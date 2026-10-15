@@ -20,7 +20,15 @@ contract.
 ## Development setup
 
 The workspace pins Rust 1.90.0. A normal compiler build also needs a local TeX
-Live or MacTeX installation:
+Live or MacTeX installation. The test suite uses `kpsewhich` and the LaTeX
+kernel to check the real TeX resolver, so they must be available on `PATH`.
+On Debian or Ubuntu, install the required base packages with:
+
+```sh
+sudo apt-get install texlive-base texlive-latex-base
+```
+
+Then build and test:
 
 ```sh
 make
