@@ -1,1 +1,5 @@
-* @antieau @dmanam
+* @antieau @dmanam @tertius-ai/public-maintainers
+
+# Workflow and review-policy changes require a project owner's approval.
+/.github/workflows/ @antieau @dmanam
+/.github/CODEOWNERS @antieau @dmanam
