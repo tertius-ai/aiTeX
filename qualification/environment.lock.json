@@ -1,0 +1,239 @@
+{
+  "artifacts": {
+    "cmr10.tfm": {
+      "sha256": "87f2d8981927644cbecaf3d639e96e348ea4e7be49d8804468bd8ba9ff3f5244"
+    },
+    "latex.fmt": {
+      "sha256": "294d487a058833f6061e608e71e34fc8d5b6ee84336607d719e71922684be9dd"
+    },
+    "latex.ltx": {
+      "sha256": "68d42138e6ddad6b6d65b81b8266162379e43e11ca709c338b485a1f77a76dea"
+    },
+    "pdflatex.fmt": {
+      "sha256": "2bb00663bd1d3ab43164cf4f4a66295bd233dfd5fd51268584beb49c5ca69876"
+    }
+  },
+  "commands": {
+    "dvitype": "DVItype 3.6 (TeX Live 2023/Debian)",
+    "gawk": "GNU Awk 5.2.1, API 3.2, PMA Avon 8-g1, (GNU MPFR 4.2.1, GNU MP 6.3.0)",
+    "ghostscript": "10.02.1",
+    "kpsewhich": "kpathsea version 6.3.5",
+    "latex": "pdfTeX 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian)",
+    "pdftex": "pdfTeX 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian)",
+    "python": "3.12.3",
+    "tex": "TeX 3.141592653 (TeX Live 2023/Debian)"
+  },
+  "description": "aiTeX compiler qualification reference",
+  "packages": {
+    "algorithm2e": {
+      "status": "absent"
+    },
+    "algorithmic": {
+      "status": "absent"
+    },
+    "amsfonts": {
+      "sha256": "dab8b0e621267acfd89736cf97bdcc02647c545c0719c4997be8a7d1bf98f9c3",
+      "status": "present"
+    },
+    "amsmath": {
+      "sha256": "da22219a49c094141141bb29034c438d1ccba8a9afe6cdd5d15b96c15bf56901",
+      "status": "present"
+    },
+    "amssymb": {
+      "sha256": "70838b061b56569dd3ed9f339b1bdd1c78ba185de49f27ceae331c97f48b5986",
+      "status": "present"
+    },
+    "amsthm": {
+      "sha256": "8d5e2bdb117297385971927b14fe4804314133dc0027b3171249a08280894626",
+      "status": "present"
+    },
+    "array": {
+      "sha256": "dc2b9a0057f8455ac0f74960618e7af3de9bf08da0e7078ef8dd0570a2924427",
+      "status": "present"
+    },
+    "babel": {
+      "sha256": "69816de88f658261e7a8ffc34973ca1dca506eb739e92737594274de8e646403",
+      "status": "present"
+    },
+    "biblatex": {
+      "sha256": "fcf08b67ad6e3944e6ef0b067ea192c9cfd2783a559dcf84ee62a81312c4d9fa",
+      "status": "present"
+    },
+    "booktabs": {
+      "sha256": "3fe694a5406f84847143e56ba1841385364277cfe7694a9f4bc0072ca8656abc",
+      "status": "present"
+    },
+    "caption": {
+      "sha256": "94b3a07d83bfdc9171d3fcb5ea510e6a9ce01ff9bebac37a1dc066e55f6ad48f",
+      "status": "present"
+    },
+    "cite": {
+      "sha256": "56979b7c69ae65bdb52de5bcd540625cae6dd70119e767db438a4826991910ea",
+      "status": "present"
+    },
+    "cleveref": {
+      "sha256": "58d7e2b67b8b165ec1c7e12dd2ea6edc807d5a61f68cb316267cea44fe128ef9",
+      "status": "present"
+    },
+    "color": {
+      "sha256": "db5153a66a97071b91dc2a2ed59f9b8c87f90082e08573c8c94dba2a46b002bf",
+      "status": "present"
+    },
+    "comment": {
+      "sha256": "27b76432648ff0c428cc0f435d9caa015880fb7d7fc02fbce45f284451a7e7ab",
+      "status": "present"
+    },
+    "courier": {
+      "sha256": "c7976508d58262bb74b705d8cc8b592a65e75ce304dff912c62f1a437e99e4d4",
+      "status": "present"
+    },
+    "csquotes": {
+      "sha256": "64ae07b68cae48a9bc45a3253b379c73b074b1b971d90b5504cf9664cd52dd90",
+      "status": "present"
+    },
+    "enumerate": {
+      "sha256": "408dfc3b98b3f52075ab59e86fd574bc0d4b4a1e0baa725a9605dccd1fec74d3",
+      "status": "present"
+    },
+    "enumitem": {
+      "sha256": "a217353d233e54e8c0944d87ea2924ec1f20d849a35b749698df03884856e5e3",
+      "status": "present"
+    },
+    "fancyhdr": {
+      "sha256": "cc6791065900f898299156662bf8a8d7d462daf2bb9af5a84bca6eb63dcac0a0",
+      "status": "present"
+    },
+    "float": {
+      "sha256": "be4a09ab7ded44b4ce97ba20a3a3efbb061d186327d5db61f8de6a3cab5019aa",
+      "status": "present"
+    },
+    "fontenc": {
+      "sha256": "b17f7346c2d881bba3bde28711e53cc7d3125e5ea440672f59bbbdbbd95499ed",
+      "status": "present"
+    },
+    "geometry": {
+      "sha256": "d5d36ad74051ad36288242b51438e2d9a5db2bd6c063b9b5704d0931fbc9f439",
+      "status": "present"
+    },
+    "graphicx": {
+      "sha256": "e9fe8e56401707f18a3d18716dadfd1dab999d02118c82af05691599cedec445",
+      "status": "present"
+    },
+    "helvet": {
+      "sha256": "a2d2cc3cf802bc0c8e6b025f911e0fb43a6ebff148abb7c4ee65bbd5c772f705",
+      "status": "present"
+    },
+    "hyperref": {
+      "sha256": "3e2bd51be23486a776165ebda8bdef7d442c0b779db14652dcc1e40429b1c1ad",
+      "status": "present"
+    },
+    "hyphenat": {
+      "sha256": "8e7e84935877f4ec5afc23007981e0143b727e721cb5d21452b4813fb0e2e8e7",
+      "status": "present"
+    },
+    "indentfirst": {
+      "sha256": "ce749439e47a7a0acbbf16ee6c3f84bd0c8b7cae377be8b4e50d638d6ad986d7",
+      "status": "present"
+    },
+    "inputenc": {
+      "sha256": "d06a1d6ac38fac720ec7fbccfe6396224e1e69616e7ba5f15e37b55bc4a6c75f",
+      "status": "present"
+    },
+    "lipsum": {
+      "sha256": "1ac9e7892621c020cfb22f081821b11625eb93c7c32fa47fd3e32a31c072c9d4",
+      "status": "present"
+    },
+    "listings": {
+      "sha256": "49776e7d2d416abcaa62fc1570755d80c73f5e1a4cb5de9da040c2b6ce20cc14",
+      "status": "present"
+    },
+    "longtable": {
+      "sha256": "83e32c4a880712340080225b239967442eb7dca5dc22bf0ca85f4ffd52506bd6",
+      "status": "present"
+    },
+    "mathptmx": {
+      "sha256": "fbf51b6bf0e1b336b3f7dc0cfb05a679f83ddbb81026ce24cf46713debeaba7b",
+      "status": "present"
+    },
+    "mathtools": {
+      "sha256": "3bf3c7550c81c3aa1bf4d39c14fe1c31e1e1599bf709c9ba2c180ee609f18c76",
+      "status": "present"
+    },
+    "microtype": {
+      "sha256": "1a41c71483a682e5443508d023fc2d01a3b96e8bdf914f0331a39760ef281549",
+      "status": "present"
+    },
+    "multirow": {
+      "sha256": "5c33cb1717024ebe00adb88514357ab394ae5f9433418fd0442ba8c64462db14",
+      "status": "present"
+    },
+    "natbib": {
+      "sha256": "d2709be806dc7d5f54daa9a16022ba1451b1322954751b98e38cfad0cc107450",
+      "status": "present"
+    },
+    "parskip": {
+      "sha256": "606938ea06d5e3c2063fb58816ab83acdcb94ff6d463293779f6475f200701b7",
+      "status": "present"
+    },
+    "pgf": {
+      "sha256": "99e08946749446e0b9b7faa985f8202740a94476f9e99bab5286cca5ce4766e9",
+      "status": "present"
+    },
+    "pgfplots": {
+      "sha256": "cb353b58769449f756c5c16f9d355c90c0714d1da1228bf912c3a5b208b4890b",
+      "status": "present"
+    },
+    "setspace": {
+      "sha256": "40037cd787ed53ada6be53a814203a37d0c00616e2894ec34675f1817543d8f8",
+      "status": "present"
+    },
+    "siunitx": {
+      "status": "absent"
+    },
+    "subcaption": {
+      "sha256": "5b6b3644307e6db3b04f0f3e2bd0709b8a84add87094da9e5395285e0b705d7e",
+      "status": "present"
+    },
+    "tabularx": {
+      "sha256": "92fd9780817710f8cb68dbe8056aab2770145651d4d442df75d5cfba5d82419a",
+      "status": "present"
+    },
+    "textcomp": {
+      "sha256": "f50ebba76b974a541b8fc2541643911efaead656aae39c957c58d5b23b51a5eb",
+      "status": "present"
+    },
+    "tikz": {
+      "sha256": "6e39ff4fdf9f126aff28880a7dd59fccc0e6735409d92ca455cdd2a4f2b4db53",
+      "status": "present"
+    },
+    "times": {
+      "sha256": "66c2602acee391948a87460295758391a12c9e0bdac0a9f7c3c0ab00849d23c5",
+      "status": "present"
+    },
+    "titlesec": {
+      "sha256": "c78182a0719ca00b7fa6cfbc5d8fbb58c341314954413b8d5b016d67a9e17f41",
+      "status": "present"
+    },
+    "todonotes": {
+      "sha256": "1fb8a83014649948a4dda06a0fc3938531578a5c86100cb8c82bc5d61ef77807",
+      "status": "present"
+    },
+    "url": {
+      "sha256": "2373f56849ac606473e77053e5c1d14c92aba312b3f684e02a130eaf36f2de47",
+      "status": "present"
+    },
+    "verbatim": {
+      "sha256": "cc351029be43b2167c15ad2bd385efb8f29472aca1bb2358f98d5bbeadc1263c",
+      "status": "present"
+    },
+    "wrapfig": {
+      "sha256": "4695b760c84ded2507b1ddc33e15e299c718f9a556cd330983f0a000f0d10de7",
+      "status": "present"
+    },
+    "xcolor": {
+      "sha256": "6d66da8f16088689c2f4995b4e920703cc94faade57911ed7aabd32b04367824",
+      "status": "present"
+    }
+  },
+  "schema": 1
+}

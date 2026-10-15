@@ -1,0 +1,15 @@
+% `tex.web` §§336/482--486: `\read` scans as a macro definition.  An `\outer`
+% token inserts a brace without escaping into the document input, invalid
+% characters are still reported while the rest of an aborted line is skipped,
+% and an open brace at file end gets the synthetic empty line's `\par`.
+\catcode`\{=1 \catcode`\}=2 \catcode`\#=6
+\immediate\openout0=read-recovery.tmp
+\immediate\write0{\string\uppercase0}
+\immediate\write0{[\string\uppercase[}
+\immediate\closeout0
+\catcode`\0=15 \catcode`\[=1 \outer\def\uppercase{}
+\openin0=read-recovery.tmp
+\read0to\a \show\a
+\read0to\a \show\a
+\message{PROBE:after}
+\end

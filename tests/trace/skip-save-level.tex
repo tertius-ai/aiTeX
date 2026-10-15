@@ -1,0 +1,38 @@
+% `tex.web` §277 `eq_save`, for the `\skip` and `\muskip` banks.
+%
+%     if xeq_level[p]<>cur_level then
+%       begin eq_save(p,xeq_level[p]); xeq_level[p]:=cur_level;
+%       end;
+%
+% A register is saved the *first* time it is assigned in a group and not
+% again, because the group only ever has to put back the one value it found.
+% The `\count` and `\dimen` banks already worked this way here; these two did
+% not — every assignment pushed an entry. So `{\skip0=1pt \skip0=2pt}` wrote
+% two `{restoring …}` lines where TeX writes one, and a loop that sets a
+% scratch skip inside a group carried an entry per turn on the save stack.
+%
+% §283's `\global` is the other half, and getting it wrong is worse than a
+% duplicated line: the entry stays on the stack with its level set to the
+% outermost, and `unsave` *discards* it — tracing `{retaining …}`, which is how
+% a reader sees that a `\global` inside a group beat the group. Deleting the
+% entry instead says nothing; applying it would undo the `\global`.
+\catcode`\{=1 \catcode`\}=2
+\tracingonline=1 \tracingrestores=1
+\skip0=1pt \muskip0=1mu \skip1=1pt
+\showthe\escapechar
+
+% Three assignments to one register, and two to another: two lines, not five.
+{\skip0=2pt \skip0=3pt \skip0=4pt \muskip0=2mu \muskip0=3mu}
+\showthe\skip0
+
+% A `\global` in the middle: the group retains it rather than restoring it,
+% and the value survives.
+{\skip1=2pt \global\skip1=9pt \skip1=3pt}
+\showthe\skip1
+
+% Nested groups each save once, and the inner one's restore is the outer
+% one's starting point.
+{{\skip0=5pt}\skip0=6pt}
+\showthe\skip0
+\showthe\escapechar
+\end

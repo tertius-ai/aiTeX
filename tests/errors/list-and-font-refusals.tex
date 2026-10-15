@@ -1,0 +1,62 @@
+% Six refusals from `tex.web`, all of which this engine granted in silence.
+%
+% §1049 sends a bare internal `\badness` through `any_mode(illegal_case)`.
+% The value is readable by a number scanner, but is never itself a command.
+% §1377 likewise restricts `\setlanguage` to horizontal modes and does not
+% scan its integer after refusing it.
+%
+% §1105 `delete_last`, which `\unskip`, `\unkern` and `\unpenalty` share:
+%
+%     begin if (mode=vmode)and(tail=head) then
+%       @<Apologize for inability to do the operation now,
+%         unless \unskip follows non-glue@>
+%
+% and §1106 is that apology, through `you_cant` — so it names the command and
+% the mode.  The page builder has already taken the main vertical list, and
+% TeX will not reach after what it has contributed.  Only the *outer* vertical
+% list: inside a `\vbox` the list is the box's own and `\unskip` works there.
+%
+% §1080 refuses `\lastbox` twice, both through `you_cant`: in math mode, and
+% on an empty main vertical list.  The box is void either way — which is what
+% we gave — but in silence.
+%
+% §577 `scan_font_ident`:
+%
+%     else begin print_err("Missing font identifier");
+%     help2("I was looking for a control sequence whose")
+%     ("current meaning has been defined by \font.");
+%     back_error; f:=null_font;
+%     end;
+%
+% We took the null font without a word, so `\fontdimen1\relax=3pt` set a
+% parameter of `\nullfont` and complained only that `\nullfont` had none —
+% an answer to a question nobody asked.
+%
+% §552: `font_params[null_font]:=7`.  `\nullfont` has the seven a font must
+% have, all nought, so reading one is legal.  Starting it at none made every
+% such read an error once §580 landed.
+%
+% And §578's own condition, which is `f<font_ptr` and nothing else:
+%
+%     if n>font_params[f] then
+%       if f<font_ptr then cur_val:=fmem_ptr
+%       else @<Increase the number of parameters in the last font@>
+%
+% The `writing` flag decides only whether the font's cached interword glue is
+% thrown away — it does *not* decide whether the font may grow.  So the last
+% font loaded extends on a *read* as readily as on an assignment.
+\catcode`\{=1 \catcode`\}=2
+\font\r=cmr10 \r \hsize100pt \parindent0pt
+\badness
+\setlanguage5\par
+\unpenalty
+\unkern
+\unskip
+\setbox0\lastbox
+\showthe\fontdimen7\nullfont
+\fontdimen1\relax=3pt
+\vbox{\hbox{}\kern3pt\unkern\unskip\setbox1\lastbox}
+\font\s=cmr10 at 5pt
+\showthe\fontdimen9\s
+\showthe\fontdimen9\r
+\end

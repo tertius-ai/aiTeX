@@ -1,0 +1,29 @@
+% `tex.web` §977 and §979: a `\vsplit` records the marks it took away.
+%
+%     if type(p)=mark_node then
+%       if split_first_mark=null then
+%         begin split_first_mark:=mark_ptr(p); split_bot_mark:=split_first_mark;
+%         …
+%       else begin delete_token_ref(split_bot_mark);
+%         split_bot_mark:=mark_ptr(p); …
+%
+% The first `\mark` in the part taken off becomes `\splitfirstmark` and the
+% last becomes `\splitbotmark`, and §977 clears both at the start of every
+% `\vsplit` whether or not it finds any — so a split that takes no mark leaves
+% them empty rather than leaving the last split's behind.
+%
+% We recorded neither. A document that splits a box and asks what was in it —
+% which is what a footnote or a long table does to carry a heading over — got
+% nothing back. In trip.log it is `3:alpha:3:alpha:alpha` against our
+% `3:alpha:3::`.
+\catcode`\{=1 \catcode`\}=2
+\splitmaxdepth=2pt
+\setbox1\vbox{\mark{A}\hbox{}\mark{B}\vskip 5pt\hbox{}\mark{C}\vskip 100pt\hbox{}\mark{D}}
+\message{<before=[\splitfirstmark][\splitbotmark]>}
+\setbox2\vsplit1 to 5pt
+\message{<after=[\splitfirstmark][\splitbotmark]>}
+\setbox3\vbox{\hbox{}}
+\setbox4\vsplit3 to 5pt
+% A split that finds no mark clears them rather than leaving the last one.
+\message{<none=[\splitfirstmark][\splitbotmark]>}
+\end

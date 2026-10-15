@@ -1,0 +1,25 @@
+% TFM-PL: vendor/trip/trip.pl
+% `tex.web` §738 lowers a math accent by
+%
+%     if h<x_height(f) then delta:=h else delta:=x_height(f)
+%
+% where `f` is the font that supplied the accent. It is not family 2's math
+% symbol font, whose x-height happens to agree in ordinary Computer Modern.
+% TRIP's purpose-built font makes the two parameters differ (and negative),
+% exposing a 4.75pt error in the vertical accent kern when the wrong one wins.
+\catcode`\{=1 \catcode`\}=2 \catcode`\$=3 \catcode`\^=7 \catcode`\_=8
+\font\trip=trip
+\font\smalltrip=trip scaled 500
+\font\bigtrip=trip at 20pt
+\trip
+\textfont0=\trip \scriptfont0=\smalltrip \scriptscriptfont0=\smalltrip
+\textfont1=\trip \scriptfont1=\smalltrip \scriptscriptfont1=\smalltrip
+\textfont2=\smalltrip \scriptfont2=\smalltrip \scriptscriptfont2=\smalltrip
+\textfont3=\bigtrip \scriptfont3=\bigtrip \scriptscriptfont3=\bigtrip
+\showboxdepth=6 \showboxbreadth=20 \tracingonline=0
+
+\setbox0=\hbox{$\mathaccent"32D A\showlists$}
+\showbox0
+\setbox0=\hbox{$\scriptstyle\mathaccent"32D A\showlists$}
+\showbox0
+\end

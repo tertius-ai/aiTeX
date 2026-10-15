@@ -1,0 +1,49 @@
+% `tex.web` §863 and §873: which passes a paragraph announces.
+%
+%     if pretolerance>=0 then
+%       begin if tracing_paragraphs>0 then
+%         begin begin_diagnostic; print_nl("@firstpass"); end;
+%       threshold:=pretolerance; second_pass:=false; final_pass:=false;
+%       end
+%     else begin threshold:=tolerance; second_pass:=true;
+%       final_pass:=(emergency_stretch<=0);
+%       if tracing_paragraphs>0 then begin_diagnostic;
+%       end;
+%
+% Only the first pass is announced there, and only if there is one: with
+% `\pretolerance` negative the narration starts straight into the breaks with
+% no header at all. `@secondpass` is §873's and is printed when a first pass
+% has *failed*, so a paragraph that never had one cannot produce it — we
+% printed it anyway.
+%
+% §873 also decides whether there is a third pass:
+%
+%     final_pass:=(emergency_stretch<=0);
+%     … else begin if tracing_paragraphs>0 then print_nl("@emergencypass");
+%       background[2]:=background[2]+emergency_stretch; final_pass:=true; end;
+%
+% With `\emergencystretch` at zero — INITEX's value, and trip.tex's — the
+% second pass *is* the final one and `@emergencypass` never appears. We ran a
+% third pass unconditionally and labelled it, so every paragraph that needed
+% hyphenation claimed an emergency.
+%
+% What that third pass *does* is unchanged and still not TeX's: §851's
+% artificial demerits make a forced break free inside the final pass, and we
+% score it. That shows as `b=*`/`d=*` in Knuth's transcript against real
+% numbers here, and sometimes as a different break. This case stays clear of
+% that historical final-pass defect: both paragraphs below are broken by a
+% pass that succeeds.
+\catcode`\{=1 \catcode`\}=2
+\tracingonline=1
+\tracingparagraphs=1
+\hsize=100pt \parindent=0pt
+\font\rip=cmr10 \rip
+
+% A first pass that succeeds: announced, and nothing else.
+\pretolerance=10000
+AAA AAA\par
+
+% No first pass at all: no header.
+\pretolerance=-1 \tolerance=10000
+AAA AAA\par
+\end

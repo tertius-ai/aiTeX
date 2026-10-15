@@ -1,0 +1,18 @@
+[package]
+name = "aitex-driver"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+publish = false
+
+[dependencies]
+aitex-fonts = { path = "../aitex-fonts" }
+aitex-page = { path = "../aitex-page" }
+# zlib-rs is the fast pure-Rust backend: it keeps deterministic PDF stream
+# compression and adds no system-library or runtime dependency. It uses
+# carefully scoped unsafe internally, which is acceptable at this boundary.
+flate2 = { version = "1.1.2", default-features = false, features = ["zlib-rs"] }
+
+[lints]
+workspace = true

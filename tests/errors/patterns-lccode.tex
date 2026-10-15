@@ -1,0 +1,40 @@
+% `tex.web` §962 folds every pattern character through `\lccode`:
+%
+%     if cur_chr="." then cur_chr:=0 {edge-of-word delimiter}
+%     else begin cur_chr:=lc_code(cur_chr);
+%       if cur_chr=0 then
+%         begin print_err("Nonletter");
+%         help1("(See Appendix H.)"); error;
+%         end;
+%       end;
+%
+% and §963 keeps the *last* of two patterns for the same letters, saying so:
+%
+%     if trie_o[q]<>min_quarterword then
+%       begin print_err("Duplicate pattern");
+%       help1("(See Appendix H.)"); error;
+%       end;
+%     trie_o[q]:=v;
+%
+% The two rules are one bug together.  Without the folding, `bb1` and `0B2B0`
+% are two patterns where TeX has one — so TeX keeps the second, whose values
+% are all even, and offers no break at all where we offered four.  The
+% overwrite itself we already had, being what a map insert does; what was
+% missing was the key it happens on.
+%
+% A pattern character with no `\lccode` is diagnosed and kept as character
+% zero, with `Nonletter` said once for each. §960 also rejects commands other than
+% letter/other-character tokens, and §962 treats a second consecutive digit as
+% a letter; its zero `\lccode` therefore raises `Nonletter`.
+\catcode`\{=1 \catcode`\}=2
+\font\r=cmr10 \r \hsize20pt \parindent0pt \baselineskip12pt
+\tolerance10000 \pretolerance-1 \hbadness10000 \uchyph=1
+\showboxbreadth99 \showboxdepth99 \tracingonline0
+\patterns{bb bb1 0B2B0 b1c}
+\setbox0\vbox{\noindent x BBBBBB\par}\showbox0
+\lccode`\!=`\!
+\patterns{a1!b !1a}
+\patterns{x1y x2y}
+\chardef\badchar=`b
+\patterns{\badchar 50b}
+\end

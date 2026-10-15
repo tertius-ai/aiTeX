@@ -1,0 +1,24 @@
+% `tex.web` §416 `@<Fetch a font identifier@>`, reached from §413 for all three
+% of `def_font`, `set_font` and `def_family`:
+%
+%     begin if cur_cmd=def_font then f:=cur_font
+%     else if cur_cmd=set_font then f:=cur_chr
+%     else begin m:=cur_chr; scan_four_bit_int; f:=equiv(m+cur_val); end;
+%     cur_val:=font_id_base+f; cur_val_level:=ident_val;
+%     end
+%
+% So `\the\textfont2` is a font identifier exactly as `\the\font` is — it is
+% how a macro remembers a family and puts it back — and the family number is
+% `scan_four_bit_int`, so -1 and 17 are `Bad number` and read as 0.
+%
+% We had the `def_font` and `set_font` arms and not this one, which since §413
+% learned to complain meant `\the\textfont2` said it could not be used after
+% `\the` and handed back a zero.
+\catcode`\{=1 \catcode`\}=2
+\font\r=cmr10 \textfont2=\r
+\showthe\textfont2
+\showthe\scriptfont0
+\showthe\scriptscriptfont-1
+\showthe\textfont17
+\edef\x{\the\textfont2}\show\x
+\end

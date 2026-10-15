@@ -1,0 +1,6 @@
+[unicode]
+font = "Noto Sans"
+font-paths = ["fonts"]
+language = "en"
+features = "Ligatures=Common"
+direction = "auto"

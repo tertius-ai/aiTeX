@@ -1,0 +1,14 @@
+% tex.web 407: scan_keyword reads with get_x_token, so a macro standing for the
+% keyword is expanded and matched. LaTeX's \@plus / \@minus are macros for the
+% glue keywords `plus` / `minus`. Our scan_keyword read raw tokens, so \@plus
+% never matched, was pushed back, and its `plus` later leaked a `p` into
+% vertical mode (\setlength\floatsep{...\@plus...} started a spurious paragraph
+% that fired \output at \@@end). @ must be a letter for \@plus to be one cs.
+\input plain
+\catcode`\@=11
+\def\@plus{plus}\def\@minus{minus}
+\skip0=12pt \@plus 2pt \@minus 4pt
+\skip1=5pt\@plus 1fil
+\skip2=3pt \@minus 2pt
+\message{<a=\the\skip0><b=\the\skip1><c=\the\skip2>}
+\bye

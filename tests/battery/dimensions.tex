@@ -1,0 +1,23 @@
+% Every unit and every literal dimension form.
+\input plain
+\catcode`\@=11
+\dimen5=3pt \count5=7
+\def\show#1{\dimen0=#1 \message{<\the\dimen0>}}
+\show{1pt}
+\show{-1pt}
+\show{1in}
+\show{1pc}
+\show{1bp}
+\show{1cm}
+\show{1mm}
+\show{1dd}
+\show{1cc}
+\show{1sp}
+\show{.5pt}
+\show{1.5pt}
+\show{2.5\dimen5}
+\show{\dimen5}
+\show{-\dimen5}
+\show{1em}
+\show{1ex}
+\bye

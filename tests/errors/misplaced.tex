@@ -1,0 +1,53 @@
+% Four error families that were silent here, each a different `tex.web`
+% section and each with a different recovery.
+%
+% §510 — `\fi`, `\else` or `\or` with no `\if` open. Ignored, and said so:
+% "I'm ignoring this; it doesn't match any \if." A `\fi` too many is exactly
+% the mistake this message exists to catch, and we ignored it in silence.
+%
+% §1126 — `\cr`, `\crcr` or a tab character outside an alignment. TeX names
+% the offender, so `\cr` and `\crcr` read differently, and the tab message
+% shows the character, since a document may have made any character a tab.
+%
+% §1049 `report_illegal_case` — one message for a whole family: a command used
+% in a mode that cannot accept it. It names the mode, which is what tells a
+% reader they are outside the paragraph they thought they were in.
+\catcode`\{=1 \catcode`\}=2 \catcode`\#=6 \catcode`\&=4
+\font\r=cmr10 \r \hsize=100pt
+
+% §510, all three spellings
+\fi
+\else
+\or
+
+% ...and the conditionals that must stay quiet
+\iftrue\fi
+\iftrue a\else b\fi
+\ifnum1<2 x\fi
+\message{PROBE:conds-ok}
+
+% §1126
+\cr
+\crcr
+a&b
+
+% ...and a tab inside an alignment is ordinary
+\halign{#&#\cr x&y\cr}
+\message{PROBE:align-ok}
+
+% §792 — a tab past the last column — is implemented but is *not* tested here.
+% Its message and recovery match TeX exactly (verified by probe), but §311's
+% context for it does not: TeX shows `<recently read> \endtemplate` where this
+% engine shows `<to be read again> \endtemplate`, because the token is still in
+% the lookahead slot when the error is raised. This file compares contexts, so
+% the case would fail on that alone.
+
+% §1049, and the mode it names
+\spacefactor=5
+\setbox0\vbox{\spacefactor=5}
+\message{PROBE:sf-vertical}
+
+% ...horizontal mode is where it belongs, and is quiet
+\indent\spacefactor=5 \par
+\message{PROBE:sf-horizontal}
+\end

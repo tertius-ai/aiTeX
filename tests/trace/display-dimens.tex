@@ -1,0 +1,38 @@
+% `tex.web` §1145: the three display dimensions are assigned *inside* the
+% formula's group.
+%
+%     push_math(math_shift_group); mode:=mmode;
+%     eq_word_define(int_base+cur_fam_code,-1);
+%     eq_word_define(dimen_base+pre_display_size_code,w);
+%     eq_word_define(dimen_base+display_width_code,l);
+%     eq_word_define(dimen_base+display_indent_code,s);
+%
+% Computing them is the work of the *enclosing* paragraph — `w` is how far the
+% last line reached to the right of its reference point — but storing them
+% belongs inside, so the closing `$$` puts all three back. We assigned before
+% opening the group, so a display left `\displayindent` and its two neighbours
+% changed behind it.
+%
+% The `\showthe` after each message is there to end the line: §252 opens a
+% restore trace with `print_char`, not `print_nl`, so `{restoring …}` joins
+% whatever line is in progress.
+\catcode`\{=1 \catcode`\}=2 \catcode`\$=3
+\tracingonline=1 \tracingrestores=1
+\hsize=100pt \parindent=0pt
+\font\rm=cmr10 \textfont0=\rm \scriptfont0=\rm \scriptscriptfont0=\rm \rm
+\font\mi=cmmi10 \textfont1=\mi \scriptfont1=\mi \scriptscriptfont1=\mi
+\font\sy=cmsy10 \textfont2=\sy \scriptfont2=\sy \scriptscriptfont2=\sy
+\font\ex=cmex10 \textfont3=\ex \scriptfont3=\ex \scriptscriptfont3=\ex
+% A report first, so the message does not join TeX's `(./file.tex`.
+\showthe\escapechar
+\message{PROBE:before=[\the\displayindent][\the\displaywidth][\the\predisplaysize]}
+% ...and a report after it too, so the paragraph's underfull warning does not
+% follow a message directly: §660 opens with an unconditional `print_ln`, which
+% after a line still in progress merely ends it, and this engine writes a blank
+% line there. That is the other half of the print-ln/print-nl distinction.
+\showthe\escapechar
+\noindent A$$B$$
+\showthe\escapechar
+\message{PROBE:after=[\the\displayindent][\the\displaywidth][\the\predisplaysize]}
+\showthe\escapechar
+\end

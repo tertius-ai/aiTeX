@@ -1,0 +1,358 @@
+{
+  "aitex": {
+    "classic_xref_annotations": {
+      "cyan_boxed_links": 192,
+      "link_annotations": 960,
+      "red_boxed_links": 768
+    },
+    "classic_xref_breakdown": {
+      "categories": {
+        "font_program": {
+          "decoded_bytes": 124351,
+          "flate_streams": 12,
+          "objects": 12,
+          "stored_bytes": 82700
+        },
+        "page_content": {
+          "decoded_bytes": 1917847,
+          "flate_streams": 193,
+          "objects": 193,
+          "stored_bytes": 329152
+        },
+        "to_unicode": {
+          "decoded_bytes": 10336,
+          "flate_streams": 4,
+          "objects": 4,
+          "stored_bytes": 4220
+        }
+      },
+      "non_payload_bytes": 335718,
+      "objects": 1585,
+      "path": "temporary/aitex-classic-xref.pdf",
+      "pdf_bytes": 751790,
+      "schema": 1,
+      "sha256": "a12d00b7688007fff4b0184ff1044b6442abb3d6ceb80be0143ef5496f4ccdf1",
+      "streams": {
+        "decoded_bytes": 2052534,
+        "flate_streams": 209,
+        "objects": 209,
+        "stored_bytes": 416072,
+        "undecoded_filtered_streams": 0
+      }
+    },
+    "classic_xref_sample": {
+      "cpu_seconds": 4.29,
+      "max_rss_kib": 209120,
+      "passes": 2,
+      "pdf_assembly_ms": 72.365,
+      "pdf_bytes": 751790,
+      "pdf_sha256": "a12d00b7688007fff4b0184ff1044b6442abb3d6ceb80be0143ef5496f4ccdf1",
+      "pdf_total_ms": 125.605,
+      "wall_seconds": 4.316195
+    },
+    "deterministic_pdf": true,
+    "median_cpu_seconds": 4.29,
+    "median_max_rss_kib": 209616,
+    "median_pdf_assembly_ms": 72.738,
+    "median_pdf_total_ms": 124.889,
+    "median_wall_seconds": 4.304071,
+    "samples": [
+      {
+        "cpu_seconds": 4.37,
+        "max_rss_kib": 211696,
+        "passes": 2,
+        "pdf_assembly_ms": 71.937,
+        "pdf_bytes": 492186,
+        "pdf_sha256": "86fee7bfea4fc64eae1b120019f1b5bb93c2e30b2a92bbe77b2c5f3dc897cac0",
+        "pdf_total_ms": 123.24,
+        "wall_seconds": 4.625085
+      },
+      {
+        "cpu_seconds": 4.29,
+        "max_rss_kib": 207968,
+        "passes": 2,
+        "pdf_assembly_ms": 72.738,
+        "pdf_bytes": 492186,
+        "pdf_sha256": "86fee7bfea4fc64eae1b120019f1b5bb93c2e30b2a92bbe77b2c5f3dc897cac0",
+        "pdf_total_ms": 124.889,
+        "wall_seconds": 4.304071
+      },
+      {
+        "cpu_seconds": 4.28,
+        "max_rss_kib": 209616,
+        "passes": 2,
+        "pdf_assembly_ms": 75.057,
+        "pdf_bytes": 492186,
+        "pdf_sha256": "86fee7bfea4fc64eae1b120019f1b5bb93c2e30b2a92bbe77b2c5f3dc897cac0",
+        "pdf_total_ms": 129.067,
+        "wall_seconds": 4.299773
+      }
+    ],
+    "validation": {
+      "fonts": {
+        "count": 12,
+        "rows": [
+          "RLYMBE+LMRoman10-Regular             Type 1            Custom           yes yes yes      6  0",
+          "DOHJFQ+LMRoman12-Bold                Type 1            Custom           yes yes yes      9  0",
+          "CALLJM+LMRoman9-Regular              Type 1            Custom           yes yes yes     12  0",
+          "SFYOMQ+LMRoman10-Bold                Type 1            Custom           yes yes yes     15  0",
+          "SNLSKO+LMRoman10-Italic              Type 1            Custom           yes yes yes     18  0",
+          "EOJBFA+LMSans10-Regular              Type 1            Custom           yes yes yes     21  0",
+          "TCXUXG+LMMono10-Regular              Type 1            Custom           yes yes yes     24  0",
+          "DOWWZB+LMRoman10-Regular             Type 1            Custom           yes yes yes     28  0",
+          "AEUDDX+LMRoman7-Regular              Type 1            Custom           yes yes yes     31  0",
+          "CFHRYN+LMMathItalic10-Regular        Type 1            Custom           yes yes yes     35  0",
+          "JKPXLH+LMMathItalic7-Regular         Type 1            Custom           yes yes yes     38  0",
+          "VKLDNX+LMMathExtension10-Regular     Type 1            Custom           yes yes yes     42  0"
+        ]
+      },
+      "info": {
+        "pages": 193,
+        "pdf_version": "1.5",
+        "tagged": "no"
+      },
+      "links": {
+        "uri_annotations": 192,
+        "urls_sha256": "cf1acb97d56b006530db43407f0289783acd3374b2be76610eabf2f00d1630b9"
+      },
+      "poppler": {
+        "pages": 193,
+        "sha256": "175fe6ce099c242b8f9c81dba7818eff48949cc0a9dcc6a33c5cceeff9decfbe"
+      },
+      "quartz": {
+        "available": true,
+        "first_page_sha256": "8df21fe11eb720a141931f14a17def969c070fa8fbbc3c79413c67e328565149"
+      },
+      "text": {
+        "bytes": 450052,
+        "generated_sections": 192,
+        "mapped_math_symbols": {
+          "integral": 192,
+          "square_root": 192,
+          "sum": 576
+        },
+        "section_sequence_sha256": "90e62b5f0759d807feb4ca89d5dee05fe467a340dea11e30de34a3b808231783",
+        "sha256": "3627e893574b07a1c3b87c91c3d048046f0c4440d2cd715c4d4001171d32a0d0"
+      },
+      "validators": {
+        "ghostscript": true,
+        "mutool": null,
+        "qpdf": null
+      }
+    }
+  },
+  "comparison": {
+    "classic_xref_breakdown": {
+      "aitex_non_payload_bytes": 335718,
+      "aitex_pdf_bytes": 751790,
+      "categories": {
+        "font_program": {
+          "aitex_decoded_bytes": 124351,
+          "aitex_objects": 12,
+          "aitex_stored_bytes": 82700,
+          "decoded_byte_delta": -65099,
+          "object_delta": 1,
+          "stock_decoded_bytes": 189450,
+          "stock_objects": 11,
+          "stock_stored_bytes": 181762,
+          "stored_byte_delta": -99062
+        },
+        "page_content": {
+          "aitex_decoded_bytes": 1917847,
+          "aitex_objects": 193,
+          "aitex_stored_bytes": 329152,
+          "decoded_byte_delta": 649941,
+          "object_delta": 0,
+          "stock_decoded_bytes": 1267906,
+          "stock_objects": 193,
+          "stock_stored_bytes": 262704,
+          "stored_byte_delta": 66448
+        },
+        "to_unicode": {
+          "aitex_decoded_bytes": 10336,
+          "aitex_objects": 4,
+          "aitex_stored_bytes": 4220,
+          "decoded_byte_delta": -11610,
+          "object_delta": -8,
+          "stock_decoded_bytes": 21946,
+          "stock_objects": 12,
+          "stock_stored_bytes": 9583,
+          "stored_byte_delta": -5363
+        }
+      },
+      "non_payload_byte_delta": -94545,
+      "pdf_byte_delta": -132522,
+      "stock_non_payload_bytes": 430263,
+      "stock_pdf_bytes": 884312
+    },
+    "extracted_section_order_equal": true,
+    "pdf_size_ratio": 0.93864,
+    "poppler_raster": {
+      "dpi": 72,
+      "equivalent": true,
+      "fuzz_fraction": 0.05,
+      "max_normalized_mae": 0.0015,
+      "max_outside_fraction": 0.005,
+      "pages": 193,
+      "worst_normalized_mae": 0.001157407,
+      "worst_normalized_mae_page": 11,
+      "worst_outside_fraction": 0.002025979,
+      "worst_outside_fraction_page": 20
+    },
+    "raw_extracted_text_equal": false,
+    "uri_annotations_equal": true
+  },
+  "compiler": {
+    "binary_sha256": "79d3723aa4b83201c5250d72f04d04823e1cb47bf3a2d1a7aea748d558f768c5",
+    "format_sha256": "d29d4df98235c4eca68252f809de8c6ed5cdfc77dd3e08975a2a50256b2d1521",
+    "git_commit": "6eaa54721ea13bcf1bafe754ce045da8f5bedcaf",
+    "git_dirty": false
+  },
+  "corpus": {
+    "contains_third_party_document_text": false,
+    "lock": "qualification/pdf-corpus-v1.json",
+    "lock_name": "aitex-pdf-font-language-v1",
+    "lock_sha256": "41f7fd34c3f613fdc64974be96828fa31c090af6287409a04242964ac1e174a8",
+    "name": "synthetic-book-v1",
+    "pages_requested": 192,
+    "provenance": "original synthetic source distributed with aiTeX",
+    "source": "tests/pdf-qualification/synthetic-book.tex",
+    "source_sha256": "879f25b8069d362245008e000df2556bc2b6684f638ed69fadeb25ea74610772"
+  },
+  "environment": {
+    "aitex": "aitex 0.2.0",
+    "ghostscript": "10.03.0",
+    "latexmk": "Latexmk, John Collins, 31 Jan. 2024. Version 4.83",
+    "pdfinfo": "pdfinfo version 26.04.0",
+    "pdflatex": "pdfTeX 3.141592653-2.6-1.40.26 (TeX Live 2024)",
+    "platform": "macOS-14.1-arm64-arm-64bit-Mach-O",
+    "python": "3.14.5",
+    "rustc": "rustc 1.90.0 (1159e78c4 2025-09-14)"
+  },
+  "schema": 1,
+  "stock": {
+    "classic_xref_breakdown": {
+      "categories": {
+        "font_program": {
+          "decoded_bytes": 189450,
+          "flate_streams": 11,
+          "objects": 11,
+          "stored_bytes": 181762
+        },
+        "page_content": {
+          "decoded_bytes": 1267906,
+          "flate_streams": 193,
+          "objects": 193,
+          "stored_bytes": 262704
+        },
+        "to_unicode": {
+          "decoded_bytes": 21946,
+          "flate_streams": 12,
+          "objects": 12,
+          "stored_bytes": 9583
+        }
+      },
+      "non_payload_bytes": 430263,
+      "objects": 2919,
+      "path": "temporary/stock-classic-xref.pdf",
+      "pdf_bytes": 884312,
+      "schema": 1,
+      "sha256": "01b94cb745b56c40aed478334eb73e334d4eb0f63b37de1e29965db11b8cf5c6",
+      "streams": {
+        "decoded_bytes": 1479302,
+        "flate_streams": 216,
+        "objects": 216,
+        "stored_bytes": 454049,
+        "undecoded_filtered_streams": 0
+      }
+    },
+    "classic_xref_sample": {
+      "cpu_seconds": 1.65,
+      "max_rss_kib": 66880,
+      "pdf_bytes": 884312,
+      "pdf_sha256": "01b94cb745b56c40aed478334eb73e334d4eb0f63b37de1e29965db11b8cf5c6",
+      "wall_seconds": 1.68803
+    },
+    "deterministic_pdf": true,
+    "median_cpu_seconds": 1.52,
+    "median_max_rss_kib": 65136,
+    "median_pdf_assembly_ms": null,
+    "median_pdf_total_ms": null,
+    "median_wall_seconds": 1.546064,
+    "samples": [
+      {
+        "cpu_seconds": 1.52,
+        "max_rss_kib": 65136,
+        "pdf_bytes": 524361,
+        "pdf_sha256": "8ae2cfc9b0228ed42b77d07797bc2cb3d0304378a22c69427a9157098bf1c4d4",
+        "wall_seconds": 1.546064
+      },
+      {
+        "cpu_seconds": 1.51,
+        "max_rss_kib": 65008,
+        "pdf_bytes": 524361,
+        "pdf_sha256": "8ae2cfc9b0228ed42b77d07797bc2cb3d0304378a22c69427a9157098bf1c4d4",
+        "wall_seconds": 1.538932
+      },
+      {
+        "cpu_seconds": 1.62,
+        "max_rss_kib": 65616,
+        "pdf_bytes": 524361,
+        "pdf_sha256": "8ae2cfc9b0228ed42b77d07797bc2cb3d0304378a22c69427a9157098bf1c4d4",
+        "wall_seconds": 1.653012
+      }
+    ],
+    "validation": {
+      "fonts": {
+        "count": 12,
+        "rows": [
+          "SPLLDR+LMRoman12-Bold                Type 1            Custom           yes yes yes    780  0",
+          "WUHMMS+LMRoman10-Regular             Type 1            Custom           yes yes yes    781  0",
+          "TGUPAH+LMRoman9-Regular              Type 1            Custom           yes yes yes    782  0",
+          "NJOETJ+LMRoman10-Bold                Type 1            Custom           yes yes yes    794  0",
+          "SRDHEJ+LMRoman10-Italic              Type 1            Custom           yes yes yes    795  0",
+          "GUBAIY+LMSans10-Regular              Type 1            Custom           yes yes yes    796  0",
+          "RPHSXD+LMMono10-Regular              Type 1            Custom           yes yes yes    797  0",
+          "JHORIS+LMMathExtension10-Regular     Type 1            Custom           yes yes yes    798  0",
+          "AAAHIX+LMRoman7-Regular              Type 1            Custom           yes yes yes    799  0",
+          "PMLXKY+LMMathItalic7-Regular         Type 1            Custom           yes yes yes    800  0",
+          "GVGFAB+LMMathItalic10-Regular        Type 1            Custom           yes yes yes    801  0",
+          "WUHMMS+LMRoman10-Regular             Type 1            Custom           yes yes yes    802  0"
+        ]
+      },
+      "info": {
+        "pages": 193,
+        "pdf_version": "1.5",
+        "tagged": "no"
+      },
+      "links": {
+        "uri_annotations": 192,
+        "urls_sha256": "cf1acb97d56b006530db43407f0289783acd3374b2be76610eabf2f00d1630b9"
+      },
+      "poppler": {
+        "pages": 193,
+        "sha256": "0137955837f05b0d3d712d1c796ed632bd3d451eb18c25acd5ddb305fca4fd5d"
+      },
+      "quartz": {
+        "available": true,
+        "first_page_sha256": "67795773bfdc2fd3c7d962a21237e71ccfc8701513726c74f38b27d75a76b568"
+      },
+      "text": {
+        "bytes": 448336,
+        "generated_sections": 192,
+        "mapped_math_symbols": {
+          "integral": 0,
+          "square_root": 0,
+          "sum": 0
+        },
+        "section_sequence_sha256": "90e62b5f0759d807feb4ca89d5dee05fe467a340dea11e30de34a3b808231783",
+        "sha256": "fd63b1b7e28525657825aacee66addc28a6e85e587d46902007e3d5d4ee49cfe"
+      },
+      "validators": {
+        "ghostscript": true,
+        "mutool": null,
+        "qpdf": null
+      }
+    }
+  }
+}

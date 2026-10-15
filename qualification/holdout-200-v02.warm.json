@@ -1,0 +1,4784 @@
+{
+  "schema": 5,
+  "description": "Locked-corpus persistent LaTeX output-cache qualification",
+  "created_at": "2026-09-02T18:31:20+00:00",
+  "cold_results_sha256": "2d99d043a4a30e90ef7a660f53622c3ac9b1e29a0838126c80f378dfd40014ab",
+  "sources_sha256": "ba336a6dded14b38332bc6e0a1008443883f167dabb21c7fc650abf9067041b2",
+  "runner_sha256": "3db6042353e9a36876eb9a2dc99ab696b4fa94ba1affccd4cd2ef30f9f682198",
+  "selection": "locked roots whose stock DVI route succeeded",
+  "cold_compiler": {
+    "git_commit": "39ee4a502fcd9c84d82e007a21d7213c3c28832e",
+    "binary_sha256": "84f91423469dfcf8f708100d96df2486c6d6c5ae1813493a359f93b05405d393",
+    "format_sha256": "e3129135ab1886fdd4c80acce85bf7f5e8bfef640979647ac2c6b31ce1029a53",
+    "version": "0.2.0"
+  },
+  "binary_sha256": "84f91423469dfcf8f708100d96df2486c6d6c5ae1813493a359f93b05405d393",
+  "format_sha256": "e3129135ab1886fdd4c80acce85bf7f5e8bfef640979647ac2c6b31ce1029a53",
+  "texmf_overlay": "/home/antieau/src/aiTeX/corpus/texlive-overlay/root/usr/share/texlive/texmf-dist",
+  "texmf_filename_database_sha256": "25347d87f434cb87c61f89084057d2aca37b7ae313aa08587cb149df5493d5e6",
+  "jobs": 3,
+  "selected": 56,
+  "valid_output_cache_hits": 56,
+  "entries": [
+    {
+      "id": "2608.27447v1",
+      "status": "valid",
+      "stock_setup_passes": 2,
+      "candidate_setup_passes": 2,
+      "stock": {
+        "returncode": 0,
+        "seconds": 0.324742,
+        "cpu_seconds": 0.31,
+        "timed_out": false,
+        "user_seconds": 0.28,
+        "system_seconds": 0.03,
+        "max_rss_kib": 47360,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 200704,
+        "output": {
+          "valid": true,
+          "pages": 23,
+          "characters": 23858,
+          "characters_sha256": "6101185d52eecdc88adc005f8fca9cc657a72db4122e65ae23b4a19f2e7a6e39",
+          "bytes": 152252
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 0.389031,
+        "cpu_seconds": 0.37,
+        "timed_out": false,
+        "user_seconds": 0.33,
+        "system_seconds": 0.04,
+        "max_rss_kib": 60232,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 413696,
+        "output": {
+          "valid": true,
+          "pages": 23,
+          "characters": 23858,
+          "characters_sha256": "6101185d52eecdc88adc005f8fca9cc657a72db4122e65ae23b4a19f2e7a6e39",
+          "bytes": 160240
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "class_snapshot_written": false,
+        "class_snapshot_hit": false,
+        "output_cache_written": true,
+        "output_cache_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.020866,
+        "cpu_seconds": 0.01,
+        "timed_out": false,
+        "user_seconds": 0.0,
+        "system_seconds": 0.01,
+        "max_rss_kib": 20736,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 0,
+        "output": {
+          "valid": true,
+          "pages": 23,
+          "characters": 23858,
+          "characters_sha256": "6101185d52eecdc88adc005f8fca9cc657a72db4122e65ae23b4a19f2e7a6e39",
+          "bytes": 160240
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "output_cache_written": false,
+        "output_cache_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.27427v1",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 0.510584,
+        "cpu_seconds": 0.49,
+        "timed_out": false,
+        "user_seconds": 0.45,
+        "system_seconds": 0.04,
+        "max_rss_kib": 47616,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 356352,
+        "output": {
+          "valid": true,
+          "pages": 36,
+          "characters": 85219,
+          "characters_sha256": "8211ec26869a9a3006bad4fdc448a57b4d88bde87990021c1c5a874b6e67c1c3",
+          "bytes": 275084
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 0.766273,
+        "cpu_seconds": 0.75,
+        "timed_out": false,
+        "user_seconds": 0.69,
+        "system_seconds": 0.06,
+        "max_rss_kib": 60724,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 741376,
+        "output": {
+          "valid": true,
+          "pages": 36,
+          "characters": 85219,
+          "characters_sha256": "8211ec26869a9a3006bad4fdc448a57b4d88bde87990021c1c5a874b6e67c1c3",
+          "bytes": 294004
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "class_snapshot_written": false,
+        "class_snapshot_hit": false,
+        "output_cache_written": true,
+        "output_cache_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.023021,
+        "cpu_seconds": 0.01,
+        "timed_out": false,
+        "user_seconds": 0.0,
+        "system_seconds": 0.01,
+        "max_rss_kib": 20480,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 0,
+        "output": {
+          "valid": true,
+          "pages": 36,
+          "characters": 85219,
+          "characters_sha256": "8211ec26869a9a3006bad4fdc448a57b4d88bde87990021c1c5a874b6e67c1c3",
+          "bytes": 294004
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "output_cache_written": false,
+        "output_cache_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.27398v1",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 0.335871,
+        "cpu_seconds": 0.33,
+        "timed_out": false,
+        "user_seconds": 0.3,
+        "system_seconds": 0.03,
+        "max_rss_kib": 48128,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 266240,
+        "output": {
+          "valid": true,
+          "pages": 32,
+          "characters": 38497,
+          "characters_sha256": "edaa014da37d426400eeace77da773791148dee1e07ea01b168b35158f90dfe6",
+          "bytes": 215104
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 0.384335,
+        "cpu_seconds": 0.37,
+        "timed_out": false,
+        "user_seconds": 0.33,
+        "system_seconds": 0.04,
+        "max_rss_kib": 59792,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 532480,
+        "output": {
+          "valid": true,
+          "pages": 32,
+          "characters": 38497,
+          "characters_sha256": "edaa014da37d426400eeace77da773791148dee1e07ea01b168b35158f90dfe6",
+          "bytes": 221564
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "class_snapshot_written": false,
+        "class_snapshot_hit": false,
+        "output_cache_written": true,
+        "output_cache_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.021034,
+        "cpu_seconds": 0.01,
+        "timed_out": false,
+        "user_seconds": 0.0,
+        "system_seconds": 0.01,
+        "max_rss_kib": 20224,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 0,
+        "output": {
+          "valid": true,
+          "pages": 32,
+          "characters": 38497,
+          "characters_sha256": "edaa014da37d426400eeace77da773791148dee1e07ea01b168b35158f90dfe6",
+          "bytes": 221564
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "output_cache_written": false,
+        "output_cache_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.27356v1",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 0.48027,
+        "cpu_seconds": 0.47,
+        "timed_out": false,
+        "user_seconds": 0.45,
+        "system_seconds": 0.02,
+        "max_rss_kib": 47616,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 335872,
+        "output": {
+          "valid": true,
+          "pages": 32,
+          "characters": 55443,
+          "characters_sha256": "04e2647579c82d40aaa55628f87c369219b52701bf09e45a48669a12186f2226",
+          "bytes": 282332
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 0.549775,
+        "cpu_seconds": 0.54,
+        "timed_out": false,
+        "user_seconds": 0.48,
+        "system_seconds": 0.06,
+        "max_rss_kib": 60360,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 692224,
+        "output": {
+          "valid": true,
+          "pages": 32,
+          "characters": 55443,
+          "characters_sha256": "04e2647579c82d40aaa55628f87c369219b52701bf09e45a48669a12186f2226",
+          "bytes": 296116
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "class_snapshot_written": false,
+        "class_snapshot_hit": false,
+        "output_cache_written": true,
+        "output_cache_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.021364,
+        "cpu_seconds": 0.01,
+        "timed_out": false,
+        "user_seconds": 0.0,
+        "system_seconds": 0.01,
+        "max_rss_kib": 20480,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 0,
+        "output": {
+          "valid": true,
+          "pages": 32,
+          "characters": 55443,
+          "characters_sha256": "04e2647579c82d40aaa55628f87c369219b52701bf09e45a48669a12186f2226",
+          "bytes": 296116
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "output_cache_written": false,
+        "output_cache_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.27347v1",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 6.501166,
+        "cpu_seconds": 6.49,
+        "timed_out": false,
+        "user_seconds": 6.44,
+        "system_seconds": 0.05,
+        "max_rss_kib": 58112,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 2383872,
+        "output": {
+          "valid": true,
+          "pages": 18,
+          "characters": 41867,
+          "characters_sha256": "9caa269920c56e108278ec4bdc27398ea6a8fea2264d7adc5ef4e7839d17540d",
+          "bytes": 2309652
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 9.30505,
+        "cpu_seconds": 9.29,
+        "timed_out": false,
+        "user_seconds": 9.13,
+        "system_seconds": 0.16,
+        "max_rss_kib": 105800,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 4796416,
+        "output": {
+          "valid": true,
+          "pages": 18,
+          "characters": 41867,
+          "characters_sha256": "9caa269920c56e108278ec4bdc27398ea6a8fea2264d7adc5ef4e7839d17540d",
+          "bytes": 2320640
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "class_snapshot_written": false,
+        "class_snapshot_hit": false,
+        "output_cache_written": true,
+        "output_cache_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.026736,
+        "cpu_seconds": 0.02,
+        "timed_out": false,
+        "user_seconds": 0.01,
+        "system_seconds": 0.01,
+        "max_rss_kib": 20736,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 0,
+        "output": {
+          "valid": true,
+          "pages": 18,
+          "characters": 41867,
+          "characters_sha256": "9caa269920c56e108278ec4bdc27398ea6a8fea2264d7adc5ef4e7839d17540d",
+          "bytes": 2320640
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "output_cache_written": false,
+        "output_cache_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.27304v1",
+      "status": "valid",
+      "stock_setup_passes": 2,
+      "candidate_setup_passes": 2,
+      "stock": {
+        "returncode": 0,
+        "seconds": 0.275223,
+        "cpu_seconds": 0.26,
+        "timed_out": false,
+        "user_seconds": 0.23,
+        "system_seconds": 0.03,
+        "max_rss_kib": 48384,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 192512,
+        "output": {
+          "valid": true,
+          "pages": 21,
+          "characters": 50015,
+          "characters_sha256": "37936a2fee6120bcd19a30c45f16e2a7be88698f5ed1cf953680dd591dfeb939",
+          "bytes": 142144
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 0.363446,
+        "cpu_seconds": 0.35,
+        "timed_out": false,
+        "user_seconds": 0.29,
+        "system_seconds": 0.06,
+        "max_rss_kib": 60048,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 401408,
+        "output": {
+          "valid": true,
+          "pages": 21,
+          "characters": 50015,
+          "characters_sha256": "37936a2fee6120bcd19a30c45f16e2a7be88698f5ed1cf953680dd591dfeb939",
+          "bytes": 154816
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "class_snapshot_written": false,
+        "class_snapshot_hit": false,
+        "output_cache_written": true,
+        "output_cache_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.022581,
+        "cpu_seconds": 0.0,
+        "timed_out": false,
+        "user_seconds": 0.0,
+        "system_seconds": 0.0,
+        "max_rss_kib": 20992,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 0,
+        "output": {
+          "valid": true,
+          "pages": 21,
+          "characters": 50015,
+          "characters_sha256": "37936a2fee6120bcd19a30c45f16e2a7be88698f5ed1cf953680dd591dfeb939",
+          "bytes": 154816
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "output_cache_written": false,
+        "output_cache_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.27283v1",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 0.34966,
+        "cpu_seconds": 0.33,
+        "timed_out": false,
+        "user_seconds": 0.31,
+        "system_seconds": 0.02,
+        "max_rss_kib": 48384,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 163840,
+        "output": {
+          "valid": true,
+          "pages": 20,
+          "characters": 24479,
+          "characters_sha256": "791ce6f6c8ba81d018ef5672538d4dcc76f6f760dffc05fa4ca1eaff7ed6b2ea",
+          "bytes": 115496
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 0.407991,
+        "cpu_seconds": 0.4,
+        "timed_out": false,
+        "user_seconds": 0.34,
+        "system_seconds": 0.06,
+        "max_rss_kib": 61072,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 335872,
+        "output": {
+          "valid": true,
+          "pages": 20,
+          "characters": 24479,
+          "characters_sha256": "791ce6f6c8ba81d018ef5672538d4dcc76f6f760dffc05fa4ca1eaff7ed6b2ea",
+          "bytes": 122064
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "class_snapshot_written": false,
+        "class_snapshot_hit": false,
+        "output_cache_written": true,
+        "output_cache_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.023064,
+        "cpu_seconds": 0.01,
+        "timed_out": false,
+        "user_seconds": 0.0,
+        "system_seconds": 0.01,
+        "max_rss_kib": 20480,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 0,
+        "output": {
+          "valid": true,
+          "pages": 20,
+          "characters": 24479,
+          "characters_sha256": "791ce6f6c8ba81d018ef5672538d4dcc76f6f760dffc05fa4ca1eaff7ed6b2ea",
+          "bytes": 122064
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "output_cache_written": false,
+        "output_cache_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.27276v1",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 0.380757,
+        "cpu_seconds": 0.37,
+        "timed_out": false,
+        "user_seconds": 0.34,
+        "system_seconds": 0.03,
+        "max_rss_kib": 48384,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 204800,
+        "output": {
+          "valid": true,
+          "pages": 17,
+          "characters": 24729,
+          "characters_sha256": "d699e2292f9a87ae5c546ebae4ff028d117a1b561aaf434bbf880164bc340fd5",
+          "bytes": 144500
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 0.450676,
+        "cpu_seconds": 0.44,
+        "timed_out": false,
+        "user_seconds": 0.39,
+        "system_seconds": 0.05,
+        "max_rss_kib": 59916,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 393216,
+        "output": {
+          "valid": true,
+          "pages": 17,
+          "characters": 24729,
+          "characters_sha256": "d699e2292f9a87ae5c546ebae4ff028d117a1b561aaf434bbf880164bc340fd5",
+          "bytes": 145384
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "class_snapshot_written": false,
+        "class_snapshot_hit": false,
+        "output_cache_written": true,
+        "output_cache_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.022238,
+        "cpu_seconds": 0.01,
+        "timed_out": false,
+        "user_seconds": 0.0,
+        "system_seconds": 0.01,
+        "max_rss_kib": 20224,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 0,
+        "output": {
+          "valid": true,
+          "pages": 17,
+          "characters": 24729,
+          "characters_sha256": "d699e2292f9a87ae5c546ebae4ff028d117a1b561aaf434bbf880164bc340fd5",
+          "bytes": 145384
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "output_cache_written": false,
+        "output_cache_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.27203v1",
+      "status": "valid",
+      "stock_setup_passes": 2,
+      "candidate_setup_passes": 2,
+      "stock": {
+        "returncode": 0,
+        "seconds": 0.430523,
+        "cpu_seconds": 0.41,
+        "timed_out": false,
+        "user_seconds": 0.38,
+        "system_seconds": 0.03,
+        "max_rss_kib": 48896,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 172032,
+        "output": {
+          "valid": true,
+          "pages": 14,
+          "characters": 26708,
+          "characters_sha256": "cc71dc7668fa070b323fb113c0444806e8d56bfeffa04afc86131e0b8b1e5c97",
+          "bytes": 122428
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 0.491316,
+        "cpu_seconds": 0.48,
+        "timed_out": false,
+        "user_seconds": 0.43,
+        "system_seconds": 0.05,
+        "max_rss_kib": 60816,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 368640,
+        "output": {
+          "valid": true,
+          "pages": 14,
+          "characters": 26708,
+          "characters_sha256": "cc71dc7668fa070b323fb113c0444806e8d56bfeffa04afc86131e0b8b1e5c97",
+          "bytes": 128060
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "class_snapshot_written": false,
+        "class_snapshot_hit": false,
+        "output_cache_written": true,
+        "output_cache_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.022417,
+        "cpu_seconds": 0.01,
+        "timed_out": false,
+        "user_seconds": 0.0,
+        "system_seconds": 0.01,
+        "max_rss_kib": 20480,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 0,
+        "output": {
+          "valid": true,
+          "pages": 14,
+          "characters": 26708,
+          "characters_sha256": "cc71dc7668fa070b323fb113c0444806e8d56bfeffa04afc86131e0b8b1e5c97",
+          "bytes": 128060
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "output_cache_written": false,
+        "output_cache_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.26969v1",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 0.841921,
+        "cpu_seconds": 0.83,
+        "timed_out": false,
+        "user_seconds": 0.8,
+        "system_seconds": 0.03,
+        "max_rss_kib": 48128,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 282624,
+        "output": {
+          "valid": true,
+          "pages": 26,
+          "characters": 40619,
+          "characters_sha256": "c0d730ab56e732d836816bfea218bcb554bac90fbec914cf46920048815e9d98",
+          "bytes": 229400
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 1.143875,
+        "cpu_seconds": 1.13,
+        "timed_out": false,
+        "user_seconds": 1.07,
+        "system_seconds": 0.06,
+        "max_rss_kib": 60520,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 602112,
+        "output": {
+          "valid": true,
+          "pages": 26,
+          "characters": 40619,
+          "characters_sha256": "c0d730ab56e732d836816bfea218bcb554bac90fbec914cf46920048815e9d98",
+          "bytes": 240532
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "class_snapshot_written": false,
+        "class_snapshot_hit": false,
+        "output_cache_written": true,
+        "output_cache_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.02276,
+        "cpu_seconds": 0.01,
+        "timed_out": false,
+        "user_seconds": 0.0,
+        "system_seconds": 0.01,
+        "max_rss_kib": 20736,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 0,
+        "output": {
+          "valid": true,
+          "pages": 26,
+          "characters": 40619,
+          "characters_sha256": "c0d730ab56e732d836816bfea218bcb554bac90fbec914cf46920048815e9d98",
+          "bytes": 240532
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "output_cache_written": false,
+        "output_cache_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.26936v1",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 0.308594,
+        "cpu_seconds": 0.29,
+        "timed_out": false,
+        "user_seconds": 0.27,
+        "system_seconds": 0.02,
+        "max_rss_kib": 47360,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 225280,
+        "output": {
+          "valid": true,
+          "pages": 19,
+          "characters": 36979,
+          "characters_sha256": "4d9f9e1a795a2df68cccab2f3e6028df32307e562b997e1900bcebe35010c43c",
+          "bytes": 187340
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 0.34644,
+        "cpu_seconds": 0.33,
+        "timed_out": false,
+        "user_seconds": 0.29,
+        "system_seconds": 0.04,
+        "max_rss_kib": 59280,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 462848,
+        "output": {
+          "valid": true,
+          "pages": 19,
+          "characters": 36979,
+          "characters_sha256": "4d9f9e1a795a2df68cccab2f3e6028df32307e562b997e1900bcebe35010c43c",
+          "bytes": 195660
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "class_snapshot_written": false,
+        "class_snapshot_hit": false,
+        "output_cache_written": true,
+        "output_cache_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.022645,
+        "cpu_seconds": 0.01,
+        "timed_out": false,
+        "user_seconds": 0.0,
+        "system_seconds": 0.01,
+        "max_rss_kib": 20480,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 0,
+        "output": {
+          "valid": true,
+          "pages": 19,
+          "characters": 36979,
+          "characters_sha256": "4d9f9e1a795a2df68cccab2f3e6028df32307e562b997e1900bcebe35010c43c",
+          "bytes": 195660
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "output_cache_written": false,
+        "output_cache_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.26923v1",
+      "status": "valid",
+      "stock_setup_passes": 2,
+      "candidate_setup_passes": 2,
+      "stock": {
+        "returncode": 0,
+        "seconds": 0.553249,
+        "cpu_seconds": 0.54,
+        "timed_out": false,
+        "user_seconds": 0.51,
+        "system_seconds": 0.03,
+        "max_rss_kib": 48896,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 258048,
+        "output": {
+          "valid": true,
+          "pages": 21,
+          "characters": 43463,
+          "characters_sha256": "e6fe6ac5a3628d54ee278403865390a442f3d04370fce9d21da96af4ab2832bc",
+          "bytes": 187920
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 0.750364,
+        "cpu_seconds": 0.74,
+        "timed_out": false,
+        "user_seconds": 0.68,
+        "system_seconds": 0.06,
+        "max_rss_kib": 60676,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 520192,
+        "output": {
+          "valid": true,
+          "pages": 21,
+          "characters": 43463,
+          "characters_sha256": "e6fe6ac5a3628d54ee278403865390a442f3d04370fce9d21da96af4ab2832bc",
+          "bytes": 196592
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "class_snapshot_written": false,
+        "class_snapshot_hit": false,
+        "output_cache_written": true,
+        "output_cache_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.023684,
+        "cpu_seconds": 0.01,
+        "timed_out": false,
+        "user_seconds": 0.0,
+        "system_seconds": 0.01,
+        "max_rss_kib": 20480,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 0,
+        "output": {
+          "valid": true,
+          "pages": 21,
+          "characters": 43463,
+          "characters_sha256": "e6fe6ac5a3628d54ee278403865390a442f3d04370fce9d21da96af4ab2832bc",
+          "bytes": 196592
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "output_cache_written": false,
+        "output_cache_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.26922v1",
+      "status": "valid",
+      "stock_setup_passes": 2,
+      "candidate_setup_passes": 2,
+      "stock": {
+        "returncode": 0,
+        "seconds": 0.449876,
+        "cpu_seconds": 0.43,
+        "timed_out": false,
+        "user_seconds": 0.4,
+        "system_seconds": 0.03,
+        "max_rss_kib": 48384,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 192512,
+        "output": {
+          "valid": true,
+          "pages": 24,
+          "characters": 25783,
+          "characters_sha256": "ca4f24bd35a8d32a933446e68b2c05b5d072b2ec0068b9c54d00180a1655bcf3",
+          "bytes": 132168
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 0.521344,
+        "cpu_seconds": 0.51,
+        "timed_out": false,
+        "user_seconds": 0.46,
+        "system_seconds": 0.05,
+        "max_rss_kib": 59792,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 409600,
+        "output": {
+          "valid": true,
+          "pages": 24,
+          "characters": 25783,
+          "characters_sha256": "ca4f24bd35a8d32a933446e68b2c05b5d072b2ec0068b9c54d00180a1655bcf3",
+          "bytes": 141644
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "class_snapshot_written": false,
+        "class_snapshot_hit": false,
+        "output_cache_written": true,
+        "output_cache_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.023735,
+        "cpu_seconds": 0.01,
+        "timed_out": false,
+        "user_seconds": 0.0,
+        "system_seconds": 0.01,
+        "max_rss_kib": 20480,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 0,
+        "output": {
+          "valid": true,
+          "pages": 24,
+          "characters": 25783,
+          "characters_sha256": "ca4f24bd35a8d32a933446e68b2c05b5d072b2ec0068b9c54d00180a1655bcf3",
+          "bytes": 141644
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "output_cache_written": false,
+        "output_cache_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.26904v1",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 0.419646,
+        "cpu_seconds": 0.4,
+        "timed_out": false,
+        "user_seconds": 0.38,
+        "system_seconds": 0.02,
+        "max_rss_kib": 48640,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 172032,
+        "output": {
+          "valid": true,
+          "pages": 11,
+          "characters": 19108,
+          "characters_sha256": "ac0c71878efbea058c0751bdafca7e4c79cc43d7b738c5d3b42c684641897d88",
+          "bytes": 94200
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 0.502181,
+        "cpu_seconds": 0.49,
+        "timed_out": false,
+        "user_seconds": 0.43,
+        "system_seconds": 0.06,
+        "max_rss_kib": 60380,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 339968,
+        "output": {
+          "valid": true,
+          "pages": 11,
+          "characters": 19108,
+          "characters_sha256": "ac0c71878efbea058c0751bdafca7e4c79cc43d7b738c5d3b42c684641897d88",
+          "bytes": 96620
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "class_snapshot_written": false,
+        "class_snapshot_hit": false,
+        "output_cache_written": true,
+        "output_cache_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.021323,
+        "cpu_seconds": 0.01,
+        "timed_out": false,
+        "user_seconds": 0.0,
+        "system_seconds": 0.01,
+        "max_rss_kib": 20480,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 0,
+        "output": {
+          "valid": true,
+          "pages": 11,
+          "characters": 19108,
+          "characters_sha256": "ac0c71878efbea058c0751bdafca7e4c79cc43d7b738c5d3b42c684641897d88",
+          "bytes": 96620
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "output_cache_written": false,
+        "output_cache_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.26874v1",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 0.480826,
+        "cpu_seconds": 0.46,
+        "timed_out": false,
+        "user_seconds": 0.43,
+        "system_seconds": 0.03,
+        "max_rss_kib": 49152,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 131072,
+        "output": {
+          "valid": true,
+          "pages": 6,
+          "characters": 10318,
+          "characters_sha256": "da407fe902864e90d275f95fd05a06decb49e7ef577176fbeeb09489a7dfcc91",
+          "bytes": 56756
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 0.544917,
+        "cpu_seconds": 0.53,
+        "timed_out": false,
+        "user_seconds": 0.47,
+        "system_seconds": 0.06,
+        "max_rss_kib": 59752,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 270336,
+        "output": {
+          "valid": true,
+          "pages": 6,
+          "characters": 10318,
+          "characters_sha256": "da407fe902864e90d275f95fd05a06decb49e7ef577176fbeeb09489a7dfcc91",
+          "bytes": 57972
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "class_snapshot_written": false,
+        "class_snapshot_hit": false,
+        "output_cache_written": true,
+        "output_cache_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.022073,
+        "cpu_seconds": 0.0,
+        "timed_out": false,
+        "user_seconds": 0.0,
+        "system_seconds": 0.0,
+        "max_rss_kib": 20736,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 0,
+        "output": {
+          "valid": true,
+          "pages": 6,
+          "characters": 10318,
+          "characters_sha256": "da407fe902864e90d275f95fd05a06decb49e7ef577176fbeeb09489a7dfcc91",
+          "bytes": 57972
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "output_cache_written": false,
+        "output_cache_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.26817v1",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 1.663897,
+        "cpu_seconds": 1.65,
+        "timed_out": false,
+        "user_seconds": 1.6,
+        "system_seconds": 0.05,
+        "max_rss_kib": 50176,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 700416,
+        "output": {
+          "valid": true,
+          "pages": 25,
+          "characters": 52999,
+          "characters_sha256": "d5ca23d9c7df1e7abff347ff64a7b7907b5d21d0e5594789131f0d3f01fe6c16",
+          "bytes": 444164
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 2.07474,
+        "cpu_seconds": 2.06,
+        "timed_out": false,
+        "user_seconds": 1.97,
+        "system_seconds": 0.09,
+        "max_rss_kib": 72928,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 1269760,
+        "output": {
+          "valid": true,
+          "pages": 25,
+          "characters": 52999,
+          "characters_sha256": "d5ca23d9c7df1e7abff347ff64a7b7907b5d21d0e5594789131f0d3f01fe6c16",
+          "bytes": 446512
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "class_snapshot_written": false,
+        "class_snapshot_hit": false,
+        "output_cache_written": true,
+        "output_cache_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.023219,
+        "cpu_seconds": 0.01,
+        "timed_out": false,
+        "user_seconds": 0.0,
+        "system_seconds": 0.01,
+        "max_rss_kib": 20480,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 0,
+        "output": {
+          "valid": true,
+          "pages": 25,
+          "characters": 52999,
+          "characters_sha256": "d5ca23d9c7df1e7abff347ff64a7b7907b5d21d0e5594789131f0d3f01fe6c16",
+          "bytes": 446512
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "output_cache_written": false,
+        "output_cache_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.26808v1",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 0.39763,
+        "cpu_seconds": 0.38,
+        "timed_out": false,
+        "user_seconds": 0.35,
+        "system_seconds": 0.03,
+        "max_rss_kib": 48384,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 266240,
+        "output": {
+          "valid": true,
+          "pages": 23,
+          "characters": 47028,
+          "characters_sha256": "2915ad2e1ee95756494c04126ad7d87cb4ffdc6dc32033a622d2b7fd474c4097",
+          "bytes": 216448
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 0.484384,
+        "cpu_seconds": 0.47,
+        "timed_out": false,
+        "user_seconds": 0.42,
+        "system_seconds": 0.05,
+        "max_rss_kib": 60712,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 569344,
+        "output": {
+          "valid": true,
+          "pages": 23,
+          "characters": 47028,
+          "characters_sha256": "2915ad2e1ee95756494c04126ad7d87cb4ffdc6dc32033a622d2b7fd474c4097",
+          "bytes": 219656
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "class_snapshot_written": false,
+        "class_snapshot_hit": false,
+        "output_cache_written": true,
+        "output_cache_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.022678,
+        "cpu_seconds": 0.0,
+        "timed_out": false,
+        "user_seconds": 0.0,
+        "system_seconds": 0.0,
+        "max_rss_kib": 21248,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 0,
+        "output": {
+          "valid": true,
+          "pages": 23,
+          "characters": 47028,
+          "characters_sha256": "2915ad2e1ee95756494c04126ad7d87cb4ffdc6dc32033a622d2b7fd474c4097",
+          "bytes": 219656
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "output_cache_written": false,
+        "output_cache_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.26801v1",
+      "status": "valid",
+      "stock_setup_passes": 2,
+      "candidate_setup_passes": 2,
+      "stock": {
+        "returncode": 0,
+        "seconds": 0.14875,
+        "cpu_seconds": 0.13,
+        "timed_out": false,
+        "user_seconds": 0.11,
+        "system_seconds": 0.02,
+        "max_rss_kib": 47104,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 57344,
+        "output": {
+          "valid": true,
+          "pages": 9,
+          "characters": 19247,
+          "characters_sha256": "37ef706975b953954d4c8e10bf8a978cc1bd1a0fe14fdee91b10b446ea4546cf",
+          "bytes": 40428
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 0.149733,
+        "cpu_seconds": 0.14,
+        "timed_out": false,
+        "user_seconds": 0.1,
+        "system_seconds": 0.04,
+        "max_rss_kib": 60304,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 131072,
+        "output": {
+          "valid": true,
+          "pages": 9,
+          "characters": 19247,
+          "characters_sha256": "37ef706975b953954d4c8e10bf8a978cc1bd1a0fe14fdee91b10b446ea4546cf",
+          "bytes": 44996
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "class_snapshot_written": false,
+        "class_snapshot_hit": false,
+        "output_cache_written": true,
+        "output_cache_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.022018,
+        "cpu_seconds": 0.0,
+        "timed_out": false,
+        "user_seconds": 0.0,
+        "system_seconds": 0.0,
+        "max_rss_kib": 20992,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 0,
+        "output": {
+          "valid": true,
+          "pages": 9,
+          "characters": 19247,
+          "characters_sha256": "37ef706975b953954d4c8e10bf8a978cc1bd1a0fe14fdee91b10b446ea4546cf",
+          "bytes": 44996
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "output_cache_written": false,
+        "output_cache_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.26770v1",
+      "status": "valid",
+      "stock_setup_passes": 2,
+      "candidate_setup_passes": 2,
+      "stock": {
+        "returncode": 0,
+        "seconds": 0.236273,
+        "cpu_seconds": 0.22,
+        "timed_out": false,
+        "user_seconds": 0.2,
+        "system_seconds": 0.02,
+        "max_rss_kib": 47616,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 106496,
+        "output": {
+          "valid": true,
+          "pages": 14,
+          "characters": 23963,
+          "characters_sha256": "2dfc32442ffa73c8f37fb62abf24824ad335efef9567c43c96ebec0232b5c2da",
+          "bytes": 77424
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 0.282291,
+        "cpu_seconds": 0.27,
+        "timed_out": false,
+        "user_seconds": 0.22,
+        "system_seconds": 0.05,
+        "max_rss_kib": 59792,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 241664,
+        "output": {
+          "valid": true,
+          "pages": 14,
+          "characters": 23963,
+          "characters_sha256": "2dfc32442ffa73c8f37fb62abf24824ad335efef9567c43c96ebec0232b5c2da",
+          "bytes": 80772
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "class_snapshot_written": false,
+        "class_snapshot_hit": false,
+        "output_cache_written": true,
+        "output_cache_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.021494,
+        "cpu_seconds": 0.0,
+        "timed_out": false,
+        "user_seconds": 0.0,
+        "system_seconds": 0.0,
+        "max_rss_kib": 20480,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 0,
+        "output": {
+          "valid": true,
+          "pages": 14,
+          "characters": 23963,
+          "characters_sha256": "2dfc32442ffa73c8f37fb62abf24824ad335efef9567c43c96ebec0232b5c2da",
+          "bytes": 80772
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "output_cache_written": false,
+        "output_cache_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.26719v1",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 0.381911,
+        "cpu_seconds": 0.37,
+        "timed_out": false,
+        "user_seconds": 0.34,
+        "system_seconds": 0.03,
+        "max_rss_kib": 48896,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 217088,
+        "output": {
+          "valid": true,
+          "pages": 18,
+          "characters": 34524,
+          "characters_sha256": "734ca89e239faf73c023341155d09524a8fb8b1395dd21e78ab3cb3db382e876",
+          "bytes": 164912
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 0.471276,
+        "cpu_seconds": 0.46,
+        "timed_out": false,
+        "user_seconds": 0.4,
+        "system_seconds": 0.06,
+        "max_rss_kib": 60048,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 458752,
+        "output": {
+          "valid": true,
+          "pages": 18,
+          "characters": 34524,
+          "characters_sha256": "734ca89e239faf73c023341155d09524a8fb8b1395dd21e78ab3cb3db382e876",
+          "bytes": 172464
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "class_snapshot_written": false,
+        "class_snapshot_hit": false,
+        "output_cache_written": true,
+        "output_cache_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.023358,
+        "cpu_seconds": 0.01,
+        "timed_out": false,
+        "user_seconds": 0.0,
+        "system_seconds": 0.01,
+        "max_rss_kib": 20992,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 0,
+        "output": {
+          "valid": true,
+          "pages": 18,
+          "characters": 34524,
+          "characters_sha256": "734ca89e239faf73c023341155d09524a8fb8b1395dd21e78ab3cb3db382e876",
+          "bytes": 172464
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "output_cache_written": false,
+        "output_cache_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.26707v1",
+      "status": "valid",
+      "stock_setup_passes": 2,
+      "candidate_setup_passes": 2,
+      "stock": {
+        "returncode": 0,
+        "seconds": 0.379121,
+        "cpu_seconds": 0.37,
+        "timed_out": false,
+        "user_seconds": 0.34,
+        "system_seconds": 0.03,
+        "max_rss_kib": 47616,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 233472,
+        "output": {
+          "valid": true,
+          "pages": 22,
+          "characters": 26765,
+          "characters_sha256": "7c61f78c558bc16dfbadee398ee91222aa007aa1a753621392deeb81bc43b507",
+          "bytes": 170520
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 0.445785,
+        "cpu_seconds": 0.43,
+        "timed_out": false,
+        "user_seconds": 0.38,
+        "system_seconds": 0.05,
+        "max_rss_kib": 60580,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 454656,
+        "output": {
+          "valid": true,
+          "pages": 22,
+          "characters": 26765,
+          "characters_sha256": "7c61f78c558bc16dfbadee398ee91222aa007aa1a753621392deeb81bc43b507",
+          "bytes": 172968
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "class_snapshot_written": false,
+        "class_snapshot_hit": false,
+        "output_cache_written": true,
+        "output_cache_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.022702,
+        "cpu_seconds": 0.01,
+        "timed_out": false,
+        "user_seconds": 0.0,
+        "system_seconds": 0.01,
+        "max_rss_kib": 20480,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 0,
+        "output": {
+          "valid": true,
+          "pages": 22,
+          "characters": 26765,
+          "characters_sha256": "7c61f78c558bc16dfbadee398ee91222aa007aa1a753621392deeb81bc43b507",
+          "bytes": 172968
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "output_cache_written": false,
+        "output_cache_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.26692v1",
+      "status": "valid",
+      "stock_setup_passes": 2,
+      "candidate_setup_passes": 2,
+      "stock": {
+        "returncode": 0,
+        "seconds": 0.331201,
+        "cpu_seconds": 0.31,
+        "timed_out": false,
+        "user_seconds": 0.28,
+        "system_seconds": 0.03,
+        "max_rss_kib": 47360,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 208896,
+        "output": {
+          "valid": true,
+          "pages": 26,
+          "characters": 33149,
+          "characters_sha256": "b0f8c96a060f9458c3470cf94c461ea93a55f241a7397458179705fc5619077e",
+          "bytes": 156132
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 0.422297,
+        "cpu_seconds": 0.41,
+        "timed_out": false,
+        "user_seconds": 0.35,
+        "system_seconds": 0.06,
+        "max_rss_kib": 60288,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 413696,
+        "output": {
+          "valid": true,
+          "pages": 26,
+          "characters": 33149,
+          "characters_sha256": "b0f8c96a060f9458c3470cf94c461ea93a55f241a7397458179705fc5619077e",
+          "bytes": 160732
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "class_snapshot_written": false,
+        "class_snapshot_hit": false,
+        "output_cache_written": true,
+        "output_cache_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.022452,
+        "cpu_seconds": 0.01,
+        "timed_out": false,
+        "user_seconds": 0.0,
+        "system_seconds": 0.01,
+        "max_rss_kib": 20736,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 0,
+        "output": {
+          "valid": true,
+          "pages": 26,
+          "characters": 33149,
+          "characters_sha256": "b0f8c96a060f9458c3470cf94c461ea93a55f241a7397458179705fc5619077e",
+          "bytes": 160732
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "output_cache_written": false,
+        "output_cache_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.26639v1",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 3.757044,
+        "cpu_seconds": 3.74,
+        "timed_out": false,
+        "user_seconds": 3.7,
+        "system_seconds": 0.04,
+        "max_rss_kib": 48896,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 638976,
+        "output": {
+          "valid": true,
+          "pages": 29,
+          "characters": 56154,
+          "characters_sha256": "646a6f4db6c9a65218e335a925e2ecc1ec4b4ab4f1bdb948331e0bfea05c7328",
+          "bytes": 580820
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 5.150061,
+        "cpu_seconds": 5.14,
+        "timed_out": false,
+        "user_seconds": 5.05,
+        "system_seconds": 0.09,
+        "max_rss_kib": 76440,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 1314816,
+        "output": {
+          "valid": true,
+          "pages": 29,
+          "characters": 56154,
+          "characters_sha256": "646a6f4db6c9a65218e335a925e2ecc1ec4b4ab4f1bdb948331e0bfea05c7328",
+          "bytes": 590524
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "class_snapshot_written": false,
+        "class_snapshot_hit": false,
+        "output_cache_written": true,
+        "output_cache_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.022363,
+        "cpu_seconds": 0.01,
+        "timed_out": false,
+        "user_seconds": 0.0,
+        "system_seconds": 0.01,
+        "max_rss_kib": 20992,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 0,
+        "output": {
+          "valid": true,
+          "pages": 29,
+          "characters": 56154,
+          "characters_sha256": "646a6f4db6c9a65218e335a925e2ecc1ec4b4ab4f1bdb948331e0bfea05c7328",
+          "bytes": 590524
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "output_cache_written": false,
+        "output_cache_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.26617v1",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 0.618211,
+        "cpu_seconds": 0.6,
+        "timed_out": false,
+        "user_seconds": 0.57,
+        "system_seconds": 0.03,
+        "max_rss_kib": 47872,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 573440,
+        "output": {
+          "valid": true,
+          "pages": 67,
+          "characters": 104107,
+          "characters_sha256": "6ddb8faea821a84b2b0a919229da3532f1e341cdb2454429cc4824897f65092d",
+          "bytes": 479720
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 0.864171,
+        "cpu_seconds": 0.85,
+        "timed_out": false,
+        "user_seconds": 0.78,
+        "system_seconds": 0.07,
+        "max_rss_kib": 60932,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 1122304,
+        "output": {
+          "valid": true,
+          "pages": 67,
+          "characters": 104107,
+          "characters_sha256": "6ddb8faea821a84b2b0a919229da3532f1e341cdb2454429cc4824897f65092d",
+          "bytes": 493276
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "class_snapshot_written": false,
+        "class_snapshot_hit": false,
+        "output_cache_written": true,
+        "output_cache_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.023596,
+        "cpu_seconds": 0.01,
+        "timed_out": false,
+        "user_seconds": 0.0,
+        "system_seconds": 0.01,
+        "max_rss_kib": 20736,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 0,
+        "output": {
+          "valid": true,
+          "pages": 67,
+          "characters": 104107,
+          "characters_sha256": "6ddb8faea821a84b2b0a919229da3532f1e341cdb2454429cc4824897f65092d",
+          "bytes": 493276
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "output_cache_written": false,
+        "output_cache_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.26615v1",
+      "status": "valid",
+      "stock_setup_passes": 2,
+      "candidate_setup_passes": 2,
+      "stock": {
+        "returncode": 0,
+        "seconds": 0.559114,
+        "cpu_seconds": 0.55,
+        "timed_out": false,
+        "user_seconds": 0.52,
+        "system_seconds": 0.03,
+        "max_rss_kib": 47872,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 294912,
+        "output": {
+          "valid": true,
+          "pages": 30,
+          "characters": 35375,
+          "characters_sha256": "a7d13249155f2f430dacf7aad3229b400f2f62d2f095822ac52d8d7406f39f16",
+          "bytes": 252736
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 0.772439,
+        "cpu_seconds": 0.76,
+        "timed_out": false,
+        "user_seconds": 0.71,
+        "system_seconds": 0.05,
+        "max_rss_kib": 59792,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 610304,
+        "output": {
+          "valid": true,
+          "pages": 30,
+          "characters": 35375,
+          "characters_sha256": "a7d13249155f2f430dacf7aad3229b400f2f62d2f095822ac52d8d7406f39f16",
+          "bytes": 258364
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "class_snapshot_written": false,
+        "class_snapshot_hit": false,
+        "output_cache_written": true,
+        "output_cache_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.023713,
+        "cpu_seconds": 0.01,
+        "timed_out": false,
+        "user_seconds": 0.0,
+        "system_seconds": 0.01,
+        "max_rss_kib": 20736,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 0,
+        "output": {
+          "valid": true,
+          "pages": 30,
+          "characters": 35375,
+          "characters_sha256": "a7d13249155f2f430dacf7aad3229b400f2f62d2f095822ac52d8d7406f39f16",
+          "bytes": 258364
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "output_cache_written": false,
+        "output_cache_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.26593v1",
+      "status": "valid",
+      "stock_setup_passes": 2,
+      "candidate_setup_passes": 2,
+      "stock": {
+        "returncode": 0,
+        "seconds": 0.265539,
+        "cpu_seconds": 0.25,
+        "timed_out": false,
+        "user_seconds": 0.23,
+        "system_seconds": 0.02,
+        "max_rss_kib": 47360,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 110592,
+        "output": {
+          "valid": true,
+          "pages": 10,
+          "characters": 25541,
+          "characters_sha256": "079ed280d0a274a4b5b814f0da4738de036679f84835e6de028f81fb8fb1109e",
+          "bytes": 69212
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 0.300399,
+        "cpu_seconds": 0.29,
+        "timed_out": false,
+        "user_seconds": 0.24,
+        "system_seconds": 0.05,
+        "max_rss_kib": 61056,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 258048,
+        "output": {
+          "valid": true,
+          "pages": 10,
+          "characters": 25541,
+          "characters_sha256": "079ed280d0a274a4b5b814f0da4738de036679f84835e6de028f81fb8fb1109e",
+          "bytes": 74916
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "class_snapshot_written": false,
+        "class_snapshot_hit": false,
+        "output_cache_written": true,
+        "output_cache_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.021674,
+        "cpu_seconds": 0.01,
+        "timed_out": false,
+        "user_seconds": 0.0,
+        "system_seconds": 0.01,
+        "max_rss_kib": 20736,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 0,
+        "output": {
+          "valid": true,
+          "pages": 10,
+          "characters": 25541,
+          "characters_sha256": "079ed280d0a274a4b5b814f0da4738de036679f84835e6de028f81fb8fb1109e",
+          "bytes": 74916
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "output_cache_written": false,
+        "output_cache_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.26591v1",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 0.384618,
+        "cpu_seconds": 0.37,
+        "timed_out": false,
+        "user_seconds": 0.35,
+        "system_seconds": 0.02,
+        "max_rss_kib": 48384,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 155648,
+        "output": {
+          "valid": true,
+          "pages": 14,
+          "characters": 24755,
+          "characters_sha256": "decd6c0729196441091da52ebfa36ffde54546255681d3cbdeb8b57d7c30db8b",
+          "bytes": 105652
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 0.438647,
+        "cpu_seconds": 0.43,
+        "timed_out": false,
+        "user_seconds": 0.37,
+        "system_seconds": 0.06,
+        "max_rss_kib": 59980,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 339968,
+        "output": {
+          "valid": true,
+          "pages": 14,
+          "characters": 24755,
+          "characters_sha256": "decd6c0729196441091da52ebfa36ffde54546255681d3cbdeb8b57d7c30db8b",
+          "bytes": 111016
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "class_snapshot_written": false,
+        "class_snapshot_hit": false,
+        "output_cache_written": true,
+        "output_cache_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.022973,
+        "cpu_seconds": 0.01,
+        "timed_out": false,
+        "user_seconds": 0.0,
+        "system_seconds": 0.01,
+        "max_rss_kib": 20480,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 0,
+        "output": {
+          "valid": true,
+          "pages": 14,
+          "characters": 24755,
+          "characters_sha256": "decd6c0729196441091da52ebfa36ffde54546255681d3cbdeb8b57d7c30db8b",
+          "bytes": 111016
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "output_cache_written": false,
+        "output_cache_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.26565v1",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 0.334704,
+        "cpu_seconds": 0.32,
+        "timed_out": false,
+        "user_seconds": 0.29,
+        "system_seconds": 0.03,
+        "max_rss_kib": 47616,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 221184,
+        "output": {
+          "valid": true,
+          "pages": 21,
+          "characters": 37409,
+          "characters_sha256": "5857acd2728b98d73ea4f4b79bc0968b68b46b7d7f3598a47b6a3d839c033cd9",
+          "bytes": 173456
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 0.400251,
+        "cpu_seconds": 0.39,
+        "timed_out": false,
+        "user_seconds": 0.34,
+        "system_seconds": 0.05,
+        "max_rss_kib": 57488,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 466944,
+        "output": {
+          "valid": true,
+          "pages": 21,
+          "characters": 37409,
+          "characters_sha256": "5857acd2728b98d73ea4f4b79bc0968b68b46b7d7f3598a47b6a3d839c033cd9",
+          "bytes": 182168
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "class_snapshot_written": false,
+        "class_snapshot_hit": false,
+        "output_cache_written": true,
+        "output_cache_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.022868,
+        "cpu_seconds": 0.01,
+        "timed_out": false,
+        "user_seconds": 0.0,
+        "system_seconds": 0.01,
+        "max_rss_kib": 20736,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 0,
+        "output": {
+          "valid": true,
+          "pages": 21,
+          "characters": 37409,
+          "characters_sha256": "5857acd2728b98d73ea4f4b79bc0968b68b46b7d7f3598a47b6a3d839c033cd9",
+          "bytes": 182168
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "output_cache_written": false,
+        "output_cache_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.26554v1",
+      "status": "valid",
+      "stock_setup_passes": 2,
+      "candidate_setup_passes": 2,
+      "stock": {
+        "returncode": 0,
+        "seconds": 0.280289,
+        "cpu_seconds": 0.27,
+        "timed_out": false,
+        "user_seconds": 0.24,
+        "system_seconds": 0.03,
+        "max_rss_kib": 48128,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 167936,
+        "output": {
+          "valid": true,
+          "pages": 23,
+          "characters": 26270,
+          "characters_sha256": "d3896d5a2ea87952b0ddb63d0e82c7b7ba9e78feb3d66184a67908759e91370b",
+          "bytes": 122748
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 0.334107,
+        "cpu_seconds": 0.32,
+        "timed_out": false,
+        "user_seconds": 0.27,
+        "system_seconds": 0.05,
+        "max_rss_kib": 60436,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 339968,
+        "output": {
+          "valid": true,
+          "pages": 23,
+          "characters": 26270,
+          "characters_sha256": "d3896d5a2ea87952b0ddb63d0e82c7b7ba9e78feb3d66184a67908759e91370b",
+          "bytes": 130528
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "class_snapshot_written": false,
+        "class_snapshot_hit": false,
+        "output_cache_written": true,
+        "output_cache_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.023043,
+        "cpu_seconds": 0.01,
+        "timed_out": false,
+        "user_seconds": 0.0,
+        "system_seconds": 0.01,
+        "max_rss_kib": 20992,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 0,
+        "output": {
+          "valid": true,
+          "pages": 23,
+          "characters": 26270,
+          "characters_sha256": "d3896d5a2ea87952b0ddb63d0e82c7b7ba9e78feb3d66184a67908759e91370b",
+          "bytes": 130528
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "output_cache_written": false,
+        "output_cache_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.26502v1",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 0.425813,
+        "cpu_seconds": 0.41,
+        "timed_out": false,
+        "user_seconds": 0.39,
+        "system_seconds": 0.02,
+        "max_rss_kib": 48384,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 405504,
+        "output": {
+          "valid": true,
+          "pages": 32,
+          "characters": 54776,
+          "characters_sha256": "7f88ee649879b5a5d73bfaf0a44d4d71f0915978acdb2cf05044020377439663",
+          "bytes": 344716
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 0.513169,
+        "cpu_seconds": 0.5,
+        "timed_out": false,
+        "user_seconds": 0.45,
+        "system_seconds": 0.05,
+        "max_rss_kib": 60728,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 819200,
+        "output": {
+          "valid": true,
+          "pages": 32,
+          "characters": 54776,
+          "characters_sha256": "7f88ee649879b5a5d73bfaf0a44d4d71f0915978acdb2cf05044020377439663",
+          "bytes": 354800
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "class_snapshot_written": false,
+        "class_snapshot_hit": false,
+        "output_cache_written": true,
+        "output_cache_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.0239,
+        "cpu_seconds": 0.01,
+        "timed_out": false,
+        "user_seconds": 0.01,
+        "system_seconds": 0.0,
+        "max_rss_kib": 20736,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 0,
+        "output": {
+          "valid": true,
+          "pages": 32,
+          "characters": 54776,
+          "characters_sha256": "7f88ee649879b5a5d73bfaf0a44d4d71f0915978acdb2cf05044020377439663",
+          "bytes": 354800
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "output_cache_written": false,
+        "output_cache_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.26457v1",
+      "status": "valid",
+      "stock_setup_passes": 2,
+      "candidate_setup_passes": 2,
+      "stock": {
+        "returncode": 0,
+        "seconds": 0.373843,
+        "cpu_seconds": 0.36,
+        "timed_out": false,
+        "user_seconds": 0.32,
+        "system_seconds": 0.04,
+        "max_rss_kib": 48640,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 196608,
+        "output": {
+          "valid": true,
+          "pages": 25,
+          "characters": 32678,
+          "characters_sha256": "1601735c42687a8164c6a6c36d5f6c0680d3158035785851947827a8cefc68a3",
+          "bytes": 136740
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 0.442707,
+        "cpu_seconds": 0.42,
+        "timed_out": false,
+        "user_seconds": 0.37,
+        "system_seconds": 0.05,
+        "max_rss_kib": 60608,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 409600,
+        "output": {
+          "valid": true,
+          "pages": 25,
+          "characters": 32678,
+          "characters_sha256": "1601735c42687a8164c6a6c36d5f6c0680d3158035785851947827a8cefc68a3",
+          "bytes": 141684
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "class_snapshot_written": false,
+        "class_snapshot_hit": false,
+        "output_cache_written": true,
+        "output_cache_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.02385,
+        "cpu_seconds": 0.01,
+        "timed_out": false,
+        "user_seconds": 0.0,
+        "system_seconds": 0.01,
+        "max_rss_kib": 20736,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 0,
+        "output": {
+          "valid": true,
+          "pages": 25,
+          "characters": 32678,
+          "characters_sha256": "1601735c42687a8164c6a6c36d5f6c0680d3158035785851947827a8cefc68a3",
+          "bytes": 141684
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "output_cache_written": false,
+        "output_cache_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.26449v1",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 0.613173,
+        "cpu_seconds": 0.6,
+        "timed_out": false,
+        "user_seconds": 0.56,
+        "system_seconds": 0.04,
+        "max_rss_kib": 48384,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 262144,
+        "output": {
+          "valid": true,
+          "pages": 14,
+          "characters": 47317,
+          "characters_sha256": "37c4d96fbeb0452420cad2584070b3c057078b805bb9c055c3f4979fb0819b42",
+          "bytes": 183308
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 0.770999,
+        "cpu_seconds": 0.76,
+        "timed_out": false,
+        "user_seconds": 0.71,
+        "system_seconds": 0.05,
+        "max_rss_kib": 60048,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 544768,
+        "output": {
+          "valid": true,
+          "pages": 14,
+          "characters": 47317,
+          "characters_sha256": "37c4d96fbeb0452420cad2584070b3c057078b805bb9c055c3f4979fb0819b42",
+          "bytes": 191844
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "class_snapshot_written": false,
+        "class_snapshot_hit": false,
+        "output_cache_written": true,
+        "output_cache_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.025123,
+        "cpu_seconds": 0.01,
+        "timed_out": false,
+        "user_seconds": 0.0,
+        "system_seconds": 0.01,
+        "max_rss_kib": 20480,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 0,
+        "output": {
+          "valid": true,
+          "pages": 14,
+          "characters": 47317,
+          "characters_sha256": "37c4d96fbeb0452420cad2584070b3c057078b805bb9c055c3f4979fb0819b42",
+          "bytes": 191844
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "output_cache_written": false,
+        "output_cache_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.26344v1",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 0.370379,
+        "cpu_seconds": 0.35,
+        "timed_out": false,
+        "user_seconds": 0.32,
+        "system_seconds": 0.03,
+        "max_rss_kib": 48640,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 225280,
+        "output": {
+          "valid": true,
+          "pages": 12,
+          "characters": 45077,
+          "characters_sha256": "4409fa4c75d533b30de847ca5234e6be379cb8c1f01416a2f5383f662a1c7afe",
+          "bytes": 161640
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 0.632215,
+        "cpu_seconds": 0.62,
+        "timed_out": false,
+        "user_seconds": 0.58,
+        "system_seconds": 0.04,
+        "max_rss_kib": 60404,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 450560,
+        "output": {
+          "valid": true,
+          "pages": 12,
+          "characters": 45077,
+          "characters_sha256": "4409fa4c75d533b30de847ca5234e6be379cb8c1f01416a2f5383f662a1c7afe",
+          "bytes": 170644
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "class_snapshot_written": false,
+        "class_snapshot_hit": false,
+        "output_cache_written": true,
+        "output_cache_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.022993,
+        "cpu_seconds": 0.0,
+        "timed_out": false,
+        "user_seconds": 0.0,
+        "system_seconds": 0.0,
+        "max_rss_kib": 21248,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 0,
+        "output": {
+          "valid": true,
+          "pages": 12,
+          "characters": 45077,
+          "characters_sha256": "4409fa4c75d533b30de847ca5234e6be379cb8c1f01416a2f5383f662a1c7afe",
+          "bytes": 170644
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "output_cache_written": false,
+        "output_cache_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.26311v1",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 0.408985,
+        "cpu_seconds": 0.4,
+        "timed_out": false,
+        "user_seconds": 0.36,
+        "system_seconds": 0.04,
+        "max_rss_kib": 47872,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 270336,
+        "output": {
+          "valid": true,
+          "pages": 22,
+          "characters": 38054,
+          "characters_sha256": "5abcb3f474d88aa9e60ecb64109545108a67800f0ba4fd45bc9a85452957ca15",
+          "bytes": 198520
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 0.485757,
+        "cpu_seconds": 0.47,
+        "timed_out": false,
+        "user_seconds": 0.41,
+        "system_seconds": 0.06,
+        "max_rss_kib": 59792,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 552960,
+        "output": {
+          "valid": true,
+          "pages": 22,
+          "characters": 38054,
+          "characters_sha256": "5abcb3f474d88aa9e60ecb64109545108a67800f0ba4fd45bc9a85452957ca15",
+          "bytes": 208676
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "class_snapshot_written": false,
+        "class_snapshot_hit": false,
+        "output_cache_written": true,
+        "output_cache_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.022508,
+        "cpu_seconds": 0.0,
+        "timed_out": false,
+        "user_seconds": 0.0,
+        "system_seconds": 0.0,
+        "max_rss_kib": 20480,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 0,
+        "output": {
+          "valid": true,
+          "pages": 22,
+          "characters": 38054,
+          "characters_sha256": "5abcb3f474d88aa9e60ecb64109545108a67800f0ba4fd45bc9a85452957ca15",
+          "bytes": 208676
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "output_cache_written": false,
+        "output_cache_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.26287v1",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 0.44375,
+        "cpu_seconds": 0.43,
+        "timed_out": false,
+        "user_seconds": 0.41,
+        "system_seconds": 0.02,
+        "max_rss_kib": 47104,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 196608,
+        "output": {
+          "valid": true,
+          "pages": 12,
+          "characters": 14749,
+          "characters_sha256": "4ff3d4fefd7917e09fbace20841f17c0bda6b701b6829a98f7b95af05123dc6a",
+          "bytes": 41196
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 0.501175,
+        "cpu_seconds": 0.48,
+        "timed_out": false,
+        "user_seconds": 0.42,
+        "system_seconds": 0.06,
+        "max_rss_kib": 60512,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 274432,
+        "output": {
+          "valid": true,
+          "pages": 12,
+          "characters": 14749,
+          "characters_sha256": "4ff3d4fefd7917e09fbace20841f17c0bda6b701b6829a98f7b95af05123dc6a",
+          "bytes": 43836
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "class_snapshot_written": false,
+        "class_snapshot_hit": false,
+        "output_cache_written": true,
+        "output_cache_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.02234,
+        "cpu_seconds": 0.0,
+        "timed_out": false,
+        "user_seconds": 0.0,
+        "system_seconds": 0.0,
+        "max_rss_kib": 20736,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 0,
+        "output": {
+          "valid": true,
+          "pages": 12,
+          "characters": 14749,
+          "characters_sha256": "4ff3d4fefd7917e09fbace20841f17c0bda6b701b6829a98f7b95af05123dc6a",
+          "bytes": 43836
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "output_cache_written": false,
+        "output_cache_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.26248v1",
+      "status": "valid",
+      "stock_setup_passes": 2,
+      "candidate_setup_passes": 2,
+      "stock": {
+        "returncode": 0,
+        "seconds": 0.387926,
+        "cpu_seconds": 0.37,
+        "timed_out": false,
+        "user_seconds": 0.34,
+        "system_seconds": 0.03,
+        "max_rss_kib": 47616,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 327680,
+        "output": {
+          "valid": true,
+          "pages": 32,
+          "characters": 69025,
+          "characters_sha256": "6869e2323f05d8ace7ce59367be5c480fb061ae17868304d7c2d184c168a2270",
+          "bytes": 247708
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 0.481025,
+        "cpu_seconds": 0.47,
+        "timed_out": false,
+        "user_seconds": 0.43,
+        "system_seconds": 0.04,
+        "max_rss_kib": 60132,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 651264,
+        "output": {
+          "valid": true,
+          "pages": 32,
+          "characters": 69025,
+          "characters_sha256": "6869e2323f05d8ace7ce59367be5c480fb061ae17868304d7c2d184c168a2270",
+          "bytes": 264040
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "class_snapshot_written": false,
+        "class_snapshot_hit": false,
+        "output_cache_written": true,
+        "output_cache_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.023469,
+        "cpu_seconds": 0.01,
+        "timed_out": false,
+        "user_seconds": 0.0,
+        "system_seconds": 0.01,
+        "max_rss_kib": 20480,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 0,
+        "output": {
+          "valid": true,
+          "pages": 32,
+          "characters": 69025,
+          "characters_sha256": "6869e2323f05d8ace7ce59367be5c480fb061ae17868304d7c2d184c168a2270",
+          "bytes": 264040
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "output_cache_written": false,
+        "output_cache_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.26092v1",
+      "status": "valid",
+      "stock_setup_passes": 2,
+      "candidate_setup_passes": 2,
+      "stock": {
+        "returncode": 0,
+        "seconds": 0.291804,
+        "cpu_seconds": 0.28,
+        "timed_out": false,
+        "user_seconds": 0.25,
+        "system_seconds": 0.03,
+        "max_rss_kib": 47616,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 151552,
+        "output": {
+          "valid": true,
+          "pages": 15,
+          "characters": 24793,
+          "characters_sha256": "6eea548f3d76b51b13590c2b2cf7ff6a4cf08966a08558497859a701e57a4415",
+          "bytes": 112188
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 0.359316,
+        "cpu_seconds": 0.35,
+        "timed_out": false,
+        "user_seconds": 0.3,
+        "system_seconds": 0.05,
+        "max_rss_kib": 60352,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 307200,
+        "output": {
+          "valid": true,
+          "pages": 15,
+          "characters": 24793,
+          "characters_sha256": "6eea548f3d76b51b13590c2b2cf7ff6a4cf08966a08558497859a701e57a4415",
+          "bytes": 118072
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "class_snapshot_written": false,
+        "class_snapshot_hit": false,
+        "output_cache_written": true,
+        "output_cache_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.022354,
+        "cpu_seconds": 0.01,
+        "timed_out": false,
+        "user_seconds": 0.0,
+        "system_seconds": 0.01,
+        "max_rss_kib": 20736,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 0,
+        "output": {
+          "valid": true,
+          "pages": 15,
+          "characters": 24793,
+          "characters_sha256": "6eea548f3d76b51b13590c2b2cf7ff6a4cf08966a08558497859a701e57a4415",
+          "bytes": 118072
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "output_cache_written": false,
+        "output_cache_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.26080v1",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 0.433411,
+        "cpu_seconds": 0.42,
+        "timed_out": false,
+        "user_seconds": 0.39,
+        "system_seconds": 0.03,
+        "max_rss_kib": 48384,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 282624,
+        "output": {
+          "valid": true,
+          "pages": 34,
+          "characters": 48151,
+          "characters_sha256": "99741d5a42dce4065af66accd86eba6a4739f05298a518eea2723570fb2ac77f",
+          "bytes": 227112
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 0.559616,
+        "cpu_seconds": 0.54,
+        "timed_out": false,
+        "user_seconds": 0.49,
+        "system_seconds": 0.05,
+        "max_rss_kib": 60328,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 565248,
+        "output": {
+          "valid": true,
+          "pages": 34,
+          "characters": 48151,
+          "characters_sha256": "99741d5a42dce4065af66accd86eba6a4739f05298a518eea2723570fb2ac77f",
+          "bytes": 237108
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "class_snapshot_written": false,
+        "class_snapshot_hit": false,
+        "output_cache_written": true,
+        "output_cache_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.022803,
+        "cpu_seconds": 0.01,
+        "timed_out": false,
+        "user_seconds": 0.0,
+        "system_seconds": 0.01,
+        "max_rss_kib": 20480,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 0,
+        "output": {
+          "valid": true,
+          "pages": 34,
+          "characters": 48151,
+          "characters_sha256": "99741d5a42dce4065af66accd86eba6a4739f05298a518eea2723570fb2ac77f",
+          "bytes": 237108
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "output_cache_written": false,
+        "output_cache_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.25831v1",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 0.292254,
+        "cpu_seconds": 0.28,
+        "timed_out": false,
+        "user_seconds": 0.26,
+        "system_seconds": 0.02,
+        "max_rss_kib": 47872,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 159744,
+        "output": {
+          "valid": true,
+          "pages": 17,
+          "characters": 26802,
+          "characters_sha256": "22ea3ad13c67fb9a2cc9ed75ef223be374dfb94f69e868095f9fd3e4bd76c5c3",
+          "bytes": 114968
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 0.35062,
+        "cpu_seconds": 0.33,
+        "timed_out": false,
+        "user_seconds": 0.28,
+        "system_seconds": 0.05,
+        "max_rss_kib": 59732,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 323584,
+        "output": {
+          "valid": true,
+          "pages": 17,
+          "characters": 26802,
+          "characters_sha256": "22ea3ad13c67fb9a2cc9ed75ef223be374dfb94f69e868095f9fd3e4bd76c5c3",
+          "bytes": 121016
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "class_snapshot_written": false,
+        "class_snapshot_hit": false,
+        "output_cache_written": true,
+        "output_cache_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.022396,
+        "cpu_seconds": 0.01,
+        "timed_out": false,
+        "user_seconds": 0.0,
+        "system_seconds": 0.01,
+        "max_rss_kib": 20480,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 0,
+        "output": {
+          "valid": true,
+          "pages": 17,
+          "characters": 26802,
+          "characters_sha256": "22ea3ad13c67fb9a2cc9ed75ef223be374dfb94f69e868095f9fd3e4bd76c5c3",
+          "bytes": 121016
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "output_cache_written": false,
+        "output_cache_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.25746v1",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 0.261362,
+        "cpu_seconds": 0.25,
+        "timed_out": false,
+        "user_seconds": 0.22,
+        "system_seconds": 0.03,
+        "max_rss_kib": 47872,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 184320,
+        "output": {
+          "valid": true,
+          "pages": 17,
+          "characters": 35252,
+          "characters_sha256": "2d850c749f8509ca62fbd61f860cc0591ed9515b4ad9d37be2aa0af216db6a5f",
+          "bytes": 151592
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 0.294441,
+        "cpu_seconds": 0.28,
+        "timed_out": false,
+        "user_seconds": 0.24,
+        "system_seconds": 0.04,
+        "max_rss_kib": 59864,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 385024,
+        "output": {
+          "valid": true,
+          "pages": 17,
+          "characters": 35252,
+          "characters_sha256": "2d850c749f8509ca62fbd61f860cc0591ed9515b4ad9d37be2aa0af216db6a5f",
+          "bytes": 157696
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "class_snapshot_written": false,
+        "class_snapshot_hit": false,
+        "output_cache_written": true,
+        "output_cache_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.023332,
+        "cpu_seconds": 0.01,
+        "timed_out": false,
+        "user_seconds": 0.0,
+        "system_seconds": 0.01,
+        "max_rss_kib": 20480,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 0,
+        "output": {
+          "valid": true,
+          "pages": 17,
+          "characters": 35252,
+          "characters_sha256": "2d850c749f8509ca62fbd61f860cc0591ed9515b4ad9d37be2aa0af216db6a5f",
+          "bytes": 157696
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "output_cache_written": false,
+        "output_cache_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.25740v1",
+      "status": "valid",
+      "stock_setup_passes": 2,
+      "candidate_setup_passes": 2,
+      "stock": {
+        "returncode": 0,
+        "seconds": 0.231047,
+        "cpu_seconds": 0.22,
+        "timed_out": false,
+        "user_seconds": 0.19,
+        "system_seconds": 0.03,
+        "max_rss_kib": 48384,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 106496,
+        "output": {
+          "valid": true,
+          "pages": 11,
+          "characters": 15299,
+          "characters_sha256": "db8928f0d95bf045eb6110a221d8ed828049c4b7469d14bf1d187586e3476946",
+          "bytes": 80232
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 0.261227,
+        "cpu_seconds": 0.24,
+        "timed_out": false,
+        "user_seconds": 0.2,
+        "system_seconds": 0.04,
+        "max_rss_kib": 59792,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 225280,
+        "output": {
+          "valid": true,
+          "pages": 11,
+          "characters": 15299,
+          "characters_sha256": "db8928f0d95bf045eb6110a221d8ed828049c4b7469d14bf1d187586e3476946",
+          "bytes": 84684
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "class_snapshot_written": false,
+        "class_snapshot_hit": false,
+        "output_cache_written": true,
+        "output_cache_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.023594,
+        "cpu_seconds": 0.01,
+        "timed_out": false,
+        "user_seconds": 0.0,
+        "system_seconds": 0.01,
+        "max_rss_kib": 20224,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 0,
+        "output": {
+          "valid": true,
+          "pages": 11,
+          "characters": 15299,
+          "characters_sha256": "db8928f0d95bf045eb6110a221d8ed828049c4b7469d14bf1d187586e3476946",
+          "bytes": 84684
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "output_cache_written": false,
+        "output_cache_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.25654v1",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 0.216925,
+        "cpu_seconds": 0.2,
+        "timed_out": false,
+        "user_seconds": 0.18,
+        "system_seconds": 0.02,
+        "max_rss_kib": 48384,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 106496,
+        "output": {
+          "valid": true,
+          "pages": 9,
+          "characters": 41039,
+          "characters_sha256": "5f89a0fc87fb71d9a89ceb251dc0de94693dd68f3159defb620b7818ac454eae",
+          "bytes": 81060
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 0.337917,
+        "cpu_seconds": 0.32,
+        "timed_out": false,
+        "user_seconds": 0.28,
+        "system_seconds": 0.04,
+        "max_rss_kib": 43524,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 237568,
+        "output": {
+          "valid": true,
+          "pages": 9,
+          "characters": 41039,
+          "characters_sha256": "5f89a0fc87fb71d9a89ceb251dc0de94693dd68f3159defb620b7818ac454eae",
+          "bytes": 87908
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "class_snapshot_written": false,
+        "class_snapshot_hit": false,
+        "output_cache_written": true,
+        "output_cache_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.023481,
+        "cpu_seconds": 0.01,
+        "timed_out": false,
+        "user_seconds": 0.0,
+        "system_seconds": 0.01,
+        "max_rss_kib": 20224,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 0,
+        "output": {
+          "valid": true,
+          "pages": 9,
+          "characters": 41039,
+          "characters_sha256": "5f89a0fc87fb71d9a89ceb251dc0de94693dd68f3159defb620b7818ac454eae",
+          "bytes": 87908
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "output_cache_written": false,
+        "output_cache_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.25558v1",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 0.532946,
+        "cpu_seconds": 0.52,
+        "timed_out": false,
+        "user_seconds": 0.49,
+        "system_seconds": 0.03,
+        "max_rss_kib": 48384,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 241664,
+        "output": {
+          "valid": true,
+          "pages": 20,
+          "characters": 39937,
+          "characters_sha256": "a709b933188f187760383f6b9dfb0639ce94f9e04004c5efac58ca75b4384d42",
+          "bytes": 173580
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 0.630791,
+        "cpu_seconds": 0.62,
+        "timed_out": false,
+        "user_seconds": 0.55,
+        "system_seconds": 0.07,
+        "max_rss_kib": 71760,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 491520,
+        "output": {
+          "valid": true,
+          "pages": 20,
+          "characters": 39937,
+          "characters_sha256": "a709b933188f187760383f6b9dfb0639ce94f9e04004c5efac58ca75b4384d42",
+          "bytes": 178472
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "class_snapshot_written": false,
+        "class_snapshot_hit": false,
+        "output_cache_written": true,
+        "output_cache_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.023103,
+        "cpu_seconds": 0.01,
+        "timed_out": false,
+        "user_seconds": 0.0,
+        "system_seconds": 0.01,
+        "max_rss_kib": 20992,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 0,
+        "output": {
+          "valid": true,
+          "pages": 20,
+          "characters": 39937,
+          "characters_sha256": "a709b933188f187760383f6b9dfb0639ce94f9e04004c5efac58ca75b4384d42",
+          "bytes": 178472
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "output_cache_written": false,
+        "output_cache_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.25553v2",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 0.653052,
+        "cpu_seconds": 0.64,
+        "timed_out": false,
+        "user_seconds": 0.61,
+        "system_seconds": 0.03,
+        "max_rss_kib": 49408,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 270336,
+        "output": {
+          "valid": true,
+          "pages": 21,
+          "characters": 53831,
+          "characters_sha256": "029a160d6d03b50d45a340d7dfd5be33b3ec068be5d6f6147dd139d291939e34",
+          "bytes": 200804
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 0.784041,
+        "cpu_seconds": 0.77,
+        "timed_out": false,
+        "user_seconds": 0.71,
+        "system_seconds": 0.06,
+        "max_rss_kib": 60816,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 577536,
+        "output": {
+          "valid": true,
+          "pages": 21,
+          "characters": 53831,
+          "characters_sha256": "029a160d6d03b50d45a340d7dfd5be33b3ec068be5d6f6147dd139d291939e34",
+          "bytes": 215316
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "class_snapshot_written": false,
+        "class_snapshot_hit": false,
+        "output_cache_written": true,
+        "output_cache_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.02353,
+        "cpu_seconds": 0.01,
+        "timed_out": false,
+        "user_seconds": 0.0,
+        "system_seconds": 0.01,
+        "max_rss_kib": 20736,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 0,
+        "output": {
+          "valid": true,
+          "pages": 21,
+          "characters": 53831,
+          "characters_sha256": "029a160d6d03b50d45a340d7dfd5be33b3ec068be5d6f6147dd139d291939e34",
+          "bytes": 215316
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "output_cache_written": false,
+        "output_cache_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.25491v1",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 0.613349,
+        "cpu_seconds": 0.6,
+        "timed_out": false,
+        "user_seconds": 0.56,
+        "system_seconds": 0.04,
+        "max_rss_kib": 48896,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 442368,
+        "output": {
+          "valid": true,
+          "pages": 38,
+          "characters": 58592,
+          "characters_sha256": "e899a70983a471f5cfe4e4ef5036f98d4b13cdf9b8eafc76beac3c001d7fde97",
+          "bytes": 343536
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 0.801431,
+        "cpu_seconds": 0.79,
+        "timed_out": false,
+        "user_seconds": 0.73,
+        "system_seconds": 0.06,
+        "max_rss_kib": 71716,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 872448,
+        "output": {
+          "valid": true,
+          "pages": 38,
+          "characters": 58592,
+          "characters_sha256": "e899a70983a471f5cfe4e4ef5036f98d4b13cdf9b8eafc76beac3c001d7fde97",
+          "bytes": 354088
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "class_snapshot_written": false,
+        "class_snapshot_hit": false,
+        "output_cache_written": true,
+        "output_cache_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.023661,
+        "cpu_seconds": 0.0,
+        "timed_out": false,
+        "user_seconds": 0.0,
+        "system_seconds": 0.0,
+        "max_rss_kib": 20480,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 0,
+        "output": {
+          "valid": true,
+          "pages": 38,
+          "characters": 58592,
+          "characters_sha256": "e899a70983a471f5cfe4e4ef5036f98d4b13cdf9b8eafc76beac3c001d7fde97",
+          "bytes": 354088
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "output_cache_written": false,
+        "output_cache_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.25471v1",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 0.421225,
+        "cpu_seconds": 0.4,
+        "timed_out": false,
+        "user_seconds": 0.38,
+        "system_seconds": 0.02,
+        "max_rss_kib": 47616,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 540672,
+        "output": {
+          "valid": true,
+          "pages": 47,
+          "characters": 94541,
+          "characters_sha256": "773b2c85411adce0f27fbfd3fd1f048506920453bfacaf0154c8bee7d0092fbc",
+          "bytes": 481400
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 0.52848,
+        "cpu_seconds": 0.51,
+        "timed_out": false,
+        "user_seconds": 0.46,
+        "system_seconds": 0.05,
+        "max_rss_kib": 60856,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 1118208,
+        "output": {
+          "valid": true,
+          "pages": 47,
+          "characters": 94541,
+          "characters_sha256": "773b2c85411adce0f27fbfd3fd1f048506920453bfacaf0154c8bee7d0092fbc",
+          "bytes": 506904
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "class_snapshot_written": false,
+        "class_snapshot_hit": false,
+        "output_cache_written": true,
+        "output_cache_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.02404,
+        "cpu_seconds": 0.01,
+        "timed_out": false,
+        "user_seconds": 0.0,
+        "system_seconds": 0.01,
+        "max_rss_kib": 20992,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 0,
+        "output": {
+          "valid": true,
+          "pages": 47,
+          "characters": 94541,
+          "characters_sha256": "773b2c85411adce0f27fbfd3fd1f048506920453bfacaf0154c8bee7d0092fbc",
+          "bytes": 506904
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "output_cache_written": false,
+        "output_cache_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.25447v1",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 0.558883,
+        "cpu_seconds": 0.55,
+        "timed_out": false,
+        "user_seconds": 0.51,
+        "system_seconds": 0.04,
+        "max_rss_kib": 48128,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 319488,
+        "output": {
+          "valid": true,
+          "pages": 37,
+          "characters": 56204,
+          "characters_sha256": "64253586a5599abe2482462d8ada9377e38772cb44829fe6f6117a7873f4652d",
+          "bytes": 255984
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 0.743615,
+        "cpu_seconds": 0.73,
+        "timed_out": false,
+        "user_seconds": 0.66,
+        "system_seconds": 0.07,
+        "max_rss_kib": 60936,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 675840,
+        "output": {
+          "valid": true,
+          "pages": 37,
+          "characters": 56204,
+          "characters_sha256": "64253586a5599abe2482462d8ada9377e38772cb44829fe6f6117a7873f4652d",
+          "bytes": 272308
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "class_snapshot_written": false,
+        "class_snapshot_hit": false,
+        "output_cache_written": true,
+        "output_cache_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.02659,
+        "cpu_seconds": 0.01,
+        "timed_out": false,
+        "user_seconds": 0.0,
+        "system_seconds": 0.01,
+        "max_rss_kib": 20992,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 0,
+        "output": {
+          "valid": true,
+          "pages": 37,
+          "characters": 56204,
+          "characters_sha256": "64253586a5599abe2482462d8ada9377e38772cb44829fe6f6117a7873f4652d",
+          "bytes": 272308
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "output_cache_written": false,
+        "output_cache_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.25387v1",
+      "status": "valid",
+      "stock_setup_passes": 2,
+      "candidate_setup_passes": 2,
+      "stock": {
+        "returncode": 0,
+        "seconds": 0.262416,
+        "cpu_seconds": 0.24,
+        "timed_out": false,
+        "user_seconds": 0.2,
+        "system_seconds": 0.04,
+        "max_rss_kib": 48640,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 110592,
+        "output": {
+          "valid": true,
+          "pages": 7,
+          "characters": 22851,
+          "characters_sha256": "a2e46827fa95fa30da6bbb1b3ef84e94c0137d1b3e0f81a461982d4620ad7a4e",
+          "bytes": 74256
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 0.312613,
+        "cpu_seconds": 0.29,
+        "timed_out": false,
+        "user_seconds": 0.24,
+        "system_seconds": 0.05,
+        "max_rss_kib": 60220,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 245760,
+        "output": {
+          "valid": true,
+          "pages": 7,
+          "characters": 22851,
+          "characters_sha256": "a2e46827fa95fa30da6bbb1b3ef84e94c0137d1b3e0f81a461982d4620ad7a4e",
+          "bytes": 86476
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "class_snapshot_written": false,
+        "class_snapshot_hit": false,
+        "output_cache_written": true,
+        "output_cache_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.026726,
+        "cpu_seconds": 0.01,
+        "timed_out": false,
+        "user_seconds": 0.0,
+        "system_seconds": 0.01,
+        "max_rss_kib": 20736,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 0,
+        "output": {
+          "valid": true,
+          "pages": 7,
+          "characters": 22851,
+          "characters_sha256": "a2e46827fa95fa30da6bbb1b3ef84e94c0137d1b3e0f81a461982d4620ad7a4e",
+          "bytes": 86476
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "output_cache_written": false,
+        "output_cache_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.25372v1",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 0.334573,
+        "cpu_seconds": 0.32,
+        "timed_out": false,
+        "user_seconds": 0.3,
+        "system_seconds": 0.02,
+        "max_rss_kib": 47616,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 286720,
+        "output": {
+          "valid": true,
+          "pages": 20,
+          "characters": 49115,
+          "characters_sha256": "83d7e93bdced536bc149b3f9b1b14b783b862aaa9d8ad90de179cf4b50240638",
+          "bytes": 241132
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 0.40351,
+        "cpu_seconds": 0.38,
+        "timed_out": false,
+        "user_seconds": 0.33,
+        "system_seconds": 0.05,
+        "max_rss_kib": 60048,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 585728,
+        "output": {
+          "valid": true,
+          "pages": 20,
+          "characters": 49115,
+          "characters_sha256": "83d7e93bdced536bc149b3f9b1b14b783b862aaa9d8ad90de179cf4b50240638",
+          "bytes": 253200
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "class_snapshot_written": false,
+        "class_snapshot_hit": false,
+        "output_cache_written": true,
+        "output_cache_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.024625,
+        "cpu_seconds": 0.01,
+        "timed_out": false,
+        "user_seconds": 0.0,
+        "system_seconds": 0.01,
+        "max_rss_kib": 20736,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 0,
+        "output": {
+          "valid": true,
+          "pages": 20,
+          "characters": 49115,
+          "characters_sha256": "83d7e93bdced536bc149b3f9b1b14b783b862aaa9d8ad90de179cf4b50240638",
+          "bytes": 253200
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "output_cache_written": false,
+        "output_cache_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.25351v1",
+      "status": "valid",
+      "stock_setup_passes": 2,
+      "candidate_setup_passes": 2,
+      "stock": {
+        "returncode": 0,
+        "seconds": 0.39324,
+        "cpu_seconds": 0.38,
+        "timed_out": false,
+        "user_seconds": 0.35,
+        "system_seconds": 0.03,
+        "max_rss_kib": 48640,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 188416,
+        "output": {
+          "valid": true,
+          "pages": 21,
+          "characters": 47647,
+          "characters_sha256": "f279606866176ed5e7152987a095ade263daff183b4976e65a4a37c75c2cfe3c",
+          "bytes": 139548
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 0.47291,
+        "cpu_seconds": 0.46,
+        "timed_out": false,
+        "user_seconds": 0.41,
+        "system_seconds": 0.05,
+        "max_rss_kib": 60352,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 401408,
+        "output": {
+          "valid": true,
+          "pages": 21,
+          "characters": 47647,
+          "characters_sha256": "f279606866176ed5e7152987a095ade263daff183b4976e65a4a37c75c2cfe3c",
+          "bytes": 151292
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "class_snapshot_written": false,
+        "class_snapshot_hit": false,
+        "output_cache_written": true,
+        "output_cache_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.025454,
+        "cpu_seconds": 0.01,
+        "timed_out": false,
+        "user_seconds": 0.0,
+        "system_seconds": 0.01,
+        "max_rss_kib": 20992,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 0,
+        "output": {
+          "valid": true,
+          "pages": 21,
+          "characters": 47647,
+          "characters_sha256": "f279606866176ed5e7152987a095ade263daff183b4976e65a4a37c75c2cfe3c",
+          "bytes": 151292
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "output_cache_written": false,
+        "output_cache_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.25339v1",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 0.331439,
+        "cpu_seconds": 0.32,
+        "timed_out": false,
+        "user_seconds": 0.29,
+        "system_seconds": 0.03,
+        "max_rss_kib": 48896,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 131072,
+        "output": {
+          "valid": true,
+          "pages": 10,
+          "characters": 17420,
+          "characters_sha256": "384aeb856a2f7ade11802cee7f3004b5d6186973d59b62e78d0f0f5dcba21c8f",
+          "bytes": 89700
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 0.379473,
+        "cpu_seconds": 0.37,
+        "timed_out": false,
+        "user_seconds": 0.32,
+        "system_seconds": 0.05,
+        "max_rss_kib": 60632,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 290816,
+        "output": {
+          "valid": true,
+          "pages": 10,
+          "characters": 17420,
+          "characters_sha256": "384aeb856a2f7ade11802cee7f3004b5d6186973d59b62e78d0f0f5dcba21c8f",
+          "bytes": 94640
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "class_snapshot_written": false,
+        "class_snapshot_hit": false,
+        "output_cache_written": true,
+        "output_cache_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.022451,
+        "cpu_seconds": 0.01,
+        "timed_out": false,
+        "user_seconds": 0.0,
+        "system_seconds": 0.01,
+        "max_rss_kib": 20224,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 0,
+        "output": {
+          "valid": true,
+          "pages": 10,
+          "characters": 17420,
+          "characters_sha256": "384aeb856a2f7ade11802cee7f3004b5d6186973d59b62e78d0f0f5dcba21c8f",
+          "bytes": 94640
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "output_cache_written": false,
+        "output_cache_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.25323v1",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 0.347549,
+        "cpu_seconds": 0.33,
+        "timed_out": false,
+        "user_seconds": 0.3,
+        "system_seconds": 0.03,
+        "max_rss_kib": 47872,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 143360,
+        "output": {
+          "valid": true,
+          "pages": 8,
+          "characters": 35270,
+          "characters_sha256": "3932695200935fada0aec22130895509f3046542bbe340173364d362f4902cb7",
+          "bytes": 91464
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 0.433605,
+        "cpu_seconds": 0.42,
+        "timed_out": false,
+        "user_seconds": 0.37,
+        "system_seconds": 0.05,
+        "max_rss_kib": 60048,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 303104,
+        "output": {
+          "valid": true,
+          "pages": 8,
+          "characters": 35270,
+          "characters_sha256": "3932695200935fada0aec22130895509f3046542bbe340173364d362f4902cb7",
+          "bytes": 97232
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "class_snapshot_written": false,
+        "class_snapshot_hit": false,
+        "output_cache_written": true,
+        "output_cache_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.024046,
+        "cpu_seconds": 0.01,
+        "timed_out": false,
+        "user_seconds": 0.0,
+        "system_seconds": 0.01,
+        "max_rss_kib": 20736,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 0,
+        "output": {
+          "valid": true,
+          "pages": 8,
+          "characters": 35270,
+          "characters_sha256": "3932695200935fada0aec22130895509f3046542bbe340173364d362f4902cb7",
+          "bytes": 97232
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "output_cache_written": false,
+        "output_cache_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.25259v1",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 0.18607,
+        "cpu_seconds": 0.17,
+        "timed_out": false,
+        "user_seconds": 0.14,
+        "system_seconds": 0.03,
+        "max_rss_kib": 47104,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 110592,
+        "output": {
+          "valid": true,
+          "pages": 8,
+          "characters": 36012,
+          "characters_sha256": "b5da1a9a8d01f7725b8af34923a058f1591b8b67d21bba678175f0dbbb930806",
+          "bytes": 78528
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 0.236045,
+        "cpu_seconds": 0.22,
+        "timed_out": false,
+        "user_seconds": 0.18,
+        "system_seconds": 0.04,
+        "max_rss_kib": 60816,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 225280,
+        "output": {
+          "valid": true,
+          "pages": 8,
+          "characters": 36012,
+          "characters_sha256": "b5da1a9a8d01f7725b8af34923a058f1591b8b67d21bba678175f0dbbb930806",
+          "bytes": 84224
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "class_snapshot_written": false,
+        "class_snapshot_hit": false,
+        "output_cache_written": true,
+        "output_cache_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.023362,
+        "cpu_seconds": 0.0,
+        "timed_out": false,
+        "user_seconds": 0.0,
+        "system_seconds": 0.0,
+        "max_rss_kib": 20736,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 0,
+        "output": {
+          "valid": true,
+          "pages": 8,
+          "characters": 36012,
+          "characters_sha256": "b5da1a9a8d01f7725b8af34923a058f1591b8b67d21bba678175f0dbbb930806",
+          "bytes": 84224
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "output_cache_written": false,
+        "output_cache_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.25232v1",
+      "status": "valid",
+      "stock_setup_passes": 2,
+      "candidate_setup_passes": 2,
+      "stock": {
+        "returncode": 0,
+        "seconds": 0.206374,
+        "cpu_seconds": 0.19,
+        "timed_out": false,
+        "user_seconds": 0.17,
+        "system_seconds": 0.02,
+        "max_rss_kib": 47360,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 90112,
+        "output": {
+          "valid": true,
+          "pages": 7,
+          "characters": 28343,
+          "characters_sha256": "086f2c77ab62fa4503b65f64ed70d185f71ac2bca9a991815ec574db9d94a766",
+          "bytes": 58396
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 0.247116,
+        "cpu_seconds": 0.24,
+        "timed_out": false,
+        "user_seconds": 0.19,
+        "system_seconds": 0.05,
+        "max_rss_kib": 59792,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 192512,
+        "output": {
+          "valid": true,
+          "pages": 7,
+          "characters": 28343,
+          "characters_sha256": "086f2c77ab62fa4503b65f64ed70d185f71ac2bca9a991815ec574db9d94a766",
+          "bytes": 63592
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "class_snapshot_written": false,
+        "class_snapshot_hit": false,
+        "output_cache_written": true,
+        "output_cache_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.023656,
+        "cpu_seconds": 0.01,
+        "timed_out": false,
+        "user_seconds": 0.0,
+        "system_seconds": 0.01,
+        "max_rss_kib": 20992,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 0,
+        "output": {
+          "valid": true,
+          "pages": 7,
+          "characters": 28343,
+          "characters_sha256": "086f2c77ab62fa4503b65f64ed70d185f71ac2bca9a991815ec574db9d94a766",
+          "bytes": 63592
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "output_cache_written": false,
+        "output_cache_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.25221v1",
+      "status": "valid",
+      "stock_setup_passes": 2,
+      "candidate_setup_passes": 2,
+      "stock": {
+        "returncode": 0,
+        "seconds": 0.431173,
+        "cpu_seconds": 0.42,
+        "timed_out": false,
+        "user_seconds": 0.39,
+        "system_seconds": 0.03,
+        "max_rss_kib": 48640,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 286720,
+        "output": {
+          "valid": true,
+          "pages": 23,
+          "characters": 62292,
+          "characters_sha256": "b74e2fefd30bfd28f48603893d4a3e3efd38cf4f07b9d8abaa744e6f9e47fc38",
+          "bytes": 235964
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 0.529267,
+        "cpu_seconds": 0.51,
+        "timed_out": false,
+        "user_seconds": 0.46,
+        "system_seconds": 0.05,
+        "max_rss_kib": 60304,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 598016,
+        "output": {
+          "valid": true,
+          "pages": 23,
+          "characters": 62292,
+          "characters_sha256": "b74e2fefd30bfd28f48603893d4a3e3efd38cf4f07b9d8abaa744e6f9e47fc38",
+          "bytes": 252864
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "class_snapshot_written": false,
+        "class_snapshot_hit": false,
+        "output_cache_written": true,
+        "output_cache_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.023267,
+        "cpu_seconds": 0.01,
+        "timed_out": false,
+        "user_seconds": 0.0,
+        "system_seconds": 0.01,
+        "max_rss_kib": 20480,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 0,
+        "output": {
+          "valid": true,
+          "pages": 23,
+          "characters": 62292,
+          "characters_sha256": "b74e2fefd30bfd28f48603893d4a3e3efd38cf4f07b9d8abaa744e6f9e47fc38",
+          "bytes": 252864
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "output_cache_written": false,
+        "output_cache_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.25183v1",
+      "status": "valid",
+      "stock_setup_passes": 2,
+      "candidate_setup_passes": 2,
+      "stock": {
+        "returncode": 0,
+        "seconds": 0.481956,
+        "cpu_seconds": 0.47,
+        "timed_out": false,
+        "user_seconds": 0.44,
+        "system_seconds": 0.03,
+        "max_rss_kib": 48384,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 253952,
+        "output": {
+          "valid": true,
+          "pages": 11,
+          "characters": 22199,
+          "characters_sha256": "6025e226802cd7e507eda57d8073d7a44944df9bfece2a4916b6e74f4a0907f9",
+          "bytes": 186956
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 0.626969,
+        "cpu_seconds": 0.61,
+        "timed_out": false,
+        "user_seconds": 0.55,
+        "system_seconds": 0.06,
+        "max_rss_kib": 60300,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 507904,
+        "output": {
+          "valid": true,
+          "pages": 11,
+          "characters": 22199,
+          "characters_sha256": "6025e226802cd7e507eda57d8073d7a44944df9bfece2a4916b6e74f4a0907f9",
+          "bytes": 191584
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "class_snapshot_written": false,
+        "class_snapshot_hit": false,
+        "output_cache_written": true,
+        "output_cache_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.023601,
+        "cpu_seconds": 0.01,
+        "timed_out": false,
+        "user_seconds": 0.01,
+        "system_seconds": 0.0,
+        "max_rss_kib": 20480,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 0,
+        "output": {
+          "valid": true,
+          "pages": 11,
+          "characters": 22199,
+          "characters_sha256": "6025e226802cd7e507eda57d8073d7a44944df9bfece2a4916b6e74f4a0907f9",
+          "bytes": 191584
+        },
+        "project_snapshot_written": false,
+        "project_snapshot_hit": false,
+        "output_cache_written": false,
+        "output_cache_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    }
+  ]
+}

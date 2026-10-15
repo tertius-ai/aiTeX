@@ -1,0 +1,31 @@
+% Controlled expansion: expanding exactly one step, and stopping.
+%
+% expl3 is built out of these. `\exp:w` is \romannumeral and `\exp_end:` a
+% \chardef'd zero, so `\exp:w <tokens> ` expands <tokens> while scanning a
+% number and stops the moment one of them leaves \exp_end: in front. Whatever
+% the expansion built is then left *unexpanded* -- which is the whole point,
+% and what makes an over-eager scanner so damaging: it runs the very token the
+% idiom exists to protect.
+\input plain
+\catcode`\:=11 \catcode`\_=11
+\chardef\c_zero_int=0
+\let\exp:w\romannumeral \let\exp_end:\c_zero_int
+\let\exp_after:wN\expandafter
+\def\exp_not:v#1{RAN(#1)}
+\def\exp_args:NNc#1#2#3{\exp_after:wN#1\exp_after:wN#2\csname #3\endcsname}
+% Under \edef everything expands afterwards, so both forms give the same text.
+\edef\a{\exp:w \exp_args:NNc \exp_after:wN \exp_end: {exp_not:v}{ARG}}
+\message{<edef=\meaning\a>}
+% Under a single expansion the difference shows: the built control sequence
+% must survive. `\unexpanded\exp_after:wN{...}` is expl3's way of expanding
+% exactly one token inside an otherwise protected group -- so \unexpanded has
+% to expand to find its own opening brace (tex.web 403).
+\edef\b{\unexpanded\exp_after:wN{\exp:w \exp_args:NNc \exp_after:wN \exp_end: {exp_not:v}{ARG}}}
+\message{<once=\meaning\b>}
+\edef\c{\unexpanded\exp_after:wN{\exp:w \exp_after:wN \exp_end: \csname exp_not:v\endcsname{ARG}}}
+\message{<csname=\meaning\c>}
+% \expanded and \detokenize find their brace the same way.
+\def\inner{IN}
+\edef\d{\expanded\exp_after:wN{\inner}}\message{<expanded=\meaning\d>}
+\edef\e{\detokenize\exp_after:wN{\inner}}\message{<detok=\meaning\e>}
+\bye

@@ -1,0 +1,10 @@
+% `tex.web` §1004 reports infinitely shrinkable glue as it reaches the current
+% page, retains the amount, and replaces its glue spec with one whose shrink
+% order is finite. The second box exercises the builder after `\vss`; the page
+% display must therefore say `minus 1.0`, not `minus 1.0fil`.
+\catcode`\{=1 \catcode`\}=2
+\showboxdepth=3 \showboxbreadth=20 \tracingonline=0
+\vsize=100pt \hsize=100pt
+\hbox{}\vss\hbox{}
+\showlists
+\end

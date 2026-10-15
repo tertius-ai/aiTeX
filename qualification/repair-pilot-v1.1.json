@@ -1,0 +1,138 @@
+{
+  "schema": "aitex-repair-pilot-qualification-v1.1",
+  "captured_date": "2026-09-04",
+  "source_commit": "6d1b67eebda15be44dfd055e0d992595156b4c6c",
+  "decision": {
+    "active_protocol": "aitex-repair-protocol-v1.1",
+    "a1_one_shot_profile": "compact",
+    "a1_max_output_tokens": 512,
+    "product_fallback_profile": "expanded",
+    "reference_model": "mistralai/mistral-small-24b-instruct-2501",
+    "claim": "shared human/model diagnostic display with matched small-pilot quality; not a general model leaderboard"
+  },
+  "offline_qualification": {
+    "profiles": [
+      "diagnostic",
+      "compact",
+      "expanded"
+    ],
+    "score_rows": 20,
+    "model_route_replays": 18,
+    "deterministic_routes": 2,
+    "build_successes": 20,
+    "exact_oracles": 20,
+    "provider_calls": 0,
+    "measured_estimated_input_max": {
+      "diagnostic": 286,
+      "compact": 396,
+      "expanded": 591
+    },
+    "enforced_estimated_input_ceiling": {
+      "diagnostic": 300,
+      "compact": 400,
+      "expanded": 750
+    }
+  },
+  "matched_comparison": {
+    "track": "routed",
+    "campaign_seed": 20260904,
+    "profiles": [
+      "compact"
+    ],
+    "cases_per_repeat": 6,
+    "repeats": 3,
+    "attempts_per_protocol": 18,
+    "same_job_seeds": true,
+    "same_model_catalog": true,
+    "same_served_provider": "DeepInfra",
+    "ignored_providers": [
+      "nextbit"
+    ],
+    "privacy": {
+      "zdr": true,
+      "data_collection": "deny"
+    },
+    "v1": {
+      "build_successes": 15,
+      "semantic_correct": 15,
+      "semantic_labeled": 18,
+      "exact_oracle": 3,
+      "input_tokens": 6690,
+      "output_tokens": 2167,
+      "reasoning_tokens": 0,
+      "charged_microusd": 507,
+      "model_ms_p50": 3065.6146855,
+      "model_ms_p95": 10153.501153000001
+    },
+    "v1.1": {
+      "build_successes": 15,
+      "semantic_correct": 15,
+      "semantic_labeled": 18,
+      "exact_oracle": 3,
+      "input_tokens": 7674,
+      "output_tokens": 2203,
+      "reasoning_tokens": 0,
+      "charged_microusd": 561,
+      "model_ms_p50": 2492.4291125,
+      "model_ms_p95": 6310.683781,
+      "diagnostic_presentation_bytes_per_attempt": 131.83333333333334,
+      "estimated_presentation_tokens_per_attempt": 33.333333333333336
+    },
+    "v1.1_delta_percent": {
+      "build_successes": 0.0,
+      "semantic_correct": 0.0,
+      "input_tokens": 14.708520179372197,
+      "output_tokens": 1.6612828795569912,
+      "charged_cost": 10.650887573964498,
+      "model_ms_p50": -18.69724775625264,
+      "model_ms_p95": -37.84721461192315
+    },
+    "stable_failure": {
+      "case": "biber-unclosed-entry",
+      "failures_per_protocol": 3,
+      "v1_classes": [
+        "invalid-patch"
+      ],
+      "v1.1_classes": [
+        "invalid-patch"
+      ],
+      "note": "all other case/repeat attempts built and were labeled semantically correct in both protocols"
+    },
+    "interpretation": "v1.1 retained matched pilot correctness while adding the exact human-facing diagnosis for about 55 provider-counted input tokens and $0.000003 per attempt; latency differences are observational network/provider variation"
+  },
+  "offline_rescore": {
+    "provider_calls": 0,
+    "evaluator_id": "7ab8a411b848ba4ff89d0b1f5d4926805f51948f6efee363dfaed595cf004c76",
+    "build_successes": 15,
+    "semantic_correct": 15,
+    "semantic_labeled": 18,
+    "regressions": 0
+  },
+  "source_artifacts_sha256": {
+    "campaign.json": "7b38d567ecb4a8e4380c958ba3bfbc5516d6e44a21a435eede7b159b6db51c33",
+    "results.jsonl": "f84922f57f07783be393e1d96b20458ff20eb4add9982411787d7648f7792675",
+    "labels.jsonl": "e0f0ad4af5d9237b1e6c1e98621df39c8b4778c47df3153bfab29943ff7ab723",
+    "models.json": "5adad74c27e13469495cc2c6335aed80b2f74042d1fca68d7d81bf524efc4727",
+    "summary.json": "268a02d8c337501dfce48c409288f2bedc945a9dda7413a0ee88bd0756dd807a",
+    "report.md": "846932cffed0fb1ae6843e3aef911e901fbfb8924e91acb6ef4fc92a3c3d42ce"
+  },
+  "rescore_artifacts_sha256": {
+    "results.jsonl": "f4b96b46738e6d4be1a61063c8625c4820c2438d0487dae86394f7d6d6306fbb",
+    "summary.json": "265b8131bd7442c9fe8496ec4270b68322c771ef2f12b4a25a6f91a3b29b0509",
+    "report.md": "8bf808f6a4d343628c839c84bad011c60cd91be6d37c2f2ba512d336d0f05fcd"
+  },
+  "protocol_sources_sha256": {
+    "docs/AI-REPAIR-PROTOCOL-V1.1.md": "c809ee69d63699430f94583f120f85219063a1ac7e7a0ad590ff11aaf27c0699",
+    "corpus/repair-lab/manifest.json": "c654eca2434538bd535231b63c41d4acd15c549c4ee0a71f30c6f0dd57e79b60",
+    "crates/aitex-core/src/lib.rs": "a7d9c5bd394674472e107f1f27aac2178c91189bb8369a0285f6c80006b8af51",
+    "crates/aitex-harness/src/repair.rs": "fcc70cbb1d9fe380b0859965e784351b9e45be65f95fbd3cb434b2c9f397ec52",
+    "crates/aitex-harness/src/patch.rs": "a7e414a97d2586854d2969bdb9b5561d04be8a8bd04790bf3f2b74b6c1e6aa9a",
+    "crates/aitex-harness/src/session.rs": "ee9db0411afdda2f54dd024fae261ea1b0b6cbb53318e3a1953356d0c9330be8",
+    "crates/aitex-harness/src/bin/aitex-repair-lab.rs": "8ddab8f86ddc78d2b1d63c8afaed1659eda94e210859400475a347009561a6b7",
+    "tools/model_campaign.py": "a12b4842ff1a90dd2e58ac136f1bd1900e1e6c0347c5f818c40b4bcde38a5e7b"
+  },
+  "evaluator_binaries_sha256": {
+    "target/debug/aitex-repair-lab": "7a04f4a65aa89959a2df855b1fb01dba55f9e01a1498e3c67434a05341ff2097",
+    "bin/aitex": "4dbbc8a794cad170857098402edbe41163ad57c5d52041f4eff9aca1fc97ea6d"
+  }
+}

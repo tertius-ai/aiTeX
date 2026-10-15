@@ -1,0 +1,35 @@
+\documentclass{article}
+\usepackage{fontspec}
+\usepackage[english]{babel}
+
+\setmainfont[Ligatures=Common]{Noto Sans}
+\setsansfont{Noto Sans}
+\setmonofont{Noto Sans}
+\newfontfamily\arabicfont{Amiri}
+\newfontfamily\hebrewfont{Noto Sans Hebrew}
+\newfontfamily\devanagarifont{Noto Sans Devanagari}
+\newfontfamily\cjkfont{Noto Sans CJK SC}
+\newfontfamily\thaifont{Noto Sans Thai}
+\newfontfamily\laofont{Noto Sans Lao}
+
+\begin{document}
+Ordinary UTF-8 and OpenType shaping: office affine. Classic math stays classic:
+$E=mc^2$.
+
+{\arabicfont\aitexlanguage{ar}السَّلَامُ عَلَيْكُمْ}
+
+{\hebrewfont\selectlanguage{hebrew}שָׁלוֹם office עוֹלָם}
+
+{\devanagarifont\aitexlanguage{hi}नमस्ते भारत}
+
+{\cjkfont\aitexlanguage{zh}日本語中文测试漢字かなカナ}
+
+{\thaifont\aitexlanguage{th}ภาษาไทย ยินดีต้อนรับ}
+
+{\laofont\aitexlanguage{lo}ສະບາຍດີ ພາສາລາວ}
+
+{\fontspec[Ligatures=Common]{Junicode VF}\aitexvariations{wght=650}%
+minimum variable width office}
+
+Ordinary vertical run: {\cjkfont\aitexlanguage{ja}\aitexdirection{ttb}日本語}.
+\end{document}

@@ -1,0 +1,12 @@
+% `tex.web` §453: `true` dimensions divide by the job's frozen `\mag` before
+% applying their physical unit.  The first use calls `prepare_mag`; a later
+% incompatible assignment is rejected globally and the original ratio remains
+% in force for both the parameter and the dimension being scanned.
+\catcode`\{=1 \catcode`\}=2
+\mag=2000
+\dimen0=1truemm
+\message{PROBE:first=\number\dimen0,mag=\the\mag}
+\mag=1999
+\dimen0=1truept
+\message{PROBE:second=\number\dimen0,mag=\the\mag}
+\end

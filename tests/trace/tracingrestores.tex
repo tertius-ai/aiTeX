@@ -1,0 +1,113 @@
+% `tex.web` §252 `restore_trace`, called from §282 `unsave` for every eqtb entry
+% a group puts back:
+%
+%     {restoring \count5=1}
+%     {restoring \m=macro:->A}
+%     {restoring \catcode63=12}
+%
+% Newest first, since the save stack is a stack. The value is formatted as §233
+% `show_eqtb` formats that region — a register or parameter the way `\the`
+% writes it, a control sequence the way `\meaning` does, and the character codes
+% by *number* rather than as characters.
+%
+% A control sequence has to be reported after its restore has run: the trace
+% names the value being restored, and until then the current meaning is still
+% the group's own. Everything else carries its old value in the save entry and
+% can report before. A glue parameter is one eqtb entry even though we keep its
+% width and its stretch in different places, so only the width half reports.
+%
+% Not covered here, and now *demonstrated* rather than suspected: TeX's
+% eq-level. §279 `eq_define` saves an entry only if it has not already been
+% saved at this group level; we save on every assignment. Adding
+% `\parshape=1 0pt 1pt` to the group below makes the difference visible —
+%
+%     tex:   {restoring \parshape=0}
+%     ours:  {restoring \parshape=1}   ← from `normal_paragraph`'s own reset
+%            {restoring \parshape=0}
+%
+% — because §1070's `normal_paragraph` resets `\parshape` with `eq_define` too,
+% and TeX coalesces the two saves where we keep both. The same missing level is
+% why §282's `{retaining …}` never appears here: a `\global` inside a group
+% should discard the saved value rather than restore it, and with no level to
+% compare there is nothing to discard. Both are one fix, and this trace is how
+% it will be checked.
+\catcode`\{=1 \catcode`\}=2 \catcode`\#=6
+\font\rip=cmr10
+\count5=1 \dimen5=1pt \skip5=1pt plus 2pt \muskip5=1mu \toks5={a}
+\def\m{A}
+\sfcode`\?=999 \mathcode`\?=99 \lccode`\?=`\! \uccode`\?=`\!
+\tracingrestores=1
+{\count5=2 \dimen5=2pt \skip5=3pt \muskip5=2mu \toks5={b}
+ \def\m{B}\let\n=\relax
+ \catcode`\?=13 \sfcode`\?=1 \mathcode`\?=1 \lccode`\?=`\@ \uccode`\?=`\@
+ \hsize=50pt \parindent=1pt \baselineskip=9pt plus 1pt
+ \everypar{E}
+ \setbox3\hbox{}\fam=2}
+
+% §233 shows a box register's old value as §184's *header* line — glue set and
+% all — with a ` []` for the list underneath that the depth limit stops. We
+% wrote the three dimensions by hand and left both out, so a restore said
+% nothing about how the box had been packed.
+\setbox7\vbox to 30pt{\hbox{}\vfill}
+{\setbox7\hbox{}}
+% §277's rule is the same for a register as for a control sequence: an entry
+% is saved only when its level differs from the current one, so a second
+% assignment inside the same group does not save again.
+%
+%     if xeq_level[p]<>cur_level then
+%       begin eq_save(p,xeq_level[p]); xeq_level[p]:=cur_level; end;
+%     eqtb[p].int:=w;
+%
+% We saved on every assignment. The value came out right — LIFO sees to that,
+% the outermost save being restored last — but a group that set `\count5` twice
+% restored it twice, and the save stack grew with every assignment rather than
+% with every entry. §282 puts the level back with the value, so an entry
+% returns to belonging to whatever group it did before.
+{\count5=1 \count5=2 \dimen5=1pt \dimen5=2pt \tolerance=1 \tolerance=2}
+
+% ...and a nested group saves it again, because that is a different level.
+{\count5=7 {\count5=8}}
+
+% §283: an entry made global inside a group is *retained* — the saved value is
+% thrown away at `unsave` and the global one stays.
+%
+%     if eq_level(p)=level_one then
+%       begin eq_destroy(save_stack[save_ptr]);
+%       stat if tracing_restores>0 then restore_trace(p,"retaining"); tats
+%       end
+%
+% §252 names the value *in force* there, not the one being discarded — the
+% trace is how a reader sees that a `\global` beat the group it was written
+% in. We deleted the save entry at the assignment instead, so there was
+% nothing left at the closing brace to say anything about.
+\count6=1 \dimen6=1pt \hbadness=1 \def\m{A}
+{\count6=2 \dimen6=2pt \hbadness=2 \def\m{B}%
+ \global\count6=3 \global\dimen6=3pt \global\hbadness=3 \global\def\m{C}}
+
+% A retained macro is shown through the same 32-character `show_token_list`
+% budget as a restored one. The `->` consumes two of those characters and the
+% cut remains on a token boundary.
+\def\q{A}
+{\def\q{B}\global\def\q{\global\count\count1=##\cr\omit\cr\tabskip}}
+
+% §233 shows a token list with `show_token_list(…, null, 32)`: thirty-two
+% characters of the *value*, then `\ETC.`. It is the value that is cut and not
+% the line, so the restore is short whatever the margin — we printed the whole
+% list, which for a real `\everypar` is most of a screen. And `\output` is
+% shown in braces where every other token list is shown bare, the opening
+% brace counting against the thirty-two.
+% §292 checks the budget *before* each token and prints it whole, so the cut
+% lands on a token boundary: a long control sequence carries the line well past
+% thirty-two. Cutting by characters instead put `\ETC.` inside a name. TeX
+% emits the marker with `print_esc`, so it follows the current `\escapechar`.
+\escapechar=`\|
+\everypar={\tracingcommands 0\showthe \outputpenalty \showboxbreadth 9}
+\toks4={\tracingcommands 0\showthe \outputpenalty \showboxbreadth 9}
+{\everypar={s}\toks4={s}}
+
+\everypar={XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX}
+\toks3={XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX}
+\output={XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX}
+{\everypar={s}\toks3={s}\output={s}}
+\tracingrestores=0
+\end

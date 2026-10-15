@@ -1,0 +1,45 @@
+% `tex.web` §1090 `init_math`: a display belongs to a *paragraph*.
+%
+%     begin get_token; {|get_x_token| would fail on \ifmmode!}
+%     if (cur_cmd=math_shift)and(mode>0) then @<Go into display math mode@>
+%     else  begin back_input; @<Go into ordinary math mode@>;
+%       end;
+%
+% `mode>0` is the whole of it. A restricted horizontal list — the inside of an
+% \hbox — is `-hmode`, so `$$` there is not a display: the second `$` is put
+% back and dispatched again, and what the box gets is two *empty inline*
+% formulas with whatever lies between them set in the box's own font.
+%
+% We read the second `$` and went into display math wherever we found it, so
+% `\hbox{A$$B$$C}` broke a paragraph that did not exist. The box came out
+% 115.58682pt wide against TeX's 21.8056, with an \abovedisplayshortskip and a
+% centred line inside it, and `B` set from family 1 instead of \rm — every one
+% of which is visible on the page, not merely in the transcript.
+%
+% The trace is the other half: TeX shows `{restricted horizontal mode: math
+% shift character $}` and then `{math mode: math shift character $}`, two
+% commands for the two characters, because `back_input` sends the second one
+% round again. A display shows one.
+\catcode`\{=1 \catcode`\}=2 \catcode`\$=3
+\tracingonline=1 \tracingcommands=2 \showboxbreadth=99 \showboxdepth=99
+\hsize=100pt \parindent=0pt
+\font\rm=cmr10 \textfont0=\rm \scriptfont0=\rm \scriptscriptfont0=\rm \rm
+\font\mi=cmmi10 \textfont1=\mi \scriptfont1=\mi \scriptscriptfont1=\mi
+\font\sy=cmsy10 \textfont2=\sy \scriptfont2=\sy \scriptscriptfont2=\sy
+\font\ex=cmex10 \textfont3=\ex \scriptfont3=\ex \scriptscriptfont3=\ex
+
+\setbox0\hbox{A$$B$$C}
+\showbox0
+
+% ...and the same inside a \vbox, where the paragraph that `$$` interrupts is
+% a real one and the display is real too. Restricted is about the *horizontal*
+% list, not about being inside a box.
+\setbox1\vbox{\noindent A$$B$$C\par}
+\showbox1
+
+% A display does start a paragraph from vertical mode — §1090's `vmode+
+% math_shift` backs the `$` up and calls `new_graf(true)`, so the paragraph
+% that gets broken is an empty indented one.
+\setbox2\vbox{$$B$$ \indent A$X$}
+\showbox2
+\end

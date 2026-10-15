@@ -1,0 +1,64 @@
+% Two different questions get asked about the same line, and pdfTeX answers them
+% differently:
+%
+%   - which character *hangs into the margin* in the finished line — asked after
+%     the trailing glue has been discarded, at the point the kern is inserted;
+%   - which character *narrows the line* for the width the breaker scores —
+%     asked of the candidate line, trailing glue and all.
+%
+% There is no §-number for either; protrusion is pdfTeX's. The rule below was
+% measured by sweeping `\rpcode` between 0 and 1000 with `\pdfprotrudechars=2`
+% and watching whether the badness `\tracingparagraphs` reports moves. With a
+% `.` before the break in every case:
+%
+%     ccc.\penalty-10000              badness moves — the character protrudes
+%     ccc. \penalty-10000             badness fixed — a glue node, nothing protrudes
+%     ccc.\kern0pt\penalty-10000      badness moves
+%     ccc.\penalty100 \penalty-10000  badness moves
+%     ccc.\hbox{}\penalty-10000       badness moves
+%     ccc.\hbox to0pt{}\penalty-10000 badness moves
+%
+% So kerns, penalties and zero-width boxes are stepped over, and **only glue
+% stops the search**. The four "moves" rows give identical badness, so it is the
+% same character being found in each.
+%
+% `2608.17686v1` ends a line `$\mathbb Z$. ` at a penalty. The glue before that
+% penalty is the last node, so the period does not protrude — taking its 2.28pt
+% anyway made the line too narrow and the breaker chose differently.
+\input plain
+\catcode`\@=11
+\pdfprotrudechars=2
+\parindent=0pt
+\tolerance=9999
+\pretolerance=9999
+\showboxbreadth=100
+\showboxdepth=10
+\rpcode\font`\.=1000
+% `\hsize` is chosen so the first line's badness is well inside the sensitive
+% range: `aaa bbb ccc.` is 54.44453pt natural, and a 10pt protrusion on the `.`
+% is a fifth of that measure again.
+\hsize=62pt
+% The character is right at the break.
+\setbox0=\vbox{\noindent aaa bbb ccc.\penalty-10000 zzz\par}
+\showbox0
+% A glue node is: nothing protrudes, and the line is set wider.
+\setbox0=\vbox{\noindent aaa bbb ccc. \penalty-10000 zzz\par}
+\showbox0
+% A kern is stepped over.
+\setbox0=\vbox{\noindent aaa bbb ccc.\kern0pt\penalty-10000 zzz\par}
+\showbox0
+% So is a penalty.
+\setbox0=\vbox{\noindent aaa bbb ccc.\penalty100 \penalty-10000 zzz\par}
+\showbox0
+% So is an empty box, and a box explicitly made zero-width.
+\setbox0=\vbox{\noindent aaa bbb ccc.\hbox{}\penalty-10000 zzz\par}
+\showbox0
+\setbox0=\vbox{\noindent aaa bbb ccc.\hbox to0pt{}\penalty-10000 zzz\par}
+\showbox0
+% With protrusion off, all six are the same shape again.
+\pdfprotrudechars=0
+\setbox0=\vbox{\noindent aaa bbb ccc.\penalty-10000 zzz\par}
+\showbox0
+\setbox0=\vbox{\noindent aaa bbb ccc. \penalty-10000 zzz\par}
+\showbox0
+\end

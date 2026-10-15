@@ -1,0 +1,47 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{fontspec}
+\providecommand{\aitexlanguage}[1]{}
+\ifdefined\aitexfont
+  \setmainfont[Ligatures=Common]{Noto Sans}
+  \newfontfamily\arabicfont{Amiri}
+  \newfontfamily\hebrewfont{Noto Sans Hebrew}
+  \newfontfamily\devanagarifont{Noto Sans Devanagari}
+  \newfontfamily\cjkfont{Noto Sans CJK SC}
+  \newfontfamily\thaifont{Noto Sans Thai}
+  \newfontfamily\laofont{Noto Sans Lao}
+\else
+  % XeTeX does not consult OSFONTDIR for name-based platform discovery. File
+  % names make all three producers consume the exact same locked font bytes.
+  \setmainfont[Path=fonts/,Ligatures=Common]{NotoSans-Latin-Test.ttf}
+  \newfontfamily\arabicfont[Path=fonts/]{Amiri-Arabic-Test.ttf}
+  \newfontfamily\hebrewfont[Path=fonts/]{NotoSansHebrew-Test.ttf}
+  \newfontfamily\devanagarifont[Path=fonts/]{NotoSansDevanagari-Test.ttf}
+  \newfontfamily\cjkfont[Path=fonts/]{NotoSansCJKsc-Test.otf}
+  \newfontfamily\thaifont[Path=fonts/]{NotoSansThai-Test.ttf}
+  \newfontfamily\laofont[Path=fonts/]{NotoSansLao-Test.ttf}
+\fi
+
+\begin{document}
+\section*{A portable Unicode workload}
+Ordinary UTF-8 and OpenType shaping: office affine.
+
+Direct U+2223 marker: scalar∣boundary.
+
+Direct U+00A0 marker: direct space.
+
+\input{included.tex}
+\input{included.bbl}
+
+{\arabicfont\aitexlanguage{ar}السَّلَامُ عَلَيْكُمْ}
+
+{\hebrewfont\aitexlanguage{he}שָׁלוֹם עוֹלָם}
+
+{\devanagarifont\aitexlanguage{hi}नमस्ते भारत}
+
+{\cjkfont\aitexlanguage{zh}日本語中文测试漢字かなカナ}
+
+{\thaifont\aitexlanguage{th}ภาษาไทย ยินดีต้อนรับ}
+
+{\laofont\aitexlanguage{lo}ສະບາຍດີ ພາສາລາວ}
+\end{document}

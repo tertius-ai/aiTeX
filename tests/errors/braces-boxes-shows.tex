@@ -1,0 +1,48 @@
+% Three errors from three different corners, and one thing that only looks
+% like an error.
+\catcode`\{=1 \catcode`\}=2
+
+% §1069 `handle_right_brace`, the `bottom_level` case: a `}` closing a group
+% that was never opened. We returned in silence, which is why the help calls it
+% harmless — TeX says so and keeps going.
+\hbox{a}}
+
+% §977: `\vsplit` of a register holding an \hbox. Two faults here, not one —
+% we raised no error, *and* we removed the box before checking its kind, so the
+% register was voided. TeX checks first: "I can't split such a box, so I'll
+% leave it alone", and the register keeps its contents.
+\setbox0\hbox{}
+\setbox1\vsplit0 to 5pt
+\message{PROBE:kept=\ifvoid0 void\else full\fi}
+\message{PROBE:got=\ifvoid1 void\else full\fi}
+
+% ...and a \vbox splits without complaint, so the check is about the kind and
+% not about splitting.
+\setbox2\vbox{\hrule\vskip10pt\hrule}
+\setbox3\vsplit2 to 1pt
+\message{PROBE:split=\ifvoid3 void\else full\fi}
+
+% §1296 and §1293 end `end_diagnostic(true); print_err("OK")`, so \showbox and
+% \showlists acknowledge through the same routine an error uses — which is why
+% `! OK.` carries a context line. §1298 gives it `help0` outside
+% \errorstopmode, so no help text follows and it is not counted as an error.
+\showboxdepth=2 \showboxbreadth=5
+\showbox2
+\showlists
+
+% \show and \showthe print their `> …` through §1294/§1297 and stop. No `! OK.`
+% follows either, which is the boundary this case pins.
+\count1=7
+\showthe\count1
+% §416 backs up and re-reads a font identifier before returning it.  With
+% `\showthe` there is no later scanner to pop that spent input level before
+% §311 prints the context, so both the `\font` primitive and a font control
+% sequence appear under `<recently read>`.  A family selector reads its number
+% afterwards and has already popped the level.
+\font\r=cmr10 \r \textfont0=\r
+\showthe\font
+\showthe\r
+\showthe\textfont0
+\def\m{x}
+\show\m
+\end

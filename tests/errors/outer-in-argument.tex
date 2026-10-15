@@ -1,0 +1,31 @@
+% `tex.web` §336's `matching` branch: an `\outer` control sequence in a macro's
+% argument.
+%
+%     matching: begin print("use"); info(p):=par_token;
+%       long_state:=outer_call; end;
+%
+% The recovery here is a `\par` rather than a `}`, and `long_state:=outer_call`
+% is what makes §396 abandon the whole call without a second message: the
+% inserted `\par` ends the *use*, not just the argument. So the macro is not
+% called at all and its argument text is left to be read as ordinary input.
+%
+% Both shapes of argument reach it. A delimited one runs away looking for a
+% delimiter that may never come; an undelimited one is a single token and the
+% forbidden name is that token. The second needed §305's `warning_index` on
+% the undelimited path too, which only the delimited one had — so the message
+% named no macro at all.
+\catcode`\{=1 \catcode`\}=2 \catcode`\#=6
+\outer\def\bad{X}
+
+% Delimited: the scan is abandoned, so `aaa`, `bbb` and `\stop` are left in the
+% input — and `\stop` is undefined, which is the error after it.
+\def\b#1\stop{[#1]}
+\message{PROBE:one=before}
+\b aaa\bad bbb\stop
+\message{PROBE:two=after}
+
+% Undelimited: one token, and it is the forbidden one.
+\def\c#1{[#1]}
+\c \bad
+\message{PROBE:three=done}
+\end

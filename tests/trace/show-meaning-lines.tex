@@ -1,0 +1,39 @@
+% `tex.web` §294 `print_meaning`, and the one `print_ln` that tells `\show`
+% from `\meaning`:
+%
+%     procedure print_meaning;
+%     begin print_cmd_chr(cur_cmd,cur_chr);
+%     if cur_cmd>=call then
+%       begin print_char(":"); print_ln; token_show(cur_chr); end
+%     else if cur_cmd=top_bot_mark then
+%       begin print_char(":"); print_ln; token_show(cur_mark[cur_chr]); end;
+%     end;
+%
+% The `print_ln` is unconditional, so `\show\m` takes two lines — the name and
+% `macro:` on the first, the parameter text and the body on the second. And
+% `\meaning\m` takes one, because §470 builds `\meaning` with
+% `selector=new_string` and §58's `print_ln` does nothing in that mode.
+%
+% The two share one string in this engine and both had the one-line form, so
+% every `\show` of a macro was a line short. `print_cmd_chr` for a macro is
+% `macro`, `\long macro` or `\protected\long macro` — never a colon — so the
+% colon `print_char` writes is the first one in the string, and a body that
+% contains a colon of its own stays where it belongs.
+\catcode`\{=1 \catcode`\}=2 \catcode`\#=6
+\tracingonline=1
+\def\m{body}
+\long\def\n#1{x#1y}
+\def\c#1[#2]{a:b}
+\let\z\m
+\chardef\ch=65
+\show\m \show\n \show\c  \show\z \show\ch \show\relax \show\topmark
+% §1294 prints `sprint_cs(cur_cs); =` only when `cur_cs<>0`. Letters and
+% other-character tokens therefore start directly with their meaning, while
+% an active character still has a control-sequence name.
+\show A \show!
+\catcode`\~=13 \def~{active}\show~
+\message{[\meaning\m][\meaning\n][\meaning\c]}
+% A report last, so TeX's closing `)` — written against the current column —
+% does not land on the message above. This engine writes no file echo at all.
+\showthe\escapechar
+\end

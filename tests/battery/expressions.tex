@@ -1,0 +1,41 @@
+\input plain
+\catcode`\@=11
+\dimen5=3pt \count5=4 \skip5=2pt plus 1fil
+\message{<1:\the\dimexpr 2pt*3\relax>}
+\message{<2:\the\dimexpr 6pt/2\relax>}
+\message{<3:\the\dimexpr 1pt+2pt\relax>}
+\message{<4:\the\dimexpr 5pt-1pt\relax>}
+\message{<5:\the\dimexpr \dimen5*2\relax>}
+\message{<6:\the\dimexpr \dimen5+1pt\relax>}
+\message{<7:\the\dimexpr -3pt\relax>}
+\message{<8:\the\dimexpr 1in\relax>}
+\message{<9:\the\dimexpr 1.5pt*2\relax>}
+\message{<10:\the\dimexpr 2\p@*3\relax>}
+\message{<11:\the\dimexpr \skip5+1pt\relax>}
+\message{<12:\the\dimexpr 10pt/3\relax>}
+\message{<13:\the\dimexpr 2pt*3/2\relax>}
+\message{<14:\the\numexpr 7*3-2\relax>}
+\message{<15:\the\numexpr -7/2\relax>}
+% \numexpr and \dimexpr are *internal quantities*: a number scan takes the
+% value and is finished. Expanding them into digits and then carrying on to
+% look for more breaks every generated expl3 conditional, whose shape is
+%
+%     \ifodd \numexpr #1 \relax \__prg_T_true:w \fi: \use_none:n
+%
+% -- after the digits the scan expands \__prg_T_true:w, which is delimited by
+% `\fi: \use_none:n` and swallows both, leaving the conditional open for ever.
+\catcode`\:=11 \catcode`\_=11
+\let\if_int_odd:w\ifodd \let\__int_eval:w\numexpr \let\__int_eval_end:\relax
+\let\fi:\fi
+\def\use:n#1{#1}
+\def\use_none:n#1{}
+\def\__prg_T_true:w\fi: \use_none:n{\fi: \use:n}
+\def\oddT#1{\if_int_odd:w \__int_eval:w #1\__int_eval_end: \__prg_T_true:w \fi: \use_none:n}
+\message{<condeven=[\oddT{0+1+1}{FIRED}]>}
+\message{<condodd=[\oddT{0+1+1+1}{FIRED}]>}
+\message{<condzero=[\oddT{0}{FIRED}]>}
+\message{<condone=[\oddT{1}{FIRED}]>}
+% And the quantity does not leak into what follows it.
+\message{<follow=\the\numexpr 1+1\relax X>}
+\count0=\numexpr 2+3\relax \message{<assign=\the\count0>}
+\bye

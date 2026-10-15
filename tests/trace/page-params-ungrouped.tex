@@ -1,0 +1,28 @@
+% `tex.web` §982 and §1245: the page-so-far quantities are not eqtb entries.
+%
+%     set_page_dimen: begin ... page_so_far[c]:=cur_val; end;
+%     set_page_int: begin ... if c=0 then dead_cycles:=cur_val
+%       else insert_penalties:=cur_val; end;
+%
+% `page_so_far[]`, `dead_cycles` and `insert_penalties` are plain globals, so a
+% group does not restore them: a value assigned inside one survives it. We
+% saved and restored them like any other named parameter, which put
+% `{restoring \pagefilstretch=…}` and `{restoring \insertpenalties=…}` in the
+% log where TeX has nothing at all — and, worse, put the page builder's own
+% accumulators back to what they had been when the group closed.
+%
+% What this case checks is therefore mostly a *silence*: four assignments
+% inside a group, no restores at the closing brace, and the values still there
+% afterwards.
+\catcode`\{=1 \catcode`\}=2
+\tracingonline=1 \tracingrestores=1
+\vsize=100pt \maxdepth=2pt
+% A report first and last, so the message does not join TeX's `(./file.tex`
+% and its closing `)` does not land on the end of the message: this engine
+% writes neither, and that gap is its own.
+\showthe\escapechar
+\hbox{}
+{\pagegoal=50pt \pagetotal=7pt \insertpenalties=3 \deadcycles=1}
+\message{PROBE:kept=[\the\pagegoal][\the\pagetotal][\the\insertpenalties][\the\deadcycles]}
+\showthe\escapechar
+\end

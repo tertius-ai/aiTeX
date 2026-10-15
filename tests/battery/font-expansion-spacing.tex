@@ -1,0 +1,56 @@
+% The three independent pdfTeX microtypography mechanisms used by microtype:
+% expanded-font line breaking, character-dependent interword glue, and
+% automatic kerns. The assignments are deliberately primitive-level so this
+% remains an algorithm test rather than a test of microtype.sty's macros.
+\input plain
+\message{<ef-default=\the\efcode\font`A>}
+\efcode\font`A=0
+\message{<ef-explicit-zero=\the\efcode\font`A>}
+\efcode\font`A=1000
+
+% Interword additions are thousandths of the preceding font's quad. Enabling
+% the extension also routes sentence spaces through the normal-space path;
+% the punctuation factor must therefore not enlarge this one.
+\setbox0=\hbox{A\kern0pt}
+\pdfadjustinterwordglue=1
+\knbscode\font`A=100
+\stbscode\font`A=200
+\shbscode\font`A=300
+\setbox1=\hbox{A \kern0pt}
+\message{<spacing-width=\the\wd1>}
+\sfcode`A=3000
+\setbox2=\hbox{A \kern0pt}
+\message{<spacing-sf-width=\the\wd2>}
+
+% A prepend code acts before a glyph at the left boundary; an append code
+% acts after one at the right boundary. Between two glyphs the two add, and a
+% nonzero automatic kern suppresses the TFM ligature/kern operation there.
+\pdfadjustinterwordglue=0
+\pdfprependkern=1
+\knbccode\font`A=100
+\setbox3=\hbox{A}
+\message{<prepend-width=\the\wd3>}
+\pdfprependkern=0
+\pdfappendkern=1
+\knaccode\font`A=200
+\setbox4=\hbox{A}
+\message{<append-width=\the\wd4>}
+\pdfprependkern=1
+\knbccode\font`B=300
+\setbox5=\hbox{AB}
+\message{<pair-width=\the\wd5>}
+
+% Five 10pt-ish glyphs exceed this measure without expansion but fit once the
+% configured shrink participates in `try_break`. The exact heights are the
+% oracle; their equality or inequality is not hard-coded here.
+\pdfprependkern=0 \pdfappendkern=0
+\font\x=cmr10 \x
+\hsize=58pt \parindent=0pt \parfillskip=0pt plus 1fil
+\tolerance=10000 \pretolerance=10000
+\setbox6=\vbox{AAAA BBBB\par}
+\pdffontexpand\x 100 100 10 autoexpand
+\pdfadjustspacing=2
+\setbox7=\vbox{AAAA BBBB\par}
+\message{<ordinary-height=\the\ht6>}
+\message{<expanded-height=\the\ht7>}
+\end

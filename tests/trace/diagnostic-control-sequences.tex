@@ -1,0 +1,18 @@
+% `tex.web` §§59, 63, 174 and 252: every diagnostic control-sequence name
+% goes through the current `\escapechar`, and that character itself goes
+% through the ordinary printer. This covers paragraph break names, font
+% identifiers, restore traces, and an unprintable escape character.
+\catcode`\{=1 \catcode`\}=2
+\font\f=cmr10 \f
+\hsize=20pt \parindent=0pt \pretolerance=-1 \tolerance=10000
+\escapechar=`|
+\tracingparagraphs=1
+A A A A\par
+\tracingparagraphs=0
+\tracingrestores=1
+{\hbadness=7}
+\escapechar=127
+\tracingcommands=1
+\relax
+\tracingcommands=0
+\end

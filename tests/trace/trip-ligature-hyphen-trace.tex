@@ -1,0 +1,20 @@
+% TFM-PL: vendor/trip/trip.pl
+% After glue, §896 steps over TRIP's boundary-built `7A` punctuation
+% ligature, applies the language whatsit, and hyphenates the following `11`.
+% The resulting discretionaries exercise §840's break-width accounting for
+% long pre-break, post-break, and replacement branches; their paragraph trace
+% pins the badness and active-node chains, not merely the ultimately chosen
+% boxes.
+\catcode`\{=1 \catcode`\}=2
+\font\r=trip \r \hyphenchar\r=`\-
+\lccode`1=`1 \lccode`A=1
+\language=98 \hyphenation{1-1}\language=0
+\lefthyphenmin=1 \righthyphenmin=1
+\pretolerance=-1 \tolerance=10000 \hbadness=10000 \parindent=0pt
+\tracingparagraphs=1 \tracingonline=1
+\showthe\escapechar
+\setbox1=\hbox{11}
+\language=98
+\setbox0=\vbox{\hsize=0pt\noindent\hskip-9pt 7A\setlanguage98\unhbox1\hskip4pt 11\par}
+\showthe\escapechar
+\end

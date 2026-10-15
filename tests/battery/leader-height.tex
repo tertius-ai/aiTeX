@@ -1,0 +1,63 @@
+% §656 measures a leader node's *box* into the height and depth of the
+% horizontal list it sits in, not only its glue into the width:
+%
+%     @<Incorporate glue into the horizontal totals@>=
+%     begin g:=glue_ptr(p); x:=x+width(g);
+%     o:=stretch_order(g); total_stretch[o]:=total_stretch[o]+stretch(g);
+%     o:=shrink_order(g); total_shrink[o]:=total_shrink[o]+shrink(g);
+%     if subtype(p)>=a_leaders then
+%       begin g:=leader_ptr(p);
+%       if height(g)>h then h:=height(g);
+%       if depth(g)>d then d:=depth(g);
+%       end;
+%     end
+%
+% It is the mirror of §668's rule in `vpack`, which makes the repeated box
+% count towards a *vertical* list's width — we had that one and not this one.
+% The list has to be tall enough to hold one copy of what it repeats.
+%
+% `longtable` draws every rule this way:
+%
+%     \multispan\LT@cols \unskip
+%       \leaders\hrule\@height\arrayrulewidth\hfill\cr
+%
+% so with the height dropped a `longtable`'s `\hline`s and its booktabs rules
+% added nothing at all. 2608.15339v1's first chunk came out 1.30005pt short —
+% exactly `\toprule` (0.8pt) plus `\midrule` (0.5pt) — the table then fitted on
+% a page pdfTeX has to break, and the document lost one of its 34 pages.
+%
+% Nothing else was wrong with the rules: the same booktabs lines inside a plain
+% `tabular` measured correctly, because there they are `\noalign{\hrule}` and
+% not leaders.
+\input plain
+% A rule leader in an hbox: the box takes the rule's height.
+\setbox0=\hbox to 50pt{\leaders\hrule height 5pt\hfill}
+\message{<rule=\the\ht0/\the\dp0/\the\wd0>}
+% Depth as well as height.
+\setbox0=\hbox to 50pt{\leaders\hrule height 3pt depth 2pt\hfill}
+\message{<depth=\the\ht0/\the\dp0>}
+% `\cleaders` and `\xleaders` are the same node with a different subtype, and
+% §656's test is `subtype>=a_leaders`, so all three count.
+\setbox0=\hbox to 50pt{\cleaders\hrule height 4pt\hfill}
+\message{<cl=\the\ht0/\the\dp0>}
+\setbox0=\hbox to 50pt{\xleaders\hrule height 6pt\hfill}
+\message{<xl=\the\ht0/\the\dp0>}
+% A *box* leader rather than a rule, which is where `leader_ptr` really is a box.
+\setbox1=\hbox{\vrule height 7pt width 3pt}
+\setbox0=\hbox to 50pt{\leaders\copy1\hfill}
+\message{<box=\the\ht0/\the\dp0>}
+% The tallest thing in the list still wins — the leader does not override it.
+\setbox0=\hbox to 50pt{\vrule height 9pt\leaders\hrule height 4pt\hfill}
+\message{<max=\the\ht0/\the\dp0>}
+% …and it does win when it is the tallest.
+\setbox0=\hbox to 50pt{\vrule height 2pt\leaders\hrule height 8pt\hfill}
+\message{<wins=\the\ht0/\the\dp0>}
+% Ordinary glue contributes no height, which is what this hangs off the same
+% arm as — a fix that measured all glue would break here.
+\setbox0=\hbox to 50pt{\hfill}
+\message{<glue=\the\ht0/\the\dp0>}
+% In a *vertical* list §668's width rule applies instead, and the height comes
+% from the glue as usual.
+\setbox0=\vbox to 20pt{\leaders\hrule height 5pt\vfill}
+\message{<vlist=\the\ht0/\the\wd0>}
+\end

@@ -1,0 +1,27 @@
+% `tex.web` §1226: the right-hand side of a token-list assignment may be a
+% token *parameter* as well as a register.
+%
+%     if cur_cmd<>left_brace then
+%       @<If the right-hand side is a token parameter or token register,
+%         finish the assignment and goto done@>;
+%
+% `\everypar=\errhelp` is `\everypar` taking a copy of `\errhelp`. We knew only
+% the register form, so the parameter was left in the input and executed as an
+% ordinary command: the assignment took nothing, and §367's trace grew a
+% `{\errhelp}` TeX does not have. trip.tex writes `\everypar=\errhelp` at line
+% 140.
+\catcode`\{=1 \catcode`\}=2
+\errhelp={HELP TEXT}
+\everypar=\errhelp
+\message{<from-parameter=\the\everypar>}
+\message{<source-intact=\the\errhelp>}
+
+% The register form, which already worked, for the boundary between them.
+\toks3={REG}
+\everyhbox=\toks3
+\message{<from-register=\the\everyhbox>}
+
+% ...and a group still opens a literal list rather than being read as a value.
+\everyvbox={LITERAL}
+\message{<from-braces=\the\everyvbox>}
+\end

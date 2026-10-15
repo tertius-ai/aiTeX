@@ -1,0 +1,40 @@
+% `tex.web` §859 charges for two hyphenated lines in a row:
+%
+%     if (break_type=hyphenated)and(type(r)=hyphenated) then
+%       if cur_p<>null then d:=d+double_hyphen_demerits
+%       else d:=d+final_hyphen_demerits;
+%
+% and this engine charged for neither — the two parameters were registered and
+% never read.
+%
+% `break_type` is `hyphenated` for a discretionary *and* for the paragraph's
+% own end, which §829 marks by `cur_p=null`. That is what makes the final
+% charge a parameter of its own: a hyphen on the second-to-last line is worse
+% than one in the middle, because the last line is short and the hyphen has
+% nothing to justify it.
+%
+% trip.tex sets both, at lines 65 and 66:
+%
+%     \doublehyphendemerits 1000
+%     \finalhyphendemerits 100000
+%
+% and its paragraph 8 is where this showed: TeX's `d=100001` against our
+% `d=1`, the whole difference being `\finalhyphendemerits` on a `\par` that
+% followed a discretionary break.
+\catcode`\{=1 \catcode`\}=2
+% `\hyphenchar` is set explicitly here: INITEX's `\defaulthyphenchar` is nought
+% and cmr10 *has* a character 0, so `\-` would insert it — and with
+% `\newlinechar` also nought, §59 prints that character as a line break rather
+% than as a character at all. That newline behavior is separate from what this
+% case pins.
+\font\r=cmr10 \r \hyphenchar\r=`\- \hsize60pt \parindent0pt \baselineskip12pt
+\tolerance10000 \pretolerance-1 \hbadness10000 \linepenalty1
+\doublehyphendemerits 1000 \finalhyphendemerits 100000
+\tracingparagraphs1 \tracingonline0
+\noindent AAAA\-AAAA\-AAAA\-AAAA\-AAAA\par
+\doublehyphendemerits 0 \finalhyphendemerits 0
+\noindent AAAA\-AAAA\-AAAA\-AAAA\-AAAA\par
+\doublehyphendemerits -500 \finalhyphendemerits 7
+\noindent AAAA\-AAAA\-AAAA\-AAAA\-AAAA\par
+\tracingparagraphs0
+\end

@@ -1,0 +1,8 @@
+% `tex.web` §82 prints TeX's own error text character by character, through the
+% same §59 printer as document text. Thus `\newlinechar=Y` splits the `Y` in
+% "You can't" even though that text came from the engine rather than the input.
+\catcode`\{=1 \catcode`\}=2
+\font\r=cmr10 \r \tracingonline=1 \tracingcommands=1
+\setbox0=\hbox{A\hskip1pt\newlinechar=`Y\global\unskip B}
+\newlinechar=-1
+\end

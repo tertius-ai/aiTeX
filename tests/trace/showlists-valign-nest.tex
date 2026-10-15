@@ -1,0 +1,16 @@
+% `tex.web` §218 walks every semantic nest level around a `\showlists`.
+% A paragraph inside a `\valign` entry inside an `\hbox` has five levels
+% above the page: its horizontal paragraph, the entry's internal vertical
+% list, the alignment's internal vertical row, the alignment's restricted
+% horizontal level, and the enclosing restricted horizontal box.  The first
+% paragraph heading also carries the language/minimum triple frozen by §1091,
+% not the parameters as subsequently changed inside the paragraph.
+\catcode`\{=1 \catcode`\}=2 \catcode`\#=6
+\tracingonline=1 \showboxbreadth=99 \showboxdepth=99
+\font\r=cmr10 \r
+\language=7 \lefthyphenmin=3 \righthyphenmin=4
+\showthe\escapechar
+\setbox0=\hbox{\valign{#\cr
+  A\language=8 \lefthyphenmin=5 \righthyphenmin=6 B\showlists\cr}}
+\showthe\escapechar
+\end

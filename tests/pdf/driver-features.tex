@@ -1,0 +1,22 @@
+% End-to-end DVI-special coverage for the PDF driver.  These packages choose
+% their dvips backends because aiTeX exposes pdfTeX compatibility while keeping
+% `\pdfoutput=0`; the PDF writer must therefore interpret the same specials a
+% dvips-to-Distiller pipeline would consume.
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=magenta]{hyperref}
+\hypersetup{pdftitle={aiTeX driver features},pdfauthor={aiTeX}}
+\begin{document}
+\section{Target}\label{sec:target}
+Normal text, then \textcolor[rgb]{1,0,0}{red text} and normal text again.
+
+\href{https://example.com/a?b=1}{External link} and
+\hyperref[sec:target]{internal link}.
+
+\includegraphics[width=72bp]{driver-image.eps}
+\includegraphics[width=36bp]{driver-procedure.eps}
+
+\newpage
+Back to \hyperref[sec:target]{the target}.
+\end{document}

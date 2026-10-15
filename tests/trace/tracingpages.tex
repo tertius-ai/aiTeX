@@ -1,0 +1,30 @@
+% `tex.web` §1011: `\tracingpages` writes the page builder's own cost trace —
+% one `%% goal height=` line per page frozen, and one `% t=… g=… b=… p=… c=…`
+% line per breakpoint weighed.
+%
+% This is the only differential view of the page builder there is. `\showlists`
+% says what is on the page at one instant; the DVI says where the breaks landed.
+% Neither says *which breakpoints were considered and what each one cost*, which
+% is the thing that decides where a page ends.
+%
+% It was invisible here for a different reason from the seven `\tracing*`
+% parameters in this directory: those were registered and inert, whereas this
+% one worked all along and its output was thrown away. The CLI printed the
+% builder's log *before* calling `finish_page`, and §1054's `\end` — which
+% contributes `\hbox to\hsize{} \vfill \penalty-'10000000000` and lets the
+% builder run once more — appends to that log afterwards. So every breakpoint
+% on the last page vanished, and on a document short enough to fit one page,
+% every breakpoint full stop.
+\catcode`\{=1 \catcode`\}=2
+\tracingpages=1 \tracingonline=0
+\output={\shipout\box255}
+\vsize=50pt \maxdepth=2pt
+
+% Three boxes with glue between them, the last of it wide enough to overfill
+% the page: four breakpoints, the last scored `b=*` because 130pt will not fit
+% in 50pt however it shrinks. Then `\end`'s own material makes a second page
+% with the forced `p=-1073741824` that §1054 uses.
+\hbox{}\vskip 10pt plus 3pt minus 4pt
+\hbox{}\vskip 20pt plus 1fil minus 7pt
+\hbox{}\vskip 100pt plus 55pt minus 66pt
+\end

@@ -1,0 +1,55 @@
+% `tex.web` §442: `` ` `` takes a character or a *one-character* control
+% sequence, and nothing else.
+%
+%     else if cur_tok<cs_token_flag+single_base then
+%       cur_val:=cur_tok-cs_token_flag-active_base
+%     else cur_val:=cur_tok-cs_token_flag-single_base;
+%     if cur_val>255 then
+%       begin print_err("Improper alphabetic constant");
+%       help2("A one-character control sequence belongs after a ` mark.")
+%       ("So I'm essentially inserting \0 here.");
+%       cur_val:="0"; back_error;
+%       end
+%     else @<Scan an optional space@>
+%
+% A multi-letter name lands past `single_base` and so above 255, which is the
+% test. The value becomes `"0"` — 48, the character, not zero — and the name
+% goes *back*, to be read as a command afterwards.
+%
+% We took the first character of the name. So `` `\relax `` was 114 and
+% `` `\undefinedzz `` was 117: a number the document never wrote, no message,
+% and the control sequence silently eaten. The recovery is the half that
+% shows twice over — `\undefinedzz` comes back and is then undefined, so TeX
+% reports both faults and we reported neither.
+%
+% An active character is a character: §442 measures it from `active_base`, so
+% it is under 255 and legal.
+%
+% `\the\delcode` is here because trip.tex asks the two together, in
+% `$$\number\the\delcode`\relax\over…`. It was not readable at all — §232
+% leaves every entry at -1, "no delimiter", except `.` which is 0.
+\catcode`\{=1 \catcode`\}=2
+\errorcontextlines=5
+\showthe\escapechar
+
+% Legal: a character, a one-character control sequence, an escape.
+\message{PROBE:ok=[\number`A][\number`\A][\number`\\][\number`\ ]}
+
+% ...and an active character.
+\catcode`~=13
+\message{PROBE:active=[\number`~]}
+
+% Not legal. The value is 48 and `\relax` comes back.
+\count0=`\relax
+\message{PROBE:relax=[\the\count0]}
+
+% ...and here the token that comes back is undefined, so there are two faults.
+\count1=`\undefinedzz
+\message{PROBE:undef=[\the\count1]}
+
+% §232's \delcode table, and trip.tex's own question.
+\message{PROBE:del=[\the\delcode`A][\the\delcode`.][\the\delcode`\relax]}
+\delcode`A="161361
+\message{PROBE:set=[\the\delcode`A]}
+\showthe\escapechar
+\end

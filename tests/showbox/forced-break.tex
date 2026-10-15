@@ -1,0 +1,55 @@
+% `tex.web` §831 and §854: a penalty of -10000 or less forces a line break.
+%
+% §831 clamps it on the way into `try_break`:
+%
+%     if abs(pi)>=inf_penalty then
+%       if pi>0 then return  {this breakpoint is inhibited}
+%       else pi:=eject_penalty  {this breakpoint will be forced}
+%
+% and §854 reads that exact value back:
+%
+%     if (b>inf_bad)or(pi=eject_penalty) then ... node_r_stays_active:=false
+%
+% — for every active node it considers. Emptying the active list is what makes
+% the break mandatory rather than merely permitted: no later line can begin
+% before it, because there is nothing left to begin from.
+%
+% We had the forced case only waiving the tolerance test, so such a break was
+% one candidate among many and the breaker was free to ignore it.
+% `A\penalty-10000 B\par` came out as one line with the penalty in the middle
+% where TeX makes two. It is also why the penalty stays *inside* the line it
+% ends rather than being discarded like the glue at a break.
+%
+% trip.tex line 146 is the case that found it — `\penalty-1000000000 % forces
+% line break in paragraph`.
+\catcode`\{=1 \catcode`\}=2
+\showboxdepth=9 \showboxbreadth=99 \tracingonline=0
+\font\r=cmr10 \r
+\hsize=100pt \parindent=0pt \baselineskip=0pt \lineskip=0pt
+
+% the boundary: -10000 forces, -9999 does not
+\setbox0\vbox{A\penalty-10000 B\par}
+\showbox0
+\setbox1\vbox{A\penalty-9999 B\par}
+\showbox1
+
+% ...and anything below -10000 is clamped to the same thing, not treated as
+% more forceful — §831 assigns `eject_penalty`, it does not keep the value.
+\setbox2\vbox{A\penalty-1000000000 B\par}
+\showbox2
+
+% two in a row: each forces, so the material between them is its own line even
+% when there is none — an empty line holding just the penalty and \rightskip.
+% This is trip.tex's shape, where a `\vadjust` between the two migrates out and
+% leaves the line empty.
+\hsize=0pt \rightskip=0pt
+\setbox3\vbox{A\hfill\vadjust{\kern1pt}\penalty-1000000000
+A\par}
+\showbox3
+
+% a forced break inhibited from the other side: +10000 is `inf_penalty` and
+% §831 returns outright, so this is not a breakpoint at all.
+\hsize=100pt
+\setbox4\vbox{A\penalty10000 B\par}
+\showbox4
+\end

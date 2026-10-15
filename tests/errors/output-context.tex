@@ -1,0 +1,29 @@
+% `tex.web` §307 and §444: two things an error context gets wrong together
+% whenever the error is raised inside an output routine.
+%
+% §307 lists the token-list types and §314 prints their names. The routine is
+% `output_text` and shows as `<output> `; pushed as an ordinary backed-up list
+% it shows as `<to be read again> `, which is what ours did — so every error
+% raised inside `\output`, of which trip.tex has many, named the wrong kind of
+% level while quoting exactly the right text.
+%
+% §444 absorbs the space that ends a number rather than backing it up:
+%
+%     if cur_cmd<>spacer then back_input
+%
+% so `loc` sits past it and the read half of the context ends with the space.
+% Trimming it moved the break one column left on every context that follows a
+% number scan — `\penalty-10000` where TeX has `\penalty-10000 ` — and in
+% trip.log that is most of them. The unread half *is* trimmed, because §31
+% strips a line's trailing blanks as it reads it, so TeX has none to print.
+%
+% Both are visible only from inside an output routine that fails, because that
+% is where the file position is examined between the number scan and whatever
+% reads next.
+\catcode`\{=1 \catcode`\}=2
+\vsize=50pt
+\output={\undefinedyy\shipout\box255}
+\hbox{}\penalty-10000 % some trailing text on the line, so the break is visible
+\hbox{}
+\message{PROBE:done}
+\end

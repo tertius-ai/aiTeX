@@ -1,0 +1,47 @@
+# Enforces docs/history/PLAN.md decision 8 + the dependency policy.
+# We ship MIT OR Apache-2.0, so copyleft is excluded outright — including LGPL,
+# whose relinking requirement we no longer need to accommodate.
+
+[licenses]
+version = 2
+allow = [
+    "MIT",
+    "Apache-2.0",
+    "Apache-2.0 WITH LLVM-exception",
+    "BSD-2-Clause",
+    "BSD-3-Clause",
+    "ISC",
+    "Unicode-3.0",
+    "Zlib",
+    "CC0-1.0",
+    # webpki-roots, via reqwest -> hyper-rustls. This is Mozilla's CA
+    # certificate bundle: a *data* license, not a code one, and permissive -
+    # no reciprocal or share-alike obligation, so it does not constrain how we
+    # license or distribute aiTeX. Added deliberately after the gate flagged
+    # it, which is the gate working as intended.
+    "CDLA-Permissive-2.0",
+]
+confidence-threshold = 0.93
+# Silence "allowed but never seen" warnings; the list is intentionally broader
+# than the current tree so a routine dependency bump does not fail CI.
+unused-allowed-license = "allow"
+
+[bans]
+multiple-versions = "warn"
+wildcards = "deny"
+# Our own crates depend on each other by path with no version, which reads as a
+# wildcard. That is intra-workspace linkage, not an unpinned external dep.
+allow-wildcard-paths = true
+# Copyleft crates we specifically evaluated and rejected (docs/history/PLAN.md §11).
+deny = [
+    { name = "tex_engine" },   # GPL-3.0-or-later
+    { name = "texlab" },       # GPL-3.0
+    { name = "tex-parser" },   # LGPL-2.1-or-later
+]
+
+[advisories]
+version = 2
+
+[sources]
+unknown-registry = "deny"
+unknown-git = "deny"

@@ -1,0 +1,45 @@
+% `tex.web` §58's column, and the three printers that write against it.
+%
+% Most of what TeX writes ends its own line — §299's command trace opens with
+% `print_nl("{")` and closes with `end_diagnostic(false)`, an error with §90's
+% two `print_ln`s. A few do not, and they are the ones that need a column:
+%
+%   * §252 `restore_trace` opens with `print_char("{")`, so `{restoring …}`
+%     *joins* whatever line is in progress. §299's `print_nl("{")` looks
+%     identical in the log and is not: it starts a new one. We started a new
+%     line for both.
+%
+%   * §660 opens a box warning with `print_ln; print_nl("Overfull \hbox (")`.
+%     The `print_ln` is unconditional, which means two different things: after
+%     a line already ended — §863's paragraph narration, which finishes with
+%     `end_diagnostic(true)` — it makes a blank line, and after one still in
+%     progress it merely ends it. We wrote a blank either way.
+%
+% What leaves a line in progress is §1279's `\message`, §537's file echo and
+% §638's page echo, all three of which are written against the column too.
+%
+% This is the last of it: `tools/trace_check.sh` no longer peels the
+% `(./file.tex` opener before comparing, because a diagnostic that TeX glues
+% onto it is now glued onto ours.
+\catcode`\{=1 \catcode`\}=2
+\tracingonline=1 \tracingrestores=1
+\hsize=100pt \parindent=0pt \vsize=12pt \maxdepth=2pt
+\font\r=cmr10 \r \hbadness=100 \vbadness=100 \tolerance=10000
+\skip0=1pt \looseness=0
+\showthe\escapechar
+
+% §252 after a `\message`: one line, not two.
+\message{before}{\skip0=2pt}
+\message{after}
+
+% ...and after nothing, where it starts its own.
+{\skip0=3pt}
+
+% §660 after a line in progress — the page echo — and after one already
+% ended, which is what §863's narration leaves.
+A\hskip 0pt plus 60pt B\par
+\tracingparagraphs=1
+A\hskip 0pt plus 60pt B\par
+\tracingparagraphs=0
+\showthe\escapechar
+\end

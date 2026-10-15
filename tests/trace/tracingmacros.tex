@@ -1,0 +1,55 @@
+% `tex.web` §320 `macro_call` and §401 `@<Show the text of the macro being
+% expanded@>`: what `\tracingmacros` says.
+%
+%     <blank line>
+%     \b #1->[#1]
+%     #1<-x
+%
+% §401's `print_ln`, then §262 `print_cs` — which gives a multi-letter name, and
+% a single-letter one whose character is a letter, a trailing space — then
+% `token_show`, which is the parameter text, `->`, and the body. Each argument
+% follows on its own line as §400 captures it, delimiters and all.
+%
+% `\meaning` already builds `macro:#1->[#1]` (§296 is `print_cmd_chr` and then
+% the same `token_show`), so the trace is that string from after the `macro:`.
+%
+% Two things this took a probe to get right. An argument lives in the parameter
+% stack, not the arena where bodies do — reading the body's range gave every
+% argument the text of whatever had been defined last. And §401 opens a line
+% only if one is in progress, so the *first* trace of a run has no blank ahead
+% of it while every later one does.
+%
+% Level 2 adds §323 `begin_token_list`: a token list that is not a macro
+% announces itself the same way, `\everypar->P`, with no arguments and no blank
+% line — §323 opens with `print_nl("")` where §401 opens with `print_ln`.
+\catcode`\{=1 \catcode`\}=2 \catcode`\#=6
+\font\rip=cmr10 \rip
+\hsize=100pt \vsize=50pt \parindent=0pt \hbadness=10000
+\def\a{A}
+\def\b#1{[#1]}
+\def\c#1#2{(#1|#2)}
+\def\d#1,#2.{<#1;#2>}
+\long\def\e#1{L#1}
+\def\f{}
+
+% --- level 1: macro calls and their arguments ------------------------------
+\tracingmacros=1
+\a
+\b{x}
+\c{p}{q}
+\d y,z.
+\e{w}
+\f
+% an argument that is itself a group, and one that is a control sequence
+\b{{g}}
+\b\relax
+\tracingmacros=0
+
+% --- level 2: token lists that are not macros ------------------------------
+\everypar{P}
+\output={\shipout\box255}
+\tracingmacros=2
+\a
+X\par
+\tracingmacros=0
+\end

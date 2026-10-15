@@ -1,0 +1,65 @@
+% TFM-PL: vendor/trip/trip.pl
+% `tex.web` §§801, 805, 810 and 811: an alignment retains a width constraint
+% for each starting column and span count, then resolves them from left to
+% right.  The three-column constraint below is deliberately read before the
+% two-column one.  Resolving spans in row order gives the last column all 90pt
+% of the first shortfall; TeX first establishes the middle column at 60pt and
+% leaves only 40pt for the last one.
+%
+% A spanning unset box is also not converted to one box as wide as the entire
+% span.  Its declared width is the first column's width; TeX follows it with
+% copies of each intervening tabskip and an empty box for each swallowed
+% column.  This preserves the prototype alignment's glue setting exactly.
+%
+% Finally, §799 packages an `\halign` row with `adjust_tail` active.  Insertions,
+% marks and adjustments migrate out of the entries and are appended after the
+% finished row, in entry order.  Keeping the marks inside their cell boxes
+% makes them invisible to the page builder.
+\input plain
+\showboxdepth=10 \showboxbreadth=100 \tracingonline=0 \hbadness=10000
+\tabskip=0pt
+\setbox0=\vbox{\halign{#&#&#\cr
+  \omit\hbox to100pt{}\span\omit\span\omit\cr
+  \omit\hbox to60pt{}\span\omit&&\cr}}
+\showbox0
+
+\tabskip=0pt plus 1fil
+\setbox1=\vbox{\halign to100pt{#&#&#\cr
+  \omit A\hfil\span\omit\span\omit\cr
+  & &B\cr}}
+\showbox1
+
+\tabskip=0pt
+\setbox2=\vbox{\halign{#&#\cr
+  A\mark{a}&B\mark{b}\cr}}
+\showbox2
+
+% The span count belongs to the outer alignment even while the continuation
+% executes a complete nested alignment. Engine-global span state loses the
+% count when the inner alignment packages its own first cell.
+\setbox3=\vbox{\halign{#&#&#\cr
+  A\span\vbox{\halign{#\cr X\cr}}&B\cr}}
+\showbox3
+
+% §783 removes spaces from the beginning of every u-template. They are still
+% visible if retained when a span replays the next template after material has
+% already entered the shared cell.
+\setbox4=\vbox{\halign{#&  \hbox{X}#&#\cr
+  A\span B&C\cr}}
+\showbox4
+
+
+% TRIP's transposed counterpart: the end-group token after the backtick is
+% consumed as an alphabetic character constant, while its alignment-state
+% effect still lets the following `\span` join two rows.
+\font\trip=trip \trip
+\hsize=100pt \leftskip=3pt \rightskip=0pt
+\parfillskip=0pt plus100pt \spaceskip=4pt minus1sp
+\baselineskip=10pt \parskip=0pt plus42pt minus8pt
+\overfullrule=5pt \looseness=-1 \tabskip=1ex plus7200bp
+\setbox5=\hbox{\valign to-5pt{#&#\cr
+  A\char`}\span\cr
+  { }\span\cr}}
+\showbox5
+\shipout\box5
+\end

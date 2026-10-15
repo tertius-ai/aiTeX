@@ -1,0 +1,31 @@
+% `tex.web` §1090: the commands that begin a paragraph when they are met in
+% vertical mode.
+%
+%     vmode+letter,vmode+other_char,vmode+char_num,vmode+char_given,
+%     vmode+math_shift,vmode+un_hbox,vmode+vrule,vmode+accent,
+%     vmode+discretionary,vmode+hskip,vmode+valign,vmode+ex_space,
+%     vmode+no_boundary:
+%       begin back_input; new_graf(true); end;
+%
+% The token is pushed back and dispatched *again* in the horizontal mode the
+% paragraph created, which is why each of these appears twice in a command
+% trace — once under the vertical mode it was found in and once under the
+% horizontal one it made.
+%
+% We had the list without `\valign`, `\hskip` and `\discretionary`, so those
+% three ran in vertical mode: no paragraph, no indent box, and every
+% mode-dependent name after them decided by the wrong mode. §1071 collapses
+% four movers onto two commands and lets the mode pick the spelling, so
+% trip.log's `{\lower}` came out here as `{\moveright}` — a symptom two
+% hundred commands downstream of the `\valign` that caused it.
+\catcode`\{=1 \catcode`\}=2 \catcode`\#=6 \catcode`\&=4
+\tracingonline=1 \tracingcommands=1
+\hsize=100pt \parindent=5pt
+\font\rip=cmr10 \rip
+\setbox0\vbox{\valign{#\cr\hbox{A}\cr}}
+\message{PROBE:one=[\the\wd0]}
+\setbox1\vbox{\hskip 3pt}
+\message{PROBE:two=[\the\wd1]}
+\setbox2\vbox{\discretionary{}{}{}}
+\message{PROBE:three=[\the\wd2]}
+\end

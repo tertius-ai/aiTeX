@@ -1,0 +1,11 @@
+% `tex.web` §1086 captures `\boxmaxdepth`, unsaves the explicit box group,
+% and only then calls `hpack`/`vpackage`. Packing diagnostics therefore use the
+% enclosing `\hbadness`, `\hfuzz`, and related values, and restore traces come
+% before the warning.
+\catcode`\{=1 \catcode`\}=2
+\tracingonline=1 \tracingrestores=1
+\hbadness=10000
+\setbox0=\hbox to 10pt{\hbadness=0\hskip0pt}
+\hbadness=0
+\setbox1=\hbox to 10pt{\hbadness=10000\hskip0pt}
+\end

@@ -1,0 +1,9 @@
+% `tex.web` §394: the synthetic right brace that bounds a `\write` is an
+% unmatched brace when a delimited macro tries to scan through it.  TeX backs
+% the brace up, inserts `\par`, and abandons even a `\long` macro call; it must
+% not let the missing delimiter consume the source following the write.
+\catcode`\{=1 \catcode`\}=2 \catcode`\#=6
+\long\def\l#1\l{#1}
+\immediate\write16{\l}
+\message{PROBE:after}
+\end

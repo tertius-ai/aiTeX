@@ -1,0 +1,48 @@
+% `tex.web` §882: breaking at a discretionary whose replace text is not empty.
+%
+% A discretionary is three lists: what goes before a break, what goes after,
+% and what stands there when no break is taken. §145 stores the third as
+% `replace_count` nodes *following* the disc node, and §882 throws them away
+% when the break is taken — the next line begins after the disc node **and**
+% after its replace text.
+%
+% Our line *builder* knew that; it cut at `cut + 1 + d.replace`. Our line
+% *searcher* did not — it started the next line with `after_break`, which skips
+% only *discardable* nodes, and replace text is usually characters and boxes.
+% So the search measured a next line that still had the replace text at its
+% head, found the break infeasible, and took no break at all:
+%
+%     \hsize=20pt   AAAA\discretionary{X}{Y}{Z}BB\par
+%     tex    two lines — `AAAA \discretionary X` then `Y … BB`
+%     ours   one overfull line holding the whole discretionary
+%
+% An empty replace text always worked, which is why nothing caught this: the
+% two computations only disagree when there is something to throw away, and
+% `\-` and every hyphenation break have none.
+%
+% §882 also leaves the disc node itself in the line, emptied, ahead of its
+% pre-break text — that is what a bare `\discretionary` in a box display is.
+\catcode`\{=1 \catcode`\}=2
+\showboxdepth=3 \showboxbreadth=12 \tracingonline=0
+\font\r=cmr10 \r \hsize=20pt \parindent=0pt \rightskip=0pt \tolerance=10000
+
+\setbox0\vbox{AAAA\discretionary{X}{Y}{Z}BB\par}
+\showbox0
+
+% several replace nodes, all thrown away
+\setbox1\vbox{AAAA\discretionary{X}{Y}{ZZZ}BB\par}
+\showbox1
+
+% a box counts as one node however wide
+\setbox2\vbox{AAAA\discretionary{X}{Y}{\hbox to 5pt{}}BB\par}
+\showbox2
+
+% an empty replace text — the case that always worked, kept so it stays working
+\setbox3\vbox{AAAA\discretionary{X}{Y}{}BB\par}
+\showbox3
+
+% and one that does not break, where the replace text is what gets set
+\hsize=200pt
+\setbox4\vbox{AA\discretionary{X}{Y}{Z}BB\par}
+\showbox4
+\end

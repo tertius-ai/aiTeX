@@ -1,0 +1,13 @@
+# Which files here are *documents* to be typeset, as opposed to libraries that
+# a document \inputs. One name per line; blank lines and # comments ignored.
+#
+# Explicit rather than inferred, because every rule anyone proposed for telling
+# the two apart was wrong on this directory: plipsum.tex has no \bye and neither
+# does story.tex; pliptest.tex has both \input and \bye and story.tex has
+# neither. A manifest cannot drift silently the way a heuristic can.
+#
+# tools/done_check.sh wraps each with `\input plain` / `\bye` when the file does
+# not supply them itself, and requires the run to set the same characters, in
+# the same order, as `tex -ini` on the same source.
+story.tex
+pliptest.tex

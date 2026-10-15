@@ -1,0 +1,82 @@
+% §1151 `scan_math` lists what a math *field* may be, and `\delimiter` is one of
+% them, beside a character, `\char`, `\mathchar` and a `\mathchardef`:
+%
+%     delim_num: begin scan_twenty_seven_bit_int;
+%       cur_val:=cur_val div @'10000; goto found;
+%       end;
+%
+% Its 27 bits are class, small variant and large variant. Used as an ordinary
+% symbol only the small one applies, which is the value shifted down twelve
+% bits — the same arithmetic `main_control` does for a `\delimiter` met directly
+% in a formula, and the reason `\mathopen\lVert` sets one glyph rather than a
+% grown fence.
+%
+% We had the arithmetic in `main_control` and not in `scan_math`, so a
+% `\delimiter` handed to `\mathopen` and friends fell through to §1151's
+% subformula branch, which backs the token up and calls `scan_left_brace`:
+%
+%     ! Missing { inserted.
+%     <recently read> \delimiter
+%
+% mathtools' `\DeclarePairedDelimiter` puts one there every time. Its unstarred,
+% unscaled wrapper is
+%
+%     \mathopen##1##2\mathclose##3
+%
+% so `\norm{Z}` from `\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}` comes out
+% as `\mathopen\lVert Z\mathclose\rVert`, and `\lVert` is `\delimiter"026B30D`.
+% 2608.15840v1 uses `\norm` throughout and stopped at the hundred-error limit
+% after four of its thirty-six pages.
+\catcode`\{=1 \catcode`\}=2 \catcode`\$=3 \catcode`\^=7 \catcode`\_=8
+\font\r=cmr10 \r \hsize=300pt \parindent=0pt
+\font\mi=cmmi10 \font\sy=cmsy10 \font\ex=cmex10
+\textfont0=\r \scriptfont0=\r \scriptscriptfont0=\r
+\textfont1=\mi \scriptfont1=\mi \scriptscriptfont1=\mi
+\textfont2=\sy \scriptfont2=\sy \scriptscriptfont2=\sy
+\textfont3=\ex \scriptfont3=\ex \scriptscriptfont3=\ex
+\showboxdepth=6 \showboxbreadth=20 \tracingonline=0
+
+% The shape mathtools produces: an open atom whose nucleus is a `\delimiter`,
+% the body, then a close atom the same way. `"026B30D` is `\lVert`, `"026B30E`
+% is `\rVert` — class 0, family 2, character `"0D`/`"0E` once the low twelve
+% bits are dropped.
+\setbox0=\hbox{$\mathopen\delimiter"026B30D Z\mathclose\delimiter"026B30E$}
+\showbox0
+
+% The same delimiters used the ordinary way, straight in the formula rather
+% than as a field: `main_control` already took the small variant, and the two
+% routes must agree.
+\setbox0=\hbox{$\delimiter"026B30D Z\delimiter"026B30E$}
+\showbox0
+
+% Every one of §1156's class-changing primitives reads its field the same way.
+\setbox0=\hbox{$\mathord\delimiter"026B30D$}
+\showbox0
+\setbox0=\hbox{$\mathbin\delimiter"026B30D$}
+\showbox0
+\setbox0=\hbox{$\mathrel\delimiter"026B30D$}
+\showbox0
+
+% §1151's other callers: the argument of `\underline`, and of `\radical`.
+\setbox0=\hbox{$\underline\delimiter"026B30D$}
+\showbox0
+\setbox0=\hbox{$\radical"270370 \delimiter"026B30D$}
+\showbox0
+
+% A script field, which reads a field too.
+\setbox0=\hbox{$x^\delimiter"026B30D$}
+\showbox0
+
+% A `\delimiter` whose class bits are not zero — `"426B30D` is class 4, open.
+% As a *field* the class is dropped along with the large variant, so this must
+% set the same atom as the class-0 one above: §1151 divides the whole 27-bit
+% value, class included, by `'10000`.
+\setbox0=\hbox{$\mathord\delimiter"426B30D$}
+\showbox0
+
+% The control: a braced subformula still goes the other way, through
+% `scan_left_brace`. A fix that swallowed everything as a field would lose the
+% group.
+\setbox0=\hbox{$\mathopen{ab}\mathclose{cd}$}
+\showbox0
+\end

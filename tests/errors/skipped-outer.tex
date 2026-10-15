@@ -1,0 +1,42 @@
+% `tex.web` §336's third branch: an `\outer` control sequence in *skipped*
+% conditional text.
+%
+%     print_err("Incomplete "); print_cmd_chr(if_test,cur_if);
+%     print("; all text was ignored after line "); print_int(skip_line);
+%     help3("A forbidden control sequence occurred in skipped text.")
+%       ("This kind of error happens when you say `\if...' and forget")
+%       ("the matching `\fi'. I've inserted a `\fi'; this might work.");
+%     if cur_cs<>0 then cur_cs:=0
+%     else help_line[2]:="The file ended while I was skipping conditional text.";
+%     cur_tok:=cs_token_flag+frozen_fi; ins_error;
+%
+% Skipped text is still scanned, so the same two things that end a balanced
+% scan end a skip — and here the recovery is a `\fi` rather than a `}`, with
+% §495's `cur_if` and `skip_line` naming which conditional it belongs to and
+% where its text began.
+%
+% The consequence to get right is what the inserted `\fi` finds. §336 leaves
+% the conditional on `cond_ptr` and lets that `\fi` close it, so a skip that had
+% not yet counted its conditional — a false branch, or an `\ifcase` looking for
+% its case — must count it now. Otherwise the `\fi` arrives to find nothing
+% open and there is an `Extra \fi` TeX does not have.
+%
+% The errors after each recovery are TeX's own and are the point of the case:
+% the `\else` and `\fi` that were meant to close the conditional are now extra,
+% because the inserted `\fi` closed it early.
+\catcode`\{=1 \catcode`\}=2 \catcode`\#=6
+\outer\def\bad{X}
+
+\message{PROBE:one=before}
+\iffalse
+\bad
+\else
+\message{PROBE:two=else}
+\fi
+\message{PROBE:three=after}
+
+% ...and in an `\ifcase` looking for its case, which counts its conditional the
+% same way and names itself differently.
+\ifcase 2 a\or b\bad\or c\fi
+\message{PROBE:four=done}
+\end

@@ -1,0 +1,13 @@
+% `tex.web` §§336--339: an `\outer` control sequence cannot occur while an
+% alignment preamble is being scanned. Here `\ifcase` first finds `\stop`
+% while skipping, which inserts `\fi`; the preamble scanner then finds the
+% backed-up `\stop` itself. TeX replaces that read with a space, resets
+% `align_state`, and inserts the frozen list `\cr }`, ending the malformed
+% alignment before rereading `\stop` as an ordinary command. The final probe
+% proves that file input resumed instead of being absorbed into the preamble.
+\catcode`\{=1 \catcode`\}=2 \catcode`\#=6
+\tracingonline=1 \tracingcommands=2
+\outer\def\stop{}
+\halign{{\span\ifcase3\stop
+\message{PROBE:after}
+\end

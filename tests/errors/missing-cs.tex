@@ -1,0 +1,37 @@
+% `tex.web` §1215 `get_r_token`, which every definition opens with:
+%
+%     begin restart: repeat get_token;
+%     until cur_tok<>space_token;
+%     if (cur_cs=0)or(cur_cs>frozen_control_sequence) then
+%       begin print_err("Missing control sequence inserted");
+%       help5("Please don't say `\def cs{...}', say `\def\cs{...}'.")
+%       ("I've inserted an inaccessible control sequence so that your")
+%       ("definition will be completed without mixing me up too badly.")
+%       ("You can recover graciously from this error, if you're")
+%       ("careful; see exercise 27.2 in The TeXbook.");
+%       if cur_cs=0 then back_input;
+%       cur_tok:=cs_token_flag+frozen_protection;
+%       ins_error; goto restart;
+%       end
+%
+% The recovery is the point.  The offending token goes *back*, a control
+% sequence no document can name takes its place, and the definition runs to
+% completion — so `\mathchardef A"7141` defines something harmless and then
+% complains about `A` where a number was wanted, which is two errors and not
+% one.  We returned nothing and every caller gave up in silence, leaving the
+% rest of the definition to be read as ordinary text.
+%
+% §1224's `shorthand_def` opens the same way, so `\countdef`, `\chardef`,
+% `\mathchardef`, `\toksdef` and the rest all reach it — that half was
+% separately missing, since it asked only for a control sequence and took an
+% active character for nothing.
+\catcode`\{=1 \catcode`\}=2
+\font\r=cmr10 \r \hsize100pt \parindent0pt
+\mathchardef A"7141
+\def B{x}
+\countdef C=5
+\let D=\relax
+\chardef E=`\E
+\toksdef F=3
+\showthe\count5
+\end

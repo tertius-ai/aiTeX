@@ -1,0 +1,56 @@
+% `tex.web` §407 `scan_keyword` reads **every** character of the keyword with
+% `get_x_token`, and it reads at the *top* of each iteration.
+%
+% Both halves of that matter, and we had neither quite right.
+%
+% Expanding throughout is what lets a keyword be assembled out of macros and
+% conditionals. LaTeX writes `\vrule\@height.7\baselineskip`, where `\@height`
+% is a macro whose body is the keyword; trip.tex goes further and spells a unit
+% with its second character inside a conditional:
+%
+%     \scriptspace … 01p\ifdim1pt<2pt t\fi\fi        % this is -0.01pt
+%
+% Reading only the first character expanded saw `\ifdim` where `t` was wanted,
+% failed the match, and backed `p` and `\ifdim` up — once per unit in the table
+% — until the value came out right by another route and two stray copies of `p`
+% and `t` were left on the input to be *typeset*. TeX sets no characters at all
+% in trip.tex's first pass; those two were the last ones we set.
+%
+% Reading at the top of the loop is what stops a *successful* match from
+% consuming one token too many. Reading ahead is invisible while the read is
+% unexpanding — the token goes straight back — but expanding it runs whatever
+% follows the keyword. `\read\rin to\line` expands `\line`, which `\read` has
+% not defined yet.
+\catcode`\{=1 \catcode`\}=2 \catcode`\#=6
+
+% A unit whose second character arrives from a conditional.
+\dimen0=3p\ifdim1pt<2pt t\fi
+\message{<unit-tail-from-if=\the\dimen0>}
+
+% …and whose first does too.
+\dimen1=3\ifdim1pt<2pt p\fi t
+\message{<unit-head-from-if=\the\dimen1>}
+
+% A whole unit from a macro, which is the LaTeX case.
+\def\height{pt}
+\dimen2=4\height
+\message{<unit-from-macro=\the\dimen2>}
+
+% A keyword that does *not* match must leave everything it looked at, so the
+% `plus` here is not consumed and the glue keeps its stretch.
+\skip0=1pt plus 2pt
+\message{<no-false-match=\the\skip0>}
+
+% `to` and `spread` are keywords too, and so is `by` in register arithmetic.
+\count0=5 \advance\count0 by\ifnum1=1 3\fi
+\message{<by-with-if=\the\count0>}
+\setbox0\hbox to\ifdim1pt<2pt 20pt\fi{}
+\message{<box-to-from-if=\the\wd0>}
+
+% The token *after* a matched keyword is not consumed and not expanded. `\line`
+% is undefined here, exactly as it is when `\read\rin to\line` runs, and asking
+% for it would be an error.
+\count1=5 \advance\count1 by 2 \relax
+\message{<after-keyword=\the\count1>}
+
+\end

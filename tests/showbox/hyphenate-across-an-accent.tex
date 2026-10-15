@@ -1,0 +1,50 @@
+% §897 takes a kern into the word it is collecting *by subtype*, and anything
+% else ends the word outright:
+%
+%     else if (type(s)=kern_node)and(subtype(s)=normal) then
+%       begin hb:=s;
+%       ...
+%       end
+%     else goto done3;
+%
+% §896's skip loop ahead of the word tests the same way. §1125's `\accent` puts
+% a kern of subtype `acc_kern` on each side of its character, so a word with an
+% accent in it ends at the accent.
+%
+% That alone would only shorten the word. What makes it visible is §894's rule
+% that there is **one** attempt per glue node — see
+% hyphenate-once-per-glue.tex. TeX finds `Gr`, cannot hyphenate two letters, and
+% never looks at `unbaum`:
+%
+%     ref    XX Gr^^?unbaum YY        XX co^^?operation YY
+%     ours   XX Gr^^?un-baum YY       XX co^^?-op-er-a-tion YY
+%
+% `Gr\"unbaum` is the first author cited in 2608.17805v1, and hyphenating it was
+% the whole difference between that paper and pdfTeX.
+\input plain
+\hsize=90pt
+\parindent=0pt
+\pretolerance=-1
+\tolerance=9999
+\showboxbreadth=100
+\showboxdepth=10
+% An accent partway through: the word ends at it, and `Gr` is too short.
+\setbox0=\vbox{\noindent XX Gr\"unbaum YY\par}
+\showbox0
+% The same letters without the accent hyphenate normally.
+\setbox0=\vbox{\noindent XX Grunbaum YY\par}
+\showbox0
+% An accent early in a long word still stops everything behind it.
+\setbox0=\vbox{\noindent XX co\"operation YY\par}
+\showbox0
+% …and the unaccented spelling does hyphenate.
+\setbox0=\vbox{\noindent XX cooperation YY\par}
+\showbox0
+% An accent on the *first* letter leaves nothing before it to hyphenate.
+\setbox0=\vbox{\noindent XX \"operation YY\par}
+\showbox0
+% A normal kern — the kind a font asks for between two letters — does not end
+% the word; `\/` is an explicit one and does.
+\setbox0=\vbox{\noindent XX opera\/tion YY\par}
+\showbox0
+\end

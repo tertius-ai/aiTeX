@@ -1,0 +1,15 @@
+% TFM-PL: vendor/trip/trip.pl
+% `tex.web` §§896--897 use two different tests for a ligature near a word.
+% The first source character can start the search, but once collection has
+% begun every source character must be a letter. The final `C/` ligature below
+% must stay outside the pattern word, leaving the fourth `C-A` discretionary.
+\catcode`\{=1 \catcode`\}=2
+\font\r=trip \r \hyphenchar\r=`\-
+\lccode`1=`1 \lccode`A=1 \chardef\?=`b
+\lefthyphenmin=2 \righthyphenmin=3 \uchyph=1
+\patterns{\?50AA1b3 1AcA. bb bb1 0B2B0 b1c}
+\pretolerance=-1 \tolerance=10000 \hbadness=10000
+\hsize=100pt \parindent=0pt \baselineskip=12pt
+\showboxbreadth=999 \showboxdepth=99 \tracingonline=0
+\setbox0=\vbox{\noindent A /A\char`A BBBBCACAC//\par}\showbox0
+\end

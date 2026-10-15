@@ -1,0 +1,56 @@
+% §774 saves `align_state` and drops it to -1000000 *before* `scan_spec` runs,
+% and `scan_spec` is what reads `to`/`spread` and the opening brace:
+%
+%     push_alignment; align_state:=-1000000;
+%     @<Scan the preamble and record it in the |preamble| list@>;
+%
+% The order is not decoration. `scan_keyword` looks one token ahead and puts it
+% back when it does not match, and §325's `back_input` *decrements* `align_state`
+% for a `{`. In TeX that dip happens down at -1000000 and no one can see it.
+% Saving after the keywords captures the dip instead: the `{` that
+% `scan_keyword("spread")` pushed back is still pending, so the saved value is -1
+% where it should be 0.
+%
+% §800 hands that -1 back to the enclosing alignment when the inner one ends,
+% and `align_state` is no longer 0 there — so §342's test
+%
+%     if cur_cmd<=car_ret then if cur_cmd>=tab_mark then
+%       if align_state=0 then
+%       @<Insert the <v_j> template and goto restart@>
+%
+% never fires, the outer row's `&` stops being a cell boundary, and amsmath's
+% `\math@cr@@@ -> &\omit …` arrives at `main_control`: "! Misplaced \omit."
+%
+% Every alignment nested inside another alignment failed that way — a matrix
+% inside an `align*`, which is most mathematical papers. 2608.17265v1 shipped
+% zero pages against pdfTeX's eight.
+\input plain
+\showboxbreadth=100
+\showboxdepth=6
+% A \halign whose entry contains another \halign. The inner one is the whole
+% point; the outer must still see its own `&` and `\cr` afterwards.
+\setbox0=\vbox{\halign{#\hfil&#\hfil\cr
+  a&\vbox{\halign{#\cr x\cr y\cr}}\cr
+  b&c\cr}}
+\showbox0
+% The same with an explicit `to`, so `scan_keyword("to")` matches instead of
+% failing — the branch that does *not* leave a token pushed back.
+\setbox0=\vbox{\halign to 100pt{#\hfil&#\hfil\cr
+  a&\vbox{\halign{#\cr x\cr y\cr}}\cr
+  b&c\cr}}
+\showbox0
+% `spread`, the other keyword, on the inner alignment.
+\setbox0=\vbox{\halign{#\hfil&#\hfil\cr
+  a&\vbox{\halign spread 10pt{#\cr x\cr}}\cr
+  b&c\cr}}
+\showbox0
+% Three deep.
+\setbox0=\vbox{\halign{#\cr
+  \vbox{\halign{#\cr \vbox{\halign{#\cr z\cr}}\cr}}\cr}}
+\showbox0
+% A \valign inside an \halign entry, so the two directions are mixed.
+\setbox0=\vbox{\halign{#\hfil&#\hfil\cr
+  a&\hbox{\valign{#\cr\hbox{x}\cr\hbox{y}\cr}}\cr
+  b&c\cr}}
+\showbox0
+\end

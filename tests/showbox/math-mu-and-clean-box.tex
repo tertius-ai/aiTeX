@@ -1,0 +1,75 @@
+% `mu` is not a length until a *style* says so, and §703 is where the style
+% comes in:
+%
+%     if cur_style<script_style then cur_size:=text_size
+%     else cur_size:=script_size*((cur_style-text_style) div 2);
+%     cur_mu:=x_over_n(math_quad(cur_size),18);
+%
+% §730 then converts while *walking* the list, not while reading it:
+%
+%     glue_node: begin if subtype(q)=mu_glue then
+%         begin x:=glue_ptr(q);
+%         y:=math_glue(x,cur_mu); delete_glue_ref(x); glue_ptr(q):=y;
+%         subtype(q):=normal;
+%         end
+%     …
+%     kern_node: math_kern(q,cur_mu);
+%
+% So the same `\mkern9mu` is one width in a formula and another in a
+% superscript, and at the moment `\mkern` is *read* the style is not yet known
+% — a superscript's list is scanned before anything decides it is a script.
+% Converting eagerly with the text quad made every `\mkern` under a script one
+% size too wide. In this document `\fontdimen6\textfont2` is 10.95003pt and
+% `\scriptfont2`'s is 8.50012pt, so `\mkern9mu` is 5.4749pt against 4.25006pt —
+% and amsmath builds every `\xrightarrow` as
+% `$\scriptstyle\mkern5mu{…}\mkern9mu$`, so every extensible arrow was 2.4pt
+% too wide. At that width one more `\cleaders` copy of the arrow's shaft fitted
+% than TeX had room for, and the arrow came out a stroke longer.
+%
+% The inter-atom skips were already right — `\thinmuskip` and friends are
+% converted where the style is known — so `$\scriptstyle x+x$` never showed it.
+% Only `\mkern` and `\mskip` did.
+%
+% And §720's "simplify a trivial box", which is the other half of what a clean
+% box holds:
+%
+%     q:=list_ptr(x);
+%     if is_char_node(q) then
+%       begin r:=link(q);
+%       if r<>null then if link(r)=null then
+%         if not is_char_node(r) then if type(r)=kern_node then
+%           begin free_node(r,small_node_size); link(q):=null;
+%           end;
+%       end
+%
+% One character followed by exactly one kern: the kern goes. The order is the
+% whole of it — this runs *after* `hpack`, so the box keeps the width the
+% italic correction gave it and only the node is dropped. `$\scriptstyle y$` is
+% 4.30675pt in pdfTeX, glyph plus correction, *and* its box holds one
+% character; both are true at once.
+\input plain
+\showboxdepth=6 \showboxbreadth=60 \tracingonline=0
+\def\M#1{\setbox0=\hbox{#1}\showbox0 }
+% `\mkern` at each of the three styles, and under a script that has no style
+% node at all — which is the case an eager conversion cannot get right.
+\M{$x\mkern9mu x$}
+\M{$\scriptstyle x\mkern9mu x$}
+\M{$\scriptscriptstyle x\mkern9mu x$}
+\M{$x^{a\mkern9mu b}$}
+\M{$x^{x^{a\mkern9mu b}}$}
+\M{$\displaystyle x\mkern9mu x$}
+% `\mskip`, which is the same rule for glue, stretch and shrink included.
+\M{$\scriptstyle x\mskip9mu plus 3mu minus 1mu x$}
+% A `fil` stretch is *not* converted: §716 scales only a finite order.
+\M{$\scriptstyle x\mskip9mu plus 1fil x$}
+% §720: a subscript's clean box is one character and keeps no kern, while the
+% width it was packed to still counts the italic correction.
+\M{$p_q$}
+\M{$\scriptstyle p_q$}
+% Two characters is not a trivial box, so nothing is dropped.
+\M{$x_{pq}$}
+% §715 puts the removed correction back as a kern when a one-character
+% clean box is reboxed to the wider side of a fraction. Otherwise the stretch
+% glue centres the bare glyph rather than the width TeX assigned to its box.
+\M{${y\over MM}$}
+\end

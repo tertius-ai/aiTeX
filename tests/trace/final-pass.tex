@@ -1,0 +1,56 @@
+% `tex.web` §851, §854 and §873: what the *final* pass may do that no other
+% pass may.
+%
+%     if (b>inf_bad)or(pi=eject_penalty) then
+%       begin if final_pass and (minimum_demerits=awful_bad) and
+%          (link(r)=last_active) and (prev_r=active) then
+%         artificial_demerits:=true {set demerits zero, this break is forced}
+%       else if b>threshold then goto deactivate;
+%       node_r_stays_active:=false;
+%       end
+%
+% Two things at once. The break is *forced* — taken however bad it is, rather
+% than the paragraph failing — and it is charged *nothing*, which §856 prints
+% as `d=*`. §852 gives an overfull line `b := inf_bad+1`, and §856 prints
+% anything past `inf_bad` as `b=*`, because there is no number for how overfull.
+%
+% Three things had to be true together for this to work here.
+%
+% §873: the second pass *is* the final one when `\emergencystretch` is zero,
+% which is INITEX's value and trip.tex's. We ran the second pass as if it could
+% fail and then a third that scored by different rules — a flat cost §859 does
+% not have, and a per-point charge for overflow that is ours alone.
+%
+% §851: an overfull line deactivates its node in *every* pass, the final one
+% included. What the final pass may do is take the break anyway, not keep the
+% node. Leaving it active kept the paragraph's start in the list to the very
+% end, so the last break never looked like the sole one and never got its
+% artificial demerits.
+%
+% §851 again: `if b>threshold then goto continue` holds in the final pass too.
+% It is not more permissive about *looseness*; the only thing it relaxes is
+% failure.
+%
+% The paragraph below cannot be set within `\tolerance` at this measure —
+% `\pretolerance` is high enough that the first pass tries and fails, so all
+% three passes' worth of behaviour is on show in one narration.
+\catcode`\{=1 \catcode`\}=2
+\tracingonline=1
+\tracingparagraphs=1
+\hsize=100pt \parindent=0pt
+\pretolerance=100 \tolerance=200
+\font\rip=cmr10 \rip
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAA AAA\par
+
+% §830, the first thing `try_break` does:
+%
+%     if abs(pi)>=inf_penalty then
+%       if pi>0 then return {inhibited by infinite penalty}
+%       else pi:=eject_penalty {this breakpoint will be forced}
+%
+% So every forcing penalty *is* `eject_penalty` from there on — in the demerits
+% and in §856's `p=`. trip.tex writes `\penalty-1000000000` and Knuth's
+% transcript reports `p=-10000`; we reported the number as written.
+AAA\penalty-1000000000 AAA\par
+\end

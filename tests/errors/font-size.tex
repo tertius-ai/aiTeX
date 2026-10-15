@@ -1,0 +1,54 @@
+% `tex.web` §1259 and §1258: the size clauses of `\font`, and what each does
+% with a value it cannot use.
+%
+% §1259, the `at` size:
+%
+%     scan_normal_dimen; s:=cur_val;
+%     if (s<=0)or(s>=@'1000000000) then
+%       begin print_err("Improper `at' size ("); print_scaled(s);
+%       print("pt), replaced by 10pt"); ... s:=10*unity; end
+%
+% `@'1000000000` is *octal* — 2^27 sp, which is 2048pt, exactly the bound the
+% help text quotes. Read as 2^30 it lets a 3000pt font through, and a 3000pt
+% font used to bring the whole engine down: §572 halves the at-size until it
+% fits, doubling `alpha` each time, and `beta:=256 div alpha` reaches zero on
+% the fifth halving. §1259's bound is precisely what keeps that unreachable.
+%
+% The recovery is a flat 10pt — not the size asked for, and not the design
+% size, though for a 10pt font they coincide. It is load-bearing at trip.tex
+% line 215, `\font\ip trip at -10pt`: 10pt is trip.tfm's design size, so the
+% replacement lands on a font already loaded, §1260's `font_id_text(f):=t`
+% renames it, and `\showthe\font` two lines later prints `\ip`. Taking -10pt at
+% face value made a second, distinct font and renamed nothing.
+%
+% §1258, the magnification: 1..32768, recovery 1000, and §91's `int_error` puts
+% the offending value on the top line.
+\catcode`\{=1 \catcode`\}=2
+
+\font\aa=cmr10 \aa
+\message{PROBE:before=\the\font}
+
+% negative: replaced by 10pt, which *is* cmr10's design size, so this names the
+% font already loaded and renames it. `\the\font` changes without any font
+% having been selected.
+\font\neg cmr10 at -10pt
+\message{PROBE:renamed=\the\font}
+\message{PROBE:negname=\fontname\neg}
+
+% over 2048pt: the same recovery, and no crash
+\font\big cmr10 at 3000pt
+\message{PROBE:bigname=\fontname\big}
+
+% just inside the bound is not an error
+\font\ok cmr10 at 2047pt
+\message{PROBE:okname=\fontname\ok}
+
+% magnification out of range either way
+\font\z cmr10 scaled 0
+\font\y cmr10 scaled 40000
+\message{PROBE:zname=\fontname\z}
+
+% and in range, which is not an error
+\font\good cmr10 scaled 2000
+\message{PROBE:goodname=\fontname\good}
+\end

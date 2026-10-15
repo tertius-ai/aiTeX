@@ -1,0 +1,34 @@
+% `tex.web` §1054 `its_all_over`: `\end` does not end the job on the first try.
+%
+%     function its_all_over:boolean;
+%     begin if privileged then
+%       begin if (page_head=page_tail)and(head=tail)and(dead_cycles=0) then
+%         begin its_all_over:=true; return; end;
+%       back_input; {we will try to end again after ejecting residual material}
+%       tail_append(new_null_box); width(tail):=hsize;
+%       tail_append(new_glue(fill_glue));
+%       tail_append(new_penalty(-'10000000000));
+%       build_page;
+%       end;
+%     its_all_over:=false;
+%     end;
+%
+% Unless the page and the current list are already empty, `\end` goes back on
+% the input, the residual `\hbox to\hsize{} \vfill \penalty-'10000000000` is
+% appended, and the page builder ejects the page — after which `main_control`
+% reads `\end` a second time and finds nothing left. So `\tracingcommands`
+% shows `{\end}` twice for any document that produced a page, and once for one
+% that produced none.
+%
+% That second reading is also why nothing after `\end` in a file is ever read:
+% the backed-up `\end` sits on top of the file, not after it.
+%
+% We used to clear the input stack outright and hand the residual material to a
+% routine outside the main loop. The pages came out the same — which is why
+% this only ever showed in the trace — but `\output` ran somewhere
+% `main_control` was not.
+\catcode`\{=1 \catcode`\}=2
+\tracingcommands=1 \tracingonline=0
+\font\r=cmr10 \r \hsize=100pt
+A\par
+\end

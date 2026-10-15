@@ -1,0 +1,75 @@
+% The glue a formula is made of, and the parameters it comes from.
+%
+% `tex.web` §766: the space between two atoms is `\thinmuskip`, `\medmuskip`
+% or `\thickmuskip` according to their classes, and the node records *which* —
+% so `\glue(\thickmuskip) 5.0 plus 5.0` says a relation was found where
+% `\glue(\medmuskip) 4.0 plus 2.0 minus 4.0` would say a binary operator. That
+% is the difference between a spacing bug and a *classification* bug, and
+% without the subtype the two are indistinguishable in a display.
+%
+% §1171's `\nonscript` is a glue node with no glue: §189 prints its name and
+% stops, with no dimension after it at all.
+%
+% §1203's display skips are four parameters, not two: a display whose preceding
+% line stopped short of it gets the *short* pair.
+\catcode`\{=1 \catcode`\}=2 \catcode`\#=6 \catcode`\$=3
+\catcode`\^=7 \catcode`\_=8
+\font\rip=cmr10 \font\mi=cmmi10 \font\sy=cmsy10 \font\ex=cmex10
+\textfont0=\rip \scriptfont0=\rip \scriptscriptfont0=\rip
+\textfont1=\mi \scriptfont1=\mi \scriptscriptfont1=\mi
+\textfont2=\sy \scriptfont2=\sy \scriptscriptfont2=\sy
+\textfont3=\ex \scriptfont3=\ex \scriptscriptfont3=\ex
+\rip
+\showboxbreadth=9999 \showboxdepth=9999
+\hsize=200pt \parindent=0pt \baselineskip=12pt \lineskip=1pt \lineskiplimit=0pt
+
+\thinmuskip=3mu \medmuskip=4mu plus 2mu minus 4mu \thickmuskip=5mu plus 5mu
+
+% A binary operator takes `\medmuskip` on both sides, a relation
+% `\thickmuskip`, punctuation `\thinmuskip` after it only.
+\setbox0\hbox{$A\mathbin{B}C\mathrel{D}E\mathpunct{F}G$}
+\showbox0
+
+% In a script style the conditional spaces vanish altogether.
+\setbox0\hbox{$\scriptstyle A\mathrel{D}E$}
+\showbox0
+
+% `\mskip` is glue in `mu`, converted the moment it is appended (§716), so the
+% node that survives is ordinary glue.
+\setbox0\hbox{$A\mskip18mu plus 9mu B$}
+\showbox0
+
+% `\nonscript` prints as a name with nothing after it.
+\setbox0\hbox{$A\nonscript\mskip18mu B$}
+\showbox0
+
+% In script styles it removes the immediately following glue or kern while
+% retaining itself, whether that spacing was expressed in mu or points.
+\setbox0\hbox{$\scriptstyle A\nonscript\mskip18mu B$}
+\showbox0
+\setbox0\hbox{$\scriptstyle A\nonscript\mkern18mu B$}
+\showbox0
+\setbox0\hbox{$\scriptstyle A\nonscript\kern1pt B$}
+\showbox0
+
+% §716 scales only finite mu components.  Infinite stretch and shrink keep
+% their amount as well as their order when automatic inter-atom spacing turns
+% a math-glue parameter into an ordinary glue node.
+\thinmuskip=1mu plus 2fill minus 3filll
+\setbox0\hbox{$A\mathop{B}C\mathpunct{D}E$}
+\showbox0
+
+% --- §1203: the display skips ----------------------------------------------
+\abovedisplayskip=10pt plus 3pt \belowdisplayskip=11pt plus 4pt
+\abovedisplayshortskip=1pt plus 1pt \belowdisplayshortskip=2pt plus 2pt
+\predisplaypenalty=101 \postdisplaypenalty=102
+
+% A long preceding line reaches past the display's left edge: the long pair.
+\setbox0\vbox{\noindent AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA$$A$$A\par}
+\showbox0
+
+% A short one does not: the short pair.
+\setbox0\vbox{\noindent A$$A$$A\par}
+\showbox0
+
+\end

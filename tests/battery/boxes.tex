@@ -1,0 +1,25 @@
+% Box construction and measurement.
+\input plain
+\catcode`\@=11
+\setbox0=\hbox{}\message{<empty-w=\the\wd0>}
+\setbox0=\hbox to 10pt{}\message{<to-w=\the\wd0>}
+\setbox0=\hbox spread 5pt{}\message{<spread-w=\the\wd0>}
+\setbox0=\hbox to 3in{}\message{<to-in=\the\wd0>}
+\setbox1=\vbox to 20pt{}\message{<vto-h=\the\ht1>}
+\setbox1=\vbox{\hrule height 4pt}\message{<rule-h=\the\ht1>}
+\setbox2=\hbox{\kern 7pt}\message{<kern-w=\the\wd2>}
+\setbox2=\hbox{\kern 2pt\kern 3pt}\message{<kerns-w=\the\wd2>}
+\setbox2=\hbox{\hskip 5pt}\message{<skip-w=\the\wd2>}
+\setbox2=\hbox{\vrule width 3pt height 2pt depth 1pt}%
+  \message{<vrule=\the\wd2|\the\ht2|\the\dp2>}
+% Dimensions are assignable, and the assignment does not change the contents.
+\setbox3=\hbox to 6pt{}\wd3=11pt \message{<setwd=\the\wd3>}
+\setbox3=\hbox to 6pt{}\ht3=4pt \dp3=2pt \message{<setht=\the\ht3|\the\dp3>}
+% \copy leaves the register; \box empties it.
+\setbox4=\hbox to 8pt{}\setbox5=\copy4 \message{<copy=\the\wd5|\the\wd4>}
+\setbox4=\hbox to 8pt{}\setbox5=\box4 \message{<box=\the\wd5>}
+\ifvoid4 \message{<box-voids=yes>}\else\message{<box-voids=no>}\fi
+% Nesting: an inner box contributes its width to the outer one.
+\setbox6=\hbox{\hbox to 4pt{}\hbox to 6pt{}}\message{<nested-w=\the\wd6>}
+\setbox7=\vbox{\hbox to 4pt{}\hbox to 6pt{}}\message{<vbox-w=\the\wd7>}
+\bye

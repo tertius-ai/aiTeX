@@ -1,0 +1,13 @@
+% `tex.web` §352 contracts `^^` notation in the input buffer and restarts at
+% the replacement character. The superscript character need not be `^`, so
+% after q becomes catcode 7, `qq1qM` contracts first to `qqM` and then to CR.
+\catcode`\{=1 \catcode`\}=2 \catcode`\#=6
+\tracingonline=1 \tracingcommands=2
+\catcode`q=7
+\catcode`\qqM=0
+\expandafter\let\csname^^Mendcsname=\^^@\relax
+\relax\catcode`\qq1qM=13
+\defqqM{\relax}#
+\showqqM
+\message{PROBE:DONE}
+\end

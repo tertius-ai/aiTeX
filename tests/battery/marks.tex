@@ -1,0 +1,37 @@
+% \mark, \topmark, \firstmark, \botmark.
+%
+% \mark{...} scans its argument fully expanded, the same way an \edef body
+% does (tex.web 1095) -- including finding its own closing brace past the
+% \iffalse }\fi trick, since it shares the same scanner. The page builder
+% then updates the three registers when a page fires: \topmark becomes
+% whatever \botmark was *before* this page; \firstmark is the page's first
+% mark (or the carried-over \botmark if the page had none); \botmark is the
+% page's last mark (unchanged if none).
+%
+% The cross-page carry-over is the part worth having and was once left out,
+% because the page builder did not yet break pages on \vsize. It does, so the
+% second half below fires \output four times and asks each time:
+%
+%   * \topmark is whatever \botmark was *before* this page — empty on page 1,
+%   * \firstmark is this page's first mark, or the carried \botmark if it has
+%     none,
+%   * \botmark is this page's last mark, unchanged if it has none.
+%
+% A page with no mark at all is the case that distinguishes the three, so page
+% 3 deliberately has none.
+\input plain
+\output={\message{<top=\topmark|first=\firstmark|bot=\botmark>}\shipout\box255}
+\mark{ONE}
+\hrule height5pt
+\mark{TWO}
+\hrule height5pt
+\vfill\eject
+% Four short pages. \vsize is small enough that each rule fills one.
+\vsize=12pt \maxdepth=2pt \topskip=0pt
+\mark{A}\hrule height10pt
+\mark{B}\hrule height10pt
+\mark{C}\mark{D}\hrule height10pt
+\hrule height10pt
+\mark{E}\hrule height10pt
+\vfill\eject
+\end

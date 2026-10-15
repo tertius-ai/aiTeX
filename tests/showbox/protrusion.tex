@@ -1,0 +1,97 @@
+% pdfTeX's character protrusion: the first and last glyph of a line may hang
+% into the margin by a negative kern.
+%
+% `\pdfprotrudechars` has two live values and they are different jobs. **1**
+% inserts the kerns and leaves line breaking alone; **2** also lets the
+% protrusion into the badness, so the breaks themselves move. Measured on one
+% paragraph, the same breakpoint reads `b=649` at 0 and at 1, and `b=2875` at 2
+% — and that is what makes 1 useful here: it pins the kerns' widths and
+% positions with the breaker provably frozen.
+%
+% **The amount is a thousandth of the font's quad, not of the character.**
+% `\lpcode 200` on cmr10's `A` — a glyph 7.50002pt wide — gives a 2.0pt kern,
+% which is a fifth of the 10pt em. At `cmr10 at 20pt` (quad 20.00005pt, `A`
+% 15.00003pt wide) it is 4.00002pt. "Thousandths of the character's width" is
+% the natural reading of the name and is wrong in every font, which is why the
+% second size is here.
+%
+% **Where they go**, both measured and neither guessable from the first dump:
+% the left kern comes *after* a non-zero `\leftskip`, and the right one *before*
+% the line's trailing glue — so on a last line it lands past §816's
+% `\penalty 10000` and ahead of `\parfillskip`, not at the end.
+%
+% `\showbox` marks them `(left margin)` and `(right margin)` and prints no
+% space after `\kern`, like a font's kern rather than an explicit one.
+\input plain
+\showboxdepth=3 \showboxbreadth=200 \tracingonline=0
+\hsize=100pt \parindent=0pt \tolerance=10000
+\rpcode\tenrm`\,=300
+\rpcode\tenrm`\.=400
+\lpcode\tenrm`\A=200
+% 0: nothing at all.
+\pdfprotrudechars=0
+\setbox0=\vbox{Alpha, beta, gamma, delta, epsilon, zeta, eta, theta.\par}\showbox0
+% 1: the kerns, and breaks identical to the box above.
+\pdfprotrudechars=1
+\setbox0=\vbox{Alpha, beta, gamma, delta, epsilon, zeta, eta, theta.\par}\showbox0
+% 2: the breaks may move now.
+\pdfprotrudechars=2
+\setbox0=\vbox{Alpha, beta, gamma, delta, epsilon, zeta, eta, theta.\par}\showbox0
+% The left kern sits after a non-zero \leftskip, and \rightskip after the right.
+\leftskip=5pt \rightskip=7pt
+\setbox0=\vbox{Alpha beta gamma delta epsilon zeta eta theta.\par}\showbox0
+\leftskip=0pt \rightskip=0pt
+% The quad is the base: same code, twice the size, twice the kern.
+\font\big=cmr10 at 20pt
+\lpcode\big`\A=200
+\setbox0=\vbox{\big \hsize=200pt Alpha beta gamma delta.\par}\showbox0
+% A code of zero protrudes nothing, so no kern node appears at all.
+\lpcode\tenrm`\A=0
+\setbox0=\vbox{Alpha beta gamma.\par}\showbox0
+% A line ending at a discretionary is set with the *hyphen*, and it is the
+% hyphen that reaches the margin — not the letter before it. microtype gives the
+% hyphen one of the largest protrusion codes it sets, so this is the common case
+% in a real document rather than a corner of one.
+\hsize=72pt \pretolerance=-1
+\rpcode\tenrm`\-=700
+\setbox0=\vbox{congruence congruence congruence congruence.\par}\showbox0
+% The search for the line's first character looks *into* a box and stops there
+% if what it finds is not a character. An empty box is the exception — the
+% `\parindent` box sits ahead of every paragraph's first letter and that letter
+% does protrude, which is why "recurse, and carry on past the box" passes every
+% probe that does not put something in the box.
+%
+% Measured: `\noindent\hbox{\kern1pt}Alpha` gets no left margin kern from
+% pdfTeX and the same line without the box does. Scanning past it gave this
+% engine 85 left kerns on one corpus paper where pdfTeX emits 61, nearly all of
+% them on running heads — which begin with a box.
+%
+% A stretchable `\leftskip` is *not* what stops it: a ragged line protrudes
+% like any other. That was the first guess and it was wrong.
+%
+% What stops it is the box having **width** — the test is the width and not the
+% contents, and an indented paragraph is where the two rules part company. Every
+% probe above sets `\parindent=0pt`, where an empty zero-width box is stepped
+% over and the letter after it protrudes; give the same box a width and pdfTeX
+% protrudes nothing, because the line no longer begins at the margin. Twelve of
+% this engine's excess left kerns on one corpus paper sat directly in front of a
+% `\hbox(0.0+0.0)x12.0`.
+\hsize=100pt \pretolerance=100
+\lpcode\tenrm`\A=200
+\parindent=0pt
+\setbox0=\vbox{Alpha beta.\par}\showbox0
+\leftskip=0pt plus 1fil
+\setbox0=\vbox{Alpha beta.\par}\showbox0
+\leftskip=0pt
+\setbox0=\vbox{\noindent\hbox{\kern1pt}Alpha beta.\par}\showbox0
+% The two rules agree on every line above and differ here.
+\parindent=12pt
+\setbox0=\vbox{Alpha beta.\par}\showbox0
+\parindent=0pt
+% …and the width alone is not the test either. A box is looked *into* first, and
+% a character inside it protrudes whatever the box measures — so a zero-width
+% box holding a letter is not stepped over. Both simplifications were tried and
+% each is wrong on exactly one of these four lines.
+\setbox0=\vbox{\noindent\hbox{Alpha} beta.\par}\showbox0
+\setbox0=\vbox{\noindent\hbox to 0pt{Alpha\hss} beta.\par}\showbox0
+\end

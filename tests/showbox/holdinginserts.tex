@@ -1,0 +1,47 @@
+% What happens to an insertion the page cannot take, and where it waits.
+%
+% `tex.web` §1017 ends `if q<>hold_head then begin link(page_head):=link(hold_head);
+% page_tail:=q end` — *after* the new page has been started. So an insertion the
+% fired page could not take goes at the head of the **new page**, not on the
+% contribution list, and `page_contents` stays `empty` around it: the glue that
+% arrives next is still discarded and the first box still gets its `\topskip`.
+% That is why §986 has a `### current page: (held over for next output)` to
+% print at all.
+%
+% We put them on the contribution list, where the builder examined them again —
+% a second `\pagegoal` reduction for an insertion already charged — and behind
+% whatever the output routine handed back.
+%
+% Moving them to the page alone is not enough: nothing re-contributes them, so
+% the accounting §1009 does for an arriving insertion has to happen there too.
+% Without it the class has no record at the next firing, `best_ins` is `None`,
+% the insertion is held again, and trip.tex loops for ever holding the same two
+% insertions. This transcript is what settled it — TeX places exactly one held
+% box per firing, straight off the page, with no new `\insert100` arriving at
+% all, which it could only do with a record in hand.
+%
+% §1025's `prev_depth := ignore_depth` is here too: the output routine builds a
+% vertical list of its own, so its first box takes no interline glue, and §219
+% shows `prevdepth ignored` for that level while the page keeps its own
+% underneath.
+\catcode`\{=1 \catcode`\}=2 \catcode`\#=6
+\font\rip=cmr10 \rip
+\hsize=100pt \vsize=60pt \topskip=0pt \maxdepth=2pt \parindent=0pt
+\baselineskip=0pt \lineskip=0pt \lineskiplimit=0pt
+\showboxbreadth=9999 \showboxdepth=9999
+% Room for one 8pt box at a time, and three of them to place.
+\dimen100=10pt \count100=1000 \skip100=0pt \splittopskip=0pt \splitmaxdepth=100pt
+\count0=0
+% The `\showlists` alone: a `\message` here would land inside the transcript
+% region the gate extracts, and the two engines flush the terminal at different
+% moments. What the display says is the point anyway.
+\output={\global\advance\count0 by1 \showlists \shipout\box255}
+\hbox to 5pt{}
+\insert100{\hbox to 5pt{\vrule height 8pt}\penalty 0
+  \hbox to 5pt{\vrule height 8pt}\penalty 0
+  \hbox to 5pt{\vrule height 8pt}}
+\hbox to 5pt{}
+\penalty-10000
+\hbox to 5pt{}
+\penalty-10000
+\end

@@ -1,0 +1,40 @@
+% `tex.web` §1145 calls `line_break(true)` and *not* `end_graf`.
+%
+% The difference is §1070's `normal_paragraph`, which `end_graf` runs and
+% `line_break` does not. A display does not *end* the paragraph, it interrupts
+% it — §1200's `resume_after_display` carries on with the same one, `prev_graf
+% := prev_graf + 3` rather than a fresh count — so `\hangindent`, `\hangafter`,
+% `\parshape` and `\looseness` are still in force for the lines *after* it.
+%
+% That is the whole reason a hanging paragraph may contain a display. Our
+% `end_paragraph` is `end_graf` and bundled both, so a display reset the shape
+% for everything below it.
+%
+% Asked with `\the` rather than measured, because this engine's line breaker
+% does not read `\hangindent` yet — the parameters are what §1070 resets and
+% what §1025's output routine saves, and they are the same four either way.
+%
+% The same fact reaches trip.tex from the other side: its `\output` fires
+% while a shape is live, and §1025's `normal_paragraph` — which runs *inside*
+% the output group — saves and restores it. With the shape already reset by
+% the display there was nothing to save, and four `{restoring …}` lines went
+% missing from the transcript.
+\catcode`\{=1 \catcode`\}=2 \catcode`\$=3
+\tracingonline=1 \hsize=100pt \parindent=0pt
+\hbadness=10000 \vbadness=10000
+\font\rm=cmr10 \textfont0=\rm \scriptfont0=\rm \scriptscriptfont0=\rm \rm
+\font\mi=cmmi10 \textfont1=\mi \scriptfont1=\mi \scriptscriptfont1=\mi
+\font\sy=cmsy10 \textfont2=\sy \scriptfont2=\sy \scriptscriptfont2=\sy
+\font\ex=cmex10 \textfont3=\ex \scriptfont3=\ex \scriptscriptfont3=\ex
+\showthe\escapechar
+
+% All four still in force on the far side of the display.
+\setbox0\vbox{\hangindent=20pt \hangafter=-3 \looseness=2
+  \parshape 2 0pt 100pt 10pt 90pt
+  \noindent AA$$B$$\message{PROBE:after=[\the\hangindent][\the\hangafter][\the\looseness][\the\parshape]}AA\par
+  \message{PROBE:ended=[\the\hangindent][\the\hangafter][\the\looseness][\the\parshape]}}
+
+% ...and the `\par` that really does end the paragraph resets them, which is
+% the `PROBE:ended` line above.
+\showthe\escapechar
+\end

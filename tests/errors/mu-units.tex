@@ -1,0 +1,44 @@
+% `tex.web` §454 is a *separate* scan, not another row in §458's unit table:
+%
+%     @<Scan for \(m)|mu| units and |goto attach_fraction|@>=
+%     begin @<Scan for (units) that are internal dimensions…@>;
+%     if scan_keyword("mu") then goto attach_fraction
+%     else begin print_err("Illegal unit of measure (");
+%       print("mu inserted)");
+%       help4("The unit of measurement in math glue must be mu.")
+%       ("To recover gracefully from this error, it's best to")
+%       ("delete the erroneous units; e.g., type `2' to delete")
+%       ("two letters. (See Chapter 27 of The TeXbook.)");
+%       error; goto attach_fraction;
+%       end;
+%     end
+%
+% reached from §453's `if mu then …`.  So `mu` is the only unit math glue
+% takes, and no other quantity takes `mu` at all.  Two rules, and this engine
+% had neither: `mu` sat in the ordinary table, where it was accepted by
+% everything, and the complaint named `pt` whatever was being measured.
+%
+% §448's `mu` argument reaches every level — `\mskip`, `\mkern`, a `\muskip`
+% register, a mu parameter, `\advance` on either, and eTeX's `\muexpr`, where
+% it has to hold for the whole expression and not just its outermost term.
+\catcode`\{=1 \catcode`\}=2 \catcode`\$=3
+\font\r=cmr10 \r \hsize100pt \parindent0pt
+$\mskip1A$\par
+$\mkern2A$\par
+\muskip3=4A
+\thinmuskip=5A
+\advance\muskip3 by 6A
+\dimen0=1mu
+\showthe\muskip3 \showthe\thinmuskip \showthe\dimen0
+
+% §445/461: an internal glue spec at the other level is retained whole,
+% after a diagnostic that says TeX will identify 1mu with 1pt.  This is not
+% the literal-unit error above: both operands are valid glue values, and their
+% infinite-order components must survive the coercion too.
+\thinmuskip=1mu plus 2fill minus 3mu
+\skip1=\thinmuskip
+\message{PROBE:skip1=\the\skip1}
+\skip0=4pt plus 5fil minus 6pt
+\muskip1=\skip0
+\message{PROBE:muskip1=\the\muskip1}
+\end

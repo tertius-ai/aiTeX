@@ -1,0 +1,30 @@
+% `tex.web` §1025: the output routine gets a nest level of its own.
+%
+%     push_nest; mode:=-vmode; prev_depth:=ignore_depth; mode_line:=-line;
+%
+% Negative, so it is *internal* vertical mode: `\ifinner` is true there, and
+% §211's `print_mode` calls it "internal vertical mode" — which §367's command
+% trace consults to decide whether to name the mode at all, since it names it
+% only when it has changed since the last line.
+%
+% This engine runs `\output` on the outer vertical list with `\prevdepth` and
+% `\prevgraf` saved rather than opening a box for it, so the mode looked outer
+% from the inside: `\ifinner` was false, and the first command *after* the
+% routine did not name its mode because as far as the trace could tell it had
+% not changed. In trip.log that is `{vertical mode: \looseness}` against our
+% bare `{\looseness}`, three hundred lines after the routine that caused it.
+\catcode`\{=1 \catcode`\}=2
+\tracingonline=1
+\tracingcommands=1
+\vsize=30pt \maxdepth=2pt
+\tracingoutput=0
+
+\output={\message{[inner=\ifinner Y\else N\fi]}\shipout\box255}
+\message{[outer=\ifinner Y\else N\fi]}
+\hbox{}\vfill\penalty-10000
+
+% The command after the routine names its mode again, because the routine's
+% was different.
+\count1=1
+\hbox{}
+\end

@@ -1,0 +1,19 @@
+% Original deterministic fixture for the complete-build document boundary.
+% The bounded calculation makes replaying the preamble measurable while its
+% small final state keeps this a test of avoided work rather than bulk cloning.
+\documentclass{article}
+\newcount\aitexprofilecount
+\aitexprofilecount=0
+\loop
+  \advance\aitexprofilecount by 1
+\ifnum\aitexprofilecount<250000
+\repeat
+\edef\aitexprofilevalue{profile-value-\the\aitexprofilecount}
+\begin{document}
+\IfFileExists{late.toc}{\def\aitexlatevalue{stable}}{\def\aitexlatevalue{first}}
+\newwrite\aitexlateout
+\immediate\openout\aitexlateout=late.toc
+\immediate\write\aitexlateout{\aitexlatevalue}
+\immediate\closeout\aitexlateout
+Document-boundary qualification.
+\end{document}

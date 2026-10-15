@@ -1,0 +1,76 @@
+% `tex.web` distinguishes primitives by `(cmd, chr)`. This engine has one
+% variant per *command*, and four families were collapsed onto one variant
+% each — so which member a control sequence was had to be recovered from the
+% way it was spelled:
+%
+%     match t.as_cs().map(resolve).as_deref() {
+%         Some("displaystyle") => Style::Display,
+%         …
+%         _ => Style::ScriptScript,   // the fallback
+%     }
+%
+% A `\let` alias spells something else, so it fell to the `_` arm. `\let\ts=
+% \textstyle` selected \scriptscriptstyle — silently, and on the page — and
+% `\let\nl=\nolimits` meant \displaylimits. expl3 renames every primitive it
+% uses into its own namespace and then undefines the original name, so this is
+% not a corner case; it is what happens to a document that loads expl3.
+%
+% §1171's four styles and §1156's three limit switches are the two that reach
+% the page. §1071's four movers are the same shape with a milder consequence:
+% the *dispatch* was already right, because `\raise` and `\moveleft` differ
+% only in a sign this engine had, but `\meaning` guessed from the current mode
+% — which is what §367's trace should do, since the modes never overlap, and
+% is arbitrary for `\meaning`, which can be asked anywhere.
+%
+% Widths are the test for the styles because a script style picks a smaller
+% font, and the same `x` set in three sizes has three widths.
+\input plain
+\font\rm=cmr10 \font\rs=cmr7 \font\rss=cmr5
+\textfont0=\rm \scriptfont0=\rs \scriptscriptfont0=\rss
+\font\mi=cmmi10 \font\mis=cmmi7 \font\miss=cmmi5
+\textfont1=\mi \scriptfont1=\mis \scriptscriptfont1=\miss
+\font\sy=cmsy10 \font\sys=cmsy7 \font\syss=cmsy5
+\textfont2=\sy \scriptfont2=\sys \scriptscriptfont2=\syss
+\rm
+\let\ds=\displaystyle \let\ts=\textstyle
+\let\ss=\scriptstyle  \let\sss=\scriptscriptstyle
+\let\li=\limits \let\nl=\nolimits \let\dl=\displaylimits
+\let\ml=\moveleft \let\mr=\moveright \let\ra=\raise \let\lo=\lower
+
+% Each style, written out and through an alias. The two must agree.
+\setbox0\hbox{$\displaystyle x$}\setbox1\hbox{$\ds x$}
+\setbox2\hbox{$\textstyle x$}\setbox3\hbox{$\ts x$}
+\setbox4\hbox{$\scriptstyle x$}\setbox5\hbox{$\ss x$}
+\setbox6\hbox{$\scriptscriptstyle x$}\setbox7\hbox{$\sss x$}
+\message{<ds=\the\wd0|\the\wd1>}
+\message{<ts=\the\wd2|\the\wd3>}
+\message{<ss=\the\wd4|\the\wd5>}
+\message{<sss=\the\wd6|\the\wd7>}
+
+% ...and the three limit switches, where a big operator's script goes above it
+% or beside it.
+\setbox8\hbox{$\displaystyle\mathop{\rm A}\limits^2$}
+\setbox9\hbox{$\displaystyle\mathop{\rm A}\li^2$}
+\setbox10\hbox{$\displaystyle\mathop{\rm A}\nolimits^2$}
+\setbox11\hbox{$\displaystyle\mathop{\rm A}\nl^2$}
+\setbox12\hbox{$\displaystyle\mathop{\rm A}\displaylimits^2$}
+\setbox13\hbox{$\displaystyle\mathop{\rm A}\dl^2$}
+\message{<li=\the\wd8|\the\wd9>}
+\message{<nl=\the\wd10|\the\wd11>}
+\message{<dl=\the\wd12|\the\wd13>}
+
+% The movers still shift the way they always did, alias or not.
+\setbox14\vbox{\moveleft 5pt\hbox{x}}
+\setbox15\vbox{\ml 5pt\hbox{x}}
+\setbox16\hbox{\raise 5pt\hbox{x}}
+\setbox17\hbox{\ra 5pt\hbox{x}}
+\message{<mv=\the\ht14|\the\ht15|\the\ht16|\the\ht17>}
+
+% §298 names each of them for itself, through an alias too.
+\message{<s=\meaning\displaystyle|\meaning\textstyle|\meaning\scriptstyle|\meaning\scriptscriptstyle>}
+\message{<sa=\meaning\ds|\meaning\ts|\meaning\ss|\meaning\sss>}
+\message{<l=\meaning\limits|\meaning\nolimits|\meaning\displaylimits>}
+\message{<la=\meaning\li|\meaning\nl|\meaning\dl>}
+\message{<v=\meaning\moveleft|\meaning\moveright|\meaning\raise|\meaning\lower>}
+\message{<va=\meaning\ml|\meaning\mr|\meaning\ra|\meaning\lo>}
+\bye

@@ -1,0 +1,22 @@
+% `tex.web` §298: `print_cmd_chr` prints a primitive by the name it was
+% registered under, and two of TeX's are a single character:
+%
+%     primitive(" ",ex_space,0);
+%     primitive("/",ital_corr,0);
+%
+% Ours knew their meanings and not their names, so the fallback spelled the
+% Rust variant: `\meaning\ ` said `\exspace` and `\meaning\/` said
+% `\italiccorrection`. §367's command trace reads the same table, so trip.log's
+% `{\ }` was `{\exspace}` here — and a document that compares `\meaning`
+% strings, which expl3 does, would compare the wrong one.
+%
+% `\-` and `\noboundary` are the same shape and are *not* covered: this engine
+% collapses both onto one primitive, so only one of the two names could be
+% right, and naming either would make the other worse.
+\catcode`\{=1 \catcode`\}=2
+\message{<space=\meaning\ >}
+\message{<ital=\meaning\/>}
+\let\sp=\ \let\ic=\/
+\message{<alias-space=\meaning\sp>}
+\message{<alias-ital=\meaning\ic>}
+\end

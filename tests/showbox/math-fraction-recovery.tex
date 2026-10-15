@@ -1,0 +1,21 @@
+% TFM-PL: vendor/trip/trip.pl
+% `tex.web` §1183: a second generalized-fraction command in one math group is
+% diagnosed and ignored. Its delimiter and thickness scanners still run, but
+% the first `\over` and the surrounding `\left...\right` retain their fields.
+\catcode`\{=1 \catcode`\}=2 \catcode`\$=3
+\font\r=cmr10 \font\mi=cmmi10 \font\sy=cmsy10 \font\ex=cmex10
+\textfont0=\r \scriptfont0=\r \scriptscriptfont0=\r
+\textfont1=\mi \scriptfont1=\mi \scriptscriptfont1=\mi
+\textfont2=\sy \scriptfont2=\sy \scriptscriptfont2=\sy
+\textfont3=\ex \scriptfont3=\ex \scriptscriptfont3=\ex
+\showboxbreadth=100 \showboxdepth=100 \tracingonline=0
+\setbox0=\hbox{$\left.A\over A\abovewithdelims.?\right($}
+\showbox0
+% §720 removes a lone character's italic-correction kern from the displayed
+% clean box only after packing it, so the correction remains in the box width.
+% TRIP's A has a conspicuous 0.5pt correction that makes the node observable.
+\font\trip=trip
+\textfont1=\trip \scriptfont1=\trip \scriptscriptfont1=\trip
+\setbox1=\hbox{${A\over A}$}
+\showbox1
+\end

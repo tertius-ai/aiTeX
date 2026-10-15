@@ -1,0 +1,22 @@
+% `tex.web` §298 `print_cmd_chr`: a primitive is printed by *its own* name.
+%
+% This engine keeps the name a primitive was registered under in a side table,
+% because deriving it from the Rust variant is wrong wherever the two differ —
+% `\pdfshellescape` would print `\shellescape` and `\-` would print
+% `\dischyphen`. Two entries were missing, and they are the two whose variant
+% carries a suffix to dodge a name clash: `\meaning\string` said `\stringp` and
+% `\meaning\meaning` said `\meaningp`. §367's level-2 command trace reads the
+% same table, so both were wrong there too.
+%
+% `\meaning` through a `\let` alias is the sharper form of the same question:
+% TeX prints the primitive it came from, never the name it was reached by.
+\input plain
+\let\zs=\string \let\zm=\meaning
+\message{<\meaning\string><\meaning\meaning>}
+\message{<\meaning\zs><\meaning\zm>}
+\message{<\meaning\noexpand><\meaning\number><\meaning\romannumeral>}
+\message{<\meaning\jobname><\meaning\fontname><\meaning\the>}
+\message{<\meaning\csname><\meaning\endcsname><\meaning\expandafter>}
+% ...and the one-character ones, which is why the table exists at all.
+\message{<\meaning\-><\meaning\/><\meaning\ >}
+\bye

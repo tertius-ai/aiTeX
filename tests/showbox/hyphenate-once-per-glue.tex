@@ -1,0 +1,61 @@
+% §894 makes **one** hyphenation attempt per glue node, and §866 is the only
+% thing that calls it:
+%
+%     When the following code is activated, the |line_break| procedure is
+%     in its second pass, and |cur_p| points to a glue node.
+%
+% §896 then walks forward looking for the word to try. A character whose
+% `\lccode` is zero — an opening paren, a quote — is *stepped over* on the way:
+%
+%     if lc_code(c)<>0 then
+%       if (lc_code(c)=c)or(uc_hyph>0) then goto done2
+%       else goto done1;
+%     continue: prev_s:=s; s:=link(prev_s);
+%
+% so `(knowledge)` hyphenates as `(knowl-edge)`. §897 then collects letters and
+% stops at the first character with a zero `\lccode`:
+%
+%     if lc_code(c)=0 then goto done3;
+%
+% and that is the end of the attempt. There is no path back to §896 for whatever
+% follows, so a second word behind the same glue is never tried.
+%
+% `(semi)stable` is the case that separates the two halves. The word §896 finds
+% is `semi`; four letters cannot be hyphenated with `\lefthyphenmin=2` and
+% `\righthyphenmin=3`; and `stable` — which on its own is `sta-ble` — is never
+% looked at. Stepping over the `)` as though still searching gives
+% `(semi)sta-ble`, one discretionary that pdfTeX does not have, and it was worth
+% a whole word of page 2 in 2608.17397v1.
+\input plain
+\hsize=80pt
+\parindent=0pt
+\pretolerance=-1
+\tolerance=9999
+\showboxbreadth=100
+\showboxdepth=10
+% The word behind the second `)` must stay whole.
+\setbox0=\vbox{\noindent XX (semi)stable YY\par}
+\showbox0
+% …while a word behind a *leading* zero-lccode character is still reached.
+\setbox0=\vbox{\noindent XX (knowledge) YY\par}
+\showbox0
+% Two of them, and a quote, ahead of the word.
+\setbox0=\vbox{\noindent XX ((knowledge YY\par}
+\showbox0
+\setbox0=\vbox{\noindent XX ``knowledge YY\par}
+\showbox0
+% No punctuation at all: the plain case still hyphenates.
+\setbox0=\vbox{\noindent XX knowledge YY\par}
+\showbox0
+% A word, then punctuation, then a second word — the second gets no attempt.
+\setbox0=\vbox{\noindent XX able)knowledge YY\par}
+\showbox0
+% …but a glue between them arms a fresh one.
+\setbox0=\vbox{\noindent XX able) knowledge YY\par}
+\showbox0
+% The first word of a paragraph is preceded by the `\parindent` box, not glue,
+% so it is never hyphenated — `\noindent` above makes that box empty but it is
+% still not a glue node.
+\setbox0=\vbox{\noindent knowledge XX\par}
+\showbox0
+\end

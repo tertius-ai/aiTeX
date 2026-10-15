@@ -1,0 +1,52 @@
+% `tex.web` §336-§339: what happens when a balanced scan meets something that
+% may not be inside it.
+%
+%     @<Tell the user what has run away and try to recover@>=
+%     begin runaway;
+%     if cur_cs=0 then print_err("File ended")
+%     else begin cur_cs:=0; print_err("Forbidden control sequence found"); end;
+%     print(" while scanning "); … print(" of "); sprint_cs(warning_index);
+%
+% §305's `scanner_status` says what is being scanned and so what the message
+% calls it — a `definition`, a `use`, a `preamble`, a `text` — and
+% `warning_index` says whose. §306 prints what had been absorbed so far under a
+% `Runaway text?` heading, §337 backs the offending name up so it can be reread
+% *as a command*, and §339 inserts the `}` that was missing.
+%
+% The recovery has one more step that is easy to miss: §337 ends by turning the
+% offending token into a space, and the scan carries on with it. So the token
+% list here ends `a<space>` and not `a`, the inserted `}` closes the group on
+% the next turn of the loop, and the `\outer` name arrives afterwards as an
+% ordinary command. Breaking out of the scan instead leaves that `}` to
+% `main_control`, which meets it with nothing open and says `Too many }'s` a
+% second time.
+%
+% Until this existed, `\outer` was recorded and never enforced, and a runaway
+% swallowed the rest of the file. trip.tex line 354 does exactly that on
+% purpose — `\tokens{\a^^@^^@a\par!` with an `\outer` name inside and no
+% closing brace — so everything after it was never read: ninety lines of
+% trip.tex and eight of its fourteen shipped pages.
+%
+% §262's `print_cs` prints the name through §48's string pool, in which every
+% character below 32 *is* the two-character string `^^X`. So a name made of
+% control characters — trip.tex's `\a^^@^^@a`, whose middle two characters are
+% NUL — is quoted readably rather than written raw into the log. No case here
+% builds such a name: reproducing one needs NUL to be a letter, and getting
+% *that* right is its own divergence (ours keeps the NULs in the name where
+% TeX does not). trip.log is where this half was measured.
+\catcode`\{=1 \catcode`\}=2 \catcode`\#=6
+\outer\def\bad{X}
+\toksdef\tokens=9
+
+% Absorbing a token list: `text of \tokens`.
+\tokens{a\bad b}
+\message{PROBE:one=[\the\tokens]}
+
+% A macro body: `definition of \worse`.
+\def\worse{p\bad q}
+\message{PROBE:two=[\meaning\worse]}
+
+% ...and an ordinary use of the same name is fine.
+\bad
+\message{PROBE:three=ok}
+\end

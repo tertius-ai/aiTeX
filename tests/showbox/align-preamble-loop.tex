@@ -1,0 +1,41 @@
+% A repeating `\halign` preamble — `\halign{&…}`, whose leading `&` marks the
+% loop — and two things `tex.web` §793 does when a row runs past its last
+% declared column.
+%
+%     begin link(q):=new_null_box; p:=link(q); {a new alignrecord}
+%     info(p):=end_span; width(p):=null_flag; cur_loop:=link(cur_loop);
+%     @<Copy the templates from node |cur_loop| into node |p|@>;
+%     cur_loop:=link(cur_loop);
+%     link(p):=new_glue(glue_ptr(cur_loop));
+%
+% First, the new column goes *after* the preamble's final tabskip and brings a
+% fresh copy of its own following glue. So the boundary that was "after the
+% last column" stays put and becomes the one between the old last column and
+% the new one; the tabskips cycle 7, 0, 10, 0, 10 and not 7, 0, 0, 0, 10.
+%
+% Second, `width(p):=null_flag` — −2^30, not zero — and §801 raises it with
+% `if w>width(cur_align)`. So a column whose every entry is *narrower than
+% nothing* takes their width: the third column here holds one `\kern-10pt` and
+% is −10pt wide. A zero floor makes every row 10pt too wide, which is what
+% amsmath's `align` walks into, its tag column being `\omit\kern-\alignsep@`.
+%
+% Third, §791 lengthens the preamble in `fin_col`, before it looks at what the
+% entry holds — so `\omit` does not exempt a column from being created. The
+% second alignment below is the same as the first with the row that would have
+% created column 3 the ordinary way removed.
+\input plain
+% `\hbadness` only silences the underfull report the rigid tabskips earn;
+% `\halign to` is what makes every row the alignment's own width, which is
+% `tex.web` §810 and not what is under test here.
+\showboxdepth=3 \showboxbreadth=40 \tracingonline=0 \hbadness=10000
+\tabskip=7pt
+\setbox0=\vbox{\halign to 200pt{&\hfil#\tabskip=0pt&#\hfil\tabskip=10pt\cr
+A&B\cr
+C&D&\omit\kern-10pt\cr
+E&F&G&H\cr}}
+\showbox0
+\setbox0=\vbox{\halign to 200pt{&\hfil#\tabskip=0pt&#\hfil\tabskip=10pt\cr
+A&B\cr
+C&D&\omit\kern-10pt\cr}}
+\showbox0
+\end

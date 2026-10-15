@@ -1,0 +1,20 @@
+% `tex.web` §1142 `start_eq_no`: an equation number is a formula of its own.
+%
+%     push_nest; mode:=mmode; incompleat_noad:=null; …
+%
+% Not the display it sits beside — *inner* math, which §211 calls "math mode"
+% and §1204 sets with `mlist_to_hlist(p,text_style,false)`. §367 names the mode
+% for the first command inside it, so leaving the style at display made ours
+% report the change one command late: `{superscript character ^}` bare where
+% TeX has `{math mode: superscript character ^}`, and then `{math mode:
+% end-group character }}` where TeX has already moved on.
+\catcode`\{=1 \catcode`\}=2 \catcode`\$=3 \catcode`\^=7
+\tracingonline=1 \tracingcommands=1
+\hsize=100pt \parindent=0pt
+\font\rm=cmr10 \textfont0=\rm \scriptfont0=\rm \scriptscriptfont0=\rm \rm
+\font\mi=cmmi10 \textfont1=\mi \scriptfont1=\mi \scriptscriptfont1=\mi
+\font\sy=cmsy10 \textfont2=\sy \scriptfont2=\sy \scriptscriptfont2=\sy
+\font\ex=cmex10 \textfont3=\ex \scriptfont3=\ex \scriptscriptfont3=\ex
+\noindent A$$B\eqno C^D$$
+\message{PROBE:done}
+\end

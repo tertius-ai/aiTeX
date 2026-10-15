@@ -1,0 +1,42 @@
+% Three more families, and a help text that was under the wrong message.
+%
+% §445 — an integer constant past 2147483647. TeX clamps and says so, once,
+% whichever radix it was written in. Overflowing silently gave a number nothing
+% in the document had asked for.
+%
+% §1244 — `\prevgraf` set negative. TeX *declines* rather than clamping: the old
+% value stays, and "I allow only nonnegative values here."
+%
+% §373 — `\endcsname` with no `\csname` open. Ignored, and said so. It was inert
+% here, so an unbalanced `\csname` — the usual way to meet this — left nothing
+% to go on.
+%
+% The help text under §403's `Missing { inserted` was §1084's, the text for
+% `A <box> was supposed to be here`. Anyone who followed it went looking for a
+% missing `\hbox` when what was missing was a `{`. §403's own text is
+% "A left brace was mandatory here, so I've put one in."
+\catcode`\{=1 \catcode`\}=2
+
+% §445, all three radices, with the clamped value each time
+\count0=99999999999
+\message{PROBE:dec=\the\count0}
+\count1="FFFFFFFFF
+\message{PROBE:hex=\the\count1}
+\count2='7777777777777
+\message{PROBE:oct=\the\count2}
+
+% ...and the largest number that is not too big
+\count3=2147483647
+\message{PROBE:max=\the\count3}
+
+% §1244: declined, not clamped — \prevgraf keeps what it had
+\prevgraf=4
+\prevgraf=-5
+\message{PROBE:prevgraf=\the\prevgraf}
+
+% §373
+\endcsname
+% ...and a balanced \csname is silent
+\expandafter\relax\csname relax\endcsname
+\message{PROBE:csname-ok}
+\end

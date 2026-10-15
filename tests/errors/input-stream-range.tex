@@ -1,0 +1,15 @@
+% `tex.web` §§435, 509, and 1375: `\openin`, `\closein`, and `\ifeof`
+% scan a four-bit stream number. An invalid value raises `Bad number` and is
+% changed to zero before the operation; `\read` is deliberately different and
+% accepts an arbitrary integer, mapping values outside 0..15 to the terminal.
+\catcode`\{=1 \catcode`\}=2
+\immediate\openout0=stream-probe.dat
+\immediate\write0{one line}
+\immediate\closeout0
+
+\openin100=stream-probe.dat
+\message{PROBE:open-zero=\ifeof0 closed\else open\fi}
+\message{PROBE:ifeof-recovery=\ifeof100 closed\else open\fi}
+\closein-1
+\message{PROBE:close-zero=\ifeof0 closed\else open\fi}
+\end

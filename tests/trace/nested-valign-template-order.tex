@@ -1,0 +1,11 @@
+% A `\valign` entry ends a paragraph before its frozen v-template marker is
+% executed. Nest the vertical alignment inside a horizontal one, and make the
+% first entry's final `\char` scan recover at the closing brace, as in TRIP.
+% The template command, paragraph packing, and save-stack restores must retain
+% TeX's order across both alignment levels.
+\catcode`\{=1 \catcode`\}=2 \catcode`\#=6 \catcode`\&=4
+\font\r=cmr10 \r
+\tracingonline=1 \tracingcommands=2 \tracingrestores=1
+\setbox0=\vbox{\looseness=-1\halign{#&#\cr
+  A&\omit\valign to -5pt{#&#\cr A\char`}\span\cr{ }\span\cr}\cr}}
+\end

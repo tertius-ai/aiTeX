@@ -1,0 +1,91 @@
+% §785's `align_peek` reads the token that starts an alignment entry with
+% `get_x_token`:
+%
+%     procedure align_peek;
+%     label restart;
+%     begin restart: align_state:=1000000; @<Get the next non-blank non-call token@>;
+%
+%     @<Get the next non-blank non-call token@>=
+%     repeat get_x_token;
+%     until cur_cmd<>spacer
+%
+% so in TeX82 the entry's first token is expanded *before* §788's `init_col`
+% backs it up and puts the u-template in front of it. e-TeX's `\protected`
+% takes that back: pdfTeX leaves a protected macro alone here and expands it
+% after the template has run.
+%
+% It matters because the u-template is where the entry's mode is decided.
+% LaTeX's `array` uses `$\displaystyle#$`, and `\{` is
+%
+%     \{=\protected macro:
+%     ->\ifmmode \lbrace \else \textbraceleft \fi .
+%
+% so expanding it early answers `\ifmmode` in the alignment's internal vertical
+% mode and takes the text branch. `\textbraceleft` is `\char123`, which §1151
+% turns into a *math* character through `\mathcode123 = "007B` — family 0,
+% character 123, an en dash in OT1 rather than the brace from family 2.
+%
+% There is no `etex.ch` here, so the rule was measured rather than read: the
+% same probe at the head of an entry, once protected and once not.
+%
+%     \def\pr{...}            pdfTeX expands it early -- reports the outer mode
+%     \protected\def\pp{...}  pdfTeX leaves it       -- reports math
+%
+% The unprotected one reporting the outer mode in pdfTeX too is what says this
+% is `\protected`'s doing, and not a difference in when the template arrives.
+\catcode`\{=1 \catcode`\}=2 \catcode`\#=6 \catcode`\$=3 \catcode`\&=4
+\font\r=cmr10 \r \hsize=300pt
+\font\mi=cmmi10 \font\sy=cmsy10 \font\ex=cmex10
+\textfont0=\r \scriptfont0=\r \scriptscriptfont0=\r
+\textfont1=\mi \scriptfont1=\mi \scriptscriptfont1=\mi
+\textfont2=\sy \scriptfont2=\sy \scriptscriptfont2=\sy
+\textfont3=\ex \scriptfont3=\ex \scriptscriptfont3=\ex
+
+\protected\def\pp{\ifmmode\message{<prot:math>}\else\message{<prot:outer>}\fi}
+
+% An alignment whose template opens math: the protected macro waits for the `$`.
+$$\halign{$\displaystyle#$&#\cr
+\pp x&y\cr}$$
+
+% The *unprotected* counterpart is deliberately not here. It is still wrong: we
+% report math where pdfTeX reports the outer mode, because §791 and §785 peek
+% *before* `init_span`/`init_row` push the entry's nest and we peek after. That
+% is an ordering question rather than a `\protected` one, so it is tracked on
+% its own rather than smuggled into this file, which would fail as a whole and
+% say nothing about what does work.
+
+% The very first entry of an alignment reaches `align_peek` by a different
+% route than a later row does — `\halign`'s own start rather than after a
+% `\cr` — so it is worth both.
+$$\halign{$\displaystyle#$\cr
+\pp a\cr}$$
+
+% After `\noalign`, which is the third way in: `align_peek` runs again when the
+% no-align group closes, and that is the path LaTeX's `\hline` uses.
+$$\halign{$\displaystyle#$\cr
+\pp b\cr\noalign{\kern1pt}\pp c\cr}$$
+
+% A protected macro that is *not* first in the entry was never peeked at, so it
+% expands inside the template either way — the control case that a fix which
+% simply stopped expanding here would still pass.
+$$\halign{$\displaystyle#$\cr
+d\pp\cr}$$
+
+% A template that does *not* open math: the protected macro still waits, and
+% still reports whatever the template left it in. This separates "waits for the
+% template" from "always says math".
+$$\halign{#\cr
+\pp e\cr}$$
+
+% `\protected` on a macro with arguments — `MacroDelim` rather than `Macro`
+% internally, and both have to be covered.
+\protected\def\pq#1{\ifmmode\message{<arg:math:#1>}\else\message{<arg:outer:#1>}\fi}
+$$\halign{$\displaystyle#$\cr
+\pq f\cr}$$
+
+% An expandable *primitive* is still expanded at the peek — `\protected` cannot
+% be applied to one, and a fix that stopped expanding everything here would
+% change this.
+$$\halign{$\displaystyle#$\cr
+\number\the\numexpr 6*7\relax\cr}$$
+\end

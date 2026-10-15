@@ -1,0 +1,82 @@
+% §879 discards what follows a break — glue, kerns, penalties, math nodes —
+% so the line a break starts really begins at the first node that survives:
+%
+%     @<Prune unwanted nodes at the beginning of the next line@>=
+%     begin r:=link(q);
+%     if r=null then …
+%     if is_char_node(r) then goto done1;
+%     if non_discardable(r) then goto done1;
+%     if type(r)=kern_node then if subtype(r)<>explicit then goto done1;
+%     …
+%
+% That surviving node can be *past* the breakpoint being considered, when
+% everything between the two breaks is discardable. §840 has no rule against
+% it: `cur_active_width` simply accumulates nothing, the line is empty, and the
+% candidate is scored like any other. We skipped it instead, and dropped
+% exactly one predecessor at each such breakpoint — always the most recently
+% created one, because that is the one whose surviving material lies furthest
+% ahead.
+%
+% 2608.17211v1's address line is the shape: a `$…$` followed by a space and a
+% `\kern`. The math node breaks, the glue and the kern after it are both
+% discarded, and the line from that break starts at the `2` of "2367" — past
+% the kern, which is the very next breakpoint. TeX weighs it:
+%
+%     $\OML/cmm/m/it/10 N[]$
+%     @\math via @@0 … @@3     b=0 p=0 d=100
+%     @@4: line 1.2 t=100 -> @@0
+%
+%     @\kern via @@0 … @@3     b=0 p=0 d=100
+%     @\kern via @@4 b=0 p=0 d=100      <-- and we did not
+%     @@5: line 1.2 t=100 -> @@0
+%
+% The missing candidates rarely win, so the paragraphs mostly came out right
+% anyway; they matter where the winner is close. Applying §1025's `mode :=
+% -vmode` (which moves material out of a resumed paragraph, so paragraphs get
+% re-broken) turned three of the corpus's papers on exactly this, one line
+% break each — 2608.17211v1 setting `inhomo-geneous` where TeX sets
+% `inhomoge-neous`.
+%
+% `\rightskip` with infinite stretch is what makes every candidate b=0 here, so
+% none is rejected on badness and the trace shows the full set. That is also
+% what the address block in the paper has.
+\catcode`\{=1 \catcode`\}=2 \catcode`\$=3
+\font\r=cmr10 \r \parindent=0pt
+\font\mi=cmmi10 \font\sy=cmsy10 \font\ex=cmex10
+\textfont0=\r \scriptfont0=\r \scriptscriptfont0=\r
+\textfont1=\mi \scriptfont1=\mi \scriptscriptfont1=\mi
+\textfont2=\sy \scriptfont2=\sy \scriptscriptfont2=\sy
+\textfont3=\ex \scriptfont3=\ex \scriptscriptfont3=\ex
+\tracingparagraphs=1 \tracingonline=0
+\hsize=200pt \rightskip=0pt plus 1fil
+
+% The paper's shape: math, a space, an explicit kern. §866 makes the math node
+% a breakpoint only because glue follows it — without that space it is not one
+% at all, and the case tests nothing. The kern breaks in turn because glue
+% follows *it* (§868), and the break at the math node has the glue, the kern and
+% the glue after it all discarded.
+Av. Fernando Correa, $N$ \kern2pt 2367\par
+
+% Two discardables in a row after the break, so the surviving node is further
+% still: math, glue, kern, glue, kern.
+Alpha beta $x$ \kern2pt \kern3pt gamma delta\par
+
+% A penalty among them — also discardable, and also skipped by §879.
+Some words $y$ \penalty100 \kern2pt zeta eta theta\par
+
+% The same with no math, so the break is at ordinary glue: the candidate whose
+% material lies ahead is still the newest one.
+One two three\kern2pt \kern2pt four five six seven eight\par
+
+% A control: nothing discardable between the breaks, so every predecessor's
+% line starts before the breakpoint and none was ever dropped. A fix that
+% clamped too eagerly would show up here as a *changed* set of candidates.
+Nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen\par
+
+% Long enough to need real decisions rather than b=0 everywhere: with the
+% stretch finite again, badness rejects some candidates and the surviving set
+% is what the fix must not disturb.
+\rightskip=0pt
+Alpha bravo charlie delta echo foxtrot golf hotel india juliet kilo lima mike
+november oscar papa $q$ \kern2pt romeo sierra tango uniform victor whiskey\par
+\end

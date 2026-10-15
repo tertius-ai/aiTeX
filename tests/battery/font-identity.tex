@@ -1,0 +1,61 @@
+% What a font *is*, as distinct from what it is called.
+%
+% `tex.web` §1257: `\the\font` gives back the font **identifier** — the control
+% sequence `\font` created — not a number. A macro that wants to restore the
+% current font later writes `\edef\restore{\the\font}`, and a number would be
+% useless to it. Ours answered `0`, which was not even a token.
+%
+% §1260: a `\font` naming a file and size already loaded does *not* load a
+% second copy; the two identifiers become the same font, which `\ifx` reports
+% and which `\fontdimen` set through one changes in the other. §1258 then
+% overwrites the identifier text, so the name `\the\font` answers with is the
+% *last* control sequence bound to that font, not the first.
+%
+% §1258 also bounds `scaled`: "The magnification ratio must be between 1 and
+% 32768", and anything else is an error and becomes 1000 — the design size.
+% trip.tex is built on that. It writes `\font\rip=trip\a` where `\a` expands to
+% ` SCALED 3~2769` (the `~` is catcode 9, so 32769) and comments "font \rip
+% will be the same as \trip". It is the same only because the magnification is
+% illegal and is replaced by 1000. Taking the number at face value gave a font
+% thirty-two times too big *and* a second copy of one already loaded, so the
+% current font had the wrong name from trip.tex's thirtieth line onward.
+\catcode`\{=1 \catcode`\}=2 \catcode`\#=6
+
+\font\first=cmr10 \first
+\message{<the-font=\the\font>}
+\message{<fontname=\fontname\font>}
+
+% The same file at the same size: one font, two names, and the later name wins.
+\font\second=cmr10
+\message{<same=\ifx\first\second Y\else N\fi>}
+\second
+\message{<after-second=\the\font>}
+\first
+\message{<after-first=\the\font>}
+
+% A different size is a different font.
+\font\bigger=cmr10 at 20pt
+\message{<bigger-differs=\ifx\first\bigger Y\else N\fi>}
+
+% `scaled 1000` is the design size, so it is the *same* font as no size at all.
+\font\unscaled=cmr10 scaled 1000
+\message{<scaled1000-same=\ifx\first\unscaled Y\else N\fi>}
+
+% `\fontdimen` set through one name is visible through the other, which is the
+% observable consequence of their being one font rather than two.
+\fontdimen1\first=3pt
+\message{<slant-through-second=\the\fontdimen1\second>}
+
+% `\the\font` of an explicitly named font, and of `\nullfont`.
+\message{<explicit=\the\bigger>}
+\nullfont \message{<null=\the\font>}
+
+% The token returned by `\the\font` is TeX's frozen identifier, not the
+% public control sequence that happens to print with the same name. Redefining
+% that public name later must not change what an already-saved token selects.
+\edef\restorefirst{\the\first}
+\let\unscaled=\relax
+\restorefirst
+\message{<frozen-still-selects=\fontname\font>}
+
+\end

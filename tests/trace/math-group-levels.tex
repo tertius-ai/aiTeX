@@ -1,0 +1,41 @@
+% `tex.web` §1153: only an explicit `{` in math mode opens a sub-formula.
+%
+%     mmode+left_brace: begin tail_append(new_noad); back_input;
+%       scan_math(nucleus(tail));
+%       end;
+%
+% `scan_math` is what reaches `push_math(math_group)`.  Every other
+% `new_save_level` — `\insert`, `\vadjust`, `\begingroup`, a box, `\output` —
+% leaves the math list alone, however its body is delimited.
+%
+% This engine pushed a level for all of them, out of one shared `begin_group`.
+% The level was never popped, and §211's name for math turns on exactly that
+% count: a display is `display math mode` while its own list is the innermost
+% and `math mode` once anything sits above it.  So
+%
+%     $$\vadjust{\penalty7}\mkern-9mu$$
+%
+% reported `{math mode: \mkern}` where TeX reports `{display math mode:
+% \mkern}` — trip.tex line 262, and every command after it in that display.
+%
+% The four groups that *do* push are `{` itself, `\left` (§1191), each of
+% `\mathchoice`'s four (§1172/§1173), and `scan_math`'s brace form under
+% `\mathord` and its fellows (§1151).
+\catcode`\{=1 \catcode`\}=2 \catcode`\$=3
+\font\r=cmr10 \r \hsize100pt \parindent0pt
+\textfont0=\r \scriptfont0=\r \scriptscriptfont0=\r
+\textfont1=\r \scriptfont1=\r \scriptscriptfont1=\r
+\textfont2=\r \scriptfont2=\r \scriptscriptfont2=\r
+\textfont3=\r \scriptfont3=\r \scriptscriptfont3=\r
+\fontdimen22\r=1pt
+A
+\tracingcommands2 \tracingonline0
+$$\vadjust{\penalty7}\mkern-9mu\relax$$
+$$\insert0{\penalty7}\mkern-9mu\relax$$
+$$\begingroup\endgroup\mkern-9mu\relax$$
+$${B}\mkern-9mu\relax$$
+$$\left.A\right.\mkern-9mu\relax$$
+$$\mathchoice{A}{B}{C}{D}\mkern-9mu\relax$$
+$$\mathord{A}\mkern-9mu\relax$$
+\tracingcommands0
+\par\end

@@ -1,0 +1,58 @@
+% A number may be assembled out of conditionals, and every part of it is read
+% *expanding* — `tex.web` §445 for the signs, §444 for the integer digits, and
+% §452 for the decimal point and the digits after it.
+%
+% The last of those we did not do. The fraction was read with `get_token`, so a
+% `\fi` in the middle of it ended the number and everything after the `\fi` was
+% left in the input. trip.tex writes
+%
+%     \scriptspace\if00-0.\fi01pt        % this boils down to -0.01pt
+%
+% and we read `-0.` and stopped: `\scriptspace` came out `-0.0pt`, which prints
+% as `0.0pt`, and the `01` was *typeset* — which started a paragraph, fired
+% `\everypar`, and sent the run somewhere TeX never goes. Two of trip.tex's
+% spurious pages came from that one missing expansion.
+%
+% The forms here are the ones a number can be spelled with: a sign, an integer
+% digit, a decimal point and a fraction digit, each arriving from a conditional
+% rather than from the file.
+\catcode`\{=1 \catcode`\}=2 \catcode`\#=6
+
+% The fraction digits come from after a `\fi`.
+\dimen0=\if00-0.\fi01pt
+\message{<frac-after-fi=\the\dimen0>}
+
+% The decimal point itself arrives from a conditional.
+\dimen1=1\if00.\fi5pt
+\message{<point-from-if=\the\dimen1>}
+
+% The sign does.
+\dimen2=\if00-\fi2pt
+\message{<sign-from-if=\the\dimen2>}
+
+% The integer digits do (§444, which we already did).
+\dimen3=\if001\fi2pt
+\message{<int-from-if=\the\dimen3>}
+
+% The *unit* does — `scan_keyword` expands, so `p` and `t` may arrive apart.
+\dimen4=3p\if00t\fi
+\message{<unit-from-if=\the\dimen4>}
+
+% A comma is a decimal point too (§452's `continental_point_token`), and it
+% works the same way.
+\dimen5=\if00-0,\fi25pt
+\message{<comma-fraction=\the\dimen5>}
+
+% All of it at once, which is the shape trip.tex actually uses.
+\dimen6=\if00-\fi\if000\if00.\fi\fi0\if001\fi p\if00t\fi
+\message{<all-at-once=\the\dimen6>}
+
+% Integers scan the same way, including the octal and hex prefixes.
+\count0=\ifnum10=10 12\fi
+\message{<int=\the\count0>}
+\count1='\ifnum10=10 12\fi
+\message{<octal=\the\count1>}
+\count2="\ifnum10=10 12\fi
+\message{<hex=\the\count2>}
+
+\end

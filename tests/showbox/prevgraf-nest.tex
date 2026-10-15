@@ -1,0 +1,47 @@
+% `tex.web` §212 and §1244: `\prevgraf` is a field of the semantic nest, not a
+% parameter.
+%
+%     @d prev_graf == cur_list.pg_field {number of paragraph lines accumulated}
+%
+% §216's `push_nest` sets it to zero and §217's `pop_nest` throws it away, so a
+% paragraph broken inside a `\vbox` leaves the enclosing list's `\prevgraf`
+% exactly as it was. We kept one global, so every box leaked its line count
+% outward and nothing ever restored the old value. In trip.tex that showed up
+% at the first shipped page: a deferred `\write` of `\the\prevgraf` said 3
+% where Knuth's transcript says 0, three boxes after the paragraph that set it.
+%
+% §1244 reads and writes it through the same walk, and that is the other half:
+%
+%     nest[nest_ptr]:=cur_list; p:=nest_ptr;
+%     while abs(nest[p].mode_field)<>vmode do decr(p);
+%     cur_val:=nest[p].pg_field;
+%
+% `pg_field` means something else in math mode — §212 calls it a "context
+% code" — and horizontal mode has no paragraphs of its own to count, so
+% `\prevgraf` inside an `\hbox` is the enclosing vertical list's, to read and
+% to set alike.
+%
+% §1025 pushes a nest level for `\output` too, so a routine sees `\prevgraf` 0
+% however many lines the page's last paragraph came to, and §1026 puts the old
+% value back.
+\catcode`\{=1 \catcode`\}=2
+\showboxbreadth=1 \showboxdepth=0
+\hsize=100pt \parindent=0pt \vsize=30pt \maxdepth=2pt
+\font\rip=cmr10 \rip
+\output={\message{[inout=\the\prevgraf]}\shipout\box255\message{[endout=\the\prevgraf]}}
+
+\message{[start=\the\prevgraf]}
+\setbox0\vbox{AAA AAA AAA AAA AAA AAA\par}
+\message{[afterbox=\the\prevgraf]}
+
+AAA AAA AAA AAA AAA AAA AAA AAA\par
+\message{[afterpar=\the\prevgraf]}
+
+% Inside an `\hbox`: the enclosing vertical list's, both ways round.
+\setbox1\hbox{\message{[inhbox=\the\prevgraf]}\prevgraf=7 }
+\message{[sethbox=\the\prevgraf]}
+
+% §218 shows every level, each with its own.
+\setbox2\vbox{AAA\par\showlists}
+\message{[end=\the\prevgraf]}
+\end

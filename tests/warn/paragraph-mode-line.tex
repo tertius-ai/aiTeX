@@ -1,0 +1,47 @@
+% `tex.web` §216 and §663: which line a paragraph *began* on.
+%
+% §1091's `new_graf` calls `push_nest`, and §216 stamps the new level with
+% `mode_line := line`. §663's `common_ending` reports a bad line against it:
+%
+%     print(") in paragraph at lines "); print_int(mode_line); …
+%
+% Every nest level has its own `mode_line`, so a box opened in the middle of a
+% paragraph gets one and the paragraph keeps its own. We had a single field,
+% used both as the paragraph's line and as the slot the *next* box is stamped
+% from — so any `\hbox` between the start of a paragraph and its end
+% overwrote it, and the warning named the box's line as the paragraph's start.
+%
+% That is the one number a reader uses to find the offending paragraph, and a
+% wrong one sends them to a line that is not even part of it.
+\catcode`\{=1 \catcode`\}=2
+\font\r=cmr10 \r \hsize=100pt \parindent=0pt \hbadness=100 \vbadness=100
+\tolerance=10000
+
+% A paragraph that opens a box in the middle of itself. Started on the first
+% line below, ended on the last.
+A\hskip 0pt plus 60pt B
+\setbox0\hbox{Q}
+\setbox1\vbox{\hbox{Q}}
+C\par
+
+% ...and one that opens none, so the two answers coincide and the case still
+% says which is which.
+A\hskip 0pt plus 60pt B\par
+
+% A box *before* a paragraph must not be its line either.
+\setbox2\hbox{Q}
+A\hskip 0pt plus 60pt B\par
+
+% A paragraph inside a \vbox, with a box inside it.
+\setbox3\vbox{A\hskip 0pt plus 60pt B
+  \setbox4\hbox{Q}
+  C\par}
+
+% \noindent starts one the same way, and so does \indent.
+\noindent A\hskip 0pt plus 60pt B
+\setbox5\hbox{Q}
+C\par
+\indent A\hskip 0pt plus 60pt B
+\setbox6\hbox{Q}
+C\par
+\end

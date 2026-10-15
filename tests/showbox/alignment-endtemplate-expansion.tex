@@ -1,0 +1,18 @@
+% TeX keeps two inaccessible tokens named `\endtemplate`: an outer marker at
+% the end of each v-template, and an inert `endv` form produced when expansion
+% reaches that marker.  First capture the outer form with `\futurelet`, as TRIP
+% does, then pass it through the same `\expandafter` chain into `\trap`'s
+% argument.  Rejecting it there as still outer makes the malformed alignment
+% recover with one extra empty row, exposed by `\everycr`'s penalties.
+\input plain
+\showboxdepth=4 \showboxbreadth=20 \tracingonline=0
+\halign{#\cr
+  \global\futurelet\endt\relax&\cr}
+\everycr{\noalign{\penalty97}}
+\let\lb={\let\e\expandafter
+\def\trap#1{}
+\def\unbalanced{\halign\lb}
+\setbox0=\vbox{\unbalanced#\cr
+  \relax\e\e\e\err\e\e\e\endt\e\trap\cr\noexpand\cr}}
+\showbox0
+\end

@@ -1,0 +1,51 @@
+% `tex.web` §1192 and §1193: a `\right` closes the group `\left` opened, and
+% only that one.
+%
+%     if (t=right_noad)and(cur_group<>math_left_group) then
+%       @<Try to recover from mismatched \right@>
+%
+%     begin scan_delimiter(garbage,false);
+%     print_err("Extra "); print_esc("right");
+%     help1("I'm ignoring a \right that had no matching \left."); error;
+%     end
+%
+% The delimiter is scanned either way, and the `\right` is then *ignored*. We
+% closed the formula's own group with it, so `$A\right)B$` ended the math at
+% the `\right` and set `B` as text — 18.47227pt against TeX's 15.58682pt.
+%
+% Worse than the width: the group closed but its *mark* did not, so
+% `math_shift_at` went on naming a formula that no longer existed. Every
+% recovery after that in the same paragraph was measuring against a group that
+% had been gone for lines. That is what the engine's `STALE` check reports at
+% trip.tex line 256, and it is why this is not a cosmetic fix.
+%
+% §1160's opener belongs with it: `@<Get the next non-blank non-relax non-call
+% token@>`, so `scan_delimiter` skips a `\relax` rather than taking it as a bad
+% delimiter. `$A\right\relax B$` reports against the `B`; we reported against
+% the `\relax` and left `B` to be read twice.
+\catcode`\{=1 \catcode`\}=2 \catcode`\$=3
+\errorcontextlines=5 \hsize=100pt \parindent=0pt
+\font\rm=cmr10 \textfont0=\rm \scriptfont0=\rm \scriptscriptfont0=\rm \rm
+\font\mi=cmmi10 \textfont1=\mi \scriptfont1=\mi \scriptscriptfont1=\mi
+\font\sy=cmsy10 \textfont2=\sy \scriptfont2=\sy \scriptscriptfont2=\sy
+\font\ex=cmex10 \textfont3=\ex \scriptfont3=\ex \scriptscriptfont3=\ex
+\delcode`(="028300 \delcode`)="029301
+\showthe\escapechar
+
+% No `\left` at all: reported, ignored, and the formula runs on.
+\setbox0\hbox{$A\right)B$}
+\message{PROBE:bare=[\the\wd0]}
+
+% ...and the same formula written properly, for the width to be read against.
+\setbox1\hbox{$A\left(B\right)C$}
+\message{PROBE:paired=[\the\wd1]}
+
+% §1160 skips the `\relax`, so the error names the `B`.
+\setbox2\hbox{$A\right\relax B$}
+\message{PROBE:relax=[\the\wd2]}
+
+% A `\left` that *is* matched says nothing.
+\setbox3\hbox{$\left(A\right)$}
+\message{PROBE:ok=[\the\wd3]}
+\showthe\escapechar
+\end

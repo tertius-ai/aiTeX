@@ -1,0 +1,56 @@
+% Every way TeX will read an integer. See tools/battery.sh.
+\input plain
+\catcode`\@=11 \catcode`\:=11 \catcode`\_=11
+\count5=17 \dimen5=3pt
+\def\show#1{\count0=#1 \message{<\the\count0>}}
+\show{123}
+\show{-42}
+\show{--5}
+\show{+ 7}
+\show{`A}
+\show{`\A}
+\show{"FF}
+\show{'77}
+\show{\count5}
+\show{-\count5}
+\show{\numexpr 2*3\relax}
+\show{\numexpr 7/2\relax}
+\show{\catcode`\A}
+\message{<\the\numexpr 123\relax>}
+\message{<\the\numexpr `A\relax>}
+\message{<\the\numexpr "FF\relax>}
+\message{<\the\numexpr \count5\relax>}
+\message{<\the\numexpr 2*3+1\relax>}
+% Number scanning is execution, not lexing: TeX reads digits with get_x_token
+% (tex.web 445), so a macro standing for a digit is absorbed into the number.
+% expl3's whole f-type expansion rests on this, written `\romannumeral-`0`:
+% the value is negative so nothing is emitted, but scanning it expands what
+% follows until something unexpandable stops the scan.
+\def\z{5}\def\foo{ABC}\def\pair{\z 7}
+\message{<\romannumeral1\z>}
+\message{<\romannumeral-`0\foo>}
+\message{<\number1\z>}
+\message{<\number3\pair>}
+\message{<\the\numexpr 1\z\relax>}
+% Signs bind to every form of number, not only to digits -- which is why the
+% sign scan has to come first.
+\count5=17
+\message{<\number-`A>}
+\message{<\number-"FF>}
+\message{<\number-'77>}
+\message{<\number-\count5>}
+% A \chardef'd name is an internal integer, and expl3's controlled expansion
+% relies on it: \exp:w is \romannumeral and \exp_end: is a chardef'd zero, so
+% `\exp:w <tokens> ` expands <tokens> while scanning a number and terminates
+% when one of them leaves \exp_end: in front.
+\chardef\c_zero_int=0
+\let\exp:w\romannumeral \let\exp_end:\c_zero_int
+\def\lvl@one{\exp_end: ABC}\def\lvl@two{\lvl@three}\def\lvl@three{\exp_end: XY}
+\message{<\exp:w \lvl@one>}
+\message{<\exp:w \lvl@two>}
+\message{<\number\c_zero_int>}
+\chardef\half=50
+\message{<\number\half>}
+\message{<\romannumeral\half>}
+\message{<\the\numexpr\half+1\relax>}
+\bye

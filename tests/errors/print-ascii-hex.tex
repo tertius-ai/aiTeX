@@ -1,0 +1,20 @@
+% `tex.web` §49 `print_ASCII` has *three* arms, and this engine had two:
+%
+%     if s<@'100 then begin print_char("^"); print_char("^"); print(s+@'100); end
+%     else if s<@'200 then begin print_char("^"); print_char("^"); print(s-@'100); end
+%     else begin print_char("^"); print_char("^");
+%       print_lc_hex(s div 16); print_lc_hex(s mod 16); end
+%
+% Above 127 the character is written as two lowercase hex digits — `^^c8` —
+% because `^^` plus one character can only name 0..127, and §352's round trip
+% has to work for every byte a file can hold.  We wrapped the third case into
+% the second and subtracted 64 from it, which for character 200 gives 136 and
+% prints nothing readable at all.
+\catcode`\{=1 \catcode`\}=2 \catcode`\$=3
+\font\r=cmr10 \r \hsize100pt \parindent0pt
+\textfont2=\r \scriptfont2=\r \scriptscriptfont2=\r
+\textfont3=\r \scriptfont3=\r \scriptscriptfont3=\r
+\fontdimen22\r=1pt
+\catcode200=11 \catcode5=11
+$\char200 \char5 $\par
+\end

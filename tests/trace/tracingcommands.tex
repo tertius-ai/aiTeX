@@ -1,0 +1,64 @@
+% `tex.web` §367 `show_cur_cmd_chr`, called from §1031's "Give diagnostic
+% information, if requested" at the top of `main_control`: every command the
+% engine executes, named, with the mode it ran in whenever that changes.
+%
+% The largest single thing in a TRIP transcript — 1,988 of trip.log's 7,220
+% lines — and the only view of what the engine *did* as against what it
+% produced. `\tracingcommands` was registered here with nothing reading it.
+%
+% Four rules, each found by differential probe, none of them obvious:
+%
+%  1. §367: the mode is printed only when it has *changed* (`shown_mode`).
+%
+%  2. Only what `big_switch` dispatches is traced. TeX's routines swallow their
+%     own operands without returning there, so `\global`'s assignment, `\hbox`'s
+%     `{` (§645 `scan_spec`) and `\setbox`'s box command (§1073 `scan_box`) are
+%     all silent.
+%
+%  3. §1034: once a character is *appended* in horizontal mode the inner loop
+%     owns the input, so a run of letters is reported once and a `\char` inside
+%     a run not at all. "Appended" is the whole condition — a character the font
+%     does not have is reported by §581 and dropped, the loop is never entered,
+%     and the next token is dispatched normally. That is why the same probe
+%     reports every digit of `\number 12` with no font loaded and none of them
+%     with `cmr10`.
+%
+%  4. §1090 pushes a paragraph-starting command back and calls `new_graf`, so
+%     the command is dispatched twice: once in vertical mode, once in the
+%     horizontal mode it just created.
+%
+% Level 2 adds §367's `@<Expand a nonmacro@>` — every expandable *primitive*,
+% never a macro call, which is the asymmetry that makes a level-2 trace
+% readable — and §498/§509's `{true}`, `{false}` and `{case n}`.
+\catcode`\{=1 \catcode`\}=2 \catcode`\#=6 \catcode`\$=3
+\font\rip=cmr10 \rip
+\hsize=100pt \parindent=0pt \hbadness=10000
+\countdef\cz=0 \chardef\cc=65
+\def\m{Z}
+
+% --- level 1 ---------------------------------------------------------------
+\tracingcommands=1
+\relax \penalty 5 \kern 3pt \vskip 2pt
+% a run of letters from the file: one line, not three; the space ends it, and
+% the `\char` that starts the next run is reported while the `E` in it is not
+ABC \char68 E\relax
+% `\char` in vertical mode is dispatched twice
+\par
+\char70 \relax
+% operands that are not commands
+{\global\cz=1 }
+\hbox{A}\vbox{\hbox{}}
+\setbox3\hbox{}\copy3 \box3
+\cc
+\tracingcommands=0
+
+% --- level 2: expandable primitives, and which way each conditional went ----
+\tracingcommands=2
+\m \number 12 \relax
+\the\cz \relax
+\expandafter\relax\romannumeral4
+\ifnum1<2 \relax\else\relax\fi
+\iftrue\relax\fi
+\ifcase1 \or\relax\fi
+\tracingcommands=0
+\end

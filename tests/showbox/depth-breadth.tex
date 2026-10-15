@@ -1,0 +1,41 @@
+% `tex.web` §182: how much of a box a display shows, and where the `[]` that
+% stands for the rest of it goes.
+%
+% `\showboxdepth` bounds the nesting and `\showboxbreadth` the nodes per level,
+% and both are tested *before* the node is printed — so a list that is one level
+% too deep contributes `[]` to the line that introduced it, with no line break
+% in front of it, and a level that runs past the breadth gets `etc.` on a line
+% of its own.
+%
+% Two things we had wrong. The `[]` went on its own line, which shifted every
+% subsequent line of a trip.tex transcript comparison by one. And a negative
+% threshold was read as "no limit" when §182 means the opposite: `cur_length >
+% depth_threshold` with `depth_threshold = -1` is true at the very top, so
+% TeX's *default* `\showbox0` prints `> \box0= []` and nothing more.
+\catcode`\{=1 \catcode`\}=2 \catcode`\#=6
+\font\rip=cmr10 \rip
+\setbox0\vbox{\hbox{A\hbox{B\hbox{C}}}\hbox{}\penalty1 \penalty2 \penalty3
+  \penalty4 \penalty5 }
+
+% Cut short in both directions: the inner `\hbox` is one level too deep, so its
+% contents become `[]` on its own line; the fourth node onwards is `etc.`
+\showboxbreadth=2 \showboxdepth=1 \showbox0
+
+% All of it.
+\showboxbreadth=9999 \showboxdepth=9999 \showbox0
+
+% Depth zero shows the box and none of its contents.
+\showboxbreadth=0 \showboxdepth=0 \showbox0
+
+% Negative shows nothing at all — not even the box.
+\showboxbreadth=-1 \showboxdepth=-1 \showbox0
+
+% Breadth at or below zero is not "none": §182 substitutes 5.
+\showboxbreadth=0 \showboxdepth=9999 \showbox0
+
+% An empty box has no list to elide, so it gets no `[]` however low the depth.
+\setbox1\hbox{}
+\showboxdepth=0 \showboxbreadth=9999 \showbox1
+\showboxdepth=-1 \showbox1
+
+\end

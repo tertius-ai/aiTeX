@@ -1,0 +1,70 @@
+% Two things that happen to a box on its way onto a vertical list.
+%
+% §663 `\overfullrule`: a box that must shrink further than its glue allows is
+% *overfull*, and TeX leaves a rule that wide at the very end of its list. That
+% is the black bar in the margin of a line that would not fit. The rule is
+% appended after packing and the box's dimensions are not recomputed, so it
+% sticks out past the box's declared width — the whole point of it. plain.tex
+% sets `\overfullrule=5pt`, so the bar is in any plain document that ever
+% overflows a line; LaTeX sets it to zero, which is why LaTeX shows none.
+%
+% We had `\overfullrule` registered as a name with nothing reading it, so no
+% document of ours ever produced the bar — and trip.tex's transcript has five of
+% them on its first page alone.
+%
+% §1083 `adjusted_hbox_group`: an `\hbox` written in *vertical* mode and
+% appended straight to that list does not keep its insertions, marks and
+% `\vadjust` material. §651 lifts all three out of the list `hpack` is
+% measuring and §1076 drops them on the vertical list just after the box. It is
+% the same migration §888 does for the lines of a paragraph and it matters for
+% the same reasons: an `\insert` has to reach the page builder to be placed, a
+% `\mark` has to reach it to be seen, and `\vadjust{\penalty-100}` has to leave
+% a penalty the page can break at. Sealed inside the box none of them exist.
+\catcode`\{=1 \catcode`\}=2 \catcode`\#=6
+\font\rip=cmr10 \rip
+\showboxbreadth=9999 \showboxdepth=9999
+\hsize=100pt \parindent=0pt \baselineskip=12pt \lineskip=1pt \lineskiplimit=0pt
+
+% --- §663 ------------------------------------------------------------------
+\overfullrule=5pt \hfuzz=0pt
+% A box asked to be far narrower than its contents, with only finite shrink.
+\setbox0\vbox{\hbox to 5pt{AAAA}}
+\showbox0
+
+% `\hfuzz` is the tolerance: an overflow no bigger than it earns no rule.
+\hfuzz=100pt
+\setbox1\vbox{\hbox to 5pt{AAAA}}
+\showbox1
+\hfuzz=0pt
+
+% `\overfullrule` at zero — LaTeX's setting — leaves none either.
+\overfullrule=0pt
+\setbox2\vbox{\hbox to 5pt{AAAA}}
+\showbox2
+\overfullrule=5pt
+
+% Infinite shrink is never overfull: `\hss` gives way without limit, which is
+% what `\llap` is built on.
+\setbox3\vbox{\hbox to 5pt{\hss AAAA\hss}}
+\showbox3
+
+% A paragraph line that will not fit gets one too.
+\setbox4\vbox{\noindent AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\par}
+\showbox4
+
+% --- §1083 -----------------------------------------------------------------
+% An `\hbox` on a vertical list hands its `\vadjust` material out; the contents
+% of the adjustment land on the list, not a node wrapping them.
+\setbox5\vbox{\hbox{A\vadjust{\penalty 999}}\hbox{A}}
+\showbox5
+
+% A `\mark` migrates the same way.
+\setbox6\vbox{\hbox{A\mark{here}}}
+\showbox6
+
+% `\setbox` is not a vertical list: §1083 tests the box context, so material in
+% a box being stored stays inside it.
+\setbox7\hbox{A\vadjust{\penalty 999}}
+\showbox7
+
+\end

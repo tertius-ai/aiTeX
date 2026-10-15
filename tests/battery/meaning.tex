@@ -1,0 +1,8 @@
+\input plain
+\def\e#1{(e:##1)}\message{<\meaning\e>}
+\def\f#{(f:}\message{<\meaning\f>}
+\def\c[#1]{(c:#1)}\message{<\meaning\c>}
+\long\def\h#1{(h:#1)}\message{<\meaning\h>}
+\protected\def\p{(p)}\message{<\meaning\p>}
+\protected\long\def\q#1{(q:#1)}\message{<\meaning\q>}
+\bye

@@ -1,0 +1,31 @@
+% `tex.web` §1073, §1084, §1078: how much of a leader is one command.
+%
+%     any_mode(leader_ship): scan_box(leader_flag-a_leaders+cur_chr);
+%
+% §1084's `scan_box` reads the box — or the rule, which is the one place a
+% rule is legal in restricted horizontal mode — without going back through
+% `main_control`. §1078's "Append a new leader node" then reads the glue and
+% calls `append_glue` directly. So `\cleaders\hbox{A}\hskip 20pt` is *one*
+% traced command, not three; we traced `{\leaders}` `{\hbox}` `{\hskip}` where
+% Knuth's transcript has `{\cleaders}` alone.
+%
+% And it is `{\cleaders}`: §1078's three differ only in how the box is spaced
+% along the glue, but they are three `chr` values in TeX, so `\meaning` and the
+% trace name each. We had collapsed them onto one primitive, which made
+% `\meaning\xleaders` say `\leaders` — including through a `\let` alias, where
+% TeX still prints the primitive it came from.
+\catcode`\{=1 \catcode`\}=2
+\tracingonline=1
+\tracingcommands=1
+\let\zz=\cleaders
+\message{[\meaning\cleaders][\meaning\xleaders][\meaning\zz][\meaning\leaders]}
+
+\setbox0\hbox{\leaders\hbox{A}\hskip 20pt
+  \cleaders\vrule width 2pt\hskip 20pt
+  \xleaders\copy0\hskip 20pt
+  \zz\hbox{B}\hskip 20pt}
+
+% In vertical mode the glue is a `\vskip`, and the box is still scanned by the
+% leader rather than by the mode.
+\leaders\hbox{C}\vskip 20pt
+\end

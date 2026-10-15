@@ -1,0 +1,48 @@
+% `tex.web` §476, the two checks a macro's parameter text gets as it is read:
+%
+%     if t=zero_token+9 then
+%       begin print_err("You already have nine parameters");
+%       help2("I'm going to ignore the # sign you just used,")
+%         ("as well as the token that followed it."); error; goto continue;
+%       end
+%     else begin incr(t);
+%       if cur_tok<>t then
+%         begin print_err("Parameters must be numbered consecutively");
+%         help2("I've inserted the digit you should have used after the #.")
+%           ("Type `1' to delete what you did use."); back_error;
+%         end;
+%       cur_tok:=s;
+%       end;
+%
+% Both *recover*.  A tenth `#` and the token after it are dropped; a wrong
+% digit is replaced by the right one, with the offending token put back to be
+% read as part of the parameter text — `back_error`, so the context carries
+% `<to be read again>`.  We rejected the whole definition and said nothing, so
+% `\def\a#1#3{x}` defined nothing and left `{x}` to be typeset.
+%
+% And §399, which the delimited path had and the undelimited one did not:
+%
+%     loop@+ begin fast_store_new_token(cur_tok); get_token;
+%       if cur_tok=par_token then if long_state<>long_call then
+%         @<Report a runaway argument and abort@>;
+%
+% — a `\par` in the argument of a macro that is not `\long` ends the call at
+% *whatever depth* the braces are, which is what stops a missing `}` from
+% swallowing the rest of the document.  Only the delimiter exemption is
+% depth-0, because that is the only place §392 matches one.
+\catcode`\{=1 \catcode`\}=2 \catcode`\#=6
+\def\a#1#3{x}
+\def\b#1#2#3#4#5#6#7#8#9#1{y}
+\def\p#1{[#1]}
+\long\def\L#1{[#1]}
+\p{one
+
+two}
+\L{three
+
+four}
+\def\q#1\stop{(#1)}
+\q one
+
+two\stop
+\end

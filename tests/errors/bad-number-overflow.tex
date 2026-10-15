@@ -1,0 +1,45 @@
+% `tex.web` §435 and §1236, two numbers this engine took quietly.
+%
+% §435 `scan_four_bit_int` — a math family is 0..15 and nothing else:
+%
+%     procedure scan_four_bit_int;
+%     begin scan_int;
+%     if (cur_val<0)or(cur_val>15) then
+%       begin print_err("Bad number");
+%       help2("Since I expected to read a number between 0 and 15,")
+%         ("I changed this one to zero."); int_error(cur_val); cur_val:=0;
+%       end;
+%     end;
+%
+% We took the number modulo sixteen, so `\textfont16` quietly meant
+% `\textfont0` and `\scriptfont-1` meant `\scriptfont15`.  Both are errors,
+% and both read as nought.  §91's `int_error` puts the offending value on the
+% top line.
+%
+% §1236, on `\multiply` and `\divide`:
+%
+%     arith_error:=false;
+%     …
+%     if arith_error then
+%       begin print_err("Arithmetic overflow");
+%       help2("I can't carry out that multiplication or division,")
+%       ("since the result is out of range.");
+%       … error; return;
+%       end
+%
+% The `return` is the point: the *old value stays*.  TeX declines the
+% assignment rather than storing a wrapped number, which is the same shape as
+% §1243's `\spacefactor`.  We wrapped and stored, so
+% `\count0=100000 \multiply\count0 by 100000` left a negative number in the
+% register and said nothing at all.  An integer is bounded at `07777777777`
+% and a dimension at `max_dimen`.
+\catcode`\{=1 \catcode`\}=2
+\font\r=cmr10 \r \hsize100pt \parindent0pt
+\textfont16=\r
+\scriptfont-1=\r
+\showthe\textfont16
+\dimen0=16383.99998pt \multiply\dimen0 by 3 \showthe\dimen0
+\count0=100000 \multiply\count0 by 100000 \showthe\count0
+\count1=6 \multiply\count1 by 7 \showthe\count1
+\skip0=1pt plus 2pt \multiply\skip0 by 3 \showthe\skip0
+\end

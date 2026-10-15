@@ -1,0 +1,51 @@
+% \let chains. expl3 renames every primitive into its own namespace, often two
+% hops deep, and then undefines the original name -- so anything that
+% recognises a primitive by spelling stops working the moment expl3 loads.
+\input plain
+\catcode`\:=11 \catcode`\_=11
+\let\tex_if:D\if        \let\if:w\tex_if:D
+\let\tex_ifnum:D\ifnum  \let\if_int_compare:w\tex_ifnum:D
+\let\tex_number:D\number \let\int_value:w\tex_number:D
+\let\tex_fi:D\fi        \let\fi:\tex_fi:D
+\let\tex_else:D\else    \let\else:\tex_else:D
+% In the stomach.
+\if:w AA\message{<stomach-if>}\else:\message{<BAD>}\fi:
+\if_int_compare:w 1<2 \message{<stomach-ifnum>}\else:\message{<BAD>}\fi:
+% In the gullet, expanding.
+\edef\x{\if:w AA1\else: 2\fi:}\message{<edef=\x>}
+\message{<message=\if:w AB no\else: yes\fi:>}
+% In a *number* position -- a separate scanner, and one that used to test the
+% raw spelling rather than the binding.
+\message{<number=\int_value:w \if:w AA1\else: 2\fi:>}
+\count0=\if:w AA5\else: 6\fi: \message{<count=\the\count0>}
+\dimen0=\if:w AA3\else: 4\fi: pt \message{<dimen=\the\dimen0>}
+% Skipping counts aliased conditionals by meaning, not spelling.
+\if:w AB \if:w AA\message{<BAD>}\fi: \message{<BAD>}\else:\message{<skip>}\fi:
+% Prefixes reached through aliases.
+\let\tex_long:D\long \let\tex_protected:D\protected \let\tex_def:D\def
+\tex_protected:D\tex_long:D\tex_def:D\p#1{(p:#1)}\message{<prefix=\p{X}>}
+% \endcsname is a terminator, and matching its spelling means a scan that
+% never terminates -- a hang, not a wrong answer. expl3 writes \cs_end:.
+\let\cs_begin:\csname \let\cs_end:\endcsname
+\let\if_cs_exist:w\ifcsname
+\expandafter\def\cs_begin: made\cs_end:{MADE}
+\message{<csname-alias=\made>}
+\if_cs_exist:w made\cs_end: \message{<ifcs-yes>}\else:\message{<BAD>}\fi:
+\if_cs_exist:w nosuch\cs_end: \message{<BAD>}\else:\message{<ifcs-no>}\fi:
+% Quantity primitives reached through their aliases, in every scanner.
+\let\tex_count:D\count \let\tex_dimen:D\dimen \let\tex_skip:D\skip
+\let\tex_catcode:D\catcode \let\tex_the:D\the \let\tex_wd:D\wd
+\tex_count:D 5=99 \message{<alias-count=\tex_the:D\tex_count:D 5>}
+\tex_dimen:D 5=3pt \message{<alias-dimen=\tex_the:D\tex_dimen:D 5>}
+\count0=\tex_count:D 5 \message{<alias-count-read=\the\count0>}
+\dimen0=\tex_dimen:D 5 \message{<alias-dimen-read=\the\dimen0>}
+\message{<alias-catcode=\tex_the:D\tex_catcode:D`\A>}
+\setbox0=\hbox to 7pt{}\message{<alias-wd=\tex_the:D\tex_wd:D 0>}
+\message{<alias-numexpr=\the\numexpr\tex_count:D 5+1\relax>}
+% The optional \relax that terminates \numexpr/\dimexpr, through an alias.
+% expl3 writes \__int_eval_end: for it and ends every \int_eval:n that way.
+\let\__int_eval:w\numexpr \let\__int_eval_end:\relax \let\__int_value:w\number
+\message{<alias-numexpr-end=\__int_value:w \__int_eval:w 3*4+2 \__int_eval_end:>}
+\let\mydimexpr\dimexpr \let\myrelax\relax
+\message{<alias-dimexpr-end=\the\mydimexpr 2pt*3\myrelax>}
+\bye

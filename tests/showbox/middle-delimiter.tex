@@ -1,0 +1,64 @@
+% e-TeX's `\middle`. §1191 in the e-TeX change file:
+%
+%     p:=new_noad; type(p):=t; scan_delimiter(delimiter(p),false);
+%     if t=middle_noad then
+%       begin type(p):=right_noad; subtype(p):=middle_noad;
+%       end;
+%     if t=left_noad then q:=p
+%     else  begin q:=fin_mlist(p); unsave; end;
+%     if t<>right_noad then
+%       begin push_math(math_left_group); link(head):=q; tail:=p;
+%       delim_ptr:=p;
+%       end
+%
+% `\middle` is a `right_noad` carrying the subtype `middle_noad`. It closes the
+% `math_left_group` its `\left` opened and immediately opens another whose list
+% *is* the old one with the new noad appended — so the mlist that reaches §762
+% is flat:
+%
+%     left_noad … middle … right_noad
+%
+% and §762 measures the whole of it, growing all three delimiters to the same
+% `max_h`/`max_d`. That is the point: `\middle|` is as tall as the fences around
+% it, where a bare `|` is one glyph of one size.
+%
+% Undefined here until now, so `\left\langle s_i \middle| s_i^2=1
+% \right\rangle` raised "Undefined control sequence" and set the `|` as an
+% ordinary character. 2608.18024v1 writes exactly that.
+%
+% This case names an e-TeX primitive, so `tools/showbox_check.sh` will not find
+% it under `tex` and falls back to `pdftex -ini -etex` — which is the only
+% engine that can answer, `\middle` not being TeX82 at all.
+\catcode`\{=1 \catcode`\}=2 \catcode`\$=3 \catcode`\^=7 \catcode`\_=8
+\font\r=cmr10 \r \hsize=300pt \parindent=0pt
+\font\mi=cmmi10 \font\sy=cmsy10 \font\ex=cmex10
+\textfont0=\r \scriptfont0=\r \scriptscriptfont0=\r
+\textfont1=\mi \scriptfont1=\mi \scriptscriptfont1=\mi
+\textfont2=\sy \scriptfont2=\sy \scriptscriptfont2=\sy
+\textfont3=\ex \scriptfont3=\ex \scriptscriptfont3=\ex
+\showboxdepth=6 \showboxbreadth=20 \tracingonline=0
+
+% The shape from the paper: a tall-ish body, so the fences and the middle bar
+% all have to grow past one glyph.
+\setbox0=\hbox{$\left\langle a^2 \middle| b_j \right\rangle$}
+\showbox0
+
+% Nothing tall inside: every delimiter stays at its smallest size, and the
+% middle one must not grow on its own.
+\setbox0=\hbox{$\left( x \middle| y \right)$}
+\showbox0
+
+% Two of them in one pair.
+\setbox0=\hbox{$\left( x \middle| y \middle| z \right)$}
+\showbox0
+
+% A `\middle` whose delimiter is a null one — `\middle.` — which has no glyph
+% at all but still takes part in the sizing.
+\setbox0=\hbox{$\left( x \middle. y \right)$}
+\showbox0
+
+% Grown by a fraction rather than by a script, so `max_h`/`max_d` come from a
+% box and not from a character.
+\setbox0=\hbox{$\left[ {a \over b} \middle| c \right]$}
+\showbox0
+\end

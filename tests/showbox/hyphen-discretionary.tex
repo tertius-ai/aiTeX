@@ -1,0 +1,63 @@
+% `tex.web` §1035's `ins_disc`, and why a compound word may break after its
+% hyphen without anyone writing `\-`:
+%
+%     if ins_disc then
+%       begin ins_disc:=false;
+%       if mode>0 then tail_append(new_disc);
+%       end;
+%
+% The character just appended is the current font's \hyphenchar, so an empty
+% discretionary goes after it. We had none of it: every hyphenated compound in
+% every document was one unbreakable word, which forces a worse line break
+% wherever one falls near it.
+%
+% Three conditions, and each is a separate way to get it wrong.
+%
+%   * It is the *font's* hyphen character, not the literal `-`. Set
+%     \hyphenchar to `Q` and it is `Q` that gets the break and `-` that does
+%     not — which is how a font whose hyphen sits elsewhere still works.
+%
+%   * A negative \hyphenchar gets none at all. That is the same test §896
+%     applies before hyphenating a word, and setting \hyphenchar to -1 is how
+%     a document turns both off together.
+%
+%   * `mode>0`: a real paragraph. An \hbox has no lines to break, so a hyphen
+%     inside one gets nothing — including an \hbox sitting in a paragraph,
+%     where the hyphens on either side of it are treated differently.
+\catcode`\{=1 \catcode`\}=2
+\tracingonline=1 \showboxbreadth=99 \showboxdepth=99
+\hsize=200pt \parindent=0pt \vsize=200pt
+\font\r=cmr10 \r
+
+% The ordinary case.
+\hyphenchar\r=`\-
+\setbox0\vbox{A-B\par}
+\showbox0
+
+% The font's hyphen is `Q`, so `-` is an ordinary character and `Q` is not.
+\hyphenchar\r=`\Q
+\setbox1\vbox{A-BQC\par}
+\showbox1
+
+% Off.
+\hyphenchar\r=-1
+\setbox2\vbox{A-BQC\par}
+\showbox2
+
+% `\char` appends a character like any other, and gets the same break.
+\hyphenchar\r=`\-
+\setbox3\vbox{A\char`\- B\par}
+\showbox3
+
+% An \hbox gets none, in a paragraph or out of one.
+\setbox4\hbox{A-B}
+\showbox4
+\setbox5\vbox{\hbox{A-B}-C\par}
+\showbox5
+
+% ...and `\-` still contributes its own, which is not this one: it carries the
+% \hyphenchar in its pre-break text, and the character after it is not a
+% hyphen, so nothing follows it.
+\setbox6\vbox{A\-B\par}
+\showbox6
+\end

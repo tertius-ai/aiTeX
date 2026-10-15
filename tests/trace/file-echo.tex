@@ -1,0 +1,45 @@
+% `tex.web` §537, §362 and §1335: the `(./file.tex` … `)` a TeX job prints
+% around every file it reads.
+%
+%     print_char("("); incr(open_parens); slow_print(name); update_terminal;
+%
+% and at a real end of file, §362:
+%
+%     if name>17 then print_char(")"); decr(open_parens);
+%
+% and for the files still open when the job stops, §1335:
+%
+%     while open_parens>0 do
+%       begin print(" )"); decr(open_parens); end;
+%
+% All three are written against the current column, which is why this waited
+% for a printer with a column: the `(` joins whatever line is in progress and
+% the `)` lands on whatever line is last. That is nearly always §638's page
+% echo, so `[0] )` is one line and not two.
+%
+% The name is the one the file system gave, not the one the document asked
+% for — `./sub.tex` for a file beside it, an absolute path for one out of the
+% tree — so the resolved path travels back with the contents now.
+%
+% Every case under tests/ used to be written around the absence of this: a
+% report first and last, to keep messages off the lines the echo would have
+% been on. `tools/trace_check.sh` still peels the opener, because §252 and
+% §299 write `{` with `print_char` too and this engine starts a new line for
+% those — that is what is left.
+\catcode`\{=1 \catcode`\}=2
+\tracingonline=1 \hsize=100pt \vsize=20pt \parindent=0pt
+\font\r=cmr10 \r \hbadness=10000 \vbadness=10000
+\immediate\openout0=fecho.tex
+\immediate\write0{\string\message{inner}}
+\immediate\closeout0
+\showthe\escapechar
+
+% A file opened and closed: its `)` comes at the real end of the file, and the
+% `\message` inside it joins the opener's line.
+\input fecho
+\message{after}
+
+% ...and a page shipped afterwards, so the echo has something to land on.
+A\par
+\showthe\escapechar
+\end

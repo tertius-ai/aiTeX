@@ -1,0 +1,18 @@
+% `tex.web` §774: `scan_spec(align_group,false)` opens the alignment's save
+% level before §782 scans the preamble.  A `\tabskip` assignment in that
+% preamble is therefore local to the alignment, even though it is executed
+% before the first entry group opens.
+%
+% Keep both alignments in the same surrounding box group: if the preamble
+% assignment is accidentally saved in that surrounding group, the second
+% alignment inherits 10pt instead of the original 1pt.
+\input plain
+\showboxbreadth=100
+\showboxdepth=5
+\setbox0=\vbox{
+  \tabskip=1pt
+  \halign{#\tabskip=10pt\cr A\cr}
+  \halign{#\cr B\cr}
+}
+\showbox0
+\end

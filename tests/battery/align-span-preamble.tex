@@ -1,0 +1,52 @@
+% `\span` means two different things, and which one applies is decided by
+% where it appears.
+%
+% In an alignment *entry* it joins the entry to the next column — that is what
+% plain's `\multispan` is built from. In a *preamble* it means something with
+% no relation to columns at all: `tex.web` §782's `get_preamble_token` reads
+% the token after it and expands that token once, then carries on reading the
+% preamble. It is how a template can be built by a macro, and amsmath's
+% alignments are built exactly that way — `\halign{\span\align@preamble\crcr
+% …}`, where `\align@preamble` expands to the whole template.
+%
+% Our preamble reader had no case for it at all, so `\span` survived into the
+% stored template, and reaching the main loop from there it took its *entry*
+% meaning: end the cell, pop a group.
+%
+% What is checked is the observable consequence — the template really is the
+% expansion, so the columns are set with it — rather than the group level,
+% which cannot go below zero and so hides the fault at the outer level, which
+% is where it was first (and wrongly) tested.
+\catcode`\{=1 \catcode`\}=2 \catcode`\#=6
+\font\testfont=cmr10 \testfont
+\hsize=200pt \vsize=200pt \parindent=0pt
+
+% The template comes only from the expansion: without it there is no `#` in
+% the preamble at all, and the alignment cannot be built.
+\def\pre{\hfil##\hfil}
+\setbox0\vbox{\halign{\span\pre\cr A\cr BB\cr}}
+\message{<span-pre wd=\the\wd0 ht=\the\ht0 dp=\the\dp0>}
+
+% The same alignment with the template written out. It must come to the same
+% box, which is what says the expansion was used as the template and not
+% merely tolerated.
+\setbox1\vbox{\halign{\hfil#\hfil\cr A\cr BB\cr}}
+\message{<literal wd=\the\wd1 ht=\the\ht1 dp=\the\dp1>}
+
+% §782 loops, so a chain of `\span`s expands one after another — but each
+% `\span` buys exactly one expansion. `\span\c` where `\c` expands to `\d`
+% leaves `\d` unexpanded and the preamble without a `#`, which is an error in
+% real TeX; it is not tested here because a battery whose reference log has
+% errors is a battery comparing error recovery.
+\def\a{\span\b}
+\def\b{##\hskip 10pt}
+\setbox2\vbox{\halign{\span\a\cr A\cr BB\cr}}
+\message{<span-chain wd=\the\wd2 ht=\the\ht2>}
+
+% A `\tabskip` assignment in the preamble is executed as it is read (§782),
+% including one arriving through `\span`.
+\def\withskip{##\tabskip 7pt}
+\setbox5\vbox{\tabskip 0pt \halign{\span\withskip\cr A\cr}}
+\message{<span-tabskip wd=\the\wd5>}
+
+\end

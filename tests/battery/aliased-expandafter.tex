@@ -1,0 +1,27 @@
+% An aliased \expandafter, mid-digit-scan.
+%
+% \exp_after:wN is \let to \expandafter, and the digit-continuation loop
+% tested the *raw spelling* for expandability instead of resolving through
+% the \let binding -- the one check in this function that didn't, while
+% every sibling check does. So an aliased \expandafter sitting where a
+% register index continues was never run.
+%
+% l3intarray's own font-dimension trick hits this directly:
+%
+%   \fontdimen #2#1#3 \c__intarray_sp_dim
+%   with #2 = 1\exp_after:wN
+%
+% The index scan read `1`, met `\exp_after:wN`, and stopped without
+% expanding it -- leaving \exp_after:wN itself for the font scanner to
+% choke on instead of the font name it should have revealed.
+\input plain
+\catcode`\:=11 \catcode`\_=11
+\def\M#1{\message{<#1>}}
+\let\exp_after:wN\expandafter
+\def\one{1}
+\count0=1\exp_after:wN\one\number\numexpr 3\relax
+\M{a=\the\count0}
+\def\z{5}
+\count1=2\exp_after:wN\z X
+\M{b=\the\count1}
+\bye

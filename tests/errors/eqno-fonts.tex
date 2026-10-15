@@ -1,0 +1,27 @@
+% `tex.web` §1194: an equation number makes `after_math` run its preamble
+% twice, and this engine ran it neither time on that path.
+%
+%     danger:=false;
+%     @<Check that the necessary fonts for math symbols are present…@>;
+%     m:=mode; l:=false; p:=fin_mlist(null);
+%     if mode=-m then {end of equation number}
+%       begin @<Check that another $ follows@>;
+%       cur_mlist:=p; cur_style:=text_style; mlist_penalties:=false;
+%       mlist_to_hlist; a:=hpack(link(temp_head),natural);
+%       unsave; decr(save_ptr); if saved(0)=1 then l:=true;
+%       danger:=false;
+%       @<Check that the necessary fonts for math symbols are present…@>;
+%       m:=mode; p:=fin_mlist(null);
+%       end
+%
+% Once for the number, once for the display it belongs to — and the second
+% comes after the number's group is unwound, so it sees the families the
+% display was written with rather than the number's.  Between them sits §1197's
+% "Check that another $ follows", which this branch also swallowed in silence.
+%
+% So `$$\eqno^{}$` on a family with no math fonts produced nothing here where
+% TeX produces three errors: the number's font complaint, the missing second
+% `$`, and then the display's own font complaint.
+\catcode`\{=1 \catcode`\}=2 \catcode`\$=3 \catcode`\^=7
+$$\eqno^{}$
+\end

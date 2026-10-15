@@ -1,0 +1,14 @@
+% `tex.web` §§367, 526, and 1030: `\endinput` sets the global `force_eof`
+% flag while an `\input` filename is expanded. Opening the named file then
+% reads its first line before §362 consults that flag, so precisely that line
+% runs; the outer file must resume after the included file closes.
+\catcode`\{=1 \catcode`\}=2
+\tracingonline=1 \tracingcommands=2
+\immediate\openout0=endinput-sub.tex
+\immediate\write0{\noexpand\message{PROBE:first}}
+\immediate\write0{\noexpand\message{PROBE:must-not-run}}
+\immediate\closeout0
+\def\stopinput{\let\input\undefined}
+\expandafter\stopinput\input endinput-sub\endinput\input
+\message{PROBE:outer-resumed}
+\end

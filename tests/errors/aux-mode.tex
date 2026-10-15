@@ -1,0 +1,72 @@
+% `tex.web` §418 and §1243: `\spacefactor` and `\prevdepth` each belong to one
+% mode, and each is fussy about its value.
+%
+% §418, reading one:
+%
+%     if abs(mode)<>m then
+%       begin print_err("Improper "); print_cmd_chr(set_aux,m);
+%       help4("You can refer to \spacefactor only in horizontal mode;")
+%         ("you can refer to \prevdepth only in vertical mode; and")
+%         ("neither of these is meaningful inside \write. So")
+%         ("I'm forgetting what you said and using zero instead.");
+%       error;
+%       if level<>tok_val then scanned_result(0)(dimen_val)
+%       else scanned_result(0)(int_val);
+%       end
+%     else if m=vmode then scanned_result(prev_depth)(dimen_val)
+%     else scanned_result(space_factor)(int_val)
+%
+% We answered with the value whatever the mode, so `\the\spacefactor` in
+% vertical mode read 999 — a number from inside a paragraph that had already
+% ended.  Note the last line of the quotation: the nought a failed read gives
+% back is an *integer*, so `\the\prevdepth` outside vertical mode prints `0`
+% and not `0.0pt`.
+%
+% And the mode that counts is the effective one: a paragraph inside a `\vbox`
+% is horizontal, so `\prevdepth` is improper there too.
+%
+% §1243 opens with the same test for the *assignment*, and it is
+% `report_illegal_case` rather than §418's own message:
+%
+%     procedure alter_aux;
+%     begin if cur_chr<>abs(mode) then report_illegal_case
+%     else begin c:=cur_chr; scan_optional_equals;
+%       if c=vmode then begin scan_normal_dimen; prev_depth:=cur_val; end
+%
+% We had the read side and not the write, so `\prevdepth=1pt` inside an
+% `\hbox` set the enclosing vertical list's `\prevdepth` from horizontal
+% mode.
+%
+% §1243, assigning to `\spacefactor`:
+%
+%     scan_int;
+%     if (cur_val<=0)or(cur_val>32767) then
+%       begin print_err("Bad space factor");
+%       help1("I allow only values in the range 1..32767 here.");
+%       int_error(cur_val);
+%       end
+%     else space_factor:=cur_val;
+%
+% The old value stays — TeX declines rather than clamps, and clamping to 1
+% would make every following space unstretchable, since §1043 scales the
+% stretch by the factor.  We had the declining right and the *reporting*
+% missing, so a document could set nonsense and hear nothing.  §91's
+% `int_error` puts the value on the top line, not in the help.
+\catcode`\{=1 \catcode`\}=2
+\font\r=cmr10 \r \hsize100pt \parindent0pt
+A\spacefactor=0
+A\spacefactor=32768
+A\spacefactor=-1
+A\spacefactor=1000
+\par
+\vbox{\spacefactor=5}
+\spacefactor\message{PROBE: spacefactor kept following token}
+\showthe\spacefactor
+\showthe\prevdepth
+A\showthe\prevdepth\par
+\vbox{\showthe\prevdepth A\showthe\prevdepth\par}
+\hbox{\prevdepth=1pt}
+\hbox{\prevdepth\message{PROBE: prevdepth kept following token}}
+\showthe\prevdepth
+\vbox{\prevdepth=3pt \showthe\prevdepth}
+\end

@@ -1,0 +1,35 @@
+% \hyphenchar and \skewchar: per-font integers, readable in the gullet.
+%
+% The stomach assigned them and threw the value away (`let _c = ...`), and the
+% gullet could not read them at all -- `\the\hyphenchar\tenrm` handed back its
+% own text. Both halves were wrong in different ways, which is the pattern
+% behind most of the faults in this engine.
+%
+% It is not a niche primitive. expl3 uses \hyphenchar as general-purpose
+% per-font storage: l3intarray keeps an integer array's *length* there, and
+% reads it back as
+%
+%   \intarray_count:N #1 -> \int_value:w \__intarray_count:w #1
+%
+% where \__intarray_count:w is \hyphenchar. Discarding the value lost every
+% array's size.
+%
+% A newly loaded font takes both from \defaulthyphenchar and \defaultskewchar
+% as they stand at load time (verified against INITEX: 0, 0, then 88 after
+% setting it). plain.tex sets the former to 45, so its fonts hyphenate on `-`.
+\input plain
+\def\M#1{\message{<#1>}}
+\M{a=\the\hyphenchar\tenrm}
+\M{b=\the\skewchar\tenrm}
+\hyphenchar\tenrm=45
+\M{c=\the\hyphenchar\tenrm}
+\M{d=\number\hyphenchar\tenrm}
+\M{e=\ifnum\hyphenchar\tenrm=45 T\else F\fi}
+\font\seven=cmr7 \M{f=\the\hyphenchar\seven}
+\hyphenchar\seven=99 \M{g=\the\hyphenchar\seven}
+\M{h=\the\hyphenchar\tenrm}
+\skewchar\seven=7 \M{i=\the\skewchar\seven}
+\M{k=\the\hyphenchar\font}
+\M{l=\ifnum\hyphenchar\seven>0 pos\else nonpos\fi}
+\edef\x{\the\hyphenchar\seven}\M{m=\x}
+\bye

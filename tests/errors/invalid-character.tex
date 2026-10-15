@@ -1,0 +1,26 @@
+% `tex.web` §346:
+%
+%     @<Decry the invalid character and |goto restart|@>=
+%     begin print_err("Text line contains an invalid character");
+%     help2("A funny symbol that I can't read has just been input.")
+%     ("Continue, and I'll forget that it ever happened.");
+%     deletions_allowed:=false; error; deletions_allowed:=true;
+%     goto restart;
+%     end
+%
+% A character of category 15 is reported and *then* forgotten — one report
+% each, and the reading carries on with the next token.  This engine had the
+% forgetting without the report: the tokenizer stepped over the character in
+% silence, so a file with a stray control byte in it produced a document
+% missing a character and no word about why.
+%
+% The tokenizer has no error stream of its own, so it counts what it stepped
+% over and the reader reports it — after the file's position is written back,
+% which is what puts the context on the line with the character consumed.
+\catcode`\{=1 \catcode`\}=2 \catcode`\^=7
+\font\r=cmr10 \r \hsize100pt \parindent0pt
+\catcode1=15
+A^^AB
+A^^A^^AB
+\par
+\end

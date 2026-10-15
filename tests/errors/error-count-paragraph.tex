@@ -1,0 +1,18 @@
+% `tex.web` §104/§1094: the 100-error stop counts errors since the last
+% paragraph, not errors over the whole job.  Three paragraphs can therefore
+% each recover from a smaller burst, even when their combined total exceeds
+% 100.  A lifetime-global diagnostic cap used to silence the final burst.
+\catcode`\{=1 \catcode`\}=2
+\font\r=cmr10 \r
+\def\ten{\errmessage{counted fault}\errmessage{counted fault}
+  \errmessage{counted fault}\errmessage{counted fault}
+  \errmessage{counted fault}\errmessage{counted fault}
+  \errmessage{counted fault}\errmessage{counted fault}
+  \errmessage{counted fault}\errmessage{counted fault}}
+\def\four{\errmessage{counted fault}\errmessage{counted fault}
+  \errmessage{counted fault}\errmessage{counted fault}}
+\ten\ten\ten\four A\par
+\ten\ten\ten\four B\par
+\ten\ten\ten\four C\par
+\errmessage{after all three paragraphs}
+\end

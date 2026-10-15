@@ -1,0 +1,19 @@
+% `tex.web` §323: the `output_text` token list announces itself under
+% `\tracingmacros>1`, in the same `\name->body` form as the `\every...`
+% token-list parameters.  Force one page break while tracing is live.
+\catcode`\{=1 \catcode`\}=2
+\output={\shipout\box255}
+% `output_text` is stored with a protective outer brace pair. The routine
+% consumes that pair when it runs, while `\the\output` exposes it.
+\showthe\output
+\vsize=1pt
+\tracingmacros=2
+\hrule height2pt
+\penalty-10000
+% §63 suppresses an out-of-range escape character both on the parameter name
+% and on every control sequence in its token list.
+\escapechar=256
+\hrule height2pt
+\penalty-10000
+\tracingmacros=0
+\end

@@ -1,0 +1,15 @@
+% `tex.web` §476: a right brace in place of a definition's opening brace is
+% consumed, diagnosed, and interpreted as an empty replacement text. It does
+% not close an enclosing group or make the scanner swallow the following one.
+\catcode`\{=1 \catcode`\}=2
+\tracingonline=1
+\def\empty{} \def\outer{outer} \def\a{outer}
+{\def\a}\ifx\a\empty
+  \message{PROBE:def-empty=yes}\else\message{PROBE:def-empty=no}\fi
+}\ifx\a\outer
+  \message{PROBE:def-restored=yes}\else\message{PROBE:def-restored=no}\fi
+{\edef\a}\ifx\a\empty
+  \message{PROBE:edef-empty=yes}\else\message{PROBE:edef-empty=no}\fi
+}\ifx\a\outer
+  \message{PROBE:edef-restored=yes}\else\message{PROBE:edef-restored=no}\fi
+\end

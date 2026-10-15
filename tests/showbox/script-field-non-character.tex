@@ -1,0 +1,62 @@
+% §1151 reads a script's field with
+%
+%     @<Get the next non-blank non-relax non-call token@>
+%
+% — spaces *and* `\relax` skipped, macros expanded — and then:
+%
+%     letter,other_char,char_given: …
+%     char_num: … math_char_num: … math_given: … delim_num: …
+%     othercases @<Scan a subformula enclosed in braces and |return|@>
+%
+% where the subformula case is
+%
+%     begin back_input; scan_left_brace;
+%     saved(0):=p; incr(save_ptr); push_math(math_group); return;
+%     end
+%
+% Two things were missing. We skipped spaces but not `\relax`, and anything
+% that was not a math character produced an *empty* field instead of a
+% subformula.
+%
+% Together they are why `\tau_{g,1}^\Z` came out wrong in 2608.17673v1, with
+% `\newcommand{\Z}{\mathbb{Z}}`. `\mathbb` is robust, so `\Z` expands to
+% `\protect\mathbb␣{Z}`, and `\protect` is `\let` to `\relax` while typesetting.
+% The scan stopped on it, the superscript came out empty, and the `\mathbb{Z}`
+% was then read as a *fresh atom* — set after the subscript rather than above
+% it. §758 packs a two-script box as superscript, kern, subscript, so the
+% glyphs shipped as `g,1` then `Z` where TeX ships `Z` then `g,1`. Page count
+% and character count both matched pdfTeX; only the order was wrong.
+\catcode`\{=1 \catcode`\}=2 \catcode`\$=3 \catcode`\^=7 \catcode`\_=8
+\font\r=cmr10 \r \hsize=200pt
+\font\mi=cmmi10 \font\sy=cmsy10 \font\ex=cmex10
+\textfont0=\r \scriptfont0=\r \scriptscriptfont0=\r
+\textfont1=\mi \scriptfont1=\mi \scriptscriptfont1=\mi
+\textfont2=\sy \scriptfont2=\sy \scriptscriptfont2=\sy
+\textfont3=\ex \scriptfont3=\ex \scriptscriptfont3=\ex
+\showboxdepth=6 \showboxbreadth=8 \tracingonline=0
+
+% The shape that failed: a `\relax`-alias standing between `^` and the group,
+% exactly as LaTeX's `\protect` does. The superscript must still be the group,
+% and it must sit above the subscript in the vlist — not after it.
+\let\protect=\relax
+\def\Z{\protect\Zaux}
+\def\Zaux{{Z}}
+\setbox0=\hbox{$x_a^\Z$}
+\showbox0
+
+% Written the other way round in the source: the vlist order is fixed by §758,
+% not by which script came first.
+\setbox0=\hbox{$x^\Z_a$}
+\showbox0
+
+% A bare `\relax` between `^` and its field is skipped just the same.
+\setbox0=\hbox{$x_a^\relax{Z}$}
+\showbox0
+
+% The controls: a single character, and a plain group. Both worked before and
+% must keep working.
+\setbox0=\hbox{$x_a^Z$}
+\showbox0
+\setbox0=\hbox{$x_a^{Z}$}
+\showbox0
+\end

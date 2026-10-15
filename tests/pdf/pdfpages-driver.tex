@@ -1,0 +1,7 @@
+% The CLI must select pdfpages' dvipdfmx transport even though packages see
+% final-PDF mode, and must preserve the requested source-page number.
+\documentclass{article}
+\usepackage{pdfpages}
+\begin{document}
+\includepdf[pages={2,1}]{pdfpages-source.pdf}
+\end{document}

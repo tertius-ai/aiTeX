@@ -1,0 +1,40 @@
+% `tex.web` §1004, §826 and §977: glue that shrinks infinitely, in each of the
+% three places TeX refuses it.
+%
+% The objection is the same every time and the wording is not. Infinite
+% shrinkability lets a paragraph of any length fit on one line, or a page of
+% any height fit on one page — so TeX reports it, forces the order to `normal`,
+% keeps the amount, and carries on. All three help texts end by saying so.
+%
+%   §1004  on current page      — as each offending glue reaches the page
+%   §826   in a paragraph       — as the paragraph is broken
+%   §977   in box being split   — before `\vsplit` splits it
+%
+% This engine detected the page case and had done since `\pageshrink` needed
+% to stay finite, but said so in a line of its own invention, once per run,
+% at the end. The other two it did not detect at all. Being right about the
+% *value* and silent about the reason is the shape this file exists to catch:
+% the recovery was already TeX's, so nothing that compares boxes or DVI could
+% tell the difference.
+\catcode`\{=1 \catcode`\}=2
+\font\r=cmr10 \r \hsize=100pt \vsize=200pt \parindent=0pt
+\output={\shipout\box255}
+
+% §1004: on the page. Reported per offending glue, as it arrives — so the
+% count is part of the test, not just the text.
+\hbox{}\vskip 0pt minus 1fil
+\hbox{}\vskip 300pt
+
+% §826: in a paragraph.
+\setbox0\vbox{A\hskip 0pt minus 1fil\ B\par}
+
+% §977: in a box being split, before the split happens.
+\setbox1\vbox{\hbox{}\vskip 0pt minus 1fil\hbox{}}
+\setbox2\vsplit1 to 5pt
+
+% ...and finite shrinkage in all three places is not an error.
+\setbox3\vbox{A\hskip 0pt minus 3pt\ B\par}
+\setbox4\vbox{\hbox{}\vskip 0pt minus 3pt\hbox{}}
+\setbox5\vsplit4 to 5pt
+\message{PROBE:done}
+\end

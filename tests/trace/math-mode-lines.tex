@@ -1,0 +1,18 @@
+% `tex.web` §§216 and 218: every pushed math nest level owns the input line
+% on which it was entered. `\showlists` reports those lines from the current
+% sub-formula outward, rather than repeating the most recently opened level.
+\catcode`\{=1 \catcode`\}=2 \catcode`\$=3
+\font\r=cmr10 \r
+\textfont0=\r \scriptfont0=\r \scriptscriptfont0=\r
+\textfont1=\r \scriptfont1=\r \scriptscriptfont1=\r
+\textfont2=\r \scriptfont2=\r \scriptscriptfont2=\r
+\textfont3=\r \scriptfont3=\r \scriptscriptfont3=\r
+\fontdimen22\r=1pt
+\tracingonline=1 \showboxbreadth=99 \showboxdepth=99
+$$
+A{
+B{
+\scriptstyle C\showlists
+}}
+$$
+\end

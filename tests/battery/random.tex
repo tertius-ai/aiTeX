@@ -1,0 +1,56 @@
+% pdfTeX's random primitives.
+%
+% Random values cannot be compared against pdftex directly, so this asserts
+% the *properties* instead -- which is the more meaningful test anyway:
+%
+%   * a fixed seed reproduces the stream exactly (this is what documents and
+%     reproducible builds actually depend on),
+%   * different seeds give different streams,
+%   * every draw of \pdfuniformdeviate n lies in [0,n), and a negative bound
+%     is a range rather than an error,
+%   * \pdfsetrandomseed reports the *absolute* value of its argument, though
+%     the sign still selects a stream.
+%
+% Entropy is I/O and reaches the engine through the World trait, never by an
+% ambient getrandom call -- that is what keeps aitex-engine at zero
+% dependencies and a wasm32 build reachable. With no entropy available the
+% engine runs from a fixed seed, so tests and differential comparisons are
+% deterministic by construction.
+%
+% Note \pdfuniformdeviate expands to digits: it is not a \the-able quantity,
+% and `\the\pdfuniformdeviate 10` is an error in pdftex too.
+%
+% One deliberate difference is not asserted here: \pdfshellescape is 2
+% (restricted) in TeX Live and 0 in ours, because we genuinely do not run
+% shell commands. 0 is the honest answer, not a stub.
+\input plain
+\def\M#1{\message{<#1>}}
+\pdfsetrandomseed 42
+\M{seed=\the\pdfrandomseed}
+\pdfsetrandomseed -7
+\M{negseed=\the\pdfrandomseed}
+\pdfsetrandomseed 42
+\edef\x{\number\pdfuniformdeviate 1000000,\number\pdfuniformdeviate 1000000}
+\pdfsetrandomseed 42
+\edef\y{\number\pdfuniformdeviate 1000000,\number\pdfuniformdeviate 1000000}
+\M{repeatable=\ifx\x\y same\else different\fi}
+\pdfsetrandomseed 1
+\edef\p{\number\pdfuniformdeviate 1000000}
+\pdfsetrandomseed 2
+\edef\q{\number\pdfuniformdeviate 1000000}
+\M{seeds-differ=\ifx\p\q same\else different\fi}
+\M{range=\ifnum\pdfuniformdeviate 10<10 in\else OUT\fi}
+\M{nonneg=\ifnum\pdfuniformdeviate 10<0 NEG\else ok\fi}
+\M{one=\number\pdfuniformdeviate 1}
+\M{zero=\number\pdfuniformdeviate 0}
+\M{negbound=\ifnum\pdfuniformdeviate -10<10 in\else OUT\fi}
+\M{has-uniform=\ifdefined\pdfuniformdeviate y\else n\fi}
+\M{has-normal=\ifdefined\pdfnormaldeviate y\else n\fi}
+\M{has-seed=\ifdefined\pdfrandomseed y\else n\fi}
+\M{has-set=\ifdefined\pdfsetrandomseed y\else n\fi}
+\M{has-timer=\ifdefined\pdfelapsedtime y\else n\fi}
+\M{has-resettimer=\ifdefined\pdfresettimer y\else n\fi}
+\M{has-shellescape=\ifdefined\pdfshellescape y\else n\fi}
+\M{version=\the\pdftexversion}
+\M{revision=\pdftexrevision}
+\bye

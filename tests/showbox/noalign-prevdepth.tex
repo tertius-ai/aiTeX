@@ -1,0 +1,18 @@
+% `tex.web` §785: a `\noalign` body runs on the alignment's internal
+% vertical list.  The completed unset row is already there, so `\prevdepth`
+% is the depth of that row even though its final column width is not yet known.
+%
+% tabto relies on this exact operation to return to the preceding baseline:
+% `\vskip-\prevdepth`.  Exposing the capture box's `ignore_depth` sentinel made
+% that a positive 1000pt skip and inflated long algpseudocodex comments by
+% thousands of points.
+\catcode`\{=1 \catcode`\}=2 \catcode`\#=6 \catcode`\&=4
+\font\r=cmr10 \r
+\showboxdepth=4 \showboxbreadth=20 \tracingonline=0
+
+\setbox0=\vbox{\halign{#\cr
+  Alpha\cr
+  \noalign{\vskip-\prevdepth \prevdepth=-99pt \vskip\prevdepth}
+}}
+\showbox0
+\end

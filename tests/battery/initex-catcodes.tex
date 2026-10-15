@@ -1,0 +1,42 @@
+% `tex.web` §232 `initialize`, the whole of the initial category-code table:
+%
+%     for k:=0 to 255 do cat_code(k):=other_char;
+%     for k:="A" to "Z" do
+%       begin cat_code(k):=letter; cat_code(k+"a"-"A"):=letter; … end;
+%     cat_code(carriage_return):=car_ret; cat_code(" "):=spacer;
+%     cat_code("\"):=escape; cat_code("%"):=comment;
+%     cat_code(invalid_code):=invalid_char; cat_code(null_code):=ignore;
+%
+% That is all of it. `{`, `}`, `$`, `&`, `#`, `^`, `_` and `~` are *other* in
+% INITEX, and `^^I` is not a space: plain.tex is what makes them what everyone
+% thinks they are.
+%
+% We started from plain's table. Two ways that showed. A document that asks —
+% `\ifnum\catcode`\~=13`, which is how a package decides whether it may claim
+% `~` — got the wrong answer. And a category code saved without being set
+% restored wrongly: `{\catcode`\~=13 …}` gave back 13 here and 12 in TeX, so
+% `tests/trace/active-and-font-restores.tex` had to use `!` instead.
+%
+% One difference remains and is deliberate: characters above 127 that Unicode
+% calls letters are letters here, so `\héllo` is a control word. TeX82 cannot
+% see those characters at all — `initex()` says so where it is written.
+\catcode`\{=1 \catcode`\}=2
+\message{<CC9=\the\catcode9>}
+\message{<CC35=\the\catcode35>}
+\message{<CC36=\the\catcode36>}
+\message{<CC38=\the\catcode38>}
+\message{<CC94=\the\catcode94>}
+\message{<CC95=\the\catcode95>}
+\message{<CC123=\the\catcode123>}
+\message{<CC125=\the\catcode125>}
+\message{<CC126=\the\catcode126>}
+\message{<CC92=\the\catcode92>}
+\message{<CC37=\the\catcode37>}
+\message{<CC32=\the\catcode32>}
+\message{<CC13=\the\catcode13>}
+\message{<CC0=\the\catcode0>}
+\message{<CC127=\the\catcode127>}
+\message{<CC65=\the\catcode65>}
+\message{<CC97=\the\catcode97>}
+\message{<CC48=\the\catcode48>}
+\end

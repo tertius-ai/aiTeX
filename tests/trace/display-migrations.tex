@@ -1,0 +1,16 @@
+% `tex.web` §§650 and 1200–1205: display packing extracts insertions, marks,
+% and adjustments. They follow the display box on the enclosing vertical list;
+% adjustment contents are spliced in directly instead of retaining a wrapper.
+\catcode`\{=1 \catcode`\}=2 \catcode`\$=3
+\font\r=cmr10 \r
+\textfont0=\r \scriptfont0=\r \scriptscriptfont0=\r
+\textfont1=\r \scriptfont1=\r \scriptscriptfont1=\r
+\textfont2=\r \scriptfont2=\r \scriptscriptfont2=\r
+\textfont3=\r \scriptfont3=\r \scriptscriptfont3=\r
+\fontdimen22\r=1pt
+\tracingonline=1 \showboxbreadth=99 \showboxdepth=99
+\vsize=10000pt \hsize=100pt \parindent=0pt
+A
+$$\vadjust{\penalty7}\mark{display-mark}\insert0{\penalty999}A$$
+\showlists
+\end

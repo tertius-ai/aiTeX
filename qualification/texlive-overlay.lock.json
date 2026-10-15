@@ -1,0 +1,191 @@
+{
+  "schema": 1,
+  "description": "Isolated TeX Live overlay used by the arXiv holdout",
+  "base_distribution": "Ubuntu 24.04 (noble)",
+  "packages": [
+    {
+      "name": "texlive-science",
+      "version": "2023.20240207-1",
+      "filename": "texlive-science_2023.20240207-1_all.deb",
+      "bytes": 3779232,
+      "sha256": "01beac58521957fab75aeee6f07b8aacc2da94ef2c435b7fed719a5405d588d1"
+    },
+    {
+      "name": "texlive-publishers",
+      "version": "2023.20240207-1",
+      "filename": "texlive-publishers_2023.20240207-1_all.deb",
+      "bytes": 22555384,
+      "sha256": "52cb5eafded77465505f43174be3d7fe59d472a21298d4699f91ea16b5e5c623"
+    },
+    {
+      "name": "texlive-fonts-extra",
+      "version": "2023.20240207-1",
+      "filename": "texlive-fonts-extra_2023.20240207-1_all.deb",
+      "bytes": 629110220,
+      "sha256": "66b09d52492c3f32450b429af42f5d30f3df286c23cbcf2cf99031a773fadec7"
+    },
+    {
+      "name": "texlive-lang-european",
+      "version": "2023.20240207-1",
+      "filename": "texlive-lang-european_2023.20240207-1_all.deb",
+      "bytes": 16530676,
+      "sha256": "c4ab4be37feaae548e6c923b0d5f9497a3c55470735972a8a627bd100b853d50"
+    },
+    {
+      "name": "texlive-lang-german",
+      "version": "2023.20240207-1",
+      "filename": "texlive-lang-german_2023.20240207-1_all.deb",
+      "bytes": 21663084,
+      "sha256": "40cc27da50c252f5af9868d693cdf103ed1704188071c17b98b007775a7d0416"
+    },
+    {
+      "name": "texlive-lang-french",
+      "version": "2023.20240207-1",
+      "filename": "texlive-lang-french_2023.20240207-1_all.deb",
+      "bytes": 91505680,
+      "sha256": "65a93b4813e27a3a460da6fea77d50a103d3145055d15286d79ce327d6c79c49"
+    },
+    {
+      "name": "texlive-lang-portuguese",
+      "version": "2023.20240207-1",
+      "filename": "texlive-lang-portuguese_2023.20240207-1_all.deb",
+      "bytes": 12744340,
+      "sha256": "e5b91989c4095a65c9f99e513babc4f64c4892ab7412e091d40075bb1549eb4c"
+    },
+    {
+      "name": "texlive-lang-spanish",
+      "version": "2023.20240207-1",
+      "filename": "texlive-lang-spanish_2023.20240207-1_all.deb",
+      "bytes": 12408672,
+      "sha256": "9b85b7a5c67b971f37371c163aaf150db401bde515c823464186a0abecd85b85"
+    },
+    {
+      "name": "texlive-lang-greek",
+      "version": "2023.20240207-1",
+      "filename": "texlive-lang-greek_2023.20240207-1_all.deb",
+      "bytes": 79151304,
+      "sha256": "8de5b241ee136dd730659ebe1cd8aad6f78e0def8fd486d64405670c5a7e3fe2"
+    },
+    {
+      "name": "texlive-lang-other",
+      "version": "2023.20240207-1",
+      "filename": "texlive-lang-other_2023.20240207-1_all.deb",
+      "bytes": 36557236,
+      "sha256": "5d4e60cdb1a74b4777159d32be78dddbb5d5b7bf66cb55d6e3453dad68ea215a"
+    },
+    {
+      "name": "texlive-lang-polish",
+      "version": "2023.20240207-1",
+      "filename": "texlive-lang-polish_2023.20240207-1_all.deb",
+      "bytes": 8617220,
+      "sha256": "d9282665ab628a7415297d9905d2fa6aecf2fc7884007545cabfcca45ee6789b"
+    },
+    {
+      "name": "texlive-lang-italian",
+      "version": "2023.20240207-1",
+      "filename": "texlive-lang-italian_2023.20240207-1_all.deb",
+      "bytes": 10745204,
+      "sha256": "f87bc67f8bd5f60e370e9a52cf1d212c5f1147e8ae07626da426268145233c59"
+    },
+    {
+      "name": "texlive-lang-czechslovak",
+      "version": "2023.20240207-1",
+      "filename": "texlive-lang-czechslovak_2023.20240207-1_all.deb",
+      "bytes": 11060048,
+      "sha256": "fd0fecaec13101b1f5d86f79469441876cac2e802107edecd1f34c5673d57d2d"
+    },
+    {
+      "name": "texlive-lang-cyrillic",
+      "version": "2023.20240207-1",
+      "filename": "texlive-lang-cyrillic_2023.20240207-1_all.deb",
+      "bytes": 20828732,
+      "sha256": "61e7bd1b886b23637d96b7991e60b67a70c109f89880815b5dfcd0168faab25c"
+    },
+    {
+      "name": "texlive-pictures",
+      "version": "2023.20240207-1",
+      "filename": "texlive-pictures_2023.20240207-1_all.deb",
+      "bytes": 16708740,
+      "sha256": "d2c81e3e52d4f53bcf00b43660096018c50c6c1eef7368fa1bdaa13d464d3638"
+    },
+    {
+      "name": "texlive-lang-cjk",
+      "version": "2023.20240207-1",
+      "filename": "texlive-lang-cjk_2023.20240207-1_all.deb",
+      "bytes": 3934076,
+      "sha256": "9f36fc10a595360bf40691480d18a7f8a9ef3f781e50d848c1d209ee5b84dce7"
+    },
+    {
+      "name": "texlive-lang-chinese",
+      "version": "2023.20240207-1",
+      "filename": "texlive-lang-chinese_2023.20240207-1_all.deb",
+      "bytes": 50625384,
+      "sha256": "8ebcaac1d9b670668863c5834c820577fe1e94ab90988850e150b6bb51a0f49d"
+    },
+    {
+      "name": "texlive-lang-japanese",
+      "version": "2023.20240207-1",
+      "filename": "texlive-lang-japanese_2023.20240207-1_all.deb",
+      "bytes": 79596968,
+      "sha256": "9006177a04ef8d4334331ec20ab1315c51a41d1ff88bcb110333b4c4ffe5157f"
+    },
+    {
+      "name": "texlive-lang-arabic",
+      "version": "2023.20240207-1",
+      "filename": "texlive-lang-arabic_2023.20240207-1_all.deb",
+      "bytes": 28004136,
+      "sha256": "239cb9656d952aede1bc3ffdd18349a93f182a552ac2c795eba758fce4ce735b"
+    },
+    {
+      "name": "cm-super-minimal",
+      "version": "0.3.4-17",
+      "filename": "cm-super-minimal_0.3.4-17_all.deb",
+      "bytes": 5777230,
+      "sha256": "077c405afdaa841241816d0233836dda618bc6a1a80764668b9188ae4b4c3ef6"
+    },
+    {
+      "name": "gnuplot-data",
+      "version": "6.0.0+dfsg1-1ubuntu3",
+      "filename": "gnuplot-data_6.0.0+dfsg1-1ubuntu3_all.deb",
+      "bytes": 75350,
+      "sha256": "16bb825ef56fa4d969c8eb9e39dfdc3e40349d1a0638a3ce04c935e781497279"
+    },
+    {
+      "name": "latex-cjk-common",
+      "version": "4.8.5-1",
+      "filename": "latex-cjk-common_4.8.5-1_amd64.deb",
+      "bytes": 200764,
+      "sha256": "298a77bdc3c22b394920b33e2fbd39e04b1e443e8bb37dc76e3f06a0a2f19fd0"
+    }
+  ],
+  "required_files": [
+    "algorithm2e.sty",
+    "algorithm.sty",
+    "algorithmic.sty",
+    "revtex4-2.cls",
+    "revtex4-1.cls",
+    "elsarticle.cls",
+    "acmart.cls",
+    "hepthesis.cls",
+    "abntex2.cls",
+    "inconsolata.sty",
+    "zi4.sty",
+    "ngerman.ldf",
+    "brazil.ldf",
+    "french.ldf",
+    "spanish.ldf",
+    "slovak.ldf",
+    "italian.ldf",
+    "greek.ldf",
+    "finnish.ldf",
+    "slovene.ldf",
+    "indonesian.ldf",
+    "polski.sty",
+    "t2aenc.def",
+    "gnuplot-lua-tikz.sty",
+    "CJKutf8.sty",
+    "ctex.sty",
+    "bxjsbook.cls",
+    "larm1000.tfm"
+  ]
+}

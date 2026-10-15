@@ -1,0 +1,45 @@
+% `tex.web` §690–§698: a math list as `\showlists` shows it, before
+% `mlist_to_hlist` has turned any of it into nodes.
+%
+% §218 walks the whole nest and prints a block per level. A formula is a level
+% — `push_math` gives `$…$` one and every `{…}` inside another — and its list
+% is *noads*, so the display is §690's `show_math_list` rather than
+% `show_box`. Everything this engine displayed went through `show_box`, which
+% prints typeset nodes, so these levels printed nothing at all.
+%
+% It is its own format. Each noad names itself (`\mathord`, `\fraction,
+% thickness = default`, `\radical"…`, `\left"…`), and its subsidiary fields
+% are shown under it with a *history character* rather than a fixed indent:
+%
+%     print_subsidiary_data(nucleus(p),".");
+%     print_subsidiary_data(supscr(p),"^");
+%     print_subsidiary_data(subscr(p),"_");
+%
+% and `\` and `/` for a fraction's two halves. The history is what lets a
+% reader tell a superscript's contents from a nucleus's at the same depth,
+% which a `.`-per-level indent cannot say — `\.^\fam1 D` is the superscript of
+% the nucleus of the second atom, and nothing shorter states that.
+%
+% §219's auxiliary field for a math level is the `incompleat_noad`: `\over`
+% seen and no `$` yet means the list being built *is* a denominator, which is
+% the one thing a reader cannot infer from the list above it.
+\catcode`\{=1 \catcode`\}=2 \catcode`\$=3 \catcode`\^=7 \catcode`\_=8
+\tracingonline=1 \showboxbreadth=99 \showboxdepth=99
+\hsize=100pt \parindent=0pt
+% Box warnings are not what this case is about, and §660's opener still adds a
+% blank line after a page echo that TeX does not — the last distinction in the
+% historical print-ln/print-nl investigation.
+\hbadness=10000 \vbadness=10000
+\font\rm=cmr10 \textfont0=\rm \scriptfont0=\rm \scriptscriptfont0=\rm \rm
+\font\mi=cmmi10 \textfont1=\mi \scriptfont1=\mi \scriptscriptfont1=\mi
+\font\sy=cmsy10 \textfont2=\sy \scriptfont2=\sy \scriptscriptfont2=\sy
+\font\ex=cmex10 \textfont3=\ex \scriptfont3=\ex \scriptscriptfont3=\ex
+\showthe\escapechar
+
+% A display with a nested group, scripts, and a fraction whose denominator is
+% still being read: three of the four history characters at once.
+% ...and the classes naming themselves, with `\limits` as a subtype on the
+% head's line.
+\noindent A$$B{C^D_E}\mathop{P}\limits^Q\mathbin{R}\over F\showlists$$G\par
+\showthe\escapechar
+\end

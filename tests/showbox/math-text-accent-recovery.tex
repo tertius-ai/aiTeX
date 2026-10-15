@@ -1,0 +1,14 @@
+% The same §1165 recovery, viewed before and after math-list conversion. The
+% live list must contain an accent noad; the packed formula must contain the
+% math accent construction, not text-mode accent kerns written outside it.
+\catcode`\{=1 \catcode`\}=2 \catcode`\$=3
+\showboxdepth=6 \showboxbreadth=20 \tracingonline=0
+\font\r=cmr10 \r
+\font\mi=cmmi10 \font\sy=cmsy10 \font\ex=cmex10
+\textfont0=\r \scriptfont0=\r \scriptscriptfont0=\r
+\textfont1=\mi \scriptfont1=\mi \scriptscriptfont1=\mi
+\textfont2=\sy \scriptfont2=\sy \scriptscriptfont2=\sy
+\textfont3=\ex \scriptfont3=\ex \scriptscriptfont3=\ex
+\setbox0=\hbox{$\accent94 A\showlists$}
+\showbox0
+\end

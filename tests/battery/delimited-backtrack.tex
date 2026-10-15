@@ -1,0 +1,36 @@
+% `tex.web` §392-§397 and §476: matching a delimited argument, and the two
+% things that make it more than a scan for a token run.
+%
+% §476: a `#{` at the end of a parameter text makes the brace the *last token
+% of the delimiter*, not something after it. `\def\t12#101001#{…}` delimits
+% `#1` by `01001{`, so the `01001` at the front of `0100101001001{` does not
+% end the argument — no `{` follows it. We took the literal run alone and
+% matched there, handing back an empty argument.
+%
+% §397: a failed partial match is not thrown away. A match may begin *inside*
+% it, so the window is shifted one token at a time and re-tested — TeX walks
+% `u` and `v` back over the matched tokens for exactly this. Discarding the
+% partial and restarting at the current token never tries those starts, so even
+% with the brace in the delimiter the `01001{` that begins four tokens later
+% was invisible and the argument ran to the end of the file.
+%
+% Each fault alone gives a different wrong answer and together they gave a
+% third. trip.tex line 161 is an `\ifdim` whose branch turns on the result.
+\catcode`\{=1 \catcode`\}=2 \catcode`\#=6
+
+\def\t12#101001#{-.#1pt}
+\message{<brace-delim=\t120100101001001{\relax}>}
+
+% The `#{` trick with no literals before it: read up to the brace, which stays.
+\def\u#1#{[#1]}
+\message{<plain-hash-brace=\u abc{\relax}>}
+
+% A delimiter that overlaps itself, which is what needs the backtracking: the
+% first `aab` starts inside the failed match of `aab` at the front.
+\def\v#1aab{(#1)}
+\message{<overlap=\v aaabX>}
+
+% ...and an ordinary delimiter, unchanged.
+\def\w#1XY{[#1]}
+\message{<plain=\w abcXY>}
+\end

@@ -1,0 +1,11 @@
+% Legacy sources often pin graphicx's pdfTeX driver explicitly. aiTeX's PDF
+% route must translate that request back to its qualified DVI-special transport
+% instead of exposing an undefined \pdfximage primitive.
+\documentclass{article}
+\usepackage[pdftex]{graphicx}
+\pagestyle{empty}
+\begin{document}
+BEFORE IMAGE
+\includegraphics[page=2,width=72bp]{figure with space.pdf}
+AFTER IMAGE
+\end{document}

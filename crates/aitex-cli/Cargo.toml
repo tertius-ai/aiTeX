@@ -1,0 +1,36 @@
+[package]
+name = "aitex-cli"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+publish.workspace = true
+
+[dependencies]
+aitex-core = { path = "../aitex-core" }
+aitex-engine = { path = "../aitex-engine" }
+aitex-driver = { path = "../aitex-driver" }
+aitex-fonts = { path = "../aitex-fonts" }
+aitex-harness = { path = "../aitex-harness", optional = true }
+serde_json = "1"
+aitex-page = { path = "../aitex-page" }
+aitex-unicode = { path = "../aitex-unicode" }
+ring = "0.17"
+libc = "0.2"
+lz4_flex = { version = "0.14.0", default-features = false, features = ["std", "safe-encode", "safe-decode", "checked-decode"] }
+flate2 = { version = "1.1.2", default-features = false, features = ["zlib-rs"] }
+toml = { version = "0.9", default-features = false, features = ["parse", "serde"] }
+
+
+[features]
+default = ["ai"]
+ai = ["dep:aitex-harness"]
+counters = ["aitex-engine/counters"]
+
+[lints]
+workspace = true
+
+[[bin]]
+# The binary is `aitex`, not `aitex-cli`.
+name = "aitex"
+path = "src/main.rs"

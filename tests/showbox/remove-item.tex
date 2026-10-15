@@ -1,0 +1,34 @@
+% `tex.web` §1105 `delete_last`: each of the three removers takes only its own
+% kind of node.
+%
+%     if not is_char_node(tail) then
+%       if type(tail)=cur_chr then …remove it…
+%
+% `cur_chr` is the node type the command names — glue for `\unskip`, a kern for
+% `\unkern`, a penalty for `\unpenalty` — and if the last node is anything else
+% nothing happens at all.
+%
+% We had one primitive for all three and removed whichever discardable happened
+% to be last, so `\unskip` ate a kern and `\unpenalty` ate glue. That is how a
+% document loses an italic correction it never asked to lose: `\/\unskip` is
+% ordinary, and the kern `\/` just added is not what `\unskip` is for.
+\catcode`\{=1 \catcode`\}=2
+\showboxbreadth=100 \showboxdepth=100
+\font\rip=cmr10 \rip
+
+% Each remover against a node of the wrong kind: nothing goes.
+\setbox0\hbox{A\kern3pt\unskip}
+\showbox0
+\setbox1\hbox{A\hskip3pt\unkern}
+\showbox1
+\setbox2\hbox{A\hskip3pt\unpenalty}
+\showbox2
+
+% ...and against its own kind: it goes.
+\setbox3\hbox{A\hskip3pt\unskip}
+\showbox3
+\setbox4\hbox{A\kern3pt\unkern}
+\showbox4
+\setbox5\hbox{A\penalty7\unpenalty}
+\showbox5
+\end

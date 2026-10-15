@@ -1,0 +1,21 @@
+% Two zero-width math nodes that TeX deliberately preserves.
+%
+% §1113 turns `\/` in math mode into a zero kern. The character's actual
+% italic correction is supplied later by mlist-to-hlist conversion, so both
+% nodes appear after an italic math letter even though only one has width.
+%
+% §749 tests whether an operator nucleus is a math character before `fetch`.
+% A missing family makes `fetch` empty that field, but TeX still cleans it into
+% an empty hbox and centres the box on the math axis. It changes no DVI motion;
+% it is nevertheless part of the formula's node list.
+\input plain
+\showboxdepth=20 \showboxbreadth=100 \tracingonline=0
+
+\setbox0=\hbox{$A\/+B$}
+\showbox0
+
+% Family 13 has no text font in plain TeX.
+\setbox1=\hbox{$\mathop\mathchar"0D79\nolimits B$}
+\showbox1
+
+\end

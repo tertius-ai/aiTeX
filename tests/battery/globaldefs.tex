@@ -1,0 +1,65 @@
+% `\globaldefs` (tex.web §1214) overrides the `\global` prefix outright.
+%
+%   positive — every assignment is global, whether or not `\global` was written
+%   negative — every assignment is local, and `\global` is *ignored*
+%   zero     — the ordinary rule
+%
+% It is not a nicety. LaTeX packages use it to make a whole block of
+% definitions escape the group they are written in, which is the only way to
+% run somebody else's code and keep what it defined. listings' `\lst@Key` is
+% exactly that — `\begingroup \globaldefs\@ne` around the call that gives each
+% key its default value — so with `\globaldefs` unimplemented every default was
+% defined inside the group and gone by the `\endgroup`. `\lst@widthfixed`, set
+% from `basewidth`'s default `0.6em,0.45em`, was undefined for the rest of the
+% run, and listings did not load at all. amsmath's `\measure@` uses it too, and
+% so does trip.tex.
+%
+% What made it hard to see is that everything *around* it was right: the key
+% macro built by `\lst@Key`, the `\afterassignment` that fires the default, the
+% `\gdef` with comma delimiters that splits the value, and the delimited call
+% that runs it — each matched pdfTeX to the token. Only the very last step, the
+% `\def` inside the group, went to the wrong scope.
+\catcode`\{=1 \catcode`\}=2 \catcode`\#=6
+
+% Positive: an ordinary `\def` inside a group survives it, and so does every
+% other kind of assignment.
+{\globaldefs=1
+ \def\gfoo{X}\count255=7 \dimen200=3pt \skip200=4pt plus 1pt
+ \catcode`\?=13 \toks200={T}}
+\message{<pos-def=\meaning\gfoo>}
+\message{<pos-count=\the\count255><pos-dimen=\the\dimen200>}
+\message{<pos-skip=\the\skip200><pos-toks=\the\toks200>}
+\message{<pos-catcode=\the\catcode`\?>}
+
+% …and with `\begingroup`/`\endgroup` just the same.
+\begingroup \globaldefs=1 \def\gbar{Y}\endgroup
+\message{<pos-begingroup=\meaning\gbar>}
+
+% Negative: `\global` is ignored, so the definition is local after all and
+% does not survive.
+{\globaldefs=-1 \global\def\gbaz{Z}\global\count254=9 }
+\message{<neg-def=\meaning\gbaz><neg-count=\the\count254>}
+
+% Zero: the ordinary rule. A plain `\def` is local, a `\global` one is not.
+{\globaldefs=0 \def\gqux{W}\global\def\gquux{V}}
+\message{<zero-local=\meaning\gqux><zero-global=\meaning\gquux>}
+
+% The parameter is itself an integer parameter, so it is restored by the group
+% that set it — which is what stops `\globaldefs=1` leaking out of the block
+% that wanted it.
+\message{<outer-globaldefs=\the\globaldefs>}
+{\globaldefs=1 \message{<inner-globaldefs=\the\globaldefs>}}
+\message{<after-globaldefs=\the\globaldefs>}
+
+% NOT tested here, because we do not yet agree: setting `\globaldefs` itself
+% under `\globaldefs=1`. TeX gives 2 and we give 0, and the reason is a rule
+% one level down — §279/§282, a *global* assignment sets the entry's level to
+% one and `unsave` then **discards** the saved value rather than restoring it.
+% We do that for a control sequence's meaning and not for a named parameter, so
+% the earlier local save of `\globaldefs=1` still fires at the `}` and undoes
+% the global `\globaldefs=2`. It is not special to `\globaldefs` — any
+% parameter assigned locally and then globally in the same group has it — and
+% it wants an eq-level per parameter rather than a scan of the save stack,
+% which is why it is written down here rather than patched around.
+
+\end

@@ -1,0 +1,34 @@
+% `tex.web` §1151 treats mathcode `"8000` as an active character while it is
+% scanning a noad field, not only when the character reaches `main_control`:
+%
+%     begin cur_cs:=cur_chr+active_base; ... x_token; back_input; end;
+%     goto restart
+%
+% TRIP makes `z` math-active and defines its active meaning as a delimiter.
+% The superscript `^z` must consequently be family 1 character `b`, the small
+% half of `"4162362`, rather than a literal family 0 `z`. The same restart is
+% required for every other field scanner such as `\mathop` and `\mathaccent`.
+\catcode`\{=1 \catcode`\}=2 \catcode`\$=3 \catcode`\^=7 \catcode`\_=8
+\font\r=cmr10 \r
+\font\mi=cmmi10 \font\sy=cmsy10 \font\ex=cmex10
+\textfont0=\r \scriptfont0=\r \scriptscriptfont0=\r
+\textfont1=\mi \scriptfont1=\mi \scriptscriptfont1=\mi
+\textfont2=\sy \scriptfont2=\sy \scriptscriptfont2=\sy
+\textfont3=\ex \scriptfont3=\ex \scriptscriptfont3=\ex
+\showboxdepth=6 \showboxbreadth=20 \tracingonline=0
+
+\begingroup \catcode`z=13 \gdef z{\delimiter"4162362 }\endgroup
+\mathcode`z="8000
+
+% The direct main-list route is a control for the active meaning itself.
+\setbox0=\hbox{$z\showlists$}
+\showbox0
+
+% These go through `scan_math`'s single-field path.
+\setbox0=\hbox{$x^z\showlists$}
+\showbox0
+\setbox0=\hbox{$\mathop z\showlists$}
+\showbox0
+\setbox0=\hbox{$\mathaccent"0362 z\showlists$}
+\showbox0
+\end

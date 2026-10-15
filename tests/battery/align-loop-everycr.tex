@@ -1,0 +1,77 @@
+% Four things `\halign` does that nothing in plain.tex or the corpus exercises,
+% and that amsmath's `align` depends on all four of at once.
+%
+% 1. A *repeating* preamble. `tex.web` §783: an `&` arriving before any `#`,
+%    with the template so far empty and no loop yet recorded, sets `cur_loop`
+%    — the columns from there on repeat for as long as the rows need them
+%    (§793 "lengthen the preamble periodically"). `\halign{&<template>\cr}` is
+%    the whole idiom, and `\align@preamble` opens with exactly that `&`.
+%
+% 2. `\everycr`. §774 inserts it once the preamble's `\cr` is read, and §799
+%    after every finished row. amsmath resets its per-row counters there, so
+%    without it the field count accumulated across rows and the alignment came
+%    out with as many spurious empty columns as it had rows.
+%
+% 3. `\setbox<n>=\lastbox` when there is no last box *voids* box n (§1079
+%    `box_end` assigns the null box). Loops are built on this: amsmath measures
+%    a row by peeling boxes off it until `\ifhbox` says there are none left, so
+%    leaving the register alone instead means the loop never ends.
+%
+% 4. Token-list *parameters* are eqtb entries, so a group restores them. Only
+%    the numbered `\toks` registers were getting that here, which made every
+%    `{\everypar{…}}` permanent — and, since `\everycr` is one of them, made
+%    one alignment's `\everycr` outlive it.
+\catcode`\{=1 \catcode`\}=2 \catcode`\#=6 \catcode`\&=4
+\font\testfont=cmr10 \testfont
+\hsize=300pt \vsize=300pt \parindent=0pt \tabskip=3pt
+
+% --- 1. the repeating preamble ---------------------------------------------
+% Three columns from a one-column template, and a row that uses fewer.
+\setbox0\vbox{\halign{&\hfil#\hfil\cr A&B&C\cr D&E\cr}}
+\message{<loop wd=\the\wd0 ht=\the\ht0>}
+% The same alignment with the columns written out must measure the same.
+\setbox1\vbox{\halign{\hfil#\hfil&\hfil#\hfil&\hfil#\hfil\cr A&B&C\cr D&E\cr}}
+\message{<fixed wd=\the\wd1 ht=\the\ht1>}
+% A loop that starts partway through: column one is its own, the rest repeat.
+\setbox2\vbox{\halign{#&&[#]\cr A&B&C\cr}}
+\message{<partial wd=\the\wd2 ht=\the\ht2>}
+
+% --- 2. \everycr ------------------------------------------------------------
+% Once after the preamble, once after each row: three for two rows.
+\count0=0
+\setbox3\vbox{\everycr{\noalign{\global\advance\count0 by 1}}%
+  \halign{#&#\cr A&B\cr C&D\cr}}
+\message{<everycr=\the\count0>}
+% It fires the same for a `\cr` that arrives from a macro, and for `\crcr`.
+\count1=0
+\def\myrow{A&B\cr}
+\setbox3\vbox{\everycr{\noalign{\global\advance\count1 by 1}}%
+  \halign{&#\crcr \myrow \myrow}}
+\message{<everycr-macro=\the\count1>}
+
+% --- 3. \lastbox with nothing to take --------------------------------------
+\setbox4\hbox{A}
+\setbox5\hbox{}
+\setbox5\hbox{\unhbox5 \global\setbox4\lastbox}
+\message{<lastbox-empty void=\ifvoid4 Y\else N\fi>}
+\setbox4\hbox{A}
+\setbox5\hbox{\kern3pt}
+\setbox5\hbox{\unhbox5 \global\setbox4\lastbox}
+\message{<lastbox-kern void=\ifvoid4 Y\else N\fi>}
+% …and when there *is* one, it is taken off the list, so the box shrinks.
+\setbox4\hbox{A}
+\setbox5\hbox{\hbox{B}}
+\setbox5\hbox{\unhbox5 \global\setbox4\lastbox}
+\message{<lastbox-box void=\ifvoid4 Y\else N\fi wd=\the\wd5>}
+
+% --- 4. token-list parameters are group-scoped ------------------------------
+\everypar{A}
+{\everypar{B}\message{<toks-inner=[\detokenize\expandafter{\the\everypar}]>}}
+\message{<toks-after=[\detokenize\expandafter{\the\everypar}]>}
+\begingroup\everypar{C}\endgroup
+\message{<toks-after2=[\detokenize\expandafter{\the\everypar}]>}
+% `\global` still leaks out on purpose.
+{\global\everypar{D}}
+\message{<toks-global=[\detokenize\expandafter{\the\everypar}]>}
+
+\end

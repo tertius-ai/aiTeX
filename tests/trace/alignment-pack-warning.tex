@@ -1,0 +1,13 @@
+% `tex.web` §§663 and 806: the constrained preamble prototype is the one pack
+% whose badness represents the entire alignment. TeX reports it against the
+% alignment's source-line range, displays its dummy column records as unset
+% boxes, and leaves that pack's value in `\badness` after setting the rows.
+\catcode`\{=1 \catcode`\}=2 \catcode`\#=6 \catcode`\&=4
+\tracingonline=1 \showboxdepth=1 \showboxbreadth=2 \hbadness=0
+\tabskip=0pt plus 40pt
+\showthe\escapechar
+\halign to 15pt{#&#\cr
+  \cr}
+\message{PROBE:badness=[\the\badness]}
+\showthe\escapechar
+\end

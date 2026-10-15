@@ -1,0 +1,11 @@
+% An internal integer in a dimension is a coefficient (tex.web 449).
+\input plain
+\catcode`\@=11
+\count5=7 \dimen5=3pt
+\def\show#1{\dimen0=#1 \message{<\the\dimen0>}}
+\show{\count5 pt}
+\show{\count5\dimen5}
+\show{\count5\p@}
+\show{-\count5 pt}
+\show{\dimen5}
+\bye

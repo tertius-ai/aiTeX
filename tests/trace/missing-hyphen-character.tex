@@ -1,0 +1,15 @@
+% TFM-PL: vendor/trip/trip.pl
+% `tex.web` uses §581's `new_character` in both paths that manufacture a
+% discretionary hyphen. An explicit `\-` asks immediately; §915 asks again
+% when the second line-breaking pass reconstitutes a pattern hyphen. If the
+% font has no glyph at `\hyphenchar`, each call warns and leaves the pre-break
+% branch without that character. TRIP's font deliberately has B but no `?`.
+\catcode`\{=1 \catcode`\}=2
+\font\r=trip \r
+\lccode`B=`B \uchyph=1
+\hyphenation{BBB-BBB}
+\lefthyphenmin=1 \righthyphenmin=1
+\hsize=100pt \parindent=0pt \pretolerance=-1 \tolerance=10000
+\hbadness=10000 \tracinglostchars=1 \tracingparagraphs=1
+\setbox0=\vbox{\hyphenchar\r=`?\- BBBBBB\par}
+\end

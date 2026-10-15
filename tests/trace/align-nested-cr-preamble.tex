@@ -1,0 +1,11 @@
+% §§782--784: `\cr` and `\crcr` delimit a preamble only at the outer
+% `align_state`. A `\cr` inside braces is template material; here it is the
+% replacement text of a definition replayed for the cell. TRIP embeds a whole
+% nested `\halign ... \crcr` at the same depth, and ending the outer preamble
+% there destroys the enclosing alignment before its first row.
+\catcode`\{=1 \catcode`\}=2 \catcode`\#=6
+\tracingonline=1 \tracingcommands=2
+\font\r=cmr10 \r
+\setbox0=\vbox{\halign{\def\savedcr{\cr}#\cr A\cr}}
+\showboxbreadth=99 \showboxdepth=99 \showbox0
+\end

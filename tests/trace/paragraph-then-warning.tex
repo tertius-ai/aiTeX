@@ -1,0 +1,34 @@
+% `tex.web` §863 and §876: which comes first in the log, the reasoning or the
+% complaint.
+%
+% `line_break` writes §846's narration as each pass runs, and only then does
+% §876's `post_line_break` hand each line to `hpack` — which is where an
+% underfull or overfull line is reported (§660/§663). So the trace of how a
+% paragraph was broken always precedes the warning about a line it chose.
+%
+% Ours drained the narration after the warnings, so a paragraph that went loose
+% announced the loose line above the reasoning that produced it. In trip.log
+% that reads as a missing trace and a misplaced warning at once, which is two
+% wrong diagnoses of one fault.
+%
+% The lines here are deliberately loose rather than overfull: an overfull line
+% means no feasible break, which sends TeX into a second pass whose narration
+% needs §851's artificial demerits to match, and that is its own piece of work.
+\catcode`\{=1 \catcode`\}=2
+\tracingonline=1
+\tracingparagraphs=1
+\hbadness=0
+\hfuzz=0pt
+% High enough that the first pass accepts the loose line: what the *second*
+% pass narrates needs §851's artificial demerits to match, and that is its own
+% piece of work.
+\pretolerance=10000
+\showboxbreadth=2 \showboxdepth=1
+\hsize=100pt \parindent=0pt
+\font\rip=cmr10 \rip
+
+% Short enough that the interword glue must stretch a long way to justify it,
+% which is what makes the line loose rather than the break wrong.
+AAA AAA\par
+AAA AAA\par
+\end

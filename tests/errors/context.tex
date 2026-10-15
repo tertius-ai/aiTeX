@@ -1,0 +1,64 @@
+% `tex.web` §311 `show_context`: where the engine is, as the input *stack*
+% rather than a file position.
+%
+% Each level gets two lines — what it has read, then what is left, indented to
+% line up under the split. §314 names the level rather than showing it raw: a
+% macro by `\name<params>->`, everything else by an angle-bracket tag, and the
+% file at the bottom by `l.<line>`. §311 shows the innermost level and the file
+% always, and at most `\errorcontextlines` of what lies between, replacing the
+% rest with a single `...`.
+%
+% We printed the file line and nothing else — 37 context lines in trip.log
+% against TeX's 487. The stack is the part that says *why* you are there: an
+% error inside a macro inside a macro reads identically to one in the source
+% without it.
+%
+% The subtle half is which levels are *gone* by the time the error prints. TeX's
+% "conserve stack space" idiom pops exhausted token lists below the one being
+% pushed, so a spent macro body never sits under a live one — but the innermost
+% level is exhausted the instant its last token is read, which is exactly when
+% the error it caused gets reported. Hence `\inner ->\undefinedone` shows and
+% the `\outer` that finished expanding it does not.
+\catcode`\{=1 \catcode`\}=2 \catcode`\#=6
+\errorcontextlines=99
+
+% a macro level under the file
+\def\inner{\undefinedone}
+\def\outer#1{#1\inner}
+\outer{x}
+
+% no macro level: the file alone
+\count0=\undefinedtwo
+\message{PROBE:count=\the\count0}
+
+% two live macro levels, so the middle one is neither innermost nor the file
+\def\mid{\inner}
+\def\top{\mid\relax}
+\top
+
+% An out-parameter substitution is its own logical input level. Starting an
+% alignment from a macro body makes both copies of the argument arrive while
+% the preamble scanner is active; the second `#` diagnoses against
+% `<argument>`, above the still-live macro body.
+\def\wrap#1{\halign{#1#1\cr A\cr}}
+\wrap{#}
+
+% A v-template is the one exhausted token list that `back_input` is forbidden
+% to discard. `\futurelet` reaches the cell boundary while looking ahead, so
+% the undefined token is diagnosed above both the backed-up end marker and the
+% spent `<template>` level.
+\halign{#&#\cr
+  \global\futurelet\endt\undefinedtemplate&A\cr}
+
+% The null control sequence is printed by spelling out the construction that
+% names it, not as a bare escape character.
+\expandafter\def\csname\endcsname{\undefinednull}
+\csname\endcsname
+
+% §355 shortens TeX's line buffer when `^^` contraction occurs while a control
+% sequence name is scanned. The superscript character need not be `^`, and a
+% contraction can expose another pair: `qq1qM` becomes `qqM`, then carriage
+% return. A later context therefore shows `^^M` in both affected positions.
+\catcode`q=7 \catcode`\qqM=0
+\relax\catcode`\qq1qM=13 \defqqM{\relax}#
+\end

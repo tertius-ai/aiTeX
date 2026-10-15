@@ -1,0 +1,20 @@
+% TFM-PL: vendor/trip/trip.pl
+% `tex.web` §1123--§1125 freezes the accent's font metrics, executes
+% assignments, and only then reads the character underneath.  The base may be
+% a `\char` command and uses the font selected by those assignments; it is
+% appended directly, so the following A must not ligature with it.
+\catcode`\{=1 \catcode`\}=2
+\showboxdepth=5 \showboxbreadth=30 \tracingonline=0
+\font\trip=trip \font\small=trip scaled 500
+\trip
+\setbox0=\hbox{\accent"42 \font\small \char'101 A}
+\showbox0
+
+% §816 replaces the final glue of a paragraph with its finishing penalty.  In
+% particular, assignment scanning and the explicit spaces around an accent may
+% not leave a spurious trailing `\spaceskip` in the finished line.
+\trip \hsize=100pt \spaceskip=2pt
+\setbox1=\vbox{\noindent\accent"42 \count0=7 \char'101 A\ \
+  \par}
+\showbox1
+\end

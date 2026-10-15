@@ -1,0 +1,76 @@
+% §1197 reaches `after_math` only when the formula's own group is the innermost
+% one:
+%
+%     mmode+math_shift: if cur_group=math_shift_group then after_math
+%       else off_save;
+%
+% and §1142's `start_eq_no` pushes a `math_shift_group` of its own for the
+% equation number. A `$` deeper than that group belongs to some other formula:
+%
+%     $$ x \eqno \hbox{$y$} $$
+%
+% closes `$y$` inside the box, and only the `$` after the `}` ends the number.
+%
+% We ended the number at the first `$` seen in math mode, whatever the depth, so
+% the box's inner formula finished it and the display's own `$$` had nothing
+% left to close:
+%
+%     ! Display math should end with $$.
+%     <to be read again> }
+%
+% The guard for `\left` groups was already there — §1064 inserts the missing
+% `\right` — but the equation number had none of its own.
+%
+% amsmath puts a box there every time. `\endmathdisplay@a` emits
+%
+%     \veqno \alt@tag \df@tag
+%
+% with `\veqno` = `\eqno`, and `\tagform@` is
+%
+%     \maketag@@@{(\ignorespaces#1\unskip\@@italiccorr)}
+%
+% so `\tag{$\dagger$}` becomes an `\hbox` holding a formula. 2608.17725v1 writes
+% exactly that and stopped at the hundred-error limit after four of its seven
+% pages.
+\catcode`\{=1 \catcode`\}=2 \catcode`\$=3 \catcode`\^=7 \catcode`\_=8
+\font\r=cmr10 \r \hsize=300pt \parindent=0pt
+\font\mi=cmmi10 \font\sy=cmsy10 \font\ex=cmex10
+\textfont0=\r \scriptfont0=\r \scriptscriptfont0=\r
+\textfont1=\mi \scriptfont1=\mi \scriptscriptfont1=\mi
+\textfont2=\sy \scriptfont2=\sy \scriptscriptfont2=\sy
+\textfont3=\ex \scriptfont3=\ex \scriptscriptfont3=\ex
+\showboxdepth=5 \showboxbreadth=12 \tracingonline=0
+\predisplaypenalty=0 \postdisplaypenalty=0
+
+% The shape amsmath produces: a formula inside the box that carries the number.
+\setbox0=\vbox{\hsize=200pt \noindent A$$ x \eqno \hbox{$y$} $$}
+\showbox0
+
+% The control: the same number with no formula in it, which always worked.
+\setbox0=\vbox{\hsize=200pt \noindent A$$ x \eqno \hbox{(a)} $$}
+\showbox0
+
+% amsmath's actual tag body — text, a formula, and material after it, all in
+% one box.
+\setbox0=\vbox{\hsize=200pt \noindent A$$ x \eqno \hbox{(\ignorespaces $y$\unskip )} $$}
+\showbox0
+
+% `\leqno` takes the same path.
+\setbox0=\vbox{\hsize=200pt \noindent A$$ x \leqno \hbox{$y$} $$}
+\showbox0
+
+% Two levels of box, and two formulas in the number.
+\setbox0=\vbox{\hsize=200pt \noindent A$$ x \eqno \hbox{$y$\hbox{$z$}} $$}
+\showbox0
+
+% A formula inside a box in the *body* of the display rather than the number —
+% this never depended on the number's group and is here so a fix that moved the
+% test rather than adding one would show up.
+\setbox0=\vbox{\hsize=200pt \noindent A$$ x \hbox{$y$} \eqno \hbox{(b)} $$}
+\showbox0
+
+% And inline math, where the box's formula is nested one level down with no
+% equation number anywhere.
+\setbox0=\hbox{$ x \hbox{$y$} z $}
+\showbox0
+\end

@@ -1,0 +1,14 @@
+% `tex.web` §1257: `\fontname` prints an `at` clause only when the resolved
+% font size differs from its design size. An explicit `at 10pt` for cmr10 and
+% `scaled 1000` therefore have the same name as a size-less load, while a real
+% resize retains the resolved size.
+\catcode`\{=1 \catcode`\}=2
+\tracingonline=1
+\font\plain=cmr10
+\font\explicit=cmr10 at 10pt
+\font\scaled=cmr10 scaled 1000
+\font\large=cmr10 at 12pt
+\showthe\escapechar
+\message{PROBE:names=[\fontname\plain][\fontname\explicit][\fontname\scaled][\fontname\large]}
+\showthe\escapechar
+\end

@@ -1,0 +1,26 @@
+% The save stack: what a group restores and what \global survives.
+\input plain
+\catcode`\@=11
+\count0=1 {\count0=2 \message{<in=\the\count0>}}\message{<out=\the\count0>}
+\count0=1 {\global\count0=2 }\message{<global=\the\count0>}
+\count0=1 {{\count0=3 }\message{<mid=\the\count0>}}\message{<nested=\the\count0>}
+\count0=1 {{\global\count0=4 }}\message{<deep-global=\the\count0>}
+\def\m{A}{\def\m{B}\message{<def-in=\m>}}\message{<def-out=\m>}
+\def\m{A}{\gdef\m{C}}\message{<gdef=\m>}
+\dimen0=1pt {\dimen0=2pt }\message{<dimen=\the\dimen0>}
+\skip0=1pt {\skip0=2pt }\message{<skip=\the\skip0>}
+\toks0={A}{\toks0={B}}\message{<toks=\the\toks0>}
+\catcode`\!=12 {\catcode`\!=13 \message{<cat-in=\the\catcode`\!>}}%
+  \message{<cat-out=\the\catcode`\!>}
+\uccode`\a=`\Z {\uccode`\a=`\Y }\message{<uccode=\the\uccode`\a>}
+\setbox0=\hbox to 1pt{}{\setbox0=\hbox to 2pt{}}\message{<box=\the\wd0>}
+\setbox0=\hbox to 1pt{}{\global\setbox0=\hbox to 3pt{}}\message{<gbox=\the\wd0>}
+% \begingroup/\endgroup group without affecting mode.
+\count0=1 \begingroup\count0=5 \message{<beg-in=\the\count0>}\endgroup
+  \message{<beg-out=\the\count0>}
+% \aftergroup fires at the closing brace, once per token, in order.
+\def\p{\message{<ag1>}}\def\q{\message{<ag2>}}
+{\aftergroup\p\aftergroup\q}\message{<ag-done>}
+% A \let is grouped like anything else.
+\let\z\relax {\let\z\undefined }\message{<let=\meaning\z>}
+\bye

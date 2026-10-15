@@ -1,0 +1,42 @@
+% e-TeX's \unless -- previously not implemented at all.
+%
+% A prefix, not a conditional of its own: it must be followed immediately by
+% a boolean \if primitive (resolved through \let, since expl3 renames every
+% one of them) and inverts that conditional's result. expl3's
+% \reverse_if:N is \let straight to it --
+%
+%   \tex_let:D \reverse_if:N \tex_unless:D
+%
+% -- and every negated comparison in the kernel is built on it: \int_compare,
+% \dim_compare, \fp_compare, dozens of others. Missing it entirely left
+% \reverse_if:N undefined, which cascaded into a runaway a few thousand
+% commands later.
+\input plain
+\def\M#1{\message{<#1>}}
+\M{a=\unless\ifnum 1>0 T\else F\fi}
+\M{b=\unless\ifnum 1<0 T\else F\fi}
+\M{c=\unless\iftrue T\else F\fi}
+\M{d=\unless\iffalse T\else F\fi}
+\M{e=\unless\ifodd 4 T\else F\fi}
+\M{f=\unless\ifodd 3 T\else F\fi}
+\M{g=\unless\ifx\undefined\relax T\else F\fi}
+\let\samecs\relax
+\M{h=\unless\ifx\samecs\relax T\else F\fi}
+\M{i=\unless\ifdim 1pt>2pt T\else F\fi}
+% nested: unless inside an ordinary conditional's operand
+\M{j=\ifnum\unless\ifodd 3 1\else 0\fi=0 T\else F\fi}
+% doubled: unless applied where the inner conditional is itself aliased
+\let\myifnum\ifnum
+\M{k=\unless\myifnum 5>10 T\else F\fi}
+\M{l=\ifdefined\reverse_if:N y\else n\fi}
+% The one that mattered: \unless prefixes a conditional whose *operand scan*
+% opens another conditional. The nested one must not steal the \unless. This
+% is the shape \int_compare's loop builds -- \unless\ifnum A < \ifx.. -- where
+% a stolen \unless inverted a false test and produced \__int_compare_<=:NNw.
+\M{m=\unless\ifnum 5<\ifnum1>0 9\else 1\fi\relax T\else F\fi}
+\M{n=\unless\ifnum 5<\ifnum1<0 9\else 1\fi\relax T\else F\fi}
+\M{o=\unless\ifnum 5<\ifx\relax\relax 9\else 1\fi\relax T\else F\fi}
+\M{p=\unless\ifnum 5<\ifx\relax\undefined 9\else 1\fi\relax T\else F\fi}
+% two levels deep, both prefixed by \unless
+\M{q=\unless\ifnum 2<\unless\ifodd 3 9\else 1\fi\relax T\else F\fi}
+\bye

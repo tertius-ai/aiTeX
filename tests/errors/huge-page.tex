@@ -1,0 +1,9 @@
+% `tex.web` §638 rejects a page whose dimensions exceed `max_dimen` after
+% announcing it, but before DVI output or deferred whatsits.  Two legal kerns
+% can pack to an illegal page even though neither dimension scan is itself an
+% error; the write in the discarded box must therefore never execute.
+\catcode`\{=1 \catcode`\}=2
+\showboxbreadth=2 \showboxdepth=1
+\shipout\vbox{\kern8192pt\kern8192pt\write16{PROBE:bad-write}}
+\message{PROBE:after}
+\end

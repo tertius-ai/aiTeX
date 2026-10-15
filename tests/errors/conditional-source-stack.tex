@@ -1,0 +1,12 @@
+% tex.web §§336 and 495: every conditional stack level retains its own
+% primitive and opening line. Closing an inner \ifcase must restore the outer
+% \iftrue before its discarded branch meets an \outer control sequence.
+\catcode`\{=1 \catcode`\}=2
+\outer\def\bad{}
+\iftrue
+  \ifcase0 nested\fi
+\else
+  \bad
+\fi
+\message{PROBE:recovered}
+\end

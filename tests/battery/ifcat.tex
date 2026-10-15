@@ -1,0 +1,48 @@
+% \ifcat and \if -- catcodes and character codes, both *expanding*.
+%
+% \ifcat was false for everything, \ifcat\relax\relax included: it compared
+% only (Char, Char) and never expanded its operands. The rule was written in
+% the comment directly above the code and simply not implemented beneath it.
+%
+% tex.web 506: a control sequence is compared as category code 16 and
+% character code 256, so any two control sequences are equal under both
+% conditionals.
+%
+% expl3 ends every floating-point expression with this test:
+%
+%   \if_catcode:w \scan_stop: \exp_not:N #2
+%
+% which asks "is #2 a control sequence" -- how \__fp_parse_infix:NN recognises
+% its end marker. Answering "no" made l3fp read the marker as another operand,
+% i.e. implicit multiplication, so \c_e_fp came out as `e * <end marker>`: an
+% invalid operation, reported in a loop that never terminated.
+%
+% \noexpand marks the token that follows, and the marker is never itself an
+% operand -- \exp_not:N sits in front of every token these conditionals see.
+\input plain
+\def\M#1{\message{<#1>}}
+\def\bar{x}
+\let\mark=\relax
+\chardef\ch=65
+\M{a=\ifcat\relax\noexpand\undefinedcs T\else F\fi}
+\M{b=\ifcat\relax\noexpand a T\else F\fi}
+\M{c=\ifcat\relax\relax T\else F\fi}
+\M{d=\ifcat\relax\noexpand\bar T\else F\fi}
+\M{e=\ifcat\noexpand\bar\noexpand\relax T\else F\fi}
+\M{f=\ifcat\relax\noexpand\mark T\else F\fi}
+\M{g=\ifcat\noexpand\mark\noexpand\bar T\else F\fi}
+\M{h=\ifcat\relax\noexpand+ T\else F\fi}
+\M{i=\ifcat\noexpand a\noexpand b T\else F\fi}
+\M{j=\ifcat\relax\noexpand\ch T\else F\fi}
+\M{k=\ifcat ab T\else F\fi}
+\M{l=\ifcat a+ T\else F\fi}
+\M{m=\ifcat +- T\else F\fi}
+\M{n=\ifcat \bar a T\else F\fi}
+\def\two{ab}
+\M{o=\ifcat \two b T\else F\fi}
+\M{p=\if ab T\else F\fi}
+\M{q=\if aa T\else F\fi}
+\M{r=\if\relax\relax T\else F\fi}
+\M{s=\if\noexpand\bar\noexpand\mark T\else F\fi}
+\M{t=\ifcat\noexpand\ch\noexpand\bar T\else F\fi}
+\bye

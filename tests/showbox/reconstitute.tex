@@ -1,0 +1,50 @@
+% `tex.web` §913: a hyphenated word is *rebuilt*, not annotated.
+%
+%     repeat l:=j; j:=reconstitute(j,hn,bchar,qi(hyf_char))+1;
+%     if hyphen_passed=0 then
+%       begin link(s):=link(hold_head);
+%       while link(s)>null do s:=link(s);
+%       if odd(hyf[j-1]) then
+%         begin l:=j; hyphen_passed:=j-1; link(hold_head):=null;
+%         end;
+%       end;
+%     if hyphen_passed>0 then
+%       @<Create and append a discretionary node …@>;
+%     until j>hn
+%
+% The letters go through the font's ligature and kern program again — once for
+% the unbroken word, and once more on each side of every break — because a
+% hyphen can change what ligates.  §904 gives the example: with ligatures
+% `bc`, `cd`, `de`, `ef`, the word `abcdef` broken between `b` and `c` is
+% `a b - cd ef`, and unbroken it is `a bc de f`.  The insertion of one hyphen
+% ripples arbitrarily far.
+%
+% The shape that falls out of §913: a step whose lig/kern program did *not*
+% consult the hyphen is emitted to the unbroken branch, and a break just after
+% it opens a discretionary standing in for nothing — its pre-break is the
+% hyphen alone.  A step that *did* consult it is not emitted; the discretionary
+% stands in for the whole step, pre-break re-set from its first letter.
+%
+% This engine left the word as it was and put a discretionary beside it,
+% replacing only a kern.  The glyphs came out right — which is why
+% `typeset_check` never saw it — and the shape did not:
+%
+%     tex:   ..\discretionary replacing 2   ours:  ..\r b
+%            ...\r b                               ..\discretionary replacing 1
+%            ...\r -                               ...\r -
+%
+% because TeX had re-set the `b` with the hyphen after it and we had not.
+%
+% §903 keeps whatever follows the last letter — `q:=link(hb)` — so the kern
+% cmr10 puts between `y` and a comma survives a rebuild that does not know the
+% comma exists.
+\catcode`\{=1 \catcode`\}=2
+\font\r=cmr10 \r \hyphenchar\r=`\- \hsize50pt \parindent0pt \baselineskip12pt
+\tolerance10000 \pretolerance-1 \hbadness10000
+\showboxbreadth99 \showboxdepth99 \tracingonline0
+% A break with a kern across it: the discretionary re-sets the letter before.
+\patterns{a1b b1c}
+\setbox0\vbox{\noindent x abcabcabc\par}\showbox0
+% The same word with the break where no kern crosses.
+\setbox1\vbox{\noindent x abcabcabc,\par}\showbox1
+\end

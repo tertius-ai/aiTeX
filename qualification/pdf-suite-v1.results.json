@@ -1,0 +1,5904 @@
+{
+  "aggregate": {
+    "all_gates_passed": true,
+    "comparable_cases": 5,
+    "geometric_mean_pdf_size_ratio": 0.79006,
+    "maximum_pdf_size_ratio": 1.086828
+  },
+  "baseline": {
+    "cases": {},
+    "inputs_unchanged": false,
+    "manifest_unchanged": true,
+    "matching_environment": false,
+    "mode_matching": true
+  },
+  "cases": [
+    {
+      "candidate": {
+        "classic_xref_annotations": {
+          "cyan_boxed_links": 192,
+          "link_annotations": 960,
+          "red_boxed_links": 768
+        },
+        "classic_xref_breakdown": {
+          "categories": {
+            "font_program": {
+              "decoded_bytes": 114502,
+              "flate_streams": 11,
+              "objects": 11,
+              "stored_bytes": 76516
+            },
+            "page_content": {
+              "decoded_bytes": 1262266,
+              "flate_streams": 193,
+              "objects": 193,
+              "stored_bytes": 257363
+            },
+            "to_unicode": {
+              "decoded_bytes": 10336,
+              "flate_streams": 4,
+              "objects": 4,
+              "stored_bytes": 4220
+            }
+          },
+          "classic_fonts": {
+            "descriptors": 11,
+            "embedded_programs": 11,
+            "encodings": 4,
+            "pdf_fonts": 12,
+            "physical_faces": 11
+          },
+          "forms": [],
+          "images": [],
+          "non_payload_bytes": 332067,
+          "objects": 1583,
+          "path": "temporary/classic-prose/candidate-classic-xref.pdf",
+          "pdf_bytes": 670166,
+          "schema": 1,
+          "sha256": "19a3bfae01217d668dce2c983e9d8797da905eb4782a50e7b28de96c8e38b929",
+          "streams": {
+            "decoded_bytes": 1387104,
+            "flate_streams": 208,
+            "objects": 208,
+            "stored_bytes": 338099,
+            "undecoded_filtered_streams": 0
+          }
+        },
+        "classic_xref_sample": {
+          "cpu_seconds": 1.5,
+          "images": null,
+          "max_rss_kib": 153312,
+          "passes": 2,
+          "pdf_assembly_ms": 64.066,
+          "pdf_bytes": 670166,
+          "pdf_font_ms": 24.165,
+          "pdf_sha256": "19a3bfae01217d668dce2c983e9d8797da905eb4782a50e7b28de96c8e38b929",
+          "pdf_total_ms": 93.938,
+          "tex_total_ms": 1322.744,
+          "wall_seconds": 1.498674
+        },
+        "determinism_probe": null,
+        "deterministic_pdf": true,
+        "median_cpu_seconds": 1.52,
+        "median_max_rss_kib": 152980,
+        "median_pdf_assembly_ms": 65.761,
+        "median_pdf_font_ms": 25.118,
+        "median_pdf_total_ms": 96.587,
+        "median_tex_total_ms": 1340.781,
+        "median_wall_seconds": 1.520383,
+        "samples": [
+          {
+            "cpu_seconds": 1.52,
+            "images": null,
+            "max_rss_kib": 152980,
+            "passes": 2,
+            "pdf_assembly_ms": 65.129,
+            "pdf_bytes": 411295,
+            "pdf_font_ms": 25.561,
+            "pdf_sha256": "042eed4fb12768aec7a1b477dcb23d626aef553d2893d19a33755242e7150c35",
+            "pdf_total_ms": 96.587,
+            "tex_total_ms": 1340.781,
+            "wall_seconds": 1.520383
+          },
+          {
+            "cpu_seconds": 1.53,
+            "images": null,
+            "max_rss_kib": 152896,
+            "passes": 2,
+            "pdf_assembly_ms": 65.761,
+            "pdf_bytes": 411295,
+            "pdf_font_ms": 24.35,
+            "pdf_sha256": "042eed4fb12768aec7a1b477dcb23d626aef553d2893d19a33755242e7150c35",
+            "pdf_total_ms": 95.678,
+            "tex_total_ms": 1348.41,
+            "wall_seconds": 1.528097
+          },
+          {
+            "cpu_seconds": 1.51,
+            "images": null,
+            "max_rss_kib": 153452,
+            "passes": 2,
+            "pdf_assembly_ms": 68.99,
+            "pdf_bytes": 411295,
+            "pdf_font_ms": 25.118,
+            "pdf_sha256": "042eed4fb12768aec7a1b477dcb23d626aef553d2893d19a33755242e7150c35",
+            "pdf_total_ms": 99.763,
+            "tex_total_ms": 1334.708,
+            "wall_seconds": 1.515825
+          }
+        ],
+        "validation": {
+          "fonts": {
+            "count": 12,
+            "rows": [
+              "JKNKSI+LMRoman10-Regular             Type 1            Custom           yes yes yes      6  0",
+              "DOHJFQ+LMRoman12-Bold                Type 1            Custom           yes yes yes      9  0",
+              "CALLJM+LMRoman9-Regular              Type 1            Custom           yes yes yes     12  0",
+              "SFYOMQ+LMRoman10-Bold                Type 1            Custom           yes yes yes     15  0",
+              "SNLSKO+LMRoman10-Italic              Type 1            Custom           yes yes yes     18  0",
+              "EOJBFA+LMSans10-Regular              Type 1            Custom           yes yes yes     21  0",
+              "TCXUXG+LMMono10-Regular              Type 1            Custom           yes yes yes     24  0",
+              "JKNKSI+LMRoman10-Regular             Type 1            Custom           yes yes yes     26  0",
+              "AEUDDX+LMRoman7-Regular              Type 1            Custom           yes yes yes     29  0",
+              "CFHRYN+LMMathItalic10-Regular        Type 1            Custom           yes yes yes     33  0",
+              "JKPXLH+LMMathItalic7-Regular         Type 1            Custom           yes yes yes     36  0",
+              "VKLDNX+LMMathExtension10-Regular     Type 1            Custom           yes yes yes     40  0"
+            ]
+          },
+          "info": {
+            "pages": 193,
+            "pdf_version": "1.5",
+            "tagged": "no"
+          },
+          "links": {
+            "uri_annotations": 192,
+            "urls_sha256": "cf1acb97d56b006530db43407f0289783acd3374b2be76610eabf2f00d1630b9"
+          },
+          "poppler": {
+            "pages": 193,
+            "selection": "all",
+            "sha256": "bdaf9a421a3625a44b474a507291bcc0fb2c75a1100247f916ecc2a02cf0d7c1"
+          },
+          "quartz": {
+            "available": false
+          },
+          "text": {
+            "bytes": 450256,
+            "markers": [
+              "Synthetic PDF qualification",
+              "Generated section",
+              "affine office"
+            ],
+            "sequence_entries": 192,
+            "sequence_sha256": "90e62b5f0759d807feb4ca89d5dee05fe467a340dea11e30de34a3b808231783",
+            "sha256": "8f59235fe9893c0fd7754730c00c60e7fb6866e4b1231a6d337507bf1fa06ea2"
+          },
+          "validators": {
+            "ghostscript": true,
+            "mutool": true,
+            "qpdf": null
+          }
+        }
+      },
+      "comparison": {
+        "classic_xref_breakdown": {
+          "aitex_non_payload_bytes": 332067,
+          "aitex_pdf_bytes": 670166,
+          "categories": {
+            "font_program": {
+              "aitex_decoded_bytes": 114502,
+              "aitex_objects": 11,
+              "aitex_stored_bytes": 76516,
+              "decoded_byte_delta": -74948,
+              "object_delta": 0,
+              "stock_decoded_bytes": 189450,
+              "stock_objects": 11,
+              "stock_stored_bytes": 181762,
+              "stored_byte_delta": -105246
+            },
+            "page_content": {
+              "aitex_decoded_bytes": 1262266,
+              "aitex_objects": 193,
+              "aitex_stored_bytes": 257363,
+              "decoded_byte_delta": -5640,
+              "object_delta": 0,
+              "stock_decoded_bytes": 1267906,
+              "stock_objects": 193,
+              "stock_stored_bytes": 262704,
+              "stored_byte_delta": -5341
+            },
+            "to_unicode": {
+              "aitex_decoded_bytes": 10336,
+              "aitex_objects": 4,
+              "aitex_stored_bytes": 4220,
+              "decoded_byte_delta": -11610,
+              "object_delta": -8,
+              "stock_decoded_bytes": 21946,
+              "stock_objects": 12,
+              "stock_stored_bytes": 9583,
+              "stored_byte_delta": -5363
+            }
+          },
+          "non_payload_byte_delta": -98203,
+          "pdf_byte_delta": -214153,
+          "stock_non_payload_bytes": 430270,
+          "stock_pdf_bytes": 884319
+        },
+        "pdf_size_ratio": 0.784365,
+        "poppler_raster": {
+          "dpi": 72,
+          "equivalent": true,
+          "fuzz_fraction": 0.05,
+          "max_normalized_mae": 0.0015,
+          "max_outside_fraction": 0.005,
+          "pages": 193,
+          "worst_normalized_mae": 0.001187958,
+          "worst_normalized_mae_page": 11,
+          "worst_outside_fraction": 0.00220547,
+          "worst_outside_fraction_page": 11
+        }
+      },
+      "id": "classic-prose",
+      "kind": "tex",
+      "pages": 193,
+      "performance_gates": {
+        "max_matching_environment_pdf_assembly_absolute_ms": 2.0,
+        "max_matching_environment_pdf_stage_absolute_ms": 40.0,
+        "max_matching_environment_rss_absolute_kib": 16384.0
+      },
+      "profile": "prose",
+      "raster_policy": "all",
+      "reference": "pdftex",
+      "samples_requested": 3,
+      "source": "tests/pdf-qualification/synthetic-book.tex",
+      "source_sha256": "879f25b8069d362245008e000df2556bc2b6684f638ed69fadeb25ea74610772",
+      "stock": {
+        "classic_xref_breakdown": {
+          "categories": {
+            "font_program": {
+              "decoded_bytes": 189450,
+              "flate_streams": 11,
+              "objects": 11,
+              "stored_bytes": 181762
+            },
+            "page_content": {
+              "decoded_bytes": 1267906,
+              "flate_streams": 193,
+              "objects": 193,
+              "stored_bytes": 262704
+            },
+            "to_unicode": {
+              "decoded_bytes": 21946,
+              "flate_streams": 12,
+              "objects": 12,
+              "stored_bytes": 9583
+            }
+          },
+          "classic_fonts": {
+            "descriptors": 11,
+            "embedded_programs": 11,
+            "encodings": 0,
+            "pdf_fonts": 12,
+            "physical_faces": 11
+          },
+          "forms": [],
+          "images": [],
+          "non_payload_bytes": 430270,
+          "objects": 2919,
+          "path": "temporary/classic-prose/reference-classic-xref.pdf",
+          "pdf_bytes": 884319,
+          "schema": 1,
+          "sha256": "4753ee60cba52b326e531b93ccf1fbf7f41e09aa956d91056acc303e2d0f6b51",
+          "streams": {
+            "decoded_bytes": 1479302,
+            "flate_streams": 216,
+            "objects": 216,
+            "stored_bytes": 454049,
+            "undecoded_filtered_streams": 0
+          }
+        },
+        "classic_xref_sample": {
+          "cpu_seconds": 0.98,
+          "max_rss_kib": 41472,
+          "pdf_bytes": 884319,
+          "pdf_sha256": "4753ee60cba52b326e531b93ccf1fbf7f41e09aa956d91056acc303e2d0f6b51",
+          "wall_seconds": 0.998645
+        },
+        "deterministic_pdf": true,
+        "median_cpu_seconds": 0.97,
+        "median_max_rss_kib": 41472,
+        "median_pdf_assembly_ms": null,
+        "median_pdf_font_ms": null,
+        "median_pdf_total_ms": null,
+        "median_tex_total_ms": null,
+        "median_wall_seconds": 0.983274,
+        "samples": [
+          {
+            "cpu_seconds": 0.97,
+            "max_rss_kib": 41472,
+            "pdf_bytes": 524367,
+            "pdf_sha256": "2c3fe793496cfe78f9222460ccf8a2189cc8e48965147b66111bfaafd4ced766",
+            "wall_seconds": 0.983274
+          },
+          {
+            "cpu_seconds": 0.97,
+            "max_rss_kib": 41216,
+            "pdf_bytes": 524367,
+            "pdf_sha256": "2c3fe793496cfe78f9222460ccf8a2189cc8e48965147b66111bfaafd4ced766",
+            "wall_seconds": 0.981589
+          },
+          {
+            "cpu_seconds": 0.98,
+            "max_rss_kib": 41472,
+            "pdf_bytes": 524367,
+            "pdf_sha256": "2c3fe793496cfe78f9222460ccf8a2189cc8e48965147b66111bfaafd4ced766",
+            "wall_seconds": 0.988471
+          }
+        ],
+        "validation": {
+          "fonts": {
+            "count": 12,
+            "rows": [
+              "SPLLDR+LMRoman12-Bold                Type 1            Custom           yes yes yes    780  0",
+              "WUHMMS+LMRoman10-Regular             Type 1            Custom           yes yes yes    781  0",
+              "TGUPAH+LMRoman9-Regular              Type 1            Custom           yes yes yes    782  0",
+              "NJOETJ+LMRoman10-Bold                Type 1            Custom           yes yes yes    794  0",
+              "SRDHEJ+LMRoman10-Italic              Type 1            Custom           yes yes yes    795  0",
+              "GUBAIY+LMSans10-Regular              Type 1            Custom           yes yes yes    796  0",
+              "RPHSXD+LMMono10-Regular              Type 1            Custom           yes yes yes    797  0",
+              "JHORIS+LMMathExtension10-Regular     Type 1            Custom           yes yes yes    798  0",
+              "AAAHIX+LMRoman7-Regular              Type 1            Custom           yes yes yes    799  0",
+              "PMLXKY+LMMathItalic7-Regular         Type 1            Custom           yes yes yes    800  0",
+              "GVGFAB+LMMathItalic10-Regular        Type 1            Custom           yes yes yes    801  0",
+              "WUHMMS+LMRoman10-Regular             Type 1            Custom           yes yes yes    802  0"
+            ]
+          },
+          "info": {
+            "pages": 193,
+            "pdf_version": "1.5",
+            "tagged": "no"
+          },
+          "links": {
+            "uri_annotations": 192,
+            "urls_sha256": "cf1acb97d56b006530db43407f0289783acd3374b2be76610eabf2f00d1630b9"
+          },
+          "poppler": {
+            "pages": 193,
+            "selection": "all",
+            "sha256": "0137955837f05b0d3d712d1c796ed632bd3d451eb18c25acd5ddb305fca4fd5d"
+          },
+          "quartz": {
+            "available": false
+          },
+          "text": {
+            "bytes": 448336,
+            "markers": [
+              "Synthetic PDF qualification",
+              "Generated section",
+              "affine office"
+            ],
+            "sequence_entries": 192,
+            "sequence_sha256": "90e62b5f0759d807feb4ca89d5dee05fe467a340dea11e30de34a3b808231783",
+            "sha256": "fd63b1b7e28525657825aacee66addc28a6e85e587d46902007e3d5d4ee49cfe"
+          },
+          "validators": {
+            "ghostscript": true,
+            "mutool": true,
+            "qpdf": null
+          }
+        }
+      }
+    },
+    {
+      "candidate": {
+        "classic_xref_annotations": null,
+        "classic_xref_breakdown": {
+          "categories": {
+            "font_program": {
+              "decoded_bytes": 168779,
+              "flate_streams": 17,
+              "objects": 17,
+              "stored_bytes": 111915
+            },
+            "page_content": {
+              "decoded_bytes": 39144,
+              "flate_streams": 12,
+              "objects": 12,
+              "stored_bytes": 14621
+            },
+            "to_unicode": {
+              "decoded_bytes": 13748,
+              "flate_streams": 7,
+              "objects": 7,
+              "stored_bytes": 5894
+            }
+          },
+          "classic_fonts": {
+            "descriptors": 17,
+            "embedded_programs": 17,
+            "encodings": 7,
+            "pdf_fonts": 19,
+            "physical_faces": 17
+          },
+          "forms": [],
+          "images": [],
+          "non_payload_bytes": 61045,
+          "objects": 87,
+          "path": "temporary/classic-fonts/candidate-classic-xref.pdf",
+          "pdf_bytes": 193475,
+          "schema": 1,
+          "sha256": "bcf62785d61008842ec270bef84e56d22e4721d3090f42947269dbd470436303",
+          "streams": {
+            "decoded_bytes": 221671,
+            "flate_streams": 36,
+            "objects": 36,
+            "stored_bytes": 132430,
+            "undecoded_filtered_streams": 0
+          }
+        },
+        "classic_xref_sample": {
+          "cpu_seconds": 0.22,
+          "images": null,
+          "max_rss_kib": 85368,
+          "passes": 2,
+          "pdf_assembly_ms": 4.257,
+          "pdf_bytes": 193475,
+          "pdf_font_ms": 14.199,
+          "pdf_sha256": "bcf62785d61008842ec270bef84e56d22e4721d3090f42947269dbd470436303",
+          "pdf_total_ms": 19.714,
+          "tex_total_ms": 144.307,
+          "wall_seconds": 0.230916
+        },
+        "determinism_probe": null,
+        "deterministic_pdf": true,
+        "median_cpu_seconds": 0.23,
+        "median_max_rss_kib": 86172,
+        "median_pdf_assembly_ms": 4.442,
+        "median_pdf_font_ms": 14.136,
+        "median_pdf_total_ms": 19.798,
+        "median_tex_total_ms": 147.403,
+        "median_wall_seconds": 0.232752,
+        "samples": [
+          {
+            "cpu_seconds": 0.23,
+            "images": null,
+            "max_rss_kib": 86188,
+            "passes": 2,
+            "pdf_assembly_ms": 4.442,
+            "pdf_bytes": 142868,
+            "pdf_font_ms": 13.878,
+            "pdf_sha256": "3f37681ed1ee65e63a8d8f0bdf0d82413312d0f7dcc0a76ff6a60b7cc24a63ab",
+            "pdf_total_ms": 19.547,
+            "tex_total_ms": 142.983,
+            "wall_seconds": 0.231508
+          },
+          {
+            "cpu_seconds": 0.23,
+            "images": null,
+            "max_rss_kib": 86172,
+            "passes": 2,
+            "pdf_assembly_ms": 4.44,
+            "pdf_bytes": 142868,
+            "pdf_font_ms": 14.136,
+            "pdf_sha256": "3f37681ed1ee65e63a8d8f0bdf0d82413312d0f7dcc0a76ff6a60b7cc24a63ab",
+            "pdf_total_ms": 19.798,
+            "tex_total_ms": 147.403,
+            "wall_seconds": 0.237289
+          },
+          {
+            "cpu_seconds": 0.23,
+            "images": null,
+            "max_rss_kib": 86056,
+            "passes": 2,
+            "pdf_assembly_ms": 4.536,
+            "pdf_bytes": 142868,
+            "pdf_font_ms": 14.197,
+            "pdf_sha256": "3f37681ed1ee65e63a8d8f0bdf0d82413312d0f7dcc0a76ff6a60b7cc24a63ab",
+            "pdf_total_ms": 19.935,
+            "tex_total_ms": 148.059,
+            "wall_seconds": 0.232752
+          }
+        ],
+        "validation": {
+          "fonts": {
+            "count": 19,
+            "rows": [
+              "ACMIAM+LMRoman10-Regular             Type 1            Custom           yes yes yes      6  0",
+              "QVSCUZ+LMRoman12-Regular             Type 1            Custom           yes yes yes      9  0",
+              "CNRGJZ+LMRoman12-Bold                Type 1            Custom           yes yes yes     12  0",
+              "ACMIAM+LMRoman10-Regular             Type 1            Custom           yes yes yes     14  0",
+              "VPZREO+LMSans10-Regular              Type 1            Custom           yes yes yes     17  0",
+              "FBUQJB+LMSans10-Bold                 Type 1            Custom           yes yes yes     20  0",
+              "JRGVBI+LMSans10-Oblique              Type 1            Custom           yes yes yes     23  0",
+              "UAKWUN+LMMono10-Regular              Type 1            Custom           yes yes yes     26  0",
+              "LBPSYO+LMRoman9-Regular              Type 1            Custom           yes yes yes     29  0",
+              "LBPSYO+LMRoman9-Regular              Type 1            Custom           yes yes yes     31  0",
+              "RPQZLS+LMRoman7-Regular              Type 1            Custom           yes yes yes     34  0",
+              "MGPEXW+LMMathItalic10-Regular        Type 1            Custom           yes yes yes     38  0",
+              "DBHKEP+LMMathItalic7-Regular         Type 1            Custom           yes yes yes     41  0",
+              "SMRBVK+LMMathSymbols10-Regular       Type 1            Custom           yes yes yes     45  0",
+              "VQKYPD+LMMathExtension10-Regular     Type 1            Custom           yes yes yes     49  0",
+              "JFJQSN+LASY10                        Type 1            Custom           yes yes yes     53  0",
+              "MHAFKA+LMRoman8-Regular              Type 1            Custom           yes yes yes     56  0",
+              "WWAFUQ+LMSans8-Regular               Type 1            Custom           yes yes yes     59  0",
+              "NSVUUP+LMRoman10-BoldItalic          Type 1            Custom           yes yes yes     62  0"
+            ]
+          },
+          "info": {
+            "pages": 12,
+            "pdf_version": "1.5",
+            "tagged": "no"
+          },
+          "links": null,
+          "poppler": {
+            "pages": 12,
+            "selection": "all",
+            "sha256": "9a033599812558c2f1b6281850d09425e6ad8f8830decab19ffe5a156c24d327"
+          },
+          "quartz": {
+            "available": false
+          },
+          "text": {
+            "bytes": 11427,
+            "markers": [
+              "Classic font matrix",
+              "Classic font qualification page",
+              "office affine"
+            ],
+            "sequence_entries": 12,
+            "sequence_sha256": "7909937abe135b51143faf006ba1713d4c139e3337325ad10f9b81807cd66786",
+            "sha256": "68f195fc2aa9363f40c1336cb584767865c27dfb8d1124f427dfaf7ffcf01cd0"
+          },
+          "validators": {
+            "ghostscript": true,
+            "mutool": true,
+            "qpdf": null
+          }
+        }
+      },
+      "comparison": {
+        "classic_xref_breakdown": {
+          "aitex_non_payload_bytes": 61045,
+          "aitex_pdf_bytes": 193475,
+          "categories": {
+            "font_program": {
+              "aitex_decoded_bytes": 168779,
+              "aitex_objects": 17,
+              "aitex_stored_bytes": 111915,
+              "decoded_byte_delta": -106503,
+              "object_delta": 0,
+              "stock_decoded_bytes": 275282,
+              "stock_objects": 17,
+              "stock_stored_bytes": 263604,
+              "stored_byte_delta": -151689
+            },
+            "page_content": {
+              "aitex_decoded_bytes": 39144,
+              "aitex_objects": 12,
+              "aitex_stored_bytes": 14621,
+              "decoded_byte_delta": 573,
+              "object_delta": 0,
+              "stock_decoded_bytes": 38571,
+              "stock_objects": 12,
+              "stock_stored_bytes": 14492,
+              "stored_byte_delta": 129
+            },
+            "to_unicode": {
+              "aitex_decoded_bytes": 13748,
+              "aitex_objects": 7,
+              "aitex_stored_bytes": 5894,
+              "decoded_byte_delta": -20086,
+              "object_delta": -12,
+              "stock_decoded_bytes": 33834,
+              "stock_objects": 19,
+              "stock_stored_bytes": 14853,
+              "stored_byte_delta": -8959
+            }
+          },
+          "non_payload_byte_delta": 32652,
+          "pdf_byte_delta": -127867,
+          "stock_non_payload_bytes": 28393,
+          "stock_pdf_bytes": 321342
+        },
+        "pdf_size_ratio": 0.471739,
+        "poppler_raster": {
+          "dpi": 72,
+          "equivalent": true,
+          "fuzz_fraction": 0.05,
+          "max_normalized_mae": 0.0015,
+          "max_outside_fraction": 0.005,
+          "pages": 12,
+          "worst_normalized_mae": 0.0,
+          "worst_normalized_mae_page": 0,
+          "worst_outside_fraction": 0.0,
+          "worst_outside_fraction_page": 0
+        }
+      },
+      "id": "classic-fonts",
+      "kind": "tex",
+      "pages": 12,
+      "performance_gates": {
+        "max_matching_environment_pdf_assembly_absolute_ms": 2.0,
+        "max_matching_environment_pdf_stage_absolute_ms": 40.0,
+        "max_matching_environment_rss_absolute_kib": 16384.0
+      },
+      "profile": "classic-fonts",
+      "raster_policy": "all",
+      "reference": "pdftex",
+      "samples_requested": 3,
+      "source": "tests/pdf-qualification/classic-fonts.tex",
+      "source_sha256": "e03d061837470ae12f8948e81a72df71476a5ef0ef1846bca70844facc17ba85",
+      "stock": {
+        "classic_xref_breakdown": {
+          "categories": {
+            "font_program": {
+              "decoded_bytes": 275282,
+              "flate_streams": 17,
+              "objects": 17,
+              "stored_bytes": 263604
+            },
+            "page_content": {
+              "decoded_bytes": 38571,
+              "flate_streams": 12,
+              "objects": 12,
+              "stored_bytes": 14492
+            },
+            "to_unicode": {
+              "decoded_bytes": 33834,
+              "flate_streams": 19,
+              "objects": 19,
+              "stored_bytes": 14853
+            }
+          },
+          "classic_fonts": {
+            "descriptors": 17,
+            "embedded_programs": 17,
+            "encodings": 0,
+            "pdf_fonts": 19,
+            "physical_faces": 17
+          },
+          "forms": [],
+          "images": [],
+          "non_payload_bytes": 28393,
+          "objects": 138,
+          "path": "temporary/classic-fonts/reference-classic-xref.pdf",
+          "pdf_bytes": 321342,
+          "schema": 1,
+          "sha256": "1e0a70ff08e0c709173f488ab18a1521cf317e5c19d6a148d1de7043267ba39c",
+          "streams": {
+            "decoded_bytes": 347687,
+            "flate_streams": 48,
+            "objects": 48,
+            "stored_bytes": 292949,
+            "undecoded_filtered_streams": 0
+          }
+        },
+        "classic_xref_sample": {
+          "cpu_seconds": 0.32,
+          "max_rss_kib": 40960,
+          "pdf_bytes": 321342,
+          "pdf_sha256": "1e0a70ff08e0c709173f488ab18a1521cf317e5c19d6a148d1de7043267ba39c",
+          "wall_seconds": 0.336179
+        },
+        "deterministic_pdf": true,
+        "median_cpu_seconds": 0.33,
+        "median_max_rss_kib": 41216,
+        "median_pdf_assembly_ms": null,
+        "median_pdf_font_ms": null,
+        "median_pdf_total_ms": null,
+        "median_tex_total_ms": null,
+        "median_wall_seconds": 0.339894,
+        "samples": [
+          {
+            "cpu_seconds": 0.33,
+            "max_rss_kib": 41216,
+            "pdf_bytes": 302854,
+            "pdf_sha256": "6229f9b1e5e46783f04946f35c970cae421a374d99f09ebfc776ff270b141de0",
+            "wall_seconds": 0.340616
+          },
+          {
+            "cpu_seconds": 0.33,
+            "max_rss_kib": 41216,
+            "pdf_bytes": 302854,
+            "pdf_sha256": "6229f9b1e5e46783f04946f35c970cae421a374d99f09ebfc776ff270b141de0",
+            "wall_seconds": 0.336304
+          },
+          {
+            "cpu_seconds": 0.33,
+            "max_rss_kib": 41216,
+            "pdf_bytes": 302854,
+            "pdf_sha256": "6229f9b1e5e46783f04946f35c970cae421a374d99f09ebfc776ff270b141de0",
+            "wall_seconds": 0.339894
+          }
+        ],
+        "validation": {
+          "fonts": {
+            "count": 19,
+            "rows": [
+              "YHSLXA+LMRoman12-Bold                Type 1            Custom           yes yes yes      4  0",
+              "UWSESW+LMRoman10-Regular             Type 1            Custom           yes yes yes      5  0",
+              "UWSESW+LMRoman10-Regular             Type 1            Custom           yes yes yes      6  0",
+              "KJLXSS+LMSans10-Regular              Type 1            Custom           yes yes yes      7  0",
+              "HHQMQU+LMSans10-Bold                 Type 1            Custom           yes yes yes      8  0",
+              "SENFCX+LMSans10-Oblique              Type 1            Custom           yes yes yes      9  0",
+              "UXXEYX+LMMono10-Regular              Type 1            Custom           yes yes yes     10  0",
+              "QFDGCK+LMRoman9-Regular              Type 1            Custom           yes yes yes     11  0",
+              "QFDGCK+LMRoman9-Regular              Type 1            Custom           yes yes yes     12  0",
+              "EKQLNN+LMMathItalic10-Regular        Type 1            Custom           yes yes yes     13  0",
+              "CFIRBS+LMMathSymbols10-Regular       Type 1            Custom           yes yes yes     14  0",
+              "LWGPYV+LMMathItalic7-Regular         Type 1            Custom           yes yes yes     15  0",
+              "YUZORF+LMMathExtension10-Regular     Type 1            Custom           yes yes yes     16  0",
+              "DLCBAQ+LMRoman7-Regular              Type 1            Custom           yes yes yes     17  0",
+              "JTEPZF+LASY10                        Type 1            Builtin          yes yes yes     18  0",
+              "QHFFJQ+LMRoman12-Regular             Type 1            Custom           yes yes yes     19  0",
+              "WNEVNQ+LMRoman8-Regular              Type 1            Custom           yes yes yes     20  0",
+              "EIZMXL+LMSans8-Regular               Type 1            Custom           yes yes yes     21  0",
+              "TGALKN+LMRoman10-BoldItalic          Type 1            Custom           yes yes yes     22  0"
+            ]
+          },
+          "info": {
+            "pages": 12,
+            "pdf_version": "1.5",
+            "tagged": "no"
+          },
+          "links": null,
+          "poppler": {
+            "pages": 12,
+            "selection": "all",
+            "sha256": "9a033599812558c2f1b6281850d09425e6ad8f8830decab19ffe5a156c24d327"
+          },
+          "quartz": {
+            "available": false
+          },
+          "text": {
+            "bytes": 11019,
+            "markers": [
+              "Classic font matrix",
+              "Classic font qualification page",
+              "office affine"
+            ],
+            "sequence_entries": 12,
+            "sequence_sha256": "7909937abe135b51143faf006ba1713d4c139e3337325ad10f9b81807cd66786",
+            "sha256": "995b75fd545c23b94dc190d67c377ead73bae8671a510be68c1a7fbc3f869583"
+          },
+          "validators": {
+            "ghostscript": true,
+            "mutool": true,
+            "qpdf": null
+          }
+        }
+      }
+    },
+    {
+      "candidate": {
+        "classic_xref_annotations": {
+          "cyan_boxed_links": 256,
+          "link_annotations": 448,
+          "red_boxed_links": 192
+        },
+        "classic_xref_breakdown": {
+          "categories": {
+            "font_program": {
+              "decoded_bytes": 35329,
+              "flate_streams": 2,
+              "objects": 2,
+              "stored_bytes": 30172
+            },
+            "page_content": {
+              "decoded_bytes": 80292,
+              "flate_streams": 64,
+              "objects": 64,
+              "stored_bytes": 38692
+            },
+            "to_unicode": {
+              "decoded_bytes": 2359,
+              "flate_streams": 1,
+              "objects": 1,
+              "stored_bytes": 976
+            }
+          },
+          "classic_fonts": {
+            "descriptors": 2,
+            "embedded_programs": 2,
+            "encodings": 1,
+            "pdf_fonts": 2,
+            "physical_faces": 2
+          },
+          "forms": [],
+          "images": [],
+          "non_payload_bytes": 137791,
+          "objects": 653,
+          "path": "temporary/annotations/candidate-classic-xref.pdf",
+          "pdf_bytes": 207631,
+          "schema": 1,
+          "sha256": "07d6e969ff35adce12dcf49de2a2666308737c559e23fa890da01cb592049bc5",
+          "streams": {
+            "decoded_bytes": 117980,
+            "flate_streams": 67,
+            "objects": 67,
+            "stored_bytes": 69840,
+            "undecoded_filtered_streams": 0
+          }
+        },
+        "classic_xref_sample": {
+          "cpu_seconds": 0.46,
+          "images": null,
+          "max_rss_kib": 86916,
+          "passes": 2,
+          "pdf_assembly_ms": 9.488,
+          "pdf_bytes": 207631,
+          "pdf_font_ms": 3.051,
+          "pdf_sha256": "07d6e969ff35adce12dcf49de2a2666308737c559e23fa890da01cb592049bc5",
+          "pdf_total_ms": 13.906,
+          "tex_total_ms": 372.647,
+          "wall_seconds": 0.463798
+        },
+        "determinism_probe": null,
+        "deterministic_pdf": true,
+        "median_cpu_seconds": 0.46,
+        "median_max_rss_kib": 87096,
+        "median_pdf_assembly_ms": 10.137,
+        "median_pdf_font_ms": 3.316,
+        "median_pdf_total_ms": 15.138,
+        "median_tex_total_ms": 371.623,
+        "median_wall_seconds": 0.462115,
+        "samples": [
+          {
+            "cpu_seconds": 0.45,
+            "images": null,
+            "max_rss_kib": 87532,
+            "passes": 2,
+            "pdf_assembly_ms": 9.961,
+            "pdf_bytes": 87629,
+            "pdf_font_ms": 3.11,
+            "pdf_sha256": "63b9153ecbfa56146c9cfcff79bf3377bb9d806a35d3d7cae715f39160f58ee5",
+            "pdf_total_ms": 14.262,
+            "tex_total_ms": 371.623,
+            "wall_seconds": 0.462115
+          },
+          {
+            "cpu_seconds": 0.46,
+            "images": null,
+            "max_rss_kib": 87096,
+            "passes": 2,
+            "pdf_assembly_ms": 10.768,
+            "pdf_bytes": 87629,
+            "pdf_font_ms": 3.316,
+            "pdf_sha256": "63b9153ecbfa56146c9cfcff79bf3377bb9d806a35d3d7cae715f39160f58ee5",
+            "pdf_total_ms": 15.195,
+            "tex_total_ms": 379.568,
+            "wall_seconds": 0.47218
+          },
+          {
+            "cpu_seconds": 0.46,
+            "images": null,
+            "max_rss_kib": 86772,
+            "passes": 2,
+            "pdf_assembly_ms": 10.137,
+            "pdf_bytes": 87629,
+            "pdf_font_ms": 3.879,
+            "pdf_sha256": "63b9153ecbfa56146c9cfcff79bf3377bb9d806a35d3d7cae715f39160f58ee5",
+            "pdf_total_ms": 15.138,
+            "tex_total_ms": 369.603,
+            "wall_seconds": 0.461857
+          }
+        ],
+        "validation": {
+          "fonts": {
+            "count": 2,
+            "rows": [
+              "QLTNUR+CMR10                         Type 1            Custom           yes yes yes      6  0",
+              "MBUMJX+CMBX12                        Type 1            Custom           yes yes yes      9  0"
+            ]
+          },
+          "info": {
+            "pages": 64,
+            "pdf_version": "1.5",
+            "tagged": "no"
+          },
+          "links": {
+            "uri_annotations": 256,
+            "urls_sha256": "1cf46bdcf95ecbf9281d2845b70d9c9db52fb1604055b898b79cd6e1935ab5cc"
+          },
+          "poppler": {
+            "pages": 64,
+            "selection": "all",
+            "sha256": "0529316101b784a48d8b0e81118dff4ad3cf22602466f9029a60fed87f74f352"
+          },
+          "quartz": {
+            "available": false
+          },
+          "text": {
+            "bytes": 33244,
+            "markers": [
+              "Annotation page",
+              "Alpha URI",
+              "another internal destination"
+            ],
+            "sequence_entries": 64,
+            "sequence_sha256": "4a1f2cf31676feb27a2ca531c70ddd37d83dd33f2b6493f9ea4bf5497dbc7b9c",
+            "sha256": "fa2ee8d17714ad758a97b7a1d7c57a7b3149c5968ae2c763cbbf7a0f40f81bbf"
+          },
+          "validators": {
+            "ghostscript": true,
+            "mutool": true,
+            "qpdf": null
+          }
+        }
+      },
+      "comparison": {
+        "classic_xref_breakdown": {
+          "aitex_non_payload_bytes": 137791,
+          "aitex_pdf_bytes": 207631,
+          "categories": {
+            "font_program": {
+              "aitex_decoded_bytes": 35329,
+              "aitex_objects": 2,
+              "aitex_stored_bytes": 30172,
+              "decoded_byte_delta": 5125,
+              "object_delta": 0,
+              "stock_decoded_bytes": 30204,
+              "stock_objects": 2,
+              "stock_stored_bytes": 28788,
+              "stored_byte_delta": 1384
+            },
+            "page_content": {
+              "aitex_decoded_bytes": 80292,
+              "aitex_objects": 64,
+              "aitex_stored_bytes": 38692,
+              "decoded_byte_delta": 1984,
+              "object_delta": 0,
+              "stock_decoded_bytes": 78308,
+              "stock_objects": 64,
+              "stock_stored_bytes": 39543,
+              "stored_byte_delta": -851
+            },
+            "to_unicode": {
+              "aitex_decoded_bytes": 2359,
+              "aitex_objects": 1,
+              "aitex_stored_bytes": 976,
+              "decoded_byte_delta": -1094,
+              "object_delta": -1,
+              "stock_decoded_bytes": 3453,
+              "stock_objects": 2,
+              "stock_stored_bytes": 1480,
+              "stored_byte_delta": -504
+            }
+          },
+          "non_payload_byte_delta": -27750,
+          "pdf_byte_delta": -27721,
+          "stock_non_payload_bytes": 165541,
+          "stock_pdf_bytes": 235352
+        },
+        "pdf_size_ratio": 0.911113,
+        "poppler_raster": {
+          "dpi": 72,
+          "equivalent": true,
+          "fuzz_fraction": 0.05,
+          "max_normalized_mae": 0.004,
+          "max_outside_fraction": 0.01,
+          "pages": 64,
+          "worst_normalized_mae": 0.002980635,
+          "worst_normalized_mae_page": 1,
+          "worst_outside_fraction": 0.007528306,
+          "worst_outside_fraction_page": 1
+        }
+      },
+      "id": "annotations",
+      "kind": "tex",
+      "pages": 64,
+      "performance_gates": {
+        "max_matching_environment_pdf_assembly_absolute_ms": 2.0,
+        "max_matching_environment_pdf_stage_absolute_ms": 40.0,
+        "max_matching_environment_rss_absolute_kib": 16384.0
+      },
+      "profile": "annotations",
+      "raster_policy": "all",
+      "reference": "pdftex",
+      "samples_requested": 3,
+      "source": "tests/pdf-qualification/annotation-stress.tex",
+      "source_sha256": "5158a1888b3bab0871e2543462592cd896633a5cc5a2e3515416e57e99b7f887",
+      "stock": {
+        "classic_xref_breakdown": {
+          "categories": {
+            "font_program": {
+              "decoded_bytes": 30204,
+              "flate_streams": 2,
+              "objects": 2,
+              "stored_bytes": 28788
+            },
+            "page_content": {
+              "decoded_bytes": 78308,
+              "flate_streams": 64,
+              "objects": 64,
+              "stored_bytes": 39543
+            },
+            "to_unicode": {
+              "decoded_bytes": 3453,
+              "flate_streams": 2,
+              "objects": 2,
+              "stored_bytes": 1480
+            }
+          },
+          "classic_fonts": {
+            "descriptors": 2,
+            "embedded_programs": 2,
+            "encodings": 0,
+            "pdf_fonts": 2,
+            "physical_faces": 2
+          },
+          "forms": [],
+          "images": [],
+          "non_payload_bytes": 165541,
+          "objects": 1095,
+          "path": "temporary/annotations/reference-classic-xref.pdf",
+          "pdf_bytes": 235352,
+          "schema": 1,
+          "sha256": "424f14e39c231ac6346aea3c0f544013b0a55dd9f62e680b2fdf9970378054ce",
+          "streams": {
+            "decoded_bytes": 111965,
+            "flate_streams": 68,
+            "objects": 68,
+            "stored_bytes": 69811,
+            "undecoded_filtered_streams": 0
+          }
+        },
+        "classic_xref_sample": {
+          "cpu_seconds": 0.45,
+          "max_rss_kib": 40704,
+          "pdf_bytes": 235352,
+          "pdf_sha256": "424f14e39c231ac6346aea3c0f544013b0a55dd9f62e680b2fdf9970378054ce",
+          "wall_seconds": 0.456699
+        },
+        "deterministic_pdf": true,
+        "median_cpu_seconds": 0.45,
+        "median_max_rss_kib": 40960,
+        "median_pdf_assembly_ms": null,
+        "median_pdf_font_ms": null,
+        "median_pdf_total_ms": null,
+        "median_tex_total_ms": null,
+        "median_wall_seconds": 0.462719,
+        "samples": [
+          {
+            "cpu_seconds": 0.46,
+            "max_rss_kib": 40960,
+            "pdf_bytes": 96178,
+            "pdf_sha256": "2d323359f5ebcebcdb3136bf431f3fe172c83b3ebae3bbed770f6901bdc98258",
+            "wall_seconds": 0.4694
+          },
+          {
+            "cpu_seconds": 0.45,
+            "max_rss_kib": 40448,
+            "pdf_bytes": 96178,
+            "pdf_sha256": "2d323359f5ebcebcdb3136bf431f3fe172c83b3ebae3bbed770f6901bdc98258",
+            "wall_seconds": 0.461711
+          },
+          {
+            "cpu_seconds": 0.45,
+            "max_rss_kib": 40960,
+            "pdf_bytes": 96178,
+            "pdf_sha256": "2d323359f5ebcebcdb3136bf431f3fe172c83b3ebae3bbed770f6901bdc98258",
+            "wall_seconds": 0.462719
+          }
+        ],
+        "validation": {
+          "fonts": {
+            "count": 2,
+            "rows": [
+              "TPQLDW+CMBX12                        Type 1            Builtin          yes yes yes    272  0",
+              "MBDRAZ+CMR10                         Type 1            Builtin          yes yes yes    274  0"
+            ]
+          },
+          "info": {
+            "pages": 64,
+            "pdf_version": "1.5",
+            "tagged": "no"
+          },
+          "links": {
+            "uri_annotations": 256,
+            "urls_sha256": "1cf46bdcf95ecbf9281d2845b70d9c9db52fb1604055b898b79cd6e1935ab5cc"
+          },
+          "poppler": {
+            "pages": 64,
+            "selection": "all",
+            "sha256": "29f6d627b442e525458cf1296890a47caca6feeefdd892e3f076e8850f9d986f"
+          },
+          "quartz": {
+            "available": false
+          },
+          "text": {
+            "bytes": 33244,
+            "markers": [
+              "Annotation page",
+              "Alpha URI",
+              "another internal destination"
+            ],
+            "sequence_entries": 64,
+            "sequence_sha256": "4a1f2cf31676feb27a2ca531c70ddd37d83dd33f2b6493f9ea4bf5497dbc7b9c",
+            "sha256": "fa2ee8d17714ad758a97b7a1d7c57a7b3149c5968ae2c763cbbf7a0f40f81bbf"
+          },
+          "validators": {
+            "ghostscript": true,
+            "mutool": true,
+            "qpdf": null
+          }
+        }
+      }
+    },
+    {
+      "candidate": {
+        "classic_xref_annotations": null,
+        "classic_xref_breakdown": {
+          "categories": {
+            "font_program": {
+              "decoded_bytes": 36360,
+              "flate_streams": 2,
+              "objects": 2,
+              "stored_bytes": 31207
+            },
+            "form": {
+              "decoded_bytes": 127,
+              "flate_streams": 1,
+              "objects": 1,
+              "stored_bytes": 83
+            },
+            "image": {
+              "decoded_bytes": 710600,
+              "flate_streams": 6,
+              "objects": 6,
+              "stored_bytes": 494407
+            },
+            "page_content": {
+              "decoded_bytes": 25398,
+              "flate_streams": 12,
+              "objects": 12,
+              "stored_bytes": 10920
+            },
+            "to_unicode": {
+              "decoded_bytes": 2359,
+              "flate_streams": 1,
+              "objects": 1,
+              "stored_bytes": 976
+            }
+          },
+          "classic_fonts": {
+            "descriptors": 2,
+            "embedded_programs": 2,
+            "encodings": 1,
+            "pdf_fonts": 2,
+            "physical_faces": 2
+          },
+          "forms": [
+            {
+              "bbox": "0 0 120 60",
+              "decoded_bytes": 127,
+              "object": 40,
+              "stored_bytes": 83
+            }
+          ],
+          "images": [
+            {
+              "bits_per_component": 8,
+              "color_space": "/DeviceRGB",
+              "decoded_bytes": 491840,
+              "filters": [
+                "FlateDecode"
+              ],
+              "height": 320,
+              "mask": null,
+              "object": 34,
+              "stored_bytes": 491276,
+              "width": 512
+            },
+            {
+              "bits_per_component": 8,
+              "color_space": "/DeviceGray",
+              "decoded_bytes": 46260,
+              "filters": [
+                "FlateDecode"
+              ],
+              "height": 180,
+              "mask": null,
+              "object": 35,
+              "stored_bytes": 865,
+              "width": 256
+            },
+            {
+              "bits_per_component": 8,
+              "color_space": "/DeviceRGB",
+              "decoded_bytes": 138420,
+              "filters": [
+                "FlateDecode"
+              ],
+              "height": 180,
+              "mask": "/SMask 35 0 R",
+              "object": 36,
+              "stored_bytes": 1871,
+              "width": 256
+            },
+            {
+              "bits_per_component": 1,
+              "color_space": "/DeviceGray",
+              "decoded_bytes": 3168,
+              "filters": [
+                "FlateDecode"
+              ],
+              "height": 96,
+              "mask": null,
+              "object": 37,
+              "stored_bytes": 65,
+              "width": 256
+            },
+            {
+              "bits_per_component": 8,
+              "color_space": "/DeviceGray",
+              "decoded_bytes": 24672,
+              "filters": [
+                "FlateDecode"
+              ],
+              "height": 96,
+              "mask": null,
+              "object": 38,
+              "stored_bytes": 250,
+              "width": 256
+            },
+            {
+              "bits_per_component": 2,
+              "color_space": "[/Indexed /DeviceRGB 3 <192D5ADC46372DBE64F5E17D>]",
+              "decoded_bytes": 6240,
+              "filters": [
+                "FlateDecode"
+              ],
+              "height": 96,
+              "mask": "/Mask [1 1]",
+              "object": 39,
+              "stored_bytes": 80,
+              "width": 256
+            }
+          ],
+          "non_payload_bytes": 10932,
+          "objects": 41,
+          "path": "temporary/graphics/candidate-classic-xref.pdf",
+          "pdf_bytes": 548525,
+          "schema": 1,
+          "sha256": "17606de6424dd5475825b4ffb4dea1adc81b752c30b80759917ce01b55d821c7",
+          "streams": {
+            "decoded_bytes": 774844,
+            "flate_streams": 22,
+            "objects": 22,
+            "stored_bytes": 537593,
+            "undecoded_filtered_streams": 0
+          }
+        },
+        "classic_xref_sample": {
+          "cpu_seconds": 0.26,
+          "images": [
+            {
+              "elapsed_us": 3348,
+              "format": "png",
+              "path": "pattern.png",
+              "peak_transient_bytes": 982666,
+              "retained_bytes": 491333,
+              "reuse": false,
+              "route": "png-native",
+              "source_bytes": 491333
+            },
+            {
+              "elapsed_us": 2296,
+              "format": "png",
+              "path": "alpha.png",
+              "peak_transient_bytes": 154167,
+              "retained_bytes": 2775,
+              "reuse": false,
+              "route": "png-alpha-in-process",
+              "source_bytes": 151392
+            },
+            {
+              "elapsed_us": 19,
+              "format": "png",
+              "path": "gray-1.png",
+              "peak_transient_bytes": 244,
+              "retained_bytes": 122,
+              "reuse": false,
+              "route": "png-native",
+              "source_bytes": 122
+            },
+            {
+              "elapsed_us": 17,
+              "format": "png",
+              "path": "gray-8.png",
+              "peak_transient_bytes": 614,
+              "retained_bytes": 307,
+              "reuse": false,
+              "route": "png-native",
+              "source_bytes": 307
+            },
+            {
+              "elapsed_us": 17,
+              "format": "png",
+              "path": "indexed-2-trns.png",
+              "peak_transient_bytes": 354,
+              "retained_bytes": 177,
+              "reuse": false,
+              "route": "png-native",
+              "source_bytes": 177
+            },
+            {
+              "elapsed_us": 487,
+              "format": "png",
+              "path": "pattern-copy.png",
+              "retained_bytes": 491333,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 491333
+            },
+            {
+              "elapsed_us": 21,
+              "format": "eps",
+              "path": "driver-image.eps",
+              "peak_transient_bytes": 520,
+              "retained_bytes": 260,
+              "reuse": false,
+              "route": "eps-native",
+              "source_bytes": 260
+            },
+            {
+              "elapsed_us": 10,
+              "format": "eps",
+              "path": "driver-image.eps",
+              "retained_bytes": 260,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 260
+            },
+            {
+              "elapsed_us": 231,
+              "format": "png",
+              "path": "pattern.png",
+              "retained_bytes": 491333,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 491333
+            },
+            {
+              "elapsed_us": 76,
+              "format": "png",
+              "path": "alpha.png",
+              "retained_bytes": 2775,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 151392
+            },
+            {
+              "elapsed_us": 9,
+              "format": "png",
+              "path": "gray-1.png",
+              "retained_bytes": 122,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 122
+            },
+            {
+              "elapsed_us": 9,
+              "format": "png",
+              "path": "gray-8.png",
+              "retained_bytes": 307,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 307
+            },
+            {
+              "elapsed_us": 9,
+              "format": "png",
+              "path": "indexed-2-trns.png",
+              "retained_bytes": 177,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 177
+            },
+            {
+              "elapsed_us": 223,
+              "format": "png",
+              "path": "pattern-copy.png",
+              "retained_bytes": 491333,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 491333
+            },
+            {
+              "elapsed_us": 10,
+              "format": "eps",
+              "path": "driver-image.eps",
+              "retained_bytes": 260,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 260
+            },
+            {
+              "elapsed_us": 9,
+              "format": "eps",
+              "path": "driver-image.eps",
+              "retained_bytes": 260,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 260
+            },
+            {
+              "elapsed_us": 228,
+              "format": "png",
+              "path": "pattern.png",
+              "retained_bytes": 491333,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 491333
+            },
+            {
+              "elapsed_us": 76,
+              "format": "png",
+              "path": "alpha.png",
+              "retained_bytes": 2775,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 151392
+            },
+            {
+              "elapsed_us": 9,
+              "format": "png",
+              "path": "gray-1.png",
+              "retained_bytes": 122,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 122
+            },
+            {
+              "elapsed_us": 9,
+              "format": "png",
+              "path": "gray-8.png",
+              "retained_bytes": 307,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 307
+            },
+            {
+              "elapsed_us": 9,
+              "format": "png",
+              "path": "indexed-2-trns.png",
+              "retained_bytes": 177,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 177
+            },
+            {
+              "elapsed_us": 228,
+              "format": "png",
+              "path": "pattern-copy.png",
+              "retained_bytes": 491333,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 491333
+            },
+            {
+              "elapsed_us": 10,
+              "format": "eps",
+              "path": "driver-image.eps",
+              "retained_bytes": 260,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 260
+            },
+            {
+              "elapsed_us": 9,
+              "format": "eps",
+              "path": "driver-image.eps",
+              "retained_bytes": 260,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 260
+            },
+            {
+              "elapsed_us": 224,
+              "format": "png",
+              "path": "pattern.png",
+              "retained_bytes": 491333,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 491333
+            },
+            {
+              "elapsed_us": 76,
+              "format": "png",
+              "path": "alpha.png",
+              "retained_bytes": 2775,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 151392
+            },
+            {
+              "elapsed_us": 9,
+              "format": "png",
+              "path": "gray-1.png",
+              "retained_bytes": 122,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 122
+            },
+            {
+              "elapsed_us": 9,
+              "format": "png",
+              "path": "gray-8.png",
+              "retained_bytes": 307,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 307
+            },
+            {
+              "elapsed_us": 9,
+              "format": "png",
+              "path": "indexed-2-trns.png",
+              "retained_bytes": 177,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 177
+            },
+            {
+              "elapsed_us": 224,
+              "format": "png",
+              "path": "pattern-copy.png",
+              "retained_bytes": 491333,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 491333
+            },
+            {
+              "elapsed_us": 10,
+              "format": "eps",
+              "path": "driver-image.eps",
+              "retained_bytes": 260,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 260
+            },
+            {
+              "elapsed_us": 9,
+              "format": "eps",
+              "path": "driver-image.eps",
+              "retained_bytes": 260,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 260
+            },
+            {
+              "elapsed_us": 227,
+              "format": "png",
+              "path": "pattern.png",
+              "retained_bytes": 491333,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 491333
+            },
+            {
+              "elapsed_us": 76,
+              "format": "png",
+              "path": "alpha.png",
+              "retained_bytes": 2775,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 151392
+            },
+            {
+              "elapsed_us": 9,
+              "format": "png",
+              "path": "gray-1.png",
+              "retained_bytes": 122,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 122
+            },
+            {
+              "elapsed_us": 9,
+              "format": "png",
+              "path": "gray-8.png",
+              "retained_bytes": 307,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 307
+            },
+            {
+              "elapsed_us": 9,
+              "format": "png",
+              "path": "indexed-2-trns.png",
+              "retained_bytes": 177,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 177
+            },
+            {
+              "elapsed_us": 225,
+              "format": "png",
+              "path": "pattern-copy.png",
+              "retained_bytes": 491333,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 491333
+            },
+            {
+              "elapsed_us": 10,
+              "format": "eps",
+              "path": "driver-image.eps",
+              "retained_bytes": 260,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 260
+            },
+            {
+              "elapsed_us": 9,
+              "format": "eps",
+              "path": "driver-image.eps",
+              "retained_bytes": 260,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 260
+            },
+            {
+              "elapsed_us": 226,
+              "format": "png",
+              "path": "pattern.png",
+              "retained_bytes": 491333,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 491333
+            },
+            {
+              "elapsed_us": 75,
+              "format": "png",
+              "path": "alpha.png",
+              "retained_bytes": 2775,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 151392
+            },
+            {
+              "elapsed_us": 9,
+              "format": "png",
+              "path": "gray-1.png",
+              "retained_bytes": 122,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 122
+            },
+            {
+              "elapsed_us": 9,
+              "format": "png",
+              "path": "gray-8.png",
+              "retained_bytes": 307,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 307
+            },
+            {
+              "elapsed_us": 9,
+              "format": "png",
+              "path": "indexed-2-trns.png",
+              "retained_bytes": 177,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 177
+            },
+            {
+              "elapsed_us": 225,
+              "format": "png",
+              "path": "pattern-copy.png",
+              "retained_bytes": 491333,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 491333
+            },
+            {
+              "elapsed_us": 9,
+              "format": "eps",
+              "path": "driver-image.eps",
+              "retained_bytes": 260,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 260
+            },
+            {
+              "elapsed_us": 9,
+              "format": "eps",
+              "path": "driver-image.eps",
+              "retained_bytes": 260,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 260
+            },
+            {
+              "elapsed_us": 222,
+              "format": "png",
+              "path": "pattern.png",
+              "retained_bytes": 491333,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 491333
+            },
+            {
+              "elapsed_us": 75,
+              "format": "png",
+              "path": "alpha.png",
+              "retained_bytes": 2775,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 151392
+            },
+            {
+              "elapsed_us": 9,
+              "format": "png",
+              "path": "gray-1.png",
+              "retained_bytes": 122,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 122
+            },
+            {
+              "elapsed_us": 9,
+              "format": "png",
+              "path": "gray-8.png",
+              "retained_bytes": 307,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 307
+            },
+            {
+              "elapsed_us": 9,
+              "format": "png",
+              "path": "indexed-2-trns.png",
+              "retained_bytes": 177,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 177
+            },
+            {
+              "elapsed_us": 221,
+              "format": "png",
+              "path": "pattern-copy.png",
+              "retained_bytes": 491333,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 491333
+            },
+            {
+              "elapsed_us": 9,
+              "format": "eps",
+              "path": "driver-image.eps",
+              "retained_bytes": 260,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 260
+            },
+            {
+              "elapsed_us": 9,
+              "format": "eps",
+              "path": "driver-image.eps",
+              "retained_bytes": 260,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 260
+            },
+            {
+              "elapsed_us": 227,
+              "format": "png",
+              "path": "pattern.png",
+              "retained_bytes": 491333,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 491333
+            },
+            {
+              "elapsed_us": 75,
+              "format": "png",
+              "path": "alpha.png",
+              "retained_bytes": 2775,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 151392
+            },
+            {
+              "elapsed_us": 9,
+              "format": "png",
+              "path": "gray-1.png",
+              "retained_bytes": 122,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 122
+            },
+            {
+              "elapsed_us": 9,
+              "format": "png",
+              "path": "gray-8.png",
+              "retained_bytes": 307,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 307
+            },
+            {
+              "elapsed_us": 9,
+              "format": "png",
+              "path": "indexed-2-trns.png",
+              "retained_bytes": 177,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 177
+            },
+            {
+              "elapsed_us": 221,
+              "format": "png",
+              "path": "pattern-copy.png",
+              "retained_bytes": 491333,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 491333
+            },
+            {
+              "elapsed_us": 9,
+              "format": "eps",
+              "path": "driver-image.eps",
+              "retained_bytes": 260,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 260
+            },
+            {
+              "elapsed_us": 13,
+              "format": "eps",
+              "path": "driver-image.eps",
+              "retained_bytes": 260,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 260
+            },
+            {
+              "elapsed_us": 223,
+              "format": "png",
+              "path": "pattern.png",
+              "retained_bytes": 491333,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 491333
+            },
+            {
+              "elapsed_us": 75,
+              "format": "png",
+              "path": "alpha.png",
+              "retained_bytes": 2775,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 151392
+            },
+            {
+              "elapsed_us": 9,
+              "format": "png",
+              "path": "gray-1.png",
+              "retained_bytes": 122,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 122
+            },
+            {
+              "elapsed_us": 9,
+              "format": "png",
+              "path": "gray-8.png",
+              "retained_bytes": 307,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 307
+            },
+            {
+              "elapsed_us": 12,
+              "format": "png",
+              "path": "indexed-2-trns.png",
+              "retained_bytes": 177,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 177
+            },
+            {
+              "elapsed_us": 223,
+              "format": "png",
+              "path": "pattern-copy.png",
+              "retained_bytes": 491333,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 491333
+            },
+            {
+              "elapsed_us": 9,
+              "format": "eps",
+              "path": "driver-image.eps",
+              "retained_bytes": 260,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 260
+            },
+            {
+              "elapsed_us": 9,
+              "format": "eps",
+              "path": "driver-image.eps",
+              "retained_bytes": 260,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 260
+            },
+            {
+              "elapsed_us": 223,
+              "format": "png",
+              "path": "pattern.png",
+              "retained_bytes": 491333,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 491333
+            },
+            {
+              "elapsed_us": 79,
+              "format": "png",
+              "path": "alpha.png",
+              "retained_bytes": 2775,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 151392
+            },
+            {
+              "elapsed_us": 9,
+              "format": "png",
+              "path": "gray-1.png",
+              "retained_bytes": 122,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 122
+            },
+            {
+              "elapsed_us": 9,
+              "format": "png",
+              "path": "gray-8.png",
+              "retained_bytes": 307,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 307
+            },
+            {
+              "elapsed_us": 9,
+              "format": "png",
+              "path": "indexed-2-trns.png",
+              "retained_bytes": 177,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 177
+            },
+            {
+              "elapsed_us": 224,
+              "format": "png",
+              "path": "pattern-copy.png",
+              "retained_bytes": 491333,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 491333
+            },
+            {
+              "elapsed_us": 10,
+              "format": "eps",
+              "path": "driver-image.eps",
+              "retained_bytes": 260,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 260
+            },
+            {
+              "elapsed_us": 9,
+              "format": "eps",
+              "path": "driver-image.eps",
+              "retained_bytes": 260,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 260
+            },
+            {
+              "elapsed_us": 224,
+              "format": "png",
+              "path": "pattern.png",
+              "retained_bytes": 491333,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 491333
+            },
+            {
+              "elapsed_us": 75,
+              "format": "png",
+              "path": "alpha.png",
+              "retained_bytes": 2775,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 151392
+            },
+            {
+              "elapsed_us": 9,
+              "format": "png",
+              "path": "gray-1.png",
+              "retained_bytes": 122,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 122
+            },
+            {
+              "elapsed_us": 9,
+              "format": "png",
+              "path": "gray-8.png",
+              "retained_bytes": 307,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 307
+            },
+            {
+              "elapsed_us": 9,
+              "format": "png",
+              "path": "indexed-2-trns.png",
+              "retained_bytes": 177,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 177
+            },
+            {
+              "elapsed_us": 228,
+              "format": "png",
+              "path": "pattern-copy.png",
+              "retained_bytes": 491333,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 491333
+            },
+            {
+              "elapsed_us": 9,
+              "format": "eps",
+              "path": "driver-image.eps",
+              "retained_bytes": 260,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 260
+            },
+            {
+              "elapsed_us": 9,
+              "format": "eps",
+              "path": "driver-image.eps",
+              "retained_bytes": 260,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 260
+            },
+            {
+              "elapsed_us": 221,
+              "format": "png",
+              "path": "pattern.png",
+              "retained_bytes": 491333,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 491333
+            },
+            {
+              "elapsed_us": 78,
+              "format": "png",
+              "path": "alpha.png",
+              "retained_bytes": 2775,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 151392
+            },
+            {
+              "elapsed_us": 9,
+              "format": "png",
+              "path": "gray-1.png",
+              "retained_bytes": 122,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 122
+            },
+            {
+              "elapsed_us": 9,
+              "format": "png",
+              "path": "gray-8.png",
+              "retained_bytes": 307,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 307
+            },
+            {
+              "elapsed_us": 9,
+              "format": "png",
+              "path": "indexed-2-trns.png",
+              "retained_bytes": 177,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 177
+            },
+            {
+              "elapsed_us": 226,
+              "format": "png",
+              "path": "pattern-copy.png",
+              "retained_bytes": 491333,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 491333
+            },
+            {
+              "elapsed_us": 10,
+              "format": "eps",
+              "path": "driver-image.eps",
+              "retained_bytes": 260,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 260
+            },
+            {
+              "elapsed_us": 9,
+              "format": "eps",
+              "path": "driver-image.eps",
+              "retained_bytes": 260,
+              "reuse": true,
+              "route": "cache",
+              "source_bytes": 260
+            }
+          ],
+          "max_rss_kib": 85808,
+          "passes": 2,
+          "pdf_assembly_ms": 2.605,
+          "pdf_bytes": 548525,
+          "pdf_font_ms": 2.14,
+          "pdf_sha256": "17606de6424dd5475825b4ffb4dea1adc81b752c30b80759917ce01b55d821c7",
+          "pdf_total_ms": 19.62,
+          "tex_total_ms": 184.487,
+          "wall_seconds": 0.269294
+        },
+        "determinism_probe": null,
+        "deterministic_pdf": true,
+        "median_cpu_seconds": 0.26,
+        "median_max_rss_kib": 85912,
+        "median_pdf_assembly_ms": 2.566,
+        "median_pdf_font_ms": 2.373,
+        "median_pdf_total_ms": 19.878,
+        "median_tex_total_ms": 185.354,
+        "median_wall_seconds": 0.273038,
+        "samples": [
+          {
+            "cpu_seconds": 0.26,
+            "images": [
+              {
+                "elapsed_us": 3248,
+                "format": "png",
+                "path": "pattern.png",
+                "peak_transient_bytes": 982666,
+                "retained_bytes": 491333,
+                "reuse": false,
+                "route": "png-native",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 2191,
+                "format": "png",
+                "path": "alpha.png",
+                "peak_transient_bytes": 154167,
+                "retained_bytes": 2775,
+                "reuse": false,
+                "route": "png-alpha-in-process",
+                "source_bytes": 151392
+              },
+              {
+                "elapsed_us": 18,
+                "format": "png",
+                "path": "gray-1.png",
+                "peak_transient_bytes": 244,
+                "retained_bytes": 122,
+                "reuse": false,
+                "route": "png-native",
+                "source_bytes": 122
+              },
+              {
+                "elapsed_us": 16,
+                "format": "png",
+                "path": "gray-8.png",
+                "peak_transient_bytes": 614,
+                "retained_bytes": 307,
+                "reuse": false,
+                "route": "png-native",
+                "source_bytes": 307
+              },
+              {
+                "elapsed_us": 17,
+                "format": "png",
+                "path": "indexed-2-trns.png",
+                "peak_transient_bytes": 354,
+                "retained_bytes": 177,
+                "reuse": false,
+                "route": "png-native",
+                "source_bytes": 177
+              },
+              {
+                "elapsed_us": 471,
+                "format": "png",
+                "path": "pattern-copy.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 20,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "peak_transient_bytes": 520,
+                "retained_bytes": 260,
+                "reuse": false,
+                "route": "eps-native",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 9,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 219,
+                "format": "png",
+                "path": "pattern.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 79,
+                "format": "png",
+                "path": "alpha.png",
+                "retained_bytes": 2775,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 151392
+              },
+              {
+                "elapsed_us": 9,
+                "format": "png",
+                "path": "gray-1.png",
+                "retained_bytes": 122,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 122
+              },
+              {
+                "elapsed_us": 9,
+                "format": "png",
+                "path": "gray-8.png",
+                "retained_bytes": 307,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 307
+              },
+              {
+                "elapsed_us": 9,
+                "format": "png",
+                "path": "indexed-2-trns.png",
+                "retained_bytes": 177,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 177
+              },
+              {
+                "elapsed_us": 223,
+                "format": "png",
+                "path": "pattern-copy.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 9,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 9,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 217,
+                "format": "png",
+                "path": "pattern.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 75,
+                "format": "png",
+                "path": "alpha.png",
+                "retained_bytes": 2775,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 151392
+              },
+              {
+                "elapsed_us": 8,
+                "format": "png",
+                "path": "gray-1.png",
+                "retained_bytes": 122,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 122
+              },
+              {
+                "elapsed_us": 9,
+                "format": "png",
+                "path": "gray-8.png",
+                "retained_bytes": 307,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 307
+              },
+              {
+                "elapsed_us": 9,
+                "format": "png",
+                "path": "indexed-2-trns.png",
+                "retained_bytes": 177,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 177
+              },
+              {
+                "elapsed_us": 218,
+                "format": "png",
+                "path": "pattern-copy.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 9,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 8,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 218,
+                "format": "png",
+                "path": "pattern.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 79,
+                "format": "png",
+                "path": "alpha.png",
+                "retained_bytes": 2775,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 151392
+              },
+              {
+                "elapsed_us": 9,
+                "format": "png",
+                "path": "gray-1.png",
+                "retained_bytes": 122,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 122
+              },
+              {
+                "elapsed_us": 8,
+                "format": "png",
+                "path": "gray-8.png",
+                "retained_bytes": 307,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 307
+              },
+              {
+                "elapsed_us": 9,
+                "format": "png",
+                "path": "indexed-2-trns.png",
+                "retained_bytes": 177,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 177
+              },
+              {
+                "elapsed_us": 219,
+                "format": "png",
+                "path": "pattern-copy.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 9,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 8,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 218,
+                "format": "png",
+                "path": "pattern.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 74,
+                "format": "png",
+                "path": "alpha.png",
+                "retained_bytes": 2775,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 151392
+              },
+              {
+                "elapsed_us": 8,
+                "format": "png",
+                "path": "gray-1.png",
+                "retained_bytes": 122,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 122
+              },
+              {
+                "elapsed_us": 8,
+                "format": "png",
+                "path": "gray-8.png",
+                "retained_bytes": 307,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 307
+              },
+              {
+                "elapsed_us": 8,
+                "format": "png",
+                "path": "indexed-2-trns.png",
+                "retained_bytes": 177,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 177
+              },
+              {
+                "elapsed_us": 222,
+                "format": "png",
+                "path": "pattern-copy.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 9,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 8,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 218,
+                "format": "png",
+                "path": "pattern.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 73,
+                "format": "png",
+                "path": "alpha.png",
+                "retained_bytes": 2775,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 151392
+              },
+              {
+                "elapsed_us": 8,
+                "format": "png",
+                "path": "gray-1.png",
+                "retained_bytes": 122,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 122
+              },
+              {
+                "elapsed_us": 8,
+                "format": "png",
+                "path": "gray-8.png",
+                "retained_bytes": 307,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 307
+              },
+              {
+                "elapsed_us": 8,
+                "format": "png",
+                "path": "indexed-2-trns.png",
+                "retained_bytes": 177,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 177
+              },
+              {
+                "elapsed_us": 217,
+                "format": "png",
+                "path": "pattern-copy.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 9,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 8,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 217,
+                "format": "png",
+                "path": "pattern.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 78,
+                "format": "png",
+                "path": "alpha.png",
+                "retained_bytes": 2775,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 151392
+              },
+              {
+                "elapsed_us": 9,
+                "format": "png",
+                "path": "gray-1.png",
+                "retained_bytes": 122,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 122
+              },
+              {
+                "elapsed_us": 8,
+                "format": "png",
+                "path": "gray-8.png",
+                "retained_bytes": 307,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 307
+              },
+              {
+                "elapsed_us": 8,
+                "format": "png",
+                "path": "indexed-2-trns.png",
+                "retained_bytes": 177,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 177
+              },
+              {
+                "elapsed_us": 217,
+                "format": "png",
+                "path": "pattern-copy.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 9,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 9,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 217,
+                "format": "png",
+                "path": "pattern.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 73,
+                "format": "png",
+                "path": "alpha.png",
+                "retained_bytes": 2775,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 151392
+              },
+              {
+                "elapsed_us": 9,
+                "format": "png",
+                "path": "gray-1.png",
+                "retained_bytes": 122,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 122
+              },
+              {
+                "elapsed_us": 8,
+                "format": "png",
+                "path": "gray-8.png",
+                "retained_bytes": 307,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 307
+              },
+              {
+                "elapsed_us": 8,
+                "format": "png",
+                "path": "indexed-2-trns.png",
+                "retained_bytes": 177,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 177
+              },
+              {
+                "elapsed_us": 218,
+                "format": "png",
+                "path": "pattern-copy.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 9,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 8,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 226,
+                "format": "png",
+                "path": "pattern.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 73,
+                "format": "png",
+                "path": "alpha.png",
+                "retained_bytes": 2775,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 151392
+              },
+              {
+                "elapsed_us": 8,
+                "format": "png",
+                "path": "gray-1.png",
+                "retained_bytes": 122,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 122
+              },
+              {
+                "elapsed_us": 9,
+                "format": "png",
+                "path": "gray-8.png",
+                "retained_bytes": 307,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 307
+              },
+              {
+                "elapsed_us": 8,
+                "format": "png",
+                "path": "indexed-2-trns.png",
+                "retained_bytes": 177,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 177
+              },
+              {
+                "elapsed_us": 217,
+                "format": "png",
+                "path": "pattern-copy.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 9,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 8,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 217,
+                "format": "png",
+                "path": "pattern.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 77,
+                "format": "png",
+                "path": "alpha.png",
+                "retained_bytes": 2775,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 151392
+              },
+              {
+                "elapsed_us": 8,
+                "format": "png",
+                "path": "gray-1.png",
+                "retained_bytes": 122,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 122
+              },
+              {
+                "elapsed_us": 8,
+                "format": "png",
+                "path": "gray-8.png",
+                "retained_bytes": 307,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 307
+              },
+              {
+                "elapsed_us": 8,
+                "format": "png",
+                "path": "indexed-2-trns.png",
+                "retained_bytes": 177,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 177
+              },
+              {
+                "elapsed_us": 217,
+                "format": "png",
+                "path": "pattern-copy.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 9,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 8,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 217,
+                "format": "png",
+                "path": "pattern.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 76,
+                "format": "png",
+                "path": "alpha.png",
+                "retained_bytes": 2775,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 151392
+              },
+              {
+                "elapsed_us": 8,
+                "format": "png",
+                "path": "gray-1.png",
+                "retained_bytes": 122,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 122
+              },
+              {
+                "elapsed_us": 8,
+                "format": "png",
+                "path": "gray-8.png",
+                "retained_bytes": 307,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 307
+              },
+              {
+                "elapsed_us": 8,
+                "format": "png",
+                "path": "indexed-2-trns.png",
+                "retained_bytes": 177,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 177
+              },
+              {
+                "elapsed_us": 215,
+                "format": "png",
+                "path": "pattern-copy.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 9,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 8,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 215,
+                "format": "png",
+                "path": "pattern.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 73,
+                "format": "png",
+                "path": "alpha.png",
+                "retained_bytes": 2775,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 151392
+              },
+              {
+                "elapsed_us": 8,
+                "format": "png",
+                "path": "gray-1.png",
+                "retained_bytes": 122,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 122
+              },
+              {
+                "elapsed_us": 8,
+                "format": "png",
+                "path": "gray-8.png",
+                "retained_bytes": 307,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 307
+              },
+              {
+                "elapsed_us": 8,
+                "format": "png",
+                "path": "indexed-2-trns.png",
+                "retained_bytes": 177,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 177
+              },
+              {
+                "elapsed_us": 216,
+                "format": "png",
+                "path": "pattern-copy.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 9,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 8,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              }
+            ],
+            "max_rss_kib": 86312,
+            "passes": 2,
+            "pdf_assembly_ms": 2.566,
+            "pdf_bytes": 542313,
+            "pdf_font_ms": 2.294,
+            "pdf_sha256": "6fd3205ec279a1820685ea09b4e64d950e7f095bff2c5340395782c9328092c7",
+            "pdf_total_ms": 19.304,
+            "tex_total_ms": 184.335,
+            "wall_seconds": 0.27112
+          },
+          {
+            "cpu_seconds": 0.26,
+            "images": [
+              {
+                "elapsed_us": 3318,
+                "format": "png",
+                "path": "pattern.png",
+                "peak_transient_bytes": 982666,
+                "retained_bytes": 491333,
+                "reuse": false,
+                "route": "png-native",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 2226,
+                "format": "png",
+                "path": "alpha.png",
+                "peak_transient_bytes": 154167,
+                "retained_bytes": 2775,
+                "reuse": false,
+                "route": "png-alpha-in-process",
+                "source_bytes": 151392
+              },
+              {
+                "elapsed_us": 17,
+                "format": "png",
+                "path": "gray-1.png",
+                "peak_transient_bytes": 244,
+                "retained_bytes": 122,
+                "reuse": false,
+                "route": "png-native",
+                "source_bytes": 122
+              },
+              {
+                "elapsed_us": 16,
+                "format": "png",
+                "path": "gray-8.png",
+                "peak_transient_bytes": 614,
+                "retained_bytes": 307,
+                "reuse": false,
+                "route": "png-native",
+                "source_bytes": 307
+              },
+              {
+                "elapsed_us": 16,
+                "format": "png",
+                "path": "indexed-2-trns.png",
+                "peak_transient_bytes": 354,
+                "retained_bytes": 177,
+                "reuse": false,
+                "route": "png-native",
+                "source_bytes": 177
+              },
+              {
+                "elapsed_us": 510,
+                "format": "png",
+                "path": "pattern-copy.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 20,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "peak_transient_bytes": 520,
+                "retained_bytes": 260,
+                "reuse": false,
+                "route": "eps-native",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 9,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 244,
+                "format": "png",
+                "path": "pattern.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 80,
+                "format": "png",
+                "path": "alpha.png",
+                "retained_bytes": 2775,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 151392
+              },
+              {
+                "elapsed_us": 9,
+                "format": "png",
+                "path": "gray-1.png",
+                "retained_bytes": 122,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 122
+              },
+              {
+                "elapsed_us": 8,
+                "format": "png",
+                "path": "gray-8.png",
+                "retained_bytes": 307,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 307
+              },
+              {
+                "elapsed_us": 9,
+                "format": "png",
+                "path": "indexed-2-trns.png",
+                "retained_bytes": 177,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 177
+              },
+              {
+                "elapsed_us": 238,
+                "format": "png",
+                "path": "pattern-copy.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 9,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 8,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 217,
+                "format": "png",
+                "path": "pattern.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 72,
+                "format": "png",
+                "path": "alpha.png",
+                "retained_bytes": 2775,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 151392
+              },
+              {
+                "elapsed_us": 8,
+                "format": "png",
+                "path": "gray-1.png",
+                "retained_bytes": 122,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 122
+              },
+              {
+                "elapsed_us": 8,
+                "format": "png",
+                "path": "gray-8.png",
+                "retained_bytes": 307,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 307
+              },
+              {
+                "elapsed_us": 8,
+                "format": "png",
+                "path": "indexed-2-trns.png",
+                "retained_bytes": 177,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 177
+              },
+              {
+                "elapsed_us": 222,
+                "format": "png",
+                "path": "pattern-copy.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 9,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 8,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 220,
+                "format": "png",
+                "path": "pattern.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 72,
+                "format": "png",
+                "path": "alpha.png",
+                "retained_bytes": 2775,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 151392
+              },
+              {
+                "elapsed_us": 9,
+                "format": "png",
+                "path": "gray-1.png",
+                "retained_bytes": 122,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 122
+              },
+              {
+                "elapsed_us": 8,
+                "format": "png",
+                "path": "gray-8.png",
+                "retained_bytes": 307,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 307
+              },
+              {
+                "elapsed_us": 8,
+                "format": "png",
+                "path": "indexed-2-trns.png",
+                "retained_bytes": 177,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 177
+              },
+              {
+                "elapsed_us": 215,
+                "format": "png",
+                "path": "pattern-copy.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 9,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 8,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 219,
+                "format": "png",
+                "path": "pattern.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 72,
+                "format": "png",
+                "path": "alpha.png",
+                "retained_bytes": 2775,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 151392
+              },
+              {
+                "elapsed_us": 8,
+                "format": "png",
+                "path": "gray-1.png",
+                "retained_bytes": 122,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 122
+              },
+              {
+                "elapsed_us": 8,
+                "format": "png",
+                "path": "gray-8.png",
+                "retained_bytes": 307,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 307
+              },
+              {
+                "elapsed_us": 8,
+                "format": "png",
+                "path": "indexed-2-trns.png",
+                "retained_bytes": 177,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 177
+              },
+              {
+                "elapsed_us": 215,
+                "format": "png",
+                "path": "pattern-copy.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 9,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 8,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 214,
+                "format": "png",
+                "path": "pattern.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 72,
+                "format": "png",
+                "path": "alpha.png",
+                "retained_bytes": 2775,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 151392
+              },
+              {
+                "elapsed_us": 8,
+                "format": "png",
+                "path": "gray-1.png",
+                "retained_bytes": 122,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 122
+              },
+              {
+                "elapsed_us": 8,
+                "format": "png",
+                "path": "gray-8.png",
+                "retained_bytes": 307,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 307
+              },
+              {
+                "elapsed_us": 8,
+                "format": "png",
+                "path": "indexed-2-trns.png",
+                "retained_bytes": 177,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 177
+              },
+              {
+                "elapsed_us": 218,
+                "format": "png",
+                "path": "pattern-copy.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 9,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 8,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 214,
+                "format": "png",
+                "path": "pattern.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 72,
+                "format": "png",
+                "path": "alpha.png",
+                "retained_bytes": 2775,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 151392
+              },
+              {
+                "elapsed_us": 8,
+                "format": "png",
+                "path": "gray-1.png",
+                "retained_bytes": 122,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 122
+              },
+              {
+                "elapsed_us": 8,
+                "format": "png",
+                "path": "gray-8.png",
+                "retained_bytes": 307,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 307
+              },
+              {
+                "elapsed_us": 8,
+                "format": "png",
+                "path": "indexed-2-trns.png",
+                "retained_bytes": 177,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 177
+              },
+              {
+                "elapsed_us": 214,
+                "format": "png",
+                "path": "pattern-copy.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 9,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 8,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 213,
+                "format": "png",
+                "path": "pattern.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 75,
+                "format": "png",
+                "path": "alpha.png",
+                "retained_bytes": 2775,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 151392
+              },
+              {
+                "elapsed_us": 8,
+                "format": "png",
+                "path": "gray-1.png",
+                "retained_bytes": 122,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 122
+              },
+              {
+                "elapsed_us": 8,
+                "format": "png",
+                "path": "gray-8.png",
+                "retained_bytes": 307,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 307
+              },
+              {
+                "elapsed_us": 8,
+                "format": "png",
+                "path": "indexed-2-trns.png",
+                "retained_bytes": 177,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 177
+              },
+              {
+                "elapsed_us": 214,
+                "format": "png",
+                "path": "pattern-copy.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 9,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 8,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 213,
+                "format": "png",
+                "path": "pattern.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 71,
+                "format": "png",
+                "path": "alpha.png",
+                "retained_bytes": 2775,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 151392
+              },
+              {
+                "elapsed_us": 8,
+                "format": "png",
+                "path": "gray-1.png",
+                "retained_bytes": 122,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 122
+              },
+              {
+                "elapsed_us": 8,
+                "format": "png",
+                "path": "gray-8.png",
+                "retained_bytes": 307,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 307
+              },
+              {
+                "elapsed_us": 8,
+                "format": "png",
+                "path": "indexed-2-trns.png",
+                "retained_bytes": 177,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 177
+              },
+              {
+                "elapsed_us": 214,
+                "format": "png",
+                "path": "pattern-copy.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 9,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 8,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 213,
+                "format": "png",
+                "path": "pattern.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 72,
+                "format": "png",
+                "path": "alpha.png",
+                "retained_bytes": 2775,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 151392
+              },
+              {
+                "elapsed_us": 8,
+                "format": "png",
+                "path": "gray-1.png",
+                "retained_bytes": 122,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 122
+              },
+              {
+                "elapsed_us": 8,
+                "format": "png",
+                "path": "gray-8.png",
+                "retained_bytes": 307,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 307
+              },
+              {
+                "elapsed_us": 8,
+                "format": "png",
+                "path": "indexed-2-trns.png",
+                "retained_bytes": 177,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 177
+              },
+              {
+                "elapsed_us": 214,
+                "format": "png",
+                "path": "pattern-copy.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 9,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 8,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 213,
+                "format": "png",
+                "path": "pattern.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 76,
+                "format": "png",
+                "path": "alpha.png",
+                "retained_bytes": 2775,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 151392
+              },
+              {
+                "elapsed_us": 8,
+                "format": "png",
+                "path": "gray-1.png",
+                "retained_bytes": 122,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 122
+              },
+              {
+                "elapsed_us": 8,
+                "format": "png",
+                "path": "gray-8.png",
+                "retained_bytes": 307,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 307
+              },
+              {
+                "elapsed_us": 8,
+                "format": "png",
+                "path": "indexed-2-trns.png",
+                "retained_bytes": 177,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 177
+              },
+              {
+                "elapsed_us": 214,
+                "format": "png",
+                "path": "pattern-copy.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 9,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 8,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 213,
+                "format": "png",
+                "path": "pattern.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 71,
+                "format": "png",
+                "path": "alpha.png",
+                "retained_bytes": 2775,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 151392
+              },
+              {
+                "elapsed_us": 8,
+                "format": "png",
+                "path": "gray-1.png",
+                "retained_bytes": 122,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 122
+              },
+              {
+                "elapsed_us": 8,
+                "format": "png",
+                "path": "gray-8.png",
+                "retained_bytes": 307,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 307
+              },
+              {
+                "elapsed_us": 8,
+                "format": "png",
+                "path": "indexed-2-trns.png",
+                "retained_bytes": 177,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 177
+              },
+              {
+                "elapsed_us": 213,
+                "format": "png",
+                "path": "pattern-copy.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 9,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 8,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              }
+            ],
+            "max_rss_kib": 85912,
+            "passes": 2,
+            "pdf_assembly_ms": 2.566,
+            "pdf_bytes": 542313,
+            "pdf_font_ms": 2.711,
+            "pdf_sha256": "6fd3205ec279a1820685ea09b4e64d950e7f095bff2c5340395782c9328092c7",
+            "pdf_total_ms": 19.878,
+            "tex_total_ms": 185.441,
+            "wall_seconds": 0.274089
+          },
+          {
+            "cpu_seconds": 0.27,
+            "images": [
+              {
+                "elapsed_us": 3424,
+                "format": "png",
+                "path": "pattern.png",
+                "peak_transient_bytes": 982666,
+                "retained_bytes": 491333,
+                "reuse": false,
+                "route": "png-native",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 2291,
+                "format": "png",
+                "path": "alpha.png",
+                "peak_transient_bytes": 154167,
+                "retained_bytes": 2775,
+                "reuse": false,
+                "route": "png-alpha-in-process",
+                "source_bytes": 151392
+              },
+              {
+                "elapsed_us": 18,
+                "format": "png",
+                "path": "gray-1.png",
+                "peak_transient_bytes": 244,
+                "retained_bytes": 122,
+                "reuse": false,
+                "route": "png-native",
+                "source_bytes": 122
+              },
+              {
+                "elapsed_us": 17,
+                "format": "png",
+                "path": "gray-8.png",
+                "peak_transient_bytes": 614,
+                "retained_bytes": 307,
+                "reuse": false,
+                "route": "png-native",
+                "source_bytes": 307
+              },
+              {
+                "elapsed_us": 16,
+                "format": "png",
+                "path": "indexed-2-trns.png",
+                "peak_transient_bytes": 354,
+                "retained_bytes": 177,
+                "reuse": false,
+                "route": "png-native",
+                "source_bytes": 177
+              },
+              {
+                "elapsed_us": 499,
+                "format": "png",
+                "path": "pattern-copy.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 44,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "peak_transient_bytes": 520,
+                "retained_bytes": 260,
+                "reuse": false,
+                "route": "eps-native",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 14,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 417,
+                "format": "png",
+                "path": "pattern.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 122,
+                "format": "png",
+                "path": "alpha.png",
+                "retained_bytes": 2775,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 151392
+              },
+              {
+                "elapsed_us": 14,
+                "format": "png",
+                "path": "gray-1.png",
+                "retained_bytes": 122,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 122
+              },
+              {
+                "elapsed_us": 13,
+                "format": "png",
+                "path": "gray-8.png",
+                "retained_bytes": 307,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 307
+              },
+              {
+                "elapsed_us": 10,
+                "format": "png",
+                "path": "indexed-2-trns.png",
+                "retained_bytes": 177,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 177
+              },
+              {
+                "elapsed_us": 264,
+                "format": "png",
+                "path": "pattern-copy.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 9,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 9,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 251,
+                "format": "png",
+                "path": "pattern.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 81,
+                "format": "png",
+                "path": "alpha.png",
+                "retained_bytes": 2775,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 151392
+              },
+              {
+                "elapsed_us": 9,
+                "format": "png",
+                "path": "gray-1.png",
+                "retained_bytes": 122,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 122
+              },
+              {
+                "elapsed_us": 9,
+                "format": "png",
+                "path": "gray-8.png",
+                "retained_bytes": 307,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 307
+              },
+              {
+                "elapsed_us": 9,
+                "format": "png",
+                "path": "indexed-2-trns.png",
+                "retained_bytes": 177,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 177
+              },
+              {
+                "elapsed_us": 254,
+                "format": "png",
+                "path": "pattern-copy.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 9,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 9,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 250,
+                "format": "png",
+                "path": "pattern.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 81,
+                "format": "png",
+                "path": "alpha.png",
+                "retained_bytes": 2775,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 151392
+              },
+              {
+                "elapsed_us": 9,
+                "format": "png",
+                "path": "gray-1.png",
+                "retained_bytes": 122,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 122
+              },
+              {
+                "elapsed_us": 9,
+                "format": "png",
+                "path": "gray-8.png",
+                "retained_bytes": 307,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 307
+              },
+              {
+                "elapsed_us": 9,
+                "format": "png",
+                "path": "indexed-2-trns.png",
+                "retained_bytes": 177,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 177
+              },
+              {
+                "elapsed_us": 253,
+                "format": "png",
+                "path": "pattern-copy.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 9,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 9,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 257,
+                "format": "png",
+                "path": "pattern.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 82,
+                "format": "png",
+                "path": "alpha.png",
+                "retained_bytes": 2775,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 151392
+              },
+              {
+                "elapsed_us": 9,
+                "format": "png",
+                "path": "gray-1.png",
+                "retained_bytes": 122,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 122
+              },
+              {
+                "elapsed_us": 9,
+                "format": "png",
+                "path": "gray-8.png",
+                "retained_bytes": 307,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 307
+              },
+              {
+                "elapsed_us": 9,
+                "format": "png",
+                "path": "indexed-2-trns.png",
+                "retained_bytes": 177,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 177
+              },
+              {
+                "elapsed_us": 224,
+                "format": "png",
+                "path": "pattern-copy.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 9,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 9,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 221,
+                "format": "png",
+                "path": "pattern.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 74,
+                "format": "png",
+                "path": "alpha.png",
+                "retained_bytes": 2775,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 151392
+              },
+              {
+                "elapsed_us": 8,
+                "format": "png",
+                "path": "gray-1.png",
+                "retained_bytes": 122,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 122
+              },
+              {
+                "elapsed_us": 9,
+                "format": "png",
+                "path": "gray-8.png",
+                "retained_bytes": 307,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 307
+              },
+              {
+                "elapsed_us": 8,
+                "format": "png",
+                "path": "indexed-2-trns.png",
+                "retained_bytes": 177,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 177
+              },
+              {
+                "elapsed_us": 228,
+                "format": "png",
+                "path": "pattern-copy.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 9,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 9,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 222,
+                "format": "png",
+                "path": "pattern.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 74,
+                "format": "png",
+                "path": "alpha.png",
+                "retained_bytes": 2775,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 151392
+              },
+              {
+                "elapsed_us": 9,
+                "format": "png",
+                "path": "gray-1.png",
+                "retained_bytes": 122,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 122
+              },
+              {
+                "elapsed_us": 9,
+                "format": "png",
+                "path": "gray-8.png",
+                "retained_bytes": 307,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 307
+              },
+              {
+                "elapsed_us": 8,
+                "format": "png",
+                "path": "indexed-2-trns.png",
+                "retained_bytes": 177,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 177
+              },
+              {
+                "elapsed_us": 221,
+                "format": "png",
+                "path": "pattern-copy.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 9,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 9,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 304,
+                "format": "png",
+                "path": "pattern.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 117,
+                "format": "png",
+                "path": "alpha.png",
+                "retained_bytes": 2775,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 151392
+              },
+              {
+                "elapsed_us": 15,
+                "format": "png",
+                "path": "gray-1.png",
+                "retained_bytes": 122,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 122
+              },
+              {
+                "elapsed_us": 14,
+                "format": "png",
+                "path": "gray-8.png",
+                "retained_bytes": 307,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 307
+              },
+              {
+                "elapsed_us": 14,
+                "format": "png",
+                "path": "indexed-2-trns.png",
+                "retained_bytes": 177,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 177
+              },
+              {
+                "elapsed_us": 333,
+                "format": "png",
+                "path": "pattern-copy.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 14,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 13,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 233,
+                "format": "png",
+                "path": "pattern.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 82,
+                "format": "png",
+                "path": "alpha.png",
+                "retained_bytes": 2775,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 151392
+              },
+              {
+                "elapsed_us": 9,
+                "format": "png",
+                "path": "gray-1.png",
+                "retained_bytes": 122,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 122
+              },
+              {
+                "elapsed_us": 9,
+                "format": "png",
+                "path": "gray-8.png",
+                "retained_bytes": 307,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 307
+              },
+              {
+                "elapsed_us": 9,
+                "format": "png",
+                "path": "indexed-2-trns.png",
+                "retained_bytes": 177,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 177
+              },
+              {
+                "elapsed_us": 235,
+                "format": "png",
+                "path": "pattern-copy.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 9,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 9,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 253,
+                "format": "png",
+                "path": "pattern.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 87,
+                "format": "png",
+                "path": "alpha.png",
+                "retained_bytes": 2775,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 151392
+              },
+              {
+                "elapsed_us": 9,
+                "format": "png",
+                "path": "gray-1.png",
+                "retained_bytes": 122,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 122
+              },
+              {
+                "elapsed_us": 9,
+                "format": "png",
+                "path": "gray-8.png",
+                "retained_bytes": 307,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 307
+              },
+              {
+                "elapsed_us": 10,
+                "format": "png",
+                "path": "indexed-2-trns.png",
+                "retained_bytes": 177,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 177
+              },
+              {
+                "elapsed_us": 234,
+                "format": "png",
+                "path": "pattern-copy.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 9,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 9,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 252,
+                "format": "png",
+                "path": "pattern.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 87,
+                "format": "png",
+                "path": "alpha.png",
+                "retained_bytes": 2775,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 151392
+              },
+              {
+                "elapsed_us": 9,
+                "format": "png",
+                "path": "gray-1.png",
+                "retained_bytes": 122,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 122
+              },
+              {
+                "elapsed_us": 9,
+                "format": "png",
+                "path": "gray-8.png",
+                "retained_bytes": 307,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 307
+              },
+              {
+                "elapsed_us": 9,
+                "format": "png",
+                "path": "indexed-2-trns.png",
+                "retained_bytes": 177,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 177
+              },
+              {
+                "elapsed_us": 231,
+                "format": "png",
+                "path": "pattern-copy.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 11,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 9,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 220,
+                "format": "png",
+                "path": "pattern.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 74,
+                "format": "png",
+                "path": "alpha.png",
+                "retained_bytes": 2775,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 151392
+              },
+              {
+                "elapsed_us": 9,
+                "format": "png",
+                "path": "gray-1.png",
+                "retained_bytes": 122,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 122
+              },
+              {
+                "elapsed_us": 9,
+                "format": "png",
+                "path": "gray-8.png",
+                "retained_bytes": 307,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 307
+              },
+              {
+                "elapsed_us": 9,
+                "format": "png",
+                "path": "indexed-2-trns.png",
+                "retained_bytes": 177,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 177
+              },
+              {
+                "elapsed_us": 220,
+                "format": "png",
+                "path": "pattern-copy.png",
+                "retained_bytes": 491333,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 491333
+              },
+              {
+                "elapsed_us": 9,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              },
+              {
+                "elapsed_us": 9,
+                "format": "eps",
+                "path": "driver-image.eps",
+                "retained_bytes": 260,
+                "reuse": true,
+                "route": "cache",
+                "source_bytes": 260
+              }
+            ],
+            "max_rss_kib": 85604,
+            "passes": 2,
+            "pdf_assembly_ms": 2.972,
+            "pdf_bytes": 542313,
+            "pdf_font_ms": 2.373,
+            "pdf_sha256": "6fd3205ec279a1820685ea09b4e64d950e7f095bff2c5340395782c9328092c7",
+            "pdf_total_ms": 21.192,
+            "tex_total_ms": 185.354,
+            "wall_seconds": 0.273038
+          }
+        ],
+        "validation": {
+          "fonts": {
+            "count": 2,
+            "rows": [
+              "TWPLNN+CMR10                         Type 1            Custom           yes yes yes      6  0",
+              "MGVWZP+CMBX12                        Type 1            Custom           yes yes yes      9  0"
+            ]
+          },
+          "info": {
+            "pages": 12,
+            "pdf_version": "1.5",
+            "tagged": "no"
+          },
+          "links": null,
+          "poppler": {
+            "pages": 12,
+            "selection": "all",
+            "sha256": "7d7bfb35a171e8ed69ab47298df0b3796946ff4b51b41fc1d36c10ddc83ae68b"
+          },
+          "quartz": {
+            "available": false
+          },
+          "text": {
+            "bytes": 4695,
+            "markers": [
+              "Raster and vector page",
+              "Deterministic RGB PNG",
+              "Original vector EPS"
+            ],
+            "sequence_entries": 12,
+            "sequence_sha256": "7909937abe135b51143faf006ba1713d4c139e3337325ad10f9b81807cd66786",
+            "sha256": "d7f8618db877a76a9c9da265f58f62c14bac4ee32167c877f69729092b743b4b"
+          },
+          "validators": {
+            "ghostscript": true,
+            "mutool": true,
+            "qpdf": null
+          }
+        }
+      },
+      "comparison": {
+        "classic_xref_breakdown": {
+          "aitex_non_payload_bytes": 10932,
+          "aitex_pdf_bytes": 548525,
+          "categories": {
+            "font_program": {
+              "aitex_decoded_bytes": 36360,
+              "aitex_objects": 2,
+              "aitex_stored_bytes": 31207,
+              "decoded_byte_delta": 26410,
+              "object_delta": 0,
+              "stock_decoded_bytes": 9950,
+              "stock_objects": 2,
+              "stock_stored_bytes": 8436,
+              "stored_byte_delta": 22771
+            },
+            "form": {
+              "aitex_decoded_bytes": 127,
+              "aitex_objects": 1,
+              "aitex_stored_bytes": 83,
+              "decoded_byte_delta": 2,
+              "object_delta": 0,
+              "stock_decoded_bytes": 125,
+              "stock_objects": 1,
+              "stock_stored_bytes": 90,
+              "stored_byte_delta": -7
+            },
+            "image": {
+              "aitex_decoded_bytes": 710600,
+              "aitex_objects": 6,
+              "aitex_stored_bytes": 494407,
+              "decoded_byte_delta": -491468,
+              "object_delta": -1,
+              "stock_decoded_bytes": 1202068,
+              "stock_objects": 7,
+              "stock_stored_bytes": 475188,
+              "stored_byte_delta": 19219
+            },
+            "page_content": {
+              "aitex_decoded_bytes": 25398,
+              "aitex_objects": 12,
+              "aitex_stored_bytes": 10920,
+              "decoded_byte_delta": 1900,
+              "object_delta": 0,
+              "stock_decoded_bytes": 23498,
+              "stock_objects": 12,
+              "stock_stored_bytes": 10207,
+              "stored_byte_delta": 713
+            },
+            "to_unicode": {
+              "aitex_decoded_bytes": 2359,
+              "aitex_objects": 1,
+              "aitex_stored_bytes": 976,
+              "decoded_byte_delta": 1345,
+              "object_delta": -1,
+              "stock_decoded_bytes": 1014,
+              "stock_objects": 2,
+              "stock_stored_bytes": 616,
+              "stored_byte_delta": 360
+            }
+          },
+          "non_payload_byte_delta": 1655,
+          "pdf_byte_delta": 44711,
+          "stock_non_payload_bytes": 9277,
+          "stock_pdf_bytes": 503814
+        },
+        "pdf_size_ratio": 1.086828,
+        "poppler_raster": {
+          "dpi": 72,
+          "equivalent": true,
+          "fuzz_fraction": 0.05,
+          "max_normalized_mae": 0.0015,
+          "max_outside_fraction": 0.006,
+          "pages": 12,
+          "worst_normalized_mae": 0.000760594,
+          "worst_normalized_mae_page": 9,
+          "worst_outside_fraction": 0.004677081,
+          "worst_outside_fraction_page": 8
+        }
+      },
+      "id": "graphics",
+      "kind": "tex",
+      "pages": 12,
+      "performance_gates": {
+        "max_matching_environment_pdf_assembly_absolute_ms": 2.0,
+        "max_matching_environment_pdf_stage_absolute_ms": 40.0,
+        "max_matching_environment_rss_absolute_kib": 16384.0
+      },
+      "profile": "graphics",
+      "raster_policy": "all",
+      "reference": "dvipdfmx",
+      "samples_requested": 3,
+      "source": "tests/pdf-qualification/graphics-stress.tex",
+      "source_sha256": "0d73ea422148a32af560849a5773c001eb3d0db6b50a4f723088f88318cf018b",
+      "stock": {
+        "classic_xref_breakdown": {
+          "categories": {
+            "font_program": {
+              "decoded_bytes": 9950,
+              "flate_streams": 2,
+              "objects": 2,
+              "stored_bytes": 8436
+            },
+            "form": {
+              "decoded_bytes": 125,
+              "flate_streams": 1,
+              "objects": 1,
+              "stored_bytes": 90
+            },
+            "image": {
+              "decoded_bytes": 1202068,
+              "flate_streams": 7,
+              "objects": 7,
+              "stored_bytes": 475188
+            },
+            "page_content": {
+              "decoded_bytes": 23498,
+              "flate_streams": 12,
+              "objects": 12,
+              "stored_bytes": 10207
+            },
+            "to_unicode": {
+              "decoded_bytes": 1014,
+              "flate_streams": 2,
+              "objects": 2,
+              "stored_bytes": 616
+            }
+          },
+          "classic_fonts": {
+            "descriptors": 2,
+            "embedded_programs": 2,
+            "encodings": 0,
+            "pdf_fonts": 2,
+            "physical_faces": 2
+          },
+          "forms": [
+            {
+              "bbox": "0 0 120 60",
+              "decoded_bytes": 125,
+              "object": 13,
+              "stored_bytes": 90
+            }
+          ],
+          "images": [
+            {
+              "bits_per_component": 8,
+              "color_space": null,
+              "decoded_bytes": 491840,
+              "filters": [
+                "FlateDecode"
+              ],
+              "height": 320,
+              "mask": null,
+              "object": 6,
+              "stored_bytes": 236838,
+              "width": 512
+            },
+            {
+              "bits_per_component": 8,
+              "color_space": null,
+              "decoded_bytes": 46080,
+              "filters": [
+                "FlateDecode"
+              ],
+              "height": 180,
+              "mask": null,
+              "object": 7,
+              "stored_bytes": 522,
+              "width": 256
+            },
+            {
+              "bits_per_component": 8,
+              "color_space": null,
+              "decoded_bytes": 138420,
+              "filters": [
+                "FlateDecode"
+              ],
+              "height": 180,
+              "mask": "/SMask 7 0 R",
+              "object": 8,
+              "stored_bytes": 691,
+              "width": 256
+            },
+            {
+              "bits_per_component": 1,
+              "color_space": null,
+              "decoded_bytes": 3072,
+              "filters": [
+                "FlateDecode"
+              ],
+              "height": 96,
+              "mask": null,
+              "object": 9,
+              "stored_bytes": 66,
+              "width": 256
+            },
+            {
+              "bits_per_component": 8,
+              "color_space": null,
+              "decoded_bytes": 24672,
+              "filters": [
+                "FlateDecode"
+              ],
+              "height": 96,
+              "mask": null,
+              "object": 10,
+              "stored_bytes": 160,
+              "width": 256
+            },
+            {
+              "bits_per_component": 2,
+              "color_space": null,
+              "decoded_bytes": 6144,
+              "filters": [
+                "FlateDecode"
+              ],
+              "height": 96,
+              "mask": null,
+              "object": 11,
+              "stored_bytes": 73,
+              "width": 256
+            },
+            {
+              "bits_per_component": 8,
+              "color_space": null,
+              "decoded_bytes": 491840,
+              "filters": [
+                "FlateDecode"
+              ],
+              "height": 320,
+              "mask": null,
+              "object": 12,
+              "stored_bytes": 236838,
+              "width": 512
+            }
+          ],
+          "non_payload_bytes": 9277,
+          "objects": 61,
+          "path": "temporary/graphics/reference-classic-xref.pdf",
+          "pdf_bytes": 503814,
+          "schema": 1,
+          "sha256": "f20f0fc4d3e5e58dc18cfc5133d399ea56936909bb99cf093c514282b13a056d",
+          "streams": {
+            "decoded_bytes": 1236655,
+            "flate_streams": 24,
+            "objects": 24,
+            "stored_bytes": 494537,
+            "undecoded_filtered_streams": 0
+          }
+        },
+        "classic_xref_sample": {
+          "cpu_seconds": 0.46,
+          "max_rss_kib": 39424,
+          "pdf_bytes": 503814,
+          "pdf_sha256": "f20f0fc4d3e5e58dc18cfc5133d399ea56936909bb99cf093c514282b13a056d",
+          "wall_seconds": 0.471837
+        },
+        "deterministic_pdf": true,
+        "median_cpu_seconds": 0.45,
+        "median_max_rss_kib": 39424,
+        "median_pdf_assembly_ms": null,
+        "median_pdf_font_ms": null,
+        "median_pdf_total_ms": null,
+        "median_tex_total_ms": null,
+        "median_wall_seconds": 0.467795,
+        "samples": [
+          {
+            "cpu_seconds": 0.46,
+            "max_rss_kib": 39424,
+            "pdf_bytes": 498987,
+            "pdf_sha256": "ca8d35a8f9e20e27ba569f5635f5f8f4327111078cf7e4f56bf17c72dd152471",
+            "wall_seconds": 0.474297
+          },
+          {
+            "cpu_seconds": 0.44,
+            "max_rss_kib": 39424,
+            "pdf_bytes": 498987,
+            "pdf_sha256": "ca8d35a8f9e20e27ba569f5635f5f8f4327111078cf7e4f56bf17c72dd152471",
+            "wall_seconds": 0.466241
+          },
+          {
+            "cpu_seconds": 0.45,
+            "max_rss_kib": 39424,
+            "pdf_bytes": 498987,
+            "pdf_sha256": "ca8d35a8f9e20e27ba569f5635f5f8f4327111078cf7e4f56bf17c72dd152471",
+            "wall_seconds": 0.467795
+          }
+        ],
+        "validation": {
+          "fonts": {
+            "count": 2,
+            "rows": [
+              "YPLWNS+CMBX12                        Type 1C           Builtin          yes yes yes      4  0",
+              "DJGHZF+CMR10                         Type 1C           Builtin          yes yes yes      5  0"
+            ]
+          },
+          "info": {
+            "pages": 12,
+            "pdf_version": "1.5",
+            "tagged": "no"
+          },
+          "links": null,
+          "poppler": {
+            "pages": 12,
+            "selection": "all",
+            "sha256": "2192762cb394f0f564882e3b600d89fc1bb7dbab1b8496d19263656400e76078"
+          },
+          "quartz": {
+            "available": false
+          },
+          "text": {
+            "bytes": 4719,
+            "markers": [
+              "Raster and vector page",
+              "Deterministic RGB PNG",
+              "Original vector EPS"
+            ],
+            "sequence_entries": 12,
+            "sequence_sha256": "7909937abe135b51143faf006ba1713d4c139e3337325ad10f9b81807cd66786",
+            "sha256": "d607106a1e2f50fffd4e56a24918006f2001533f9c5be6295caf65454b04e2aa"
+          },
+          "validators": {
+            "ghostscript": true,
+            "mutool": true,
+            "qpdf": null
+          }
+        }
+      }
+    },
+    {
+      "candidate": {
+        "classic_xref_annotations": null,
+        "classic_xref_breakdown": {
+          "categories": {
+            "font_program": {
+              "decoded_bytes": 16631,
+              "flate_streams": 1,
+              "objects": 1,
+              "stored_bytes": 14030
+            },
+            "page_content": {
+              "decoded_bytes": 1168894,
+              "flate_streams": 0,
+              "objects": 10000,
+              "stored_bytes": 1168894
+            },
+            "to_unicode": {
+              "decoded_bytes": 2359,
+              "flate_streams": 1,
+              "objects": 1,
+              "stored_bytes": 976
+            }
+          },
+          "classic_fonts": {
+            "descriptors": 1,
+            "embedded_programs": 1,
+            "encodings": 1,
+            "pdf_fonts": 1,
+            "physical_faces": 1
+          },
+          "forms": [],
+          "images": [],
+          "non_payload_bytes": 2295281,
+          "objects": 20047,
+          "path": "temporary/high-page-count/candidate-classic-xref.pdf",
+          "pdf_bytes": 3479181,
+          "schema": 1,
+          "sha256": "427bc812208d25bdf9f20a8f8c53435c28ec4efd67e27e50a295f6360b238f19",
+          "streams": {
+            "decoded_bytes": 1187884,
+            "flate_streams": 2,
+            "objects": 10002,
+            "stored_bytes": 1183900,
+            "undecoded_filtered_streams": 0
+          }
+        },
+        "classic_xref_sample": {
+          "cpu_seconds": 3.96,
+          "images": null,
+          "max_rss_kib": 139988,
+          "passes": 2,
+          "pdf_assembly_ms": 115.983,
+          "pdf_bytes": 3479181,
+          "pdf_font_ms": 14.04,
+          "pdf_sha256": "427bc812208d25bdf9f20a8f8c53435c28ec4efd67e27e50a295f6360b238f19",
+          "pdf_total_ms": 143.061,
+          "tex_total_ms": 3754.607,
+          "wall_seconds": 3.974985
+        },
+        "determinism_probe": {
+          "pdf_bytes": 1904568,
+          "pdf_sha256": "7f2108c57bed3de551762a8e7da026ae73af941e3e1ca338d04e7c0b291aa60d"
+        },
+        "deterministic_pdf": true,
+        "median_cpu_seconds": 3.96,
+        "median_max_rss_kib": 158368,
+        "median_pdf_assembly_ms": 125.047,
+        "median_pdf_font_ms": 13.752,
+        "median_pdf_total_ms": 150.051,
+        "median_tex_total_ms": 3743.85,
+        "median_wall_seconds": 3.976113,
+        "samples": [
+          {
+            "cpu_seconds": 3.96,
+            "images": null,
+            "max_rss_kib": 158368,
+            "passes": 2,
+            "pdf_assembly_ms": 125.047,
+            "pdf_bytes": 1904568,
+            "pdf_font_ms": 13.752,
+            "pdf_sha256": "7f2108c57bed3de551762a8e7da026ae73af941e3e1ca338d04e7c0b291aa60d",
+            "pdf_total_ms": 150.051,
+            "tex_total_ms": 3743.85,
+            "wall_seconds": 3.976113
+          }
+        ],
+        "validation": {
+          "fonts": {
+            "count": 1,
+            "rows": [
+              "FNKAXH+CMR10                         Type 1            Custom           yes yes yes      6  0"
+            ]
+          },
+          "info": {
+            "pages": 10000,
+            "pdf_version": "1.5",
+            "tagged": "no"
+          },
+          "links": null,
+          "poppler": {
+            "document_pages": 10000,
+            "pages": 3,
+            "selected_pages": [
+              1,
+              5000,
+              10000
+            ],
+            "selection": "sampled",
+            "sha256": "36687486be8da32fb87f11f0721b5a05df04e71118a2ef54dbe2d83c5b108ec1"
+          },
+          "quartz": {
+            "available": false
+          },
+          "text": {
+            "bytes": 378894,
+            "markers": [
+              "aiTeX scale qualification page"
+            ],
+            "sequence_entries": 10000,
+            "sequence_sha256": "ffc3cbb821dcb3355c794c3dba7248e60a616b08360f8f6d4033d5122fa9f624",
+            "sha256": "dd8cdc768d6c679c9847b6fd250b8408819c0ad33dd9bf39ee33be5966b53755"
+          },
+          "validators": {
+            "ghostscript": true,
+            "mutool": true,
+            "qpdf": null
+          }
+        }
+      },
+      "comparison": {
+        "classic_xref_breakdown": {
+          "aitex_non_payload_bytes": 2295281,
+          "aitex_pdf_bytes": 3479181,
+          "categories": {
+            "font_program": {
+              "aitex_decoded_bytes": 16631,
+              "aitex_objects": 1,
+              "aitex_stored_bytes": 14030,
+              "decoded_byte_delta": 1855,
+              "object_delta": 0,
+              "stock_decoded_bytes": 14776,
+              "stock_objects": 1,
+              "stock_stored_bytes": 14128,
+              "stored_byte_delta": -98
+            },
+            "page_content": {
+              "aitex_decoded_bytes": 1168894,
+              "aitex_objects": 10000,
+              "aitex_stored_bytes": 1168894,
+              "decoded_byte_delta": 50000,
+              "object_delta": 0,
+              "stock_decoded_bytes": 1118894,
+              "stock_objects": 10000,
+              "stock_stored_bytes": 1088531,
+              "stored_byte_delta": 80363
+            },
+            "to_unicode": {
+              "aitex_decoded_bytes": 2359,
+              "aitex_objects": 1,
+              "aitex_stored_bytes": 976,
+              "decoded_byte_delta": 635,
+              "object_delta": 0,
+              "stock_decoded_bytes": 1724,
+              "stock_objects": 1,
+              "stock_stored_bytes": 739,
+              "stored_byte_delta": 237
+            }
+          },
+          "non_payload_byte_delta": -1337618,
+          "pdf_byte_delta": -1257116,
+          "stock_non_payload_bytes": 3632899,
+          "stock_pdf_bytes": 4736297
+        },
+        "pdf_size_ratio": 0.840134,
+        "poppler_raster": {
+          "dpi": 72,
+          "equivalent": true,
+          "fuzz_fraction": 0.05,
+          "max_normalized_mae": 0.0015,
+          "max_outside_fraction": 0.005,
+          "pages": 3,
+          "worst_normalized_mae": 1.0494e-05,
+          "worst_normalized_mae_page": 1,
+          "worst_outside_fraction": 6.602e-05,
+          "worst_outside_fraction_page": 1
+        }
+      },
+      "id": "high-page-count",
+      "kind": "tex",
+      "pages": 10000,
+      "performance_gates": {
+        "max_matching_environment_pdf_assembly_absolute_ms": 30.0,
+        "max_matching_environment_pdf_stage_absolute_ms": 50.0,
+        "max_matching_environment_rss_absolute_kib": 49152.0
+      },
+      "profile": "scale",
+      "raster_policy": "sampled",
+      "reference": "pdftex",
+      "samples_requested": 1,
+      "source": "tests/scale/ten-thousand-pages.tex",
+      "source_sha256": "5744bbf968abb769fbdd0570a23f510d7cec91eaac7db6a4bac5fd0ffd5e12fe",
+      "stock": {
+        "classic_xref_breakdown": {
+          "categories": {
+            "font_program": {
+              "decoded_bytes": 14776,
+              "flate_streams": 1,
+              "objects": 1,
+              "stored_bytes": 14128
+            },
+            "page_content": {
+              "decoded_bytes": 1118894,
+              "flate_streams": 10000,
+              "objects": 10000,
+              "stored_bytes": 1088531
+            },
+            "to_unicode": {
+              "decoded_bytes": 1724,
+              "flate_streams": 1,
+              "objects": 1,
+              "stored_bytes": 739
+            }
+          },
+          "classic_fonts": {
+            "descriptors": 1,
+            "embedded_programs": 1,
+            "encodings": 0,
+            "pdf_fonts": 1,
+            "physical_faces": 1
+          },
+          "forms": [],
+          "images": [],
+          "non_payload_bytes": 3632899,
+          "objects": 32010,
+          "path": "temporary/high-page-count/reference-classic-xref.pdf",
+          "pdf_bytes": 4736297,
+          "schema": 1,
+          "sha256": "ccd1d51f903543cf809298e15adbef9c3374dfc02ced343cc573d61cb06fb683",
+          "streams": {
+            "decoded_bytes": 1135394,
+            "flate_streams": 10002,
+            "objects": 10002,
+            "stored_bytes": 1103398,
+            "undecoded_filtered_streams": 0
+          }
+        },
+        "classic_xref_sample": {
+          "cpu_seconds": 3.48,
+          "max_rss_kib": 41984,
+          "pdf_bytes": 4736297,
+          "pdf_sha256": "ccd1d51f903543cf809298e15adbef9c3374dfc02ced343cc573d61cb06fb683",
+          "wall_seconds": 3.489041
+        },
+        "deterministic_pdf": true,
+        "median_cpu_seconds": 3.6,
+        "median_max_rss_kib": 42496,
+        "median_pdf_assembly_ms": null,
+        "median_pdf_font_ms": null,
+        "median_pdf_total_ms": null,
+        "median_tex_total_ms": null,
+        "median_wall_seconds": 3.608918,
+        "samples": [
+          {
+            "cpu_seconds": 3.6,
+            "max_rss_kib": 42496,
+            "pdf_bytes": 2266980,
+            "pdf_sha256": "919359aa2c80bc26193b05075ee102962d37a688bd82490ba9cd62868e100349",
+            "wall_seconds": 3.608918
+          }
+        ],
+        "validation": {
+          "fonts": {
+            "count": 1,
+            "rows": [
+              "DQQQTZ+CMR10                         Type 1            Builtin          yes yes yes      4  0"
+            ]
+          },
+          "info": {
+            "pages": 10000,
+            "pdf_version": "1.5",
+            "tagged": "no"
+          },
+          "links": null,
+          "poppler": {
+            "document_pages": 10000,
+            "pages": 3,
+            "selected_pages": [
+              1,
+              5000,
+              10000
+            ],
+            "selection": "sampled",
+            "sha256": "5f28513b46ba290caa41164df54c873f8f1634652fc86e273ad07a0301cb10f2"
+          },
+          "quartz": {
+            "available": false
+          },
+          "text": {
+            "bytes": 378894,
+            "markers": [
+              "aiTeX scale qualification page"
+            ],
+            "sequence_entries": 10000,
+            "sequence_sha256": "ffc3cbb821dcb3355c794c3dba7248e60a616b08360f8f6d4033d5122fa9f624",
+            "sha256": "dd8cdc768d6c679c9847b6fd250b8408819c0ad33dd9bf39ee33be5966b53755"
+          },
+          "validators": {
+            "ghostscript": true,
+            "mutool": true,
+            "qpdf": null
+          }
+        }
+      }
+    },
+    {
+      "candidate": {
+        "classic_xref_annotations": null,
+        "classic_xref_breakdown": {
+          "categories": {
+            "font_program": {
+              "decoded_bytes": 128306,
+              "flate_streams": 11,
+              "objects": 11,
+              "stored_bytes": 80345
+            },
+            "page_content": {
+              "decoded_bytes": 7974,
+              "flate_streams": 1,
+              "objects": 1,
+              "stored_bytes": 1714
+            },
+            "to_unicode": {
+              "decoded_bytes": 7293,
+              "flate_streams": 7,
+              "objects": 7,
+              "stored_bytes": 3435
+            }
+          },
+          "classic_fonts": {
+            "descriptors": 11,
+            "embedded_programs": 11,
+            "encodings": 2,
+            "pdf_fonts": 3,
+            "physical_faces": 3
+          },
+          "forms": [],
+          "images": [],
+          "non_payload_bytes": 15869,
+          "objects": 54,
+          "path": "temporary/native-unicode-cli/candidate-classic-xref.pdf",
+          "pdf_bytes": 101363,
+          "schema": 1,
+          "sha256": "6a9cc7f5ca8630eef1b05cef043cafdb19baf25ae5ab50c508a88b012f59ae83",
+          "streams": {
+            "decoded_bytes": 143573,
+            "flate_streams": 19,
+            "objects": 19,
+            "stored_bytes": 85494,
+            "undecoded_filtered_streams": 0
+          }
+        },
+        "classic_xref_sample": {
+          "cpu_seconds": 0.19,
+          "images": null,
+          "max_rss_kib": 87788,
+          "passes": 2,
+          "pdf_assembly_ms": 5.778,
+          "pdf_bytes": 101363,
+          "pdf_font_ms": 11.077,
+          "pdf_sha256": "6a9cc7f5ca8630eef1b05cef043cafdb19baf25ae5ab50c508a88b012f59ae83",
+          "pdf_total_ms": 18.141,
+          "tex_total_ms": 110.878,
+          "wall_seconds": 0.201129
+        },
+        "determinism_probe": null,
+        "deterministic_pdf": true,
+        "median_cpu_seconds": 0.19,
+        "median_max_rss_kib": 88612,
+        "median_pdf_assembly_ms": 5.97,
+        "median_pdf_font_ms": 10.965,
+        "median_pdf_total_ms": 18.123,
+        "median_tex_total_ms": 111.382,
+        "median_wall_seconds": 0.199981,
+        "samples": [
+          {
+            "cpu_seconds": 0.19,
+            "images": null,
+            "max_rss_kib": 89136,
+            "passes": 2,
+            "pdf_assembly_ms": 5.97,
+            "pdf_bytes": 90277,
+            "pdf_font_ms": 10.644,
+            "pdf_sha256": "0577827f4712162e18372a3ca854e6b15761776bdd92410404547f0c017f6852",
+            "pdf_total_ms": 17.842,
+            "tex_total_ms": 111.382,
+            "wall_seconds": 0.199981
+          },
+          {
+            "cpu_seconds": 0.18,
+            "images": null,
+            "max_rss_kib": 88088,
+            "passes": 2,
+            "pdf_assembly_ms": 5.999,
+            "pdf_bytes": 90277,
+            "pdf_font_ms": 11.173,
+            "pdf_sha256": "0577827f4712162e18372a3ca854e6b15761776bdd92410404547f0c017f6852",
+            "pdf_total_ms": 18.407,
+            "tex_total_ms": 109.017,
+            "wall_seconds": 0.194151
+          },
+          {
+            "cpu_seconds": 0.19,
+            "images": null,
+            "max_rss_kib": 88612,
+            "passes": 2,
+            "pdf_assembly_ms": 5.949,
+            "pdf_bytes": 90277,
+            "pdf_font_ms": 10.965,
+            "pdf_sha256": "0577827f4712162e18372a3ca854e6b15761776bdd92410404547f0c017f6852",
+            "pdf_total_ms": 18.123,
+            "tex_total_ms": 114.527,
+            "wall_seconds": 0.202353
+          }
+        ],
+        "validation": {
+          "fonts": {
+            "count": 12,
+            "rows": [
+              "MONGYG+CMR7                          Type 1            Custom           yes yes yes     44  0",
+              "RYNUVN+CMR10                         Type 1            Custom           yes yes yes     47  0",
+              "SOTZFC+CMMI10                        Type 1            Custom           yes yes yes     51  0",
+              "BIAFRM+NotoSans-Regular              CID TrueType      Identity-H       yes yes yes      7  0",
+              "YDFDYR+Amiri-Regular                 CID TrueType      Identity-H       yes yes no      11  0",
+              "PYGFXY+NotoSansHebrew-Regular        CID TrueType      Identity-H       yes yes no      15  0",
+              "OUPVYG+NotoSansDevanagari-Regular    CID TrueType      Identity-H       yes yes no      19  0",
+              "HFGPIS+NotoSansCJKsc-Regular         CID Type 0C (OT)  Identity-H       yes yes yes     24  0",
+              "HFGPIS+NotoSansCJKsc-Regular         CID Type 0C (OT)  Identity-V       yes yes yes     25  0",
+              "PGHQZC+NotoSansThai-Regular          CID TrueType      Identity-H       yes yes yes     30  0",
+              "VSVRYU+NotoSansLao-Regular           CID TrueType      Identity-H       yes yes yes     35  0",
+              "ZYIJFI+JunicodeVF-Regular            CID TrueType      Identity-H       yes yes yes     40  0"
+            ]
+          },
+          "info": {
+            "pages": 1,
+            "pdf_version": "1.5",
+            "tagged": "no"
+          },
+          "links": null,
+          "poppler": {
+            "pages": 1,
+            "selection": "all",
+            "sha256": "d72548a6732c37bbcee2b0268a41f327488761119ec4d027afa35f7b292b26b2"
+          },
+          "quartz": {
+            "available": false
+          },
+          "text": {
+            "bytes": 524,
+            "markers": [
+              "Ordinary UTF-8 and OpenType shaping",
+              "office affine",
+              "\u0928\u092e\u0938\u094d\u0924\u0947",
+              "\u65e5\u672c\u8a9e\u4e2d\u6587\u6d4b\u8bd5",
+              "\u0e20\u0e32\u0e29\u0e32\u0e44\u0e17\u0e22",
+              "\u0eaa\u0eb0\u0e9a\u0eb2\u0e8d\u0e94\u0eb5",
+              "minimum variable width office"
+            ],
+            "sha256": "6e49a6a9f6dbd4c8294604dd2cbf91d9880318329514f325481a8eb59f12698b"
+          },
+          "validators": {
+            "ghostscript": true,
+            "mutool": true,
+            "qpdf": null
+          }
+        }
+      },
+      "comparison": null,
+      "id": "native-unicode-cli",
+      "kind": "unicode",
+      "pages": 1,
+      "performance_gates": {
+        "max_matching_environment_pdf_assembly_absolute_ms": 2.0,
+        "max_matching_environment_pdf_stage_absolute_ms": 40.0,
+        "max_matching_environment_rss_absolute_kib": 16384.0
+      },
+      "profile": "unicode",
+      "raster_policy": "all",
+      "reference": null,
+      "samples_requested": 3,
+      "source": "tests/unicode/product/main.tex",
+      "source_sha256": "dea6eef6fdc4e10e6029cafdc71061b9c6440912fed5e632c8472bf3be72872f",
+      "stock": null
+    },
+    {
+      "candidate": {
+        "classic_xref_annotations": null,
+        "classic_xref_breakdown": {
+          "categories": {
+            "font_program": {
+              "decoded_bytes": 117276,
+              "flate_streams": 11,
+              "objects": 11,
+              "stored_bytes": 60858
+            },
+            "page_content": {
+              "decoded_bytes": 5283,
+              "flate_streams": 3,
+              "objects": 3,
+              "stored_bytes": 1714
+            },
+            "to_unicode": {
+              "decoded_bytes": 2333,
+              "flate_streams": 5,
+              "objects": 5,
+              "stored_bytes": 1380
+            }
+          },
+          "classic_fonts": {
+            "descriptors": 11,
+            "embedded_programs": 11,
+            "encodings": 0,
+            "pdf_fonts": 0,
+            "physical_faces": 0
+          },
+          "forms": [],
+          "images": [],
+          "non_payload_bytes": 12721,
+          "objects": 76,
+          "path": "temporary/native-positioned-fonts/candidate-classic-xref.pdf",
+          "pdf_bytes": 76673,
+          "schema": 1,
+          "sha256": "ab0b03eccb32b75baa2c2c87c783560a7dc49ceb57187005a6c00f4e2476b0d5",
+          "streams": {
+            "decoded_bytes": 124892,
+            "flate_streams": 19,
+            "objects": 19,
+            "stored_bytes": 63952,
+            "undecoded_filtered_streams": 0
+          }
+        },
+        "classic_xref_sample": {
+          "cpu_seconds": 0.0,
+          "max_rss_kib": 6656,
+          "passes": 1,
+          "pdf_assembly_ms": null,
+          "pdf_bytes": 76673,
+          "pdf_sha256": "ab0b03eccb32b75baa2c2c87c783560a7dc49ceb57187005a6c00f4e2476b0d5",
+          "pdf_total_ms": 4.097,
+          "wall_seconds": 0.006124
+        },
+        "determinism_probe": {
+          "pdf_bytes": 68076,
+          "pdf_sha256": "c1f6d0f29591c432751e197d68d6e9e8fc628cebb907b7dfaa17304bab279ad2"
+        },
+        "deterministic_pdf": true,
+        "median_cpu_seconds": 0.0,
+        "median_max_rss_kib": 6656,
+        "median_pdf_assembly_ms": null,
+        "median_pdf_font_ms": null,
+        "median_pdf_total_ms": 4.245,
+        "median_tex_total_ms": null,
+        "median_wall_seconds": 0.006965,
+        "samples": [
+          {
+            "cpu_seconds": 0.0,
+            "max_rss_kib": 6656,
+            "passes": 1,
+            "pdf_assembly_ms": null,
+            "pdf_bytes": 68076,
+            "pdf_sha256": "c1f6d0f29591c432751e197d68d6e9e8fc628cebb907b7dfaa17304bab279ad2",
+            "pdf_total_ms": 4.245,
+            "wall_seconds": 0.006965
+          }
+        ],
+        "validation": {
+          "fonts": {
+            "count": 12,
+            "rows": [
+              "ICATBM+NotoSans-Regular              CID TrueType      Identity-H       yes yes yes      9  0",
+              "ROSJOS+Amiri-Regular                 CID TrueType      Identity-H       yes yes no      13  0",
+              "RHGAJK+NotoSansDevanagari-Regular    CID TrueType      Identity-H       yes yes no      17  0",
+              "EMUGCS+SourceSerif4-Regular          CID Type 0C (OT)  Identity-H       yes yes yes     22  0",
+              "KNVRPU+NotoSansHebrew-Regular        CID TrueType      Identity-H       yes yes no      26  0",
+              "NMALXJ+NotoSansCJKsc-Regular         CID Type 0C (OT)  Identity-H       yes yes yes     31  0",
+              "FKCKFV+NotoSansThai-Regular          CID TrueType      Identity-H       yes yes no      36  0",
+              "HUFUUG+NotoSansLao-Regular           CID TrueType      Identity-H       yes yes no      40  0",
+              "CSBKGZ+JunicodeVF-Regular            CID TrueType      Identity-H       yes yes yes     45  0",
+              "TUGLJW+SourceSerif4Variable-Roman    CID TrueType      Identity-H       yes yes yes     50  0",
+              "NMALXJ+NotoSansCJKsc-Regular         CID Type 0C (OT)  Identity-V       yes yes yes     32  0",
+              "LRCSHR+AmiriQuranColored-Regular     CID TrueType      Identity-H       yes yes no      54  0"
+            ]
+          },
+          "info": {
+            "pages": 3,
+            "pdf_version": "1.7",
+            "tagged": "yes"
+          },
+          "links": null,
+          "poppler": {
+            "pages": 3,
+            "selection": "all",
+            "sha256": "915b1f75028ed5df18b04e656099b33f4c03d697e42d93b6fb94bae808056d2f"
+          },
+          "quartz": {
+            "available": false
+          },
+          "text": {
+            "bytes": 364,
+            "markers": [
+              "office affine",
+              "\u0928\u092e\u0938\u094d\u0924",
+              "\u0930\u0924",
+              "\u65e5\u672c\u8a9e\u4e2d\u6587\u6d4b\u8bd5",
+              "\u0e20\u0e32\u0e29\u0e32\u0e44\u0e17\u0e22",
+              "\u0eaa\u0eb0\u0e9a\u0eb2\u0e8d",
+              "\u0e9e\u0eb2\u0eaa\u0eb2\u0ea5\u0eb2\u0ea7",
+              "variable width",
+              "variable office",
+              "\u0660"
+            ],
+            "sha256": "393de1cc3c969ebcdfad6722b9ec4a12b82aece1f28a120fe68fdaeba5893fb2"
+          },
+          "validators": {
+            "ghostscript": true,
+            "mutool": true,
+            "qpdf": null
+          }
+        }
+      },
+      "comparison": null,
+      "id": "native-positioned-fonts",
+      "kind": "positioned",
+      "pages": 3,
+      "performance_gates": {
+        "max_matching_environment_pdf_assembly_absolute_ms": 2.0,
+        "max_matching_environment_pdf_stage_absolute_ms": 40.0,
+        "max_matching_environment_rss_absolute_kib": 16384.0
+      },
+      "profile": "positioned",
+      "raster_policy": "all",
+      "reference": null,
+      "samples_requested": 1,
+      "source": "crates/aitex-driver/examples/pdf_qualification.rs",
+      "source_sha256": "e49dc1b7aaddae1eb8eb484af8ec0906716661ae12c97bbff98d1a95fcdb8086",
+      "stock": null
+    }
+  ],
+  "compiler": {
+    "binary_sha256": "671c2baae5d3d173618d8b7389339f331535b185db2d7f7c7b8b92aa98be0e3d",
+    "format_sha256": "496b0f2728bb97b4e2dc70478c38c57c7312f699db2bcdf1d24271fb6088902b",
+    "git_commit": "6ae3c6adfe1291a96b8a87761b736baec0089424",
+    "git_dirty": false,
+    "positioned_binary_sha256": "d5f453b75635bc4f364552a0be1465e2fef4af5c6c0e6a2d95a27f02a64d8037"
+  },
+  "environment": {
+    "dvipdfmx": "This is dvipdfmx Version 20220710 by the DVIPDFMx project team,",
+    "fingerprint_sha256": "b99480ead8ff4f7aaa705f15ecf9b7500dbcbf3698548c3b36c2a7a71465d917",
+    "ghostscript": "10.02.1",
+    "latexmk": "Latexmk, John Collins, 31 Jan. 2024. Version 4.83",
+    "pdfinfo": "pdfinfo version 24.02.0",
+    "pdflatex": "pdfTeX 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian)",
+    "platform": "Linux-6.8.0-134-generic-x86_64-with-glibc2.39",
+    "python": "3.12.3",
+    "rustc": "rustc 1.90.0 (1159e78c4 2025-09-14)"
+  },
+  "gates": {
+    "max_comparable_pdf_size_ratio": 1.25,
+    "max_matching_environment_pdf_assembly_absolute_ms": 2.0,
+    "max_matching_environment_pdf_assembly_regression": 0.1,
+    "max_matching_environment_pdf_stage_absolute_ms": 40.0,
+    "max_matching_environment_pdf_stage_regression": 0.1,
+    "max_matching_environment_rss_absolute_kib": 16384,
+    "max_matching_environment_rss_regression": 0.15,
+    "max_pdf_size_regression": 0.02,
+    "raster_fuzz_fraction": 0.05,
+    "raster_max_normalized_mae": 0.0015,
+    "raster_max_outside_fraction": 0.005
+  },
+  "schema": 1,
+  "suite": {
+    "contains_third_party_document_text": false,
+    "corpus_lock": "qualification/pdf-corpus-v1.json",
+    "corpus_lock_sha256": "042bdd244f07a5929c293f0467c3b3bde0e5c40122bb6e0c1da5190380a6e01c",
+    "generated_assets": {
+      "alpha.png": {
+        "bytes": 151392,
+        "sha256": "e81d43f934602fbafd6d1c064f67fcb188466936fdb32ae76586bae73e3e2c53"
+      },
+      "gray-1.png": {
+        "bytes": 122,
+        "sha256": "8d8f0d631492b82982fd90e875483ecbe93b6b2c4587edace3a4fe17743db94b"
+      },
+      "gray-8.png": {
+        "bytes": 307,
+        "sha256": "20be6c90ab6da4d82b4495c4031a72e1e48c7405a307bc2be8de08185aa77d0e"
+      },
+      "indexed-2-trns.png": {
+        "bytes": 177,
+        "sha256": "459379d1ac6ee577d79d8b5e01a270ff6621ec4df020f2a76fca43c70b1ed49d"
+      },
+      "pattern-copy.png": {
+        "bytes": 491333,
+        "sha256": "02a425436d192e99b5563c03ce87e27fb97dd21ef1edc8969167133a3680a830"
+      },
+      "pattern.png": {
+        "bytes": 491333,
+        "sha256": "02a425436d192e99b5563c03ce87e27fb97dd21ef1edc8969167133a3680a830"
+      }
+    },
+    "manifest": "qualification/pdf-suite-v1.json",
+    "manifest_sha256": "cc4d3155f684bfa87d996d161d6aa5ec30f4081b445bee6e9e0fb2738aa73cd1",
+    "name": "aitex-varied-pdf-qualification-v1",
+    "quick": false
+  }
+}

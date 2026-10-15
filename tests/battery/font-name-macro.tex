@@ -1,0 +1,11 @@
+% tex.web 526: a font's file name is scanned with get_x_token, so a macro
+% standing for it is expanded. NFSS drives every font load through
+% \edef\external@font{<name> at <size>} then \font\font@name\external@font;
+% without expanding it the name came out empty and the macro leaked its `cmr...`
+% text into vertical mode as a spurious paragraph that fired \output at \@@end.
+\input plain
+\edef\myfont{cmr10}
+\font\x\myfont
+\font\y\myfont\space at 12pt
+\message{<mode=\ifvmode V\else H\fi><xdef=\ifx\x\undefined u\else d\fi>}
+\bye

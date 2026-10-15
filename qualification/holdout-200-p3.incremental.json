@@ -1,0 +1,611 @@
+{
+  "schema": 1,
+  "description": "Locked-corpus P3 incremental exactness qualification",
+  "created_at": "2026-08-31T19:59:17+00:00",
+  "selection": "valid P2 locked DVI roots; P3 eligibility decided mechanically",
+  "warm_sha256": "8e2526f36798422a36b81292da2c7333db4e6b4d3f5b732eaee32459d85ec275",
+  "sources_sha256": "ba336a6dded14b38332bc6e0a1008443883f167dabb21c7fc650abf9067041b2",
+  "runner_sha256": "de1b9d86800a5432d484fa06a2afff814e261c1cd9ccaea746db735e8c783e95",
+  "binary_sha256": "d392538e5716f45bcd7cca6e1e223d1ead6147979fc91ac16ccbfdeb699ff971",
+  "format_sha256": "176043a33c0717b155e74e5780c226a4cd936214dc39d47c483ba4b59a611475",
+  "selected": 56,
+  "eligible": 53,
+  "valid": 53,
+  "entries": [
+    {
+      "id": "2608.27447v1",
+      "status": "valid",
+      "edit_path": "checkpoint",
+      "comparison": {
+        "valid": true,
+        "equivalent": true,
+        "drawing_equivalent": true,
+        "specials_equivalent": true
+      }
+    },
+    {
+      "id": "2608.27427v1",
+      "status": "ineligible_small_body"
+    },
+    {
+      "id": "2608.27398v1",
+      "status": "valid",
+      "edit_path": "checkpoint",
+      "comparison": {
+        "valid": true,
+        "equivalent": true,
+        "drawing_equivalent": true,
+        "specials_equivalent": true
+      }
+    },
+    {
+      "id": "2608.27356v1",
+      "status": "ineligible_small_body"
+    },
+    {
+      "id": "2608.27347v1",
+      "status": "valid",
+      "edit_path": "checkpoint",
+      "comparison": {
+        "valid": true,
+        "equivalent": true,
+        "drawing_equivalent": true,
+        "specials_equivalent": true
+      }
+    },
+    {
+      "id": "2608.27304v1",
+      "status": "valid",
+      "edit_path": "checkpoint",
+      "comparison": {
+        "valid": true,
+        "equivalent": true,
+        "drawing_equivalent": true,
+        "specials_equivalent": true
+      }
+    },
+    {
+      "id": "2608.27283v1",
+      "status": "valid",
+      "edit_path": "checkpoint",
+      "comparison": {
+        "valid": true,
+        "equivalent": true,
+        "drawing_equivalent": true,
+        "specials_equivalent": true
+      }
+    },
+    {
+      "id": "2608.27276v1",
+      "status": "valid",
+      "edit_path": "checkpoint",
+      "comparison": {
+        "valid": true,
+        "equivalent": true,
+        "drawing_equivalent": true,
+        "specials_equivalent": true
+      }
+    },
+    {
+      "id": "2608.27203v1",
+      "status": "valid",
+      "edit_path": "checkpoint",
+      "comparison": {
+        "valid": true,
+        "equivalent": true,
+        "drawing_equivalent": true,
+        "specials_equivalent": true
+      }
+    },
+    {
+      "id": "2608.26969v1",
+      "status": "valid",
+      "edit_path": "checkpoint",
+      "comparison": {
+        "valid": true,
+        "equivalent": true,
+        "drawing_equivalent": true,
+        "specials_equivalent": true
+      }
+    },
+    {
+      "id": "2608.26936v1",
+      "status": "valid",
+      "edit_path": "checkpoint",
+      "comparison": {
+        "valid": true,
+        "equivalent": true,
+        "drawing_equivalent": true,
+        "specials_equivalent": true
+      }
+    },
+    {
+      "id": "2608.26923v1",
+      "status": "valid",
+      "edit_path": "checkpoint",
+      "comparison": {
+        "valid": true,
+        "equivalent": true,
+        "drawing_equivalent": true,
+        "specials_equivalent": true
+      }
+    },
+    {
+      "id": "2608.26922v1",
+      "status": "valid",
+      "edit_path": "checkpoint",
+      "comparison": {
+        "valid": true,
+        "equivalent": true,
+        "drawing_equivalent": true,
+        "specials_equivalent": true
+      }
+    },
+    {
+      "id": "2608.26904v1",
+      "status": "valid",
+      "edit_path": "checkpoint",
+      "comparison": {
+        "valid": true,
+        "equivalent": true,
+        "drawing_equivalent": true,
+        "specials_equivalent": true
+      }
+    },
+    {
+      "id": "2608.26874v1",
+      "status": "valid",
+      "edit_path": "checkpoint",
+      "comparison": {
+        "valid": true,
+        "equivalent": true,
+        "drawing_equivalent": true,
+        "specials_equivalent": true
+      }
+    },
+    {
+      "id": "2608.26817v1",
+      "status": "valid",
+      "edit_path": "checkpoint",
+      "comparison": {
+        "valid": true,
+        "equivalent": true,
+        "drawing_equivalent": true,
+        "specials_equivalent": true
+      }
+    },
+    {
+      "id": "2608.26808v1",
+      "status": "valid",
+      "edit_path": "checkpoint",
+      "comparison": {
+        "valid": true,
+        "equivalent": true,
+        "drawing_equivalent": true,
+        "specials_equivalent": true
+      }
+    },
+    {
+      "id": "2608.26801v1",
+      "status": "valid",
+      "edit_path": "checkpoint",
+      "comparison": {
+        "valid": true,
+        "equivalent": true,
+        "drawing_equivalent": true,
+        "specials_equivalent": true
+      }
+    },
+    {
+      "id": "2608.26770v1",
+      "status": "valid",
+      "edit_path": "checkpoint",
+      "comparison": {
+        "valid": true,
+        "equivalent": true,
+        "drawing_equivalent": true,
+        "specials_equivalent": true
+      }
+    },
+    {
+      "id": "2608.26719v1",
+      "status": "valid",
+      "edit_path": "checkpoint",
+      "comparison": {
+        "valid": true,
+        "equivalent": true,
+        "drawing_equivalent": true,
+        "specials_equivalent": true
+      }
+    },
+    {
+      "id": "2608.26707v1",
+      "status": "valid",
+      "edit_path": "checkpoint",
+      "comparison": {
+        "valid": true,
+        "equivalent": true,
+        "drawing_equivalent": true,
+        "specials_equivalent": true
+      }
+    },
+    {
+      "id": "2608.26692v1",
+      "status": "valid",
+      "edit_path": "checkpoint",
+      "comparison": {
+        "valid": true,
+        "equivalent": true,
+        "drawing_equivalent": true,
+        "specials_equivalent": true
+      }
+    },
+    {
+      "id": "2608.26639v1",
+      "status": "valid",
+      "edit_path": "checkpoint",
+      "comparison": {
+        "valid": true,
+        "equivalent": true,
+        "drawing_equivalent": true,
+        "specials_equivalent": true
+      }
+    },
+    {
+      "id": "2608.26617v1",
+      "status": "valid",
+      "edit_path": "checkpoint",
+      "comparison": {
+        "valid": true,
+        "equivalent": true,
+        "drawing_equivalent": true,
+        "specials_equivalent": true
+      }
+    },
+    {
+      "id": "2608.26615v1",
+      "status": "valid",
+      "edit_path": "checkpoint",
+      "comparison": {
+        "valid": true,
+        "equivalent": true,
+        "drawing_equivalent": true,
+        "specials_equivalent": true
+      }
+    },
+    {
+      "id": "2608.26593v1",
+      "status": "valid",
+      "edit_path": "checkpoint",
+      "comparison": {
+        "valid": true,
+        "equivalent": true,
+        "drawing_equivalent": true,
+        "specials_equivalent": true
+      }
+    },
+    {
+      "id": "2608.26591v1",
+      "status": "valid",
+      "edit_path": "checkpoint",
+      "comparison": {
+        "valid": true,
+        "equivalent": true,
+        "drawing_equivalent": true,
+        "specials_equivalent": true
+      }
+    },
+    {
+      "id": "2608.26565v1",
+      "status": "valid",
+      "edit_path": "checkpoint",
+      "comparison": {
+        "valid": true,
+        "equivalent": true,
+        "drawing_equivalent": true,
+        "specials_equivalent": true
+      }
+    },
+    {
+      "id": "2608.26554v1",
+      "status": "valid",
+      "edit_path": "checkpoint",
+      "comparison": {
+        "valid": true,
+        "equivalent": true,
+        "drawing_equivalent": true,
+        "specials_equivalent": true
+      }
+    },
+    {
+      "id": "2608.26502v1",
+      "status": "valid",
+      "edit_path": "checkpoint",
+      "comparison": {
+        "valid": true,
+        "equivalent": true,
+        "drawing_equivalent": true,
+        "specials_equivalent": true
+      }
+    },
+    {
+      "id": "2608.26457v1",
+      "status": "valid",
+      "edit_path": "checkpoint",
+      "comparison": {
+        "valid": true,
+        "equivalent": true,
+        "drawing_equivalent": true,
+        "specials_equivalent": true
+      }
+    },
+    {
+      "id": "2608.26449v1",
+      "status": "valid",
+      "edit_path": "checkpoint",
+      "comparison": {
+        "valid": true,
+        "equivalent": true,
+        "drawing_equivalent": true,
+        "specials_equivalent": true
+      }
+    },
+    {
+      "id": "2608.26344v1",
+      "status": "valid",
+      "edit_path": "checkpoint",
+      "comparison": {
+        "valid": true,
+        "equivalent": true,
+        "drawing_equivalent": true,
+        "specials_equivalent": true
+      }
+    },
+    {
+      "id": "2608.26311v1",
+      "status": "valid",
+      "edit_path": "checkpoint",
+      "comparison": {
+        "valid": true,
+        "equivalent": true,
+        "drawing_equivalent": true,
+        "specials_equivalent": true
+      }
+    },
+    {
+      "id": "2608.26287v1",
+      "status": "valid",
+      "edit_path": "checkpoint",
+      "comparison": {
+        "valid": true,
+        "equivalent": true,
+        "drawing_equivalent": true,
+        "specials_equivalent": true
+      }
+    },
+    {
+      "id": "2608.26248v1",
+      "status": "valid",
+      "edit_path": "checkpoint",
+      "comparison": {
+        "valid": true,
+        "equivalent": true,
+        "drawing_equivalent": true,
+        "specials_equivalent": true
+      }
+    },
+    {
+      "id": "2608.26092v1",
+      "status": "valid",
+      "edit_path": "checkpoint",
+      "comparison": {
+        "valid": true,
+        "equivalent": true,
+        "drawing_equivalent": true,
+        "specials_equivalent": true
+      }
+    },
+    {
+      "id": "2608.26080v1",
+      "status": "valid",
+      "edit_path": "checkpoint",
+      "comparison": {
+        "valid": true,
+        "equivalent": true,
+        "drawing_equivalent": true,
+        "specials_equivalent": true
+      }
+    },
+    {
+      "id": "2608.25831v1",
+      "status": "valid",
+      "edit_path": "checkpoint",
+      "comparison": {
+        "valid": true,
+        "equivalent": true,
+        "drawing_equivalent": true,
+        "specials_equivalent": true
+      }
+    },
+    {
+      "id": "2608.25746v1",
+      "status": "valid",
+      "edit_path": "checkpoint",
+      "comparison": {
+        "valid": true,
+        "equivalent": true,
+        "drawing_equivalent": true,
+        "specials_equivalent": true
+      }
+    },
+    {
+      "id": "2608.25740v1",
+      "status": "valid",
+      "edit_path": "checkpoint",
+      "comparison": {
+        "valid": true,
+        "equivalent": true,
+        "drawing_equivalent": true,
+        "specials_equivalent": true
+      }
+    },
+    {
+      "id": "2608.25654v1",
+      "status": "valid",
+      "edit_path": "checkpoint",
+      "comparison": {
+        "valid": true,
+        "equivalent": true,
+        "drawing_equivalent": true,
+        "specials_equivalent": true
+      }
+    },
+    {
+      "id": "2608.25558v1",
+      "status": "valid",
+      "edit_path": "checkpoint",
+      "comparison": {
+        "valid": true,
+        "equivalent": true,
+        "drawing_equivalent": true,
+        "specials_equivalent": true
+      }
+    },
+    {
+      "id": "2608.25553v2",
+      "status": "ineligible_small_body"
+    },
+    {
+      "id": "2608.25491v1",
+      "status": "valid",
+      "edit_path": "checkpoint",
+      "comparison": {
+        "valid": true,
+        "equivalent": true,
+        "drawing_equivalent": true,
+        "specials_equivalent": true
+      }
+    },
+    {
+      "id": "2608.25471v1",
+      "status": "valid",
+      "edit_path": "checkpoint",
+      "comparison": {
+        "valid": true,
+        "equivalent": true,
+        "drawing_equivalent": true,
+        "specials_equivalent": true
+      }
+    },
+    {
+      "id": "2608.25447v1",
+      "status": "valid",
+      "edit_path": "checkpoint",
+      "comparison": {
+        "valid": true,
+        "equivalent": true,
+        "drawing_equivalent": true,
+        "specials_equivalent": true
+      }
+    },
+    {
+      "id": "2608.25387v1",
+      "status": "valid",
+      "edit_path": "checkpoint",
+      "comparison": {
+        "valid": true,
+        "equivalent": true,
+        "drawing_equivalent": true,
+        "specials_equivalent": true
+      }
+    },
+    {
+      "id": "2608.25372v1",
+      "status": "valid",
+      "edit_path": "checkpoint",
+      "comparison": {
+        "valid": true,
+        "equivalent": true,
+        "drawing_equivalent": true,
+        "specials_equivalent": true
+      }
+    },
+    {
+      "id": "2608.25351v1",
+      "status": "valid",
+      "edit_path": "checkpoint",
+      "comparison": {
+        "valid": true,
+        "equivalent": true,
+        "drawing_equivalent": true,
+        "specials_equivalent": true
+      }
+    },
+    {
+      "id": "2608.25339v1",
+      "status": "valid",
+      "edit_path": "checkpoint",
+      "comparison": {
+        "valid": true,
+        "equivalent": true,
+        "drawing_equivalent": true,
+        "specials_equivalent": true
+      }
+    },
+    {
+      "id": "2608.25323v1",
+      "status": "valid",
+      "edit_path": "checkpoint",
+      "comparison": {
+        "valid": true,
+        "equivalent": true,
+        "drawing_equivalent": true,
+        "specials_equivalent": true
+      }
+    },
+    {
+      "id": "2608.25259v1",
+      "status": "valid",
+      "edit_path": "checkpoint",
+      "comparison": {
+        "valid": true,
+        "equivalent": true,
+        "drawing_equivalent": true,
+        "specials_equivalent": true
+      }
+    },
+    {
+      "id": "2608.25232v1",
+      "status": "valid",
+      "edit_path": "checkpoint",
+      "comparison": {
+        "valid": true,
+        "equivalent": true,
+        "drawing_equivalent": true,
+        "specials_equivalent": true
+      }
+    },
+    {
+      "id": "2608.25221v1",
+      "status": "valid",
+      "edit_path": "checkpoint",
+      "comparison": {
+        "valid": true,
+        "equivalent": true,
+        "drawing_equivalent": true,
+        "specials_equivalent": true
+      }
+    },
+    {
+      "id": "2608.25183v1",
+      "status": "valid",
+      "edit_path": "checkpoint",
+      "comparison": {
+        "valid": true,
+        "equivalent": true,
+        "drawing_equivalent": true,
+        "specials_equivalent": true
+      }
+    }
+  ]
+}

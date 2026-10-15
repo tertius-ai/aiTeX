@@ -1,0 +1,31 @@
+% `tex.web` §1241, and the guard is asked *after* the number and the `=`:
+%
+%     set_box: begin scan_eight_bit_int; n:=cur_val;
+%       if global then n:=256+n;
+%       scan_optional_equals;
+%       if set_box_allowed then scan_box(box_flag+n)
+%       else begin print_err("Improper "); print_esc("setbox");
+%         help2("Sorry, \setbox is not allowed after \halign in a display,")
+%         ("or between \accent and an accented character."); error;
+%         end;
+%       end;
+%
+% `set_box_allowed` is false inside §1270's `do_assignments`, which wraps
+% every one of them:
+%
+%     set_box_allowed:=false; prefixed_command; set_box_allowed:=true;
+%
+% so a box may not be filled while TeX is reading the assignments that follow
+% a display's `\halign` — the list being assembled is not the one `\setbox`
+% would divert.  The box command after it is left alone, which also ends the
+% assignment run, since a box is not an assignment.
+%
+% Other assignments in the same run are fine: `\count0` below still takes 5.
+\catcode`\{=1 \catcode`\}=2 \catcode`\$=3 \catcode`\#=6 \catcode`\&=4
+\font\r=cmr10 \r \hsize100pt \parindent0pt
+A
+$$\halign{#&#\cr a&b\cr}
+\global\setbox1=\hbox{y}\count0=5
+$$
+\showthe\count0 \showbox1
+\end

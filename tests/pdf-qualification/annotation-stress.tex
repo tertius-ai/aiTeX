@@ -1,0 +1,46 @@
+% Original synthetic annotation/object workload for redistributable qualification.
+\documentclass[10pt]{article}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{
+  pdftitle={aiTeX annotation qualification},
+  pdfauthor={aiTeX project},
+  bookmarksopen=false
+}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\newcount\aitexannotationpage
+\aitexannotationpage=0
+\providecommand{\aitexqualificationpages}{64}
+
+\begin{document}
+\hypertarget{annotation-first}{}
+\loop
+  \advance\aitexannotationpage by 1
+  \section{Annotation page \number\aitexannotationpage}
+  \hypertarget{annotation-page-\number\aitexannotationpage}{}
+  This original page deliberately creates many small PDF objects. Its counter
+  is \number\aitexannotationpage, so every page remains observably distinct.\par
+  \medskip
+
+  \hyperlink{annotation-first}{First page}\quad
+  \hyperlink{annotation-page-\number\aitexannotationpage}{This page}\quad
+  \href{https://example.invalid/aitex/alpha}{Alpha URI}\quad
+  \href{https://example.invalid/aitex/beta}{Beta URI}\par
+  \medskip
+
+  \href{https://example.invalid/aitex/long/path?kind=qualification}{A deliberately
+  longer wrapped external hyperlink exercises split annotation rectangles in
+  a stable paragraph measure while retaining the familiar cyan boxes.}\par
+  \medskip
+
+  \textcolor{blue}{Blue state}\quad
+  \textcolor{red}{red state}\quad
+  \rule{80pt}{0.6pt}\quad
+  \hyperlink{annotation-first}{another internal destination}\par
+  \vfill
+  Annotation qualification page \number\aitexannotationpage\hfill aiTeX
+  \newpage
+\ifnum\aitexannotationpage<\aitexqualificationpages
+\repeat
+\end{document}

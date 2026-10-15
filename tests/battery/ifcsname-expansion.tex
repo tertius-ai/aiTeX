@@ -1,0 +1,34 @@
+% \ifcsname builds its name by *expanding*, exactly as \csname does.
+%
+% A control sequence in the middle of the name that isn't \endcsname must be
+% expanded, not dropped. Ours dropped it: `\ifcsname\pfx foo\endcsname` built
+% the name `foo` instead of expanding \pfx to `X` first and testing `Xfoo` --
+% so results were not merely wrong, they tested the wrong name entirely.
+%
+% expl3's \cs_if_exist:cTF is built on exactly this shape, feeding \ifcsname a
+% prefix token (\c__msg_text_prefix_tl) that must expand before the name is
+% complete. Every real message the kernel tried to look up tested under the
+% wrong name, found nothing, and fell back to reporting "message not found" --
+% which itself couldn't be found either, for the same reason, forever: the
+% engine ran 5,000,000 commands in that loop before its own step cap stopped
+% it, with no error printed at all.
+\input plain
+\def\M#1{\message{<#1>}}
+\def\pfx{X}
+\expandafter\def\csname Xfoo\endcsname{DEF}
+\M{a=\ifcsname\pfx foo\endcsname Y\else N\fi}
+\M{b=\ifcsname\pfx bar\endcsname Y\else N\fi}
+\def\Xz{Z}
+\M{c=\ifcsname\pfx z\endcsname Y\else N\fi}
+\M{d=\meaning\Xz}
+\M{e=\ifcsname foo\endcsname Y\else N\fi}
+\M{f=\ifcsname relax\endcsname Y\else N\fi}
+\def\a{a}\def\b{b}
+\expandafter\def\csname ab\endcsname{ABDEF}
+\M{g=\ifcsname\a\b\endcsname Y\else N\fi}
+\M{h=\ifcsname\a\b c\endcsname Y\else N\fi}
+% nested expansion: prefix comes from a macro that itself needs expanding
+\def\getx{\pfx}
+\M{i=\ifcsname\getx foo\endcsname Y\else N\fi}
+% an undefined cs mid-name still terminates its own contribution silently
+\bye

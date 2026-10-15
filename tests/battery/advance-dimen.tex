@@ -1,0 +1,22 @@
+% tex.web 1240 (do_register_command): the operand of \advance takes the
+% register's own kind -- a count advances by a <number>, a dimen by a <dimen>,
+% a glue by a <glue>. Only \multiply and \divide always scale by an integer.
+% We had scanned an integer for \advance\dimen too, which merely *looked*
+% right while the operand was itself an internal dimen (`\advance\@tempdima
+% -\textwidth` coerces to the same sp count either way, so the whole kernel
+% passed). The first literal dimen with a unit exposed it: size10.clo's
+% `\addtolength\marginparwidth{-0.4in}` = `\advance\marginparwidth -0.4in`
+% scanned `-0` and then hit `.` -- BadNumber, ~1700 commands into every
+% \documentclass{article}.
+\input plain
+\dimen0=100pt \dimen1=30pt
+\advance\dimen0 by -0.4in
+\advance\dimen0 by -\dimen1
+\advance\dimen0 by 2.5in
+\advance\dimen0 by .5\dimen1
+\count5=100 \advance\count5 by 7
+\skip3=10pt plus 2pt minus 1pt \advance\skip3 by 4pt plus 1fil
+\dimen2=100pt \multiply\dimen2 by 3
+\dimen3=99pt \divide\dimen3 by 2
+\message{<a=\the\dimen0><f=\the\count5><s=\the\skip3><m=\the\dimen2><d=\the\dimen3>}
+\bye

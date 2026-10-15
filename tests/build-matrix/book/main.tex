@@ -1,0 +1,36 @@
+\documentclass[11pt,twoside]{book}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath}
+\usepackage{xcolor,fancyhdr,microtype,hyperref}
+\pagestyle{fancy}
+\fancyhead[LE,RO]{\thepage}
+\fancyhead[LO]{\rightmark}
+\fancyhead[RE]{\leftmark}
+\title{A Small Synthetic Book}
+\author{aiTeX qualification}
+\date{September 2001}
+
+\begin{document}
+\frontmatter
+\maketitle
+\tableofcontents
+\mainmatter
+
+\chapter{Foundations}\label{ch:foundations}
+\section{An opening section}
+This chapter establishes a stable running-head, mark, and cross-reference
+workload. Office and affine retain their ordinary ligatures.
+\[
+  e^{i\pi}+1=0.
+\]
+
+\chapter{Consequences}
+Chapter~\ref{ch:foundations} supplies the first reference. A colored rule
+\textcolor{red}{\rule{72pt}{1pt}} and a boxed paragraph exercise resources.
+
+\appendix
+\chapter{Deterministic appendix}
+This appendix makes the front-matter, main-matter, and appendix page-numbering
+transitions observable.
+\end{document}

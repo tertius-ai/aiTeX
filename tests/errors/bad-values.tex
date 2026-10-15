@@ -1,0 +1,87 @@
+%% reference: etex
+% The errors a scanner raises when the value it reads is *wrong* rather than
+% absent. Each is a distinct `tex.web` section with a distinct recovery, which
+% is why the sequence is the test: getting a message right but its recovery
+% wrong shows up as the next error moving, or as an error that should not be
+% there at all.
+%
+% Judged against eTeX, because one of them is about register range and that is
+% the single place this engine diverges from TeX82 on purpose — 32768 registers
+% rather than 256, because expl3 allocates far past 256. Against `tex -ini`,
+% `\count300` would be an error here and is not; against eTeX both agree.
+\catcode`\{=1 \catcode`\}=2
+
+% §459: a dimension whose number has no unit. TeX assumes `pt` and *keeps the
+% number*, so this is 5pt, not 0pt. We already computed 5pt — silently. The
+% value was right and the silence was wrong.
+\dimen0=5
+\message{PROBE:nounit=\the\dimen0}
+
+% §433 as widened by eTeX to `scan_register_num`: out of range is an error and
+% the recovery is *zero*, not a wrap. We wrapped modulo 32768, so this used to
+% set \count7232 and leave \count0 alone.
+\count40000=1
+\message{PROBE:badreg=\the\count0}
+
+% ...and inside the range, no error: this is the divergence from TeX82.
+\count300=7
+\message{PROBE:etexreg=\the\count300}
+
+% §434 `scan_char_num`: 0..255, recovery zero. We kept 300.
+\chardef\c=300
+\message{PROBE:badchar=\the\c}
+
+% §436 `scan_fifteen_bit_int`: a mathchar packs class, family and position, so
+% its range is wider — 300 is perfectly ordinary here.
+\mathchardef\mc=300
+\message{PROBE:mathchar=\the\mc}
+
+% §434/§1227: the target of every character-code table is still an eight-bit
+% TeX character, and an invalid target recovers to slot zero. The right side
+% then has a table-specific range and recovers to value zero. `\delcode` alone
+% accepts negative values.
+\lccode256=65
+\message{PROBE:badcodetarget=\the\lccode0}
+\lccode65=256
+\message{PROBE:badlccode=\the\lccode65}
+\catcode1=16
+\message{PROBE:badcatcode=\the\catcode1}
+\mathcode66=32769
+\message{PROBE:badmathcode=\the\mathcode66}
+\sfcode67=-1
+\message{PROBE:badsfcode=\the\sfcode67}
+\delcode68=16777216
+\message{PROBE:baddelcode=\the\delcode68}
+\delcode69=-123
+\message{PROBE:negdelcode=\the\delcode69}
+
+% §436 is a separate restricted scanner with its own diagnostic and help.
+\mathchardef\badmc=32768
+\message{PROBE:badmathchar=\the\badmc}
+
+% §454: third-order infinity is the ceiling, and every extra `l` is its own
+% error. Recovery keeps the component at `filll`.
+\skip2=1pt plus 2filllll
+\message{PROBE:filll=\the\skip2}
+
+% §459 again inside a rule specification, where the recovery has to leave the
+% rule with the number it read rather than a default.
+\setbox0\hbox{\vrule width 3}
+\message{PROBE:rule=\the\wd0}
+
+% §435 `scan_four_bit_int`, reached from §1350: an output stream is 0..15 and
+% the recovery is zero. Only `\openout` gets this check — `\closeout` is scanned
+% with `\write`'s clamp instead, because §1350 branches on node size and
+% `close_node` happens to be the same size as `write_node`. So the second line
+% below raises nothing, and its silence is as much the test as the first line's
+% error: getting it wrong in the safe-looking direction adds an error TeX does
+% not have.
+\immediate\openout-1=zzz
+\immediate\closeout99
+\message{PROBE:stream=ok}
+
+% and the neighbouring error, for the boundary between them: no number at all
+% is §446, not §459.
+\count1=x
+\message{PROBE:letter=\the\count1}
+\end

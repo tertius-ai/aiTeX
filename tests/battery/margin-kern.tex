@@ -1,0 +1,103 @@
+% pdfTeX's `\leftmarginkern<box>` and `\rightmarginkern<box>` are internal
+% *dimens*, and they do not compute anything: they read back the
+% `margin_kern_node` the line breaker already put at that edge of the box, and
+% answer zero when there is none.  It first walks inward past pdfTeX's
+% `cp_skipable` nodes and the matching \leftskip or \rightskip parameter glue.
+%
+%     while (p != null &&
+%            (cp_skipable(p) || subtype(p) == left_skip_code + 1))
+%         p = link(p);
+%
+% A natural \hbox has no margin kern, so those answers are zero.  A paragraph
+% line built with protrusion enabled does have them, and the primitive must
+% find the right one before its two trailing glue nodes.
+%
+% Leaving the two primitives undefined was the worse state. microtype writes
+%
+%     \@tempdima=\leftmarginkern\MT@tempbox\relax
+%
+% and with the name undefined the number scan failed — "Missing number, treated
+% as zero" — and the leftovers of microtype's own code were typeset. Every
+% amsmath equation tag in a microtype document picked up a stray digit beside
+% it, which is a good deal worse than a kern that is not there.
+\input plain
+\catcode`\@=11
+\skipdef\zeroskip=255 \zeroskip=0pt
+% Written as microtype writes it — an assignment. pdfTeX will not take one
+% after `\the`: `\the\leftmarginkern0` is "You can't use `the character 0'
+% after \the", so the primitive is an internal dimen for the purposes of
+% `\dimen0=` and not for `\the`.
+\setbox0=\hbox{ABC}
+\dimen0=\leftmarginkern0\relax  \message{<lmk=\the\dimen0>}
+\dimen0=\rightmarginkern0\relax \message{<rmk=\the\dimen0>}
+\message{<meaning=\meaning\leftmarginkern>}
+% A box built after protrusion codes are set still has no margin kern, because
+% nothing inserts one.
+\lpcode\font`\A=200
+\rpcode\font`\C=200
+\setbox2=\hbox{ABC}
+\dimen0=\leftmarginkern2\relax  \message{<lmk2=\the\dimen0>}
+\dimen0=\rightmarginkern2\relax \message{<rmk2=\the\dimen0>}
+% …while the codes themselves read back what was set.
+\message{<lp=\the\lpcode\font`\A>}
+\message{<rp=\the\rpcode\font`\C>}
+\message{<lp0=\the\lpcode\font`\B>}
+% Read back the actual margin kerns from a paragraph line.  Extracting the
+% last box through a second vbox leaves it in a numbered register, just as
+% microtype's \MT@get@prot does.
+\pdfprotrudechars=1
+\parfillskip=0pt
+\setbox4=\vbox{\hsize=100pt\noindent ABC\par}
+\setbox5=\vbox{\unvbox4\global\setbox6=\lastbox}
+\dimen0=\leftmarginkern6\relax  \message{<line-lmk=\the\dimen0>}
+\dimen0=\rightmarginkern6\relax \message{<line-rmk=\the\dimen0>}
+% microtype does not unbox the original vbox directly: it vsplits one line,
+% unboxes that split piece, and takes its last box.  The extracted hbox must
+% retain both margin-kern nodes; otherwise \leftprotrusion measures zero and
+% list/theorem headings lose their explicit edge kern.
+\setbox7=\vbox{\hsize=100pt\noindent ABC\par}
+\splittopskip=0pt
+\setbox8=\vbox{%
+  \global\setbox9=\vsplit7 to \normalbaselineskip
+  \unvbox9
+  \global\setbox9=\lastbox}
+\dimen0=\leftmarginkern9\relax  \message{<split-lmk=\the\dimen0>}
+\dimen0=\rightmarginkern9\relax \message{<split-rmk=\the\dimen0>}
+% The register may be named by a \chardef, as every LaTeX \newbox is.
+\newbox\trialbox
+\global\setbox\trialbox=\box9
+\dimen0=\leftmarginkern\trialbox\relax
+\message{<named-lmk=\the\dimen0>}
+% A nonzero \leftskip is physically the first node of the packed line, ahead
+% of the margin kern.  Looking only at `list.first()` therefore reports zero;
+% pdfTeX crosses the parameter glue and microtype depends on that exact case in
+% theorem/list trial boxes.  The right-hand reader symmetrically crosses
+% \rightskip.
+\setbox10=\vbox{\hsize=100pt\leftskip=5pt\rightskip=7pt
+  \noindent ABC\par}
+\setbox11=\vbox{\unvbox10\global\setbox12=\lastbox}
+\dimen0=\leftmarginkern12\relax
+\message{<skip-lmk=\the\dimen0>}
+\dimen0=\rightmarginkern12\relax
+\message{<skip-rmk=\the\dimen0>}
+% `cp_skipable` tests identity, not dimensions: \z@skip is TeX's shared
+% zero-glue object and is transparent even inside nested hboxes, while a newly
+% scanned \hskip0pt is a barrier. Hyperref's anchor uses the former exact
+% sequence (special, penalty, \hskip\z@skip, special).
+\setbox13=\vbox{\hsize=100pt\noindent\hskip\zeroskip ABC\par}
+\setbox14=\vbox{\unvbox13\global\setbox15=\lastbox}
+\dimen0=\leftmarginkern15\relax
+\message{<top-canonical-zero-lmk=\the\dimen0>}
+\setbox13=\vbox{\hsize=100pt\noindent
+  \hbox{\hbox{\special{anchor-start}\penalty10000\hskip\zeroskip
+    \special{anchor-end}}}\special{color}ABC\par}
+\setbox14=\vbox{\unvbox13\global\setbox15=\lastbox}
+\dimen0=\leftmarginkern15\relax
+\message{<canonical-zero-lmk=\the\dimen0>}
+\setbox13=\vbox{\hsize=100pt\noindent
+  \hbox{\hbox{\special{anchor-start}\penalty10000\hskip0pt
+    \special{anchor-end}}}\special{color}ABC\par}
+\setbox14=\vbox{\unvbox13\global\setbox15=\lastbox}
+\dimen0=\leftmarginkern15\relax
+\message{<explicit-zero-lmk=\the\dimen0>}
+\end

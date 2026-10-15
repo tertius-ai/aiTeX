@@ -1,0 +1,36 @@
+% `tex.web` §1197 normally turns a braced subformula into an Ord noad whose
+% nucleus is the list inside the braces. It has one special splice for an
+% accent that is the only noad in the group:
+%
+%     else if type(p)=accent_noad then if saved(0)=nucleus(tail) then
+%       if type(tail)=ord_noad then replace the tail of the list by p
+%
+% The distinction becomes visible when scripts follow the closing brace.
+% They attach directly to the accent noad, and §738 consequently swaps the
+% accented character and both scripts into the box below the accent. Keeping
+% the otherwise invisible outer Ord instead leaves the scripts beside a much
+% shorter accent box; this was the first 15.7pt page-10 displacement in TRIP.
+\input plain
+\showboxdepth=8 \showboxbreadth=40 \tracingonline=0
+
+% The live list must show one accent noad carrying both scripts, not an Ord
+% whose braced nucleus contains an accent and whose scripts sit outside it.
+\setbox0=\hbox{${\hat A}_b^c\showlists$}
+\showbox0
+
+% Scripts already inside the braces do not participate in the splice test,
+% but the lone accent noad is still preserved whole when the group closes.
+\setbox0=\hbox{${\hat A_b^c}\showlists$}
+\showbox0
+
+% A braced accent used as a script remains a sub-mlist. When that list is
+% cleaned, however, its one translated vbox is already clean and must be
+% returned directly instead of hidden inside a new hbox.
+\setbox0=\hbox{$x^{\hat A}\showlists$}
+\showbox0
+
+% A group containing anything beside the accent is a real subformula and must
+% retain its outer ordinary atom.
+\setbox0=\hbox{${\hat A+1}_b^c\showlists$}
+\showbox0
+\end

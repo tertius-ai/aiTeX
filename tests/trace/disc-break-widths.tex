@@ -1,0 +1,49 @@
+% Three things a discretionary break costs and measures, from `tex.web`.
+%
+% §869 charges `\exhyphenpenalty`, not `\hyphenpenalty`, when the *pre-break*
+% list is empty:
+%
+%     begin s:=pre_break(cur_p); disc_width:=0;
+%     if s=null then try_break(ex_hyphen_penalty,hyphenated)
+%     else  begin repeat @<Add the width of node |s| to |disc_width|@>;
+%         s:=link(s);
+%       until s=null;
+%       act_width:=act_width+disc_width;
+%       try_break(hyphen_penalty,hyphenated);
+%
+% — a break after `\-` in an already-hyphenated word is not a new hyphen. We
+% charged `\hyphenpenalty` for both, and defaulted it to *plain's* 50 where
+% §240 leaves it at nought, so an unset `\hyphenpenalty` cost fifty demerits a
+% break in every document.
+%
+% §840 gives the line that *begins* at a discretionary the post-break text:
+%
+%     while s<>null do
+%       begin @<Add the width of node |s| to |break_width|@>;
+%       s:=link(s);
+%       end;
+%
+% `after_break` skips past the disc node and its replace text to find where
+% the next line's nodes begin, which is right — but the material TeX moved
+% across the break is not among them, and was going uncounted. A line after
+% `\discretionary{AAAB}{B-}{}` measured 4pt short of what it set.
+%
+% §853 gives an overfull line `b:=inf_bad+1`, one *past* `inf_bad`, which is
+% how §856 knows to print `*` and how §851's `b>inf_bad` tells an overfull
+% line from a merely dreadful one. We returned `inf_bad` itself, so every
+% overfull line reported `b=10000` where TeX reports `b=*`, and — being
+% measured short — reported the *stretching* fitness class as well.
+\catcode`\{=1 \catcode`\}=2
+\font\r=cmr10 \r \hsize13pt \parindent1pt \baselineskip12pt
+\leftskip3pt \tolerance10000 \pretolerance100 \hbadness10000
+\tracingparagraphs1 \tracingonline0
+\noindent\indent\hbox spread2pt{\hskip0pt plus-1bp}%
+\discretionary{AAAB}{B-}{/A\kern2pt}\unkern
+\vbox{\hrule width 6pt} \par
+\hsize100pt
+\noindent AAA\discretionary{}{}{}BBB\par
+\hyphenpenalty=88 \exhyphenpenalty=13
+\noindent AAA\discretionary{}{}{}BBB\par
+\noindent AAA\discretionary{-}{}{}BBB\par
+\tracingparagraphs0
+\end

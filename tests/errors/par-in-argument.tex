@@ -1,0 +1,38 @@
+% `tex.web` §392 and §396: a `\par` in a macro's argument, and the one place it
+% is not a fault.
+%
+%     continue: get_token;
+%     if cur_tok=info(r) then
+%       @<Advance r; goto found if the parameter delimiter has been fully
+%         matched, otherwise goto continue@>;
+%     @<Contribute the recently matched tokens to the current parameter …@>;
+%     if cur_tok=par_token then if long_state<>long_call then
+%       @<Report a runaway argument and abort@>;
+%
+% The delimiter is tested first. So `\def\a#1\par#2{}` — a macro whose first
+% argument ends at a paragraph — takes a `\par` there without complaint, while
+% the same token anywhere else in a non-`\long` argument is "Paragraph ended
+% before \a was complete".
+%
+% We tested for `\par` first and abandoned every call of such a macro. trip.tex
+% line 354 defines one on purpose, and the run stopped there — with the
+% argument scan running away to the end of the file, which is the very thing
+% §396 exists to prevent.
+\catcode`\{=1 \catcode`\}=2 \catcode`\#=6
+
+% `\par` as the delimiter: no error, and it is not part of the argument.
+\def\a#1\par#2{[#1|#2]}
+\message{PROBE:one=\a x\par y}
+
+% `\par` inside the argument of a delimiter that is not `\par`: §396's error,
+% and the call is abandoned.
+\def\b#1x{[#1]}
+\message{PROBE:two=before}
+\b a\par x
+\message{PROBE:three=after}
+
+% ...and `\long` allows it.
+\long\def\c#1x{[#1]}
+\message{PROBE:four=\c a\par x}
+\message{PROBE:done}
+\end

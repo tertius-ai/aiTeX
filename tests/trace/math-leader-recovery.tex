@@ -1,0 +1,12 @@
+% `tex.web` §§1046--1047 and 1078: rule leaders are scanned as part of the
+% leader command, so `\hrule` does not close math mode. A non-glue follower
+% rejects the leader and is then reread in the same formula. All `vskip`
+% variants, including `\vfill`, do close a malformed formula.
+\catcode`\{=1 \catcode`\}=2
+\tracingonline=1 \tracingcommands=2
+\muskip0=1mu
+^\leaders\vrule\mskip0 M\leaders\hrule\nonscript\hskip1mu
+
+$x\vfill
+\message{PROBE:leader-recovered}
+\end

@@ -1,0 +1,19 @@
+% `tex.web` §§785, 807, and 812: a `\valign` is built on a restricted
+% horizontal semantic level whose auxiliary field is its `\spacefactor`.
+% `\noalign` opens only a save group, not a new semantic level, so it inherits
+% and can change that factor. Each finished row and each horizontal `\vrule`
+% resets it to 1000; when the alignment closes, the final value is copied back
+% to the enclosing horizontal list. The two distinct glues below make the
+% inherited 2000 before the rule and its reset after the rule visible as nodes.
+\catcode`\{=1 \catcode`\}=2 \catcode`\#=6
+\tracingonline=1 \tracingcommands=2 \showboxbreadth=100 \showboxdepth=100
+\spaceskip=4pt plus2pt minus1pt \xspaceskip=-1pt
+\setbox0=\hbox{\spacefactor=3000\valign{#\cr
+  \cr
+  \noalign{\message{PROBE:after-row=\the\spacefactor}\spacefactor=2000}
+  \noalign{ \vrule width0pt{ }\message{PROBE:after-rule=\the\spacefactor}}
+  \cr
+  \noalign{\message{PROBE:after-empty-row=\the\spacefactor}\spacefactor=1}}
+  \message{PROBE:after-align=\the\spacefactor}}
+\showbox0
+\end

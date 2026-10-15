@@ -1,0 +1,72 @@
+name: unpublished native wheel checks
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: native-wheels-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  wheel:
+    name: ${{ matrix.name }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: Linux x86_64
+            os: ubuntu-24.04
+            target: x86_64-unknown-linux-gnu
+            manylinux: "2_28"
+          - name: Linux arm64
+            os: ubuntu-24.04-arm
+            target: aarch64-unknown-linux-gnu
+            manylinux: "2_28"
+          - name: macOS Intel
+            os: macos-15-intel
+            target: x86_64-apple-darwin
+            manylinux: "off"
+          - name: macOS Apple Silicon
+            os: macos-15
+            target: aarch64-apple-darwin
+            manylinux: "off"
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+      - name: Stage wheel documentation
+        run: make wheel-data
+      - name: Build native wheel
+        uses: PyO3/maturin-action@e83996d129638aa358a18fbd1dfb82f0b0fb5d3b # v1
+        with:
+          command: build
+          args: >-
+            --release --locked --compatibility pypi
+            --target-dir build/wheel-target --out dist
+          target: ${{ matrix.target }}
+          manylinux: ${{ matrix.manylinux }}
+          maturin-version: v1.15.0
+          rust-toolchain: 1.90.0
+      - name: Verify wheel structure
+        shell: bash
+        run: |
+          python3 tools/wheel_check.py dist/*.whl
+          python3 -m venv target/wheel-smoke
+          target/wheel-smoke/bin/pip install dist/*.whl
+          target/wheel-smoke/bin/aitex --version
+          printf 'not-an-aitex-format\n' > target/invalid.afmt
+          if target/wheel-smoke/bin/aitex pass tests/wheel/smoke.tex \
+              --fmt target/invalid.afmt -halt-on-error -o target/invalid.dvi \
+              >target/invalid.log 2>&1; then
+            echo 'incompatible format was accepted' >&2
+            exit 1
+          fi
+          grep -F 'not an aiTeX format file' target/invalid.log
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
+        with:
+          name: aitex-${{ matrix.target }}-${{ github.sha }}
+          if-no-files-found: error
+          retention-days: 7
+          path: dist/*.whl

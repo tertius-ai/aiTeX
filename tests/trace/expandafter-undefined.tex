@@ -1,0 +1,8 @@
+% `tex.web` §367 traces every expandable token before expansion. An undefined
+% token reached through `\expandafter` takes `expand_one`, not the ordinary
+% `get_x_token` path, but must still produce the same `{undefined}` trace line
+% before its error.
+\catcode`\{=1 \catcode`\}=2
+\tracingonline=1 \tracingcommands=2
+\expandafter\relax\undefined
+\end

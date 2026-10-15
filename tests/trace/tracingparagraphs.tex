@@ -1,0 +1,59 @@
+% `tex.web` §846: the line breaker's own narration.
+%
+%     @firstpass
+%     []\rip AAA AAA AAA AAA
+%     @ via @@0 b=0 p=0 d=0
+%     @@1: line 1.2 t=0 -> @@0
+%     AAA AAA AAA AAA
+%     @\par via @@1 b=0 p=-10000 d=0
+%     @@2: line 2.2- t=0 -> @@1
+%
+% Four parts. §863/§866/§873 head each pass. §857 shows the material since the
+% last reported breakpoint in §174's short form — characters bare, a font
+% announced by its identifier the first time it is used, `[]` for a box, `|` for
+% a rule, a space for any non-zero glue. §855 reports each feasible break: the
+% node broken at, the active node reached through, the badness (`*` past
+% `inf_bad`), the penalty, and the demerits of *this line* before the running
+% total is added. §856 reports each active node created: its serial, the line it
+% ends and its fitness class, `-` if the break is at a discretionary, the total
+% demerits, and the serial it came from.
+%
+% The serials are §845's, numbered as passive nodes are created, and they are
+% what made this the last of the seven: TeX numbers them from its active list,
+% and our breaker keeps a DP table. The table does carry a §835-pruned active
+% list, so the numbering is reconstructible — but TeX walks that list oldest
+% first where we walk it newest first, so the `@ via` lines are collected and
+% reversed before they are printed.
+%
+% **What this case does not cover, and why.** A paragraph that gets past the
+% first pass narrates differently, though it *sets the same*:
+%
+%     tex:   @firstpass @secondpass                   breaks with `b=*`, `d=*`
+%     ours:  @firstpass @secondpass @emergencypass    different `@` lines
+%
+% TeX has two passes and the second *is* the final one — §854's
+% `artificial_demerits` lets it accept an overfull line at zero cost, which is
+% what `d=*` means. We have three: our second pass refuses overfull lines and a
+% separate emergency pass allows them, so it reaches the same breaks by a
+% different route and reports a different search.
+%
+% The breaks themselves agree. For
+%
+%     \hsize=90pt \tolerance=9999
+%     AA BBBB CC DDDDDD EE FFFF GG HHHHHH II JJ KKKK LL\par
+%
+% where no break is feasible at any tolerance, both engines set
+% `AABBBBCCDDDDDD | EEFFFFGGHHHHHH | IIJJKKKKLL`, every glyph at the same
+% horizontal *and* vertical position. So this is a trace difference, not a
+% typesetting one — which is why the case stays on a paragraph that breaks in
+% the first pass rather than claiming a fault that is not there.
+\catcode`\{=1 \catcode`\}=2 \catcode`\#=6
+\font\rip=cmr10 \rip
+\hsize=100pt \parindent=0pt \tolerance=10000 \hbadness=10000
+\pretolerance=100 \baselineskip=12pt
+\tracingparagraphs=1
+AAA AAA AAA AAA AAA AAA AAA AAA\par
+% a second paragraph, so the serials restart per paragraph as TeX's do
+AAA AAA AAA AAA\par
+\tracingparagraphs=0
+\end

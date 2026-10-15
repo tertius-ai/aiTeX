@@ -1,0 +1,25 @@
+% e-TeX's saved-items extension: positive `\savingvdiscards` retains the
+% discardable nodes pruned from a split remainder and from the top of a page.
+% `\splitdiscards` and `\pagediscards` move those nodes into the current
+% vertical list, so a second use is empty.
+\catcode`\{=1 \catcode`\}=2 \catcode`\#=6
+\font\r=cmr10 \r
+\showboxbreadth=99 \showboxdepth=99 \tracingonline=1
+\savingvdiscards=1
+
+% Break after A. The remainder's glue, kern and penalty are pruned before B;
+% they must appear, in order, in \splitdiscards.
+\splittopskip=10pt
+\setbox1=\vbox{\hbox{A}\penalty0\vskip2pt\kern3pt\penalty50\hbox{B}}
+\setbox2=\vsplit1 to 7pt
+\setbox3=\vbox{\splitdiscards}
+\setbox4=\vbox{\splitdiscards}
+\showbox2 \showbox1 \showbox3 \showbox4
+
+% The page builder drops the leading skip before P. The output routine can
+% retrieve it exactly once before the page-discard list is cleared.
+\vsize=30pt
+\output={\setbox5=\vbox{\pagediscards}\setbox6=\vbox{\pagediscards}%
+  \showbox5 \showbox6 \shipout\box255}
+\vskip4pt \hbox{P}\penalty-10000
+\end

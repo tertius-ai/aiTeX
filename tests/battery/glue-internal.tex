@@ -1,0 +1,12 @@
+\input plain
+\skip5=3pt plus 1fil minus 2pt \dimen5=2pt
+\def\showglue#1{\skip0=#1 \message{<\the\skip0>}}
+\showglue{\skip5}
+\showglue{-\skip5}
+\showglue{\skip5 plus 5pt}
+\showglue{\skip 5}
+\showglue{\dimen5}
+\showglue{\lastskip}
+\showglue{\baselineskip}
+\showglue{2\skip5}
+\bye

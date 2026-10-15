@@ -1,0 +1,30 @@
+% Token-level machinery: case changing, lookahead, deferred execution.
+\input plain
+\catcode`\@=11
+\uppercase{\message{<upper-abc>}}
+\lowercase{\message{<LOWER-ABC>}}
+\uppercase{\message{<mixed-aBcZ>}}
+% \uccode/\lccode drive them, and a zero code leaves the character alone.
+\uccode`\a=`\Q \uppercase{\message{<uccode-a>}}
+% \expandafter reorders exactly one expansion.
+\def\one{1}\def\two{2}
+\message{<ea=\expandafter\string\one>}
+\expandafter\def\csname made\endcsname{MADE}\message{<csname=\made>}
+\message{<nested-ea=\expandafter\expandafter\expandafter\string\one>}
+% \noexpand stops one expansion.
+\edef\held{\noexpand\one}\message{<noexpand=\meaning\held>}
+% \futurelet peeks without consuming.
+\def\peek{\futurelet\next\showpeek}
+\def\showpeek{\message{<futurelet=\meaning\next>}}
+\peek X
+% \aftergroup defers to the end of the current group.
+{\aftergroup\one\message{<in-group>}}\message{<after-group-ran>}
+% \afterassignment fires after the next assignment completes.
+\def\fired{\message{<afterassignment-fired>}}
+\afterassignment\fired \count0=5
+\message{<count-after=\the\count0>}
+% Token registers hold tokens, not text.
+\toks0={\one\two}\message{<toks=\the\toks0>}
+\toks1=\toks0 \message{<toks-copy=\the\toks1>}
+\edef\x{\the\toks0}\message{<toks-edef=\meaning\x>}
+\bye

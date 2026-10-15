@@ -1,0 +1,3 @@
+./main.tex:19: Undefined control sequence.
+l.19 \widgitize
+                {important text}

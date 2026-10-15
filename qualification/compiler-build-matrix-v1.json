@@ -1,0 +1,725 @@
+{
+  "schema": 1,
+  "name": "aitex-compiler-build-matrix-v1",
+  "description": "Systematic one-shot and complete-build comparison across TeX-family engines, routes, document shapes, and the locked real-world corpus",
+  "font_fixture_tree_sha256": "49da7e9554c44a2912d81602786b208b7e4917cbd6d2eedf2d88c7970b9adae0",
+  "defaults": {
+    "samples": 3,
+    "warmups": 1,
+    "timeout_seconds": 300,
+    "source_date_epoch": 1000000000,
+    "worker_budget": 4,
+    "oracle": "structural"
+  },
+  "generators": {
+    "pdf-fixture-assets": {
+      "path": "tools/pdf_fixture_assets.py",
+      "sha256": "f59a317adf2f8fb76d63fd6632f112f435016f51acc5938b3252e2ba4de04319"
+    }
+  },
+  "producer_profiles": {
+    "plain-core": [
+      "tex-ini",
+      "aitex-ini-pass"
+    ],
+    "classic-core": [
+      "latex",
+      "pdflatex",
+      "aitex-pass",
+      "latexmk-dvi",
+      "latexmk-pdf",
+      "aitex-build"
+    ],
+    "classic-all": [
+      "latex",
+      "pdflatex",
+      "aitex-pass",
+      "latexmk-dvi",
+      "latexmk-pdf",
+      "aitex-build",
+      "xelatex",
+      "lualatex",
+      "latexmk-xelatex",
+      "latexmk-lualatex"
+    ],
+    "unicode": [
+      "aitex-pass",
+      "aitex-build",
+      "xelatex",
+      "lualatex",
+      "latexmk-xelatex",
+      "latexmk-lualatex"
+    ]
+  },
+  "producers": [
+    {
+      "id": "tex-ini",
+      "engine": "tex",
+      "format": "source",
+      "workflow": "one-shot",
+      "commands": {
+        "plain:dvi": [
+          "tex",
+          "-ini",
+          "-interaction=nonstopmode",
+          "-halt-on-error",
+          "{root}"
+        ]
+      }
+    },
+    {
+      "id": "latex",
+      "engine": "pdftex",
+      "format": "latex",
+      "workflow": "one-shot",
+      "commands": {
+        "classic-latex:dvi": [
+          "latex",
+          "-interaction=nonstopmode",
+          "-halt-on-error",
+          "-file-line-error",
+          "-no-shell-escape",
+          "{root}"
+        ]
+      }
+    },
+    {
+      "id": "pdflatex",
+      "engine": "pdftex",
+      "format": "latex",
+      "workflow": "one-shot",
+      "commands": {
+        "classic-latex:pdf": [
+          "pdflatex",
+          "-interaction=nonstopmode",
+          "-halt-on-error",
+          "-file-line-error",
+          "-no-shell-escape",
+          "{root}"
+        ]
+      }
+    },
+    {
+      "id": "aitex-ini-pass",
+      "engine": "aitex",
+      "format": "source",
+      "workflow": "one-shot",
+      "commands": {
+        "plain:dvi": [
+          "{binary}",
+          "pass",
+          "{root}",
+          "--ini",
+          "--no-cache",
+          "--no-banner",
+          "-halt-on-error",
+          "-file-line-error",
+          "-o",
+          "{job}.dvi"
+        ]
+      }
+    },
+    {
+      "id": "aitex-pass",
+      "engine": "aitex",
+      "format": "latex",
+      "workflow": "one-shot",
+      "commands": {
+        "classic-latex:dvi": [
+          "{binary}",
+          "pass",
+          "{root}",
+          "--fmt",
+          "{format}",
+          "--no-cache",
+          "--no-banner",
+          "-halt-on-error",
+          "-file-line-error",
+          "-o",
+          "{job}.dvi"
+        ],
+        "classic-latex:pdf": [
+          "{binary}",
+          "pass",
+          "{root}",
+          "--fmt",
+          "{format}",
+          "--no-cache",
+          "--no-banner",
+          "-halt-on-error",
+          "-file-line-error",
+          "-o",
+          "{job}.pdf"
+        ],
+        "unicode-latex:pdf": [
+          "{binary}",
+          "pass",
+          "--unicode",
+          "{root}",
+          "--fmt",
+          "{format}",
+          "--no-cache",
+          "--no-banner",
+          "-halt-on-error",
+          "-file-line-error",
+          "-o",
+          "{job}.pdf"
+        ]
+      }
+    },
+    {
+      "id": "aitex-build",
+      "engine": "aitex",
+      "format": "latex",
+      "workflow": "full-build",
+      "commands": {
+        "classic-latex:dvi": [
+          "{binary}",
+          "{root}",
+          "--fmt",
+          "{format}",
+          "--no-cache",
+          "--no-banner",
+          "-halt-on-error",
+          "-file-line-error",
+          "-o",
+          "{job}.dvi"
+        ],
+        "classic-latex:pdf": [
+          "{binary}",
+          "{root}",
+          "--fmt",
+          "{format}",
+          "--no-cache",
+          "--no-banner",
+          "-halt-on-error",
+          "-file-line-error",
+          "-o",
+          "{job}.pdf"
+        ],
+        "unicode-latex:pdf": [
+          "{binary}",
+          "--unicode",
+          "{root}",
+          "--fmt",
+          "{format}",
+          "--no-cache",
+          "--no-banner",
+          "-halt-on-error",
+          "-file-line-error",
+          "-o",
+          "{job}.pdf"
+        ]
+      }
+    },
+    {
+      "id": "latexmk-dvi",
+      "engine": "pdftex",
+      "format": "latex",
+      "frontend": "latexmk",
+      "workflow": "full-build",
+      "commands": {
+        "classic-latex:dvi": [
+          "latexmk",
+          "-norc",
+          "-dvi",
+          "-interaction=nonstopmode",
+          "-halt-on-error",
+          "-file-line-error",
+          "{root}"
+        ]
+      }
+    },
+    {
+      "id": "latexmk-pdf",
+      "engine": "pdftex",
+      "format": "latex",
+      "frontend": "latexmk",
+      "workflow": "full-build",
+      "commands": {
+        "classic-latex:pdf": [
+          "latexmk",
+          "-norc",
+          "-pdf",
+          "-interaction=nonstopmode",
+          "-halt-on-error",
+          "-file-line-error",
+          "{root}"
+        ]
+      }
+    },
+    {
+      "id": "xelatex",
+      "engine": "xetex",
+      "format": "latex",
+      "workflow": "one-shot",
+      "commands": {
+        "classic-latex:pdf": [
+          "xelatex",
+          "-interaction=nonstopmode",
+          "-halt-on-error",
+          "-file-line-error",
+          "-no-shell-escape",
+          "{root}"
+        ],
+        "unicode-latex:pdf": [
+          "xelatex",
+          "-interaction=nonstopmode",
+          "-halt-on-error",
+          "-file-line-error",
+          "-no-shell-escape",
+          "{root}"
+        ]
+      }
+    },
+    {
+      "id": "lualatex",
+      "engine": "luatex",
+      "format": "latex",
+      "workflow": "one-shot",
+      "commands": {
+        "classic-latex:pdf": [
+          "lualatex",
+          "-interaction=nonstopmode",
+          "-halt-on-error",
+          "-file-line-error",
+          "-no-shell-escape",
+          "{root}"
+        ],
+        "unicode-latex:pdf": [
+          "lualatex",
+          "-interaction=nonstopmode",
+          "-halt-on-error",
+          "-file-line-error",
+          "-no-shell-escape",
+          "{root}"
+        ]
+      }
+    },
+    {
+      "id": "latexmk-xelatex",
+      "engine": "xetex",
+      "format": "latex",
+      "frontend": "latexmk",
+      "workflow": "full-build",
+      "commands": {
+        "classic-latex:pdf": [
+          "latexmk",
+          "-norc",
+          "-xelatex",
+          "-interaction=nonstopmode",
+          "-halt-on-error",
+          "-file-line-error",
+          "{root}"
+        ],
+        "unicode-latex:pdf": [
+          "latexmk",
+          "-norc",
+          "-xelatex",
+          "-interaction=nonstopmode",
+          "-halt-on-error",
+          "-file-line-error",
+          "{root}"
+        ]
+      }
+    },
+    {
+      "id": "latexmk-lualatex",
+      "engine": "luatex",
+      "format": "latex",
+      "frontend": "latexmk",
+      "workflow": "full-build",
+      "commands": {
+        "classic-latex:pdf": [
+          "latexmk",
+          "-norc",
+          "-lualatex",
+          "-interaction=nonstopmode",
+          "-halt-on-error",
+          "-file-line-error",
+          "{root}"
+        ],
+        "unicode-latex:pdf": [
+          "latexmk",
+          "-norc",
+          "-lualatex",
+          "-interaction=nonstopmode",
+          "-halt-on-error",
+          "-file-line-error",
+          "{root}"
+        ]
+      }
+    }
+  ],
+  "comparison_rules": [
+    {
+      "id": "plain-one-shot-dvi",
+      "family": "plain",
+      "route": "dvi",
+      "workflow": "one-shot",
+      "reference": "tex-ini",
+      "candidate": "aitex-ini-pass",
+      "oracle": "exact-dvi"
+    },
+    {
+      "id": "classic-one-shot-dvi",
+      "family": "classic-latex",
+      "route": "dvi",
+      "workflow": "one-shot",
+      "reference": "latex",
+      "candidate": "aitex-pass",
+      "oracle": "exact-dvi"
+    },
+    {
+      "id": "classic-full-build-dvi",
+      "family": "classic-latex",
+      "route": "dvi",
+      "workflow": "full-build",
+      "reference": "latexmk-dvi",
+      "candidate": "aitex-build",
+      "oracle": "exact-dvi"
+    },
+    {
+      "id": "classic-one-shot-pdf",
+      "family": "classic-latex",
+      "route": "pdf",
+      "workflow": "one-shot",
+      "reference": "pdflatex",
+      "candidate": "aitex-pass",
+      "oracle": "classic-pdf"
+    },
+    {
+      "id": "classic-full-build-pdf",
+      "family": "classic-latex",
+      "route": "pdf",
+      "workflow": "full-build",
+      "reference": "latexmk-pdf",
+      "candidate": "aitex-build",
+      "oracle": "classic-pdf"
+    },
+    {
+      "id": "classic-one-shot-xetex",
+      "family": "classic-latex",
+      "route": "pdf",
+      "workflow": "one-shot",
+      "reference": "xelatex",
+      "candidate": "aitex-pass",
+      "oracle": "cross-engine-pdf"
+    },
+    {
+      "id": "classic-one-shot-luatex",
+      "family": "classic-latex",
+      "route": "pdf",
+      "workflow": "one-shot",
+      "reference": "lualatex",
+      "candidate": "aitex-pass",
+      "oracle": "cross-engine-pdf"
+    },
+    {
+      "id": "classic-full-build-xetex",
+      "family": "classic-latex",
+      "route": "pdf",
+      "workflow": "full-build",
+      "reference": "latexmk-xelatex",
+      "candidate": "aitex-build",
+      "oracle": "cross-engine-pdf"
+    },
+    {
+      "id": "classic-full-build-luatex",
+      "family": "classic-latex",
+      "route": "pdf",
+      "workflow": "full-build",
+      "reference": "latexmk-lualatex",
+      "candidate": "aitex-build",
+      "oracle": "cross-engine-pdf"
+    },
+    {
+      "id": "unicode-one-shot-xetex",
+      "family": "unicode-latex",
+      "route": "pdf",
+      "workflow": "one-shot",
+      "reference": "xelatex",
+      "candidate": "aitex-pass",
+      "oracle": "cross-engine-pdf"
+    },
+    {
+      "id": "unicode-one-shot-luatex",
+      "family": "unicode-latex",
+      "route": "pdf",
+      "workflow": "one-shot",
+      "reference": "lualatex",
+      "candidate": "aitex-pass",
+      "oracle": "cross-engine-pdf"
+    },
+    {
+      "id": "unicode-full-build-xetex",
+      "family": "unicode-latex",
+      "route": "pdf",
+      "workflow": "full-build",
+      "reference": "latexmk-xelatex",
+      "candidate": "aitex-build",
+      "oracle": "cross-engine-pdf"
+    },
+    {
+      "id": "unicode-full-build-luatex",
+      "family": "unicode-latex",
+      "route": "pdf",
+      "workflow": "full-build",
+      "reference": "latexmk-lualatex",
+      "candidate": "aitex-build",
+      "oracle": "cross-engine-pdf"
+    }
+  ],
+  "cases": [
+    {
+      "id": "plain",
+      "project": "tests/build-matrix/plain",
+      "root": "main.tex",
+      "tree_sha256": "bc30bf886b8949f12d94c6cddabf134bede32e3054c866fa54e2869494cb7a64",
+      "family": "plain",
+      "routes": [
+        "dvi"
+      ],
+      "workflows": [
+        "one-shot"
+      ],
+      "producer_profile": "plain-core",
+      "traits": [
+        "format:plain",
+        "font:computer-modern",
+        "content:math"
+      ]
+    },
+    {
+      "id": "article-common",
+      "project": "tests/build-matrix/article-common",
+      "root": "main.tex",
+      "tree_sha256": "a11b4fda2e3bd4d48ffa8ac44eda80a6b0b4f97ab92273b3e91c1fe96514fb4c",
+      "family": "classic-latex",
+      "routes": [
+        "dvi",
+        "pdf"
+      ],
+      "workflows": [
+        "one-shot",
+        "full-build"
+      ],
+      "producer_profile": "classic-all",
+      "traits": [
+        "class:article",
+        "font:type1",
+        "content:cross-references",
+        "content:tables",
+        "content:math"
+      ]
+    },
+    {
+      "id": "book",
+      "project": "tests/build-matrix/book",
+      "root": "main.tex",
+      "tree_sha256": "a987280a166d31eb02654329242f7f6bde82c3233cb2c04e8d1c2ecf1977d373",
+      "family": "classic-latex",
+      "routes": [
+        "dvi",
+        "pdf"
+      ],
+      "workflows": [
+        "one-shot",
+        "full-build"
+      ],
+      "producer_profile": "classic-all",
+      "traits": [
+        "class:book",
+        "font:type1",
+        "content:cross-references",
+        "content:running-heads"
+      ]
+    },
+    {
+      "id": "amsart",
+      "project": "tests/build-matrix/amsart",
+      "root": "main.tex",
+      "tree_sha256": "1f2b06c1c8902c3069bbd9478b907752c911e74a51a6acd6c3f63bdeddc22ebf",
+      "family": "classic-latex",
+      "routes": [
+        "dvi",
+        "pdf"
+      ],
+      "workflows": [
+        "one-shot",
+        "full-build"
+      ],
+      "producer_profile": "classic-all",
+      "traits": [
+        "class:amsart",
+        "font:type1",
+        "content:theorems",
+        "content:math"
+      ]
+    },
+    {
+      "id": "report-tools",
+      "project": "tests/build-matrix/report-tools",
+      "root": "main.tex",
+      "tree_sha256": "75cc6802f8bbce21b9df28fd79572332aeefa25a4ff1448c9fa369b7e57e76cf",
+      "family": "classic-latex",
+      "routes": [
+        "dvi",
+        "pdf"
+      ],
+      "workflows": [
+        "one-shot",
+        "full-build"
+      ],
+      "producer_profile": "classic-all",
+      "traits": [
+        "class:report",
+        "font:type1",
+        "content:bibliography",
+        "content:index",
+        "content:cross-references"
+      ]
+    },
+    {
+      "id": "beamer",
+      "project": "tests/build-matrix/beamer",
+      "root": "main.tex",
+      "tree_sha256": "c3770adb31618a3cd8194f809dd913592e3199677d68ae3ae65c48335cd14ce5",
+      "family": "classic-latex",
+      "routes": [
+        "pdf"
+      ],
+      "workflows": [
+        "one-shot",
+        "full-build"
+      ],
+      "producer_profile": "classic-all",
+      "traits": [
+        "class:beamer",
+        "content:slides",
+        "content:vector-graphics",
+        "package:tikz"
+      ]
+    },
+    {
+      "id": "unicode",
+      "project": "tests/build-matrix/unicode",
+      "root": "main.tex",
+      "tree_sha256": "6d7341703ad86f69820dd3cbc89da68997558ebdf8953996db73d61e82e0fd0f",
+      "family": "unicode-latex",
+      "routes": [
+        "pdf"
+      ],
+      "workflows": [
+        "one-shot",
+        "full-build"
+      ],
+      "producer_profile": "unicode",
+      "expected_text_markers": [
+        "AportableUnicodeworkload",
+        "OrdinaryUTF-8andOpenTypeshaping:officeaffine.",
+        "DirectU+2223marker:scalar∣boundary.",
+        "DirectU+00A0marker:directspace.",
+        "IncludedTeXU+2223marker:include∣boundary.",
+        "IncludedTeXU+00A0marker:includespace.",
+        "IncludedbibliographyU+00A0marker:bibliographyspace.",
+        "नमस्तेभारत",
+        "日本語中文测试漢字かなカナ",
+        "ภาษาไทยยินดีต้อนรับ",
+        "ສະບາຍດີພາສາລາວ"
+      ],
+      "traits": [
+        "class:article",
+        "input:utf8",
+        "input:included-tex",
+        "input:included-bbl",
+        "font:opentype",
+        "language:arabic",
+        "language:hebrew",
+        "language:devanagari",
+        "language:cjk",
+        "language:thai",
+        "language:lao"
+      ]
+    },
+    {
+      "id": "graphics",
+      "project": "tests/build-matrix/graphics",
+      "root": "main.tex",
+      "tree_sha256": "5c0f2892f32a7030a6554073da3dc405506240192e7a46c2d923c3d91911274b",
+      "family": "classic-latex",
+      "routes": [
+        "pdf"
+      ],
+      "workflows": [
+        "one-shot",
+        "full-build"
+      ],
+      "producer_profile": "classic-all",
+      "setup": "pdf-fixture-assets",
+      "traits": [
+        "class:article",
+        "content:raster-graphics",
+        "asset:png",
+        "image:alpha",
+        "image:indexed"
+      ]
+    }
+  ],
+  "locked_corpus": {
+    "source_lock": "qualification/holdout-200.sources.json",
+    "source_root": "corpus/holdout-200/sources",
+    "family": "classic-latex",
+    "routes": [
+      "dvi",
+      "pdf"
+    ],
+    "workflows": [
+      "one-shot",
+      "full-build"
+    ],
+    "producer_profile": "classic-core",
+    "selection_status": "ready",
+    "expected_roots": 191,
+    "sample_seed": "aitex-compiler-build-matrix-v1"
+  },
+  "tiers": {
+    "smoke": {
+      "curated_cases": [
+        "plain",
+        "article-common",
+        "report-tools",
+        "unicode"
+      ],
+      "corpus_fraction": 0.0,
+      "samples": 1,
+      "warmups": 0
+    },
+    "curated": {
+      "curated_cases": "all",
+      "corpus_fraction": 0.0,
+      "samples": 3,
+      "warmups": 1
+    },
+    "corpus-10": {
+      "curated_cases": [],
+      "corpus_fraction": 0.1,
+      "corpus_producer_profile": "classic-all",
+      "samples": 3,
+      "warmups": 1
+    },
+    "corpus-full": {
+      "curated_cases": [],
+      "corpus_fraction": 1.0,
+      "samples": 1,
+      "warmups": 1
+    },
+    "all": {
+      "curated_cases": "all",
+      "corpus_fraction": 1.0,
+      "corpus_producer_profile": "classic-all",
+      "samples": 1,
+      "warmups": 1
+    }
+  }
+}

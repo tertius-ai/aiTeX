@@ -1,0 +1,93 @@
+% \halign -- tex.web 768-812. Column widths are not known until every row has
+% been read, so every measurement here is a second-pass result.
+\input plain
+\catcode`\@=11
+\tabskip=0pt
+\def\M#1{\message{<#1>}}
+% Two columns; each is as wide as its widest entry.
+\setbox0=\vbox{\halign{#&#\cr aa&b\cr c&dddd\cr}}
+\M{basic=\the\wd0|\the\ht0}
+% The same entries measured alone, so the column widths are checkable.
+\setbox1=\hbox{aa}\setbox2=\hbox{dddd}
+\M{cells=\the\wd1|\the\wd2}
+% Templates: text either side of the # is set around every entry.
+\setbox3=\vbox{\halign{(#)&[#]\cr a&b\cr}}
+\setbox4=\hbox{(a)[b]}
+\M{template=\the\wd3|\the\wd4}
+% \hfil in a template right-aligns a column: the entry is padded to the width.
+\setbox5=\vbox{\halign{#\hfil&\hfil#\cr a&b\cr ccc&ddd\cr}}
+\M{hfil=\the\wd5}
+% \tabskip goes before the first column, between each pair, and after the last.
+\tabskip=5pt
+\setbox6=\vbox{\halign{#&#\cr a&b\cr}}
+\M{tabskip=\the\wd6}
+\tabskip=0pt
+% \halign to <dimen> sets every row to that width.
+\setbox7=\vbox{\halign to 100pt{#&#\cr a&b\cr}}
+\M{to=\the\wd7}
+\setbox8=\vbox{\halign spread 10pt{#&#\cr a&b\cr}}
+\M{spread=\the\wd8}
+% \noalign contributes vertical material between rows.
+\setbox9=\vbox{\halign{#\cr a\cr\noalign{\kern 7pt}b\cr}}
+\setbox10=\vbox{\halign{#\cr a\cr b\cr}}
+\M{noalign=\the\ht9|\the\ht10}
+% \omit drops the template for one entry.
+\setbox11=\vbox{\halign{(#)\cr a\cr\omit b\cr}}
+\setbox12=\hbox{(a)}\setbox13=\hbox{b}
+\M{omit=\the\wd11|\the\wd12|\the\wd13}
+% A single row, and an empty entry.
+\setbox14=\vbox{\halign{#&#\cr &b\cr}}
+\M{empty=\the\wd14}
+% & inside a group the entry opened is an ordinary character, not a separator.
+\setbox15=\vbox{\halign{#\cr \hbox{a}\cr}}
+\M{nested=\the\wd15}
+% \crcr after \cr does nothing, which is what lets a macro end a row safely.
+\setbox16=\vbox{\halign{#\cr a\cr\crcr}}
+\M{crcr=\the\wd16|\the\ht16}
+% Rules between rows: a rule sets \prevdepth to the ignore sentinel, so no
+% interline glue follows it (tex.web 1056). \noalign material joins the
+% alignment's own vertical list, so that has to survive to the next row.
+\setbox17=\vbox{\halign{#&#\cr a&b\cr\noalign{\hrule}c&d\cr}}
+\M{rule=\the\wd17|\the\ht17|\the\dp17}
+% Three columns with ragged and centred templates.
+\setbox18=\vbox{\halign{#\hfil&\hfil#\hfil&\hfil#\cr a&bb&ccc\cr dddd&e&f\cr}}
+\M{three=\the\wd18}
+% A cell holding a box, and a nested \halign inside a cell.
+\setbox19=\vbox{\halign{#\cr\hbox to 30pt{}\cr{aa}\cr}}
+\M{box=\the\wd19}
+\setbox20=\vbox{\halign{#\cr\vbox{\halign{#\cr x\cr}}\cr}}
+\M{nested-halign=\the\wd20}
+% Glue inside a cell stretches when the entry is set to the column width.
+\setbox21=\vbox{\halign{#\cr a\hfil b\cr ccccccc\cr}}
+\M{cellglue=\the\wd21}
+% \span joins columns; plain's \multispan{n} is \omit then n-1 \span\omit.
+\setbox22=\vbox{\halign{#&#\cr a&b\cr\multispan2 wide\cr}}
+\M{multispan=\the\wd22}
+\setbox23=\vbox{\halign{#&#&#\cr a&b&c\cr\multispan3 verywideindeed\cr}}
+\M{multispan3=\the\wd23}
+% A span that fits needs no widening at all.
+\setbox24=\vbox{\halign{#&#\cr aaaa&bbbb\cr\multispan2 x\cr}}
+\M{spanfits=\the\wd24}
+% \tabskip may be reassigned inside the preamble, and each boundary gets the
+% value in force when it was scanned (tex.web 782). There is one more boundary
+% than there are columns.
+\tabskip=1pt
+\setbox25=\vbox{\halign{#\tabskip=5pt&#\tabskip=9pt&#\tabskip=13pt\cr
+  \hbox to 10pt{}&\hbox to 20pt{}&\hbox to 40pt{}\cr}}
+\M{varying=\the\wd25}
+\tabskip=1pt
+\setbox26=\vbox{\halign{#&#&#\cr
+  \hbox to 10pt{}&\hbox to 20pt{}&\hbox to 40pt{}\cr}}
+\M{uniform=\the\wd26}
+% A change before the first column applies to the leading boundary too.
+\tabskip=1pt
+\setbox27=\vbox{\halign{\tabskip=3pt#&#\cr\hbox to 10pt{}&\hbox to 20pt{}\cr}}
+\M{leading=\the\wd27}
+% And a span swallows the boundaries inside it but not those at its ends.
+\tabskip=2pt
+\setbox28=\vbox{\halign{#&#&#\cr
+  \hbox to 10pt{}&\hbox to 20pt{}&\hbox to 40pt{}\cr
+  \multispan3\hbox to 100pt{}\cr}}
+\M{spanskip=\the\wd28}
+\tabskip=0pt
+\bye

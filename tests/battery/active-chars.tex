@@ -1,0 +1,38 @@
+% Active characters and single-character control sequences are separate
+% namespaces, not the same one.
+%
+% tex.web keeps them in genuinely separate eqtb regions (active_base vs
+% single_base): the active character `~` and the control sequence `\~` are
+% two different things, and \catcode is what decides which one a bare
+% character refers to. Collapsing both into the same string key -- as this
+% engine used to, via the bare character as its own name -- let plain.tex's
+% own bootstrap corrupt a real primitive: line 526's
+% `{\obeyspaces\global\let =\space}` defines the *active* space
+% \obeyspaces makes, and silently overwrote the pdfTeX primitive `\ `
+% (control-space, tex.web's ex_space) purely because both were keyed on the
+% string " ". Every `\ ` in every document after that point meant
+% `\space` instead of the real primitive.
+%
+% `\ ` was missing outright once the collision was fixed and stopped
+% masking it -- it is added here as its own primitive, verified to behave
+% exactly like an ordinary space character (both in paragraph-starting and
+% in the glue it produces).
+%
+% Also verified: \let copying an active character's *current meaning* (not
+% treating it as a literal character to bind against), and \ifx comparing
+% an active character against a control sequence by looked-up meaning.
+\input plain
+\def\M#1{\message{<#1>}}
+\catcode`\~=13
+\def~{TILDE}
+\M{a=~}
+\let\foo~
+\M{b=\foo}
+\M{c=\ifx~\foo Y\else N\fi}
+\let\bar=\relax
+\M{d=\ifx~\bar Y\else N\fi}
+\def\samething{TILDE}
+\M{e=\ifx~\samething Y\else N\fi}
+\catcode`\_=11
+\M{f=\ifx~\undefinedcs Y\else N\fi}
+\bye

@@ -1,0 +1,39 @@
+% `tex.web` §638: what a `\write` lands *after*.
+%
+% `ship_out` shows the box and then ships it:
+%
+%     if tracing_output>0 then
+%       begin print_char("]"); begin_diagnostic; show_box(p);
+%       end_diagnostic(true);
+%       end;
+%     @<Ship box |p| out@>;
+%
+% and §1370's `out_what` — which is what performs a deferred `\write`,
+% `\openout` or `\closeout` — is reached from `vlist_out`, inside that last
+% line. So the display of a page always precedes the text written by the
+% whatsits on it, and never the other way round.
+%
+% We performed the whatsits first. Nothing about the *content* of either was
+% wrong, so no gate that compared them separately could see it; in trip.log it
+% put `log file only0` fifteen lines above where Knuth's transcript has it,
+% which reads as a missing page trace rather than as a misordered write.
+%
+% The second half of the case is §1023: with no `\output` routine TeX ships
+% `\box255` itself, and that path has to reach the same `ship_out` — ours used
+% to skip straight to the DVI writer, so a deferred `\write` on an ordinary
+% page was built, displayed and then dropped unperformed.
+\catcode`\{=1 \catcode`\}=2
+\tracingonline=1
+\tracingoutput=1
+\showboxbreadth=5 \showboxdepth=2
+\vsize=50pt \maxdepth=2pt
+
+\write16{FIRST-PAGE-WRITE}
+\hbox{}\vfill\penalty-10000
+
+% ...and again with a real `\output`, which reaches `ship_out` by the other
+% route. The two must put the text in the same place relative to the display.
+\output={\shipout\box255}
+\write16{SECOND-PAGE-WRITE}
+\hbox{}\vfill\penalty-10000
+\end

@@ -1,0 +1,73 @@
+% A name \let to a *character* is that character, everywhere a character is
+% what the scanner wants. `\let\bgroup={` is how a document opens a group from
+% inside a macro, and expl3's `\exp_stop_f:` is a space bound the same way --
+% which is how it terminates a \romannumeral scan.
+%
+% The meaning was being stored and never dispatched, so every such name behaved
+% as undefined the moment it was used.
+\input plain
+\catcode`\@=11
+\def\M#1{\message{<#1>}}
+\let\myb={ \let\mye=}
+\setbox0=\hbox\myb aa\mye  \setbox1=\hbox{aa}
+\M{brace=\the\wd0|\the\wd1}
+% \let to a space needs two after the `=`: \let skips one optional space
+% (tex.web 1221), so the second is what gets bound.
+\def\usenn#1#2{#1#2}
+\def\setsp#1{\let#1= }
+\usenn{\setsp\spc}{ }
+\M{meaning=\meaning\spc}
+\setbox2=\hbox{a\spc b}\setbox3=\hbox{a b}
+\M{space=\the\wd2|\the\wd3}
+% And that is what stops a \romannumeral: the space ends the number scan.
+\chardef\zed=0
+\M{stopscan=\romannumeral\zed\spc ABC}
+% \let to other character kinds.
+\let\dollar=$ \let\amp=&
+\M{other=\meaning\dollar|\meaning\amp}
+% A \let-to-space terminates a *number* exactly as a space does. expl3 ends
+% every \if_predicate:w and \if_int_compare:w in the kernel with \exp_stop_f:,
+% which is bound this way, so a scanner that sees only a control sequence there
+% cannot read any of them.
+\count5=7
+\M{ifnum=\ifnum\count5=7\spc yes\else no\fi}
+\M{ifodd=\ifodd 3\spc yes\else no\fi}
+\M{number=\number\count5\spc}
+\M{relation=\ifnum 1<2\spc T\else F\fi}
+\count0=5\spc \M{assign=\the\count0}
+\M{numexpr=\the\numexpr 2+3\spc}
+
+% §476 scans the resolved command code in a macro parameter text. A control
+% sequence whose current meaning is a parameter character therefore introduces
+% an argument; looking only at the token's written form gives this macro arity
+% zero and makes the `#1` in its replacement text illegal.
+\let\hash=#
+\def\withimplicit[\hash1]{\M{macro-param=#1}}
+\withimplicit[X]
+
+% Braces use token identity, not resolved meaning, in a macro's parameter
+% text. A control sequence let to either brace is therefore a legal delimiter;
+% only an actual brace token starts/recovers the replacement scan. This is the
+% distinction used by spectralsequences' smuggling macros.
+\let\implicitopen={ \let\implicitclose=}
+\def\untilclose#1\implicitclose{\M{close-delimiter=#1}}
+\untilclose C\implicitclose
+\def\untilopen#1\implicitopen{\M{open-delimiter=#1}}
+\untilopen O\implicitopen
+\def\implicitboth\hash1\implicitopen{\M{implicit-both=#1}}
+\implicitboth B\implicitopen
+
+% The `#{` exception still fires when the brace token really is `{`, including
+% when the parameter character was reached through a control sequence.
+\def\hashbrace\hash1\hash{\M{hash-brace=#1}}
+\hashbrace H#{
+
+% §§782--784 likewise inspect the resolved command while retaining the token
+% itself in an alignment template. The glue scan expands `\peek` far enough to
+% put its `\let` assignment into the u-template. At scan time `\probe` means
+% `{`, but neither brace depth nor stored token identity may change: replay
+% must still see the control sequence as the assignment target.
+\let\probe={
+\def\peek{\let\probe=*\M{align-token=preserved}}
+\setbox4=\vbox{\halign{&\tabskip=-1pt\peek#\cr 1\cr}}
+\bye

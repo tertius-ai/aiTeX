@@ -1,0 +1,54 @@
+% Two rules about what a *box* and an *italic correction* do to a horizontal
+% list, both of which this engine skipped when the value involved was zero or
+% the node looked inconsequential.
+%
+% `tex.web` §1076, appending a box:
+%
+%     else  begin if abs(mode)=hmode then space_factor:=1000
+%       else  begin p:=new_noad; … end;
+%       link(tail):=cur_box; tail:=cur_box;
+%       end;
+%
+% A box is not a character, so nothing about the letter before it should still
+% be governing the space after it. hyperref sets every citation label in an
+% `\hbox`, so `\citet{…}` after a `?` or a `.` carried a space factor of 3000
+% straight across the box: the following space came out 1.21665pt too wide with
+% three times the stretch and a third of the shrink, and the paragraph broke
+% somewhere else.
+%
+% §1113, the italic correction:
+%
+%     f:=font(p);
+%     tail_append(new_kern(char_italic(f)(char_info(f)(character(p)))));
+%     subtype(tail):=explicit;
+%
+% Appended whatever the correction comes to. A zero one is not nothing: the
+% subtype is `explicit`, and §866 lets a line break at an explicit kern when
+% glue follows. LaTeX ends `\textbf{…}` with an italic correction and an
+% upright bold font's is zero, so every `\textbf{word} word` lost a breakpoint
+% TeX had — visible in `\tracingparagraphs` as `@\kern via @@5` where we
+% printed a bare `@ via @@5`, every number identical.
+%
+% `?` is the space factor to test with: plain gives it `\sfcode 3000`, and 3000
+% is over 2000, so §1043 adds `\extraspace` as well as scaling the stretch and
+% shrink. `)` is the other half of the rule — `\sfcode 0` leaves the factor
+% alone, so the box is the only thing that can reset it.
+\input plain
+\showboxdepth=2 \showboxbreadth=50 \tracingonline=0
+% A box between a sentence-ending character and a space.
+\setbox1=\hbox{]}
+\setbox0=\hbox{a? \copy1 b c}\showbox0
+% …and without the box, for the space factor the box is cancelling.
+\setbox0=\hbox{a? b c}\showbox0
+% `)` does not change the factor, so it is still 3000 at the box.
+\setbox0=\hbox{a?) \copy1 b}\showbox0
+% A box appended in *math* mode becomes a noad instead, and §1076's assignment
+% does not run — the `else` branch is the one that takes it.
+\setbox0=\hbox{a? $\copy1$ b}\showbox0
+% The italic correction, zero and non-zero, each followed by glue so that §866
+% has something to make a breakpoint out of.
+\setbox0=\hbox{\bf x\/ y}\showbox0
+\setbox0=\hbox{\it x\/ y}\showbox0
+% And after something that is not a character, where §1113 appends nothing.
+\setbox0=\hbox{\bf x\hbox{}\/ y}\showbox0
+\end

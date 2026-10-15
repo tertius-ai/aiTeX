@@ -1,0 +1,57 @@
+% Four guards this engine had none of, all in commands that build lists.
+%
+% §1099 `begin_insert_or_adjust` — box 255 is where the page builder puts the
+% page, so no document may insert into it:
+%
+%     if cur_val=255 then
+%       begin print_err("You can't "); print_esc("insert"); print_int(255);
+%       help1("I'm changing to \insert0; box 255 is special."); error;
+%       cur_val:=0;
+%       end;
+%
+% §1159 `math_limit_switch` — an *operator*, not merely the last thing in the
+% list.  We set the flag on whatever noad was last, and said nothing when there
+% was none:
+%
+%     begin if head<>tail then if type(tail)=op_noad then
+%       begin subtype(tail):=cur_chr; return;
+%       end;
+%     print_err("Limit controls must follow a math operator");
+%     help1("I'm ignoring this misplaced \limits or \nolimits command.");
+%
+% §1122 prunes a discretionary sublist to characters, boxes, rules, kerns and
+% ligatures — the line breaker sets these lists without measuring them again,
+% so glue in one has no width to be set to.  Everything from the offender on is
+% deleted, and shown as it goes, inside §245's diagnostic:
+%
+%     begin print_err("Improper discretionary list");
+%     help1("Discretionary lists must contain only boxes and kerns."); error;
+%     begin_diagnostic;
+%     print_nl("The following discretionary sublist has been deleted:");
+%     show_box(p); end_diagnostic(true);
+%     flush_node_list(p); link(q):=null; goto done;
+%     end;
+%
+% §1119 — the replacement text is appended to the enclosing list, and a math
+% list has no room for it.  `n>0`, so an empty third part is fine in a formula:
+%
+%     if (n>0)and(abs(mode)=mmode) then
+%       begin print_err("Illegal math "); print_esc("discretionary");
+%       help2("Sorry: The third part of a discretionary break must be")
+%       ("empty, in math formulas. I had to delete your third part.");
+%       flush_node_list(p); n:=0; error;
+%       end
+\catcode`\{=1 \catcode`\}=2 \catcode`\$=3
+\font\r=cmr10 \r \hsize100pt \parindent0pt
+\textfont2=\r \scriptfont2=\r \scriptscriptfont2=\r
+\textfont3=\r \scriptfont3=\r \scriptscriptfont3=\r
+\fontdimen22\r=1pt
+\showboxbreadth5 \showboxdepth5
+\insert255{\hbox{}}
+$A\limits B$\par
+$\mathop{A}\limits B$\par
+$\limits$\par
+\discretionary{A}{B}{A\hss C}\par
+$\discretionary{A}{B}{C}$\par
+$\discretionary{A}{B}{}$\par
+\end

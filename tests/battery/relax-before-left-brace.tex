@@ -1,0 +1,70 @@
+% §403 `scan_left_brace` does not merely skip spaces — it skips `\relax` too:
+%
+%     procedure scan_left_brace; {reads a mandatory |left_brace|}
+%     begin @<Get the next non-blank non-relax non-call token@>;
+%     if cur_cmd<>left_brace then
+%       begin print_err("Missing { inserted");
+%
+%     @ @<Get the next non-blank non-relax non-call token@>=
+%     repeat get_x_token;
+%     until (cur_cmd<>spacer)and(cur_cmd<>relax)
+%
+% §1084's `scan_box` opens with the same three-way skip, so a `\relax` is
+% equally invisible between `\raise<dimen>` and the box that follows.
+%
+% This is not a curiosity. expl3 writes its box constructors with an explicit
+% `\scan_stop:` — which is `\relax` under another name — precisely because the
+% skip is guaranteed:
+%
+%     \hbox:n #1 -> \tex_hbox:D \scan_stop: {\color_group_begin: #1 \color_group_end: }
+%     \__box_dim_eval:n #1 -> \__box_dim_eval:w #1 \scan_stop:
+%
+% so hyperref's anchor, which is `\box_move_up:nn` around `\hbox:n`, arrives at
+% the engine as
+%
+%     \raise \dimexpr \normalbaselineskip \scan_stop: \hbox \scan_stop: {...}
+%
+% and every `\relax` in it has to vanish. Getting this wrong made
+% `\begin{theorem}` under hyperref raise "Missing { inserted", which is one
+% stray token in the line and one character out in the whole document.
+\input plain
+\catcode`\@=11
+% A `\relax` between a box constructor and its brace.
+\setbox0=\hbox\relax{AB}
+\message{<hbox=\the\wd0>}
+\setbox0=\vbox\relax{\hbox{AB}}
+\message{<vbox=\the\ht0>}
+% …and after a spec, where the keyword scan has already run.
+\setbox0=\hbox to 10pt\relax{AB}
+\message{<hboxto=\the\wd0>}
+\setbox0=\hbox spread 5pt\relax{}
+\message{<hboxspread=\the\wd0>}
+% More than one, mixed with spaces — the skip is a loop.
+\setbox0=\hbox \relax \relax {AB}
+\message{<twice=\the\wd0>}
+% `\vtop`, `\vcenter` is math-only, so these two.
+\setbox0=\vtop\relax{\hbox{AB}}
+\message{<vtop=\the\ht0>}
+% §1084 `scan_box`: a `\relax` between `\raise<dimen>` and the box.
+\setbox1=\hbox{\raise2pt\relax\hbox{AB}}
+\message{<raise=\the\ht1>}
+\setbox1=\hbox{\lower2pt\relax\hbox{AB}}
+\message{<lower=\the\dp1>}
+% The same, with the dimension coming from a `\dimexpr` that is itself closed
+% by a `\relax`. The expression consumes *its* terminator; the one the box scan
+% skips is the next one along.
+\setbox1=\hbox{\raise\dimexpr 1pt+1pt\relax\hbox{AB}}
+\message{<raiseexpr=\the\ht1>}
+\setbox1=\hbox{\raise\dimexpr 1pt+1pt\relax\relax\hbox{AB}}
+\message{<raiseexprrelax=\the\ht1>}
+% A `\dimexpr` terminator is consumed, so `\the` sees no leftover.
+\message{<expr=\the\dimexpr 1pt+2pt\relax>}
+\dimen0=\dimexpr 3pt+4pt\relax
+\message{<exprassign=\the\dimen0>}
+% `\setbox` itself: `\relax` is skipped before the box too.
+\setbox2=\relax\hbox{AB}
+\message{<setboxrelax=\the\wd2>}
+% `\copy`/`\box` after a move, with a `\relax` in between.
+\setbox1=\hbox{\raise1pt\relax\copy0 }
+\message{<copyafterrelax=\the\wd1>}
+\end

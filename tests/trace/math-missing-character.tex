@@ -1,0 +1,11 @@
+% `tex.web` §722 `fetch` rejects a math character whose family font exists
+% but whose TFM has no entry for the requested slot. It calls `char_warning`
+% and makes the field empty; it does not emit a zero-metric character node.
+% An operator fetches its nucleus early in §749, and §723 empties it so the
+% ordinary conversion does not report the same missing character twice.
+\input plain
+\tracinglostchars=1
+\hsize=100pt \parindent=0pt
+A$\mathchar"00C8$B\par
+C$\mathop{\mathchar"00C9}\limits^x$D\par
+\end

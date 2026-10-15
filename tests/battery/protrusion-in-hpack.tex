@@ -1,0 +1,56 @@
+% pdfTeX protrudes the first and last character of an `\hbox`, not only of a
+% line the paragraph breaker made. There is no §-number for this — protrusion is
+% pdfTeX's, not Knuth's — so the behaviour below is what `pdftex -ini` does, and
+% these probes are the specification.
+%
+% It matters because every equation tag goes through one. amsmath sets `(1.1)`
+% in an `\hbox`, and with microtype loaded pdfTeX gives that box a left margin
+% kern for the `(` and a right margin kern for the `)`:
+%
+%     \hbox(8.2125+2.73749)x19.94624, display
+%     .\hbox(8.2125+2.73749)x19.94624
+%     ..\kern -1.28114
+%     ..(1.1
+%     ..\kern 0.0
+%     ..)
+%     ..\kern -1.28114
+%
+% Without them the box is 22.50853pt — 2.56228pt too wide, which is 2*1.28114
+% exactly. That difference moved a line, which moved a hyphenation, which moved
+% a word off page 2 of 2608.17397v1.
+%
+% `\lpcode`/`\rpcode` are thousandths of the font's quad (`\fontdimen6`), not of
+% the character's own width. See docs/history/engine-notes/protrusion.md.
+\input plain
+\catcode`\@=11
+\pdfprotrudechars=1
+\lpcode\font`\(=200
+\rpcode\font`\)=200
+% The equation-tag shape: a box whose first and last characters both protrude.
+\setbox0=\hbox{(1.1)}
+\message{<tag=\the\wd0>}
+% One-sided: only the opening character has a code.
+\setbox1=\hbox{(AB}
+\message{<left=\the\wd1>}
+% Only the closing one.
+\setbox2=\hbox{AB)}
+\message{<right=\the\wd2>}
+% Neither character has a code — no kerns at all.
+\setbox3=\hbox{AB}
+\message{<none=\the\wd3>}
+% A box `to` a fixed size still gets the kerns; they change the glue set, not
+% the width.
+\setbox4=\hbox to 50pt{(1.1)}
+\message{<to=\the\wd4>}
+% Turning protrusion off leaves the box alone.
+\pdfprotrudechars=0
+\setbox5=\hbox{(1.1)}
+\message{<off=\the\wd5>}
+\pdfprotrudechars=1
+% A nested box: the outer box's edge character is inside the inner one.
+\setbox6=\hbox{\hbox{(1.1)}}
+\message{<nested=\the\wd6>}
+% A leading glue node means there is no protruding character on the left.
+\setbox7=\hbox{\kern3pt(1.1)}
+\message{<kernfirst=\the\wd7>}
+\end

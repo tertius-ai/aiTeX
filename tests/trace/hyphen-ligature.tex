@@ -1,0 +1,63 @@
+% `tex.web` §143, §175 and §897: a word hyphenated where it had a ligature.
+%
+% §897's `reconstitute` puts a word back together around each break it is
+% offered, and the two halves of the resulting discretionary are re-ligatured
+% material. §143 says what a ligature node holds — the characters it was made
+% of — and §175 prints *those*, then skips the `replace` nodes the two halves
+% stand in for:
+%
+%     disc_node: begin short_display(pre_break(p));
+%       short_display(post_break(p));
+%       n:=replace_count(p);
+%       while n>0 do
+%         begin if link(p)<>null then p:=link(p); decr(n); end;
+%       end;
+%
+% Two faults, and each hid the other.
+%
+% The halves were rebuilt without the record, so they printed the ligature's
+% own glyph position rather than its letters — for cmr10's `fi` that is
+% character 12, which prints as nothing at all. And the `replace` nodes were
+% not skipped, so the unbroken word was printed *as well as* the two halves.
+% Together `office` broken after `of` read `of-ffices`: the post-break
+% invisible, the whole `ffi` ligature printed in its place. One fault alone
+% would have read `of-fiffices` or `of-ces`, and the pair looked like a
+% plausible word.
+%
+% A hyphenation exception rather than patterns, so the case says what it means
+% and does not depend on a pattern file.
+\catcode`\{=1 \catcode`\}=2
+\lccode`\o=`\o \lccode`\f=`\f \lccode`\i=`\i
+\lccode`\c=`\c \lccode`\e=`\e \lccode`\s=`\s \lccode`\x=`\x
+\lefthyphenmin=1 \righthyphenmin=1
+\hyphenation{of-fices}
+\tracingonline=1
+\tracingparagraphs=1
+\hsize=40pt \parindent=0pt \pretolerance=-1 \tolerance=9999
+\font\rip=cmr10 \rip
+\hyphenchar\rip=`\-
+
+xx offices\par
+
+% §896 decides whether a word may be hyphenated at all, from its first letter:
+%
+%     if lc_code(c)=0 then goto done1;
+%     if (lc_code(c)=c)or(uc_hyph>0) then goto done2 else goto done1;
+%
+% A character with no `\lccode` is not a letter and stops the word; one whose
+% `\lccode` is not itself is a capital, and a capitalised word is hyphenated
+% only when `\uchyph` is positive. And the patterns are matched against the
+% `\lccode` image, not Unicode's own lowercase — `\lccode` is how a document
+% says which characters are letters and what each folds to.
+%
+% We asked neither question, so `\uchyph=0` hyphenated anyway. trip.tex sets it
+% to zero at line 200 for exactly this, and to one on the line after to show
+% the difference.
+\lccode`\O=`\o
+
+\uchyph=1
+xx Offices\par
+
+\uchyph=0
+xx Offices\par
+\end

@@ -1,0 +1,76 @@
+% §1200 opens the resumed paragraph's nest level itself:
+%
+%     procedure resume_after_display;
+%     begin if cur_group<>math_shift_group then confusion("display");
+%     unsave; prev_graf:=prev_graf+3;
+%     push_nest; mode:=hmode; space_factor:=1000; set_cur_lang; clang:=cur_lang;
+%     …
+%
+% and §216's `push_nest` stamps `mode_line := line`. So the paragraph carrying
+% on after a display is "entered at" the line of the closing `$$`, not the line
+% the interrupted paragraph began on. §218 prints it:
+%
+%     ### horizontal mode entered at line N
+%
+% We kept the original paragraph's line, so every `\showlists` after a display
+% named a line several earlier than TeX's — and `\tracingparagraphs`-adjacent
+% reading of a transcript starts from exactly that number.
+\catcode`\{=1 \catcode`\}=2 \catcode`\$=3
+\font\r=cmr10 \r \hsize=200pt \parindent=0pt
+\font\mi=cmmi10 \font\sy=cmsy10 \font\ex=cmex10
+\textfont0=\r \scriptfont0=\r \scriptscriptfont0=\r
+\textfont1=\mi \scriptfont1=\mi \scriptscriptfont1=\mi
+\textfont2=\sy \scriptfont2=\sy \scriptscriptfont2=\sy
+\textfont3=\ex \scriptfont3=\ex \scriptscriptfont3=\ex
+\showboxdepth=1 \showboxbreadth=4 \tracingonline=0
+
+% The paragraph starts here, the display closes two lines later, and the
+% resumed paragraph is entered at the closing line — not at this one.
+A line of text before the display which runs on
+for a while
+$$x$$
+and then carries on afterwards.
+\showlists
+\par
+
+% A second display in the same paragraph: the count moves again, to the line of
+% *its* closing `$$`.
+More text to open a fresh paragraph
+$$y$$
+middle
+$$z$$
+end.
+\showlists
+\par
+
+% A paragraph with no display in it keeps §1091's own `mode_line`, which is the
+% line the paragraph began on — this is the control.
+An ordinary paragraph
+with no display at all.
+\showlists
+\par
+
+% Everything above passes with the line taken from either source, because this
+% file is the only one on the input stack. The defect needed a file that had
+% been `\input` and *closed* still sitting there: `here` walks the frame stack
+% to the innermost frame naming a file, while the engine's cheaper
+% `current_line` took `files.last()` on the reasoning that the last open file is
+% the one `here` would find. The file is the same; its recorded line is not.
+%
+% Every LaTeX document has one — `\begin{document}` reads the `.aux` — so after
+% a display `### horizontal mode entered at line N` named a line three back, and
+% so did the "in paragraph at lines N--M" of every Overfull and Underfull report
+% for the rest of the document. On 2608.17233v1 that was 126 paragraphs reported
+% by TeX against 140 by us, the first divergence being `101--107` where we said
+% `2--107`: the start frozen at the top of the file.
+\immediate\openout0=aux-probe.tex
+\immediate\write0{\string\relax}
+\immediate\closeout0
+\input aux-probe
+
+A paragraph after a file has been read and closed
+$$w$$
+carries on here.
+\showlists
+\par
+\end

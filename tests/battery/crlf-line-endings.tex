@@ -1,0 +1,79 @@
+% web2c's `input_ln` is what decides where a line ends, and it ends one at
+% `\n`, at `\r`, or at the `\r\n` pair - consuming both of the pair, so a DOS
+% file has exactly one ending per line like any other. The terminator is never
+% handed to the scanner as a character, so its catcode never comes up.
+%
+% We split on `\n` alone. A `\r` therefore arrived as an ordinary character
+% carrying its default catcode, which is `EndOfLine`: 13 is `\endlinechar` and
+% `tex.web` gives it catcode 5. So a CRLF line ended twice - once on the `\r`,
+% and again when the `\n` delivered `\endlinechar`. The second ending saw the
+% state the first had just reset to `new_line`, and §344's `new_line` case for
+% a line ending is the blank-line one:
+%
+%     new_line+car_ret: begin loc:=limit+1; cur_cs:=par_loc;
+%       cur_cmd:=eq_type(cur_cs); cur_chr:=equiv(cur_cs); ...
+%
+% a `\par`. After every line of the file.
+%
+% Whole arXiv submissions are CRLF; 2608.18006v1 is one. Its
+%
+%     \hypersetup{
+%       colorlinks=true,
+%
+% put that `\par` inside a macro argument, so kvsetkeys was handed the key
+% `\par colorlinks` and hyperref's whole option list was lost. The same `\par`
+% started a paragraph while `\everypar` still held `\@nodocument`, which
+% reported the failure a long way from its cause:
+%
+%     ! LaTeX Error: Missing \begin{document}.
+%     l.22 }
+%
+% naming the closing brace of the `\hypersetup` six lines below the `\par`.
+%
+% Every line of this file is CRLF-terminated, so any of its cases would fail
+% against a build without the fix.
+\catcode`\{=1 \catcode`\}=2 \catcode`\#=6
+% The shape from the paper: a braced group opened at the end of one line and
+% closed several lines later. The endings are spaces, so the argument survives
+% - with a `\par` in it this is "Paragraph ended before \s was complete".
+\def\s#1{\toks0={#1}\showthe\toks0 }
+\s{
+  colorlinks=true,
+  linkcolor=blue
+}
+% The same at top level rather than in an argument, where a spurious `\par`
+% lands in the token list instead of destroying it.
+\toks0={
+X
+Y}
+\showthe\toks0
+% A line ending mid-text is a space...
+\toks0={A
+B}
+\showthe\toks0
+% ...one right after a control word is swallowed...
+\def\cw{}
+\toks0={\cw
+B}
+\showthe\toks0
+% ...and a genuinely blank line is still a `\par`, which is what the bug was
+% manufacturing everywhere. The blank line below is CRLF too.
+\long\def\keep#1{\toks0={#1}\showthe\toks0 }
+\keep{P
+
+Q}
+% `\endlinechar` still governs what a CRLF ending delivers: out of range, the
+% line ends with nothing at all and the construct runs on to the next.
+\endlinechar=-1
+\toks0={C
+D}
+\showthe\toks0
+\endlinechar=13
+% A `%` comment ends at the file's line ending, which for a CRLF file has to be
+% the `\r` and not only the `\n` - otherwise the comment eats the `\r` and the
+% `\n` alone still delivers `\endlinechar`, which is the same double ending
+% arriving by the other route.
+\toks0={E% comment
+F}
+\showthe\toks0
+\end

@@ -1,0 +1,34 @@
+% `tex.web` §977 and §675: the box a `\vsplit` hands back is packed, and a
+% packed box is reported on.
+%
+%     q:=vpackage(q,h,exactly,split_max_depth);
+%
+% `vpackage` is `vpack` with a depth limit, and §675 complains about the result
+% exactly as it does for a `\vbox`: too high is `Overfull \vbox (Npt too high)`
+% and too short is `Underfull \vbox (badness B)`, each `detected at line N` —
+% or `has occurred while \output is active`, which is where trip.tex's is.
+%
+% We packed the split-off part in silence. It is the one packing path in this
+% engine that said nothing, and the only reason it went unnoticed is that a
+% `\vsplit` is usually of a box built to fit.
+\catcode`\{=1 \catcode`\}=2
+\showboxbreadth=2 \showboxdepth=1
+\vbadness=0 \vfuzz=0pt \splitmaxdepth=2pt
+\font\rip=cmr10 \rip
+
+% Too short for what it was split to: underfull.
+\setbox1\vbox{\hbox{}\vskip 100pt\hbox{}}
+\setbox2\vsplit1 to 5pt
+\message{PROBE:one=split}
+
+% Too tall: overfull. The split takes everything down to the break, so a
+% single tall box has to come whole.
+\setbox3\vbox{\vbox to 40pt{}\penalty-10000 \hbox{}}
+\setbox4\vsplit3 to 5pt
+\message{PROBE:two=split}
+
+% ...and one that fits says nothing.
+\setbox5\vbox{\hbox to 0pt{}\penalty-10000 \hbox{}}
+\setbox6\vsplit5 to 0pt
+\message{PROBE:three=done}
+\end

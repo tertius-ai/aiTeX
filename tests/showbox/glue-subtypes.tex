@@ -1,0 +1,58 @@
+% `tex.web` §189: a glue node records *which parameter* it came from, and the
+% display names it — `\glue(\baselineskip) 3.0`, not `\glue 3.0`.
+%
+% That one word is most of what a page or paragraph display is worth. Every
+% question a vertical list raises is "which glue is this": the space above a
+% line is `\baselineskip` when the lines are far enough apart and `\lineskip`
+% when they are not, the space above a paragraph is `\parskip`, the space at the
+% top of a page is `\topskip` and at the top of a *split* remainder it is
+% `\splittopskip` — and all five print as an unlabelled `\glue` with a number if
+% the subtype is missing. Ours were all missing, so a trip.tex page trace could
+% be read for the numbers and not for the meaning.
+\catcode`\{=1 \catcode`\}=2 \catcode`\#=6 \catcode`\$=3 \catcode`\&=4
+\catcode`\^=7 \catcode`\_=8
+\font\rip=cmr10 \rip
+\showboxbreadth=9999 \showboxdepth=9999
+\hsize=100pt \parindent=0pt
+
+% --- interline glue, §679 --------------------------------------------------
+% Far enough apart is `\baselineskip`; too close is `\lineskip`.
+\baselineskip=20pt plus 1pt \lineskip=3pt minus 2pt \lineskiplimit=1pt
+\setbox0\vbox{\hbox{A}\hbox{A}}
+\showbox0
+\baselineskip=0pt \setbox0\vbox{\hbox{A}\hbox{A}}
+\showbox0
+
+% --- `\parskip`, §1091 -----------------------------------------------------
+\parskip=5pt plus 2pt \baselineskip=12pt \lineskip=1pt \lineskiplimit=0pt
+\setbox0\vbox{\hbox{}\noindent A\par}
+\showbox0
+
+% --- `\leftskip`, `\rightskip` and `\parfillskip`, §816/§880 ---------------
+\leftskip=7pt \rightskip=9pt plus 1fil \parfillskip=0pt plus 1fill
+\setbox0\vbox{\noindent A\par}
+\showbox0
+\leftskip=0pt \rightskip=0pt \parfillskip=0pt plus 1fil
+
+% --- `\splittopskip`, §968 -------------------------------------------------
+\splittopskip=4pt plus 3pt \splitmaxdepth=1pt
+\setbox1\vbox{\hbox{A}\penalty0 \hbox{A}}
+\setbox2\vsplit1 to 0pt
+\showbox1
+
+% --- `\spaceskip` and `\xspaceskip`, §1041/§1043 ---------------------------
+% The font's own interword glue carries no subtype; a `\spaceskip` does.
+\spaceskip=6pt \xspaceskip=8pt
+\setbox0\hbox{A A}
+\showbox0
+\spaceskip=0pt \xspaceskip=0pt
+\setbox0\hbox{A A}
+\showbox0
+
+% --- `\tabskip`, §768 ------------------------------------------------------
+\tabskip=3pt
+\setbox0\vbox{\halign{#\cr A\cr}}
+\showbox0
+\tabskip=0pt
+
+\end

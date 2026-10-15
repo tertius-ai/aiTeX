@@ -1,0 +1,67 @@
+% §507 does not classify by how a token is *written*. It reads `cur_cmd` and
+% `cur_chr`, and for a control sequence those are `eq_type` and `equiv` — its
+% *meaning*. So a control sequence `\let` to a character token is that
+% character, catcode and all:
+%
+%     @<Test if two characters match@>=
+%     begin get_x_token_or_active_char;
+%     if (cur_cmd>active_char)or(cur_chr>255) then {not a character}
+%       begin m:=relax; n:=256;
+%       end
+%     else  begin m:=cur_cmd; n:=cur_chr;
+%       end;
+%
+% `\noexpand` does not shield such a token either. §369 replaces a meaning with
+% `relax`/`no_expand_flag` only when the token is expandable:
+%
+%     cur_cmd:=eq_type(cur_cs); cur_chr:=equiv(cur_cs);
+%     if cur_cmd>max_command then
+%       begin cur_cmd:=relax; cur_chr:=no_expand_flag;
+%       end;
+%
+% hyperref depends on both halves of that. It `\futurelet`s a control sequence
+% onto a space so spaces survive the `\xdef`s inside `\pdfstringdef`, then asks
+% `\ifcat\relax\noexpand#1\relax` whether each token is a control sequence.
+% Answering "yes" for the space sent it to `\HyPsd@CatcodeWarning` — "Token not
+% allowed in a PDF string ... removing" — and every space disappeared from
+% every PDF bookmark.
+\input plain
+\catcode`\@=11
+% A control sequence \let to a character, by \let and by \futurelet.
+\let\lA=A
+\message{<catlet=\ifcat\lA A yes\else no\fi>}
+\message{<charlet=\if\lA A yes\else no\fi>}
+% Different letter, same category: \ifcat agrees, \if does not.
+\message{<catAB=\ifcat\lA B yes\else no\fi>}
+\message{<charAB=\if\lA B yes\else no\fi>}
+% \let to a non-letter keeps that catcode.
+\let\lplus=+
+\message{<catplus=\ifcat\lplus +yes\else no\fi>}
+\message{<catplusA=\ifcat\lplus A yes\else no\fi>}
+% hyperref's idiom: \futurelet onto a space, then the control-sequence test.
+% \@gobble is LaTeX's, so spell it out here.
+\def\@gobble#1{}
+\def\LetUS#1{\expandafter\futurelet\expandafter#1\expandafter\@gobble\space\relax}
+\LetUS\usp
+\message{<meaning=\meaning\usp>}
+\message{<iscs=\ifcat\relax\noexpand\usp cs\else notcs\fi>}
+\message{<isspace=\ifcat\usp\space yes\else no\fi>}
+% \noexpand must not disturb it: the meaning is a spacer, well under
+% max_command, so §369 leaves it alone.
+\message{<nxspace=\ifcat\noexpand\usp\space yes\else no\fi>}
+% A real \relax *is* "not a character" — cur_chr is 256.
+\message{<relaxcs=\ifcat\relax\noexpand\relax cs\else notcs\fi>}
+% …and so is a macro, whose meaning is above max_command and which \noexpand
+% therefore does turn into relax/no_expand_flag.
+\def\mac{x}
+\message{<maccs=\ifcat\relax\noexpand\mac cs\else notcs\fi>}
+% \chardef is *not* a character token: TeX gives it char_given, above
+% active_char, so §507's first test sends it to relax/256.
+\chardef\cA=`A
+\message{<chardefcs=\ifcat\relax\noexpand\cA cs\else notcs\fi>}
+\message{<chardefA=\ifcat\cA A yes\else no\fi>}
+% Unlike almost every other scanning context, \ifcat does not skip spaces:
+% get_x_token_or_active_char is a plain get_x_token. Here the space between
+% `A` and `B` is the second operand, not a separator.
+\message{<nospaceskip=\ifcat A B yes\else no\fi>}
+\end

@@ -1,0 +1,47 @@
+% `tex.web` §1065: `after_math` is reached only when the formula's own group is
+% the innermost one.
+%
+%     mmode+math_shift: if cur_group=math_shift_group then after_math
+%       else off_save;
+%
+% A `$` inside a `\left` group is not the end of the formula. A `\right` is
+% missing first, and §1064's `off_save` inserts it — `Missing \right.
+% inserted` — after which the `$` is read again and does end the formula.
+%
+% We ended it regardless of what was open. That closes a group which is not
+% the innermost, and leaves two marks behind: the formula's own, and the
+% `\left`'s, which now has no formula around it. The engine's drift check
+% reports the result as `ms=[2,3] mode=Vertical` — a formula's group innermost
+% while the typesetter is in vertical mode, which TeX cannot be in, because
+% §1145 and §1191 push the group and the mode together and §1194 and §1192 pop
+% them together.
+%
+% On trip.tex that state is reached at line 285 and never recovered from: it
+% is what cost two of the fourteen pages.
+\catcode`\{=1 \catcode`\}=2 \catcode`\$=3
+\errorcontextlines=5 \hsize=100pt \parindent=0pt
+\font\rm=cmr10 \textfont0=\rm \scriptfont0=\rm \scriptscriptfont0=\rm \rm
+\font\mi=cmmi10 \textfont1=\mi \scriptfont1=\mi \scriptscriptfont1=\mi
+\font\sy=cmsy10 \textfont2=\sy \scriptfont2=\sy \scriptscriptfont2=\sy
+\font\ex=cmex10 \textfont3=\ex \scriptfont3=\ex \scriptscriptfont3=\ex
+\delcode`(="028300 \delcode`)="029301
+\showthe\escapechar
+
+% A formula ended from inside a `\left` group: the `\right.` goes in first.
+\setbox0\hbox{A$\left(B$C}
+\message{PROBE:left=[\the\wd0]}
+
+% ...and written properly, for the width to be read against.
+\setbox1\hbox{A$\left(B\right)$C}
+\message{PROBE:paired=[\the\wd1]}
+
+% The same from inside an ordinary `{}` group, which is a different arm of
+% §1065 and inserts the brace instead.
+\setbox2\hbox{A${B$C}
+\message{PROBE:brace=[\the\wd2]}
+
+% A formula whose own group *is* innermost says nothing.
+\setbox3\hbox{A$B$C}
+\message{PROBE:ok=[\the\wd3]}
+\showthe\escapechar
+\end

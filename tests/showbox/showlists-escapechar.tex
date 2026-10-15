@@ -1,0 +1,22 @@
+% `tex.web` §§63 and 174–198 route every diagnostic control-sequence name
+% through `print_esc`, including box/node names, glue parameter names, font
+% identifiers, and math-noad names. An out-of-range `\escapechar` prints no
+% prefix at all.
+\catcode`\{=1 \catcode`\}=2 \catcode`\$=3
+\font\f=cmr10
+\textfont0=\f \scriptfont0=\f \scriptscriptfont0=\f
+\textfont1=\f \scriptfont1=\f \scriptscriptfont1=\f
+\showboxbreadth=100 \showboxdepth=100 \tracingonline=0
+\setbox0=\hbox{\f A\hskip1pt\kern2pt\vrule width3pt}
+\escapechar=`|
+\showbox0
+\box0 \penalty7 \mark{x}
+\showlists
+$$A\showlists$$\par
+\setbox1=\hbox{\f A\hskip1pt\kern2pt\vrule width3pt}
+\escapechar=-1
+\showbox1
+\box1 \penalty8 \mark{y}
+\showlists
+$$A\showlists$$\par
+\end

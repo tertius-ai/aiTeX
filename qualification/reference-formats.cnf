@@ -1,0 +1,7 @@
+# The complete, ordered fmtutil catalog used by aiTeX qualification.
+# Passing this file explicitly prevents unrelated installed formats and
+# package-install order from changing the classical LaTeX reference dumps.
+# Seed pdfTeX on its command line: custom .ini paths are stored in the dump
+# and would make the bytes depend on the location of the repository checkout.
+latex pdftex language.dat -etex -translate-file=cp227.tcx \\pdfsetrandomseed1000000000 \\input latex.ini
+pdflatex pdftex language.dat -etex -translate-file=cp227.tcx \\pdfsetrandomseed1000000000 \\input pdflatex.ini

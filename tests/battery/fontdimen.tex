@@ -1,0 +1,40 @@
+% \fontdimen read as a *number*, not only through \the.
+%
+% l3intarray stores an integer array's entries in font dimensions and reads
+% them back with
+%
+%   \__kernel_intarray_item:Nn #1#2 -> \int_value:w \__intarray_entry:w #2#1
+%   \__intarray_entry:w              =  \fontdimen
+%
+% so an entry is `\number\fontdimen n <font>`. \the could already read it and
+% a number scan could not, so every entry read back as nothing at all.
+%
+% Writing goes the same way, as a coefficient times an internal dimension:
+%
+%   \__kernel_intarray_gset:Nnn #1#2#3 -> \fontdimen #2#1#3\c__intarray_sp_dim
+%
+% which is the `2\p@` form -- an integer scaled by 1sp.
+\input plain
+\def\M#1{\message{<#1>}}
+\dimen0=1sp
+\M{a=\the\fontdimen6\tenrm}
+\M{b=\number\fontdimen6\tenrm}
+\fontdimen2\tenrm=42\dimen0
+\M{c=\the\fontdimen2\tenrm}
+\M{d=\number\fontdimen2\tenrm}
+\M{e=\ifnum\fontdimen2\tenrm=42 T\else F\fi}
+\edef\x{\number\fontdimen2\tenrm}\M{f=\x}
+\M{g=\number\fontdimen6\font}
+\bye
+
+% `\textfont<n>`, `\scriptfont<n>` and `\scriptscriptfont<n>` are font
+% identifiers in their own right (tex.web 577), so they can name the font a
+% `\fontdimen` belongs to. `\fontdimen22\textfont2` is the *axis height* every
+% formula is built around, and reading it as zero — which is what happens when
+% the operand is not consumed — puts every fraction bar and radical rule in the
+% wrong place.
+\textfont2=\tenrm \scriptfont2=\tenrm \scriptscriptfont2=\tenrm
+\message{<axis=\the\fontdimen22\textfont2>}
+\message{<axis-script=\the\fontdimen22\scriptfont2>}
+\message{<quad-text=\the\fontdimen6\textfont2>}
+\message{<num=\number\fontdimen6\textfont2>}

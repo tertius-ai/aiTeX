@@ -1,0 +1,30 @@
+% `tex.web` §§336, 392, and 396: a macro call is abandoned when its
+% compulsory parameter text does not match, when an outer control sequence is
+% found at any brace depth, or when a non-long argument contains `\par`.
+% Captured arguments are discarded and the replacement text is never entered.
+\catcode`\{=1 \catcode`\}=2 \catcode`\#=6
+\tracingonline=1 \tracingcommands=2 \tracingmacros=1
+\outer\def\stop{}
+\def\need A#1{\message{BAD:need}}
+\need B
+\need\stop
+\def\undelimited#1{\message{BAD:undelimited}}
+\undelimited{x\stop}
+\def\delimited#1X{\message{BAD:delimited}}
+\delimited a\stop X
+% §400 traces each completed argument immediately. Thus the first argument is
+% visible before an outer token makes the second one run away.
+\def\ordered#1#2X{\message{BAD:ordered}}
+\ordered A\stop X
+% `\meaning` uses the current escape character for macro prefixes. LaTeX 2e's
+% command-hook builder parses exactly this string with `/` as a delimiter.
+\escapechar=`/
+\long\def\prefixprobe#1{}
+\message{PROBE:prefix=\meaning\prefixprobe}
+\escapechar=`\\
+% §396 compares the literal `\par` token, not all aliases of its meaning.
+\let\paralias=\par
+\def\aliasarg#1{\message{PROBE:par-alias-accepted}}
+\aliasarg\paralias
+\message{PROBE:matching-recovered}
+\end

@@ -1,0 +1,61 @@
+% `tex.web` §1197: a display opened with `$$` has to close with `$$` too.
+%
+%     begin get_x_token;
+%     if cur_cmd<>math_shift then
+%       begin print_err("Display math should end with $$");
+%       help2("The `$' that I just saw supposedly matches a previous `$$'.")
+%       ("So I shall assume that you typed `$$' both times."); back_error;
+%       end;
+%     end
+%
+% We read the token with `get_next` and put back anything that was not a `$`
+% in silence, so the commonest way to mistype a display — one `$` at the end
+% instead of two — went by without a word, and the rest of the paragraph came
+% out looking deliberate.
+%
+% Two details of where §1194 reaches this matter as much as the message:
+%
+%   * `get_x_token`, so a macro that *expands* to `$` closes the display and
+%     raises nothing. `\let\dollar=$` does too — a `\let` to a character token
+%     keeps its catcode.
+%
+%   * §1194 checks the fonts *first*, then `fin_mlist`, then this. So when a
+%     formula is deleted for want of fonts the error context still shows the
+%     second `$` unread, one token earlier than where we had it.
+\catcode`\{=1 \catcode`\}=2 \catcode`\$=3 \catcode`\#=6
+\hsize=100pt \parindent=0pt
+\font\rm=cmr10 \textfont0=\rm \scriptfont0=\rm \scriptscriptfont0=\rm \rm
+\font\mi=cmmi10 \textfont1=\mi \scriptfont1=\mi \scriptscriptfont1=\mi
+\font\sy=cmsy10 \textfont2=\sy \scriptfont2=\sy \scriptscriptfont2=\sy
+\font\ex=cmex10 \textfont3=\ex \scriptfont3=\ex \scriptscriptfont3=\ex
+
+% One `$` where two belong. The token that was not a `$` goes back — the `C`
+% is set, and the paragraph is the one the document asked for.
+\setbox0\vbox{\noindent A$$B$C\par}
+\message{PROBE:one=[\the\ht0]}
+
+% ...and with a control sequence there instead, so the context carries the
+% `<to be read again>` line above it.
+\setbox1\vbox{\noindent A$$B$\relax C\par}
+\message{PROBE:cs=[\the\ht1]}
+
+% An expansion closes it: `get_x_token`, not `get_next`.
+\def\closer{$}
+\setbox2\vbox{\noindent A$$B$\closer C\par}
+\message{PROBE:expanded=[\the\ht2]}
+
+% ...and so does a `\let` alias, which is a character token and not a macro.
+\let\dollar=$
+\setbox3\vbox{\noindent A$$B$\dollar C\par}
+\message{PROBE:let=[\the\ht3]}
+
+% §1194's order: the font check comes first, so this reports the missing
+% family with the display's second `$` still unread.
+\textfont2=\nullfont \scriptfont2=\nullfont \scriptscriptfont2=\nullfont
+\setbox4\vbox{\noindent A$$B$$C\par}
+\message{PROBE:danger=[\the\ht4]}
+
+% ...and both faults at once, in the order §1194 raises them.
+\setbox5\vbox{\noindent A$$B$C\par}
+\message{PROBE:both=[\the\ht5]}
+\end
