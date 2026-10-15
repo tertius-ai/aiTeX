@@ -43,10 +43,18 @@ if grep -R -n -E \
   FAILED=1
 fi
 
-if ! grep -Fq 'on: [push, pull_request]' .github/workflows/ci.yml; then
-  echo "repository policy: hosted CI must run on pushes and pull requests" >&2
-  FAILED=1
-fi
+# Inspect event keys in the block form so push branch filters are supported.
+CI_EVENTS=$(awk '
+  /^on:$/ { in_events=1; next }
+  in_events && /^[^[:space:]#]/ { exit }
+  in_events { print }
+' .github/workflows/ci.yml)
+for event in push pull_request; do
+  if ! printf '%s\n' "$CI_EVENTS" | grep -Eq "^  ${event}:([[:space:]]|$)"; then
+    echo "repository policy: hosted CI must run on main pushes and pull requests" >&2
+    FAILED=1
+  fi
+done
 
 if ! grep -Fq 'tools/package_release.py source' \
     .github/workflows/release-artifacts.yml; then
