@@ -1,5 +1,8 @@
 name: CI
-on: [push, pull_request]
+on:
+  push:
+    branches: [main]
+  pull_request:
 
 permissions:
   contents: read
@@ -7,8 +10,7 @@ permissions:
 # A duplicated delivery or a second push should not keep an obsolete run alive.
 # Besides wasting runners, each superseded failure can produce another email.
 concurrency:
-  # A same-repository PR receives both push and pull_request deliveries. Give
-  # both the same key so only the newest run for that branch survives.
+  # Keep only the newest commit's run for each pull request or main branch.
   group: ci-${{ github.workflow }}-${{ github.event.pull_request.head.repo.full_name || github.repository }}-${{ github.event.pull_request.head.ref || github.ref_name }}
   cancel-in-progress: true
 
