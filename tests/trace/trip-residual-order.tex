@@ -1,0 +1,18 @@
+% Three final TRIP trace boundaries, each visible only in their relative order:
+% §75's interaction switch ends the current printer line; §645's missing box
+% brace resumes tracing at the offending character rather than at the command
+% after it; and §1005's page-cost narration precedes the infinite-shrink error
+% discovered by the same page-builder step.
+\catcode`\{=1 \catcode`\}=2
+\tracingonline=1 \tracingcommands=2 \tracingpages=1
+\font\rip=cmr10 \rip
+
+\batchmode
+\scrollmode
+
+\setbox0=\hbox X}
+
+\vsize=20pt \maxdepth=2pt
+\output={\shipout\box255}
+\hbox{}\vskip0pt minus1fil\penalty-10000
+\end

@@ -1,0 +1,242 @@
+{
+  "schema": 1,
+  "name": "aitex-pdf-font-language-v1",
+  "policy": {
+    "allowed": [
+      "original synthetic sources",
+      "deterministically generated temporary workloads",
+      "redistributable font fixtures with recorded provenance and licenses"
+    ],
+    "forbidden": [
+      "third-party document sources without redistribution permission",
+      "third-party document excerpts or reconstructed derivatives",
+      "generated PDF artifacts"
+    ]
+  },
+  "entries": [
+    {
+      "id": "synthetic-book-v1",
+      "path": "tests/pdf-qualification/synthetic-book.tex",
+      "sha256": "879f25b8069d362245008e000df2556bc2b6684f638ed69fadeb25ea74610772",
+      "provenance": "original aiTeX synthetic fixture",
+      "license": "repository license",
+      "gate": "python3 tools/pdf_qualification.py"
+    },
+    {
+      "id": "classic-font-workload-v1",
+      "path": "tests/pdf-qualification/classic-fonts.tex",
+      "sha256": "e03d061837470ae12f8948e81a72df71476a5ef0ef1846bca70844facc17ba85",
+      "provenance": "original aiTeX synthetic fixture",
+      "license": "repository license",
+      "gate": "python3 tools/pdf_suite.py --case classic-fonts"
+    },
+    {
+      "id": "annotation-workload-v1",
+      "path": "tests/pdf-qualification/annotation-stress.tex",
+      "sha256": "5158a1888b3bab0871e2543462592cd896633a5cc5a2e3515416e57e99b7f887",
+      "provenance": "original aiTeX synthetic fixture",
+      "license": "repository license",
+      "gate": "python3 tools/pdf_suite.py --case annotations"
+    },
+    {
+      "id": "graphics-workload-v1",
+      "path": "tests/pdf-qualification/graphics-stress.tex",
+      "sha256": "0d73ea422148a32af560849a5773c001eb3d0db6b50a4f723088f88318cf018b",
+      "provenance": "original aiTeX synthetic fixture",
+      "license": "repository license",
+      "gate": "python3 tools/pdf_suite.py --case graphics"
+    },
+    {
+      "id": "graphics-asset-generator-v1",
+      "path": "tools/pdf_fixture_assets.py",
+      "sha256": "f59a317adf2f8fb76d63fd6632f112f435016f51acc5938b3252e2ba4de04319",
+      "provenance": "original aiTeX deterministic PNG generator",
+      "license": "repository license",
+      "gate": "python3 tools/pdf_suite.py --case graphics"
+    },
+    {
+      "id": "graphics-vector-v1",
+      "path": "tests/pdf/driver-image.eps",
+      "sha256": "f419f3e051d812a50e452a74896d6e1169040dae7a4d8f17f37f15a5158f58c3",
+      "provenance": "original aiTeX vector fixture",
+      "license": "repository license",
+      "gate": "python3 tools/pdf_suite.py --case graphics"
+    },
+    {
+      "id": "native-positioned-workload-v1",
+      "path": "crates/aitex-driver/examples/pdf_qualification.rs",
+      "sha256": "e49dc1b7aaddae1eb8eb484af8ec0906716661ae12c97bbff98d1a95fcdb8086",
+      "provenance": "original aiTeX positioned-page qualification producer",
+      "license": "repository license",
+      "gate": "python3 tools/pdf_suite.py --case native-positioned-fonts"
+    },
+    {
+      "id": "classic-driver-features",
+      "path": "tests/pdf/driver-features.tex",
+      "sha256": "d1a705b223294300ee82def53c9b38aaee6841d119c652d13b18d2350ddaaa4c",
+      "provenance": "original aiTeX synthetic fixture",
+      "license": "repository license",
+      "gate": "tools/pdf_check.sh"
+    },
+    {
+      "id": "classic-advanced-features",
+      "path": "tests/pdf/advanced-features.tex",
+      "sha256": "6ce10be8dcb85f786a9d6f0f33cdcb032d068217a4c07a8cf10fa326fc06e5fb",
+      "provenance": "original aiTeX synthetic fixture",
+      "license": "repository license",
+      "gate": "tools/pdf_check.sh"
+    },
+    {
+      "id": "classic-raster-formats",
+      "path": "tests/pdf/raster-formats.tex",
+      "sha256": "1cc9fe37098e72d6d1dc6d2623aca254ab0d3e70e8c46275e0d7feb1099508dc",
+      "provenance": "original aiTeX synthetic fixture",
+      "license": "repository license",
+      "gate": "tools/pdf_check.sh"
+    },
+    {
+      "id": "many-page-scale",
+      "path": "tests/scale/ten-thousand-pages.tex",
+      "sha256": "5744bbf968abb769fbdd0570a23f510d7cec91eaac7db6a4bac5fd0ffd5e12fe",
+      "provenance": "original aiTeX generated-page fixture",
+      "license": "repository license",
+      "gate": "tools/scale_check.sh"
+    },
+    {
+      "id": "native-multilingual",
+      "path": "tests/unicode/multilingual.tex",
+      "sha256": "b81cacc4ed0652ec877a9dddd2923171a141c4009ffe768acef98e887d9bd184",
+      "provenance": "original aiTeX short multilingual test phrases",
+      "license": "repository license",
+      "gate": "tools/unicode_check.sh"
+    },
+    {
+      "id": "native-unicode-product",
+      "path": "tests/unicode/product/main.tex",
+      "sha256": "dea6eef6fdc4e10e6029cafdc71061b9c6440912fed5e632c8472bf3be72872f",
+      "provenance": "original aiTeX ordinary Unicode/OpenType product fixture",
+      "license": "repository license",
+      "gate": "tools/unicode_check.sh and tools/pdf_suite.py --case native-unicode-cli"
+    },
+    {
+      "id": "native-unicode-product-config",
+      "path": "tests/unicode/product/.aitex.toml",
+      "sha256": "13c8dbfc3d3b8595c9bad60608b5dbc2c6593435c331296a40c16dbd504802ab",
+      "provenance": "original aiTeX Unicode project configuration fixture",
+      "license": "repository license",
+      "gate": "tools/unicode_check.sh"
+    },
+    {
+      "id": "native-polyglossia-product",
+      "path": "tests/unicode/product/polyglossia.tex",
+      "sha256": "f914e1bc56572fedf1eec2ca1faf43a1f21e625b82f08065f910fda1f276cb79",
+      "provenance": "original aiTeX bounded polyglossia compatibility fixture",
+      "license": "repository license",
+      "gate": "tools/unicode_check.sh"
+    },
+    {
+      "id": "locked-opentype-fixtures",
+      "path": "crates/aitex-fonts/tests/fonts/README.md",
+      "sha256": "8d5bb4dbf296fd4650036fd25361d6e7c351aa8f13f8a33fd75abedc90892ed2",
+      "provenance": "upstream OFL fonts with recorded source/output hashes",
+      "license": "SIL Open Font License 1.1",
+      "gate": "cargo test -p aitex-fonts && cargo test -p aitex-driver --test positioned_pdf"
+    },
+    {
+      "id": "colrv0-amiri",
+      "path": "crates/aitex-fonts/tests/fonts/AmiriQuranColored-COLRv0-Test.ttf",
+      "sha256": "e29bf08e34703838a577f60b1a20f5d226e709e3a3088248fe40b28fcbec7ac7",
+      "provenance": "unmodified Amiri Quran Colored 1.000 font",
+      "license": "SIL Open Font License 1.1",
+      "gate": "cargo test -p aitex-fonts --test font_stack && cargo test -p aitex-driver --test positioned_pdf"
+    },
+    {
+      "id": "font-noto-latin",
+      "path": "crates/aitex-fonts/tests/fonts/NotoSans-Latin-Test.ttf",
+      "sha256": "7af90644da84abf2ed6df77f3f112cc84aafb0b8c93afb70aedcc8b5024e11bc",
+      "provenance": "modified OFL subset; font README records upstream version, source hash, and subset procedure",
+      "license": "SIL Open Font License 1.1",
+      "gate": "python3 tools/pdf_suite.py --case native-positioned-fonts"
+    },
+    {
+      "id": "font-amiri-arabic",
+      "path": "crates/aitex-fonts/tests/fonts/Amiri-Arabic-Test.ttf",
+      "sha256": "cc3233f310b85f2fc00647adfb34fc6e30fc360dde4c695eafe9146c76615a28",
+      "provenance": "modified OFL subset; font README records upstream version, source hash, and subset procedure",
+      "license": "SIL Open Font License 1.1",
+      "gate": "python3 tools/pdf_suite.py --case native-positioned-fonts"
+    },
+    {
+      "id": "font-noto-devanagari",
+      "path": "crates/aitex-fonts/tests/fonts/NotoSansDevanagari-Test.ttf",
+      "sha256": "e842dc348ba75ca32d6b93b63c45e72a704ba8f011848f495a31bee2bcc8880c",
+      "provenance": "modified OFL subset; font README records upstream version, source hash, and subset procedure",
+      "license": "SIL Open Font License 1.1",
+      "gate": "python3 tools/pdf_suite.py --case native-positioned-fonts"
+    },
+    {
+      "id": "font-noto-hebrew",
+      "path": "crates/aitex-fonts/tests/fonts/NotoSansHebrew-Test.ttf",
+      "sha256": "4f86593591b738cd6dc94027ef88013d810f7ccb4a7b1d3357fbfb9c91245737",
+      "provenance": "modified OFL subset; font README records upstream version, source hash, and subset procedure",
+      "license": "SIL Open Font License 1.1",
+      "gate": "python3 tools/pdf_suite.py --case native-positioned-fonts"
+    },
+    {
+      "id": "font-junicode-variable",
+      "path": "crates/aitex-fonts/tests/fonts/Junicode-Variable-Test.ttf",
+      "sha256": "774bef7743bab85ff2cff811f019d9ce0415687870db9f2863c0ff522f170917",
+      "provenance": "modified OFL subset; font README records upstream version, source hash, and subset procedure",
+      "license": "SIL Open Font License 1.1",
+      "gate": "python3 tools/pdf_suite.py --case native-positioned-fonts"
+    },
+    {
+      "id": "font-source-serif-cff",
+      "path": "crates/aitex-fonts/tests/fonts/SourceSerif4-CFF-Test.otf",
+      "sha256": "aef0743735bf153286eda449ca9d3e5bd514b3e9cb7bba50c2238fef773cd407",
+      "provenance": "modified OFL subset; font README records upstream version, source hash, and subset procedure",
+      "license": "SIL Open Font License 1.1",
+      "gate": "python3 tools/pdf_suite.py --case native-positioned-fonts"
+    },
+    {
+      "id": "font-source-serif-cff2-variable",
+      "path": "crates/aitex-fonts/tests/fonts/SourceSerif4-CFF2-Variable-Test.otf",
+      "sha256": "b393c8effe81ab165fa91b4d79c1b963c5460f783bfd4b4c2dd6db28fecd098d",
+      "provenance": "modified OFL subset; font README records upstream version, source hash, and subset procedure",
+      "license": "SIL Open Font License 1.1",
+      "gate": "python3 tools/pdf_suite.py --case native-positioned-fonts"
+    },
+    {
+      "id": "font-noto-thai",
+      "path": "crates/aitex-fonts/tests/fonts/NotoSansThai-Test.ttf",
+      "sha256": "7ab8c52fe5f55c42781da401e2593c693cf36d952a337becef5a8415671949ca",
+      "provenance": "modified OFL subset; font README records upstream version, source hash, and subset procedure",
+      "license": "SIL Open Font License 1.1",
+      "gate": "python3 tools/pdf_suite.py --case native-positioned-fonts"
+    },
+    {
+      "id": "font-noto-lao",
+      "path": "crates/aitex-fonts/tests/fonts/NotoSansLao-Test.ttf",
+      "sha256": "1c297a0b946a9844eedef8ff1cbfb93accfbbe36122624edd4aeabc0d65eeb6b",
+      "provenance": "modified OFL subset; font README records upstream version, source hash, and subset procedure",
+      "license": "SIL Open Font License 1.1",
+      "gate": "python3 tools/pdf_suite.py --case native-positioned-fonts"
+    },
+    {
+      "id": "font-noto-cjk-sc",
+      "path": "crates/aitex-fonts/tests/fonts/NotoSansCJKsc-Test.otf",
+      "sha256": "be01c44b9bf642857b3e0b7acff2132b794b71f22d468056c8abdf42661381bf",
+      "provenance": "modified OFL subset; font README records upstream version, source hash, and subset procedure",
+      "license": "SIL Open Font License 1.1",
+      "gate": "python3 tools/pdf_suite.py --case native-positioned-fonts"
+    },
+    {
+      "id": "font-ofl-license",
+      "path": "crates/aitex-fonts/tests/fonts/OFL-1.1.txt",
+      "sha256": "4c3551808210502ed71d21006565c97d7a6ba63e8b58c1731a5fe3d615ac3f52",
+      "provenance": "SIL Open Font License 1.1 text distributed with the locked fixtures",
+      "license": "SIL Open Font License 1.1",
+      "gate": "python3 tools/pdf_suite.py --list"
+    }
+  ]
+}

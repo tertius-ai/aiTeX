@@ -1,0 +1,40 @@
+% `tex.web` §545/§1034: a TFM ligature op inserts a replacement, independently
+% retains either neighbor, then advances the cursor by zero, one, or two
+% characters. The purpose-built PL font beside this file contains all eight
+% legal op bytes plus left- and right-boundary programs.
+\catcode`\{=1 \catcode`\}=2
+\font\r=ligature-operators \r
+\showboxbreadth=99 \showboxdepth=9 \tracingonline=0
+% Suppress implicit boundaries here so each pair isolates one operator:
+% =:, =:|, |=:, |=:|, =:|>, |=:>, |=:|>, and |=:|>>.
+\setbox0=\hbox{\noboundary AB CD EF GH IJ KL MN OP\noboundary}
+\showbox0
+% The left boundary consumes Q into X; the right boundary inserts X after R.
+\setbox1=\hbox{Q}\showbox1
+\setbox2=\hbox{R}\showbox2
+% `\noboundary` suppresses both adjacent programs when used on both sides.
+\setbox3=\hbox{\noboundary QR\noboundary}\showbox3
+% §902 must test a candidate hyphen while the retained-operand cursor is
+% live, then synchronize the broken and unbroken translations by cut prefix.
+% A whole-word span comparison cannot represent these operators.
+\lccode`A=`A \lccode`B=`B \lccode`C=`C \lccode`D=`D
+\lccode`E=`E \lccode`F=`F \lccode`G=`G \lccode`H=`H
+\lccode`I=`I \lccode`J=`J \lccode`K=`K \lccode`L=`L
+\lccode`M=`M \lccode`N=`N \lccode`O=`O \lccode`P=`P
+\lccode`Q=`Q \lccode`R=`R
+\hyphenchar\r=`Y \lefthyphenmin=1 \righthyphenmin=1
+\pretolerance=-1 \tolerance=10000 \hbadness=10000 \parindent=0pt
+\hyphenation{A-B C-D E-F G-H I-J K-L M-N O-P Q-A A-R}
+\setbox4=\vbox{\hsize=21pt A AB\par}\showbox4
+\setbox5=\vbox{\hsize=21pt A CD\par}\showbox5
+\setbox6=\vbox{\hsize=21pt A EF\par}\showbox6
+\setbox7=\vbox{\hsize=21pt A GH\par}\showbox7
+\setbox8=\vbox{\hsize=21pt A IJ\par}\showbox8
+\setbox9=\vbox{\hsize=21pt A KL\par}\showbox9
+\setbox10=\vbox{\hsize=21pt A MN\par}\showbox10
+\setbox11=\vbox{\hsize=21pt A OP\par}\showbox11
+% §903 saves the ligature's implicit boundary as `hu[0]`/`init_list` so the
+% discretionary branches reconstruct the word from the same context.
+\setbox12=\vbox{\hsize=21pt A QA\par}\showbox12
+\setbox13=\vbox{\hsize=21pt A AR\par}\showbox13
+\end

@@ -1,0 +1,44 @@
+% `\holdinginserts` (tex.web §1018). An insertion is moved into its box only
+% when the parameter is zero or negative; positive means *hold*, and the
+% insertion nodes stay in `\box255` exactly where they were.
+%
+% That is not a corner. It is how an output routine decides, *after* seeing the
+% page, whether it wants the insertions on it: fire once with the parameter
+% positive, look, `\unvbox255` to hand everything back — insertion nodes and
+% all — set the parameter to zero, and let the builder consider them again. The
+% second time they are placed for real. trip.tex's `\output` is built on
+% exactly that, and LaTeX's float mechanism uses it to move a float to the next
+% page after discovering it does not fit on this one.
+%
+% We had the parameter registered as a name and nothing read it, so insertions
+% were always placed on the first firing. The second firing then saw none, and
+% TeX's whole second page of trip.tex never happened here.
+\catcode`\{=1 \catcode`\}=2 \catcode`\#=6
+\font\testfont=cmr10 \testfont
+\hsize=100pt \vsize=60pt \topskip=0pt \maxdepth=2pt \parindent=0pt
+\dimen100=100pt \count100=500 \skip100=0pt
+
+% Held: the box is still void when the routine looks, and the insertion is
+% still in `\box255` to be handed back.
+\holdinginserts=1
+\output={\message{<fire hi=\the\holdinginserts box=\ifvoid100 void\else full\fi>}%
+  \ifnum\holdinginserts>0
+    \global\holdinginserts0 \unvbox255 \penalty-10000
+  \else
+    \message{<placed wd=\the\wd100 ht=\the\ht100>}%
+    \shipout\box255
+  \fi}
+\hbox{A}\insert100{\hbox{X}}\penalty-10000
+
+% Not held: the insertion is placed on the first firing, so the routine sees a
+% full box straight away.
+\global\holdinginserts=0
+\output={\message{<direct box=\ifvoid100 void\else full\fi>}\shipout\box255}
+\hbox{B}\insert100{\hbox{Y}}\penalty-10000
+
+% Negative is the same as zero — §1018 tests `<= 0`.
+\global\holdinginserts=-5
+\output={\message{<negative box=\ifvoid100 void\else full\fi>}\shipout\box255}
+\hbox{C}\insert100{\hbox{Z}}\penalty-10000
+
+\end

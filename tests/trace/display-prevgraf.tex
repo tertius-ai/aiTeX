@@ -1,0 +1,30 @@
+% `tex.web` §§816, 848 and 1200 use the enclosing vertical list's
+% `prev_graf` as the absolute line-number origin when a paragraph resumes after
+% display math. An empty `\noindent` paragraph contributes no line before the
+% display, the display contributes three, and the following text therefore
+% starts at line 4 in `\tracingparagraphs`.
+%
+% The display measure is line `prev_graf + 2` (§1149), not the total number
+% of line boxes the typesetter has ever made. The throwaway paragraph below
+% separates those values; the `\everydisplay` probe must still select the
+% second `\parshape` entry.
+\catcode`\{=1 \catcode`\}=2 \catcode`\$=3
+\font\r=cmr10 \r
+\font\mi=cmmi10 \font\sy=cmsy10 \font\ex=cmex10
+\textfont0=\r \scriptfont0=\r \scriptscriptfont0=\r
+\textfont1=\mi \scriptfont1=\mi \scriptscriptfont1=\mi
+\textfont2=\sy \scriptfont2=\sy \scriptscriptfont2=\sy
+\textfont3=\ex \scriptfont3=\ex \scriptscriptfont3=\ex
+\hsize=45pt \parindent=0pt \pretolerance=10000 \tolerance=10000
+\hbadness=10000 \vbadness=10000 \parfillskip=0pt plus 1fil
+
+\setbox0=\vbox{
+  A A A A A A A A A A A A\par
+  \parshape=3 1pt 40pt 2pt 50pt 3pt 60pt
+  \everydisplay={\message{PROBE:display=[\the\displayindent][\the\displaywidth]}}
+  \tracingparagraphs=1 \tracingonline=0
+  \noindent$$x$$
+  A A A A A A A A A A\par
+}
+\tracingparagraphs=0
+\end

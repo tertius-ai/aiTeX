@@ -1,0 +1,57 @@
+% `tex.web` §722 `fetch` and §723, its failure:
+%
+%     begin cur_c:=character(a); cur_f:=fam_fnt(fam(a)+cur_size);
+%     if cur_f=null_font then
+%       @<Complain about an undefined family and set |cur_i| null@>
+%
+%     begin print_err(""); print_size(cur_size); print_char(" ");
+%     print_int(fam(a)); print(" is undefined (character ");
+%     print_ASCII(qo(cur_c)); print_char(")");
+%     help4("Somewhere in the math formula just ended, you used the")
+%     ("stated character from an undefined font family. For example,")
+%     ("plain TeX doesn't allow \it or \sl in subscripts. Proceed,")
+%     ("and I'll try to forget that I needed that character.");
+%     error; cur_i:=null_character; math_type(a):=empty;
+%     end
+%
+% The character is *dropped* — `math_type(a):=empty` — not moved elsewhere.
+% This engine fell back to family 0, which set a glyph TeX does not set, out
+% of a font the formula never named, and said nothing about it.
+%
+% §699's `print_size` names the size, not the family's text font, so the same
+% character in a superscript reports `\scriptfont`.  `mlist_to_hlist` has no
+% error stream of its own, so the complaints are collected there and reported
+% by the engine when the formula ends — which is where §723 sits in the log,
+% after everything the formula traced.
+% The test is `cur_f=null_font`, not "no font at all": a family explicitly set
+% to `\nullfont` is as undefined as one never set.  And §1233 reads the
+% right-hand side with `scan_font_ident`, which takes any `<font>` — a
+% `\font`-defined identifier, the primitive `\font` for the current one, or
+% another family.  Matching only the first of those left `\textfont1=\font`
+% quietly unset, which stayed invisible until §723 began reporting.
+\catcode`\{=1 \catcode`\}=2 \catcode`\$=3 \catcode`\^=7
+\font\r=cmr10 \r \hsize100pt \parindent0pt
+\textfont2=\r \scriptfont2=\r \scriptscriptfont2=\r
+\textfont3=\r \scriptfont3=\r \scriptscriptfont3=\r
+\fontdimen22\r=1pt
+$\fam0 A^{\fam0 B}$\par
+% §722 `fetch` is called from more than the ordinary conversion.  §738's
+% `make_math_accent` opens with `fetch(accent_chr(q))`, and when it fails the
+% accent block is *skipped* while the nucleus is still converted:
+%
+%     begin fetch(accent_chr(q));
+%     if char_exists(cur_i) then
+%       begin i:=cur_i; c:=cur_c; f:=cur_f; … end;
+%     end;
+%
+% And §749's `make_op` opens with `fetch(nucleus(q))` — before the limit boxes
+% are cleaned, so an operator out of an undefined family is reported ahead of
+% its own superscript.  §723's `math_type(a):=empty` is what stops either from
+% being reported twice.
+$\mathaccent"7161 {A}$\par
+$\mathop{\fam0 A}\limits^{\fam0 B}$\par
+$\radical"161 {\fam0 A}$\par
+\textfont1=\font \showthe\textfont1
+\textfont0=\nullfont \scriptfont0=\nullfont \scriptscriptfont0=\nullfont
+$\fam0 C$\par
+\end

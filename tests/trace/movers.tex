@@ -1,0 +1,45 @@
+% `tex.web` §1071 and §1073: the four box movers, and what §367 calls them.
+%
+% §1071 registers four names as *two* commands:
+%
+%     primitive("moveleft",hmove,1);  primitive("moveright",hmove,0);
+%     primitive("raise",vmove,1);     primitive("lower",vmove,0);
+%
+% `hmove` shifts a box horizontally and is a **vertical**-mode command;
+% `vmove` shifts vertically and belongs to horizontal and math mode. Using the
+% wrong spelling for the mode is §1049's illegal case, so the pairs never
+% overlap — which is what lets the trace pick the name from the mode.
+%
+% This engine collapses each pair onto one primitive, so its name table keeps
+% only one of the two and §367 printed `{\raise}` where TeX prints
+% `{\moveleft}`. trip.tex line 104 is where that showed: it is the nineteenth
+% traced command of 1988, and the command traces diverged there and stayed
+% diverged.
+%
+% §1073 then reads the box with `scan_box`, which does not go back through
+% `main_control` — so the `\hbox` or `\copy` after a mover is never traced. We
+% dispatched it normally and traced it, putting a `{\copy}` after every
+% `{\moveleft}` that TeX does not have.
+\catcode`\{=1 \catcode`\}=2
+\tracingcommands=1 \tracingonline=0
+\font\r=cmr10 \r \hsize=100pt
+\setbox0\hbox{}
+
+% vertical mode: the horizontal movers, and no trace for the box they take
+\moveleft20pt\copy0
+\moveright20pt\hbox{}
+
+% restricted horizontal mode: the vertical ones
+\setbox1\hbox{\raise2pt\copy0 \lower2pt\hbox{}}
+% §1071's pairs are chosen by the *mode*, and inside a paragraph the enclosing
+% list is still vertical while the mode is horizontal. Deciding from the
+% typesetter's raw field instead of §211's reported mode made `\lower` inside a
+% paragraph come out `\moveright` — with no `{vertical mode: …}` prefix to give
+% it away, because the prefix is computed from the reported mode and agreed
+% with TeX.
+% Inside a *box*: the enclosing list is the box's, still vertical, while the
+% mode is the paragraph's. That is the case the raw field gets wrong; a
+% paragraph on the main vertical list sets the field itself and hides it.
+\setbox9\hbox{}
+\setbox8\vbox{\noindent A\lower 1pt\copy9 \raise 1pt\copy9 \par}
+\end

@@ -1,0 +1,27 @@
+% `tex.web` §§1094, 1126, and 1127: after a source right brace closes an
+% ordinary group opened by the template, the entry's brace count is negative.
+% The following paragraph inserts another `}`; when that reaches the alignment
+% group it is replaced by a frozen `\cr`. With the brace count still negative,
+% that boundary in turn inserts `{` before ending the entry and alignment. The
+% following explicit `}` must therefore close the surrounding source group.
+\catcode`\{=1 \catcode`\}=2 \catcode`\#=6 \catcode`\&=4
+\tracingonline=1 \tracingcommands=2 \tracingmacros=1 \tracingrestores=2
+\hbadness=10000
+\long\def\l#1{#1}
+\def\scope{outer}
+% A boundary read by `\futurelet` exposes the inaccessible v-template marker.
+\halign{x#&x#\cr
+  \global\futurelet\endt\foo&\show\endt\cr}
+% The source `}` closes the argument begun by the u-template and leaves
+% `align_state` negative; the following blank-line `\par` drives all three
+% insertions described above.
+\noindent{\def\scope{inner}
+\halign{\l{#}\cr
+  .}
+
+}
+\message{PROBE:scope=\scope}
+% Far from an active alignment, the same commands are genuinely misplaced;
+% unlike their preamble-only sense, `\span` must not expand its successor.
+\cr\span
+\end

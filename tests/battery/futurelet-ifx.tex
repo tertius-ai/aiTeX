@@ -1,0 +1,22 @@
+% The gullet's macro map is a *cache* of the eqtb; \futurelet (like \let) must
+% evict a stale entry when it binds the target to something that is not a macro
+% -- a character, here. If it does not, the target keeps looking like a macro,
+% and \ifx compares one operand cached-as-macro against a non-macro operand and
+% returns false even when their meanings are identical. That is exactly how
+% \@ifstar's `\ifx\@let@token\reserved@d' (both \let to `*') came out false,
+% so a \DeclareRobustCommand* fed its `*' to \xdef and stalled latex.ltx.
+\input plain
+\catcode`\@=11
+% \tok starts as a macro (so it has a cache entry), then \futurelet rebinds it
+% to the character `*'; \ifx against another `*' must then be true.
+\def\tok{some macro body}
+\let\star=*
+\def\peek{\ifx\tok\star \message{<a=YES>}\else \message{<a=NO>}\fi}
+\futurelet\tok\peek *
+% and the reverse: a macro target \futurelet to a control sequence stays a macro
+% comparison (both \relax here) -- true.
+\def\tok{x}\let\myrelax\relax
+\def\peekb{\ifx\tok\myrelax \message{<b=YES>}\else \message{<b=NO>}\fi}
+\futurelet\tok\peekb \relax
+\catcode`\@=12
+\bye

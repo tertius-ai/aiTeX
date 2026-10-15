@@ -1,0 +1,78 @@
+% `tex.web` §279/§282: a **global** assignment discards every value the open
+% groups have saved for that entry.
+%
+% TeX does it with a level per eqtb entry. `eq_define` sets the level to
+% `cur_level` and saves the old value; a global assignment sets the level to
+% `level_one` and destroys what was there, and §282's `unsave` then *retains* —
+% throws the saved value away, and prints `{retaining …}` under
+% `\tracingrestores` — rather than restoring it.
+%
+% Our `define` already did this for control sequences, which is why
+% `{\def\m{B}\gdef\m{C}}` has always left `C`. Registers and parameters had no
+% such level, so a local assignment's save entry survived the global one and put
+% the pre-group value back over it:
+%
+%     \count0=7  {\count0=1 \global\count0=2 }  \the\count0
+%     tex 2, ours 7
+%
+% Found by `\tracingrestores` (§252), which showed us restoring entries TeX had
+% already discarded. The order matters: only a *local* assignment before the
+% global one leaves an entry to discard, which is why `{\global\count=2}` alone
+% was always right and this was not.
+\catcode`\{=1 \catcode`\}=2 \catcode`\#=6
+\font\rip=cmr10
+
+% --- every kind of eqtb entry, local then global in the same group ----------
+\count0=7  {\count0=1  \global\count0=2 }
+\message{<count=\the\count0>}
+
+\dimen0=7pt {\dimen0=1pt \global\dimen0=2pt }
+\message{<dimen=\the\dimen0>}
+
+\skip0=7pt plus 7pt {\skip0=1pt \global\skip0=2pt plus 2pt }
+\message{<skip=\the\skip0>}
+
+\muskip0=7mu {\muskip0=1mu \global\muskip0=2mu }
+\message{<muskip=\the\muskip0>}
+
+\toks0={seven} {\toks0={one}\global\toks0={two}}
+\message{<toks=\the\toks0>}
+
+\hsize=7pt {\hsize=1pt \global\hsize=2pt }
+\message{<param=\the\hsize>}
+
+\baselineskip=7pt plus 7pt {\baselineskip=1pt \global\baselineskip=2pt plus 2pt }
+\message{<glue-param=\the\baselineskip>}
+
+\everypar{seven} {\everypar{one}\global\everypar{two}}
+\message{<toks-param=\the\everypar>}
+\everypar{}
+
+\catcode`\?=12 {\catcode`\?=13 \global\catcode`\?=11 }
+\message{<catcode=\the\catcode`\?>}
+\catcode`\?=12
+
+\sfcode`\?=7 {\sfcode`\?=1 \global\sfcode`\?=2 }
+\message{<sfcode=\the\sfcode`\?>}
+
+\lccode`\?=`\a {\lccode`\?=`\b \global\lccode`\?=`\c }
+\message{<lccode=\the\lccode`\?>}
+
+\setbox0\hbox{}\wd0=7pt {\setbox0\hbox to 1pt{}\global\setbox0\hbox to 2pt{}}
+\message{<box=\the\wd0>}
+
+% --- and the orders that were already right, so they stay right -------------
+\count1=7 {\global\count1=2 }
+\message{<global-only=\the\count1>}
+\count2=7 {\global\count2=2 \count2=3 }
+\message{<global-then-local=\the\count2>}
+\count3=7 {\count3=1 }
+\message{<local-only=\the\count3>}
+% a global inside a *nested* group discards the outer group's entry too
+\count4=7 {\count4=1 {\global\count4=2 }}
+\message{<nested=\the\count4>}
+% and a local assignment after it still restores to the global value
+\count5=7 {\count5=1 \global\count5=2 {\count5=3 }}
+\message{<local-after-global=\the\count5>}
+
+\end

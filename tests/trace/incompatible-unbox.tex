@@ -1,0 +1,17 @@
+% `tex.web` §1107: unboxing requires both the matching mode and the matching
+% box-list kind. A failed voiding form reports the incompatibility and leaves
+% the register intact.
+\catcode`\{=1 \catcode`\}=2 \catcode`\$=3
+\tracingonline=1 \tracingcommands=2
+\showboxbreadth=100 \showboxdepth=100
+\font\r=cmr10 \r
+\setbox0=\vbox{\hbox{A}}
+X\unhbox0\par
+\showbox0
+\setbox1=\hbox{B}
+\unvbox1
+\showbox1
+\setbox2=\hbox{C}
+$\unhbox2$
+\showbox2
+\end

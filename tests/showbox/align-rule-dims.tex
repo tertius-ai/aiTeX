@@ -1,0 +1,46 @@
+% `tex.web` §804 and §806: a rule in an alignment's own list is measured by the
+% alignment.
+%
+%     @<Make the running dimensions of rule |q| extend to the boundaries of
+%       the alignment@>=
+%     begin if is_running(width(q)) then width(q):=width(p);
+%     if is_running(height(q)) then height(q):=height(p);
+%     if is_running(depth(q)) then depth(q):=depth(p);
+%
+% `p` is §804's *prototype box*: `hpack(preamble)` for `\halign`, and for
+% `\valign` a `vpack` of the same list with each entry's width and height
+% swapped. Its dimensions are the alignment's boundaries in the direction the
+% alignment runs, and nothing in the other — packing a preamble of unset boxes
+% and tabskip glue gives no height.
+%
+% So `\noalign{\hrule}` inside `\halign to 50pt` is fifty points wide, and the
+% same `\hrule` in a plain `\vbox` stays running: nothing but an alignment does
+% this, which is what makes it a rule of its own rather than part of packing.
+%
+% We left every such rule running. Found in trip.tex's sixth shipped page,
+% which carries a `\rule(22.0+0.0)x0.0` where ours had `\rule(*+*)x0.0`.
+\catcode`\{=1 \catcode`\}=2 \catcode`\#=6
+\showboxbreadth=100 \showboxdepth=100
+\font\rip=cmr10 \rip
+
+% Running width, set by the alignment's width.
+\setbox0\vbox{\halign to 50pt{#\cr\noalign{\hrule}AA\cr BB\cr}}
+\showbox0
+
+% The same rule with no alignment around it keeps its running width — and the
+% `\glue(\parskip) 0.0` between it and the paragraph is §1091's, appended
+% because the list is not empty. `new_param_glue` makes a node whatever the
+% parameter is worth; we skipped it when `\parskip` was zero, which is most
+% documents.
+\setbox1\vbox{\hrule AA}
+\showbox1
+
+% An explicit width is left alone; only a running dimension is filled in.
+\setbox2\vbox{\halign to 50pt{#\cr\noalign{\hrule width 3pt}AA\cr}}
+\showbox2
+
+% `\valign`: the prototype is packed the other way, so it is the *height* that
+% the alignment fixes and the width that comes out zero.
+\setbox3\hbox{\valign to 30pt{#\cr\noalign{\vrule}\hbox{A}\cr}}
+\showbox3
+\end

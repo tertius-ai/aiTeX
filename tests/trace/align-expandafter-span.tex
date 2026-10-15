@@ -1,0 +1,13 @@
+% `tex.web` §§342, 366, and 789: an alignment delimiter is consumed by
+% `get_next`, even when that read happens inside `\expandafter`. The scanner
+% inserts the current column's v-template and restarts, so the token expanded
+% after `\xx` below is the old `\A` from that template, not `\span` itself.
+% Only after the old expansion has produced `B` does `\xx` globally replace
+% `\A`; the command trace therefore executes `B`, not `C`.
+\catcode`\{=1 \catcode`\}=2 \catcode`\#=6 \catcode`\&=4
+\tracingonline=1 \tracingcommands=2
+\font\r=cmr10 \r
+\def\A{B}
+\setbox0=\vbox{\halign{#\A&#\cr
+  \def\xx{\global\def\A{C}}\expandafter\xx\span A\cr}}
+\end

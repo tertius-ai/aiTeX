@@ -1,0 +1,31 @@
+% `tex.web` §1372 and §1375: what a `\write` text expands to, and what §367
+% traces while it does.
+%
+% §1372 sets `mode:=0` for the duration — "no mode", which §211 prints and
+% which disables `\lastskip`, `\lastkern`, `\lastpenalty`, `\lastnodetype`,
+% `\prevdepth` and `\spacefactor`. A `\write` runs when the page is shipped and
+% not where it was written, so the list it would report on is not the one the
+% document meant; TeX's answer is to report none. At `\tracingcommands=2` the
+% expandable primitives inside the text are traced, and the mode label on the
+% first of them is `no mode`.
+%
+% §1375: `\immediate` reads the extension command itself with `get_x_token` and
+% dispatches it, so that command never reaches `main_control` and is never
+% traced. We fell through to the next iteration and traced a `{\write}` TeX
+% does not have. A *deferred* `\write` is still traced, because that one really
+% does go round the loop.
+%
+% Only the `\immediate` form is exercised here. A deferred `\write` expands at
+% shipout, which makes the page non-empty and brings §638's `[N]` page echo with
+% it — and that echo needs the column model this engine does not have yet, so a
+% case with one in it would be testing something else.
+%
+% trip.tex line 93 turns `\tracingcommands2` on and lines 94-97 are four
+% `\write`s, so this is where the command traces part company if it is wrong.
+\catcode`\{=1 \catcode`\}=2
+\tracingcommands=2 \tracingonline=0
+\count0=7
+
+% \immediate: the \write itself is not traced, its expansion is
+\immediate\write-1{n=\number\count0 r=\romannumeral4 t=\the\count0}
+\end

@@ -1,0 +1,46 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage[unicode]{hyperref}
+\hypersetup{
+  pdftitle={Méta (qualification)},
+  pdfauthor={Åuthor},
+  bookmarksopen=true,
+  colorlinks=true,
+  urlcolor=blue,
+  linkcolor=red
+}
+\setlength{\textwidth}{130pt}
+\setlength{\parindent}{0pt}
+\begin{document}
+\section{Racine é}
+\subsection{Enfant å}
+\href{https://example.com/über?q=(x)}{This is a deliberately very long wrapped hyperlink that occupies several visible lines in the narrow measure.}
+
+\medskip
+\rotatebox{18}{\href{https://example.org/rotated}{Rotated link}}
+
+% Pin every named-destination view accepted by hyperref's pdfmark route.
+\special{ps:SDict begin H.S end}%
+\special{ps:SDict begin [/View [/Fit]/Dest (view.fit) cvn /DEST pdfmark end}%
+\special{ps:SDict begin H.S end}%
+\special{ps:SDict begin [/View [/FitB]/Dest (view.fitb) cvn /DEST pdfmark end}%
+\special{ps:SDict begin H.S end}%
+\special{ps:SDict begin [/View [/FitH H.V]/Dest (view.fith) cvn /DEST pdfmark end}%
+\special{ps:SDict begin H.S end}%
+\special{ps:SDict begin [/View [/FitBH H.V]/Dest (view.fitbh) cvn /DEST pdfmark end}%
+\special{ps:SDict begin H.S end}%
+\special{ps:SDict begin [/View [/FitV H.V]/Dest (view.fitv) cvn /DEST pdfmark end}%
+\special{ps:SDict begin H.S end}%
+\special{ps:SDict begin [/View [/FitBV H.V]/Dest (view.fitbv) cvn /DEST pdfmark end}%
+
+\newpage
+\special{papersize=792bp,612bp}% page-local landscape media box
+\section{Second}
+\hyperlink{tärgét}{Internal target link}\quad\hypertarget{tärgét}{Target}
+
+\newpage
+\special{papersize=612bp,792bp}% restore portrait on this page only
+\section{Third}
+Page-boundary qualification.
+\end{document}

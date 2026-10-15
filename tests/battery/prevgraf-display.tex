@@ -1,0 +1,11 @@
+\catcode`\{=1 \catcode`\}=2 \catcode`\$=3
+\hsize=100pt \parindent=0pt \hbadness=10000 \vbadness=10000
+\font\rm=cmr10 \textfont0=\rm \scriptfont0=\rm \scriptscriptfont0=\rm \rm
+\font\mi=cmmi10 \textfont1=\mi \scriptfont1=\mi \scriptscriptfont1=\mi
+\font\sy=cmsy10 \textfont2=\sy \scriptfont2=\sy \scriptscriptfont2=\sy
+\font\ex=cmex10 \textfont3=\ex \scriptfont3=\ex \scriptscriptfont3=\ex
+\setbox0\vbox{\noindent A\message{<start=\the\prevgraf>}$$B\message{<in=\the\prevgraf>}$$C\message{<after=\the\prevgraf>}\par
+  \message{<ended=\the\prevgraf>}}
+\setbox1\vbox{\noindent A$$B$$C$$D$$E\message{<two=\the\prevgraf>}\par}
+\setbox2\vbox{\noindent A\par\message{<plain=\the\prevgraf>}}
+\end

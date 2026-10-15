@@ -1,0 +1,42 @@
+[workspace]
+resolver = "3"
+members = ["crates/*"]
+
+[workspace.package]
+version = "0.3.1"
+edition = "2024"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/tertius-ai/aiTeX"
+rust-version = "1.90"
+# Not on crates.io yet. Beyond being true, this is what lets intra-workspace
+# path dependencies pass cargo-deny's wildcard check: it only forbids them for
+# crates that could actually be published.
+publish = false
+
+# `deny`, not `forbid`: unsafe stays banned across the workspace by default, but the
+# tight monolithic engine core (`fastcore`) — a single hot loop that must elide the
+# per-token abstraction tax to reach TeX speed — opts in with scoped
+# `#[allow(unsafe_code)]` + documented safety invariants. See docs/ARCHITECTURE.md §8.
+[workspace.lints.rust]
+unsafe_code = "deny"
+
+[workspace.lints.clippy]
+all = { level = "warn", priority = -1 }
+
+# Release is a perf target: benchmarked against pdfTeX (optimized C), so it must
+# use the optimizations "release" leaves off by default. `lto = "fat"` gives
+# cross-crate whole-program inlining -- the engine's hot token/expansion loop
+# crosses module and crate boundaries, so this is where it matters most --
+# and `codegen-units = 1` lets the optimizer see a whole crate at once. Slower to
+# build, dramatically not the point.
+[profile.release]
+lto = "fat"
+codegen-units = 1
+
+# A profiling build: same optimisation, but functions stay separate so a
+# profiler can attribute to them. `cargo build --profile profiling`.
+[profile.profiling]
+inherits = "release"
+lto = false
+codegen-units = 16
+debug = 1

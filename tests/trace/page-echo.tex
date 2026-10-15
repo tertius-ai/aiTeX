@@ -1,0 +1,41 @@
+% `tex.web` §638 and §640: the `[N]` a TeX job prints as it works.
+%
+%     if term_offset>max_print_line-9 then print_ln
+%     else if (term_offset>0)or(file_offset>0) then print_char(" ");
+%     print_char("["); j:=9;
+%     while (j>0)and(count(j)=0) do decr(j);
+%     for k:=0 to j do
+%       begin print_int(count(k)); if k<j then print_char("."); end;
+%
+% and §640 closes it — `if tracing_output<=0 then print_char("]")` — *after*
+% the page has actually gone out, so anything raised while shipping falls
+% between the two halves.
+%
+% It is `\count0` through the last nonzero one, dot-separated: `\count0` is
+% the page number, and a document that uses `\count1` for a part number gets
+% `[7.3]`. And it is written against the current column, so it joins whatever
+% line is in progress with a space in front — which is why this waited on a
+% printer that has a column at all. On a list of whole lines it would have
+% gone on one of its own: the right information in the wrong place.
+%
+% With `\tracingoutput` positive the same numbers appear inside §638's
+% `Completed box being shipped out [0]` announcement instead, which is a
+% different line and was already right — tests/showbox/tracingoutput.tex.
+\catcode`\{=1 \catcode`\}=2
+\hsize=100pt \parindent=0pt \vsize=20pt
+\font\r=cmr10 \r
+\hbadness=10000 \vbadness=10000
+\showthe\escapechar
+
+% Two pages at the default counters.
+A\par B\par
+
+% ...and two more with `\count1` set, so the number has two parts.
+\count0=7 \count1=3
+C\par
+
+% A `\message` leaves the line open, and the next `[N]` joins it.
+\message{after}
+D\par
+\showthe\escapechar
+\end

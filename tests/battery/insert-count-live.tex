@@ -1,0 +1,47 @@
+% `\count n`, `\dimen n` and `\skip n` are read at different moments, and
+% §1009 is precise about which.
+%
+% When an insertion reaches the page, TeX asks how much room `\output` will
+% need for it:
+%
+%     if count(n)=1000 then h:=height(p)
+%     else h:=x_over_n(height(p),1000)*count(n);
+%     if ((h<=0)or(h<=delta))and(height(p)+height(r)<=dimen(n)) then
+%       page_goal:=page_goal-h;
+%
+% `count(n)` and `dimen(n)` are read *there*, on every contribution. Only the
+% glue correction — `\skip n`'s width, and whatever `\box n` already holds — is
+% charged once, when the class's page-insertion node is created.
+%
+% This engine froze the whole set on the class's first contribution, so a class
+% kept whichever `\count` happened to be in force when its first insertion
+% landed. trip.tex sets `\count200=500` *between* insertions — that is what it
+% is testing — and every later `\pagegoal` was then computed from the
+% insertion's full height instead of half of it.
+%
+% The rounding is part of the answer. §1009 divides and *then* multiplies, so
+% the result is a multiple of 1000sp and always slightly short: 40pt with
+% `\count=500` takes 19.99666pt off the goal, not 20pt, and 145 - 19.99666
+% prints as 125.00336. `xn_over_d` would be exact and wrong.
+\input plain
+\output={\message{<OUT g=\the\pagegoal\space t=\the\pagetotal\space ip=\the\insertpenalties>}\shipout\box255}
+\vsize=200pt \maxdepth=4pt \topskip=10pt
+\dimen200=100pt \count200=1000 \skip200=5pt
+\message{<s0 g=\the\pagegoal\space t=\the\pagetotal>}
+\hbox{}\message{<s1 g=\the\pagegoal\space t=\the\pagetotal>}
+% The first insertion of its class pays the `\skip200` correction: 200 - 5 -
+% (20 x 1000/1000) = 175.
+\insert200{\hbox{}\vskip 20pt}
+\message{<s2 g=\the\pagegoal\space t=\the\pagetotal\space ip=\the\insertpenalties>}
+\vskip 10pt
+\message{<s3 g=\the\pagegoal\space t=\the\pagetotal>}
+% The second pays no correction, only its height: 175 - 30 = 145.
+\insert200{\hbox{}\vskip 30pt}
+\message{<s4 g=\the\pagegoal\space t=\the\pagetotal\space ip=\the\insertpenalties>}
+% And the third is rated at half, because `\count200` is read *now*.
+\count200=500
+\insert200{\hbox{}\vskip 40pt}
+\message{<s5 g=\the\pagegoal\space t=\the\pagetotal\space ip=\the\insertpenalties>}
+\vfill\penalty-10000
+\message{<s6 g=\the\pagegoal\space t=\the\pagetotal>}
+\end

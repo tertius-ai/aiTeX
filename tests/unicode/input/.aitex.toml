@@ -1,0 +1,5 @@
+[unicode]
+font = "Noto Sans"
+font-paths = ["../../../crates/aitex-fonts/tests/fonts"]
+language = "en"
+direction = "auto"

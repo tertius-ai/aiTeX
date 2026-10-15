@@ -1,0 +1,26 @@
+% `tex.web` §298, §342 and §791: what a `\tracingcommands` trace shows of an
+% alignment's cell boundaries.
+%
+% The `&` or `\cr` that ends a cell is read by the alignment machinery —
+% `fin_col` and `fin_row` — and never dispatched as a command, so §367 does not
+% see it. What it sees is the `endv` the template ends with, and §298 names
+% that for what it is:
+%
+%     endv: print("end of alignment template");
+%
+% not for the internal control sequence an implementation registers it under.
+%
+% We traced three things where TeX traces one: the tab or the `\cr`, and then
+% `{\endtemplate}` under its own name. In trip.log that is two surplus lines at
+% every cell of every alignment, and there are a lot of them.
+\catcode`\{=1 \catcode`\}=2 \catcode`\#=6 \catcode`\&=4
+\tracingonline=1
+\tracingcommands=1
+\font\rip=cmr10 \rip
+
+\setbox0\vbox{\halign{#&#\cr A&B\cr}}
+
+% `\valign`'s cells end the same way.
+\setbox1\hbox{\valign{#&#\cr\hbox{A}&\hbox{B}\cr}}
+\message{PROBE:done}
+\end

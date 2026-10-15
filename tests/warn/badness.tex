@@ -1,0 +1,53 @@
+% `tex.web` §660, §664 and §675: the four verdicts on a packed box.
+%
+%   stretching, finite glue:  b = badness(diff, avail)
+%                             b > \hbadness -> Underfull if b > 100 else Loose
+%   shrinking within capacity: b > \hbadness -> Tight
+%   shrinking past capacity:   over > \hfuzz or \hbadness < 100 -> Overfull
+%                              otherwise no report
+%
+% and §675 the same with \vbadness, \vfuzz, "too high" and \vbox.
+%
+% None of this existed here. `\hbadness`, `\vbadness` and `\vfuzz` were
+% registered parameters with nothing reading them, so the engine typeset an
+% overfull line and said nothing — the one report TeX makes about a box that is
+% wrong but still set, and the message users judge a typesetter by.
+%
+% §663's `common_ending` picks the tail, and the tail is where a plausible
+% implementation goes wrong: "in paragraph at lines N--M" against the line the
+% paragraph *started* on (§1091's `mode_line`), against "detected at line N" for
+% a box the document packed by hand.
+\catcode`\{=1 \catcode`\}=2
+\font\r=cmr10 \r \hsize=100pt \parindent=0pt \hbadness=100 \vbadness=100
+\tolerance=10000
+
+% --- boxes packed by hand: "detected at line N" ---------------------------
+\setbox0\hbox to 20pt{AAAAAAAAAA}
+\setbox1\hbox to 200pt{A}
+\setbox2\vbox to 50pt{\hbox{}}
+\setbox3\vbox to 5pt{\hbox{}\vskip 40pt}
+
+% --- lines of a paragraph: "in paragraph at lines N--M" --------------------
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA BB\par
+A\hskip 0pt plus 60pt B\par
+
+% a paragraph spanning several source lines, so the two numbers differ
+A\hskip 0pt plus 60pt
+B\par
+
+% --- what must stay quiet -------------------------------------------------
+% infinite glue absorbs anything, so \hss is never overfull and \hfil never
+% underfull — this is what \llap and \rlap are built on
+\setbox4\hbox to 20pt{\hss AAAAAAAAAA\hss}
+\setbox5\hbox to 200pt{A\hfil}
+% an empty list is never reported however far off it is
+\setbox6\hbox to 200pt{}
+\setbox7\vbox to 200pt{}
+% and a box that fits
+\setbox8\hbox to 200pt{A\hskip 0pt plus 200pt}
+% §664 does not reclassify overflow hidden by \hfuzz as Tight. Once finite
+% shrink is exhausted this takes the overfull branch, and a tolerated excess
+% returns without falling through to the ordinary finite-shrink badness test.
+\hfuzz=3pt \hbadness=100
+\setbox9\hbox to 10pt{A A A}
+\end

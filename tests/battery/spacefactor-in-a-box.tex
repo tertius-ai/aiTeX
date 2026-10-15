@@ -1,0 +1,60 @@
+% §1243's `alter_aux` decides whether `\spacefactor` may be set:
+%
+%     procedure alter_aux;
+%     var c:halfword; {|hmode| or |vmode|}
+%     begin if cur_chr<>abs(mode) then report_illegal_case
+%     else  begin c:=cur_chr; scan_optional_equals;
+%       if c=vmode then begin scan_normal_dimen; prev_depth:=cur_val; end
+%       else begin scan_int;
+%         if (cur_val<=0)or(cur_val>32767) then …
+%         else space_factor:=cur_val;
+%         end;
+%       end;
+%     end;
+%
+% The test is on `abs(mode)`, and `abs(mode)` is `hmode` for **restricted**
+% horizontal mode as much as for unrestricted — so `\spacefactor` is perfectly
+% legal inside an `\hbox`. We tested a mode field that only describes the
+% outermost list, so an `\hbox` was refused, and the error then read
+%
+%     ! You can't use `\spacefactor' in horizontal mode.
+%
+% naming the very mode it is allowed in.
+%
+% hyperref runs
+%
+%     \def\Hy@RestoreSpaceFactor{\relax
+%       \ifnum\spacefactor>\z@ \spacefactor=\Hy@SavedSpaceFactor \fi}
+%
+% inside the box every link is set in, so any document with a `\ref` or a
+% `\cite` in a box hit it. Three of the corpus's remaining twelve failed on it.
+\input plain
+% Reading it inside an `\hbox`: legal, and the value is the box's own.
+\setbox0=\hbox{A\message{<read=\the\spacefactor>}}
+% Setting it inside an `\hbox`, which is the case that was refused. 1200 is
+% what a `.` leaves behind, so the following space would be stretched.
+\setbox0=\hbox{A\spacefactor=1200 \message{<set=\the\spacefactor>}B}
+\message{<boxwd=\the\wd0>}
+% The same in unrestricted horizontal mode, which always worked.
+\setbox1=\vbox{\noindent X\spacefactor=999 \message{<par=\the\spacefactor>}Y\par}
+% Nested boxes: the inner one has its own space factor, and leaving it restores
+% the outer one — §1243 sets the *current* list's, not a global.
+\setbox0=\hbox{A\spacefactor=1500 \setbox2=\hbox{B\spacefactor=1100
+  \message{<inner=\the\spacefactor>}}\message{<outer=\the\spacefactor>}}
+% A value out of range is refused and the old one kept (§1243's "Bad space
+% factor"), which is a different branch from the mode test.
+\setbox0=\hbox{A\spacefactor=1300 \message{<before=\the\spacefactor>}}
+% An `\hbox` inside a running paragraph, one in math, and one two levels down.
+\setbox1=\vbox{\noindent A\hbox{B\spacefactor=1400
+  \message{<inpar=\the\spacefactor>}}C\par}
+\setbox0=\hbox{$x\hbox{A\spacefactor=1200 \message{<math=\the\spacefactor>}}y$}
+\setbox0=\hbox{\vbox{\noindent B\hbox{C\spacefactor=1350
+  \message{<deep=\the\spacefactor>}}\par}}
+%
+% None of these separates `abs(mode)` from the engine's mode field, because
+% opening a box sets both — so this file does **not** fail against a build with
+% the bug in it. It is coverage of §1243's legal cases, not a regression test
+% for the mode test itself. The evidence for that is the corpus: 2608.17639v1
+% and 2608.16845v1 each raised exactly one error before the fix and none after,
+% and 2608.15840v1 moved on to a different first error.
+\end

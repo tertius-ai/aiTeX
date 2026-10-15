@@ -1,0 +1,26 @@
+% \pdfstrcmp{A}{B} -- both arguments fully expanded, then compared as strings:
+% -1, 0 or 1, by character code. expl3 does not merely prefer it, it binds
+% \__str_if_eq:nn straight to it with no fallback, so every string comparison
+% in the LaTeX kernel needs it.
+\input plain
+\catcode`\@=11
+\def\M#1{\message{<#1>}}
+\M{eq=\pdfstrcmp{abc}{abc}}
+\M{lt=\pdfstrcmp{abc}{abd}}
+\M{gt=\pdfstrcmp{abd}{abc}}
+\M{prefix=\pdfstrcmp{ab}{abc}}
+\M{empty=\pdfstrcmp{}{}}
+\M{emptyb=\pdfstrcmp{}{a}}
+% The arguments are expanded, as in an \edef.
+\def\foo{XY}
+\M{expands=\pdfstrcmp{\foo}{XY}}
+% Control sequences compare by their printed form.
+\M{cs=\pdfstrcmp{\relax}{\relax}}
+\M{csdiff=\pdfstrcmp{\relax}{\hbox}}
+% By character code, so digits sort as text and case matters.
+\M{digits=\pdfstrcmp{10}{9}}
+\M{case=\pdfstrcmp{A}{a}}
+% And it is expandable: usable inside \edef and in a number scan.
+\edef\r{\pdfstrcmp{a}{b}}\M{edef=\meaning\r}
+\ifnum\pdfstrcmp{a}{a}=0 \M{innum=yes}\else\M{innum=no}\fi
+\bye

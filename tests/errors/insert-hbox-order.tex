@@ -1,0 +1,41 @@
+% `tex.web` §1009 and §1010: which comes first, the page's specifications or
+% the complaint about the register.
+%
+%     @<Append an insertion to the current page and |goto contribute|@>=
+%     begin if page_contents=empty then freeze_page_specs(inserts_only);
+%     ...
+%     subtype(r):=n; type(r):=inserting; ensure_vbox(n);
+%
+% `freeze_page_specs` is what prints `%% goal height=…, max depth=…`, and it
+% runs before `ensure_vbox` complains that `\box n` holds an `\hbox`. So the
+% complaint always sits under the line that says which page it is about.
+%
+% Ours read the class's three registers ahead of the builder rather than inside
+% it, so the complaint came out first and the page's specifications after it.
+% The check stays where it is — the register is emptied there, as §992 does —
+% and only the message waits for the builder to finish narrating.
+\catcode`\{=1 \catcode`\}=2
+\tracingonline=1
+\tracingpages=1
+\showboxbreadth=3 \showboxdepth=1
+\vsize=200pt \maxdepth=2pt
+\font\rip=cmr10 \rip
+\output={\shipout\box255}
+
+% Both of §1010's complaints about one class, in the order it makes them:
+% `ensure_vbox(n)` first, then the glue correction whose shrink is infinite.
+\dimen5=20pt \count5=1000 \skip5=0pt minus 1fil
+\setbox5=\hbox{\rip A}
+% The insertion is the first thing on the page, so it is what freezes the
+% specifications: a box ahead of it would have frozen them earlier and the
+% ordering would hold by accident.
+\insert5{\hbox{}\vskip 100pt\hbox{}}
+% The class is re-frozen on the next page, and §1009 would report the same
+% \skip again there. Making it finite now keeps this case to one report of
+% each: where the *second* one lands is tests/errors/insert-skip.tex's subject,
+% and the input stack it lands on is not yet TeX's.
+\skip5=0pt
+\vskip 300pt
+\hbox{}
+\message{PROBE:done}
+\end

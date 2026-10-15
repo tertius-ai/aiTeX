@@ -1,0 +1,22 @@
+% A catcode-10 character reads as a space token whose *character* is 32, not the
+% original (tex.web 344/345). Under LaTeX ^^I (tab) is catcode 10, so a tab in a
+% \read line must come back as a real space -- babel's delimited-parameter split
+% of a tab-separated language.dat line (`dumylang<TAB>dumyhyph.tex`) depends on
+% it. \readline (str mode) forces catcode 12, so there a tab stays a tab.
+\input plain
+\catcode`\^^I=10
+\newwrite\wout
+\immediate\openout\wout=probe.dat
+% Write a genuine tab between the two words (catcode 12 so \write emits it raw).
+\begingroup\catcode`\^^I=12
+  \immediate\write\wout{alpha^^Ibeta}
+\endgroup
+\immediate\closeout\wout
+\newread\rin
+\openin\rin=probe.dat
+\read\rin to\line
+% Split \line on the FIRST space. If the tab read as a space, #1=alpha, #2=beta.
+\def\split#1 #2\@@{\message{<first=#1|second=#2|>}}
+\expandafter\split\line\@@
+\closein\rin
+\bye

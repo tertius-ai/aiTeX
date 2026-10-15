@@ -1,0 +1,10 @@
+% `tex.web` §403 reports a missing mandatory left brace with `back_error`.
+% The offending token is therefore already on a backed-up input level when
+% §311 displays the context, whether it came from the file or a token list.
+\catcode`\{=1 \catcode`\}=2
+\font\r=cmr10 \r
+\setbox0=\hbox X}
+\message{PROBE:char=\the\wd0}
+\setbox1=\hbox\hfil}
+\message{PROBE:cs=\the\wd1}
+\end

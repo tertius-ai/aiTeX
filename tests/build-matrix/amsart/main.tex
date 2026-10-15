@@ -1,0 +1,49 @@
+\documentclass[11pt]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{microtype,hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\title{A Synthetic Mathematical Note}
+\author{A. Author}
+\address{Department of Reproducible Typesetting}
+\email{author@example.invalid}
+\date{September 2001}
+
+\begin{document}
+\begin{abstract}
+We record a compact theorem, alignment, matrix, and bibliography-free
+mathematical workload.
+\end{abstract}
+\maketitle
+
+\section{The statement}
+\begin{definition}
+A sequence $(a_n)$ is stable if $a_{n+1}=a_n$ for all sufficiently large $n$.
+\end{definition}
+
+\begin{lemma}\label{lem:finite}
+Every eventually constant sequence has a finite set of changes.
+\end{lemma}
+
+\begin{proof}
+Choose $N$ after which the sequence is constant. Only indices below $N$ can
+contribute a change.
+\end{proof}
+
+\begin{theorem}
+For $A=\begin{pmatrix}1&1\\0&1\end{pmatrix}$, one has
+\[
+  A^n=\begin{pmatrix}1&n\\0&1\end{pmatrix}.
+\]
+\end{theorem}
+
+\begin{align}
+ f(x+y) &= f(x)+f(y), \\
+ \frac{d}{dx}\int_0^x f(t)\,dt &= f(x).
+\end{align}
+See Lemma~\ref{lem:finite}.
+\end{document}

@@ -1,0 +1,60 @@
+% Five refusals from `tex.web`, each of which this engine simply proceeded on.
+%
+% §1129 — reaching `main_control` at all means the alignment machinery did not
+% take it, and that is the error:
+%
+%     procedure no_align_error;
+%     begin print_err("Misplaced "); print_esc("noalign");
+%     help2("I expect to see \noalign only after the \cr of")
+%       ("an alignment. Proceed, and I'll ignore this case."); error;
+%     end;
+%
+% We ignored it, which is the "proceed" without the complaint.
+%
+% §1082 — `\vsplit` wants its `to`, and says so *before* reading the dimension:
+%
+%     if not scan_keyword("to") then
+%       begin print_err("Missing `to' inserted");
+%       help2("I'm working on `\vsplit<box number> to <dimen>';")
+%       ("will look for the <dimen> next."); error;
+%       end;
+%     scan_normal_dimen;
+%
+% §503 — a comparison's relation is `<`, `=` or `>` and nothing else:
+%
+%     if (cur_tok>=other_token+"<")and(cur_tok<=other_token+">") then
+%       r:=cur_tok-other_token
+%     else begin print_err("Missing = inserted for ");
+%       print_cmd_chr(if_test,this_if);
+%       help1("I was expecting to see `<', `=', or `>'. Didn't.");
+%       back_error; r:="=";
+%       end;
+%
+% `back_error` matters: the offending token is read again as the start of the
+% second operand, so `\ifdim 1pt 2pt` compares 1pt with 2pt.  We assumed `=`
+% in silence *and* did not put the token back, so the operand was lost too.
+%
+% §1078 — the command after `\leaders<box>` must be the skip that repeats it,
+% and anything else throws the box away:
+%
+%     else begin print_err("Leaders not followed by proper glue");
+%     help3("You should say `\leaders <box or rule><hskip or vskip>'.")
+%     ("I found the <box or rule>, but there's no suitable")
+%     ("<hskip or vskip>, so I'm ignoring these leaders."); back_error;
+%     flush_node_list(cur_box);
+%     end;
+%
+% We kept the box waiting indefinitely, so it attached itself to whatever glue
+% came next, however far away.  Which skip is proper depends on the mode:
+% `\hskip` outside vertical mode, `\vskip` inside it.
+\catcode`\{=1 \catcode`\}=2 \catcode`\#=6 \catcode`\&=4
+\font\r=cmr10 \r \hsize100pt \parindent0pt
+\setbox0\vbox{\hbox{}}
+\vsplit0 5pt
+\count0=\ifdim 1pt 2pt 3\else 4\fi \showthe\count0
+\count1=\ifnum 1 2 3\else 4\fi \showthe\count1
+\leaders\hbox{}\kern3pt
+\noalign
+\omit
+\leaders\hbox{}\hskip3pt
+\end

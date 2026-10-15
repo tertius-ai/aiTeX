@@ -1,0 +1,12 @@
+% `tex.web` §§424, 690–692 and 716: an mlist mixes noads with ordinary
+% nodes. The latter display directly (without a `\mathord` nucleus wrapper),
+% retain mu units until conversion, and are visible to `\lastskip`. An
+% occupied subsidiary field hidden by `\showboxdepth` is shown as ` []` on
+% its noad's head line.
+\catcode`\{=1 \catcode`\}=2 \catcode`\$=3
+\tracingonline=1 \showboxbreadth=99
+\showboxdepth=1
+$${{}}\showlists$$
+\showboxdepth=99
+$$\vadjust{\penalty7}\mkern-9mu\nonscript\mskip9mu minus1fil\showthe\lastskip\discretionary{\kern1pt}{}{}\showlists$$
+\end

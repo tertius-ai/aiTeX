@@ -1,0 +1,63 @@
+%% max_print_line: default
+% `tex.web` §58: the transcript is a character stream with a hard right margin.
+%
+%     if file_offset=max_print_line then
+%       begin wlog_cr; file_offset:=0; end;
+%
+% Every printed character advances `file_offset`, and the line is broken the
+% instant it reaches the limit — so no line of a TeX log is ever wider than
+% `max_print_line`, and ours were: nineteen lines of our trip transcript ran
+% past it, the widest to 242 characters.
+%
+% The consequence that is easy to miss is what happens to a line whose length
+% is *exactly* the limit. It has already been ended by the wrap, so the
+% `print_ln` that was going to end it writes a blank line instead. §90 ends
+% every error with two of those, and §317 pads the second line of a truncated
+% context to exactly `error_line` — which is 79, which is also the default
+% `max_print_line`. So a long context is followed by two blank lines where a
+% short one is followed by one.
+%
+% This case runs at that default rather than the 1000 every other case here
+% uses, which is the only way to see any of it: at 1000 nothing wraps, in
+% either engine.
+\catcode`\{=1 \catcode`\}=2
+\hsize=100pt
+
+% Nothing here typesets: the long lines are long *comments*, so the context has
+% something to quote and the page stays empty.
+
+% Short context, help text: one blank line after the help.
+\count1=\undefinedshort
+\message{ONE}
+
+% Long context, help text: the context's second line fills the margin exactly,
+% and the help still follows it immediately — `print_nl` at column zero adds
+% nothing.
+\count2=\undefinedlong % aaaaaaaaaa bbbbbbbbbb cccccccccc dddddddddd eeeeeeeeee ffffffffff
+\message{TWO}
+
+% Short context, no help: `\showthe` reaches §90 with `help0`, so both of its
+% `print_ln`s show, and the first of them ends the padded line.
+\showthe\hsize
+% A message wider than the margin: TeX breaks it at exactly 79 characters and
+% carries on.
+%
+% §1279 puts one more rule in front of that — `if term_offset+length(s) >
+% max_print_line-2 then print_ln` — so a long message always starts on a line of
+% its own. `HEAD` here is what that `print_ln` ends; without something to end,
+% it would make a blank line, and deciding that needs the column this engine
+% does not track.
+\message{HEAD}\message{XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX}
+
+% Long context, no help: the padded line is exactly at the margin, so the first
+% `print_ln` makes a blank line of its own and there are two.
+\showthe\hsize % aaaaaaaaaa bbbbbbbbbb cccccccccc dddddddddd eeeeeeeeee ffffffffff
+\message{FOUR}
+
+% A report last, and one shipped page, so TeX's `[0]` and its closing `)` land
+% on a line of their own — which tools/trace_check.sh already drops — rather
+% than on the end of `FOUR`. A `\message` leaves the line open, and joining the
+% next thing onto it is the half of §58's column model this engine still lacks.
+\showthe\hsize
+\hbox{}
+\end

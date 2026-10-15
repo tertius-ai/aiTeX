@@ -1,0 +1,29 @@
+% `tex.web` §218 and §1296: the two blank lines a `\showlists` is wrapped in.
+%
+%     procedure show_activities;
+%     begin nest[nest_ptr]:=cur_list;
+%     print_nl(""); print_ln;
+%     for p:=nest_ptr downto 0 do
+%       begin print_nl("### "); …
+%
+% The `print_nl("")` ends whatever line was in progress and the `print_ln`
+% shows as a blank line before the first `### `. And §1296 ends the way §1293
+% does — `end_diagnostic(true); print_err("OK")` — which is another blank
+% between the display and its acknowledgement.
+%
+% Neither was here, so a `\showlists` ran straight on from the command before
+% it and straight into its own `! OK.`. In trip.log that is one line of
+% difference at each of nine `\showlists`, and every line after the first of
+% them out of step.
+\catcode`\{=1 \catcode`\}=2
+\tracingonline=1
+\showboxbreadth=2 \showboxdepth=1
+
+% A report first, so what follows starts at column zero in both engines.
+\showthe\escapechar
+\message{BEFORE}
+\hbox{}
+\showlists
+\message{AFTER}
+\showthe\escapechar
+\end

@@ -1,0 +1,100 @@
+% §400 states the rule it needs, and the reason, outright:
+%
+%     A slightly subtle point arises here: When the parameter delimiter ends
+%     with `\#\{', the token list will have a left brace both before and
+%     after the |end_match|. Only one of these should affect the
+%     |align_state|, but both will be scanned, so we must make a correction.
+%
+%     @<Advance r; goto found if the parameter delimiter has been fully...@>=
+%     begin r:=link(r);
+%     if (info(r)>=match_token)and(info(r)<=end_match_token) then
+%       begin if cur_tok<left_brace_limit then decr(align_state);
+%       goto found;
+%       end
+%     else goto continue;
+%     end
+%
+% §476 puts the `{` of a `#{` parameter text in two places: it delimits the
+% argument, and it is re-inserted at the head of the body. Both copies get
+% scanned, so without the correction one brace raises `align_state` twice and
+% its `}` only lowers it once.
+%
+% Nothing shows until the macro is used inside an alignment, and then §342's
+%
+%     if cur_cmd<=car_ret then if cur_cmd>=tab_mark then
+%       if align_state=0 then
+%       @<Insert the <v_j> template and goto restart@>
+%
+% never fires. hyperref writes `\def\Hy@href#{\hyper@normalise\href@}`, so an
+% `\href` inside `\author` left the counter one too high for the rest of the
+% `tabular` that `\maketitle` builds: `\endtabular`'s `\crcr` stopped being a
+% row boundary, reached `main_control`, and the two `\egroup`s behind it closed
+% a group too many. 2608.17815v1 shipped no pages at all.
+\input plain
+\catcode`\@=11
+% The shape hyperref uses: a `#{` macro called inside an alignment entry.
+\def\hb#{\relax}
+\setbox0=\vbox{\halign{#\hfil&#\hfil\cr
+  a&\hb{x}\cr
+  b&c\cr}}
+\message{<rows=\the\ht0>}
+% Two of them in one entry.
+\setbox0=\vbox{\halign{#\hfil&#\hfil\cr
+  a&\hb{x}\hb{y}\cr
+  b&c\cr}}
+\message{<twice=\the\ht0>}
+% A `#{` macro whose body opens a group of its own, so the brace it puts back
+% is not the only one in flight.
+\def\hc#{\hbox}
+\setbox0=\vbox{\halign{#\hfil&#\hfil\cr
+  a&\hc{x}\cr
+  b&c\cr}}
+\message{<opensbox=\the\ht0>}
+% With a preceding argument: `\def\x#1#{...}` delimits #1 by the brace.
+\def\hd#1#{[#1]}
+\setbox0=\vbox{\halign{#\hfil&#\hfil\cr
+  a&\hd P{x}\cr
+  b&c\cr}}
+\message{<witharg=\the\ht0>}
+% §400 lives in the *delimiter-matching* loop, so it applies however the `{`
+% arrives — not only when the parameter text is `#{` alone. Three routes reach
+% it and each needs the correction:
+%
+%   \def\hb#{…}       the brace is the whole parameter text
+%   \def\hd#1#{…}     the brace directly delimits an argument
+%   \def\hg#1x#{…}    the brace ends a *run* of delimiter tokens
+%
+% Only the first was corrected, which was enough for hyperref's
+% `\def\Hy@href#{…}` and no more. LaTeX's `\@yargd@f` — the macro that gives a
+% font command its arguments — builds `\def\reserved@a#15#2#{…}` and takes the
+% second route, so *loading a font shape* inside an alignment drifted:
+%
+%   \usepackage[T1]{fontenc}   \author{\texttt{q}}   \maketitle
+%
+% `\texttt` under T1 has to read `t1cmtt.fd`, that runs `\@yargd@f` inside the
+% `tabular` \maketitle builds, and `\endtabular`'s `\crcr` then arrives at
+% align_state=1 instead of 0. 2608.15339v1 shipped no pages.
+\def\hg#1x#{[#1]}
+\setbox0=\vbox{\halign{#\hfil&#\hfil\cr
+  a&\hg Px{y}\cr
+  b&c\cr}}
+\message{<litrun=\the\ht0>}
+% The shape \@yargd@f actually writes: a literal between two parameters, the
+% second delimited by the brace.
+\def\hh#1 5#2#{[#1|#2]}
+\setbox0=\vbox{\halign{#\hfil&#\hfil\cr
+  a&\hh A 5B{z}\cr
+  b&c\cr}}
+\message{<yargdef=\the\ht0>}
+% Each of the three, in one entry, so a correction applied twice shows up too.
+\setbox0=\vbox{\halign{#\hfil&#\hfil\cr
+  a&\hb{p}\hd Q{q}\hg Rx{r}\cr
+  b&c\cr}}
+\message{<allthree=\the\ht0>}
+% …and outside an alignment it must still behave: the brace is put back, so the
+% group it opens is closed by the matching `}`.
+\def\he#{(e:}
+\message{<outside=\detokenize\expandafter{\he{Q}}>}
+\setbox0=\hbox{\he{Q}}
+\message{<outsidebox=\the\wd0>}
+\end

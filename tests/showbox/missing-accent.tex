@@ -1,0 +1,10 @@
+% `tex.web` §1123 asks `new_character` for the accent before it scans the
+% character below. If the font has no accent glyph, TeX warns and stops the
+% accent operation immediately: the following A remains an ordinary character
+% and the missing accent contributes no kern or character node to the box.
+\catcode`\{=1 \catcode`\}=2
+\showboxdepth=2 \showboxbreadth=10 \tracingonline=0
+\font\r=cmr10 \r
+\setbox0=\hbox{\accent200 A}
+\showbox0
+\end

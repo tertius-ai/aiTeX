@@ -1,0 +1,14 @@
+\documentclass{article}
+\pagestyle{empty}
+\newcount\aitexpage
+\aitexpage=0
+\providecommand{\aitexqualificationpages}{10000}
+\begin{document}
+\loop
+  \advance\aitexpage by 1
+  \noindent aiTeX scale qualification page \number\aitexpage.
+  \vfill
+  \newpage
+\ifnum\aitexpage<\aitexqualificationpages
+\repeat
+\end{document}

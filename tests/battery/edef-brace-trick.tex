@@ -1,0 +1,32 @@
+% \edef/\xdef find their own closing brace by *expanding* as they scan.
+%
+% tex.web 477 (scan_toks with xpand set): a \iffalse ... \fi trick for
+% emitting a literal, unbalanced brace inside a body depends on this --
+% the brace is consumed as ordinary skipped text by the conditional, and
+% must never be seen by a counter that runs *before* expansion.
+%
+% Ours used to extract the body with a separate, purely textual brace
+% counter (read_group_with) before any expansion ran at all -- correct for
+% \def/\gdef, which read their body completely unexpanded, but backwards
+% for \edef/\xdef. The literal brace ended that extraction early, stranding
+% the matching \fi and everything after it in the live input, unseen by the
+% body scanner. expl3's l3iow uses exactly this trick to build its own
+% wrapped-line text, so \edef could never complete it -- the very first
+% real exercise of l3iow's line wrapping, expl3's own package-banner
+% announcement, ran straight into it.
+%
+% \def is unaffected and still ends its argument at the literal brace,
+% verified separately.
+\input plain
+\catcode`\:=11 \catcode`\_=11
+\def\M#1{\message{<#1>}}
+\let\if_false:\iffalse \let\fi:\fi
+\edef\a{\if_false: }\fi: ABC}
+\M{a=\meaning\a}
+\xdef\c{\if_false: }\fi: GLOBAL}
+\M{c=\meaning\c}
+\edef\d{X\if_false: }\fi: {nested}rest}
+\M{d=\meaning\d}
+\edef\f{\if_false: }\fi: A\if_false: }\fi: B}
+\M{f=\meaning\f}
+\bye

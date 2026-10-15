@@ -1,0 +1,9 @@
+% `tex.web` §1201 repacks a display to `\displaywidth` when its natural width
+% does not fit. That constrained pack goes through §663 just like an explicit
+% `\hbox to`, so a finite overfull formula ends with `\overfullrule`. The rule
+% has running height and depth and does not change the display box's dimensions.
+\input plain
+\showboxbreadth=9999 \showboxdepth=9999 \tracingonline=0
+\setbox0=\vbox{\hsize=10pt \noindent x\par $$AAAAAAAA$$}
+\showbox0
+\end

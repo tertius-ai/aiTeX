@@ -1,0 +1,29 @@
+[package]
+name = "aitex-engine"
+description = "TeX engine. Deps: serde + postcard only (state dump/restore) - see docs/history/PLAN.md decision 8."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+publish.workspace = true
+
+# The ONLY runtime dependencies are serde + postcard, a deliberate, reasoned
+# exception to the zero-dep posture (docs/history/PLAN.md decision 8): they power engine
+# state dump/restore, which is core product machinery -- the preamble snapshot
+# and incremental re-typesetting (docs/ARCHITECTURE.md §4-§5), not a niche add-on
+# -- so the feature would always be on in real builds and gating it was only
+# friction. Both are pure Rust, no_std, wasm-clean (proven on wasm32), and
+# permissively licensed. tools/check_zero_deps.py enforces that these are the
+# only external direct dependencies; `aitex-page` is first-party and itself
+# dependency-free.
+[dependencies]
+aitex-page = { path = "../aitex-page" }
+serde = { version = "1", default-features = false, features = ["derive", "alloc", "rc"] }
+postcard = { version = "1", default-features = false, features = ["alloc"] }
+
+[features]
+# Token-traffic performance counters (crate::counters). Zero cost when off.
+counters = []
+
+[lints]
+workspace = true

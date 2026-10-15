@@ -1,0 +1,14 @@
+% Original aiTeX fixture: pdfx must use the available pdfTeX creation-date
+% primitive and never enter its XeTeX-style shell-escape fallback.
+\documentclass{article}
+\usepackage[a-2b]{pdfx}
+\title{Safe shell-escape status}
+\author{aiTeX qualification}
+\date{September 2001}
+
+\begin{document}
+\maketitle
+\section{Disabled execution}
+The package loaded while shell execution remained disabled. Marker:
+PDFX-SHELL-ESCAPE-ZERO.
+\end{document}

@@ -1,0 +1,12 @@
+% `tex.web` §1372: `write_out` surrounds the stored write text with three
+% freshly installed token-list levels. In particular, its artificial opening
+% brace was never read before it is installed, so it must not receive the
+% `back_input` alignment-state adjustment. Otherwise each immediate write in
+% an alignment decrements `align_state`, and the following `\cr` is no longer
+% recognized as the row boundary.
+\catcode`\{=1 \catcode`\}=2 \catcode`\#=6 \catcode`\&=4
+\tracingonline=1 \tracingcommands=2
+\setbox0=\vbox{\halign{#\cr
+  \immediate\write-1{inside alignment}X\cr}}
+\immediate\write-1{after alignment}
+\end

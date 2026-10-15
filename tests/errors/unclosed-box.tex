@@ -1,0 +1,27 @@
+% `tex.web` §1094 and §1064: `\end` inside a box that was never closed.
+%
+% §1048 sends `hmode+stop` to `head_for_vmode`, and there, when the mode is
+% *internal* — `mode<0`, an \hbox being built — it is `off_save`:
+%
+%     else begin back_input;
+%       p:=get_avail; link(temp_head):=p;
+%       print_err("Missing ");
+%       ... info(p):=right_brace_token+"}"; print_char("}");
+%       print(" inserted"); ins_list(link(temp_head));
+%
+% `\end` goes back, the `}` the box is missing goes in front of it, and the
+% error says so. The `}` then closes the box and `\end` is read again in the
+% mode outside it, which is why this terminates rather than spinning — and why
+% three unclosed boxes give three errors, not one.
+%
+% A file ending `\setbox0\hbox{a` is the ordinary way to meet this. We ended
+% the job on the spot with the box still open, and said nothing at all.
+\catcode`\{=1 \catcode`\}=2
+\font\r=cmr10 \r
+
+% The marker is inside both boxes and still runs: the material up to `\end` is
+% read normally, and only `\end` itself triggers the insertion. Its position in
+% the sequence — before both errors, not after — is the part worth pinning.
+\setbox0\hbox{a\hbox{b
+\message{PROBE:inside-both-boxes}
+\end

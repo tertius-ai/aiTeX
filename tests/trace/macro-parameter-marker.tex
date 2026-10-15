@@ -1,0 +1,16 @@
+% `tex.web` §294 prints replacement-parameter tokens with the match character
+% from the macro's parameter text. Catcode 6 can be assigned to any character;
+% TRIP uses character 3 as well as `#`, and both body spellings below must be
+% shown with character 3 once they have become parameter-reference tokens.
+\catcode`\{=1 \catcode`\}=2 \catcode`\#=6 \catcode3=6
+\font\r=cmr10 \r \tracingonline=1
+\def\a^^C1{#1^^C1}
+\tracingmacros=1
+\a X
+\tracingmacros=0
+% A runaway definition prints the token list accumulated so far. Valid body
+% parameters use the parameter text's match character, while the invalid `#2`
+% recovery remains a doubled literal `#` followed by `2`.
+\outer\def\stop{}
+\def\b^^C1{#1#2\stop
+\end

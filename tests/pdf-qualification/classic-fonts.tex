@@ -1,0 +1,44 @@
+% Original synthetic classic-font workload for redistributable qualification.
+\documentclass[10pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,textcomp,latexsym,amsmath,graphicx}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\newcount\aitexfontpage
+\aitexfontpage=0
+\providecommand{\aitexqualificationpages}{12}
+
+\newcommand{\fontmatrix}{%
+  {\fontencoding{OT1}\fontfamily{lmr}\selectfont
+    OT1 Roman: office affine AV fi fl ``quoted'' -- punctuation.\par}
+  {\fontencoding{T1}\fontfamily{lmr}\selectfont
+    T1 Roman: R\'esum\'e; d\'ej\`a vu; \guillemotleft Stra\ss e\guillemotright.\par}
+  {\sffamily Sans serif medium, \textbf{bold}, \textsl{slanted}, and
+    \textit{italic} text at ten points.\par}
+  {\ttfamily Typewriter 0123456789: deterministic fixed-width data.\par}
+  {\small TS1: 20\textdegree C; \textnumero 7; 10\textperthousand;
+    \textcurrency\ \textbrokenbar\ \textcopyright\ \textregistered.\par}
+  \medskip
+  OML/OMS: $a + \alpha \rightarrow \beta \leq \Gamma \otimes x$.
+  OMX: $\displaystyle \sum_{i=0}^{n}x_i=
+    \left\{\frac{1}{1+x^2}\right\}^{\!2}$.
+  U/lasy: $\mho\ \Join\ \Box\ \Diamond\ \leadsto\ \sqsubset$.\par
+  \medskip
+  {\Large Large Roman}\quad{\footnotesize footnote sans \sffamily sample}\quad
+  {\bfseries\itshape bold italic office}.\par
+  \rotatebox{7}{\sffamily Rotated font resource page \number\aitexfontpage}
+  \quad
+  \scalebox{1.15}[0.9]{\ttfamily transformed 0123456789}.\par
+}
+
+\begin{document}
+\loop
+  \advance\aitexfontpage by 1
+  {\Large\bfseries Classic font matrix \number\aitexfontpage}\par\medskip
+  \fontmatrix
+  \vfill
+  Classic font qualification page \number\aitexfontpage\hfill aiTeX
+  \newpage
+\ifnum\aitexfontpage<\aitexqualificationpages
+\repeat
+\end{document}

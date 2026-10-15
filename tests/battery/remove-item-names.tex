@@ -1,0 +1,15 @@
+% `tex.web` §1105 and §298: the three removers are three `chr` values of one
+% command, so `\meaning` names each for itself — including through a `\let`
+% alias, where TeX names the primitive the alias came from.
+%
+% Collapsing them onto one primitive made `\meaning\unkern` say `\unskip`, the
+% same shape as `\cleaders` and the one-character primitives before it. A
+% document that compares `\meaning` strings — expl3 does — compares the wrong
+% one.
+\catcode`\{=1 \catcode`\}=2
+\message{<skip=\meaning\unskip>}
+\message{<kern=\meaning\unkern>}
+\message{<penalty=\meaning\unpenalty>}
+\let\z=\unkern
+\message{<alias=\meaning\z>}
+\end

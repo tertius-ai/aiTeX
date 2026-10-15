@@ -1,0 +1,78 @@
+% §1035's `wrapup` puts an empty discretionary after an explicit hyphen:
+%
+%     @d wrapup(#)==if cur_l<non_char then
+%       begin if link(cur_q)>null then
+%         if character(tail)=qi(hyphen_char[main_f]) then ins_disc:=true;
+%       if ligature_present then pack_lig(#);
+%       if ins_disc then
+%         begin ins_disc:=false;
+%         if mode>0 then tail_append(new_disc);
+%         end;
+%       end
+%
+% That empty discretionary is the breakpoint after `well-` in `well-known`.
+% §869 charges `\exhyphenpenalty` for it rather than `\hyphenpenalty`, because
+% its pre-break list is empty — there is no second hyphen to set.
+%
+% `wrapup` runs when the *character run* ends, so the discretionary lands
+% immediately after the hyphen and before whatever ended the run. In
+% `length-$a$` the run ends at the `$`, and the node order is
+%
+%     l e n g t h - \discretionary  <math> a <math>
+%
+% not `… - <math> a <math> \discretionary`. Putting it after the formula moves
+% the breakpoint one atom to the right, which makes the line that ends there
+% longer and its badness lower — so a first pass that TeX cannot complete
+% within `\pretolerance` succeeded here instead, the paragraph never reached
+% the second pass, and a word TeX hyphenates came out whole. 2608.18024v1
+% matched pdfTeX's 60 pages and was 14 characters short, all of them hyphens.
+%
+% `mode>0` in the last line is why this is a *paragraph* and not an `\hbox`:
+% restricted horizontal mode gets no such discretionary at all.
+\catcode`\{=1 \catcode`\}=2 \catcode`\$=3
+% Without this the font's `\hyphenchar` is `\defaulthyphenchar`, which INITEX
+% leaves at 0 — §1035 compares the character against it and never fires, so
+% every case below shows no discretionary in *either* engine and the file
+% asserts nothing. plain.tex sets `\defaulthyphenchar` to `\-`; this file does
+% not load plain.
+\font\r=cmr10 \r \hyphenchar\r=`\- \hsize=200pt \parindent=0pt
+\font\mi=cmmi10 \font\sy=cmsy10 \font\ex=cmex10
+\textfont0=\r \scriptfont0=\r \scriptscriptfont0=\r
+\textfont1=\mi \scriptfont1=\mi \scriptscriptfont1=\mi
+\textfont2=\sy \scriptfont2=\sy \scriptscriptfont2=\sy
+\textfont3=\ex \scriptfont3=\ex \scriptscriptfont3=\ex
+\showboxdepth=2 \showboxbreadth=2000 \tracingonline=0
+
+% The discretionary has to be looked for in the *unbroken* horizontal list:
+% `\showbox` of the finished `\vbox` shows the lines after `post_line_break`,
+% and there the placement difference does not survive. `\showlists` in the
+% middle of the paragraph is what sees it. (A `\showbox` version of these cases
+% passed happily against a build that placed the node two positions late.)
+%
+% A hyphen with a formula straight after it: the run ends at the `$`, so the
+% discretionary goes between the hyphen and `\mathon` —
+%
+%     h - \discretionary \mathon a \mathoff
+%
+% not after the formula, and not after the space that follows it.
+\noindent length-$a$ submodules\showlists
+\par
+
+% A hyphen at the end of an ordinary word, the everyday case: the run ends at
+% the space.
+\noindent well-known result\showlists
+\par
+
+% Two hyphens running, then a formula.
+\noindent a--$b$\showlists
+\par
+
+% A hyphen with *nothing* after it: no further node is appended, so the only
+% thing that can put the discretionary down is the run ending at `\showlists`.
+\noindent trailing-\showlists
+\par
+
+% In restricted horizontal mode there is no discretionary at all: `mode>0`.
+\setbox0=\hbox{length-$a$}
+\showbox0
+\end

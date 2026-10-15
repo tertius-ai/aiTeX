@@ -1,0 +1,13 @@
+[package]
+name = "aitex-page"
+description = "Dependency-free positioned page events shared by aiTeX backends"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+publish.workspace = true
+
+[dependencies]
+
+[lints]
+workspace = true

@@ -1,0 +1,84 @@
+% Parameter texts: undelimited, multiple, delimited, and TeX's `#{` (476).
+\input plain
+\def\a#1{(a:#1)}\message{<\a{X}>}
+\def\b#1#2{(b:#1|#2)}\message{<\b{X}{Y}>}
+\def\c[#1]{(c:#1)}\message{<\c[X]>}
+\def\d#1,#2.{(d:#1|#2)}\message{<\d X,Y.>}
+\long\def\h#1{(h:#1)}\message{<\h{X}>}
+% `#{` leaves the brace in the input, so it still opens a group: the
+% assignment inside is local and reverts.
+\count0=1 \def\f#{(f:}\message{<\f{\count0=2 }>}\message{<after=\the\count0>}
+% `#{` delimits the *preceding* parameter -- it does not introduce one.
+% `\def\g#1#{...}` gives #1 everything up to the brace, so `\g AB{x}` binds
+% `AB`. This is how expl3 reads a parameter text as an argument, and reading
+% the `#` as a parameter of its own silently truncates it to one token.
+\def\g#1#{(g:#1)}\message{<brace-delim=\g AB{x}>}
+\def\h#1#2#{(h:#1|#2)}\message{<brace-delim2=\h A BC{x}>}
+\message{<brace-meaning=\meaning\g>}
+% And with nothing before it, it binds nothing and only requires the brace.
+\def\k#{(k:}\message{<brace-bare=\k{Z}>}
+% A delimiter may be several tokens, and matching it needs *backtracking*:
+% tex.web 392 keeps a partial-match buffer and backs up when a delimiter starts
+% to match and does not finish, because the tokens matched so far turn out to
+% belong to the argument. Committing to the first token instead makes any such
+% macro fail whenever that token appears alone earlier in the argument.
+%
+% expl3 depends on this: \__prg_generate_conditional_test:w is delimited by
+% \prg_return_true:\else:\prg_return_false:\fi: and is deliberately fed bodies
+% containing \prg_return_true: on its own -- that is how it tells a "fast"
+% conditional from a slow one.
+\def\dlmA{} \def\dlmB{} \def\dlmC{} \def\other{}
+\def\pick#1\dlmA\dlmB{(got:#1)}
+\message{<simple=\pick XY\dlmA\dlmB>}
+\message{<firstalone=\pick X\dlmA Y\dlmA\dlmB>}
+\message{<falsestart=\pick X\dlmA\other Y\dlmA\dlmB>}
+\def\three#1\dlmA\dlmB\dlmC{(3:#1)}
+\message{<threetoken=\three A\dlmA B\dlmA\dlmB C\dlmA\dlmB\dlmC>}
+% A group hides a would-be delimiter entirely.
+\def\grp#1\dlmA\dlmB{(g:#1)}
+\message{<grouped=\grp {X\dlmA\dlmB Y}\dlmA\dlmB>}
+% And a single-token delimiter still behaves.
+\def\one#1\dlmA{(1:#1)}
+\message{<single=\one PQ\dlmA>}
+% `#` is processed while a body is *read*, not afterwards (tex.web 477). A `#`
+% in the source is halved or becomes a parameter reference; whatever the
+% expansion produces is appended as it stands and is NOT re-examined.
+%
+% Expanding first and parsing `#` in the result rejects a parameter character
+% that arrived through \the or \exp_not:N -- which is what expl3 produces once
+% \char_set_catcode_parameter:n has made a character catcode 6.
+\edef\ha{##}\message{<halve=\meaning\ha>}
+\toks0={##}
+\edef\hb{\the\toks0}\message{<viatoks=\meaning\hb>}
+\edef\hc{X\the\toks0 Y}\message{<viatoksmid=\meaning\hc>}
+% A parameter reference in an \edef body survives its expansion.
+\def\houter#1{\edef\hd{[#1]}}\houter{Q}\message{<ref=\meaning\hd>}
+\def\hmk#1{\edef\he{\noexpand\relax #1}}\hmk{Z}\message{<refprot=\meaning\he>}
+% And an unexpanded \def is unchanged.
+\def\hf{##}\message{<plaindef=\meaning\hf>}
+% Reading, expanding and `#` handling happen in ONE pass (tex.web 477-478), and
+% neither shortcut works. Expanding first and parsing `#` afterwards
+% re-examines characters that never came from the source; parsing `#` first and
+% expanding afterwards halves the `##` inside an \unexpanded, which TeX leaves
+% alone. The `\the` family is the one exception: its result is appended
+% verbatim.
+\def\gput#1#2{\xdef#1{\unexpanded\expandafter{#1 #2}}}
+\def\store{OLD}
+\def\csA{} \def\mystery{} \def\csB{}
+\gput\store{\csA \mystery {A}{B}}
+\message{<gput=\meaning\store>}
+\gput\store{\csB}
+\message{<gputtwice=\meaning\store>}
+% A parameter character *inside* the protected group keeps both its `#`s.
+\def\storeb{OLD}
+\gput\storeb{\def\tmp##1{[##1]}}
+\message{<protectedhash=\meaning\storeb>}
+% While one read from the source is still halved.
+\edef\hg{##}\message{<sourcehash=\meaning\hg>}
+% And a reference still resolves.
+\def\wrap#1{\edef\hh{<#1>}}\wrap{V}\message{<refstill=\meaning\hh>}
+% A \protected macro does not expand in an \edef body -- that is what
+% \protected is for, and expl3 marks most of its kernel that way.
+\protected\def\prot{PROT}\def\plain{PLAIN}
+\edef\pa{\prot\plain}\message{<protected=\meaning\pa>}
+\bye

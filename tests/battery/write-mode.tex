@@ -1,0 +1,50 @@
+% `tex.web` §1372: `write_out` expands a `\write`'s text with `mode := 0`.
+%
+% Mode zero is none of vertical, horizontal or math, and it is not inner
+% either, so all four mode tests are FALSE inside a `\write` — wherever the
+% write sits, and whichever `\write` it is. That is the point: a deferred
+% write is expanded when the page ships, not where it was written, so any
+% answer about "the current mode" would describe somewhere the document never
+% asked about. TeX's answer is to describe nowhere.
+%
+% The same `mode := 0` is what disables `\lastskip`, `\lastkern`,
+% `\lastpenalty`, `\lastnodetype`, `\prevdepth` and `\spacefactor` in a write,
+% which this engine already honoured — but the mode *tests* still reported the
+% real mode, so `\ifhmode` inside a `\write` in an `\hbox` said yes where TeX
+% says no.
+%
+% It went unnoticed because it is nearly unobservable from a document: it
+% changes what a diagnostic reports, not what gets typeset. It surfaced from
+% the other direction — a probe written to find out which mode amsmath's
+% `align` was in kept disagreeing with pdfTeX, and the probe was right and the
+% engine was wrong.
+\catcode`\{=1 \catcode`\}=2 \catcode`\#=6
+\font\testfont=cmr10 \testfont
+\hsize=100pt \vsize=100pt
+
+% The battery compares only what a case prints inside angle brackets.
+\def\modes{<v=\ifvmode Y\else N\fi/h=\ifhmode Y\else N\fi/%
+            m=\ifmmode Y\else N\fi/i=\ifinner Y\else N\fi>}
+
+% Outer vertical mode.
+\immediate\write17{VERT \modes}
+
+% Restricted horizontal mode.
+\setbox0\hbox{A\immediate\write17{HBOX \modes}}
+
+% Internal vertical mode.
+\setbox0\vbox{\immediate\write17{VBOX \modes}}
+
+% Non-display math, which is both math and inner.
+\setbox0\hbox{$x\immediate\write17{MATH \modes}$}
+
+% Unrestricted horizontal mode: a real paragraph, not a box.
+\setbox0\vbox{\noindent A\immediate\write17{HORIZ \modes}\par}
+
+% Outside a write the same tests report the real mode, which is what makes the
+% ones above a statement about `\write` and not about the tests.
+\message{CONTROL-VERT \modes}
+\setbox0\hbox{A\message{CONTROL-HBOX \modes}}
+\setbox0\vbox{\message{CONTROL-VBOX \modes}}
+
+\end

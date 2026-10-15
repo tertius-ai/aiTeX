@@ -1,0 +1,33 @@
+% `tex.web` §68's `print_ASCII` calls §59's `print`, and §59 has a case
+% *before* any `^^` form:
+%
+%     if (@<Character |s| is the current new-line character@>) then
+%       if selector<pseudo then
+%         begin print_ln; return;
+%         end;
+%
+% So the character equal to `\newlinechar` prints as an actual line break —
+% in a box display, in a `short_display`, everywhere `print` is used.
+%
+% INITEX leaves `\newlinechar` at nought and `\defaulthyphenchar` at nought
+% too, so a font loaded without one hyphenates with character 0 and TeX writes
+% that hyphen as a line break.  That is what `\setbox0\hbox{A\-A}\showbox0`
+% shows below: `..\r ` and then nothing, where we wrote `^^@`.
+%
+% It is not only that corner: LaTeX commonly sets `\newlinechar` to `^^J`, so
+% any document that sets it and shows a box is affected.
+%
+% `detok_toks_string` already had the rule for `\message` and `\write`; this is
+% the same rule reaching the printers that go through §59.
+\catcode`\{=1 \catcode`\}=2 \catcode`\^=7
+\font\r=cmr10 \r \hsize100pt \parindent0pt
+\showboxbreadth99 \showboxdepth99 \tracingonline0
+% \hyphenchar defaults to \defaulthyphenchar, which INITEX leaves at nought.
+\setbox0\hbox{A\-A}\showbox0
+% With \newlinechar elsewhere, character 0 prints in its `^^` form again.
+\newlinechar=`\^^J
+\setbox1\hbox{A\-A}\showbox1
+% And the character that *is* \newlinechar prints as a break.
+\catcode1=11
+\setbox2\hbox{A^^AA}\newlinechar=1 \showbox2
+\end

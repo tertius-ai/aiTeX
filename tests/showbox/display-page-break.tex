@@ -1,0 +1,35 @@
+% `tex.web` §1145 breaks the paragraph a display interrupts, and does *not*
+% build the page:
+%
+%     else  begin line_break(display_widow_penalty);@/
+%       @<Calculate the natural width, |w|, ...@>;
+%       end;
+%
+% §1096's `end_graf` does end with `build_page`, and this engine's
+% `end_paragraph` is `end_graf` — so a display ran the page builder one step
+% early, before the display box had joined the vertical list. The page the
+% display belongs to was shipped without it, and the display then arrived at
+% the head of a fresh page: `\topskip` above it instead of `\abovedisplayskip`,
+% its `\predisplaypenalty` discarded as a top-of-page discardable, and the rest
+% of the interrupted paragraph set *below* it.
+%
+% The page is next weighed in §1200, after §1205 has appended the box:
+%
+%     procedure resume_after_display;
+%     ... if nest_ptr=1 then build_page;
+%
+% Only a paragraph that spans the break shows it. Everything here is sized so
+% that it does: the page holds four lines, the paragraph runs to seven, and the
+% display sits at its end.
+\input plain
+\showboxdepth=4 \showboxbreadth=100 \tracingonline=0 \tracingoutput=1
+\output={\shipout\box255}
+\hsize=100pt \vsize=60pt \maxdepth=2pt \topskip=10pt \parindent=0pt
+\predisplaypenalty=10000 \abovedisplayskip=5pt \belowdisplayskip=5pt
+\abovedisplayshortskip=1pt \belowdisplayshortskip=1pt
+one two three four five six seven eight nine ten eleven twelve thirteen
+fourteen fifteen sixteen seventeen eighteen
+$$x=1$$
+after the display.
+\vfill\penalty-10000
+\end

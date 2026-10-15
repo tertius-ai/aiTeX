@@ -1,0 +1,33 @@
+% \pdffilesize -- and above all, that it is *expandable*.
+%
+% This was a stomach primitive that pushed its digits back onto the input.
+% That works when it is reached from the main loop and fires nowhere else:
+% inside \expanded or an \edef body the gullet never hands off to the stomach,
+% so the call came back out as macro text. expl3 reaches it only through
+% \exp_args:Ne -- \__file_full_name_auxi:nn {\__file_size:n {#1}} -- so every
+% file lookup in the kernel compared macro text where a number belonged, and
+% latex.ltx stopped on a bad number.
+%
+% The empty expansion for an absent file is not an edge case, it is the
+% interface: it is how LaTeX asks whether a file is there.
+\input plain
+\def\M#1{\message{<#1>}}
+\M{direct=\pdffilesize{b.tex}}
+\M{absent=[\pdffilesize{no-such-file-xyz.tex}]}
+\edef\r{\pdffilesize{b.tex}}\M{edef=\r}
+\M{expanded=\expandafter\relax\expanded{{\pdffilesize{b.tex}}}}
+\M{absentexp=\expandafter\relax\expanded{{[\pdffilesize{no-such-file-xyz.tex}]}}}
+\ifnum\pdffilesize{b.tex}>0 \M{ifnum=positive}\else\M{ifnum=zero}\fi
+% The argument is a general text, fully expanded before use.
+\def\nm{b.tex}
+\M{viamacro=\pdffilesize{\nm}}
+\edef\s{\pdffilesize{\nm}}\M{viamacroedef=\s}
+% The \exp_args:Ne shape itself: \expandafter through \expanded.
+\long\def\eargs#1#2{\expandafter#1\expanded{{#2}}}
+\def\auxi#1{[size=#1]}
+\M{shape=\eargs\auxi{\pdffilesize{b.tex}}}
+% An absent file through the same shape -- the argument arrives empty.
+\M{shapeabsent=\eargs\auxi{\pdffilesize{nope.tex}}}
+\count0=\pdffilesize{b.tex}\relax
+\M{count=\the\count0}
+\bye

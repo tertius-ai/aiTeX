@@ -1,0 +1,43 @@
+% `tex.web` §1194 and §1195: what is left of a display whose fonts are missing.
+%
+%     begin danger:=false;
+%     @<Check that the necessary fonts for math symbols are present; if not,
+%       flush the current math lists and set |danger:=true|@>;
+%     m:=mode; l:=false; p:=fin_mlist(null);
+%     …
+%     else begin if a=null then @<Check that another \$ follows@>;
+%       @<Finish displayed math@>;
+%       end;
+%
+% §718's `flush_math` empties the formula's list. It does not pop the nest, and
+% §1194 does not return: "Finish displayed math" runs over an empty list, so
+% the display still contributes \predisplaypenalty, its display skips, the
+% baselineskip glue above it, an empty hbox centred in \displaywidth, and
+% \postdisplaypenalty.
+%
+% We returned as soon as `danger` was set and appended nothing at all, which
+% cost the vbox here 12pt — the \baselineskip glue above a box that was never
+% there. That is invisible in INITEX's own defaults, where every one of those
+% glues is zero and both answers give the same height; it takes a document
+% that has set its display skips, which is every real one.
+\catcode`\{=1 \catcode`\}=2 \catcode`\$=3
+\tracingonline=1 \showboxbreadth=99 \showboxdepth=99
+\hsize=100pt \parindent=0pt
+\baselineskip=12pt \abovedisplayskip=7pt \belowdisplayskip=9pt
+\abovedisplayshortskip=3pt \belowdisplayshortskip=5pt
+\predisplaypenalty=101 \postdisplaypenalty=102
+\font\rm=cmr10 \textfont0=\rm \scriptfont0=\rm \scriptscriptfont0=\rm \rm
+\font\mi=cmmi10 \textfont1=\mi \scriptfont1=\mi \scriptscriptfont1=\mi
+
+% Family 2 is absent, so this display is deleted — and still framed.
+\setbox0\vbox{\noindent A$$B$$C\par}
+\showbox0
+
+% The same with the fonts in place, for the shape the deletion is measured
+% against: the empty hbox above becomes a real one, and it is centred by the
+% same rule.
+\font\sy=cmsy10 \textfont2=\sy \scriptfont2=\sy \scriptscriptfont2=\sy
+\font\ex=cmex10 \textfont3=\ex \scriptfont3=\ex \scriptscriptfont3=\ex
+\setbox1\vbox{\noindent A$$B$$C\par}
+\showbox1
+\end

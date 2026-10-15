@@ -1,0 +1,3 @@
+./main.tex:3: Undefined control sequence.
+l.3 \rotatebox
+                {90}{rotated text}

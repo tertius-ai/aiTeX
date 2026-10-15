@@ -1,0 +1,13 @@
+\input plain
+\catcode`\@=11
+\def\my@greet#1{Hello, #1!}
+\count0=3
+\def\thrice#1{#1#1#1}
+\edef\frozen{\number\count0}
+\count0=99
+\my@greet{world} The counter was \frozen{} at definition time and is
+\number\count0{} now. \thrice{Ho! }
+\ifnum\count0>50 That is a large number.\else That is small.\fi
+\message{engine ran: count0=\number\count0}
+\end
+\bye

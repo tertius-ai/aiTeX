@@ -1,0 +1,13 @@
+% A hex/octal number's digits arrive by expansion (tex.web reads them with
+% get_x_token). LaTeX's \set@mathchar builds "\mathchar@type#3\hexnumber@#1#4,
+% whose hex digits are macros; a scanner that stops at the first unexpanded
+% macro reads zero digits and fails. Both number scanners -- the gullet's and
+% the stomach's scan_radix (used by \count/\mathcode/\advance) -- must expand.
+\input plain
+\def\hd{A}\def\od{7}
+\count0="\hd5\relax \message{<a=\the\count0>}%           " A5 = 165
+\count1='\od3\relax \message{<b=\the\count1>}%           ' 73 octal = 59
+\count2=\numexpr"\hd\hd\relax \message{<c=\the\count2>}%  "AA = 170
+% \advance target and value both expanded
+\count3=16 \advance\count3 by "\hd\relax \message{<d=\the\count3>}% 16+10=26
+\bye

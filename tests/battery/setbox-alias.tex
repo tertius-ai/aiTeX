@@ -1,0 +1,19 @@
+% \setbox resolves its box-constructor keyword through \let.
+%
+% expl3 renames \hbox to \tex_hbox:D and writes \setbox0=\tex_hbox:D{...}
+% throughout the kernel -- matching the raw spelling "hbox" instead of
+% resolving through the \let binding made every one of those report
+% "\\setbox needs a box, got \\tex_hbox:D" for a perfectly good box.
+\input plain
+\catcode`\:=11 \catcode`\_=11
+\def\M#1{\message{<#1>}}
+\let\tex_hbox:D\hbox \let\tex_vbox:D\vbox \let\tex_setbox:D\setbox
+\setbox0=\tex_hbox:D{}
+\M{a=setbox-hbox-ok}
+\tex_setbox:D1=\tex_vbox:D{}
+\M{b=setbox-vbox-via-alias-ok}
+\setbox2=\box0
+\M{c=\the\wd2}
+\setbox3=\copy2
+\M{d=done}
+\bye

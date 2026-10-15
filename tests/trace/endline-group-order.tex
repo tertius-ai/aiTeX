@@ -1,0 +1,13 @@
+% An alphabetic constant made from an end-group character consumes the
+% character but compensates align_state (§442).  When that character is also
+% the newly assigned \endlinechar, the following physical line ends the group.
+% Scanner lookahead loads that following line while the old value is still in
+% force, so its terminator must stay absent after the assignment takes effect.
+\catcode`\{=1 \catcode`\}=2
+\tracingonline=1 \tracingcommands=2 \tracingrestores=2
+\muskipdef\m=3 \m=1mu
+{\endlinechar=-1
+\endlinechar=`}
+\global\multiply\m by 2
+\showthe\m
+\end

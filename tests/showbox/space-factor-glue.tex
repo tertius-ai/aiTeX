@@ -1,0 +1,56 @@
+% `tex.web` §1041, §1044 and §1045: which glue an interword space becomes, and
+% what it is called afterwards.
+%
+% §1044 `app_space`, when the space factor is not 1000:
+%
+%     if (space_factor>=2000)and(xspace_skip<>zero_glue) then
+%       q:=new_param_glue(xspace_skip_code)
+%     else begin if space_skip<>zero_glue then main_p:=space_skip
+%       else <the font's own interword glue>;
+%       main_p:=new_spec(main_p);
+%       <modify main_p according to the space factor>;
+%       q:=new_glue(main_p); end
+%
+% and §1045's modification:
+%
+%     if space_factor>=2000 then width(main_p):=width(main_p)+extra_space(cur_font);
+%     stretch(main_p):=xn_over_d(stretch(main_p),space_factor,1000);
+%     shrink(main_p):=xn_over_d(shrink(main_p),1000,space_factor)
+%
+% Two things were wrong here, and both are visible only in a box display.
+%
+% The `extra_space` was added to the font's own glue but not to a `\spaceskip`,
+% on the theory that a `\spaceskip` brings none of its own. §1045 modifies
+% `main_p` whatever it is. `\spaceskip=3pt plus 2pt` at factor 2000 is
+% 4.11111pt wide in TeX — 3pt plus cmr10's `\fontdimen7` — and was 3pt here.
+%
+% And the *name*: §1041 uses the parameter as-is at factor 1000, so the node
+% records which parameter it was (`new_param_glue`) and `\showbox` prints
+% `\glue(\spaceskip)`. Once §1045 has scaled it the glue is its own
+% (`new_glue`) and has no subtype at all — which is how a box display tells a
+% scaled space from an unscaled one. We printed neither name.
+%
+% Found by diffing trip.tex's sixth shipped page, where TeX has
+% `\glue(\xspaceskip) -1.0` and we had an ordinary font space.
+\catcode`\{=1 \catcode`\}=2
+\font\r=cmr10 \r \hsize=200pt
+\showboxdepth=2 \showboxbreadth=9 \tracingonline=0
+\xspaceskip=7pt plus 1pt \spaceskip=3pt plus 2pt
+
+% factor 2000 with \xspaceskip set: used outright, and named
+\sfcode`\A=2000
+\setbox0\hbox{A B}\showbox0
+
+% factor 1000: \spaceskip used as-is, and named
+\sfcode`\A=1000
+\setbox1\hbox{A B}\showbox1
+
+% factor 2000 with \xspaceskip zero: \spaceskip modified — width plus
+% \fontdimen7, stretch scaled up, shrink scaled down — and unnamed
+\xspaceskip=0pt \sfcode`\A=2000
+\setbox2\hbox{A B}\showbox2
+
+% ...and with no \spaceskip either, the font's own glue, modified the same way
+\spaceskip=0pt
+\setbox3\hbox{A B}\showbox3
+\end

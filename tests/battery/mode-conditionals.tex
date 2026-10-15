@@ -1,0 +1,17 @@
+% \ifvmode/\ifhmode/\ifmmode/\ifinner are expandable conditionals (tex.web
+% 487), so expl3's \mode_if_horizontal:TF and friends run \if_mode_horizontal:
+% (=\ifhmode) in the gullet. They were implemented only in the stomach, so an
+% expandable use was undefined and latex.ltx stalled defining commands that
+% branch on the mode. The mode is the stomach's, mirrored onto the gullet.
+\input plain
+\def\M#1{\message{<#1>}}
+% at the top level the mode is outer vertical.
+\M{v=\ifvmode V\else o\fi}
+\M{h=\ifhmode H\else o\fi}
+\M{m=\ifmmode M\else o\fi}
+\M{i=\ifinner I\else o\fi}
+% in a gullet expansion (\edef) rather than executed directly.
+\edef\x{\ifvmode yes\else no\fi/\ifhmode y\else n\fi}\M{edef=\x}
+% inside \hbox the mode is (restricted) horizontal and inner.
+\setbox0=\hbox{\message{<box=\ifhmode H\else o\fi\ifinner I\else o\fi>}}
+\bye

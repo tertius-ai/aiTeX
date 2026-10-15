@@ -1,0 +1,1202 @@
+{
+  "class_option_combinations": [
+    {
+      "class": "article",
+      "count": 28,
+      "options": "11pt"
+    },
+    {
+      "class": "article",
+      "count": 17,
+      "options": ""
+    },
+    {
+      "class": "IEEEtran",
+      "count": 7,
+      "options": "conference"
+    },
+    {
+      "class": "article",
+      "count": 5,
+      "options": "12pt"
+    },
+    {
+      "class": "llncs",
+      "count": 5,
+      "options": "runningheads"
+    },
+    {
+      "class": "acmart",
+      "count": 4,
+      "options": "sigconf,nonacm"
+    },
+    {
+      "class": "article",
+      "count": 4,
+      "options": "letterpaper"
+    },
+    {
+      "class": "sn-jnl",
+      "count": 4,
+      "options": "pdflatex,sn-mathphys-num"
+    },
+    {
+      "class": "acmart",
+      "count": 3,
+      "options": "sigconf"
+    },
+    {
+      "class": "amsart",
+      "count": 3,
+      "options": ""
+    },
+    {
+      "class": "amsart",
+      "count": 3,
+      "options": "11pt"
+    },
+    {
+      "class": "amsart",
+      "count": 3,
+      "options": "11pt,reqno"
+    },
+    {
+      "class": "article",
+      "count": 3,
+      "options": "10pt"
+    },
+    {
+      "class": "article",
+      "count": 3,
+      "options": "11pt,a4paper"
+    },
+    {
+      "class": "article",
+      "count": 3,
+      "options": "letterpaper,twocolumn,10pt"
+    },
+    {
+      "class": "IEEEtran",
+      "count": 2,
+      "options": "conference,10pt"
+    },
+    {
+      "class": "IEEEtran",
+      "count": 2,
+      "options": "lettersize,journal"
+    },
+    {
+      "class": "aastex701",
+      "count": 2,
+      "options": "twocolumn"
+    },
+    {
+      "class": "amsart",
+      "count": 2,
+      "options": "10pt"
+    },
+    {
+      "class": "amsart",
+      "count": 2,
+      "options": "12pt,a4paper,reqno"
+    },
+    {
+      "class": "amsart",
+      "count": 2,
+      "options": "reqno"
+    },
+    {
+      "class": "ieeeconf",
+      "count": 2,
+      "options": "letterpaper,10pt,conference"
+    },
+    {
+      "class": "IEEEtran",
+      "count": 1,
+      "options": "10pt,journal,compsoc"
+    },
+    {
+      "class": "aa",
+      "count": 1,
+      "options": ""
+    },
+    {
+      "class": "aa",
+      "count": 1,
+      "options": "traditabstract"
+    },
+    {
+      "class": "aastex63",
+      "count": 1,
+      "options": "twocolumn"
+    },
+    {
+      "class": "aastex7",
+      "count": 1,
+      "options": "trackchanges,twocolumn,resetfootnote"
+    },
+    {
+      "class": "aastex701",
+      "count": 1,
+      "options": "twocolumn,twocolappendix,resetfootnote"
+    },
+    {
+      "class": "acmart",
+      "count": 1,
+      "options": "sigconf,screen"
+    },
+    {
+      "class": "amsart",
+      "count": 1,
+      "options": "10pt,reqno"
+    },
+    {
+      "class": "amsart",
+      "count": 1,
+      "options": "11pt,final"
+    },
+    {
+      "class": "amsart",
+      "count": 1,
+      "options": "11pt,letterpaper,reqno"
+    },
+    {
+      "class": "amsart",
+      "count": 1,
+      "options": "11pt,twoside"
+    },
+    {
+      "class": "amsart",
+      "count": 1,
+      "options": "12pt"
+    },
+    {
+      "class": "amsart",
+      "count": 1,
+      "options": "12pt,reqno"
+    },
+    {
+      "class": "amsart",
+      "count": 1,
+      "options": "12pt,reqno,a4paper"
+    },
+    {
+      "class": "amsart",
+      "count": 1,
+      "options": "a4paper"
+    },
+    {
+      "class": "amsart",
+      "count": 1,
+      "options": "a4paper,reqno,12pt,toc"
+    },
+    {
+      "class": "amsart",
+      "count": 1,
+      "options": "alphabetic"
+    },
+    {
+      "class": "amsart",
+      "count": 1,
+      "options": "letterpaper,twoside,11pt"
+    },
+    {
+      "class": "amsart",
+      "count": 1,
+      "options": "oneside,english"
+    },
+    {
+      "class": "amsproc",
+      "count": 1,
+      "options": "12pt"
+    },
+    {
+      "class": "article",
+      "count": 1,
+      "options": "10pt,twocolumn,a4paper"
+    },
+    {
+      "class": "article",
+      "count": 1,
+      "options": "10pt,twocolumn,letterpaper"
+    },
+    {
+      "class": "article",
+      "count": 1,
+      "options": "11pt,UTF8"
+    },
+    {
+      "class": "article",
+      "count": 1,
+      "options": "11pt,letterpaper"
+    },
+    {
+      "class": "article",
+      "count": 1,
+      "options": "12pt,titlepage"
+    },
+    {
+      "class": "article",
+      "count": 1,
+      "options": "a4paper"
+    },
+    {
+      "class": "article",
+      "count": 1,
+      "options": "a4paper,11pt"
+    },
+    {
+      "class": "article",
+      "count": 1,
+      "options": "a4paper,12pt"
+    },
+    {
+      "class": "article",
+      "count": 1,
+      "options": "a4paper,notitlepage,10pt"
+    },
+    {
+      "class": "article",
+      "count": 1,
+      "options": "english,11pt"
+    },
+    {
+      "class": "article",
+      "count": 1,
+      "options": "twocolumn,9pt"
+    },
+    {
+      "class": "article",
+      "count": 1,
+      "options": "twoside,a4paper,11pt"
+    },
+    {
+      "class": "atlasdoc",
+      "count": 1,
+      "options": "PAPER,atlasdraft=false,cernpreprint,UKenglish,texmf,orcidlogo"
+    },
+    {
+      "class": "ceurart",
+      "count": 1,
+      "options": ""
+    },
+    {
+      "class": "dobottechreport",
+      "count": 1,
+      "options": "10pt,logo"
+    },
+    {
+      "class": "elsarticle",
+      "count": 1,
+      "options": "final"
+    },
+    {
+      "class": "elsarticle",
+      "count": 1,
+      "options": "final,1p,times"
+    },
+    {
+      "class": "elsarticle",
+      "count": 1,
+      "options": "preprint,11pt,authoryear"
+    },
+    {
+      "class": "elsarticle",
+      "count": 1,
+      "options": "preprint,12pt"
+    },
+    {
+      "class": "elsarticle",
+      "count": 1,
+      "options": "preprint,12pt,a4paper"
+    },
+    {
+      "class": "elsarticle",
+      "count": 1,
+      "options": "preprint,12pt,sort&compress"
+    },
+    {
+      "class": "epl2",
+      "count": 1,
+      "options": "doublecol"
+    },
+    {
+      "class": "hepthesis",
+      "count": 1,
+      "options": "hyperpdf,bindnopdf"
+    },
+    {
+      "class": "ieeeconf",
+      "count": 1,
+      "options": "conference"
+    },
+    {
+      "class": "imsart",
+      "count": 1,
+      "options": "aos"
+    },
+    {
+      "class": "interact",
+      "count": 1,
+      "options": ""
+    },
+    {
+      "class": "jfm",
+      "count": 1,
+      "options": ""
+    },
+    {
+      "class": "lmcs",
+      "count": 1,
+      "options": ""
+    },
+    {
+      "class": "mjsartcl",
+      "count": 1,
+      "options": ""
+    },
+    {
+      "class": "mnras",
+      "count": 1,
+      "options": "fleqn,usenatbib"
+    },
+    {
+      "class": "osajnl",
+      "count": 1,
+      "options": "9pt,twocolumn,twoside"
+    },
+    {
+      "class": "packages/icmc",
+      "count": 1,
+      "options": "mestrado,pre-defesa"
+    },
+    {
+      "class": "pasj02",
+      "count": 1,
+      "options": ""
+    },
+    {
+      "class": "quantumarticle",
+      "count": 1,
+      "options": "a4paper,11pt"
+    },
+    {
+      "class": "rasti",
+      "count": 1,
+      "options": "fleqn,usenatbib"
+    },
+    {
+      "class": "revtex4-1",
+      "count": 1,
+      "options": "aps,letterpaper,twocolumn,preprintnumbers,floatfix,superscriptaddress"
+    },
+    {
+      "class": "revtex4-1",
+      "count": 1,
+      "options": "aps,pra,reprint,superscriptaddress,floatfix"
+    },
+    {
+      "class": "revtex4-1",
+      "count": 1,
+      "options": "aps,prl,twocolumn,superscriptaddress,nofootinbib"
+    },
+    {
+      "class": "revtex4-2",
+      "count": 1,
+      "options": "aps,pra,10pt,twocolumn,floatfix,superscriptaddress,longbibliography"
+    },
+    {
+      "class": "revtex4-2",
+      "count": 1,
+      "options": "aps,pra,reprint,nofootinbib,longbibliography"
+    },
+    {
+      "class": "revtex4-2",
+      "count": 1,
+      "options": "aps,pra,twocolumn,superscriptaddress,showpacs,nofootinbib"
+    },
+    {
+      "class": "revtex4-2",
+      "count": 1,
+      "options": "aps,prd,preprint,superscriptaddress,nofootinbib"
+    },
+    {
+      "class": "revtex4-2",
+      "count": 1,
+      "options": "aps,prl,preprint,superscriptaddress,nofootinbib,longbibliography"
+    },
+    {
+      "class": "revtex4-2",
+      "count": 1,
+      "options": "aps,prl,reprint,twocolumn,nofootinbib,floatfix,superscriptaddress"
+    },
+    {
+      "class": "revtex4-2",
+      "count": 1,
+      "options": "aps,prl,twocolumn,groupedaddress,superscriptaddress,footinbib,floatfix,longbibliography,showpacs,"
+    },
+    {
+      "class": "revtex4-2",
+      "count": 1,
+      "options": "aps,prl,twocolumn,superscriptaddress,showpacs,preprintnumbers,nofootinbib"
+    },
+    {
+      "class": "revtex4-2",
+      "count": 1,
+      "options": "prb,twocolumn,superscriptaddress,10pt,floatfix"
+    },
+    {
+      "class": "revtex4-2",
+      "count": 1,
+      "options": "reprint,amsmath,amssymb,aps,pra,floatfix,superscriptaddress"
+    },
+    {
+      "class": "revtex4-2",
+      "count": 1,
+      "options": "reprint,aps,prb,floatfix,superscriptaddress,longbibliography"
+    },
+    {
+      "class": "revtex4-2",
+      "count": 1,
+      "options": "reprint,superscriptaddress,amsmath,amssymb,aps"
+    },
+    {
+      "class": "revtex4-2",
+      "count": 1,
+      "options": "reprint,superscriptaddress,nofootinbib,amsmath,amssymb,aps,"
+    },
+    {
+      "class": "revtex4-2",
+      "count": 1,
+      "options": "superscriptaddress,amsmath,amssymb,aps,pra,floatfix,twocolumn"
+    },
+    {
+      "class": "revtex4-2",
+      "count": 1,
+      "options": "twocolumn,aps,floatfix,superscriptaddress,longbibliography"
+    },
+    {
+      "class": "revtex4-2",
+      "count": 1,
+      "options": "twocolumn,superscriptaddress,floatfix,preprintnumbers,nofootinbib"
+    },
+    {
+      "class": "scrartcl",
+      "count": 1,
+      "options": "11pt,a4paper,DIV=12,numbers=noenddot,sfdefaults=off,enabledeprecatedfontcommands"
+    },
+    {
+      "class": "sn-jnl",
+      "count": 1,
+      "options": ""
+    },
+    {
+      "class": "sn-jnl",
+      "count": 1,
+      "options": "pdflatex,sn-basic"
+    },
+    {
+      "class": "sn-jnl",
+      "count": 1,
+      "options": "pdflatex,sn-mathphys,Numbered"
+    },
+    {
+      "class": "socg-lipics-v2021",
+      "count": 1,
+      "options": "a4paper,UKenglish,cleveref,autoref,thm-restate,nolineno"
+    },
+    {
+      "class": "spml_template",
+      "count": 1,
+      "options": ""
+    },
+    {
+      "class": "style/iromlab",
+      "count": 1,
+      "options": ""
+    },
+    {
+      "class": "tibop-article",
+      "count": 1,
+      "options": "11pt"
+    }
+  ],
+  "classes": [
+    {
+      "class": "article",
+      "count": 75,
+      "fraction": 0.39267,
+      "option_sets": [
+        {
+          "count": 28,
+          "options": "11pt"
+        },
+        {
+          "count": 17,
+          "options": ""
+        },
+        {
+          "count": 5,
+          "options": "12pt"
+        },
+        {
+          "count": 4,
+          "options": "letterpaper"
+        },
+        {
+          "count": 3,
+          "options": "10pt"
+        },
+        {
+          "count": 3,
+          "options": "11pt,a4paper"
+        },
+        {
+          "count": 3,
+          "options": "letterpaper,twocolumn,10pt"
+        },
+        {
+          "count": 1,
+          "options": "10pt,twocolumn,a4paper"
+        },
+        {
+          "count": 1,
+          "options": "10pt,twocolumn,letterpaper"
+        },
+        {
+          "count": 1,
+          "options": "11pt,UTF8"
+        },
+        {
+          "count": 1,
+          "options": "11pt,letterpaper"
+        },
+        {
+          "count": 1,
+          "options": "12pt,titlepage"
+        },
+        {
+          "count": 1,
+          "options": "a4paper"
+        },
+        {
+          "count": 1,
+          "options": "a4paper,11pt"
+        },
+        {
+          "count": 1,
+          "options": "a4paper,12pt"
+        },
+        {
+          "count": 1,
+          "options": "a4paper,notitlepage,10pt"
+        },
+        {
+          "count": 1,
+          "options": "english,11pt"
+        },
+        {
+          "count": 1,
+          "options": "twocolumn,9pt"
+        },
+        {
+          "count": 1,
+          "options": "twoside,a4paper,11pt"
+        }
+      ]
+    },
+    {
+      "class": "amsart",
+      "count": 27,
+      "fraction": 0.141361,
+      "option_sets": [
+        {
+          "count": 3,
+          "options": ""
+        },
+        {
+          "count": 3,
+          "options": "11pt"
+        },
+        {
+          "count": 3,
+          "options": "11pt,reqno"
+        },
+        {
+          "count": 2,
+          "options": "10pt"
+        },
+        {
+          "count": 2,
+          "options": "12pt,a4paper,reqno"
+        },
+        {
+          "count": 2,
+          "options": "reqno"
+        },
+        {
+          "count": 1,
+          "options": "10pt,reqno"
+        },
+        {
+          "count": 1,
+          "options": "11pt,final"
+        },
+        {
+          "count": 1,
+          "options": "11pt,letterpaper,reqno"
+        },
+        {
+          "count": 1,
+          "options": "11pt,twoside"
+        },
+        {
+          "count": 1,
+          "options": "12pt"
+        },
+        {
+          "count": 1,
+          "options": "12pt,reqno"
+        },
+        {
+          "count": 1,
+          "options": "12pt,reqno,a4paper"
+        },
+        {
+          "count": 1,
+          "options": "a4paper"
+        },
+        {
+          "count": 1,
+          "options": "a4paper,reqno,12pt,toc"
+        },
+        {
+          "count": 1,
+          "options": "alphabetic"
+        },
+        {
+          "count": 1,
+          "options": "letterpaper,twoside,11pt"
+        },
+        {
+          "count": 1,
+          "options": "oneside,english"
+        }
+      ]
+    },
+    {
+      "class": "revtex4-2",
+      "count": 16,
+      "fraction": 0.08377,
+      "option_sets": [
+        {
+          "count": 1,
+          "options": "aps,pra,10pt,twocolumn,floatfix,superscriptaddress,longbibliography"
+        },
+        {
+          "count": 1,
+          "options": "aps,pra,reprint,nofootinbib,longbibliography"
+        },
+        {
+          "count": 1,
+          "options": "aps,pra,twocolumn,superscriptaddress,showpacs,nofootinbib"
+        },
+        {
+          "count": 1,
+          "options": "aps,prd,preprint,superscriptaddress,nofootinbib"
+        },
+        {
+          "count": 1,
+          "options": "aps,prl,preprint,superscriptaddress,nofootinbib,longbibliography"
+        },
+        {
+          "count": 1,
+          "options": "aps,prl,reprint,twocolumn,nofootinbib,floatfix,superscriptaddress"
+        },
+        {
+          "count": 1,
+          "options": "aps,prl,twocolumn,groupedaddress,superscriptaddress,footinbib,floatfix,longbibliography,showpacs,"
+        },
+        {
+          "count": 1,
+          "options": "aps,prl,twocolumn,superscriptaddress,showpacs,preprintnumbers,nofootinbib"
+        },
+        {
+          "count": 1,
+          "options": "prb,twocolumn,superscriptaddress,10pt,floatfix"
+        },
+        {
+          "count": 1,
+          "options": "reprint,amsmath,amssymb,aps,pra,floatfix,superscriptaddress"
+        },
+        {
+          "count": 1,
+          "options": "reprint,aps,prb,floatfix,superscriptaddress,longbibliography"
+        },
+        {
+          "count": 1,
+          "options": "reprint,superscriptaddress,amsmath,amssymb,aps"
+        },
+        {
+          "count": 1,
+          "options": "reprint,superscriptaddress,nofootinbib,amsmath,amssymb,aps,"
+        },
+        {
+          "count": 1,
+          "options": "superscriptaddress,amsmath,amssymb,aps,pra,floatfix,twocolumn"
+        },
+        {
+          "count": 1,
+          "options": "twocolumn,aps,floatfix,superscriptaddress,longbibliography"
+        },
+        {
+          "count": 1,
+          "options": "twocolumn,superscriptaddress,floatfix,preprintnumbers,nofootinbib"
+        }
+      ]
+    },
+    {
+      "class": "IEEEtran",
+      "count": 12,
+      "fraction": 0.062827,
+      "option_sets": [
+        {
+          "count": 7,
+          "options": "conference"
+        },
+        {
+          "count": 2,
+          "options": "conference,10pt"
+        },
+        {
+          "count": 2,
+          "options": "lettersize,journal"
+        },
+        {
+          "count": 1,
+          "options": "10pt,journal,compsoc"
+        }
+      ]
+    },
+    {
+      "class": "acmart",
+      "count": 8,
+      "fraction": 0.041885,
+      "option_sets": [
+        {
+          "count": 4,
+          "options": "sigconf,nonacm"
+        },
+        {
+          "count": 3,
+          "options": "sigconf"
+        },
+        {
+          "count": 1,
+          "options": "sigconf,screen"
+        }
+      ]
+    },
+    {
+      "class": "sn-jnl",
+      "count": 7,
+      "fraction": 0.036649,
+      "option_sets": [
+        {
+          "count": 4,
+          "options": "pdflatex,sn-mathphys-num"
+        },
+        {
+          "count": 1,
+          "options": ""
+        },
+        {
+          "count": 1,
+          "options": "pdflatex,sn-basic"
+        },
+        {
+          "count": 1,
+          "options": "pdflatex,sn-mathphys,Numbered"
+        }
+      ]
+    },
+    {
+      "class": "elsarticle",
+      "count": 6,
+      "fraction": 0.031414,
+      "option_sets": [
+        {
+          "count": 1,
+          "options": "final"
+        },
+        {
+          "count": 1,
+          "options": "final,1p,times"
+        },
+        {
+          "count": 1,
+          "options": "preprint,11pt,authoryear"
+        },
+        {
+          "count": 1,
+          "options": "preprint,12pt"
+        },
+        {
+          "count": 1,
+          "options": "preprint,12pt,a4paper"
+        },
+        {
+          "count": 1,
+          "options": "preprint,12pt,sort&compress"
+        }
+      ]
+    },
+    {
+      "class": "llncs",
+      "count": 5,
+      "fraction": 0.026178,
+      "option_sets": [
+        {
+          "count": 5,
+          "options": "runningheads"
+        }
+      ]
+    },
+    {
+      "class": "aastex701",
+      "count": 3,
+      "fraction": 0.015707,
+      "option_sets": [
+        {
+          "count": 2,
+          "options": "twocolumn"
+        },
+        {
+          "count": 1,
+          "options": "twocolumn,twocolappendix,resetfootnote"
+        }
+      ]
+    },
+    {
+      "class": "ieeeconf",
+      "count": 3,
+      "fraction": 0.015707,
+      "option_sets": [
+        {
+          "count": 2,
+          "options": "letterpaper,10pt,conference"
+        },
+        {
+          "count": 1,
+          "options": "conference"
+        }
+      ]
+    },
+    {
+      "class": "revtex4-1",
+      "count": 3,
+      "fraction": 0.015707,
+      "option_sets": [
+        {
+          "count": 1,
+          "options": "aps,letterpaper,twocolumn,preprintnumbers,floatfix,superscriptaddress"
+        },
+        {
+          "count": 1,
+          "options": "aps,pra,reprint,superscriptaddress,floatfix"
+        },
+        {
+          "count": 1,
+          "options": "aps,prl,twocolumn,superscriptaddress,nofootinbib"
+        }
+      ]
+    },
+    {
+      "class": "aa",
+      "count": 2,
+      "fraction": 0.010471,
+      "option_sets": [
+        {
+          "count": 1,
+          "options": ""
+        },
+        {
+          "count": 1,
+          "options": "traditabstract"
+        }
+      ]
+    },
+    {
+      "class": "aastex63",
+      "count": 1,
+      "fraction": 0.005236,
+      "option_sets": [
+        {
+          "count": 1,
+          "options": "twocolumn"
+        }
+      ]
+    },
+    {
+      "class": "aastex7",
+      "count": 1,
+      "fraction": 0.005236,
+      "option_sets": [
+        {
+          "count": 1,
+          "options": "trackchanges,twocolumn,resetfootnote"
+        }
+      ]
+    },
+    {
+      "class": "amsproc",
+      "count": 1,
+      "fraction": 0.005236,
+      "option_sets": [
+        {
+          "count": 1,
+          "options": "12pt"
+        }
+      ]
+    },
+    {
+      "class": "atlasdoc",
+      "count": 1,
+      "fraction": 0.005236,
+      "option_sets": [
+        {
+          "count": 1,
+          "options": "PAPER,atlasdraft=false,cernpreprint,UKenglish,texmf,orcidlogo"
+        }
+      ]
+    },
+    {
+      "class": "ceurart",
+      "count": 1,
+      "fraction": 0.005236,
+      "option_sets": [
+        {
+          "count": 1,
+          "options": ""
+        }
+      ]
+    },
+    {
+      "class": "dobottechreport",
+      "count": 1,
+      "fraction": 0.005236,
+      "option_sets": [
+        {
+          "count": 1,
+          "options": "10pt,logo"
+        }
+      ]
+    },
+    {
+      "class": "epl2",
+      "count": 1,
+      "fraction": 0.005236,
+      "option_sets": [
+        {
+          "count": 1,
+          "options": "doublecol"
+        }
+      ]
+    },
+    {
+      "class": "hepthesis",
+      "count": 1,
+      "fraction": 0.005236,
+      "option_sets": [
+        {
+          "count": 1,
+          "options": "hyperpdf,bindnopdf"
+        }
+      ]
+    },
+    {
+      "class": "imsart",
+      "count": 1,
+      "fraction": 0.005236,
+      "option_sets": [
+        {
+          "count": 1,
+          "options": "aos"
+        }
+      ]
+    },
+    {
+      "class": "interact",
+      "count": 1,
+      "fraction": 0.005236,
+      "option_sets": [
+        {
+          "count": 1,
+          "options": ""
+        }
+      ]
+    },
+    {
+      "class": "jfm",
+      "count": 1,
+      "fraction": 0.005236,
+      "option_sets": [
+        {
+          "count": 1,
+          "options": ""
+        }
+      ]
+    },
+    {
+      "class": "lmcs",
+      "count": 1,
+      "fraction": 0.005236,
+      "option_sets": [
+        {
+          "count": 1,
+          "options": ""
+        }
+      ]
+    },
+    {
+      "class": "mjsartcl",
+      "count": 1,
+      "fraction": 0.005236,
+      "option_sets": [
+        {
+          "count": 1,
+          "options": ""
+        }
+      ]
+    },
+    {
+      "class": "mnras",
+      "count": 1,
+      "fraction": 0.005236,
+      "option_sets": [
+        {
+          "count": 1,
+          "options": "fleqn,usenatbib"
+        }
+      ]
+    },
+    {
+      "class": "osajnl",
+      "count": 1,
+      "fraction": 0.005236,
+      "option_sets": [
+        {
+          "count": 1,
+          "options": "9pt,twocolumn,twoside"
+        }
+      ]
+    },
+    {
+      "class": "packages/icmc",
+      "count": 1,
+      "fraction": 0.005236,
+      "option_sets": [
+        {
+          "count": 1,
+          "options": "mestrado,pre-defesa"
+        }
+      ]
+    },
+    {
+      "class": "pasj02",
+      "count": 1,
+      "fraction": 0.005236,
+      "option_sets": [
+        {
+          "count": 1,
+          "options": ""
+        }
+      ]
+    },
+    {
+      "class": "quantumarticle",
+      "count": 1,
+      "fraction": 0.005236,
+      "option_sets": [
+        {
+          "count": 1,
+          "options": "a4paper,11pt"
+        }
+      ]
+    },
+    {
+      "class": "rasti",
+      "count": 1,
+      "fraction": 0.005236,
+      "option_sets": [
+        {
+          "count": 1,
+          "options": "fleqn,usenatbib"
+        }
+      ]
+    },
+    {
+      "class": "scrartcl",
+      "count": 1,
+      "fraction": 0.005236,
+      "option_sets": [
+        {
+          "count": 1,
+          "options": "11pt,a4paper,DIV=12,numbers=noenddot,sfdefaults=off,enabledeprecatedfontcommands"
+        }
+      ]
+    },
+    {
+      "class": "socg-lipics-v2021",
+      "count": 1,
+      "fraction": 0.005236,
+      "option_sets": [
+        {
+          "count": 1,
+          "options": "a4paper,UKenglish,cleveref,autoref,thm-restate,nolineno"
+        }
+      ]
+    },
+    {
+      "class": "spml_template",
+      "count": 1,
+      "fraction": 0.005236,
+      "option_sets": [
+        {
+          "count": 1,
+          "options": ""
+        }
+      ]
+    },
+    {
+      "class": "style/iromlab",
+      "count": 1,
+      "fraction": 0.005236,
+      "option_sets": [
+        {
+          "count": 1,
+          "options": ""
+        }
+      ]
+    },
+    {
+      "class": "tibop-article",
+      "count": 1,
+      "fraction": 0.005236,
+      "option_sets": [
+        {
+          "count": 1,
+          "options": "11pt"
+        }
+      ]
+    }
+  ],
+  "description": "Literal document-class and option frequency in the locked 191-root holdout corpus",
+  "measured": 191,
+  "roots": 191,
+  "schema": 1,
+  "source_lock": "qualification/holdout-200.sources.json",
+  "source_lock_created_at": "2026-08-28T06:41:43+00:00",
+  "source_lock_sha256": "ba336a6dded14b38332bc6e0a1008443883f167dabb21c7fc650abf9067041b2",
+  "unmatched": []
+}

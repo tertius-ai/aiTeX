@@ -1,0 +1,10 @@
+% `tex.web` §1211 backs up a non-assignable command found after a prefix,
+% reports the combination, and then executes that command normally.  The
+% prefix itself is discarded: it must not make a later, unrelated assignment
+% global.
+\catcode`\{=1 \catcode`\}=2
+\font\r=cmr10 \r
+\count0=1
+{\setbox0=\hbox{A\hskip10pt\global\unskip B}\message{PROBE:wd=[\the\wd0]}\count0=7}
+\message{PROBE:count=[\the\count0]}
+\end

@@ -1,0 +1,46 @@
+% `tex.web` §1130, checked by `init_align` before anything else it does:
+%
+%     if (mode=mmode)and((tail<>head)or(incompleat_noad<>null)) then
+%       begin print_err("Improper "); print_esc("halign");
+%       print(" inside $$'s");
+%       help3("Displays can use special alignments (like \eqalignno)")
+%       ("only if nothing but the alignment itself is between $$'s.")
+%       ("So I've deleted the formulas that preceded this alignment.");
+%       error; flush_math;
+%       end
+%
+% A display alignment *replaces* the display, so there is nowhere for a
+% formula written beside it to go — §812 packages the rows as the display and
+% never looks at the math list. TeX throws that list away and says so; we set
+% it, wherever it happened to land.
+%
+% `incompleat_noad` is the other half of "nothing but the alignment":
+% `$$\over\halign{…}$$` has an empty list and a fraction waiting for its
+% denominator, which is just as much a formula.
+%
+% The test is `mode=mmode` — a *display*. An `\halign` in an ordinary `$…$` is
+% §1046's "Missing $ inserted" instead, which is a different fault, and one in
+% vertical mode is the ordinary case.
+\catcode`\{=1 \catcode`\}=2 \catcode`\$=3 \catcode`\#=6 \catcode`\&=4
+\errorcontextlines=5
+\hsize=100pt \parindent=0pt
+\font\rm=cmr10 \textfont0=\rm \scriptfont0=\rm \scriptscriptfont0=\rm \rm
+\font\mi=cmmi10 \textfont1=\mi \scriptfont1=\mi \scriptscriptfont1=\mi
+\font\sy=cmsy10 \textfont2=\sy \scriptfont2=\sy \scriptscriptfont2=\sy
+\font\ex=cmex10 \textfont3=\ex \scriptfont3=\ex \scriptscriptfont3=\ex
+\showthe\escapechar
+
+% A formula before the alignment: deleted, with a message.
+\setbox1\vbox{\noindent A$$Q\halign{#\cr B\cr}$$C\par}
+\message{PROBE:formula=[\the\ht1]}
+
+% A fraction waiting for its denominator counts as one, though the list is
+% empty.
+\setbox2\vbox{\noindent A$$Q\over\halign{#\cr B\cr}$$C\par}
+\message{PROBE:overfrac=[\the\ht2]}
+
+% Nothing beside it: no message.
+\setbox3\vbox{\noindent A$$\halign{#\cr B\cr}$$C\par}
+\message{PROBE:clean=[\the\ht3]}
+\showthe\escapechar
+\end

@@ -1,0 +1,270 @@
+{
+  "campaign": {
+    "aitex_sha256": "95b67840059139e59e3e7162af1d3ed173254e578c8cc92f377b5a6f9ae6ddda",
+    "budget_microusd": 20000,
+    "candidates": [
+      {
+        "model": "mistralai/mistral-small-24b-instruct-2501",
+        "provider": "DeepInfra"
+      },
+      {
+        "model": "nvidia/nemotron-3.5-lightning",
+        "provider": "DeepInfra"
+      }
+    ],
+    "corpus_sha256": "c654eca2434538bd535231b63c41d4acd15c549c4ee0a71f30c6f0dd57e79b60",
+    "lab_sha256": "840bf20227f4197ec1c2a49efedd70bbea197316360f8ff70aaa0d43ae927fcc",
+    "max_input_tokens": 1000,
+    "max_output_tokens": 512,
+    "min_request_ms": 0,
+    "privacy": {
+      "data_collection": "deny",
+      "zdr": true
+    },
+    "profiles": [
+      "compact"
+    ],
+    "repair_protocol": "aitex-repair-protocol-v1.2",
+    "repeats": 3,
+    "retries": 2,
+    "seed": 20260924,
+    "track": "pinned"
+  },
+  "privacy": {
+    "aggregate_contains_source_text": false,
+    "raw_prompts_responses_patches_published": false
+  },
+  "private_source_artifacts_sha256": {
+    "campaign.json": "5b4a832f1bd1aeb75836dc3429232b4df27ef1f740b271e6688c5d760d2c9bc9",
+    "labels.jsonl": "de8dab44f83948a3ccf34c1bab241b0b8956e954063cf774427218f0d5f2fdb1",
+    "models.json": "919c3b49e7506c978833edf0ec719744e60f59705f1b6222c073c3b541dbfb12",
+    "results.jsonl": "21902e7ba2f0b0077b896d73a4aa3c40642612c3857e71ccc0c37599a983267f"
+  },
+  "result": {
+    "budget_debit_microusd": 1904,
+    "charged_microusd": 1904,
+    "completed_jobs": 36,
+    "groups": [
+      {
+        "attempts": 18,
+        "build_rate": 0.8333333333333334,
+        "build_rate_ci95": [
+          0.6077796189608428,
+          0.9416342319413856
+        ],
+        "build_successes": 15,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0,
+        "charged_microusd": 565,
+        "cost_per_attempt_microusd": 31.38888888888889,
+        "cost_per_build_success_microusd": 37.666666666666664,
+        "cost_per_semantic_success_microusd": 40.357142857142854,
+        "cost_per_success_microusd": 37.666666666666664,
+        "diagnostic_gaps": {
+          "other-file": 9,
+          "unlocalizable": 9
+        },
+        "diagnostic_presentation_bytes_per_attempt": 186.0,
+        "exact_oracle": 3,
+        "failures": {
+          "invalid-patch": 3
+        },
+        "input_tokens": 7710,
+        "missing_cost_records": 0,
+        "model": "mistralai/mistral-small-24b-instruct-2501",
+        "model_ms_p50": 2392.1492895,
+        "model_ms_p95": 3748.0451110000004,
+        "output_tokens": 2206,
+        "profile": "compact",
+        "protocols": [
+          "aitex-repair-protocol-v1.2"
+        ],
+        "provider": "DeepInfra",
+        "provider_generation_ms_p50": 2206.5,
+        "provider_generation_ms_p95": 3565.0,
+        "reasoning_tokens": 0,
+        "safety_passes": 15,
+        "semantic_correct": 14,
+        "semantic_incorrect": 4,
+        "semantic_labeled": 18,
+        "semantic_rate": 0.7777777777777778,
+        "semantic_rate_ci95": [
+          0.5478541568378739,
+          0.9099907189139831
+        ],
+        "semantic_uncertain": 0,
+        "successful_model_ms_p50": 2384.3784010000004,
+        "successful_model_ms_p95": 3527.460354,
+        "time_to_first_byte_ms_p50": 379.7766105,
+        "time_to_first_byte_ms_p95": 614.268405,
+        "tokens_per_attempt": {
+          "input": 428.3333333333333,
+          "output": 122.55555555555556,
+          "reasoning": 0.0
+        },
+        "tokens_per_build_success": {
+          "input": 514.0,
+          "output": 147.06666666666666,
+          "reasoning": 0.0
+        },
+        "validation_ms_p50": 175.767162,
+        "validation_ms_p95": 275.999066
+      },
+      {
+        "attempts": 18,
+        "build_rate": 0.2777777777777778,
+        "build_rate_ci95": [
+          0.12499753379553993,
+          0.5087265656029746
+        ],
+        "build_successes": 5,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0,
+        "charged_microusd": 1339,
+        "cost_per_attempt_microusd": 74.38888888888889,
+        "cost_per_build_success_microusd": 267.8,
+        "cost_per_semantic_success_microusd": 267.8,
+        "cost_per_success_microusd": 267.8,
+        "diagnostic_gaps": {
+          "other-file": 9,
+          "unlocalizable": 9
+        },
+        "diagnostic_presentation_bytes_per_attempt": 186.0,
+        "exact_oracle": 1,
+        "failures": {
+          "invalid-patch": 12,
+          "malformed-output": 1
+        },
+        "input_tokens": 7908,
+        "missing_cost_records": 0,
+        "model": "nvidia/nemotron-3.5-lightning",
+        "model_ms_p50": 1236.1033284999999,
+        "model_ms_p95": 1764.77087,
+        "output_tokens": 3536,
+        "profile": "compact",
+        "protocols": [
+          "aitex-repair-protocol-v1.2"
+        ],
+        "provider": "DeepInfra",
+        "provider_generation_ms_p50": 986.0,
+        "provider_generation_ms_p95": 1576.0,
+        "reasoning_tokens": 0,
+        "safety_passes": 5,
+        "semantic_correct": 5,
+        "semantic_incorrect": 13,
+        "semantic_labeled": 18,
+        "semantic_rate": 0.2777777777777778,
+        "semantic_rate_ci95": [
+          0.12499753379553993,
+          0.5087265656029746
+        ],
+        "semantic_uncertain": 0,
+        "successful_model_ms_p50": 1260.815036,
+        "successful_model_ms_p95": 1335.572674,
+        "time_to_first_byte_ms_p50": 374.417001,
+        "time_to_first_byte_ms_p95": 642.779454,
+        "tokens_per_attempt": {
+          "input": 439.3333333333333,
+          "output": 196.44444444444446,
+          "reasoning": 0.0
+        },
+        "tokens_per_build_success": {
+          "input": 1581.6,
+          "output": 707.2,
+          "reasoning": 0.0
+        },
+        "validation_ms_p50": 152.959124,
+        "validation_ms_p95": 276.023143
+      }
+    ],
+    "input_tokens": 15618,
+    "model_cards": [
+      {
+        "canonical_slug": "mistralai/mistral-small-24b-instruct-2501",
+        "context_length": 32768,
+        "name": "Mistral: Mistral Small 3",
+        "pricing": {
+          "completion": "0.00000008",
+          "prompt": "0.00000005"
+        },
+        "requested_model": "mistralai/mistral-small-24b-instruct-2501",
+        "requested_provider": "DeepInfra",
+        "supported_parameters": [
+          "frequency_penalty",
+          "logit_bias",
+          "max_tokens",
+          "min_p",
+          "presence_penalty",
+          "repetition_penalty",
+          "response_format",
+          "seed",
+          "stop",
+          "structured_outputs",
+          "temperature",
+          "top_k",
+          "top_p"
+        ]
+      },
+      {
+        "canonical_slug": "nvidia/nemotron-3.5-lightning-20260807",
+        "context_length": 262144,
+        "name": "NVIDIA: Nemotron 3.5 Lightning",
+        "pricing": {
+          "completion": "0.0000002",
+          "input_cache_read": "0.00000004",
+          "prompt": "0.00000008"
+        },
+        "requested_model": "nvidia/nemotron-3.5-lightning",
+        "requested_provider": "DeepInfra",
+        "supported_parameters": [
+          "frequency_penalty",
+          "include_reasoning",
+          "logit_bias",
+          "logprobs",
+          "max_tokens",
+          "min_p",
+          "presence_penalty",
+          "reasoning",
+          "repetition_penalty",
+          "response_format",
+          "seed",
+          "stop",
+          "structured_outputs",
+          "temperature",
+          "tool_choice",
+          "tools",
+          "top_k",
+          "top_logprobs",
+          "top_p"
+        ]
+      }
+    ],
+    "output_tokens": 5742,
+    "pareto_frontier": [
+      {
+        "model": "mistralai/mistral-small-24b-instruct-2501",
+        "profile": "compact",
+        "provider": "DeepInfra",
+        "quality_metric": "semantic"
+      },
+      {
+        "model": "nvidia/nemotron-3.5-lightning",
+        "profile": "compact",
+        "provider": "DeepInfra",
+        "quality_metric": "semantic"
+      }
+    ],
+    "planned_jobs": 36,
+    "reasoning_tokens": 0,
+    "reservation_overruns": 0,
+    "semantic_labels": 36,
+    "unknown_cost_records": 0
+  },
+  "schema": "aitex-model-campaign-qualification-v1",
+  "semantic_review": {
+    "blinded_model_and_provider_identity": true,
+    "reviewer_ids": [
+      "codex-semantic-review-20260924"
+    ]
+  }
+}

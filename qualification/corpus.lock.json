@@ -1,0 +1,346 @@
+{
+  "schema": 1,
+  "description": "Versioned aiTeX compiler parity corpus",
+  "entries": [
+    {
+      "id": "2608.17725v1",
+      "url": "https://arxiv.org/e-print/2608.17725v1",
+      "root": "T2E_arxiv.tex",
+      "tree_sha256": "b11d7521497f9493f1e239afc522c912bbd4d5040c378c343eeb84209d9f8b5b",
+      "files": 2,
+      "bytes": 25612,
+      "reference_pages": 7,
+      "reference_characters": 15601
+    },
+    {
+      "id": "2608.17978v1",
+      "url": "https://arxiv.org/e-print/2608.17978v1",
+      "root": "iauguide.tex",
+      "tree_sha256": "b5d954522caf8fffe66a6b20c710c6f4ebbc114d944a570a8ea07dfa81c21f6e",
+      "files": 7,
+      "bytes": 619410,
+      "reference_pages": 6,
+      "reference_characters": 18169
+    },
+    {
+      "id": "2608.17364v1",
+      "url": "https://arxiv.org/e-print/2608.17364v1",
+      "root": "Ostrogradsky-theorem.tex",
+      "tree_sha256": "9e863238656115d570bc3383bf7c444b103d0f3780ae1f8266a7b16267ddc42e",
+      "files": 2,
+      "bytes": 29692,
+      "reference_pages": 9,
+      "reference_characters": 21887
+    },
+    {
+      "id": "2608.17673v1",
+      "url": "https://arxiv.org/e-print/2608.17673v1",
+      "root": "MSS_Galois260818_arXiv.tex",
+      "tree_sha256": "3081ea9c25ee9de379a81b380cd7d4aafc4575094dc8ede1ff007e554e2202d9",
+      "files": 2,
+      "bytes": 97299,
+      "reference_pages": 28,
+      "reference_characters": 46193
+    },
+    {
+      "id": "2608.17880v1",
+      "url": "https://arxiv.org/e-print/2608.17880v1",
+      "root": "main.tex",
+      "tree_sha256": "d79d356c7ac0e6d82dbf364129d41b638c68101e0f7a376e084491557c7d04af",
+      "files": 2,
+      "bytes": 27916,
+      "reference_pages": 8,
+      "reference_characters": 20549
+    },
+    {
+      "id": "2608.17746v1",
+      "url": "https://arxiv.org/e-print/2608.17746v1",
+      "root": "F70_F143_Principal_Minors_Multiple_Author_Institution_Placeholders_v7_2026-08-18.tex",
+      "tree_sha256": "6b232b7046c9f696689e5eb34e8a23d524cf25d23e6f231d2270b3fd12b96a1d",
+      "files": 2,
+      "bytes": 26204,
+      "reference_pages": 10,
+      "reference_characters": 15475
+    },
+    {
+      "id": "2608.17199v1",
+      "url": "https://arxiv.org/e-print/2608.17199v1",
+      "root": "nnnEng.tex",
+      "tree_sha256": "5652c44954db1b00fe4ffc481ae3807a8a7bec0e4b52bf4208fcea37772e8581",
+      "files": 2,
+      "bytes": 82295,
+      "reference_pages": 29,
+      "reference_characters": 45221
+    },
+    {
+      "id": "2608.17545v1",
+      "url": "https://arxiv.org/e-print/2608.17545v1",
+      "root": "Alternating_generalizations_of_Mizuno_s_product_formula-2-arXiv.tex",
+      "tree_sha256": "e632b850675338b37392f56a5512b49bc691384f58d40e50e1f4ae5120d6e0db",
+      "files": 2,
+      "bytes": 120009,
+      "reference_pages": 45,
+      "reference_characters": 64724
+    },
+    {
+      "id": "2608.17372v1",
+      "url": "https://arxiv.org/e-print/2608.17372v1",
+      "root": "Semiclassical.tex",
+      "tree_sha256": "4c213b8b45d4905dd0b5948c7751d9d246051d05f46a2c8fa75f090f08e0f426",
+      "files": 4,
+      "bytes": 156944,
+      "reference_pages": 28,
+      "reference_characters": 46941
+    },
+    {
+      "id": "2608.17821v1",
+      "url": "https://arxiv.org/e-print/2608.17821v1",
+      "root": "MainPfisterEquivariant.tex",
+      "tree_sha256": "d23887f03ae242c27da741843498dfde2f95cf4582581dd8704cd733da922d8d",
+      "files": 3,
+      "bytes": 107753,
+      "reference_pages": 46,
+      "reference_characters": 66923
+    },
+    {
+      "id": "2608.17211v1",
+      "url": "https://arxiv.org/e-print/2608.17211v1",
+      "root": "vmsg9.tex",
+      "tree_sha256": "46ce50ccd4276ddb46309ff78f1cf96b78f73ca9f2c65b76a6c7209592a7a6be",
+      "files": 16,
+      "bytes": 19715545,
+      "reference_pages": 49,
+      "reference_characters": 81925
+    },
+    {
+      "id": "2608.17397v1",
+      "url": "https://arxiv.org/e-print/2608.17397v1",
+      "root": "mainv4-3.tex",
+      "tree_sha256": "62a13cf60db5d7962e49d972e73d2b2ef7636ef05e9afb746057b526b823ef60",
+      "files": 2,
+      "bytes": 40833,
+      "reference_pages": 14,
+      "reference_characters": 23237
+    },
+    {
+      "id": "2608.18054v1",
+      "url": "https://arxiv.org/e-print/2608.18054v1",
+      "root": "sato_weak_f_equivalence.tex",
+      "tree_sha256": "cec75d9aca76e11a72c0f59d2071e451e96bb3fd4dc50eeef1f2a9ca75bb299a",
+      "files": 2,
+      "bytes": 67347,
+      "reference_pages": 18,
+      "reference_characters": 41880
+    },
+    {
+      "id": "2608.17686v1",
+      "url": "https://arxiv.org/e-print/2608.17686v1",
+      "root": "p-adic-Wirsing.tex",
+      "tree_sha256": "e101f23ff78054b30b07c63289120c586b895fc87057afbc8276ed2cab2d0ca6",
+      "files": 2,
+      "bytes": 45336,
+      "reference_pages": 18,
+      "reference_characters": 25767
+    },
+    {
+      "id": "2608.17952v1",
+      "url": "https://arxiv.org/e-print/2608.17952v1",
+      "root": "paperv2.tex",
+      "tree_sha256": "863bba3b5e3126de7ac942d1dda75672ce41700441fee615c5b647c99cdb14f6",
+      "files": 3,
+      "bytes": 63665,
+      "reference_pages": 14,
+      "reference_characters": 28264
+    },
+    {
+      "id": "2608.17805v1",
+      "url": "https://arxiv.org/e-print/2608.17805v1",
+      "root": "Helly-type_thm.tex",
+      "tree_sha256": "73ff1c15e5d1ebd625e2c6fc6336a96bb7c97dd526005b45e4e56003899a5318",
+      "files": 3,
+      "bytes": 25979,
+      "reference_pages": 6,
+      "reference_characters": 14147
+    },
+    {
+      "id": "2608.18072v1",
+      "url": "https://arxiv.org/e-print/2608.18072v1",
+      "root": "main.tex",
+      "tree_sha256": "1989290cbf8c77748a9520bc56e1d7e9406940ceea868ee4ce6eb4a2b4bb4e60",
+      "files": 8,
+      "bytes": 2267078,
+      "reference_pages": 13,
+      "reference_characters": 29501
+    },
+    {
+      "id": "2608.15742v1",
+      "url": "https://arxiv.org/e-print/2608.15742v1",
+      "root": "BanachVF.tex",
+      "tree_sha256": "4f6982ee923a8b03fad6cbbbf7be0fa5a2a9cf2656b045bb68bee692a683f83c",
+      "files": 2,
+      "bytes": 27277,
+      "reference_pages": 8,
+      "reference_characters": 17198
+    },
+    {
+      "id": "2608.15840v1",
+      "url": "https://arxiv.org/e-print/2608.15840v1",
+      "root": "bivariate_lingam_minimax_.tex",
+      "tree_sha256": "5cf19fbad8105f51253c2003b591324cc5b6164984b3d85b815bb49722312e12",
+      "files": 2,
+      "bytes": 108614,
+      "reference_pages": 36,
+      "reference_characters": 61765
+    },
+    {
+      "id": "2608.17920v1",
+      "url": "https://arxiv.org/e-print/2608.17920v1",
+      "root": "main.tex",
+      "tree_sha256": "f1b18439885d5eb574e03493299c74d35e3d5cb29d9d4f687280a6e0a4f8e2da",
+      "files": 3,
+      "bytes": 118349,
+      "reference_pages": 22,
+      "reference_characters": 50247
+    },
+    {
+      "id": "2608.15339v1",
+      "url": "https://arxiv.org/e-print/2608.15339v1",
+      "root": "main.tex",
+      "tree_sha256": "415baa92f3d5a823c5b46bb85b908c8de3e7f9c9adff4c1e637bd9abcc97428f",
+      "files": 4,
+      "bytes": 204273,
+      "reference_pages": 34,
+      "reference_characters": 115224
+    },
+    {
+      "id": "2608.17953v1",
+      "url": "https://arxiv.org/e-print/2608.17953v1",
+      "root": "symmdiffk3charp-2026-08-15.tex",
+      "tree_sha256": "840108f2d16422bda78ac6f66ad4dec10f7d5f3f991c609913e79ebc18a0a1aa",
+      "files": 3,
+      "bytes": 145487,
+      "reference_pages": 37,
+      "reference_characters": 81645
+    },
+    {
+      "id": "2608.17265v1",
+      "url": "https://arxiv.org/e-print/2608.17265v1",
+      "root": "main.tex",
+      "tree_sha256": "f8a507055e64f4829087627ea7c65cb7d13a5eac7a4e6ce398487b173972dba2",
+      "files": 3,
+      "bytes": 38216,
+      "reference_pages": 8,
+      "reference_characters": 10718
+    },
+    {
+      "id": "2608.16468v1",
+      "url": "https://arxiv.org/e-print/2608.16468v1",
+      "root": "main_0817_v3.tex",
+      "tree_sha256": "5e48fa24b6a1b5c0d9f4186800832482b246a43e488e26a8bb7fd16021e4a3fa",
+      "files": 13,
+      "bytes": 360233,
+      "reference_pages": 72,
+      "reference_characters": 114022
+    },
+    {
+      "id": "2608.17815v1",
+      "url": "https://arxiv.org/e-print/2608.17815v1",
+      "root": "fused_second_residue_v4.tex",
+      "tree_sha256": "7e3733bb1c95957cdddbe92918fcaa1c61490b2543f43d409cfcf035cd3cbfba",
+      "files": 13,
+      "bytes": 41455,
+      "reference_pages": 14,
+      "reference_characters": 24084
+    },
+    {
+      "id": "2608.17233v1",
+      "url": "https://arxiv.org/e-print/2608.17233v1",
+      "root": "FanoFourfolds.tex",
+      "tree_sha256": "4bcf79b946cc7c5f760388dad104642850195239297ffd3db6bcb197ce7c5431",
+      "files": 2,
+      "bytes": 31242,
+      "reference_pages": 8,
+      "reference_characters": 15518
+    },
+    {
+      "id": "2608.18003v1",
+      "url": "https://arxiv.org/e-print/2608.18003v1",
+      "root": "main.tex",
+      "tree_sha256": "25b939cbf929e1e4883cb4cbb3a308dd89f602e26005ed43751f618dbb50daca",
+      "files": 2,
+      "bytes": 21464,
+      "reference_pages": 8,
+      "reference_characters": 13819
+    },
+    {
+      "id": "2608.18006v1",
+      "url": "https://arxiv.org/e-print/2608.18006v1",
+      "root": "paper-obstruction-arxiv.tex",
+      "tree_sha256": "1e3ad33f3e1f2d2515bfc46fa88878fbeede88071d1f1ec7f70494b160272999",
+      "files": 23,
+      "bytes": 343148,
+      "reference_pages": 42,
+      "reference_characters": 113362
+    },
+    {
+      "id": "2608.18000v1",
+      "url": "https://arxiv.org/e-print/2608.18000v1",
+      "root": "main-11.tex",
+      "tree_sha256": "a68df5743f6346ac56b3725e98385ef42000270020ef83254da603fdfd954d41",
+      "files": 2,
+      "bytes": 29034,
+      "reference_pages": 7,
+      "reference_characters": 15653
+    },
+    {
+      "id": "2608.17639v1",
+      "url": "https://arxiv.org/e-print/2608.17639v1",
+      "root": "Wang_Frobenius_Field.tex",
+      "tree_sha256": "a992c2f18ab19ef1c761b5792f82a1d08d2ad0703b092fb85f72b65ffac9675e",
+      "files": 3,
+      "bytes": 139881,
+      "reference_pages": 23,
+      "reference_characters": 49688
+    },
+    {
+      "id": "2608.17213v1",
+      "url": "https://arxiv.org/e-print/2608.17213v1",
+      "root": "meta-induction-psa2026-2.tex",
+      "tree_sha256": "f8804affe7974531c73da1b5ba03b5fa654ab8cf5dcfbcf2074469e0bfb072bd",
+      "files": 2,
+      "bytes": 40233,
+      "reference_pages": 17,
+      "reference_characters": 27519
+    },
+    {
+      "id": "2608.16845v1",
+      "url": "https://arxiv.org/e-print/2608.16845v1",
+      "root": "Manuscript.tex",
+      "tree_sha256": "6de5bb924177ea32b967aaae0dbdc6b882eb8055bce696469d5a992040003304",
+      "files": 3,
+      "bytes": 65476,
+      "reference_pages": 19,
+      "reference_characters": 33177
+    },
+    {
+      "id": "2608.17818v1",
+      "url": "https://arxiv.org/e-print/2608.17818v1",
+      "root": "main.tex",
+      "tree_sha256": "e092810dc052ef91671af341173fdf917f4ba247c62859b7f91264459db1207d",
+      "files": 3,
+      "bytes": 28312,
+      "reference_pages": 7,
+      "reference_characters": 9644
+    },
+    {
+      "id": "2608.18024v1",
+      "url": "https://arxiv.org/e-print/2608.18024v1",
+      "root": "main.tex",
+      "tree_sha256": "c73172d5e3bd5385314430f3e64e93e3fcc76be7eff1bd5e7c91bc29359bc6d2",
+      "files": 12,
+      "bytes": 260047,
+      "reference_pages": 60,
+      "reference_characters": 146991
+    }
+  ]
+}

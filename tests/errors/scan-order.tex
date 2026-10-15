@@ -1,0 +1,23 @@
+% `tex.web` §370: an undefined control sequence is expandable, so a number
+% scanner meets it from inside its own `get_x_token` and reports it *there* —
+% before it concludes it has no number.
+%
+%     \count0=\undefinedthing
+%     tex   ! Undefined control sequence.   then   ! Missing number…
+%     ours  ! Missing number…               then   ! Undefined control sequence.
+%
+% The reversal was the visible half of a real difference: with the name
+% unexpandable our scan gave up a token earlier than TeX's. Nothing else in
+% this tree looked at an error, so nothing else could see it.
+\catcode`\{=1 \catcode`\}=2
+\count0=\undefinedthing
+\message{PROBE:count=\the\count0}
+
+% the same from a dimension and a glue scan
+\dimen0=\undefinedtwo pt
+\message{PROBE:dimen=\the\dimen0}
+
+% and through `\expandafter`, which takes the other dispatch path
+\expandafter\undefinedthree
+\message{PROBE:after}
+\end

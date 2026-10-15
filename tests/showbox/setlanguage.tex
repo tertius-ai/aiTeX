@@ -1,0 +1,15 @@
+% `tex.web` §1034/§1377: `\language` changes are materialized immediately
+% before the next paragraph character, while explicit `\setlanguage` always
+% appends a whatsit. Each node freezes the two normalized hyphen minima.
+\catcode`\{=1 \catcode`\}=2
+\font\r=cmr10 \r
+\showboxbreadth=99 \showboxdepth=99 \tracingonline=0
+\lefthyphenmin=2 \righthyphenmin=3
+\setbox0=\vbox{\language=5\noindent
+  A{\language=7\lefthyphenmin=4\righthyphenmin=6 B}C\setlanguage9 D\par}
+\showbox0
+% Explicit `\setlanguage` is also legal in restricted horizontal mode, and
+% values outside 1..255 select language zero.
+\setbox1=\hbox{\lefthyphenmin=8\righthyphenmin=9\setlanguage300 A}
+\showbox1
+\end

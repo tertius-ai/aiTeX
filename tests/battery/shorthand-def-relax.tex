@@ -1,0 +1,64 @@
+% `tex.web` §1224: `shorthand_def` defines the name as `\relax` *before* it
+% scans the register number.
+%
+%     procedure shorthand_def;
+%     begin n:=cur_chr; get_r_token; p:=cur_cs;
+%     define(p,relax,256); {N.B.: `\relax', not `\let'}
+%     scan_optional_equals;
+%     ...  scan_eight_bit_int;
+%
+% The placeholder is load-bearing, not tidiness. A register number is scanned
+% by §444's `scan_int`, which must read one token past the last digit to find
+% out where the number ends — and reads it *expanded* (§445 `get_x_token`). So
+% when the token after the digits is the name being defined, what that name
+% means at that instant decides where the number stops.
+%
+%     \def\foo{2}  \countdef\foo 1\foo=7
+%
+% TeX's lookahead finds `\foo` already `\relax`, ends the number at 1, binds
+% `\foo` to `\count1`, and `\foo=7` then sets it. Defining afterwards instead —
+% as we did — let the *old* `\foo` expand into the number being scanned: we
+% read 12, bound `\foo` to `\count12`, and `=7` was left to typeset itself, so
+% neither register was ever assigned. TeX printed 7 and 0 for the two counts;
+% we printed 0 and 0.
+%
+% This is the same ordering as §1257's `\font`, and it is trip.tex line 34:
+%
+%     \skipdef\shkip100\shkip -18pt plus\catcode`\}fil minus 10fil
+%
+% where the token after the digits is the name itself. With the definition
+% late, `\shkip` was undefined exactly there, and our TRIP run reported an
+% undefined control sequence that TeX does not report.
+\catcode`\{=1 \catcode`\}=2 \catcode`\#=6
+
+% --- the lookahead sees the placeholder, for every shorthand ----------------
+\def\a{2}\def\b{2}\def\c{2}\def\d{2}\def\e{2}
+\countdef\a 1\a=7          \message{<count=\the\count1>}
+\dimendef\b 1\b=7pt        \message{<dimen=\the\dimen1>}
+\skipdef\c 1\c=7pt         \message{<skip=\the\skip1>}
+\muskipdef\d 1\d=7mu       \message{<muskip=\the\muskip1>}
+\toksdef\e 1\e={x}         \message{<toks=\the\toks1>}
+
+% `\chardef` and `\mathchardef` scan a character code, not a register, but they
+% go through the same procedure and take the same placeholder.
+\def\f{2}\def\g{2}
+\chardef\f 1               \message{<char=\the\f>}
+\mathchardef\g 1           \message{<mathchar=\the\g>}
+
+% --- trip.tex line 34's shape: the name is the very next token -------------
+\skipdef\shkip100\shkip -18pt plus 2fil minus 10fil
+\message{<trip=\the\shkip>}
+\message{<trip-reg=\the\skip100>}
+
+% --- the prefix has to survive the placeholder ------------------------------
+% `define` consumes `\global`; spending it here would make the real definition
+% local and lose the name at the closing brace. `\showthe\z` outside the group
+% is what catches that — the value is restored, but the *binding* is not.
+{\global\countdef\z 3 \global\z=9 }
+\message{<global=\the\count3> <global-binding=\the\z>}
+
+% --- and an undefined name after the digits is still just a terminator ------
+\countdef\y 4\y=5
+\message{<fresh=\the\count4>}
+
+\end

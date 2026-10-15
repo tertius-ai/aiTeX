@@ -1,0 +1,53 @@
+% `tex.web` §1068 and §1069: three kinds of group a `}` may not close.
+%
+%     procedure extra_right_brace;
+%     begin print_err("Extra }, or forgotten ");
+%     case cur_group of
+%     semi_simple_group: print_esc("endgroup");
+%     math_shift_group: print_char("$");
+%     math_left_group: print_esc("right");
+%     end;
+%     help5(…); error; incr(align_state);
+%     end;
+%
+% `handle_right_brace` is reached only by a `}` — §1065 gives `\endgroup` its
+% own entry and §1191 gives `\right` one — so this is where a brace that
+% cannot close what is open gets caught. The brace is *deleted* and the group
+% stays open, which is the part that shows on the page: we closed the group
+% instead, so `$B}C$` set `C` outside the formula in the text font, and the
+% `$` that really did close it opened a second one.
+%
+% `incr(align_state)` at the end undoes what scanning the brace did to the
+% alignment's brace count — the token is gone, so its effect must go with it.
+\catcode`\{=1 \catcode`\}=2 \catcode`\$=3
+\errorcontextlines=5
+\hsize=100pt \parindent=0pt
+\font\rm=cmr10 \textfont0=\rm \scriptfont0=\rm \scriptscriptfont0=\rm \rm
+\font\mi=cmmi10 \textfont1=\mi \scriptfont1=\mi \scriptscriptfont1=\mi
+\font\sy=cmsy10 \textfont2=\sy \scriptfont2=\sy \scriptscriptfont2=\sy
+\font\ex=cmex10 \textfont3=\ex \scriptfont3=\ex \scriptscriptfont3=\ex
+\showthe\escapechar
+
+% math_shift_group. The width is the point: `BC` is all in the formula.
+\setbox0\hbox{A$B}C$D}
+\message{PROBE:math=[\the\wd0]}
+
+% ...and the same formula written correctly, for the width to be measured
+% against.
+\setbox1\hbox{A$BC$D}
+\message{PROBE:right=[\the\wd1]}
+
+% math_left_group. `\left.` rather than `\left(` because §232 leaves every
+% \delcode at -1 but `.`, and a `(` here is a different error.
+\setbox2\hbox{A$\left.B}C\right.D$E}
+\message{PROBE:left=[\the\wd2]}
+
+% semi_simple_group, and nested, so the second `}` meets the outer one.
+\begingroup\begingroup A}B}C\endgroup\endgroup
+\message{PROBE:semi}
+
+% An ordinary group is closed by a brace and says nothing.
+\setbox3\hbox{A{B}C}
+\message{PROBE:plain=[\the\wd3]}
+\showthe\escapechar
+\end

@@ -1,0 +1,24 @@
+% TFM-PL: vendor/trip/trip.pl
+% `tex.web` §§897 and 913: second-pass hyphenation reconstructs a word through
+% the font's ligature program. TRIP's `B+B -> A` program makes the provenance
+% observable: every resulting ligature must still own both source `B`s, and a
+% discretionary must cover the complete unbroken translation. aiTeX dropped
+% the final source character from that record at TRIP lines 201--202 even
+% though the first-pass spelling was complete.
+\catcode`\{=1 \catcode`\}=2
+\font\r=trip \r \hyphenchar\r=`\-
+\lccode`\B=`\b \lccode`\b=`\b
+\lefthyphenmin=1 \righthyphenmin=1
+\uchyph=1
+\pretolerance=-1 \tolerance=10000 \hbadness=10000
+\hsize=100pt \parindent=0pt \baselineskip=12pt
+\showboxbreadth=999 \showboxdepth=99 \tracingonline=0
+
+\hyphenation{BBB-BBB}
+\setbox0=\vbox{X BBBBBB\par}\showbox0
+
+\hyphenation{BB-B-BBB}
+\setbox1=\vbox{X BBBBBB\par}\showbox1
+
+\setbox2=\vbox{X BBBBBB\kern0pt B\par}\showbox2
+\end

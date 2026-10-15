@@ -1,0 +1,18 @@
+% `tex.web` §476: parameter-text errors recover the same way for `\edef` as
+% for `\def`. The second `#8` becomes the expected `#9` while its `8` is
+% backed up as a literal delimiter; the following tenth `#9` pair is dropped;
+% and the final `#{` delimits the ninth argument and contributes `{` to the
+% replacement text. This is TRIP's exact pathological definition.
+\catcode`\{=1 \catcode`\}=2 \catcode`\#=6 \catcode`U=6
+\tracingonline=1 \tracingcommands=2
+\outer\edef\one{} \show\one
+\outer\def\two{} \show\two
+\let\alias=\one \show\alias
+{\def\one{inner}} \show\one
+\let\two=\relax \show\two
+\outer\global\long\edef\lo#1#2U3#4#5#6#7#8#8#99#{\relax}
+\show\lo
+\outer\def\stop{}
+\xdef\recover#1{#1\par\stop
+\show\recover
+\end

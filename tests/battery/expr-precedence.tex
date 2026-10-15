@@ -1,0 +1,45 @@
+% e-TeX expression syntax: precedence and parentheses.
+%
+% Ours was a left-to-right fold, which is a different language:
+% \numexpr 1+2*3 is 7, not 9. Every gate was green -- plain.tex never writes a
+% mixed-precedence expression, and neither did any battery until this one.
+% l3fp, which is built almost entirely out of parenthesised \__fp_int_eval:w,
+% could not evaluate its first expression.
+%
+% The grammar is e-TeX's (etex.ch, scan_expr):
+%   expr   := term { (+|-) term }
+%   term   := factor { (*|/) integer-factor }
+%   factor := operand | ( expr )
+%
+% The asymmetry in `term` is what makes a dimension expression type-check:
+% 2pt*3 is a dimension times a *number*, so after the first factor the
+% operands are integers however the expression as a whole is typed.
+\input plain
+\def\M#1{\message{<#1>}}
+\count5=7 \dimen5=3pt \skip5=2pt plus 1pt
+\M{a=\the\numexpr 1+2*3\relax}
+\M{b=\the\numexpr (1+2)*3\relax}
+\M{c=\the\numexpr 2*(3+4)-5\relax}
+\M{d=\the\numexpr 100/(2*5)\relax}
+\M{e=\the\numexpr ((1+2)*(3+4))\relax}
+\M{f=\the\numexpr 1-2-3\relax}
+\M{g=\the\numexpr 8/4/2\relax}
+\M{h=\the\numexpr 2+3*4-5/5\relax}
+\M{i=\the\numexpr 7/2\relax}
+\M{j=\the\numexpr -7/2\relax}
+\M{k=\the\numexpr 1+(2+(3+(4+5)))\relax}
+\M{l=\the\numexpr \count5*2+1\relax}
+\M{m=\the\numexpr (\count5+1)*2\relax}
+\M{n=\the\numexpr 2*3/4\relax}
+\M{o=\the\numexpr 32767*2+1\relax}
+\M{p=\the\dimexpr (1pt+2pt)*3\relax}
+\M{q=\the\dimexpr 1pt+2pt*3\relax}
+\M{r=\the\dimexpr \dimen5*2+1pt\relax}
+\M{s=\the\dimexpr (1pt+1pt)/2\relax}
+\M{t=\the\dimexpr 1pt*(2+3)\relax}
+\M{u=\the\glueexpr (1pt plus 1pt)*2\relax}
+\M{v=\the\glueexpr \skip5*2+1pt plus 1pt\relax}
+\M{w=\the\glueexpr (\skip5+1pt plus 1pt)*2\relax}
+\M{x=\the\numexpr 1 + 2 * 3 \relax}
+\M{y=\the\numexpr ( 1 + 2 ) * 3 \relax}
+\bye

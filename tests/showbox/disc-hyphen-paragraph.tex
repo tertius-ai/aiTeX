@@ -1,0 +1,52 @@
+% `tex.web` §1090: `\-` at the head of a paragraph starts one.
+%
+% §1116 registers `\discretionary` and `\-` as one command with two `chr`
+% values, and §1090's list of commands that begin a paragraph names that
+% command once:
+%
+%     vmode+…,vmode+discretionary,…:
+%       begin back_input; new_graf(true); end;
+%
+% We had only the braced form in the list, so trip.tex's `\--\--\char-0-A\-`
+% left the first `\-` in vertical mode. It appended its discretionary to the
+% enclosing vertical list, where no line breaker will ever look at it, and the
+% paragraph began at the character after it instead — one node in the wrong
+% list and an indent box in the wrong place.
+%
+% §1117 is what the node is:
+%
+%     tail_append(new_disc);
+%     if cur_chr=1 then
+%       begin c:=hyphen_char[cur_font];
+%       if c>=0 then if c<256 then pre_break(tail):=new_character(cur_font,c);
+%       end
+%
+% so `\-` is a discretionary whose pre-break text is the current font's
+% \hyphenchar, and with \hyphenchar negative it is an empty one — still a
+% legal place to break, just one that shows nothing.
+\catcode`\{=1 \catcode`\}=2
+\tracingonline=1 \showboxbreadth=99 \showboxdepth=99
+\hsize=200pt \parindent=0pt \vsize=200pt
+\font\r=cmr10 \r \hyphenchar\r=`\-
+
+% `\-` first: it is what starts the paragraph, so the indent box is above it.
+\setbox0\vbox{\-AB\par}
+\showbox0
+
+% ...and in the middle and at the end, where it never had to start anything.
+\setbox1\vbox{A\-B\par}
+\showbox1
+\setbox2\vbox{A\-\par}
+\showbox2
+
+% A negative \hyphenchar gives an empty discretionary, not no discretionary.
+\hyphenchar\r=-1
+\setbox3\vbox{\-AB\par}
+\showbox3
+
+% In restricted horizontal mode there is no paragraph to start and the node is
+% appended where it stands.
+\hyphenchar\r=`\-
+\setbox4\hbox{A\-B}
+\showbox4
+\end

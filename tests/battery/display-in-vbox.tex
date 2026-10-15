@@ -1,0 +1,63 @@
+% A display inside a vertical box, and what starts a paragraph.
+%
+% `tex.web` §1090 starts a paragraph from *vertical* mode. Math mode is not
+% vertical mode, and a character in a formula is a `\mathchar`, never the thing
+% that begins a paragraph.
+%
+% That distinction is invisible on the page and decisive inside a `\vbox`.
+% Opening a display breaks the paragraph so far (§1145), which leaves the box
+% with no paragraph in progress — and we asked the *box* whether a paragraph
+% was needed rather than the mode. So the first character of the formula
+% started one: `\everypar` fired inside the display, `\parskip` went in, and the
+% display's own `\predisplaypenalty`, `\abovedisplayskip`, equation box,
+% `\postdisplaypenalty` and `\belowdisplayskip` were all appended to that
+% paragraph's horizontal list — which §1206 `resume_after_display` clears.
+%
+% Every display inside a vertical box vanished, contents and all. On the page it
+% worked, because there the mode really is `mmode` and the question never came
+% up, so no gate built on whole documents could see it.
+\catcode`\{=1 \catcode`\}=2 \catcode`\#=6 \catcode`\$=3
+\catcode`\^=7 \catcode`\_=8
+\font\rip=cmr10 \font\mi=cmmi10 \font\sy=cmsy10 \font\ex=cmex10
+\textfont0=\rip \scriptfont0=\rip \scriptscriptfont0=\rip
+\textfont1=\mi \scriptfont1=\mi \scriptscriptfont1=\mi
+\textfont2=\sy \scriptfont2=\sy \scriptscriptfont2=\sy
+\textfont3=\ex \scriptfont3=\ex \scriptscriptfont3=\ex
+\rip
+\hsize=200pt \parindent=0pt \baselineskip=12pt \lineskip=1pt \lineskiplimit=0pt
+
+% A paragraph with a display in the middle of it: two text lines and the
+% display between them.
+\setbox0\vbox{\noindent A$$A$$A\par}
+\message{<para-with-display=\the\ht0>}
+
+% The same paragraph with no display, for the difference to be readable.
+\setbox1\vbox{\noindent AA\par}
+\message{<para-alone=\the\ht1>}
+
+% A display that ends the box, with nothing after it.
+\setbox2\vbox{\noindent A$$A$$\par}
+\message{<display-last=\the\ht2>}
+
+% A display after a box rather than after text.
+\setbox3\vbox{\hbox{A}$$A$$}
+\message{<display-after-box=\the\ht3>}
+
+% `\everypar` must not fire inside the formula. If it does, the token it
+% inserts is typeset in math mode and the count goes up.
+\count0=0
+\everypar{\global\advance\count0 by1 }
+\setbox4\vbox{\noindent A$$A$$A\par}
+\message{<everypar-count=\the\count0>}
+\everypar{}
+
+% The display's skips are on the box's *vertical* list, so changing them
+% changes the box's height by exactly that much.
+\abovedisplayskip=10pt \belowdisplayskip=11pt
+\abovedisplayshortskip=10pt \belowdisplayshortskip=11pt
+\setbox5\vbox{\noindent A$$A$$A\par}
+\message{<with-skips=\the\ht5>}
+\abovedisplayskip=0pt \belowdisplayskip=0pt
+\abovedisplayshortskip=0pt \belowdisplayshortskip=0pt
+
+\end

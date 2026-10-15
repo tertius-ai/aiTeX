@@ -1,0 +1,3705 @@
+{
+  "schema": 1,
+  "description": "Source lock for the blind arXiv compatibility holdout",
+  "created_at": "2026-08-28T06:41:43+00:00",
+  "sample_sha256": "9e5171a6b72c153d9e0cc6f2171fe331a217a3fe5bbead009a497f7245088087",
+  "entries": [
+    {
+      "id": "2608.27451v1",
+      "url": "https://arxiv.org/e-print/2608.27451v1",
+      "published": "2026-08-27T17:59:01Z",
+      "updated": "2026-08-27T17:59:01Z",
+      "primary_category": "cs.PL",
+      "categories": [
+        "cs.PL",
+        "cs.SE"
+      ],
+      "title": "Tacet: A Language and Type System for Automatic Statistical Validity Accounting",
+      "status": "ready",
+      "root": "tacet.tex",
+      "tree_sha256": "d65ab389111e45382e899beebe092928e7dc090347cf221a422dc2795f7a341e",
+      "files": 5,
+      "bytes": 346753,
+      "response_bytes": 127628,
+      "response_sha256": "9847146c00f5b47f326d0e993e014907a1c0b157bc05dae811cce3ef63d16fb3"
+    },
+    {
+      "id": "2608.27447v1",
+      "url": "https://arxiv.org/e-print/2608.27447v1",
+      "published": "2026-08-27T17:58:06Z",
+      "updated": "2026-08-27T17:58:06Z",
+      "primary_category": "hep-th",
+      "categories": [
+        "hep-th",
+        "math-ph"
+      ],
+      "title": "Proof of the AGT Conjecture at Generic $β$",
+      "status": "ready",
+      "root": "supplemental_material.tex",
+      "tree_sha256": "56d600bd21feb046eace1b54e42afff2b40f58909bed4f7e6f39891902b5db8a",
+      "files": 3,
+      "bytes": 89341,
+      "response_bytes": 28636,
+      "response_sha256": "9ca96eaadfc776a059ae7d2de1c6164ad25303dd273fa9919b7f09ea2c6ae365"
+    },
+    {
+      "id": "2608.27441v1",
+      "url": "https://arxiv.org/e-print/2608.27441v1",
+      "published": "2026-08-27T17:56:05Z",
+      "updated": "2026-08-27T17:56:05Z",
+      "primary_category": "math.AG",
+      "categories": [
+        "math.AG"
+      ],
+      "title": "Towards the Global Torelli Theorem",
+      "status": "ready",
+      "root": "towards_the_global_torelli.tex",
+      "tree_sha256": "3f8c4a76d50ce9ddecbc3df4d1729066b0529d8b958b22ab57dc900385904c81",
+      "files": 3,
+      "bytes": 95047,
+      "response_bytes": 28392,
+      "response_sha256": "c549c8588a70d957ab88196fb864fc1bd26d97545cea845f47eea3d23d9082be"
+    },
+    {
+      "id": "2608.27437v1",
+      "url": "https://arxiv.org/e-print/2608.27437v1",
+      "published": "2026-08-27T17:55:03Z",
+      "updated": "2026-08-27T17:55:03Z",
+      "primary_category": "astro-ph.SR",
+      "categories": [
+        "astro-ph.SR",
+        "astro-ph.EP"
+      ],
+      "title": "The JWST/NIRCam Scattered Light Disks GTO 2780 program: panchromatic coronagraphic imaging of the HD 10647, HD 32297, HD 61005, HD 107146, and HD 181327 debris disk systems",
+      "status": "ready",
+      "root": "ms2780_verB_e2p.tex",
+      "tree_sha256": "fc022b959afe9b5920335dd2b5622f2afe8a2ead4a5f243fc4ce2263babb02f4",
+      "files": 50,
+      "bytes": 21979460,
+      "response_bytes": 20035528,
+      "response_sha256": "3db877dadcfcc2e840ae72ff82c13613922c19836b7ccd1d61e07beea5877b25"
+    },
+    {
+      "id": "2608.27427v1",
+      "url": "https://arxiv.org/e-print/2608.27427v1",
+      "published": "2026-08-27T17:50:07Z",
+      "updated": "2026-08-27T17:50:07Z",
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "title": "Persona-Execution Separation: An Architecture Pattern for Evolving LLM Agents under Execution Audit",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "a15b314d0aaec3ef8a227bdfd82d23c01eb3f48c984ce290535fc4a43994d918",
+      "files": 20,
+      "bytes": 365753,
+      "response_bytes": 196112,
+      "response_sha256": "f2a569313665921e840da67fd6efe9569dd4ea08dca77c4ad27a660097bc2881"
+    },
+    {
+      "id": "2608.27424v1",
+      "url": "https://arxiv.org/e-print/2608.27424v1",
+      "published": "2026-08-27T17:49:28Z",
+      "updated": "2026-08-27T17:49:28Z",
+      "primary_category": "cs.CR",
+      "categories": [
+        "cs.CR",
+        "cs.AI"
+      ],
+      "title": "Beyond F1: Evaluating Coverage and Failure Recovery in AI Model Security Scanners",
+      "status": "ready",
+      "root": "modelsec.tex",
+      "tree_sha256": "33c129bc7e75d836aa8d5fe28d9fa39d7f5190ece834e8fdcf9774d5f1f69efa",
+      "files": 6,
+      "bytes": 296130,
+      "response_bytes": 242669,
+      "response_sha256": "9f99b8db97a03a7131ff8128ffdfc4efa61e55345ca40399773571bbe2302e51"
+    },
+    {
+      "id": "2608.27421v1",
+      "url": "https://arxiv.org/e-print/2608.27421v1",
+      "published": "2026-08-27T17:46:21Z",
+      "updated": "2026-08-27T17:46:21Z",
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.LG"
+      ],
+      "title": "Learning a Continuous Sepsis Severity Score Without Hour-by-Hour Supervision: A Two-Site Retrospective Study",
+      "status": "no_tex_source",
+      "response_bytes": 1090220,
+      "response_sha256": "ffc0d845c1ee8d5527bf59eec58008e3a769f3fd782b3305608e002fbf38a5d0",
+      "content_type": "application/pdf"
+    },
+    {
+      "id": "2608.27419v1",
+      "url": "https://arxiv.org/e-print/2608.27419v1",
+      "published": "2026-08-27T17:45:28Z",
+      "updated": "2026-08-27T17:45:28Z",
+      "primary_category": "cs.GT",
+      "categories": [
+        "cs.GT",
+        "math.PR"
+      ],
+      "title": "Algorithms for Robbins' Problem using Markov Decision Processes",
+      "status": "ready",
+      "root": "main_arxiv.tex",
+      "tree_sha256": "5e89a61ffce5ac1c036b8917b1a83f6d815bcb79500e4589fb5041d292aee805",
+      "files": 11,
+      "bytes": 584816,
+      "response_bytes": 419584,
+      "response_sha256": "95a8ba6564a57feff4aaf91494f16025a893b7696b07b0d9d9b127ee5f0bb469"
+    },
+    {
+      "id": "2608.27415v1",
+      "url": "https://arxiv.org/e-print/2608.27415v1",
+      "published": "2026-08-27T17:42:36Z",
+      "updated": "2026-08-27T17:42:36Z",
+      "primary_category": "nlin.PS",
+      "categories": [
+        "nlin.PS",
+        "nlin.SI"
+      ],
+      "title": "Wedge problems and dispersive shock waves in the two-dimensional Toda lattice",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "82349aeabeb631f1ab212c2d4c8067669a82f56ef2121836da632ebabf5303df",
+      "files": 18,
+      "bytes": 6035016,
+      "response_bytes": 5684905,
+      "response_sha256": "0754e24215087c48d9f078cde1fcdb8281ab3a3c8a2a56f7b27f3b97b8fd0de0"
+    },
+    {
+      "id": "2608.27410v1",
+      "url": "https://arxiv.org/e-print/2608.27410v1",
+      "published": "2026-08-27T17:40:24Z",
+      "updated": "2026-08-27T17:40:24Z",
+      "primary_category": "hep-th",
+      "categories": [
+        "hep-th"
+      ],
+      "title": "Doubly-scaled planar ${\\cal N} = 4$ SYM \\& Carroll Holography",
+      "status": "ready",
+      "root": "draft_AB.tex",
+      "tree_sha256": "6a659fa8616f8c77a3c8db6f0ef16f5a4d7f5ba55d97de4bec5d42a367234919",
+      "files": 6,
+      "bytes": 226232,
+      "response_bytes": 70947,
+      "response_sha256": "199f3717deb193aef672763f84d13608bbb255b0a422387828e03c0988d85f04"
+    },
+    {
+      "id": "2608.27409v1",
+      "url": "https://arxiv.org/e-print/2608.27409v1",
+      "published": "2026-08-27T17:38:04Z",
+      "updated": "2026-08-27T17:38:04Z",
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL"
+      ],
+      "title": "Consolidating RLVR Capabilities Across Domains: A Deep Dive into Fusion Paradigms",
+      "status": "ready",
+      "root": "main_2027.tex",
+      "tree_sha256": "0a58f9dd720bb82e46b056dbdaea8caf81fbd2c241dabc9f80db1bd8a1207cd6",
+      "files": 32,
+      "bytes": 897266,
+      "response_bytes": 690393,
+      "response_sha256": "f3fcc8e4772ce522315ed3eebcd70993ff0f4041859ccb44efccdae3f1f8bbc1"
+    },
+    {
+      "id": "2608.27406v1",
+      "url": "https://arxiv.org/e-print/2608.27406v1",
+      "published": "2026-08-27T17:35:10Z",
+      "updated": "2026-08-27T17:35:10Z",
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.AI",
+        "cs.CV"
+      ],
+      "title": "CLAP: Cross-Embodiment Video World Models are Zero-Shot Physical Simulators",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "a0138b6742565d165272138d8572da362eff9cc43945c69193d4e5ee6ff7224c",
+      "files": 37,
+      "bytes": 9386887,
+      "response_bytes": 8938375,
+      "response_sha256": "3aadf56b804685f625720bcf98de50d9a9e7d36184c1e817f0ad8b19a03cf1e1"
+    },
+    {
+      "id": "2608.27399v1",
+      "url": "https://arxiv.org/e-print/2608.27399v1",
+      "published": "2026-08-27T17:29:04Z",
+      "updated": "2026-08-27T17:29:04Z",
+      "primary_category": "quant-ph",
+      "categories": [
+        "quant-ph",
+        "cond-mat.dis-nn",
+        "hep-th"
+      ],
+      "title": "Krylov Break Times from an Inhomogeneous Lieb--Robinson Light Cone",
+      "status": "ready",
+      "root": "krylov_LiebRobinson_main.tex",
+      "tree_sha256": "5bf6da564353757ba72aa44985ae9d0cd4a50bb5638d1432eea8c7fbe36dbc3a",
+      "files": 10,
+      "bytes": 1355614,
+      "response_bytes": 1164901,
+      "response_sha256": "c8c48d8f86b4c6edfb7195fcfef6834e22ebe90bb2a7234f1d4d38c1a834f67d"
+    },
+    {
+      "id": "2608.27398v1",
+      "url": "https://arxiv.org/e-print/2608.27398v1",
+      "published": "2026-08-27T17:29:00Z",
+      "updated": "2026-08-27T17:29:00Z",
+      "primary_category": "math.DG",
+      "categories": [
+        "math.DG"
+      ],
+      "title": "Strict Stability and Strict Minimality of Regular Area-Minimizing Hypercones: A Quantitative Characterization",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "cb8024b89a7a0891e570332723336eca7734c1d7d2d9d7f4d7093c64f0a77cc4",
+      "files": 3,
+      "bytes": 93156,
+      "response_bytes": 27342,
+      "response_sha256": "bec7ba7d5643e88969e25f03bfd5602916424f7c5cdd648b9bbfdcf5be0350b8"
+    },
+    {
+      "id": "2608.27367v1",
+      "url": "https://arxiv.org/e-print/2608.27367v1",
+      "published": "2026-08-27T17:04:57Z",
+      "updated": "2026-08-27T17:04:57Z",
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "title": "Successive Capacity Growth: Task-Complexity-Driven Width and Depth Expansion for Vision Transformer Encoders in JEPA World Models",
+      "status": "ready",
+      "root": "neurips2026_5.tex",
+      "tree_sha256": "ab958848dfad2aaad04ade30a35f55451af3c9f8e7783730464fb0d92e1cf9cf",
+      "files": 8,
+      "bytes": 282157,
+      "response_bytes": 178609,
+      "response_sha256": "a38ce79cc33efa39169e4052b2777aa6ed23639cad6e36788df568a26e3e738f"
+    },
+    {
+      "id": "2608.27357v1",
+      "url": "https://arxiv.org/e-print/2608.27357v1",
+      "published": "2026-08-27T16:55:04Z",
+      "updated": "2026-08-27T16:55:04Z",
+      "primary_category": "quant-ph",
+      "categories": [
+        "quant-ph"
+      ],
+      "title": "Randomness can be certified in energy-constrained semi-device-independent scenarios",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "15355f902c10419fbd27efd356a29765394d77d20348127dbae17f8d750f6d40",
+      "files": 10,
+      "bytes": 179429,
+      "response_bytes": 96385,
+      "response_sha256": "74bd15d1f6ea9cc27dbdf588af82d331b7fa32cb34aa60b306b567dd57b4e8dc"
+    },
+    {
+      "id": "2608.27356v1",
+      "url": "https://arxiv.org/e-print/2608.27356v1",
+      "published": "2026-08-27T16:53:12Z",
+      "updated": "2026-08-27T16:53:12Z",
+      "primary_category": "math.NT",
+      "categories": [
+        "math.NT"
+      ],
+      "title": "Integers divisible by a shifted prime in a given interval",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "118f5e743e6f094ce73c4bec5877a3aeecee7f79dd2dfe344ef879a8b9722eac",
+      "files": 8,
+      "bytes": 133368,
+      "response_bytes": 36454,
+      "response_sha256": "c2dc453b4e64995e6dc15bb20707f79689a4ddb5b0101fcd72c64ab4290410ee"
+    },
+    {
+      "id": "2608.27347v1",
+      "url": "https://arxiv.org/e-print/2608.27347v1",
+      "published": "2026-08-27T16:46:57Z",
+      "updated": "2026-08-27T16:46:57Z",
+      "primary_category": "cs.GT",
+      "categories": [
+        "cs.GT"
+      ],
+      "title": "Blindfolded pursuit with delays of your choice",
+      "status": "ready",
+      "root": "manuscript.tex",
+      "tree_sha256": "460db0a8c87d1eb9be6c1cff44b41757e6f126bcf539f78dd0f4c187995d6ca3",
+      "files": 13,
+      "bytes": 296505,
+      "response_bytes": 33060,
+      "response_sha256": "bc9df206f93fe11ac9190ba3105bbd62e87ca84f03405c7be6f815255f4c0e01"
+    },
+    {
+      "id": "2608.27340v1",
+      "url": "https://arxiv.org/e-print/2608.27340v1",
+      "published": "2026-08-27T16:41:48Z",
+      "updated": "2026-08-27T16:41:48Z",
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "title": "Not All Eval-Awareness Is Equal: Capabilities Framing Predicts Compliance",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "dd760bac7a08f35875700c299180e269c9620b0486aea1cd3307fbaef24b3a12",
+      "files": 13,
+      "bytes": 1762826,
+      "response_bytes": 1383243,
+      "response_sha256": "3ff3a76de65cbdec858fd5ab2d74f0c26cce2aba9829f2b8d4574c837a730d78"
+    },
+    {
+      "id": "2608.27334v1",
+      "url": "https://arxiv.org/e-print/2608.27334v1",
+      "published": "2026-08-27T16:35:52Z",
+      "updated": "2026-08-27T16:35:52Z",
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL",
+        "cs.SE"
+      ],
+      "title": "BTS-AgentBench: A Deterministic, Replayable Pipeline from Read-Only Telemetry Logs to Agent Benchmarks",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "f3514a272c2d98b23443b33e9e315dcc13b76b85693f5f1153eaf3b94c8da48a",
+      "files": 6,
+      "bytes": 1014653,
+      "response_bytes": 923695,
+      "response_sha256": "d66f5ef1a58b93de6437c8d0dda4a826be1beab237a1d227907dde1b42eaa9ba"
+    },
+    {
+      "id": "2608.27333v1",
+      "url": "https://arxiv.org/e-print/2608.27333v1",
+      "published": "2026-08-27T16:35:30Z",
+      "updated": "2026-08-27T16:35:30Z",
+      "primary_category": "quant-ph",
+      "categories": [
+        "quant-ph",
+        "physics.data-an"
+      ],
+      "title": "Evaluating Quantum Kernel Methods for Track-Based Classification in High-Energy Physics",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "f907ca6f8d1abedfcea919e0e8a6c3974fde22f7e76ef2ad8301dbeac2b0bcb1",
+      "files": 23,
+      "bytes": 1583855,
+      "response_bytes": 1431045,
+      "response_sha256": "47a57c5cc701de796e732dbc9b541a911d72352281c94be4586ef0522ee8b307"
+    },
+    {
+      "id": "2608.27315v1",
+      "url": "https://arxiv.org/e-print/2608.27315v1",
+      "published": "2026-08-27T16:18:21Z",
+      "updated": "2026-08-27T16:18:21Z",
+      "primary_category": "physics.app-ph",
+      "categories": [
+        "physics.app-ph"
+      ],
+      "title": "Hyperuniformity as a unifying organizational principle across diatom architectures",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "88dbd034998f777cb12c1a03bcaf1976e3b1ab9313dad9d1eaba479b12155eec",
+      "files": 11,
+      "bytes": 25751645,
+      "response_bytes": 24740466,
+      "response_sha256": "f6a0e92f87350bea40a575749c61aa89e384556baee1619ee5b67e6fd8ac9f7f"
+    },
+    {
+      "id": "2608.27304v1",
+      "url": "https://arxiv.org/e-print/2608.27304v1",
+      "published": "2026-08-27T16:07:01Z",
+      "updated": "2026-08-27T16:07:01Z",
+      "primary_category": "cond-mat.mtrl-sci",
+      "categories": [
+        "cond-mat.mtrl-sci"
+      ],
+      "title": "3D Cloud Component Analysis of Atomic Structures",
+      "status": "ready",
+      "root": "manuscript.tex",
+      "tree_sha256": "a4c8b583450e89da322fc4b0276bf4d651c4cc9effbddbb27ea90aa2eabd0a97",
+      "files": 2,
+      "bytes": 73906,
+      "response_bytes": 25610,
+      "response_sha256": "6841c02e2faeeb4cb6b2e0fc973e631d6dc3160696ea607d9bb69021e7fe5a8e"
+    },
+    {
+      "id": "2608.27289v1",
+      "url": "https://arxiv.org/e-print/2608.27289v1",
+      "published": "2026-08-27T15:58:11Z",
+      "updated": "2026-08-27T15:58:11Z",
+      "primary_category": "stat.ME",
+      "categories": [
+        "stat.ME"
+      ],
+      "title": "Combining covariate adjustment with information from secondary endpoints to improve precision in randomized trials",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "969c1af7849b838f426ad596e6df3e63e3ae47c4d5129460d902aae14bad6d75",
+      "files": 18,
+      "bytes": 592945,
+      "response_bytes": 490658,
+      "response_sha256": "729ec132364b565c4d0e9cfd8c25d1681429704d0c421b1a4c5c67754a704f59"
+    },
+    {
+      "id": "2608.27283v1",
+      "url": "https://arxiv.org/e-print/2608.27283v1",
+      "published": "2026-08-27T15:54:33Z",
+      "updated": "2026-08-27T15:54:33Z",
+      "primary_category": "math.NT",
+      "categories": [
+        "math.NT"
+      ],
+      "title": "The Matrix Pythagorean Equation over $\\mathrm{GL}_2(\\mathbb{Z})$",
+      "status": "ready",
+      "root": "MP.tex",
+      "tree_sha256": "a39872132e1f531f61bee98c4936c4c9b61499563b722583ddd0e8f960c04d7a",
+      "files": 2,
+      "bytes": 47842,
+      "response_bytes": 14974,
+      "response_sha256": "53abdfedd31f977e8b278540c5e38e61e11c4912d4081866b1ea7c0ef388f45e"
+    },
+    {
+      "id": "2608.27282v1",
+      "url": "https://arxiv.org/e-print/2608.27282v1",
+      "published": "2026-08-27T15:54:32Z",
+      "updated": "2026-08-27T15:54:32Z",
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.AI",
+        "cs.RO",
+        "eess.SY"
+      ],
+      "title": "TADP: Task-Aware Deformable Prediction for Single-Stage 3D Object Detection",
+      "status": "ready",
+      "root": "conference_101719.tex",
+      "tree_sha256": "e6fa8e03d3c6955c026bd7eea3002dc5c7f30534786089f8963f6de9b9518baa",
+      "files": 9,
+      "bytes": 1466855,
+      "response_bytes": 1154797,
+      "response_sha256": "c00cd7079934ef08a3bcbe054b22519d3b9523be7d540a544cd250b9464e1f58"
+    },
+    {
+      "id": "2608.27276v1",
+      "url": "https://arxiv.org/e-print/2608.27276v1",
+      "published": "2026-08-27T15:52:06Z",
+      "updated": "2026-08-27T15:52:06Z",
+      "primary_category": "math.AP",
+      "categories": [
+        "math.AP"
+      ],
+      "title": "The complete spectrum of the linearized $p$-Laplacian at a Sobolev extremal",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "4dfb07f3879a52e3cbc5869d5956f8b11a4f1d2cc02ba926302d5f1156a214ea",
+      "files": 2,
+      "bytes": 57082,
+      "response_bytes": 16595,
+      "response_sha256": "eb11ec3046cc0d922adabe540c482492544ff16807d57b734eb560c708ea7ed1"
+    },
+    {
+      "id": "2608.27268v1",
+      "url": "https://arxiv.org/e-print/2608.27268v1",
+      "published": "2026-08-27T15:48:39Z",
+      "updated": "2026-08-27T15:48:39Z",
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.HC"
+      ],
+      "title": "BrailleBench: Investigating Multi-Criteria Braille Comprehension in Large Language Models",
+      "status": "ready",
+      "root": "conference_101719.tex",
+      "tree_sha256": "fac99a6b5a16f7cd629cd950ad7d7fcebb92368544c6ddc7ed89e1405d9c5a86",
+      "files": 10,
+      "bytes": 513904,
+      "response_bytes": 221268,
+      "response_sha256": "26237f08b7284c787b9e85a9bde3828ea9273090f4e2a539c900b7ed8acaddaa"
+    },
+    {
+      "id": "2608.27267v1",
+      "url": "https://arxiv.org/e-print/2608.27267v1",
+      "published": "2026-08-27T15:48:11Z",
+      "updated": "2026-08-27T15:48:11Z",
+      "primary_category": "hep-lat",
+      "categories": [
+        "hep-lat",
+        "hep-ph",
+        "quant-ph"
+      ],
+      "title": "Efficient Quantum Simulations of Yang-Mills theory with Maximal-tree Gauge",
+      "status": "ready",
+      "root": "arxiv_v1.tex",
+      "tree_sha256": "3a99a48901d75de7e70e0a52fed63d8ff953d787e0c8d96e22d22197ea5b3447",
+      "files": 5,
+      "bytes": 94025,
+      "response_bytes": 43587,
+      "response_sha256": "b55df71a25a571d5596028372ff1fb9ccc2eb085f24f305d6970194ef8e54b7c"
+    },
+    {
+      "id": "2608.27235v1",
+      "url": "https://arxiv.org/e-print/2608.27235v1",
+      "published": "2026-08-27T15:19:23Z",
+      "updated": "2026-08-27T15:19:23Z",
+      "primary_category": "math.CO",
+      "categories": [
+        "math.CO"
+      ],
+      "title": "An Extremal Spectral Problem for Triangle-Free Graphs Arising from Quantum Transport",
+      "status": "ready",
+      "root": "short_time_quantum_transport_triangle_free_V15.tex",
+      "tree_sha256": "17be9716a752ad012f931ccede68a89484d15af38ea90c9a166f5f3bb1b14247",
+      "files": 8,
+      "bytes": 122353,
+      "response_bytes": 54428,
+      "response_sha256": "9c96dd600fef73bfa446b65dbfe84e490f026b16996c7902057e941454669e8b"
+    },
+    {
+      "id": "2608.27220v1",
+      "url": "https://arxiv.org/e-print/2608.27220v1",
+      "published": "2026-08-27T15:03:32Z",
+      "updated": "2026-08-27T15:03:32Z",
+      "primary_category": "astro-ph.SR",
+      "categories": [
+        "astro-ph.SR",
+        "astro-ph.GA"
+      ],
+      "title": "Bright Metal-Poor Star Survey - I. Tomo-e Gozen narrow-band photometric survey and medium-resolution spectroscopic follow-up",
+      "status": "ready",
+      "root": "ms.tex",
+      "tree_sha256": "63a05ec1a1b9eb67ce0e781f58d30ca1c5dfe27069f994336d309f9062423d91",
+      "files": 23,
+      "bytes": 25745307,
+      "response_bytes": 24716225,
+      "response_sha256": "722e31f9c55d7586de57d88f13c4186f800a23f5caee86be2673302fe0a7e5de"
+    },
+    {
+      "id": "2608.27205v1",
+      "url": "https://arxiv.org/e-print/2608.27205v1",
+      "published": "2026-08-27T14:52:02Z",
+      "updated": "2026-08-27T14:52:02Z",
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG"
+      ],
+      "title": "Profit based evaluation of machine learning for nitrogen recommendations in winter wheat",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "cfeeaadda6eba2c6025f5d848d9c840b8e324fd76a42dd65daf104c108b9e88d",
+      "files": 8,
+      "bytes": 964895,
+      "response_bytes": 893418,
+      "response_sha256": "8b1f3f786b6ce39b425faa78c80e01e216ca66655fec19cb61552b6b0339833b"
+    },
+    {
+      "id": "2608.27203v1",
+      "url": "https://arxiv.org/e-print/2608.27203v1",
+      "published": "2026-08-27T14:47:51Z",
+      "updated": "2026-08-27T14:47:51Z",
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG"
+      ],
+      "title": "Common Geodesics Do Not Guarantee Fisher Consistency of the Structured SVM: Minimal Counterexamples and a Tree-Metric Classification",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "9345955637a65dc5de6c2883c1dad1d180f7a6715ab1e9bb342c0843656ac588",
+      "files": 4,
+      "bytes": 47882,
+      "response_bytes": 16723,
+      "response_sha256": "f447d6841793ff05bf3228d8c1fd78f143a7994d37775a645523e77a07f249b8"
+    },
+    {
+      "id": "2608.27191v1",
+      "url": "https://arxiv.org/e-print/2608.27191v1",
+      "published": "2026-08-27T14:35:57Z",
+      "updated": "2026-08-27T14:35:57Z",
+      "primary_category": "stat.ME",
+      "categories": [
+        "stat.ME"
+      ],
+      "title": "Personalized Federated Learning for Tensor Regression",
+      "status": "ready",
+      "root": "T-fl_arxiv.tex",
+      "tree_sha256": "adfc88d94c013d7b130626d6d04358ef23e03af4f7dbe35ab747db3f5568ab58",
+      "files": 6,
+      "bytes": 494938,
+      "response_bytes": 144118,
+      "response_sha256": "6ffc1a18e1d1022d33e4389d0e6e975914c2e6959cc4cdfc375e5c834383dbdd"
+    },
+    {
+      "id": "2608.27181v1",
+      "url": "https://arxiv.org/e-print/2608.27181v1",
+      "published": "2026-08-27T14:28:19Z",
+      "updated": "2026-08-27T14:28:19Z",
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "title": "SSMB: Self-Supervised Local Feature Detection under Motion Blur",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "917530a89fe6d8d2e82a151c6499d86ad9db30cae75b4bc26674a368aa4c2b23",
+      "files": 79,
+      "bytes": 41438038,
+      "response_bytes": 40239491,
+      "response_sha256": "49f07611e42319a9b0827d1c4cc7186486756459aa3973fda6b5601a3ce8d332"
+    },
+    {
+      "id": "2608.27179v1",
+      "url": "https://arxiv.org/e-print/2608.27179v1",
+      "published": "2026-08-27T14:27:56Z",
+      "updated": "2026-08-27T14:27:56Z",
+      "primary_category": "math.CO",
+      "categories": [
+        "math.CO",
+        "cs.DM",
+        "math.SP"
+      ],
+      "title": "On Eigenvalue Bounds for Bounded Genus Graphs and Minor-Free Graphs",
+      "status": "ready",
+      "root": "arxiv.tex",
+      "tree_sha256": "144179fd55debc082d9577dbdca95de84d4393ab51d1c8d3f19b2a6082e2af44",
+      "files": 4,
+      "bytes": 219285,
+      "response_bytes": 120173,
+      "response_sha256": "6f25477c3284e1592eb0867de7775dea5d224f29b76b8ca4c11a8313b4fb97ac"
+    },
+    {
+      "id": "2608.27148v1",
+      "url": "https://arxiv.org/e-print/2608.27148v1",
+      "published": "2026-08-27T14:00:16Z",
+      "updated": "2026-08-27T14:00:16Z",
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "title": "AgentDV: Closed-Loop Agentic AI for Hardware Design Verification",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "67621757c052ba7cee187bd59ad4e8664037f448e207134c6639a4d85923270d",
+      "files": 15,
+      "bytes": 2474746,
+      "response_bytes": 2321444,
+      "response_sha256": "fe13944d6fcf486150977205ab0b2127c3a07c056aafce68c34d0e48fd077762"
+    },
+    {
+      "id": "2608.27127v1",
+      "url": "https://arxiv.org/e-print/2608.27127v1",
+      "published": "2026-08-27T13:40:11Z",
+      "updated": "2026-08-27T13:40:11Z",
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "title": "TransMeme: A Multi-Agent Framework for Cross-Cultural Meme Transcreation",
+      "status": "ready",
+      "root": "transmeme-camera-ready.tex",
+      "tree_sha256": "5d20e92dcb29f1bd4912c36a75e537bf26c80ba90bf3092ca0f426d9e4395664",
+      "files": 10,
+      "bytes": 1607888,
+      "response_bytes": 1267002,
+      "response_sha256": "e58862ca24e98a5a75237c2ea4e5af0f8c7b135a3a902da9d68e136ea168a472"
+    },
+    {
+      "id": "2608.27114v1",
+      "url": "https://arxiv.org/e-print/2608.27114v1",
+      "published": "2026-08-27T13:27:17Z",
+      "updated": "2026-08-27T13:27:17Z",
+      "primary_category": "cs.CG",
+      "categories": [
+        "cs.CG",
+        "math.AG"
+      ],
+      "title": "Quadratic Complexity of Voronoi Diagrams in $\\mathbb{R}^3$ for Lines in a Single Ruling of a Regulus",
+      "status": "ready",
+      "root": "regulus_voronoi_arxiv.tex",
+      "tree_sha256": "ea8d97beaecd6cf910ce306de3d1795b7f788553e94b900f88d092b978bf6b73",
+      "files": 6,
+      "bytes": 340518,
+      "response_bytes": 235033,
+      "response_sha256": "b5724ff64f587ea51eb4ffcb704405f41f4de4a600ea275b11cd0a4dddd25717"
+    },
+    {
+      "id": "2608.27101v1",
+      "url": "https://arxiv.org/e-print/2608.27101v1",
+      "published": "2026-08-27T13:16:55Z",
+      "updated": "2026-08-27T13:16:55Z",
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "title": "pro-team at LLMs4OL 2026 Tasks Flagship and Reuse: Retrieval-Augmented Generation and Vocabulary-Constrained Filtering for Ontology Learning",
+      "status": "ready",
+      "root": "llms4olcmr.tex",
+      "tree_sha256": "af790919dc55b250357242f74e747b4c13a189abadfd32e5af526189c7d30964",
+      "files": 5,
+      "bytes": 82663,
+      "response_bytes": 49339,
+      "response_sha256": "91bc5602fa00c916e255dd337db8bcbc03487f01ab9cda6ccfc8cb6242e01c6c"
+    },
+    {
+      "id": "2608.27083v1",
+      "url": "https://arxiv.org/e-print/2608.27083v1",
+      "published": "2026-08-27T13:08:24Z",
+      "updated": "2026-08-27T13:08:24Z",
+      "primary_category": "cond-mat.mtrl-sci",
+      "categories": [
+        "cond-mat.mtrl-sci"
+      ],
+      "title": "Laser induced ultrafast Co 3d and Ho 4f spin dynamics in CoHo ferrimagnetic alloys",
+      "status": "no_tex_source",
+      "response_bytes": 656152,
+      "response_sha256": "ed7f50fa088ef57cfac144dfec938f94ad6c889e58db3d9977b9643bdee7e840",
+      "content_type": "application/pdf"
+    },
+    {
+      "id": "2608.27076v1",
+      "url": "https://arxiv.org/e-print/2608.27076v1",
+      "published": "2026-08-27T13:01:32Z",
+      "updated": "2026-08-27T13:01:32Z",
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "q-fin.CP",
+        "q-fin.TR"
+      ],
+      "title": "Tabular Deep Learning for Algorithmic Trading: Cross-Regime Bayesian Optimisation for Equity Signal Generation",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "f5ca80d959c76044ec5d24088319fe98e8a4f62dca2fc258c792b9c743a9e810",
+      "files": 45,
+      "bytes": 11888258,
+      "response_bytes": 10322685,
+      "response_sha256": "5db51f79ddf96a25cc513feeb78cc2db508a6a0b9ba43b230818d90c790a22d3"
+    },
+    {
+      "id": "2608.27057v1",
+      "url": "https://arxiv.org/e-print/2608.27057v1",
+      "published": "2026-08-27T12:42:43Z",
+      "updated": "2026-08-27T12:42:43Z",
+      "primary_category": "quant-ph",
+      "categories": [
+        "quant-ph",
+        "cond-mat.mes-hall"
+      ],
+      "title": "Fast On-Chip Thermometry with TiN Kinetic Inductance Resonators in 22 nm Process Technology",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "5b7356103b6824fc4d3a684d8fe8550b3d6f793bf7774a77fea5414add5360cc",
+      "files": 7,
+      "bytes": 3134067,
+      "response_bytes": 2965628,
+      "response_sha256": "c5116773bb426c13e67a93527538ccc1266a4ce1a888937071958afe6c6d8782"
+    },
+    {
+      "id": "2608.27055v1",
+      "url": "https://arxiv.org/e-print/2608.27055v1",
+      "published": "2026-08-27T12:41:33Z",
+      "updated": "2026-08-27T12:41:33Z",
+      "primary_category": "math.ST",
+      "categories": [
+        "math.ST"
+      ],
+      "title": "How far can symmetry help? Phase transitions and symmetry selection in sparse functional data analysis",
+      "status": "ready",
+      "root": "Art01arxiv.tex",
+      "tree_sha256": "6fcbe847a776dc1b1b96d4692145a755b41cbaaa07003c1e17d978706d3234c9",
+      "files": 9,
+      "bytes": 5803692,
+      "response_bytes": 5271694,
+      "response_sha256": "68f08f23a10d016828711d6c11e7a24bd69d8b1632bb6375fdb0ad7f3f5a8d6e"
+    },
+    {
+      "id": "2608.27047v1",
+      "url": "https://arxiv.org/e-print/2608.27047v1",
+      "published": "2026-08-27T12:33:52Z",
+      "updated": "2026-08-27T12:33:52Z",
+      "primary_category": "math.CV",
+      "categories": [
+        "math.CV"
+      ],
+      "title": "Smale's Mean Value Conjecture and its Dual Conjecture for Complex Polynomials",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "7132f8b3aa01a40d94ef0f579de390d031b5a9bcbc4cd29501cde1c4d7a75a7b",
+      "files": 10,
+      "bytes": 677795,
+      "response_bytes": 418510,
+      "response_sha256": "75fae12f70ff7b675bff99711c339e6b2fbd7ce5046f62d77124d9f55d1042f6"
+    },
+    {
+      "id": "2608.27037v1",
+      "url": "https://arxiv.org/e-print/2608.27037v1",
+      "published": "2026-08-27T12:22:55Z",
+      "updated": "2026-08-27T12:22:55Z",
+      "primary_category": "cs.CR",
+      "categories": [
+        "cs.CR"
+      ],
+      "title": "Neighborhood Watch: Privacy Risks in Seeded Local Combination Synthetic Data",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "4e4b8932979ad8add6cfb0d3f7798c61f174bdec1c39ebf95c927a9e409e6d31",
+      "files": 18,
+      "bytes": 4183328,
+      "response_bytes": 3770096,
+      "response_sha256": "2196d1aa79c74725fb352afec5b5bbd7b32923d5cb6fc1ed2f79b947b8eeeee1"
+    },
+    {
+      "id": "2608.27003v1",
+      "url": "https://arxiv.org/e-print/2608.27003v1",
+      "published": "2026-08-27T11:48:39Z",
+      "updated": "2026-08-27T11:48:39Z",
+      "primary_category": "q-bio.NC",
+      "categories": [
+        "q-bio.NC"
+      ],
+      "title": "Beta oscillation changes in ALS: A Dual-Site International Replication Study",
+      "status": "no_tex_source",
+      "response_bytes": 1952844,
+      "response_sha256": "e3ee8e95de9e7ad5a2690198cfd72120f081ca59df5a361765aff4406d81a708",
+      "content_type": "application/pdf"
+    },
+    {
+      "id": "2608.26995v1",
+      "url": "https://arxiv.org/e-print/2608.26995v1",
+      "published": "2026-08-27T11:42:25Z",
+      "updated": "2026-08-27T11:42:25Z",
+      "primary_category": "physics.flu-dyn",
+      "categories": [
+        "physics.flu-dyn",
+        "quant-ph"
+      ],
+      "title": "Quantum-Inspired Computational Fluid Dynamics for Transient Turbulent Compressible Flows",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "92ef2bbf252eae70d6a86ba6fac3ae1de0b66e30da3627431edea888e1fecc3f",
+      "files": 13,
+      "bytes": 348642,
+      "response_bytes": 251892,
+      "response_sha256": "264aeca19741564dcea596356c30b90f27da92f12bcd9fbbc7a01964221d2061"
+    },
+    {
+      "id": "2608.26969v1",
+      "url": "https://arxiv.org/e-print/2608.26969v1",
+      "published": "2026-08-27T11:12:16Z",
+      "updated": "2026-08-27T11:12:16Z",
+      "primary_category": "math.DS",
+      "categories": [
+        "math.DS"
+      ],
+      "title": "Linear response for random systems with a cusp",
+      "status": "ready",
+      "root": "Linear_response_for_random_systems_with_a_cusp.tex",
+      "tree_sha256": "020c9ed88df6ff56420b4d897298e5dccc062f6cefff3983a28ee0a82a12ed18",
+      "files": 2,
+      "bytes": 77223,
+      "response_bytes": 22718,
+      "response_sha256": "7b263086312143187f8f7f4704820e17d07294b225b329b38691d68485337e1f"
+    },
+    {
+      "id": "2608.26964v1",
+      "url": "https://arxiv.org/e-print/2608.26964v1",
+      "published": "2026-08-27T11:02:13Z",
+      "updated": "2026-08-27T11:02:13Z",
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG"
+      ],
+      "title": "Graph-Based Pseudo-multimodal Contrastive Learning for 12-Lead ECG Representations",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "e731d1f7af9bec86608838aae23f47d9175f6c37427eae3d397201230d34a4a3",
+      "files": 11,
+      "bytes": 2551135,
+      "response_bytes": 2010179,
+      "response_sha256": "9566a670497d772c870d76c14ee880f04f68c6093974f458b119393eb27adea8"
+    },
+    {
+      "id": "2608.26962v1",
+      "url": "https://arxiv.org/e-print/2608.26962v1",
+      "published": "2026-08-27T11:01:18Z",
+      "updated": "2026-08-27T11:01:18Z",
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cond-mat.mtrl-sci"
+      ],
+      "title": "Packora: Systematic Design for Generative Molecular Crystal Structure Prediction",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "8facffb8ead8502fee2447d3b46a1448e8fedfa98bc28f264e58b844cfde4639",
+      "files": 79,
+      "bytes": 11594331,
+      "response_bytes": 11081379,
+      "response_sha256": "332e5e0a3f6e4b90a370f2572ecf0b5c1532200c64c634d725024c6814e6bbe0"
+    },
+    {
+      "id": "2608.26960v1",
+      "url": "https://arxiv.org/e-print/2608.26960v1",
+      "published": "2026-08-27T11:00:50Z",
+      "updated": "2026-08-27T11:00:50Z",
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "title": "Geo-LoRA: Geometry-Aware Subspace Evolution for Low-Rank Adaptation in Continual Learning",
+      "status": "ready",
+      "root": "greenmm_geolora.tex",
+      "tree_sha256": "98438d332156e957831e257984745d7542e4aec5c7ca0d570aff55642943db08",
+      "files": 19,
+      "bytes": 2699129,
+      "response_bytes": 1984983,
+      "response_sha256": "43e4e48d887d92a141b12a385fff8816bd344fd598fadc6dc7e0081cbc00ecf2"
+    },
+    {
+      "id": "2608.26941v1",
+      "url": "https://arxiv.org/e-print/2608.26941v1",
+      "published": "2026-08-27T10:42:48Z",
+      "updated": "2026-08-27T10:42:48Z",
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL"
+      ],
+      "title": "KinyaEmbed: Contrastive Sentence Embeddings for Kinyarwanda via Multi-Stage Curriculum Training",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "841f1b6883091c81b1d8aa2c76e99058874c9cbf83fddddfa0bc104db8e57b03",
+      "files": 5,
+      "bytes": 166602,
+      "response_bytes": 91507,
+      "response_sha256": "65d79091b1c61ff0f524349d468c17a1c96c0f9a6dc4bd0a59b195ddca427b4a"
+    },
+    {
+      "id": "2608.26939v1",
+      "url": "https://arxiv.org/e-print/2608.26939v1",
+      "published": "2026-08-27T10:40:15Z",
+      "updated": "2026-08-27T10:40:15Z",
+      "primary_category": "cs.MA",
+      "categories": [
+        "cs.MA",
+        "cs.RO"
+      ],
+      "title": "Dynamic Haven Selection for Multi-Agent Pickup and Delivery in Constrained Warehouses",
+      "status": "ready",
+      "root": "caipi_prl26.tex",
+      "tree_sha256": "fbf636186908fa79b70e358c53a40f1b950b163119f1019f32f3acc668aa7a14",
+      "files": 15,
+      "bytes": 2309185,
+      "response_bytes": 1658106,
+      "response_sha256": "4f50722476817473b6e7687303cc5cf279c1eb1cc0a6a9c79c51891821d03b00"
+    },
+    {
+      "id": "2608.26936v1",
+      "url": "https://arxiv.org/e-print/2608.26936v1",
+      "published": "2026-08-27T10:37:00Z",
+      "updated": "2026-08-27T10:37:00Z",
+      "primary_category": "math.CA",
+      "categories": [
+        "math.CA",
+        "math.FA",
+        "math.SP"
+      ],
+      "title": "Optimal fractional discrete Hardy inequalities on the half-line",
+      "status": "ready",
+      "root": "frac-hardy_arxiv.tex",
+      "tree_sha256": "8fdadb97df34188012c4c76e5508bcfc902dafcd8f6a7aeef6b4729f8ea74349",
+      "files": 2,
+      "bytes": 79918,
+      "response_bytes": 22301,
+      "response_sha256": "7f7fa5cadd67bac98fb990d3f9fcd9f6bcf3d5668dc8993b1a09a5a4fda4e892"
+    },
+    {
+      "id": "2608.26923v1",
+      "url": "https://arxiv.org/e-print/2608.26923v1",
+      "published": "2026-08-27T10:21:39Z",
+      "updated": "2026-08-27T10:21:39Z",
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL"
+      ],
+      "title": "TabuLM: Morphology-Aware Tabular Pre-training for Low-Resource Languages",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "a282ae2df1b9d360cacd5b9fa952ddd16350411185bd51cf2b783bc0d4b86190",
+      "files": 4,
+      "bytes": 119964,
+      "response_bytes": 35088,
+      "response_sha256": "31d516e07d7c9ad46cb3af32ed3e55716e14adb985180d7c80a84ea72d30502c"
+    },
+    {
+      "id": "2608.26922v1",
+      "url": "https://arxiv.org/e-print/2608.26922v1",
+      "published": "2026-08-27T10:17:21Z",
+      "updated": "2026-08-27T10:17:21Z",
+      "primary_category": "math.AG",
+      "categories": [
+        "math.AG"
+      ],
+      "title": "Nef cone decompositions for nested Hilbert schemes of points on surfaces",
+      "status": "ready",
+      "root": "nef_cone_of_nested_Hilbert_schemes.tex",
+      "tree_sha256": "68ce10064e1f6dd0fc874f56e624d49611fb7032682687c9e7b7736711ebe12b",
+      "files": 3,
+      "bytes": 77826,
+      "response_bytes": 20882,
+      "response_sha256": "f5929820c9b02f0e7c4754dfbc43b69a42729ffd4cfd05f3672a9144ef24898b"
+    },
+    {
+      "id": "2608.26904v1",
+      "url": "https://arxiv.org/e-print/2608.26904v1",
+      "published": "2026-08-27T10:05:59Z",
+      "updated": "2026-08-27T10:05:59Z",
+      "primary_category": "math.LO",
+      "categories": [
+        "math.LO"
+      ],
+      "title": "Hyperarithmetic directions can all be exceptional for Marstrand's projection theorem",
+      "status": "ready",
+      "root": "Unusual_Directions.tex",
+      "tree_sha256": "29d4f6152de6d86b4c94a57c5ccbb06da5f584174275bec8529e7a2faa37238c",
+      "files": 3,
+      "bytes": 95878,
+      "response_bytes": 26116,
+      "response_sha256": "96285a4e86b74951bf13c95584b7b5c7a229d4532bd8dc9d5010075fa8c62298"
+    },
+    {
+      "id": "2608.26903v1",
+      "url": "https://arxiv.org/e-print/2608.26903v1",
+      "published": "2026-08-27T10:05:35Z",
+      "updated": "2026-08-27T10:05:35Z",
+      "primary_category": "math.RA",
+      "categories": [
+        "math.RA"
+      ],
+      "title": "Relation graphs of the sedenion algebra",
+      "status": "ready",
+      "root": "part2-arXiv.tex",
+      "tree_sha256": "2b62f81981fab38cb9a9c0b7d0c64c25a946f27526aefb7823778fa420708702",
+      "files": 4,
+      "bytes": 647942,
+      "response_bytes": 194462,
+      "response_sha256": "a9ca381bb566a00af4038738e76eb689505ba520ae2839d3c4c17e77fb97ac65"
+    },
+    {
+      "id": "2608.26880v1",
+      "url": "https://arxiv.org/e-print/2608.26880v1",
+      "published": "2026-08-27T09:39:38Z",
+      "updated": "2026-08-27T09:39:38Z",
+      "primary_category": "astro-ph.EP",
+      "categories": [
+        "astro-ph.EP",
+        "astro-ph.IM"
+      ],
+      "title": "The true masses of radial-velocity exoplanets constrained by stability",
+      "status": "ready",
+      "root": "manuscript.tex",
+      "tree_sha256": "187002eb92de591df7e27d4eb2bce30f54c98363205f34592999a6850dd54597",
+      "files": 16,
+      "bytes": 9474744,
+      "response_bytes": 8580963,
+      "response_sha256": "4f33d40c6516e504fdbcf7abe777ed33916c65f27a5f3dad8055682c9c615fde"
+    },
+    {
+      "id": "2608.26879v1",
+      "url": "https://arxiv.org/e-print/2608.26879v1",
+      "published": "2026-08-27T09:39:09Z",
+      "updated": "2026-08-27T09:39:09Z",
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.MM"
+      ],
+      "title": "Mitigating Strong-Modality Collapse in Multimodal Learning via Inverted Asymmetric Fusion",
+      "status": "ready",
+      "root": "acl_latex.tex",
+      "tree_sha256": "3b4e12d1ef540d6a5a41a7aa2ba9934fd201864d2dd3b1c2e627beb2450e60d1",
+      "files": 8,
+      "bytes": 1502997,
+      "response_bytes": 479488,
+      "response_sha256": "5618321efcd1f97b9615d74d4c41dd8ec37f2e1f4ef5e38dd10ec5491a08ac08"
+    },
+    {
+      "id": "2608.26877v1",
+      "url": "https://arxiv.org/e-print/2608.26877v1",
+      "published": "2026-08-27T09:38:54Z",
+      "updated": "2026-08-27T09:38:54Z",
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "stat.ML"
+      ],
+      "title": "When Is the Sharp Covariance Envelope Tight? Feature-Only Geometry for Volume-Sampled Least Squares",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "86f62459e74dc632a65929af3ea7e8d6c77c62d3891e9a29cb9f068b969af824",
+      "files": 45,
+      "bytes": 1246050,
+      "response_bytes": 487269,
+      "response_sha256": "57a0c72b9137fe2d683ce8e31d681793fb7e24be421c3c2ccc79bd3e27a88636"
+    },
+    {
+      "id": "2608.26874v1",
+      "url": "https://arxiv.org/e-print/2608.26874v1",
+      "published": "2026-08-27T09:36:14Z",
+      "updated": "2026-08-27T09:36:14Z",
+      "primary_category": "math.CT",
+      "categories": [
+        "math.CT",
+        "math.LO"
+      ],
+      "title": "Failure of Higher-Order Truth within Intuitionistic Propositional Logic",
+      "status": "ready",
+      "root": "pitts-s-problem.tex",
+      "tree_sha256": "46083821b4351d43ea4340d6c232345b23b62481aa3ec5f1a944d91e4e5369b4",
+      "files": 4,
+      "bytes": 44000,
+      "response_bytes": 14546,
+      "response_sha256": "f96661131c51e9fdd49f5e4d9fcc1646f1ecfa9baf28ff98cd136a3b52ab2522"
+    },
+    {
+      "id": "2608.26847v1",
+      "url": "https://arxiv.org/e-print/2608.26847v1",
+      "published": "2026-08-27T09:15:37Z",
+      "updated": "2026-08-27T09:15:37Z",
+      "primary_category": "astro-ph.HE",
+      "categories": [
+        "astro-ph.HE",
+        "hep-ph"
+      ],
+      "title": "Energy-dependent slow collective flavor conversion of supernova neutrinos",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "9caf6cff9d09caffe2b68491c38da3821bf3c3200772e57193cedaa1ed0c1693",
+      "files": 16,
+      "bytes": 4612448,
+      "response_bytes": 4322249,
+      "response_sha256": "02347b34cb8b22f7f610659eb0d87a08fb5d969103140a52ce44f926ac44d086"
+    },
+    {
+      "id": "2608.26831v1",
+      "url": "https://arxiv.org/e-print/2608.26831v1",
+      "published": "2026-08-27T09:05:09Z",
+      "updated": "2026-08-27T09:05:09Z",
+      "primary_category": "cs.CR",
+      "categories": [
+        "cs.CR"
+      ],
+      "title": "When Relationships Break: Interpreting Network Traffic Anomalies via Dependency Violations",
+      "status": "ready",
+      "root": "Main_doc.tex",
+      "tree_sha256": "7838bfa99b8c08421543825a1590fa4c487b23f79ec26d0376f0515b464205e6",
+      "files": 17,
+      "bytes": 3563591,
+      "response_bytes": 3131369,
+      "response_sha256": "99636e343302e9faa61ddb720694716079c9d7eea8b3b71570906a92d50e4fa8"
+    },
+    {
+      "id": "2608.26817v1",
+      "url": "https://arxiv.org/e-print/2608.26817v1",
+      "published": "2026-08-27T08:53:50Z",
+      "updated": "2026-08-27T08:53:50Z",
+      "primary_category": "math.RT",
+      "categories": [
+        "math.RT",
+        "hep-th",
+        "math-ph",
+        "math.DG"
+      ],
+      "title": "The Saito determinant for extended affine Weyl discriminant strata",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "6beeb6980a492808fc74ace4cc7fbfe5363cfbac51ed11c9dbbe15fd5d6b935b",
+      "files": 4,
+      "bytes": 1863933,
+      "response_bytes": 93133,
+      "response_sha256": "523fdb75dad8306f1ebb082bd483d1d0b94e19e3f9600888e539915a33ea0a0a"
+    },
+    {
+      "id": "2608.26808v1",
+      "url": "https://arxiv.org/e-print/2608.26808v1",
+      "published": "2026-08-27T08:47:34Z",
+      "updated": "2026-08-27T08:47:34Z",
+      "primary_category": "math.GR",
+      "categories": [
+        "math.GR",
+        "math.CO"
+      ],
+      "title": "The Hurwitz Action in the Affine Symmetric Group",
+      "status": "ready",
+      "root": "hurwitz_affine_symmetric.tex",
+      "tree_sha256": "2344deb76f78f3028d6e63431a6e12b4b1d4619df8678ebcf650b3e607cffcf0",
+      "files": 2,
+      "bytes": 84118,
+      "response_bytes": 27047,
+      "response_sha256": "4d4cf665fbbc01bd1203e7ff4e8bd9534de39f496f00105b3bc6727d7f5bdf49"
+    },
+    {
+      "id": "2608.26801v1",
+      "url": "https://arxiv.org/e-print/2608.26801v1",
+      "published": "2026-08-27T08:41:07Z",
+      "updated": "2026-08-27T08:41:07Z",
+      "primary_category": "cs.GT",
+      "categories": [
+        "cs.GT"
+      ],
+      "title": "A lone divider allocation algorithm with subjective divisibility",
+      "status": "ready",
+      "root": "SubjectiveDivisibility.tex",
+      "tree_sha256": "563669755d9b49557380aa020ffc9cbbc1c790d738428fec12a293d60017ab3d",
+      "files": 2,
+      "bytes": 29647,
+      "response_bytes": 9579,
+      "response_sha256": "87e09bb62c66c849608008bd786235342f09420e89c93e42f8d606286b1c52dc"
+    },
+    {
+      "id": "2608.26770v1",
+      "url": "https://arxiv.org/e-print/2608.26770v1",
+      "published": "2026-08-27T08:01:09Z",
+      "updated": "2026-08-27T08:01:09Z",
+      "primary_category": "math.QA",
+      "categories": [
+        "math.QA",
+        "math.RA"
+      ],
+      "title": "The weak bialgebra structures on $\\mathbb{k}^{\\oplus n}$",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "eee4dfce1eb268b4f7f093cbae62034a15913872b771ec0213586fafb4fd30c4",
+      "files": 2,
+      "bytes": 42519,
+      "response_bytes": 13520,
+      "response_sha256": "ef3171d98a723b66918fd0eb76ffcb25a6843c6907a469e99fa02883ad786ba5"
+    },
+    {
+      "id": "2608.26762v1",
+      "url": "https://arxiv.org/e-print/2608.26762v1",
+      "published": "2026-08-27T07:55:42Z",
+      "updated": "2026-08-27T07:55:42Z",
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL",
+        "cs.IR",
+        "cs.LG"
+      ],
+      "title": "Equal Ranking Quality, Different Decisions: Training Order-Consistent LLM Scorers",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "28ec2901290f49bc4a943dc4aff494eea7ab00cbfe4abda238fce7f80bb5d394",
+      "files": 46,
+      "bytes": 662113,
+      "response_bytes": 341027,
+      "response_sha256": "0dc68461b28fe4854b6ee10b64f7ab2bd4565d7e5041fdcde838bb9ce35e9691"
+    },
+    {
+      "id": "2608.26759v1",
+      "url": "https://arxiv.org/e-print/2608.26759v1",
+      "published": "2026-08-27T07:54:13Z",
+      "updated": "2026-08-27T07:54:13Z",
+      "primary_category": "cs.MA",
+      "categories": [
+        "cs.MA",
+        "cs.RO"
+      ],
+      "title": "Fixed-Haven Reservation for Online Multi-Agent Pickup and Delivery in Dense Warehouses",
+      "status": "ready",
+      "root": "main3.tex",
+      "tree_sha256": "1bb81cd3bb3af6574f31b7b317947c3671b773b3664eaf6223f792ebf1db9da1",
+      "files": 14,
+      "bytes": 2150984,
+      "response_bytes": 1596563,
+      "response_sha256": "827ab22ea0fbd83f188f690ce40aa4bf63baf11729c5abcc40df0124052e2e8e"
+    },
+    {
+      "id": "2608.26758v1",
+      "url": "https://arxiv.org/e-print/2608.26758v1",
+      "published": "2026-08-27T07:53:18Z",
+      "updated": "2026-08-27T07:53:18Z",
+      "primary_category": "cs.AR",
+      "categories": [
+        "cs.AR"
+      ],
+      "title": "HOLMES: In-Context Failure-Center Localization for High-Dimensional Yield Estimation",
+      "status": "ready",
+      "root": "iccad26_camare_ready.tex",
+      "tree_sha256": "b97a50f77190bb4d420c40f9674fc532dde5b818eb682b6baa1233d7bb089b5f",
+      "files": 7,
+      "bytes": 2479151,
+      "response_bytes": 2011672,
+      "response_sha256": "c7b75e88f58f3a85f32c847759a2a252ba5a0815538afe1bc94484f179e1dc3d"
+    },
+    {
+      "id": "2608.26719v1",
+      "url": "https://arxiv.org/e-print/2608.26719v1",
+      "published": "2026-08-27T07:12:06Z",
+      "updated": "2026-08-27T07:12:06Z",
+      "primary_category": "math.OC",
+      "categories": [
+        "math.OC"
+      ],
+      "title": "When a Relaxed PEP Is Exact: The Sharp Queried-Gradient Rate of Nesterov's Fast Gradient Method",
+      "status": "ready",
+      "root": "fgm_best_gradient_exact.tex",
+      "tree_sha256": "760043d61bffcf136a6cae01750650b723c85b184ab0983471c486993188465a",
+      "files": 8,
+      "bytes": 92779,
+      "response_bytes": 30763,
+      "response_sha256": "f6d98effe8ced8402c38d6829f5ff20f46d2cdd6187f6e72f158bc3904d2233b"
+    },
+    {
+      "id": "2608.26707v1",
+      "url": "https://arxiv.org/e-print/2608.26707v1",
+      "published": "2026-08-27T07:02:18Z",
+      "updated": "2026-08-27T07:02:18Z",
+      "primary_category": "math.PR",
+      "categories": [
+        "math.PR"
+      ],
+      "title": "An Exponential Lower Bound for the Permanent of Random Bernoulli Matrix",
+      "status": "ready",
+      "root": "An_Exponential_Lower_Bound_for_the_Permanent_of_Random_Bernoulli_Matrix.tex",
+      "tree_sha256": "aea767df0eee307d10b85a04de6f0c0b757cb31a31b490f884fabd0aec9e8ed9",
+      "files": 2,
+      "bytes": 67538,
+      "response_bytes": 20506,
+      "response_sha256": "f25dad92534e4f26eed32416524a5479125fcb878a40bd6ea7676a17bbac7bce"
+    },
+    {
+      "id": "2608.26693v1",
+      "url": "https://arxiv.org/e-print/2608.26693v1",
+      "published": "2026-08-27T06:51:32Z",
+      "updated": "2026-08-27T06:51:32Z",
+      "primary_category": "math.PR",
+      "categories": [
+        "math.PR"
+      ],
+      "title": "High-Dimensional Spectral Limits for Gaussian KL-Unbalanced Optimal Transport",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "413d3db96346ea24721207d3577506bf4302ff1bd4096d1c5758dd821d9cd88b",
+      "files": 8,
+      "bytes": 220809,
+      "response_bytes": 81108,
+      "response_sha256": "c8acc9fb8a32f88737639fcd9830dc2f344d67447c767e4c9079348e6c93ff52"
+    },
+    {
+      "id": "2608.26692v1",
+      "url": "https://arxiv.org/e-print/2608.26692v1",
+      "published": "2026-08-27T06:51:31Z",
+      "updated": "2026-08-27T06:51:31Z",
+      "primary_category": "math.PR",
+      "categories": [
+        "math.PR",
+        "math.MG"
+      ],
+      "title": "Many Facets in Random Polytopes from Product and Log-Concave Measures",
+      "status": "ready",
+      "root": "many_facets_product_logconcave.tex",
+      "tree_sha256": "980d52cca23e0ab4847c1ca38345361c302ec6ea3e072a44360403cc202cba22",
+      "files": 3,
+      "bytes": 75081,
+      "response_bytes": 23210,
+      "response_sha256": "7b35603a541700cc1cce76a69ac54dabf570475109b0812cd80d54d34cfeeb1d"
+    },
+    {
+      "id": "2608.26671v1",
+      "url": "https://arxiv.org/e-print/2608.26671v1",
+      "published": "2026-08-27T06:24:59Z",
+      "updated": "2026-08-27T06:24:59Z",
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "title": "RECAP-Forcing: Retaining Content Appearances for Long Video Generation",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "5b3a26a8c7a2668484bfdd90ba5daeadccb5b4d16023f8152fc5e2bb161ee973",
+      "files": 29,
+      "bytes": 12565770,
+      "response_bytes": 12334394,
+      "response_sha256": "96a5ad441128d16727a61bca687875df5b659bef91cb8f0e685f6025b9ea4f50"
+    },
+    {
+      "id": "2608.26661v1",
+      "url": "https://arxiv.org/e-print/2608.26661v1",
+      "published": "2026-08-27T06:15:22Z",
+      "updated": "2026-08-27T06:15:22Z",
+      "primary_category": "cs.IR",
+      "categories": [
+        "cs.IR"
+      ],
+      "title": "When Does Supervised Fine-Tuning Reduce Instruction Sensitivity?",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "cc3b88c755091fb6c0066b177d2b2fecff7c59139b681fec34a7266c9e8e6650",
+      "files": 16,
+      "bytes": 501417,
+      "response_bytes": 312674,
+      "response_sha256": "a4c9cb14f518e68db0346e133958ce3ad94ab60f901be98531368db9b2d783ce"
+    },
+    {
+      "id": "2608.26650v1",
+      "url": "https://arxiv.org/e-print/2608.26650v1",
+      "published": "2026-08-27T06:01:46Z",
+      "updated": "2026-08-27T06:01:46Z",
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL"
+      ],
+      "title": "Meta-Learning Where to Allocate Experts: Task-Conditioned Layer-Wise Compression for MoEs",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "334b781a7430c64f56cd5ff25852b86682eb128c1e57481dfba742fec23c01b1",
+      "files": 6,
+      "bytes": 205032,
+      "response_bytes": 120138,
+      "response_sha256": "02c316f57aacf401f8003c2bc82bdfd8ac4f14c31fb99d8fc506b1e0da53a59b"
+    },
+    {
+      "id": "2608.26639v1",
+      "url": "https://arxiv.org/e-print/2608.26639v1",
+      "published": "2026-08-27T05:48:16Z",
+      "updated": "2026-08-27T05:48:16Z",
+      "primary_category": "math.OC",
+      "categories": [
+        "math.OC"
+      ],
+      "title": "Quadratic Convexification of a Square Truncated by a Hyperbola",
+      "status": "ready",
+      "root": "article_bounded.tex",
+      "tree_sha256": "c18698bf5ba568cd7588a7334cfcc6ff1c20dc63f8ee1ca4b18464530172bcc9",
+      "files": 5,
+      "bytes": 230792,
+      "response_bytes": 59711,
+      "response_sha256": "494869b4aaf75ee13a733a8defbb918c6d5be2f8809db6565604e2116c65a96d"
+    },
+    {
+      "id": "2608.26630v1",
+      "url": "https://arxiv.org/e-print/2608.26630v1",
+      "published": "2026-08-27T05:37:38Z",
+      "updated": "2026-08-27T05:37:38Z",
+      "primary_category": "quant-ph",
+      "categories": [
+        "quant-ph"
+      ],
+      "title": "Quantum-enhanced single and multiparameter metrology in qutrit ensembles by generalized twisting dynamics",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "5ac8d0ea2d908443f1832d0541435610b8fcdec272d83f25f17c478174898056",
+      "files": 12,
+      "bytes": 895584,
+      "response_bytes": 469499,
+      "response_sha256": "acdc1cbede0dbfdb2482453ec67b47b58a325c77b0872fddddfc5e2ec9994eaf"
+    },
+    {
+      "id": "2608.26626v1",
+      "url": "https://arxiv.org/e-print/2608.26626v1",
+      "published": "2026-08-27T05:28:06Z",
+      "updated": "2026-08-27T05:28:06Z",
+      "primary_category": "cs.MA",
+      "categories": [
+        "cs.MA",
+        "cs.AI"
+      ],
+      "title": "Risks and Controls for Multi-Agent Systems: an analytical framework for deployment of AI agents across organisational boundaries",
+      "status": "no_tex_source",
+      "response_bytes": 2174212,
+      "response_sha256": "5d5acaccdbd331dcd0d669fe6cf9af927ddcf7cf6ecb4e3b59db939e0fd8b9d3",
+      "content_type": "application/pdf"
+    },
+    {
+      "id": "2608.26623v1",
+      "url": "https://arxiv.org/e-print/2608.26623v1",
+      "published": "2026-08-27T05:20:22Z",
+      "updated": "2026-08-27T05:20:22Z",
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "title": "AgentJudgeBench: A Multi-Difficulty Benchmark for Evaluating LLM Judges on Agentic Tool-Calling",
+      "status": "ready",
+      "root": "emnlp2023.tex",
+      "tree_sha256": "5932332f152b6f02623c17b69e94d0223345466abe625863fb5e3816e8eae39c",
+      "files": 37,
+      "bytes": 2121542,
+      "response_bytes": 1445893,
+      "response_sha256": "def196526a51dc21e5e0c78e843a2d8a67610e80e68237f2a583b4db05368b72"
+    },
+    {
+      "id": "2608.26617v1",
+      "url": "https://arxiv.org/e-print/2608.26617v1",
+      "published": "2026-08-27T05:01:33Z",
+      "updated": "2026-08-27T05:01:33Z",
+      "primary_category": "math.NT",
+      "categories": [
+        "math.NT"
+      ],
+      "title": "The k-Rank Taylor Family: Canonical Harmonic Lifts, Principal Parts, and Rademacher Series",
+      "status": "ready",
+      "root": "The_k_Rank_Taylor_Family.tex",
+      "tree_sha256": "ce96b2189078ef205dc34b64673bf005c0fc883fb89b68727ca6c5617b693da2",
+      "files": 2,
+      "bytes": 200045,
+      "response_bytes": 56804,
+      "response_sha256": "4437f07f549ee3aae32ee0041488485df24e5c943b486022e41e97bb21531259"
+    },
+    {
+      "id": "2608.26615v1",
+      "url": "https://arxiv.org/e-print/2608.26615v1",
+      "published": "2026-08-27T04:55:18Z",
+      "updated": "2026-08-27T04:55:18Z",
+      "primary_category": "math.OC",
+      "categories": [
+        "math.OC"
+      ],
+      "title": "Galerkin approximations to the space of convex bodies by polytopes in nondegenerate V-representation",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "f912ac326a45fa30d7f8f07f36e57d30ded30243281e4f896a27fd971f5c07a8",
+      "files": 3,
+      "bytes": 96365,
+      "response_bytes": 24086,
+      "response_sha256": "0c5f01831af78de5b84d0214b8fea642691e39e5229ed1202e448e467573e378"
+    },
+    {
+      "id": "2608.26593v1",
+      "url": "https://arxiv.org/e-print/2608.26593v1",
+      "published": "2026-08-27T04:20:44Z",
+      "updated": "2026-08-27T04:20:44Z",
+      "primary_category": "cs.DM",
+      "categories": [
+        "cs.DM",
+        "math.CO"
+      ],
+      "title": "On identifying codes on oriented graphs",
+      "status": "ready",
+      "root": "IsIDCode_v5__1_.tex",
+      "tree_sha256": "6da742f3655a716e09b99b6548d4bb74cc13f6f427cc2d9a18a457ed90936854",
+      "files": 3,
+      "bytes": 48049,
+      "response_bytes": 14141,
+      "response_sha256": "61a76344a68d121d27a2e3d32125c1da5afc6d9a2e48f9ff21fa63cebdab3fea"
+    },
+    {
+      "id": "2608.26591v1",
+      "url": "https://arxiv.org/e-print/2608.26591v1",
+      "published": "2026-08-27T04:08:02Z",
+      "updated": "2026-08-27T04:08:02Z",
+      "primary_category": "math.AC",
+      "categories": [
+        "math.AC"
+      ],
+      "title": "Comparing v-numbers of symbolic and ordinary powers of squarefree monomial ideals",
+      "status": "ready",
+      "root": "main__6_.tex",
+      "tree_sha256": "b75e7af1059d835b6977e45917c0992c9f77055d21aa6dff978d0e20fd4bd07a",
+      "files": 2,
+      "bytes": 45882,
+      "response_bytes": 14811,
+      "response_sha256": "4fa5a17efb0599a803f01fab0d94e3b58bb3e6650d03dfb25348c9737d2bbaae"
+    },
+    {
+      "id": "2608.26588v1",
+      "url": "https://arxiv.org/e-print/2608.26588v1",
+      "published": "2026-08-27T03:59:55Z",
+      "updated": "2026-08-27T03:59:55Z",
+      "primary_category": "cs.CR",
+      "categories": [
+        "cs.CR",
+        "cs.SE"
+      ],
+      "title": "Unsaid, Unsafe? Implicit Security Obligations in LLM-Based RTL Code Generation",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "e703d5ca3bc389a5ee1fe451c8082da99b5d2bee67f37371883d1c53857826e5",
+      "files": 16,
+      "bytes": 870109,
+      "response_bytes": 499148,
+      "response_sha256": "42b7ed22b58a9ae21021a70e8691e110b40b113c4bda43b0e8741d7cd8216c52"
+    },
+    {
+      "id": "2608.26565v1",
+      "url": "https://arxiv.org/e-print/2608.26565v1",
+      "published": "2026-08-27T03:13:58Z",
+      "updated": "2026-08-27T03:13:58Z",
+      "primary_category": "math.DG",
+      "categories": [
+        "math.DG"
+      ],
+      "title": "A Horizon-Free Extrinsic Penrose Inequality",
+      "status": "ready",
+      "root": "NH_extrinsic_penrose.tex",
+      "tree_sha256": "45bd36b8d2594248e0c4ac4c872a8f50fde7762614faea8c6559c48b9e49dec4",
+      "files": 2,
+      "bytes": 71619,
+      "response_bytes": 21389,
+      "response_sha256": "fd5a2f846b96d448ad4b7b33c8cf888661b036c6ec65d36904d7d3032d882fb2"
+    },
+    {
+      "id": "2608.26564v1",
+      "url": "https://arxiv.org/e-print/2608.26564v1",
+      "published": "2026-08-27T03:11:56Z",
+      "updated": "2026-08-27T03:11:56Z",
+      "primary_category": "math.GT",
+      "categories": [
+        "math.GT",
+        "math.GR"
+      ],
+      "title": "Real ideal points, Conway spheres, and left-orderable Dehn fillings",
+      "status": "ready",
+      "root": "ConwaySpheres.tex",
+      "tree_sha256": "6541ef1d4ff170acd3472e93f7f2513561d7f480058559f0ff3a07f8f2a1725c",
+      "files": 38,
+      "bytes": 1437371,
+      "response_bytes": 1207494,
+      "response_sha256": "b2467bcc2f406a17a7127ce043c100e0b48d21169a08f098b90e3141f00b83c3"
+    },
+    {
+      "id": "2608.26554v1",
+      "url": "https://arxiv.org/e-print/2608.26554v1",
+      "published": "2026-08-27T02:48:48Z",
+      "updated": "2026-08-27T02:48:48Z",
+      "primary_category": "gr-qc",
+      "categories": [
+        "gr-qc",
+        "quant-ph"
+      ],
+      "title": "Comparison of Two-Atom Cross Spectra in de Sitter Spacetime, Uniformly Accelerated Minkowski Vacuum, and a Thermal Bath",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "0f7fb3708cc2f91519cbba9a192780e46067bb204b50e9439380052def8a1ed7",
+      "files": 2,
+      "bytes": 47752,
+      "response_bytes": 13973,
+      "response_sha256": "34576909db2d18608eddab119f7d46e9fe1b6c00d2b66c72f8b757d70695b20b"
+    },
+    {
+      "id": "2608.26547v1",
+      "url": "https://arxiv.org/e-print/2608.26547v1",
+      "published": "2026-08-27T02:36:40Z",
+      "updated": "2026-08-27T02:36:40Z",
+      "primary_category": "math.CO",
+      "categories": [
+        "math.CO",
+        "cond-mat.dis-nn",
+        "cond-mat.stat-mech",
+        "physics.soc-ph"
+      ],
+      "title": "Random Recursive Simplicial Complexes",
+      "status": "ready",
+      "root": "simplex-2.tex",
+      "tree_sha256": "760f9899f05760ac5745aef27baaf10e415bf0262420280812dfc8b90981adb1",
+      "files": 12,
+      "bytes": 366077,
+      "response_bytes": 159519,
+      "response_sha256": "e6f16f84afb0cf3fa6911e24c48520bda3e8df86d1f9294c1716650bb3468362"
+    },
+    {
+      "id": "2608.26535v1",
+      "url": "https://arxiv.org/e-print/2608.26535v1",
+      "published": "2026-08-27T02:12:25Z",
+      "updated": "2026-08-27T02:12:25Z",
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "title": "Multi2AV-Safety: Benchmarking Safety in Multimodal-to-Audio-Video Generation",
+      "status": "ready",
+      "root": "main_arxiv.tex",
+      "tree_sha256": "f771d87452ecdbf67df8ef6c6c65442066abeac86a472ee994bc98c090f05e13",
+      "files": 7,
+      "bytes": 6820484,
+      "response_bytes": 6574642,
+      "response_sha256": "c744a19c6ed11f571796a5897003df182655d5ed90c81f7f5d1579ccf37ba203"
+    },
+    {
+      "id": "2608.26533v1",
+      "url": "https://arxiv.org/e-print/2608.26533v1",
+      "published": "2026-08-27T02:11:43Z",
+      "updated": "2026-08-27T02:11:43Z",
+      "primary_category": "eess.SY",
+      "categories": [
+        "eess.SY",
+        "cs.RO"
+      ],
+      "title": "Barrier Function Conformal Safety Clearance Certification with CVaR for Driving Trajectory Selection",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "3a911b6abdef1fe889b5e07e31d0d9902cc0396201cd4379744113fa284ddf19",
+      "files": 7,
+      "bytes": 1088707,
+      "response_bytes": 869500,
+      "response_sha256": "8548e0b5eeb47dd0d729f3df4df3a006849f0baa62191bea8b81443f2c0b77cf"
+    },
+    {
+      "id": "2608.26529v1",
+      "url": "https://arxiv.org/e-print/2608.26529v1",
+      "published": "2026-08-27T02:03:27Z",
+      "updated": "2026-08-27T02:03:27Z",
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL"
+      ],
+      "title": "Multi-Expert Conformal Risk Control for Pairwise LLM Judging in Open-Ended Dialogue",
+      "status": "ready",
+      "root": "emnlp2023.tex",
+      "tree_sha256": "b4ade70b47a30b4b3bf9efe73e026fcb6c5f101f29d2f0fc51d7ebb63aefb425",
+      "files": 9,
+      "bytes": 946697,
+      "response_bytes": 799200,
+      "response_sha256": "65b13dbb82ac032613eca6bed23018ce3d65bc05409d3c7ac54fbc542b94688b"
+    },
+    {
+      "id": "2608.26502v1",
+      "url": "https://arxiv.org/e-print/2608.26502v1",
+      "published": "2026-08-27T00:55:12Z",
+      "updated": "2026-08-27T00:55:12Z",
+      "primary_category": "math.AP",
+      "categories": [
+        "math.AP"
+      ],
+      "title": "Compactness of positive radial Solution Sets and corresponding $L^2$-Mass sets for \"Zero Mass\" Quasi-linear Schrödinger Equations",
+      "status": "ready",
+      "root": "Compactness_of_positive_radial_Solution_Sets_and_corresponding__L_2_-Mass_sets_for___Zero_Mass__.tex",
+      "tree_sha256": "6b196c48f5e70ac388e8b6c79b4b70e9854fee6778e418361b16cb766b2ba42d",
+      "files": 2,
+      "bytes": 127060,
+      "response_bytes": 32841,
+      "response_sha256": "efcb39d96f69408a6a848e9188be62d69bcce10e5459534af031ae1c709567ee"
+    },
+    {
+      "id": "2608.26494v1",
+      "url": "https://arxiv.org/e-print/2608.26494v1",
+      "published": "2026-08-27T00:34:09Z",
+      "updated": "2026-08-27T00:34:09Z",
+      "primary_category": "cond-mat.mtrl-sci",
+      "categories": [
+        "cond-mat.mtrl-sci",
+        "physics.comp-ph"
+      ],
+      "title": "Beyond Allen-Heine-Cardona: non-perturbative electron-phonon interactions in the linewidths and lineshifts of diamond",
+      "status": "ready",
+      "root": "manuscript.tex",
+      "tree_sha256": "81f1f71bf15b927d1f87d5bd9f9caf0c16022b9b4354452d8029355de14ce5af",
+      "files": 27,
+      "bytes": 545229,
+      "response_bytes": 226115,
+      "response_sha256": "99433e86d14701e3b52452beb16d557c83d640e868c86a288139f9d63a45a02d"
+    },
+    {
+      "id": "2608.26460v1",
+      "url": "https://arxiv.org/e-print/2608.26460v1",
+      "published": "2026-08-26T23:31:57Z",
+      "updated": "2026-08-26T23:31:57Z",
+      "primary_category": "cond-mat.soft",
+      "categories": [
+        "cond-mat.soft"
+      ],
+      "title": "Comparing non-local granular fluid continuum models for silo discharge: Toward clogging prediction",
+      "status": "ready",
+      "root": "ArticleJFMv1.tex",
+      "tree_sha256": "c1021497a2857d3c3c11eb51951418f8bb92fef01c37c1f6ea5561fbdcfc1f03",
+      "files": 77,
+      "bytes": 8393272,
+      "response_bytes": 7848268,
+      "response_sha256": "c282bcd6f999cf797ebf718c1dff4a9871c40a7c1d0cc664877e5f82d70bbbff"
+    },
+    {
+      "id": "2608.26457v1",
+      "url": "https://arxiv.org/e-print/2608.26457v1",
+      "published": "2026-08-26T23:28:24Z",
+      "updated": "2026-08-26T23:28:24Z",
+      "primary_category": "cs.IT",
+      "categories": [
+        "cs.IT",
+        "math.CO"
+      ],
+      "title": "Weight Distributions of Single Parity-Check Product Codes via Character Sums",
+      "status": "ready",
+      "root": "Versao_26_08.tex",
+      "tree_sha256": "d2ef3b537428f0532b6c4a11c4bef24bc9b35f005fc7ecb64fbda0ab8fea7855",
+      "files": 5,
+      "bytes": 206470,
+      "response_bytes": 52745,
+      "response_sha256": "cef78d9dd828e0aa4896d0140997814402ef9346673d931b8c2f8ba546f75eca"
+    },
+    {
+      "id": "2608.26449v1",
+      "url": "https://arxiv.org/e-print/2608.26449v1",
+      "published": "2026-08-26T22:56:24Z",
+      "updated": "2026-08-26T22:56:24Z",
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL",
+        "cs.LG"
+      ],
+      "title": "Vowel Signs Are Not Letters: A Pre-tokenization Ceiling on Multilingual Tokenizer Fertility",
+      "status": "ready",
+      "root": "arkios-tokenizer.tex",
+      "tree_sha256": "3a1ed2e335d154ada228072d268a85ccf7cbc910ff1ca41a338d11d360eb9555",
+      "files": 23,
+      "bytes": 158098,
+      "response_bytes": 48141,
+      "response_sha256": "aebfafe31765dbe9bc2c22ba4f3287e3cca727e286b11153c6679240ad25021c"
+    },
+    {
+      "id": "2608.26435v1",
+      "url": "https://arxiv.org/e-print/2608.26435v1",
+      "published": "2026-08-26T22:22:04Z",
+      "updated": "2026-08-26T22:22:04Z",
+      "primary_category": "physics.flu-dyn",
+      "categories": [
+        "physics.flu-dyn"
+      ],
+      "title": "Direct numerical simulation of NOx formation in turbulent lean premixed hydrogen-air flames under engine-relevant conditions",
+      "status": "ready",
+      "root": "PROCI_LaTeX_42.tex",
+      "tree_sha256": "239c651a8a709d02f3aa2d4affe8d4ecbddfe4c2dd9fb5504e4a27aa46bffa95",
+      "files": 13,
+      "bytes": 10783682,
+      "response_bytes": 10076401,
+      "response_sha256": "2cb78e4075db4330a09d3ae0910be0cd94a433355486dfc968dbcab59808218a"
+    },
+    {
+      "id": "2608.26411v1",
+      "url": "https://arxiv.org/e-print/2608.26411v1",
+      "published": "2026-08-26T21:23:44Z",
+      "updated": "2026-08-26T21:23:44Z",
+      "primary_category": "stat.ME",
+      "categories": [
+        "stat.ME"
+      ],
+      "title": "Marginal Structural Models for Electricity Demand under Treatment-Confounder Feedback: A Continuous-Treatment Outcome-Adaptive and Fused LASSO Approach",
+      "status": "ready",
+      "root": "1.main.tex",
+      "tree_sha256": "c0b0422721022d037b8cd905f6181638189047214f7a0c277edd74d011782c3f",
+      "files": 11,
+      "bytes": 844603,
+      "response_bytes": 721355,
+      "response_sha256": "fff2a1d7725dd15b93c514fe740e7348860cfc1283461a3bf52d0b3ff225de22"
+    },
+    {
+      "id": "2608.26409v1",
+      "url": "https://arxiv.org/e-print/2608.26409v1",
+      "published": "2026-08-26T21:22:20Z",
+      "updated": "2026-08-26T21:22:20Z",
+      "primary_category": "cs.DL",
+      "categories": [
+        "cs.DL",
+        "stat.AP"
+      ],
+      "title": "Gender and the Production of Research Impact",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "2a3f6487f932a0d958ba000292d143f6cc41060c02e62a57b6a197c5c34d8b12",
+      "files": 36,
+      "bytes": 2260939,
+      "response_bytes": 1419994,
+      "response_sha256": "176cce39471dd26cec2a1503e8c39fea3fcfbfee0196ff7ba899c14595ff145b"
+    },
+    {
+      "id": "2608.26385v1",
+      "url": "https://arxiv.org/e-print/2608.26385v1",
+      "published": "2026-08-26T20:17:01Z",
+      "updated": "2026-08-26T20:17:01Z",
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL",
+        "cs.AI"
+      ],
+      "title": "Why RAGs Hallucinate: Penalty-Aware Evaluation of Retrieval-Augmented Generation Systems with Knowledge-Gap Canaries",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "ce4672f9fd0fb45af5c752421b83ff3aee813dd18e1d0e68ba89b0751615f6eb",
+      "files": 5,
+      "bytes": 73340,
+      "response_bytes": 36789,
+      "response_sha256": "1be3b2cc63c2683d940e488dbcf3ffa6c7db5e7e3ffd6e6c6a41066f817589e7"
+    },
+    {
+      "id": "2608.26380v1",
+      "url": "https://arxiv.org/e-print/2608.26380v1",
+      "published": "2026-08-26T20:08:48Z",
+      "updated": "2026-08-26T20:08:48Z",
+      "primary_category": "cs.CR",
+      "categories": [
+        "cs.CR"
+      ],
+      "title": "Improving the Robustness of the XRP Ledger Network via Edge Augmentation Strategies",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "f63c2c379f272bb868c7efd6a698b7b4d81d880b79f7f19081007eca04257fa7",
+      "files": 34,
+      "bytes": 1303515,
+      "response_bytes": 351025,
+      "response_sha256": "8d5021b6990c01455d0a24c572fa86afbff372a1e20fbe14c0aaf0f7f3b52878"
+    },
+    {
+      "id": "2608.26354v1",
+      "url": "https://arxiv.org/e-print/2608.26354v1",
+      "published": "2026-08-26T19:37:18Z",
+      "updated": "2026-08-26T19:37:18Z",
+      "primary_category": "astro-ph.CO",
+      "categories": [
+        "astro-ph.CO",
+        "astro-ph.IM",
+        "cs.LG",
+        "physics.data-an"
+      ],
+      "title": "Cross-simulator transfer with foundation model summaries: Towards robust SKA-era reionization inference",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "8829452f889745c86c997ca4463559cfefce7fb98f64d8f0b41d2fd073729896",
+      "files": 19,
+      "bytes": 3391501,
+      "response_bytes": 2803521,
+      "response_sha256": "f9fd1e07c411ca52dfd3d1d20d92068d73a4e697f37c748709b5e57a6d7c708e"
+    },
+    {
+      "id": "2608.26347v1",
+      "url": "https://arxiv.org/e-print/2608.26347v1",
+      "published": "2026-08-26T19:29:46Z",
+      "updated": "2026-08-26T19:29:46Z",
+      "primary_category": "cond-mat.str-el",
+      "categories": [
+        "cond-mat.str-el"
+      ],
+      "title": "Dynamical signatures of deconfined spinons in dimerized sawtooth chains",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "284db47ad9b92948aab500a6413af7fcfc2182a50825c1430e5db486d51506a7",
+      "files": 12,
+      "bytes": 19758324,
+      "response_bytes": 19325806,
+      "response_sha256": "a0f4682d1878f3903c4dc9fb4c7c4d44a62d0ba170cde0135af10377fb26fcc9"
+    },
+    {
+      "id": "2608.26344v1",
+      "url": "https://arxiv.org/e-print/2608.26344v1",
+      "published": "2026-08-26T19:26:15Z",
+      "updated": "2026-08-26T19:26:15Z",
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL"
+      ],
+      "title": "MoganColBERT-TR: A Late-Interaction Multi-Vector Retrieval Model for Turkish",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "023831861461e865f50e2bb3c795d8c1ca8edd289c74e3fc02051087bacb35a2",
+      "files": 2,
+      "bytes": 71124,
+      "response_bytes": 25268,
+      "response_sha256": "e3939d5b2fd17a822a2373cfc1c48b22dc6cc801b9ba2daee77050114d0fa179"
+    },
+    {
+      "id": "2608.26311v1",
+      "url": "https://arxiv.org/e-print/2608.26311v1",
+      "published": "2026-08-26T18:44:24Z",
+      "updated": "2026-08-26T18:44:24Z",
+      "primary_category": "math.NT",
+      "categories": [
+        "math.NT",
+        "math.GT"
+      ],
+      "title": "Closed geodesics in homology classes modulo sublattices",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "d6a31db6873bfaaf29f1436673a2559da59b67d2cb1f860850fde3561c48c407",
+      "files": 3,
+      "bytes": 140951,
+      "response_bytes": 36677,
+      "response_sha256": "46862e848d7efb6796d3fa922d039aab54ad87c0fb377c7fa57a7d87a20cf9ef"
+    },
+    {
+      "id": "2608.26304v1",
+      "url": "https://arxiv.org/e-print/2608.26304v1",
+      "published": "2026-08-26T18:35:26Z",
+      "updated": "2026-08-26T18:35:26Z",
+      "primary_category": "math.OC",
+      "categories": [
+        "math.OC"
+      ],
+      "title": "Multi-Objective Planning for Healthcare Facility Resilience: Mitigate Now or Respond Later?",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "7bd892a6db50028b96d03063b3c3e6a5c78a2531f91b81c27fb93fcd0125b85c",
+      "files": 22,
+      "bytes": 1855749,
+      "response_bytes": 1435646,
+      "response_sha256": "1374604181c55cc058b84609db1707467069b29d580175ddf7290b53cb1e2fc4"
+    },
+    {
+      "id": "2608.26292v1",
+      "url": "https://arxiv.org/e-print/2608.26292v1",
+      "published": "2026-08-26T18:16:24Z",
+      "updated": "2026-08-26T18:16:24Z",
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL",
+        "cs.AI",
+        "cs.LG"
+      ],
+      "title": "On Scope Classification and Current Knowledge-Editing Benchmarks: A Negative Result, with INLAY as a Gradient-Free Case Study",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "cf6a404834438c90780e707ea5b489e1135b213fa02aa8b0f8ae7bff4d277fc1",
+      "files": 10,
+      "bytes": 219644,
+      "response_bytes": 123809,
+      "response_sha256": "99f470c530b616aa8661a199e25b0981ef6192506aebdcc142ca560b49789016"
+    },
+    {
+      "id": "2608.26289v1",
+      "url": "https://arxiv.org/e-print/2608.26289v1",
+      "published": "2026-08-26T18:14:22Z",
+      "updated": "2026-08-26T18:14:22Z",
+      "primary_category": "astro-ph.CO",
+      "categories": [
+        "astro-ph.CO",
+        "astro-ph.IM",
+        "hep-ex",
+        "hep-ph",
+        "physics.ins-det"
+      ],
+      "title": "Paleo-Detectors as a Novel Probe of Dark Matter-Nucleus Effective Interactions",
+      "status": "ready",
+      "root": "skeleton.tex",
+      "tree_sha256": "944d74808e78f836c734c8f0ee26cd5d044dc99b2f7194f07c3fa026a82356de",
+      "files": 52,
+      "bytes": 1140381,
+      "response_bytes": 452031,
+      "response_sha256": "bd9824573507f4f88beb8db889bb3ce28dfca79047e82465934f1d00c5ca747a"
+    },
+    {
+      "id": "2608.26287v1",
+      "url": "https://arxiv.org/e-print/2608.26287v1",
+      "published": "2026-08-26T18:13:00Z",
+      "updated": "2026-08-26T18:13:00Z",
+      "primary_category": "math.NA",
+      "categories": [
+        "math.NA"
+      ],
+      "title": "A simple algorithm for the summation of alternating series",
+      "status": "ready",
+      "root": "AS.tex",
+      "tree_sha256": "c825812071cd27dab861bb27765f13bb24aa6c5aad9236b3a472d518abb691e0",
+      "files": 6,
+      "bytes": 127785,
+      "response_bytes": 24841,
+      "response_sha256": "b20d8630365a8d47664984b759fe60282cb3108b8a9bbb64e5420940c1943af6"
+    },
+    {
+      "id": "2608.26284v1",
+      "url": "https://arxiv.org/e-print/2608.26284v1",
+      "published": "2026-08-26T18:09:06Z",
+      "updated": "2026-08-26T18:09:06Z",
+      "primary_category": "hep-th",
+      "categories": [
+        "hep-th",
+        "gr-qc"
+      ],
+      "title": "Gravitational Compton Amplitude to All Orders in Perturbation Theory",
+      "status": "ready",
+      "root": "letter.tex",
+      "tree_sha256": "9047198b347fae5e46e1e34d431a7fb179c62ea2f550497ab29d0e710fe4aeb7",
+      "files": 6,
+      "bytes": 3820309,
+      "response_bytes": 532995,
+      "response_sha256": "00d8a542e153b81b3f309abdfc945822edcf8a8885fddc89c3a1d8e9811e6daf"
+    },
+    {
+      "id": "2608.26250v1",
+      "url": "https://arxiv.org/e-print/2608.26250v1",
+      "published": "2026-08-26T18:00:01Z",
+      "updated": "2026-08-26T18:00:01Z",
+      "primary_category": "astro-ph.EP",
+      "categories": [
+        "astro-ph.EP"
+      ],
+      "title": "SOAR TESS Survey III: Mapping the Stellar Companion Deficit around TESS Planet Candidates",
+      "status": "ready",
+      "root": "soar_tess_iii.tex",
+      "tree_sha256": "046a8964b80931589f2ec4f629d296dd694d3173c5b28acc4938d73d090d3a57",
+      "files": 32,
+      "bytes": 2528976,
+      "response_bytes": 1910796,
+      "response_sha256": "fc96869bee6b3714931c1ae18ac6d328d3223c8a8c88e62c984d1ba6505f0f13"
+    },
+    {
+      "id": "2608.26248v1",
+      "url": "https://arxiv.org/e-print/2608.26248v1",
+      "published": "2026-08-26T18:00:01Z",
+      "updated": "2026-08-26T18:00:01Z",
+      "primary_category": "hep-ph",
+      "categories": [
+        "hep-ph"
+      ],
+      "title": "FlaSR: A Mathematica Package for the Automatic Generation of $U$-spin Sum Rules",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "7e3c018f70d1be645fe1528e515747bc35964813b6ccb49f7ccd79cede220ccb",
+      "files": 4,
+      "bytes": 208079,
+      "response_bytes": 48665,
+      "response_sha256": "4a92afedd4a44aaf386629ec8db981b6421e2717664d5e0c93523bbe2a169571"
+    },
+    {
+      "id": "2608.26241v1",
+      "url": "https://arxiv.org/e-print/2608.26241v1",
+      "published": "2026-08-26T18:00:00Z",
+      "updated": "2026-08-26T18:00:00Z",
+      "primary_category": "quant-ph",
+      "categories": [
+        "quant-ph",
+        "math-ph"
+      ],
+      "title": "Fast GHZ encoding with $1-o(1)$ fidelity",
+      "status": "ready",
+      "root": "ghz.tex",
+      "tree_sha256": "45133eca7fb7f6d987d072cbec87b9e006778b207e5e303ff99e0d2b93e1a9c4",
+      "files": 5,
+      "bytes": 857486,
+      "response_bytes": 730747,
+      "response_sha256": "c83827e60a5e04e99a2087560129b4b85d2bd9fac2777c36970246d9749b1dd7"
+    },
+    {
+      "id": "2608.26099v1",
+      "url": "https://arxiv.org/e-print/2608.26099v1",
+      "published": "2026-08-26T17:58:52Z",
+      "updated": "2026-08-26T17:58:52Z",
+      "primary_category": "cond-mat.quant-gas",
+      "categories": [
+        "cond-mat.quant-gas",
+        "cond-mat.mes-hall",
+        "quant-ph"
+      ],
+      "title": "Exact analytical spectrum, eigenstates, and quantum geometry of the quarter-flux Harper-Hofstadter model",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "6a6771e535930d0982b5809157756c33afa3047931c37fc1742f792c4d41fb8f",
+      "files": 10,
+      "bytes": 2676822,
+      "response_bytes": 2293710,
+      "response_sha256": "167ae657abea4f4eb0d4026883c2e64a4381bc8feda813593bce0d398a19ab57"
+    },
+    {
+      "id": "2608.26092v1",
+      "url": "https://arxiv.org/e-print/2608.26092v1",
+      "published": "2026-08-26T17:54:41Z",
+      "updated": "2026-08-26T17:54:41Z",
+      "primary_category": "math.CA",
+      "categories": [
+        "math.CA"
+      ],
+      "title": "Optimal differentiability of isotropic positive definite functions on even-dimensional spheres",
+      "status": "ready",
+      "root": "Paper26.tex",
+      "tree_sha256": "f7c84e02579815517e5a4230252c8136e602828352fdecf7b870931ab73401f6",
+      "files": 2,
+      "bytes": 45773,
+      "response_bytes": 14561,
+      "response_sha256": "2b5bc334527d959d48c4c4d28fa2c91abc127df7a54e7222151d91b281063066"
+    },
+    {
+      "id": "2608.26080v1",
+      "url": "https://arxiv.org/e-print/2608.26080v1",
+      "published": "2026-08-26T17:45:30Z",
+      "updated": "2026-08-26T17:45:30Z",
+      "primary_category": "math.AG",
+      "categories": [
+        "math.AG"
+      ],
+      "title": "Negative Effective Divisors and Bridgeland Stability of Line Bundles on Surfaces",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "619d39ee90dd43b2db7f9a4be56045993dce19acbc8241a909aed238608c7ecd",
+      "files": 2,
+      "bytes": 86516,
+      "response_bytes": 25718,
+      "response_sha256": "69df629f35064868fee38f3a5694353b7168d6ceb12536ff122fad3d771599c5"
+    },
+    {
+      "id": "2608.26019v1",
+      "url": "https://arxiv.org/e-print/2608.26019v1",
+      "published": "2026-08-26T17:01:21Z",
+      "updated": "2026-08-26T17:01:21Z",
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "title": "DualOPSD: Adaptive Privileged Teachers for On-Policy Self-Distillation",
+      "status": "ready",
+      "root": "paper.tex",
+      "tree_sha256": "a5ab1cf782dd0cd0d559d5aca98465e95ed067ce1493ca6318a4e48be1641808",
+      "files": 10,
+      "bytes": 288650,
+      "response_bytes": 175243,
+      "response_sha256": "833d213c1df868ce4a266960459aaabed4b6d6c97560051ab017dc312e9cd4d4"
+    },
+    {
+      "id": "2608.26018v1",
+      "url": "https://arxiv.org/e-print/2608.26018v1",
+      "published": "2026-08-26T17:00:42Z",
+      "updated": "2026-08-26T17:00:42Z",
+      "primary_category": "quant-ph",
+      "categories": [
+        "quant-ph",
+        "cond-mat.mes-hall"
+      ],
+      "title": "The Gain-Engineered Transmon",
+      "status": "ready",
+      "root": "Heatmon_arXiv.tex",
+      "tree_sha256": "8b907ac691f49f451c7ee7edc227706a3f83d8e6e6fbb17272d4d817e674bc41",
+      "files": 22,
+      "bytes": 7393475,
+      "response_bytes": 5085665,
+      "response_sha256": "66b17605ccdffb7d40fa58be5ab7855250489d746b0ebae921be23d66ad64958"
+    },
+    {
+      "id": "2608.25997v1",
+      "url": "https://arxiv.org/e-print/2608.25997v1",
+      "published": "2026-08-26T16:46:58Z",
+      "updated": "2026-08-26T16:46:58Z",
+      "primary_category": "math.ST",
+      "categories": [
+        "math.ST",
+        "stat.ME"
+      ],
+      "title": "Statistical Properties of Nonparametric MLE under Laplace Noise",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "cba8c35963a1f29c316d9bf16fa386fe147418f2e206ee88d05605978ac7432d",
+      "files": 7,
+      "bytes": 227689,
+      "response_bytes": 90452,
+      "response_sha256": "7c3e2cfa8da44485de02865031d6128a36efeda95c071e41e8e953f7716fd5e1"
+    },
+    {
+      "id": "2608.25996v1",
+      "url": "https://arxiv.org/e-print/2608.25996v1",
+      "published": "2026-08-26T16:46:46Z",
+      "updated": "2026-08-26T16:46:46Z",
+      "primary_category": "eess.SP",
+      "categories": [
+        "eess.SP"
+      ],
+      "title": "Visualizing Wireless Propagation and Polarization in Augmented Reality with ESPARGOS",
+      "status": "ready",
+      "root": "kh2026.tex",
+      "tree_sha256": "ba163ce2b732d8de25f4957a8087e5b79fa7ea9e7a566f87e06b979244d07841",
+      "files": 17,
+      "bytes": 1681960,
+      "response_bytes": 1403781,
+      "response_sha256": "455dc3ab0e9f91f6bf3d2cdca10192206a09a221b20a31fb4c56e2aaa25e20b6"
+    },
+    {
+      "id": "2608.25994v1",
+      "url": "https://arxiv.org/e-print/2608.25994v1",
+      "published": "2026-08-26T16:43:45Z",
+      "updated": "2026-08-26T16:43:45Z",
+      "primary_category": "math.AG",
+      "categories": [
+        "math.AG",
+        "math.RT"
+      ],
+      "title": "Crepant partial resolutions of the nilpotent cone via Hamiltonian reduction",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "d3aec153c1c62b09397db63a5af278955c5ca7b294ae25bfd4580b60f61e918d",
+      "files": 4,
+      "bytes": 420388,
+      "response_bytes": 99580,
+      "response_sha256": "f3196105025727e3552ed795e9126746e36eb5c9f71d1a9b3fd66dc67ea411cd"
+    },
+    {
+      "id": "2608.25990v1",
+      "url": "https://arxiv.org/e-print/2608.25990v1",
+      "published": "2026-08-26T16:41:12Z",
+      "updated": "2026-08-26T16:41:12Z",
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG"
+      ],
+      "title": "Spectral Allocation: Why Muon Outperforms Adam, and How to Improve Muon",
+      "status": "ready",
+      "root": "submission.tex",
+      "tree_sha256": "209545519fd002eca8fb2a1c33a281e009a8d3f66f3932f8be9ea7496db6b0be",
+      "files": 18,
+      "bytes": 709977,
+      "response_bytes": 391378,
+      "response_sha256": "cdc90f65ba538e4d3f49591f3ddc50cfedc4978d5be725a850ed37e5aa000d9b"
+    },
+    {
+      "id": "2608.25970v1",
+      "url": "https://arxiv.org/e-print/2608.25970v1",
+      "published": "2026-08-26T16:28:20Z",
+      "updated": "2026-08-26T16:28:20Z",
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "title": "PANDA - Prototype-Anchored Alignment for Partially Unpaired Multimodal Learning, with Applications to Alzheimers MRI and TCGA Pathology",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "65027fd565e60df19877cc0f067868dea12965d058434f66a29e169af9e114e5",
+      "files": 13,
+      "bytes": 1950720,
+      "response_bytes": 1643779,
+      "response_sha256": "f8b66548842bafbba08eb56893a4eb4219754f534875467e7750d78d45747296"
+    },
+    {
+      "id": "2608.25966v1",
+      "url": "https://arxiv.org/e-print/2608.25966v1",
+      "published": "2026-08-26T16:23:16Z",
+      "updated": "2026-08-26T16:23:16Z",
+      "primary_category": "econ.TH",
+      "categories": [
+        "econ.TH"
+      ],
+      "title": "Potentials and Weak Potentials in Acyclic and Weakly Acyclic Games",
+      "status": "no_tex_source",
+      "response_bytes": 390679,
+      "response_sha256": "4bca5f2c5f4a114b247e250f1e2817675025361590c0c7e95edca3075d171e3a",
+      "content_type": "application/pdf"
+    },
+    {
+      "id": "2608.25941v1",
+      "url": "https://arxiv.org/e-print/2608.25941v1",
+      "published": "2026-08-26T15:57:42Z",
+      "updated": "2026-08-26T15:57:42Z",
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG"
+      ],
+      "title": "When Pruning Meets Interpretability: Preserving Sparse Autoencoder Robustness in LLMs",
+      "status": "ready",
+      "root": "colm2026_conference.tex",
+      "tree_sha256": "f6346308d989787de9dd7b5548b4cacae0503ca02fb8b7e9c1304bce629b5388",
+      "files": 27,
+      "bytes": 463991,
+      "response_bytes": 188943,
+      "response_sha256": "9d8b9c208c9ff082e10f2eef5b8edba8c535d8349cec08c148367ea339bcdd30"
+    },
+    {
+      "id": "2608.25916v1",
+      "url": "https://arxiv.org/e-print/2608.25916v1",
+      "published": "2026-08-26T15:30:39Z",
+      "updated": "2026-08-26T15:30:39Z",
+      "primary_category": "cond-mat.stat-mech",
+      "categories": [
+        "cond-mat.stat-mech",
+        "cond-mat.soft",
+        "math-ph"
+      ],
+      "title": "Current fluctuations in a gas of active Ornstein-Uhlenbeck particles",
+      "status": "ready",
+      "root": "Main.tex",
+      "tree_sha256": "d03aa6346431fa706eb5b11e7cc8faada12c1e48646a62550b0946dfce12341b",
+      "files": 11,
+      "bytes": 1277210,
+      "response_bytes": 1138011,
+      "response_sha256": "99f7aa2806cfb8694e92cc7a54875bed9b71cac36ea5a8efef24184aa8904fe3"
+    },
+    {
+      "id": "2608.25913v1",
+      "url": "https://arxiv.org/e-print/2608.25913v1",
+      "published": "2026-08-26T15:28:11Z",
+      "updated": "2026-08-26T15:28:11Z",
+      "primary_category": "physics.ao-ph",
+      "categories": [
+        "physics.ao-ph"
+      ],
+      "title": "A place for stabilization alongside tipping cascades: the AMOC-cryosphere system",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "8ddcb7bb24a510578c0f69608553c3fe1daf615734e67f347bb3f0d8d8f13de5",
+      "files": 5,
+      "bytes": 6987832,
+      "response_bytes": 6296373,
+      "response_sha256": "907d09c52597e047ab1f43a0490a15f7c420d60e81b23da6c07c2a20bf0368b3"
+    },
+    {
+      "id": "2608.25880v1",
+      "url": "https://arxiv.org/e-print/2608.25880v1",
+      "published": "2026-08-26T14:52:44Z",
+      "updated": "2026-08-26T14:52:44Z",
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.CR"
+      ],
+      "title": "Beyond the Editing Canvas: Evidence Divergence in OOXML-to-LLM Ingestion",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "c0350118e0da7ee8cc8ead70efa44c838f2d9449ed7a1a98ab2a389736aa8c35",
+      "files": 26,
+      "bytes": 483218,
+      "response_bytes": 369925,
+      "response_sha256": "64e240703d478c935e44e43f97a30699099cb42044894975f7eb2cbc9dcf1058"
+    },
+    {
+      "id": "2608.25879v1",
+      "url": "https://arxiv.org/e-print/2608.25879v1",
+      "published": "2026-08-26T14:51:50Z",
+      "updated": "2026-08-26T14:51:50Z",
+      "primary_category": "physics.flu-dyn",
+      "categories": [
+        "physics.flu-dyn"
+      ],
+      "title": "A Compensated Koopman Neural Operator with Selective State-Space Dynamics for Unsteady Flows",
+      "status": "ready",
+      "root": "CoKo_UNO_elsarticle_en_v3.tex",
+      "tree_sha256": "84fb60e4be72a30010fc63b36574d85795329373f687fc2b2f60cc1ae7ad1bd6",
+      "files": 29,
+      "bytes": 9428847,
+      "response_bytes": 8117075,
+      "response_sha256": "85c9962186bf2ead7015c8f82ad5234b09d70cc206b6ea404cca7011b1062b18"
+    },
+    {
+      "id": "2608.25876v1",
+      "url": "https://arxiv.org/e-print/2608.25876v1",
+      "published": "2026-08-26T14:49:37Z",
+      "updated": "2026-08-26T14:49:37Z",
+      "primary_category": "cs.HC",
+      "categories": [
+        "cs.HC",
+        "cs.CV"
+      ],
+      "title": "Do Vision-Language Models Agree on the Affective Qualities of Shape? A Cross-Model Audit for Generative Design Interfaces",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "0c72a7e2d6f2d8ee88d99dc2799bab8542fbae6ec838531d8dc7a5945e265de6",
+      "files": 16,
+      "bytes": 549701,
+      "response_bytes": 436333,
+      "response_sha256": "ea31e102686a5803e8adc634bfbf2b34cc9a4730f17448aec10623d059423876"
+    },
+    {
+      "id": "2608.25858v1",
+      "url": "https://arxiv.org/e-print/2608.25858v1",
+      "published": "2026-08-26T14:30:39Z",
+      "updated": "2026-08-26T14:30:39Z",
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.LG",
+        "physics.ao-ph"
+      ],
+      "title": "Precipitation Downscaling Using Foundation Model-Conditioned Diffusion",
+      "status": "ready",
+      "root": "arxiv.tex",
+      "tree_sha256": "6641df72542f6dcff1ba6d2f2683fa198a196dec52921b8f4fd33f46ca967fed",
+      "files": 12,
+      "bytes": 6766896,
+      "response_bytes": 6593671,
+      "response_sha256": "3d322db9daf8b471ad2e8fdfc85364edd340e6eab652192ba686da45ecc4790a"
+    },
+    {
+      "id": "2608.25857v1",
+      "url": "https://arxiv.org/e-print/2608.25857v1",
+      "published": "2026-08-26T14:29:19Z",
+      "updated": "2026-08-26T14:29:19Z",
+      "primary_category": "hep-ph",
+      "categories": [
+        "hep-ph",
+        "hep-lat",
+        "hep-th",
+        "nucl-th"
+      ],
+      "title": "Robust Finite-Momentum Instabilities in Dense Matter",
+      "status": "ready",
+      "root": "paper.tex",
+      "tree_sha256": "7a8604afc5fcfd0c065a0de02100c303e0571029970d769230b426af9f35cff6",
+      "files": 5,
+      "bytes": 206521,
+      "response_bytes": 155833,
+      "response_sha256": "8e05cdb4577608e34431525f1b1fdd75c27e8dd320c619456b1500aaf0f82e62"
+    },
+    {
+      "id": "2608.25831v1",
+      "url": "https://arxiv.org/e-print/2608.25831v1",
+      "published": "2026-08-26T14:11:47Z",
+      "updated": "2026-08-26T14:11:47Z",
+      "primary_category": "math.CO",
+      "categories": [
+        "math.CO"
+      ],
+      "title": "Clique-saturating non-edges throughout the Turán range",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "ddbf72b34d7c767107833994ce55502d194c9fb87561aba6765820e025b10f47",
+      "files": 2,
+      "bytes": 48035,
+      "response_bytes": 15557,
+      "response_sha256": "c946b7237e98a20a5a5f8b984c00658663548afc145c03b7bb0d1dead93b093e"
+    },
+    {
+      "id": "2608.25828v1",
+      "url": "https://arxiv.org/e-print/2608.25828v1",
+      "published": "2026-08-26T14:08:13Z",
+      "updated": "2026-08-26T14:08:13Z",
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.LG"
+      ],
+      "title": "FlowMoDL: Model-Based Deep Learning with Conjugate-Gradient Data Consistency for Highly Accelerated 4D Flow MRI Reconstruction",
+      "status": "ready",
+      "root": "flowmodl.tex",
+      "tree_sha256": "e0f323aa31dbf1d8a6e74f2426147216da1a0be6bd16242f1afb780102f7715a",
+      "files": 11,
+      "bytes": 552554,
+      "response_bytes": 359968,
+      "response_sha256": "cfbc24cf338de0df278f2db3895120e9f06dd6324ae8435e12b13c71fba389d4"
+    },
+    {
+      "id": "2608.25819v1",
+      "url": "https://arxiv.org/e-print/2608.25819v1",
+      "published": "2026-08-26T14:01:36Z",
+      "updated": "2026-08-26T14:01:36Z",
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "title": "Steer the Sampling, Not the Kernel Grid: Geometry-Guided Sampling Operator for Volumetric Segmentation",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "1f772925667379fd7d79f57382b04e9135a5ea29938037ca601a665f5d8e3dde",
+      "files": 9,
+      "bytes": 36983289,
+      "response_bytes": 32143322,
+      "response_sha256": "6fe9189696b9aa6bc1f29fcaba78ac048f51903f2761aa08baf6ab16b43fe787"
+    },
+    {
+      "id": "2608.25812v1",
+      "url": "https://arxiv.org/e-print/2608.25812v1",
+      "published": "2026-08-26T13:57:47Z",
+      "updated": "2026-08-26T13:57:47Z",
+      "primary_category": "math.NT",
+      "categories": [
+        "math.NT"
+      ],
+      "title": "The second moment of twisted modular $L$-functions and Dirichlet $L$-functions at the central point",
+      "status": "ready",
+      "root": "main_15.38.46.tex",
+      "tree_sha256": "0f49f490022ec2369841b7bf9ce7594c1339ba239a668de6eb73b97468c39652",
+      "files": 2,
+      "bytes": 307487,
+      "response_bytes": 69370,
+      "response_sha256": "3b40544b3b0b6d7aed478e6e1959d4867bdfbcbc0807870168dbde9b22665f63"
+    },
+    {
+      "id": "2608.25790v1",
+      "url": "https://arxiv.org/e-print/2608.25790v1",
+      "published": "2026-08-26T13:40:49Z",
+      "updated": "2026-08-26T13:40:49Z",
+      "primary_category": "hep-ph",
+      "categories": [
+        "hep-ph"
+      ],
+      "title": "Deeply Inelastic Scattering Revisited",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "47e751c08ca7317f7d2afed34428add12c3eb9fd20c0cea89a3b9c6c9afc168a",
+      "files": 36,
+      "bytes": 1214927,
+      "response_bytes": 1029181,
+      "response_sha256": "2cb66ffc0f7fdebb61ed43889a4f34cc6379492cfc21d8708d31bd3679f6e7b3"
+    },
+    {
+      "id": "2608.25746v1",
+      "url": "https://arxiv.org/e-print/2608.25746v1",
+      "published": "2026-08-26T12:56:05Z",
+      "updated": "2026-08-26T12:56:05Z",
+      "primary_category": "math.CO",
+      "categories": [
+        "math.CO"
+      ],
+      "title": "Large Cliques and Clique Spectral Radius in the Erdős--Sós Problem",
+      "status": "ready",
+      "root": "large-clique-8-26.tex",
+      "tree_sha256": "e70731d10b392d4585aa474f9d5d33f92648d850f41b91b28a151c4211e25b75",
+      "files": 2,
+      "bytes": 57513,
+      "response_bytes": 18199,
+      "response_sha256": "4ae23438cc7abca0a984956c75f57fcd41709bfe8c1b565b6fc202595244f449"
+    },
+    {
+      "id": "2608.25744v1",
+      "url": "https://arxiv.org/e-print/2608.25744v1",
+      "published": "2026-08-26T12:54:37Z",
+      "updated": "2026-08-26T12:54:37Z",
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG"
+      ],
+      "title": "A Constitutive Markov Physics-Informed Neural Operator (MPNO) for Autoregressive Stability in Transient Dynamics",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "18741f1a9f650c481007cb14c6effb8b09f5c3305c3a67c1798d70e1ed5948f7",
+      "files": 12,
+      "bytes": 5961195,
+      "response_bytes": 5306240,
+      "response_sha256": "3db244863c6bae4b9fda41f410bf259c75180f8ab7e75de420d047a09514aae7"
+    },
+    {
+      "id": "2608.25740v1",
+      "url": "https://arxiv.org/e-print/2608.25740v1",
+      "published": "2026-08-26T12:50:46Z",
+      "updated": "2026-08-26T12:50:46Z",
+      "primary_category": "math.FA",
+      "categories": [
+        "math.FA"
+      ],
+      "title": "The Cesàro Operator is in the Toeplitz Algebra",
+      "status": "ready",
+      "root": "The_Cesaro_Operator_is_in_the_Toeplitz_Algebra.tex",
+      "tree_sha256": "ac62f47ec20e6a14e3a300652ec48174e1768c7720dcf6821fc7a78f41f08408",
+      "files": 2,
+      "bytes": 33369,
+      "response_bytes": 11012,
+      "response_sha256": "3961a53160f67b2c203b88c08ae3f71693298df47541749d137d63ab0548b1fe"
+    },
+    {
+      "id": "2608.25730v1",
+      "url": "https://arxiv.org/e-print/2608.25730v1",
+      "published": "2026-08-26T12:44:33Z",
+      "updated": "2026-08-26T12:44:33Z",
+      "primary_category": "cs.CR",
+      "categories": [
+        "cs.CR"
+      ],
+      "title": "From Verdict to Diagnosis: Attributable Security Review of Pull Requests",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "8c0309991cda24e87fca26840622f96088be2bc233f1824c9f6b8e90574678e0",
+      "files": 20,
+      "bytes": 192772,
+      "response_bytes": 112400,
+      "response_sha256": "5c7167a3604c8f7d28344c0da7156053f8806d491eb456b76c8b531a774b202e"
+    },
+    {
+      "id": "2608.25698v1",
+      "url": "https://arxiv.org/e-print/2608.25698v1",
+      "published": "2026-08-26T12:16:04Z",
+      "updated": "2026-08-26T12:16:04Z",
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG"
+      ],
+      "title": "Modeling spatio-temporal locality in multi-step forecasting of geo-referenced time series",
+      "status": "no_tex_source",
+      "response_bytes": 3484902,
+      "response_sha256": "60b9faa585afddede88ceeb810f0427300637143ae4cd77a79ffd59445532c41",
+      "content_type": "application/pdf"
+    },
+    {
+      "id": "2608.25679v1",
+      "url": "https://arxiv.org/e-print/2608.25679v1",
+      "published": "2026-08-26T11:55:59Z",
+      "updated": "2026-08-26T11:55:59Z",
+      "primary_category": "math.NA",
+      "categories": [
+        "math.NA"
+      ],
+      "title": "A Computational Model for Global Ocean Dynamics at all Scales",
+      "status": "ready",
+      "root": "nh_ocean_ac_v107.tex",
+      "tree_sha256": "f8e6766c4d4f5d4635f398525e25d237030f4f5c2a57dcd589aeef67e3653071",
+      "files": 3,
+      "bytes": 308023,
+      "response_bytes": 112005,
+      "response_sha256": "f4bf038c766d3ccd58891cd77e687cbf1f20862eb1344f8547d28287610cdd73"
+    },
+    {
+      "id": "2608.25675v1",
+      "url": "https://arxiv.org/e-print/2608.25675v1",
+      "published": "2026-08-26T11:53:40Z",
+      "updated": "2026-08-26T11:53:40Z",
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "title": "Deep Learning Segmentation of Diffusion-Weighted MRI Acute Ischaemic Stroke: A Pragmatic Evaluation Across Three Datasets",
+      "status": "no_tex_source",
+      "response_bytes": 930590,
+      "response_sha256": "c5d9f7a3ebfbbf6f58fef34ec0ad7a48850a58d1c1d4cd463f608b6ab4d5dee2",
+      "content_type": "application/pdf"
+    },
+    {
+      "id": "2608.25670v1",
+      "url": "https://arxiv.org/e-print/2608.25670v1",
+      "published": "2026-08-26T11:51:38Z",
+      "updated": "2026-08-26T11:51:38Z",
+      "primary_category": "cs.CR",
+      "categories": [
+        "cs.CR"
+      ],
+      "title": "An Analysis of the Impact of Psychological Factors and Techniques Across Different Types of Social Engineering",
+      "status": "ready",
+      "root": "workshop.tex",
+      "tree_sha256": "6a7e6dba70ce62cf602d52f7ff3ab0887327a01ddb924f1d1b03e2a7ecfc90f7",
+      "files": 13,
+      "bytes": 735430,
+      "response_bytes": 509316,
+      "response_sha256": "4673fe7cb0c1073cc339f2d4a6a0568a545b576669a26ff1eb1eaf59109ae063"
+    },
+    {
+      "id": "2608.25657v1",
+      "url": "https://arxiv.org/e-print/2608.25657v1",
+      "published": "2026-08-26T11:38:24Z",
+      "updated": "2026-08-26T11:38:24Z",
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.LG",
+        "cs.PL",
+        "cs.SE"
+      ],
+      "title": "Narcissus: Program Synthesis Using Context-Aware LLM Approximations",
+      "status": "ready",
+      "root": "aaai2027.tex",
+      "tree_sha256": "1fff3eca396371891fd1aff461d2d0b009671670dcb083424eab215a46872b2c",
+      "files": 39,
+      "bytes": 1044473,
+      "response_bytes": 952889,
+      "response_sha256": "bf2af4596a3db82319b69b8e606bbf215b6313e183d1ecdd1d88313d842ed0d0"
+    },
+    {
+      "id": "2608.25654v1",
+      "url": "https://arxiv.org/e-print/2608.25654v1",
+      "published": "2026-08-26T11:36:31Z",
+      "updated": "2026-08-26T11:36:31Z",
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL",
+        "cs.AI"
+      ],
+      "title": "Unmatched Does Not Mean False: Incomplete Reference Sets Can Reverse Calibration Rankings in Open-Ended Theory-of-Mind Tracking",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "c26de6bb2bf6f021c83617771919aa8cc72ca42a17b9e85e4cb79da793e688ce",
+      "files": 17,
+      "bytes": 1407070,
+      "response_bytes": 1193629,
+      "response_sha256": "5510cf3f5b6c4b0757a4b0bf231f2a52d6139f878bdd68c59136900823543929"
+    },
+    {
+      "id": "2608.25636v1",
+      "url": "https://arxiv.org/e-print/2608.25636v1",
+      "published": "2026-08-26T11:06:21Z",
+      "updated": "2026-08-26T11:06:21Z",
+      "primary_category": "hep-ph",
+      "categories": [
+        "hep-ph"
+      ],
+      "title": "A Comprehensive Analysis of the R2HDM Vacuum Evolution and the Induced GW and Collider Phenomenology",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "1d24898645945436df9398508facc9488c018266eee168893b92583b5ee24730",
+      "files": 29,
+      "bytes": 21595748,
+      "response_bytes": 20822046,
+      "response_sha256": "1b1e82cf8d3ab891cf096965bf0db61e08bf9c95c9c78ee0f46a88cced7322b8"
+    },
+    {
+      "id": "2608.25633v1",
+      "url": "https://arxiv.org/e-print/2608.25633v1",
+      "published": "2026-08-26T11:02:06Z",
+      "updated": "2026-08-26T11:02:06Z",
+      "primary_category": "math.KT",
+      "categories": [
+        "math.KT",
+        "math.AT"
+      ],
+      "title": "The integral homology of $\\text{SL}_2(\\mathbb{Z}[1/n])$",
+      "status": "ready",
+      "root": "thesis.tex",
+      "tree_sha256": "636e2d0ee3d8d1bb89ff2a6e028edbfc07146870855b6c07c3bac32f2b789e1c",
+      "files": 32,
+      "bytes": 5690323,
+      "response_bytes": 3401670,
+      "response_sha256": "2ff6b59a7b9e6750efd6ba08f5148c10c8649c05c34ab810e11282fb5f6d8dc1"
+    },
+    {
+      "id": "2608.25620v1",
+      "url": "https://arxiv.org/e-print/2608.25620v1",
+      "published": "2026-08-26T10:41:24Z",
+      "updated": "2026-08-26T10:41:24Z",
+      "primary_category": "astro-ph.HE",
+      "categories": [
+        "astro-ph.HE"
+      ],
+      "title": "Ultraluminous X-ray sources in the first eROSITA survey I. Candidate catalogs",
+      "status": "ready",
+      "root": "aa59942-26.tex",
+      "tree_sha256": "d25633c63896054e6dc74c1d4eb6747caeba143d1326469299fff594766e7fb4",
+      "files": 22,
+      "bytes": 1482470,
+      "response_bytes": 1158353,
+      "response_sha256": "077056d70a1da0d44ce3af9b815bdf9f9fb3852ea3f4e92ac0273c0641cc5e49"
+    },
+    {
+      "id": "2608.25617v1",
+      "url": "https://arxiv.org/e-print/2608.25617v1",
+      "published": "2026-08-26T10:33:00Z",
+      "updated": "2026-08-26T10:33:00Z",
+      "primary_category": "astro-ph.GA",
+      "categories": [
+        "astro-ph.GA",
+        "gr-qc"
+      ],
+      "title": "Revealing Galactic dust beneath the cosmic infrared background anisotropies with Wavelet Phase Harmonics",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "9213ba674f829816f613aa3506ace17539a07080cd9d7ace3ecb08d40ac7fecc",
+      "files": 28,
+      "bytes": 11514489,
+      "response_bytes": 9251503,
+      "response_sha256": "a798de95f9c66d469a0f682ef2e21c15a8cadba4bdcfdfe33636a65d07f2e2b0"
+    },
+    {
+      "id": "2608.25613v1",
+      "url": "https://arxiv.org/e-print/2608.25613v1",
+      "published": "2026-08-26T10:29:17Z",
+      "updated": "2026-08-26T10:29:17Z",
+      "primary_category": "math.QA",
+      "categories": [
+        "math.QA",
+        "math.RT"
+      ],
+      "title": "Characters of Quantum Symmetric Pairs",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "6fb39775ddd300d3e748f5e3ee00649261cf7ccd78ab1bd95bec0d5a974ca0bc",
+      "files": 3,
+      "bytes": 59140,
+      "response_bytes": 15874,
+      "response_sha256": "d7b827fb905aa38e66bd737a2adf874c904932cef41f034bba500037bc7725ec"
+    },
+    {
+      "id": "2608.25563v1",
+      "url": "https://arxiv.org/e-print/2608.25563v1",
+      "published": "2026-08-26T09:16:02Z",
+      "updated": "2026-08-26T09:16:02Z",
+      "primary_category": "quant-ph",
+      "categories": [
+        "quant-ph"
+      ],
+      "title": "GNSS-free quantum gravity-aided navigation and fine-scale marine surveying with a strapdown quantum gravimeter",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "34308f7c2e2026094293e8428f179ee9f72d0078a0dd62bf5117a9d0b6bae748",
+      "files": 11,
+      "bytes": 5946722,
+      "response_bytes": 5580879,
+      "response_sha256": "aa455c91bd863873297d3a29f87dc28d112343dbb5f2b8a9483163e40a973163"
+    },
+    {
+      "id": "2608.25558v1",
+      "url": "https://arxiv.org/e-print/2608.25558v1",
+      "published": "2026-08-26T09:07:21Z",
+      "updated": "2026-08-26T09:07:21Z",
+      "primary_category": "math.CO",
+      "categories": [
+        "math.CO"
+      ],
+      "title": "On the Dimension of the Best-Worst Choice Polytope",
+      "status": "ready",
+      "root": "best_worst_polytope_dimension.tex",
+      "tree_sha256": "c5b560285b5507b4987ba182458ae7a597023f1cb388f3c784fb8b9a20dcf8b6",
+      "files": 2,
+      "bytes": 71276,
+      "response_bytes": 22256,
+      "response_sha256": "f4e25add2ff2a9d7a49bf6d45440ffd34b72a525c52e27ce47ad62c5ff1dff9d"
+    },
+    {
+      "id": "2608.25553v2",
+      "url": "https://arxiv.org/e-print/2608.25553v2",
+      "published": "2026-08-26T09:04:21Z",
+      "updated": "2026-08-27T08:32:16Z",
+      "primary_category": "cs.IR",
+      "categories": [
+        "cs.IR",
+        "cs.AI",
+        "cs.CL"
+      ],
+      "title": "When Stale Constraints Go Unchecked: Budgeted Verification Failures in Inherited Agent Memory",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "549dbaffea21c0a07fa5f2efe5ab51432fb673f11b4732947fc1630cfce926d3",
+      "files": 25,
+      "bytes": 100778,
+      "response_bytes": 34178,
+      "response_sha256": "75663780b421d18a548ac6e9ee52939855834d79b925c2de44c893e70f07fb4a"
+    },
+    {
+      "id": "2608.25552v2",
+      "url": "https://arxiv.org/e-print/2608.25552v2",
+      "published": "2026-08-26T09:04:13Z",
+      "updated": "2026-08-27T02:09:51Z",
+      "primary_category": "astro-ph.HE",
+      "categories": [
+        "astro-ph.HE",
+        "astro-ph.GA"
+      ],
+      "title": "Energy Partition in AGN-driven Bubbles of NGC 4438: From Nuclear Bubbles to a Galaxy-scale Outflow",
+      "status": "ready",
+      "root": "4438_paper.tex",
+      "tree_sha256": "6578aa8115e48089d93d5e78865a1faff7433477fc13c8fa21850bc9bee11a49",
+      "files": 14,
+      "bytes": 2758265,
+      "response_bytes": 2244401,
+      "response_sha256": "eb011b6649b817330c494f91710723b95e448d64329a8427316e698e4fe4540e"
+    },
+    {
+      "id": "2608.25547v1",
+      "url": "https://arxiv.org/e-print/2608.25547v1",
+      "published": "2026-08-26T09:01:36Z",
+      "updated": "2026-08-26T09:01:36Z",
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.AI"
+      ],
+      "title": "A Tendon-Driven Five-Fingered Hand with Distributed Tactile Perception for Dexterous Manipulation",
+      "status": "no_tex_source",
+      "response_bytes": 1098117,
+      "response_sha256": "122cbd3be92a90ef863c6443b227fe3ffa7ec069aedf96d83f94cadf007f4e86",
+      "content_type": "application/pdf"
+    },
+    {
+      "id": "2608.25545v1",
+      "url": "https://arxiv.org/e-print/2608.25545v1",
+      "published": "2026-08-26T08:57:01Z",
+      "updated": "2026-08-26T08:57:01Z",
+      "primary_category": "quant-ph",
+      "categories": [
+        "quant-ph",
+        "cs.IT"
+      ],
+      "title": "Certified decoding of quantum LDPC codes",
+      "status": "ready",
+      "root": "pgmec.tex",
+      "tree_sha256": "7b879373f7fa27fc7a7ab23c1a1c8d32e2b7873b97de18908b7c85964af4bec5",
+      "files": 9,
+      "bytes": 208859,
+      "response_bytes": 72125,
+      "response_sha256": "3b19afcfc1852e6b48a2c6776731aba64d9853dde2e4516436fb4a574be11191"
+    },
+    {
+      "id": "2608.25527v1",
+      "url": "https://arxiv.org/e-print/2608.25527v1",
+      "published": "2026-08-26T08:35:12Z",
+      "updated": "2026-08-26T08:35:12Z",
+      "primary_category": "cs.HC",
+      "categories": [
+        "cs.HC"
+      ],
+      "title": "The Well-Being Palette: An Action-Word Selection Tool Designed for Low-Burden Reflection on Workplace Well-Being",
+      "status": "no_tex_source",
+      "response_bytes": 1947167,
+      "response_sha256": "bf8c0de39522cef3dba8811df774b26b51c32c01dde5a61bafa7d8bd61517c90",
+      "content_type": "application/pdf"
+    },
+    {
+      "id": "2608.25513v1",
+      "url": "https://arxiv.org/e-print/2608.25513v1",
+      "published": "2026-08-26T08:24:04Z",
+      "updated": "2026-08-26T08:24:04Z",
+      "primary_category": "stat.ML",
+      "categories": [
+        "stat.ML",
+        "cs.LG"
+      ],
+      "title": "Adaptive Regularization for Random Features: A Neighboring Early-Stopping Rule with Oracle-Rate Guarantees",
+      "status": "ready",
+      "root": "arxiv.tex",
+      "tree_sha256": "65588fb2f78c2e217be8cf247ef785b24141d802557d692942d6c211f807df1f",
+      "files": 44,
+      "bytes": 13290865,
+      "response_bytes": 8528655,
+      "response_sha256": "d8a14bb1a87bc0a4171e0bb487fcbc363cb5fb003c185856e6806c4a02acf48a"
+    },
+    {
+      "id": "2608.25503v1",
+      "url": "https://arxiv.org/e-print/2608.25503v1",
+      "published": "2026-08-26T08:14:21Z",
+      "updated": "2026-08-26T08:14:21Z",
+      "primary_category": "quant-ph",
+      "categories": [
+        "quant-ph"
+      ],
+      "title": "High-Fidelity Entangled States in a Connectivity-Four Fluxonium Quantum Processor",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "5245598ccde2d049c66470af1ddeef869c01696866666de6d58aab8608537fc9",
+      "files": 10,
+      "bytes": 10089718,
+      "response_bytes": 9605970,
+      "response_sha256": "d5684d1e68f974e8599985a727ea7fc2d14f89eafe8e8030d6813cf858179b65"
+    },
+    {
+      "id": "2608.26212v1",
+      "url": "https://arxiv.org/e-print/2608.26212v1",
+      "published": "2026-08-26T08:09:58Z",
+      "updated": "2026-08-26T08:09:58Z",
+      "primary_category": "stat.ME",
+      "categories": [
+        "stat.ME"
+      ],
+      "title": "Copula based dependent censoring in cure models with covariates",
+      "status": "ready",
+      "root": "P2_Delhelle.tex",
+      "tree_sha256": "7f10374eac3a676f8652306e413b89ec7158524935a8e3593f626fd401abc0c0",
+      "files": 6,
+      "bytes": 133639,
+      "response_bytes": 55097,
+      "response_sha256": "87a4f595e9cf66511aa1e0e09b484c5ca2e8a8cc031b82350cc4f3f274f23007"
+    },
+    {
+      "id": "2608.25491v1",
+      "url": "https://arxiv.org/e-print/2608.25491v1",
+      "published": "2026-08-26T08:05:56Z",
+      "updated": "2026-08-26T08:05:56Z",
+      "primary_category": "cs.DS",
+      "categories": [
+        "cs.DS",
+        "cs.DM",
+        "math.PR"
+      ],
+      "title": "A Spectral Local-to-Global Principle for Spin Systems on Graphs with Girth At Least Five",
+      "status": "ready",
+      "root": "girth5.tex",
+      "tree_sha256": "2179f5e9f023ac7dfd5f06a9ae930240a7e275d325a6c6deeddf6986668159b1",
+      "files": 3,
+      "bytes": 134108,
+      "response_bytes": 38295,
+      "response_sha256": "581e94658dc68fcb5d17c255d71677b5ef5a223c12af1a59a728207587cd96b1"
+    },
+    {
+      "id": "2608.25488v1",
+      "url": "https://arxiv.org/e-print/2608.25488v1",
+      "published": "2026-08-26T08:00:30Z",
+      "updated": "2026-08-26T08:00:30Z",
+      "primary_category": "cs.SI",
+      "categories": [
+        "cs.SI",
+        "econ.GN"
+      ],
+      "title": "Social Network Structure, Wealth, and Wealth Inequality Across Cultures",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "1644afb6504070cda160e9053d1bc2fe644c5d20a2d30dd259780359a52bf337",
+      "files": 130,
+      "bytes": 24739918,
+      "response_bytes": 23184380,
+      "response_sha256": "aeefbf7f91576dd12fc9dc87076f20f665f7229ee16b9e8ace2c3d26abf72f23"
+    },
+    {
+      "id": "2608.25476v1",
+      "url": "https://arxiv.org/e-print/2608.25476v1",
+      "published": "2026-08-26T07:45:19Z",
+      "updated": "2026-08-26T07:45:19Z",
+      "primary_category": "hep-ex",
+      "categories": [
+        "hep-ex"
+      ],
+      "title": "Measurement of $tZq$ inclusive and differential cross-sections in $pp$ collisions at $\\sqrt{s} = 13~\\text{TeV}$ with the ATLAS detector",
+      "status": "ready",
+      "root": "ANA-TOPQ-2021-21-PAPER.tex",
+      "tree_sha256": "6acd61bad094381053b88011365159dd0738603c94e80eb962fb6dc9618cd449",
+      "files": 123,
+      "bytes": 7956626,
+      "response_bytes": 1631671,
+      "response_sha256": "aaecd64c07bbcbbbd7b872e84e713d833934cfcb115f0a7c14e07c5279825a6f"
+    },
+    {
+      "id": "2608.25471v1",
+      "url": "https://arxiv.org/e-print/2608.25471v1",
+      "published": "2026-08-26T07:42:22Z",
+      "updated": "2026-08-26T07:42:22Z",
+      "primary_category": "math.PR",
+      "categories": [
+        "math.PR"
+      ],
+      "title": "Exact Hausdorff measures and fine geometry of collisions of independent Markov processes",
+      "status": "ready",
+      "root": "Geometry_of_collisions_arxiv_v1.tex",
+      "tree_sha256": "e2a118b38698050f210499cd831b63b439f1805e01ec07466c1332de65f30891",
+      "files": 3,
+      "bytes": 210035,
+      "response_bytes": 49485,
+      "response_sha256": "e5932cb84491efa4bf8f779858a779fe7b692a44ae4b05f816e409b5149bba9b"
+    },
+    {
+      "id": "2608.25468v1",
+      "url": "https://arxiv.org/e-print/2608.25468v1",
+      "published": "2026-08-26T07:36:39Z",
+      "updated": "2026-08-26T07:36:39Z",
+      "primary_category": "stat.ME",
+      "categories": [
+        "stat.ME",
+        "cs.LG",
+        "math.ST",
+        "stat.ML"
+      ],
+      "title": "Functional linear regression from sparse to dense designs: a pooling-ridge method and minimax optimality",
+      "status": "ready",
+      "root": "AOS2666.tex",
+      "tree_sha256": "8e91a900e54fc22dd3cf1cf8fb5b19c4c8265ec97bdee9ea8c9748a348f648ec",
+      "files": 14,
+      "bytes": 584767,
+      "response_bytes": 287843,
+      "response_sha256": "419fe0aba5354eeaae90326c299de81e0267f3f03ac0b05a76643f882868edea"
+    },
+    {
+      "id": "2608.25447v1",
+      "url": "https://arxiv.org/e-print/2608.25447v1",
+      "published": "2026-08-26T07:08:10Z",
+      "updated": "2026-08-26T07:08:10Z",
+      "primary_category": "math.AG",
+      "categories": [
+        "math.AG",
+        "math.CO"
+      ],
+      "title": "Tautological Pushforwards of Hilbert Schemes of Points on Curves and Surfaces",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "23e98354ff1507799255cc08ab567680ba02af8676144ec7746f77e43f5fe7bb",
+      "files": 3,
+      "bytes": 124522,
+      "response_bytes": 37650,
+      "response_sha256": "dee63ddb5574861754463625c30ac628aa2b805fad4132d0f98fe90377fe4900"
+    },
+    {
+      "id": "2608.25427v1",
+      "url": "https://arxiv.org/e-print/2608.25427v1",
+      "published": "2026-08-26T06:34:43Z",
+      "updated": "2026-08-26T06:34:43Z",
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "title": "SUPER ODOMETRY 2.0: Resilient Odometry via Hierarchical Adaptation",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "86d057116ae3925ad6981291e7a0dbaee9f3f50b9cbc4835b07ebeee7bd3f8bb",
+      "files": 37,
+      "bytes": 16558744,
+      "response_bytes": 15286112,
+      "response_sha256": "d396d7e86f8e836d744c6875ed2b169ccf3d3e677597ad408415a7075ffa4eba"
+    },
+    {
+      "id": "2608.25417v1",
+      "url": "https://arxiv.org/e-print/2608.25417v1",
+      "published": "2026-08-26T06:19:28Z",
+      "updated": "2026-08-26T06:19:28Z",
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "title": "Paint What You See: Benchmarking Dexterous Visual Tool Use in Multimodal Agents",
+      "status": "ready",
+      "root": "AnonymousSubmission2027.tex",
+      "tree_sha256": "f0e2de2ae088ff0e454e936d689055d0ce36a4f41ea7876a49bcf759a33c63b6",
+      "files": 15,
+      "bytes": 3218601,
+      "response_bytes": 2910702,
+      "response_sha256": "caf4138fd0e1adfc15b14ed9c7b62c792fb72c861be886c5c19cd0c1cc9117a6"
+    },
+    {
+      "id": "2608.25415v1",
+      "url": "https://arxiv.org/e-print/2608.25415v1",
+      "published": "2026-08-26T06:17:39Z",
+      "updated": "2026-08-26T06:17:39Z",
+      "primary_category": "quant-ph",
+      "categories": [
+        "quant-ph"
+      ],
+      "title": "Quantum skyrmion parallelism via metasurface-tailored high-dimensional entanglement",
+      "status": "ready",
+      "root": "Main_ArXiv.tex",
+      "tree_sha256": "f789d72573262db9f75fd12e019e65173ed89036165ecd2938a90a63e0d24159",
+      "files": 17,
+      "bytes": 13976604,
+      "response_bytes": 13407892,
+      "response_sha256": "026bfb329d6015c82296b866ed1731e2cec2df6ee013964441f1b26c9a0bafb0"
+    },
+    {
+      "id": "2608.25387v1",
+      "url": "https://arxiv.org/e-print/2608.25387v1",
+      "published": "2026-08-26T05:26:14Z",
+      "updated": "2026-08-26T05:26:14Z",
+      "primary_category": "astro-ph.SR",
+      "categories": [
+        "astro-ph.SR"
+      ],
+      "title": "Large fraction of blends from Rowan et al. (2023)",
+      "status": "ready",
+      "root": "mnras_blends2025_rev.tex",
+      "tree_sha256": "d7f4ae802f5bc830da84ae149a0d6d486ab7cd9801bf60e90a7dfd3f38adc7d4",
+      "files": 2,
+      "bytes": 41234,
+      "response_bytes": 13009,
+      "response_sha256": "1ba3498bdcc8e8840dd2f046a8dc6d63286248bd6420855fb1bb5e9922dbce38"
+    },
+    {
+      "id": "2608.25386v1",
+      "url": "https://arxiv.org/e-print/2608.25386v1",
+      "published": "2026-08-26T05:25:40Z",
+      "updated": "2026-08-26T05:25:40Z",
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "title": "Efficient Training with Foresight: Multi-Token Auxiliary Supervision for Autoregressive Image Generation",
+      "status": "ready",
+      "root": "MTAR_arXive.tex",
+      "tree_sha256": "41e75104675c38e7260354940df21993ce472b7ded0eefef2e83a515949e5e1f",
+      "files": 22,
+      "bytes": 4769526,
+      "response_bytes": 4303323,
+      "response_sha256": "a02052a73e3e916cdde910e7ff1b59ae8d0d8d2ec939ddfcb6e4bc70dd05fe4c"
+    },
+    {
+      "id": "2608.25372v1",
+      "url": "https://arxiv.org/e-print/2608.25372v1",
+      "published": "2026-08-26T04:45:57Z",
+      "updated": "2026-08-26T04:45:57Z",
+      "primary_category": "math.RA",
+      "categories": [
+        "math.RA"
+      ],
+      "title": "Cohomology and extensions of Novikov algebras of truncated polynomials",
+      "status": "ready",
+      "root": "coh.Novikov.tex",
+      "tree_sha256": "eb23da1ea4e10f13af637e0a8b0a7d1b76f5d6801521dde2b8d76b928345d962",
+      "files": 2,
+      "bytes": 81535,
+      "response_bytes": 27092,
+      "response_sha256": "1980ab1c9e46f25e61949cd7068ccb70ce8a38ed55ccbca1aef5b034fb54936a"
+    },
+    {
+      "id": "2608.25369v1",
+      "url": "https://arxiv.org/e-print/2608.25369v1",
+      "published": "2026-08-26T04:41:50Z",
+      "updated": "2026-08-26T04:41:50Z",
+      "primary_category": "cs.CE",
+      "categories": [
+        "cs.CE"
+      ],
+      "title": "Forecasting Global Volatility Across Asynchronous Markets: Incremental Accuracy from Constrained Cross-Market Attention",
+      "status": "ready",
+      "root": "Forecasting_Global_Volatility_Across_Asynchronous_Markets.tex",
+      "tree_sha256": "03417a785d12eeed8a787c09a585097cb114b1985f109dc4472f0fbc8b250541",
+      "files": 10,
+      "bytes": 602078,
+      "response_bytes": 461262,
+      "response_sha256": "7bf505c11d2ccbd8c0325f68b27c3dca14905c9e7cf31647e592c095c5390a9c"
+    },
+    {
+      "id": "2608.25363v1",
+      "url": "https://arxiv.org/e-print/2608.25363v1",
+      "published": "2026-08-26T04:37:09Z",
+      "updated": "2026-08-26T04:37:09Z",
+      "primary_category": "gr-qc",
+      "categories": [
+        "gr-qc",
+        "math-ph",
+        "math.AP",
+        "math.NA"
+      ],
+      "title": "A 3D Summation-by-Parts scheme on a Hyperboloidal Foliation of Minkowski",
+      "status": "ready",
+      "root": "SBP_3D_MK.tex",
+      "tree_sha256": "afacec8371a1fdeefcecc07f78fab9e5c63a1ebfd7339a8d83031342cbfa39dc",
+      "files": 18,
+      "bytes": 1344365,
+      "response_bytes": 964410,
+      "response_sha256": "6eb616aee0c1edfbcb4190a1f21c5bb16846f78c0844960e26a17eb0c80e5500"
+    },
+    {
+      "id": "2608.25360v1",
+      "url": "https://arxiv.org/e-print/2608.25360v1",
+      "published": "2026-08-26T04:34:08Z",
+      "updated": "2026-08-26T04:34:08Z",
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "title": "FlashNormal: Detailed Surface Normal Estimation from Flash and No-Flash Images",
+      "status": "ready",
+      "root": "bare_jrnl_new_sample4.tex",
+      "tree_sha256": "ae0f69560349788c6a028a4941f3911f44fc604cde41ca8807cbf90bd2b3f7ea",
+      "files": 356,
+      "bytes": 34474400,
+      "response_bytes": 33250776,
+      "response_sha256": "ace780e4e8eebcbde9f5e0e4c9799285961f0900717f453880aea0936f585ebe"
+    },
+    {
+      "id": "2608.25351v1",
+      "url": "https://arxiv.org/e-print/2608.25351v1",
+      "published": "2026-08-26T04:14:59Z",
+      "updated": "2026-08-26T04:14:59Z",
+      "primary_category": "cs.LO",
+      "categories": [
+        "cs.LO"
+      ],
+      "title": "Exact SAT and Constraint Programming for Job Shop Scheduling with Time-Varying Peak Power Constraints",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "ee5a6e4a2064e0330a4acf2ee7b16697b19e843fbce678138175837f20e23387",
+      "files": 8,
+      "bytes": 192474,
+      "response_bytes": 52588,
+      "response_sha256": "aa5741aade527e14508f69451e9d3dad7f447edfe9280de29313cbc28f0a2445"
+    },
+    {
+      "id": "2608.25350v1",
+      "url": "https://arxiv.org/e-print/2608.25350v1",
+      "published": "2026-08-26T04:09:21Z",
+      "updated": "2026-08-26T04:09:21Z",
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.RO"
+      ],
+      "title": "Beyond Pairwise Feedback: Listwise Vision-Language Supervision for Preference-Based Reward Learning",
+      "status": "ready",
+      "root": "arxiv.tex",
+      "tree_sha256": "82385ae964816f4704056c8ae0d41441f0fc6a4ac74d6cb4eef7fd07d9df9687",
+      "files": 13,
+      "bytes": 6783044,
+      "response_bytes": 6471845,
+      "response_sha256": "97dab3cb654e0abed6a52e41558db3d7ec17d7bfd222dc7ff959bee2bfba66c3"
+    },
+    {
+      "id": "2608.25348v1",
+      "url": "https://arxiv.org/e-print/2608.25348v1",
+      "published": "2026-08-26T04:07:03Z",
+      "updated": "2026-08-26T04:07:03Z",
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "title": "Point-in-Time Audit Before Alpha: Public-Archive Availability and a Negative Matched-Budget Study on BTC Perpetual Futures",
+      "status": "ready",
+      "root": "main_pandoc.tex",
+      "tree_sha256": "d6b4976dd4a9bc35cfe9402504776c0f5b8896816e574e0a2909b1d8281e3206",
+      "files": 6,
+      "bytes": 1149383,
+      "response_bytes": 944320,
+      "response_sha256": "db545cf15aaf0284eab11745e3dbbc7f0991ea01b6cf7bd62db38501006563c8"
+    },
+    {
+      "id": "2608.25339v1",
+      "url": "https://arxiv.org/e-print/2608.25339v1",
+      "published": "2026-08-26T03:46:09Z",
+      "updated": "2026-08-26T03:46:09Z",
+      "primary_category": "math.LO",
+      "categories": [
+        "math.LO"
+      ],
+      "title": "Thin set theorem for arbitrarily many colors implies bounding",
+      "status": "ready",
+      "root": "Thin_set_theorem_for_arbitrarily_many_colors_implies_bounding_0826.tex",
+      "tree_sha256": "73c35e5b25de2f1c4c949e1e92bc1b5ad7c9b55fb9acbbdae0c9cb4a93483d18",
+      "files": 3,
+      "bytes": 35054,
+      "response_bytes": 9483,
+      "response_sha256": "e2fab6e2873783b3aaa6dcca2fba383a41d2842e9bfeb8bd2cc858d55719a7c7"
+    },
+    {
+      "id": "2608.25323v1",
+      "url": "https://arxiv.org/e-print/2608.25323v1",
+      "published": "2026-08-26T03:10:07Z",
+      "updated": "2026-08-26T03:10:07Z",
+      "primary_category": "eess.SY",
+      "categories": [
+        "eess.SY"
+      ],
+      "title": "Scalable Tube-Tightened Multi-Agent Safety via Certified Constraint Reduction",
+      "status": "ready",
+      "root": "ACC2027.tex",
+      "tree_sha256": "fc4d8906035cd765b194af1d5aae03989afc20baed077b37e7f6029fae43a838",
+      "files": 9,
+      "bytes": 8133719,
+      "response_bytes": 927793,
+      "response_sha256": "3a237be4eb79d0e94d3e64a97767c3f508e2a392d6c5755bc38d1f1c0a251a5b"
+    },
+    {
+      "id": "2608.25313v1",
+      "url": "https://arxiv.org/e-print/2608.25313v1",
+      "published": "2026-08-26T02:52:12Z",
+      "updated": "2026-08-26T02:52:12Z",
+      "primary_category": "astro-ph.HE",
+      "categories": [
+        "astro-ph.HE"
+      ],
+      "title": "Constraining gamma-ray burst viewing angles with Swift/XRT afterglow light curves",
+      "status": "ready",
+      "root": "aastex701_sun0813.tex",
+      "tree_sha256": "b86e916fa03b523163eb8e8baa0729e393fa358d048aeea5e3b26b09e1fdbff8",
+      "files": 176,
+      "bytes": 5805732,
+      "response_bytes": 3870133,
+      "response_sha256": "a8638540222bad730604461e35853b35816d471d325231ebe963b265b8c54461"
+    },
+    {
+      "id": "2608.25286v1",
+      "url": "https://arxiv.org/e-print/2608.25286v1",
+      "published": "2026-08-26T01:45:55Z",
+      "updated": "2026-08-26T01:45:55Z",
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "q-bio.QM"
+      ],
+      "title": "BixBench3: Benchmarking AI agents on research-study-scale computational biology tasks",
+      "status": "ready",
+      "root": "bixbench3-manuscript.tex",
+      "tree_sha256": "8de83573ae3e66762480aed7ef5ed53e0bc3f67596f4ce29995c5d0257a45c75",
+      "files": 19,
+      "bytes": 6100765,
+      "response_bytes": 5790882,
+      "response_sha256": "c553936058689c3396922e596b6fe6b525c398e2d17501ba386f37bde047304f"
+    },
+    {
+      "id": "2608.25275v1",
+      "url": "https://arxiv.org/e-print/2608.25275v1",
+      "published": "2026-08-26T01:22:49Z",
+      "updated": "2026-08-26T01:22:49Z",
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.RO"
+      ],
+      "title": "PhaseShift: Topology-Aware Data Harmonization and Model Consolidation Across Signalized Intersections",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "88fc79f9b68664cdb919b4c4f687518e5eb798f8fb3be1f96998f7bccd151013",
+      "files": 6,
+      "bytes": 903284,
+      "response_bytes": 621794,
+      "response_sha256": "25535ef52414cb4ef81400ef9235dc0fa875ab4b38357501b6056088056c01f9"
+    },
+    {
+      "id": "2608.25267v1",
+      "url": "https://arxiv.org/e-print/2608.25267v1",
+      "published": "2026-08-26T01:07:13Z",
+      "updated": "2026-08-26T01:07:13Z",
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "eess.SY"
+      ],
+      "title": "Mitigating LLM sycophancy with RL-based fine-tuning: Bayesian Truth Serum approach",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "273578e6d1008d11cd2e888298f930121c2af85327e9b4b55d79f1c5c3450d89",
+      "files": 8,
+      "bytes": 1553613,
+      "response_bytes": 810146,
+      "response_sha256": "ecabf64efe53754ffef38243288f0b2c54d64166c6a5711e753273c85d2dfe34"
+    },
+    {
+      "id": "2608.25259v1",
+      "url": "https://arxiv.org/e-print/2608.25259v1",
+      "published": "2026-08-26T00:45:42Z",
+      "updated": "2026-08-26T00:45:42Z",
+      "primary_category": "eess.SY",
+      "categories": [
+        "eess.SY"
+      ],
+      "title": "Observability Blocking in a Linear Synchronization Network with Partial State Measurements",
+      "status": "ready",
+      "root": "New_Paper.tex",
+      "tree_sha256": "f1eefdda710aad0c6e27299b3b46ac30e0eb96511edc49a7c370f1673f8c7310",
+      "files": 14,
+      "bytes": 9060661,
+      "response_bytes": 1568475,
+      "response_sha256": "a68808a3e9069608507f6df720f00be5bb81e3a6d070f571a337427a57b7f1f5"
+    },
+    {
+      "id": "2608.25232v1",
+      "url": "https://arxiv.org/e-print/2608.25232v1",
+      "published": "2026-08-25T23:41:08Z",
+      "updated": "2026-08-25T23:41:08Z",
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "eess.SY"
+      ],
+      "title": "Long-Term Behavioral Evaluation for Trusted Collaborator Selection via Bidirectional Mamba",
+      "status": "ready",
+      "root": "main_file.tex",
+      "tree_sha256": "336a61f49591aa8cc47065318d42f4ce3bbf73b4ea2f96deeb79ee21a0c73361",
+      "files": 8,
+      "bytes": 423472,
+      "response_bytes": 171299,
+      "response_sha256": "30432bb23a80d53d0b57473e527eb0da00cf245f28c6e9867bc2905cee63e6ce"
+    },
+    {
+      "id": "2608.25221v1",
+      "url": "https://arxiv.org/e-print/2608.25221v1",
+      "published": "2026-08-25T23:22:33Z",
+      "updated": "2026-08-25T23:22:33Z",
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "math.OC",
+        "stat.ML"
+      ],
+      "title": "Representing MAX functions using two-hidden-layer ReLU networks",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "efe90d1845cf37ed2cc668e9e8fc1b5729fc93095b08f034077218c0632f28d8",
+      "files": 5,
+      "bytes": 513017,
+      "response_bytes": 127681,
+      "response_sha256": "99222531843a5e3f88e485a750212082d87305ec7fd0f240dcd9215378a58e04"
+    },
+    {
+      "id": "2608.25210v1",
+      "url": "https://arxiv.org/e-print/2608.25210v1",
+      "published": "2026-08-25T22:59:08Z",
+      "updated": "2026-08-25T22:59:08Z",
+      "primary_category": "cs.DB",
+      "categories": [
+        "cs.DB"
+      ],
+      "title": "Bolt-on, Verifiable Provenance for LLM-Powered Data Processing",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "b97b511f051e6c6d76d28dcddb44bfe663000f6489e23f46f3f6f7beae4978fe",
+      "files": 29,
+      "bytes": 921833,
+      "response_bytes": 504718,
+      "response_sha256": "ea2fb8d879eae1fd947a83cdb429b62c3e9fc4d2fed8c7713923467af555c2cc"
+    },
+    {
+      "id": "2608.25197v1",
+      "url": "https://arxiv.org/e-print/2608.25197v1",
+      "published": "2026-08-25T22:26:11Z",
+      "updated": "2026-08-25T22:26:11Z",
+      "primary_category": "cs.DS",
+      "categories": [
+        "cs.DS"
+      ],
+      "title": "Exact algorithms for optimal discretization",
+      "status": "ready",
+      "root": "arx_main.tex",
+      "tree_sha256": "0e847b15c0e85f658272e946d823ef35ab825671324c35f125de63769a6b58cf",
+      "files": 9,
+      "bytes": 395122,
+      "response_bytes": 253756,
+      "response_sha256": "0204efd2f6235315d8b1c445e1d183de7b7869a85b95f2094c62d4a91ae23cbb"
+    },
+    {
+      "id": "2608.25194v1",
+      "url": "https://arxiv.org/e-print/2608.25194v1",
+      "published": "2026-08-25T22:18:29Z",
+      "updated": "2026-08-25T22:18:29Z",
+      "primary_category": "q-bio.QM",
+      "categories": [
+        "q-bio.QM",
+        "q-bio.BM"
+      ],
+      "title": "Designability of RNA Targets with Up to Two Length-2 Helices",
+      "status": "ready",
+      "root": "Designability_of_RNA_Targets_with_Up_to_Two_Length_2_Helices.tex",
+      "tree_sha256": "5fc80e6ca4012991b3799ebd41bdaa8ae6d0fae810a9223d1dd550dd9dae30ef",
+      "files": 15,
+      "bytes": 1026676,
+      "response_bytes": 645821,
+      "response_sha256": "6388a12bfcc063ba922a197e2a36645903a55f632a3b5604801d220c4960c0a8"
+    },
+    {
+      "id": "2608.25186v1",
+      "url": "https://arxiv.org/e-print/2608.25186v1",
+      "published": "2026-08-25T21:58:36Z",
+      "updated": "2026-08-25T21:58:36Z",
+      "primary_category": "stat.ME",
+      "categories": [
+        "stat.ME"
+      ],
+      "title": "Log-regularly varying scale mixture of asymmetric Laplaces for robust Bayesian quantile regression",
+      "status": "ready",
+      "root": "Fullpaper.tex",
+      "tree_sha256": "f5b6d7d6453b2ee07f1a24dd238f1fe91b6db099fea1a35eb317e3336704ac0e",
+      "files": 9,
+      "bytes": 743744,
+      "response_bytes": 500884,
+      "response_sha256": "21c9398bc7cd6c0fba64a778990f62d7459259d9bc0001e559f0d70f1a74b49e"
+    },
+    {
+      "id": "2608.25183v1",
+      "url": "https://arxiv.org/e-print/2608.25183v1",
+      "published": "2026-08-25T21:58:04Z",
+      "updated": "2026-08-25T21:58:04Z",
+      "primary_category": "hep-th",
+      "categories": [
+        "hep-th"
+      ],
+      "title": "Exact All-Level Positivity of the Bosonic Veneziano Amplitude",
+      "status": "ready",
+      "root": "Veneziano_unitarity.tex",
+      "tree_sha256": "17fdb883cb590691013e4903cc1eeab5b1beead303151c0fdcc7a0990597ea5e",
+      "files": 4,
+      "bytes": 96298,
+      "response_bytes": 25088,
+      "response_sha256": "ebd8fc231a8225b2750c5ea85b8e5ace7910e1236d52f9043a6f58b1cb802784"
+    },
+    {
+      "id": "2608.25168v1",
+      "url": "https://arxiv.org/e-print/2608.25168v1",
+      "published": "2026-08-25T21:29:35Z",
+      "updated": "2026-08-25T21:29:35Z",
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.MM"
+      ],
+      "title": "See More, Detect Less? Taming Information Leakage in Multi-View Anomaly Detection",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "b8f0914e18be8607bba8a22652421318d33fbe04245a06263c4e7eb26ae11055",
+      "files": 26,
+      "bytes": 19805917,
+      "response_bytes": 19526918,
+      "response_sha256": "bd1dd47329dff1155f86753b032c0c8e7b55de75cffade8536a6f1deb35c620e"
+    },
+    {
+      "id": "2608.25165v1",
+      "url": "https://arxiv.org/e-print/2608.25165v1",
+      "published": "2026-08-25T21:21:17Z",
+      "updated": "2026-08-25T21:21:17Z",
+      "primary_category": "cs.CR",
+      "categories": [
+        "cs.CR",
+        "cs.NI"
+      ],
+      "title": "BGPay: An Incentive-Compatible Mechanism for BGP Hijack Filtering",
+      "status": "ready",
+      "root": "main.tex",
+      "tree_sha256": "c6b7ad077902aee99fc396845fe0864a6130345f95d4a4256fd7d0157dbbb8b5",
+      "files": 49,
+      "bytes": 344040,
+      "response_bytes": 88230,
+      "response_sha256": "81958695c44ca168186aca3f4ed37f093eb9cb8cefa847f2e583657579fb3978"
+    }
+  ]
+}

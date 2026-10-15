@@ -1,0 +1,8 @@
+% tex.web §396 gives a non-long macro whose argument meets \par a dedicated
+% three-line recovery: this is not §336's generic runaway-scan help.
+\catcode`\{=1 \catcode`\}=2 \catcode`\#=6
+\scrollmode
+\def\b#1\par{}
+\b{\par
+\message{PROBE:after}
+\end

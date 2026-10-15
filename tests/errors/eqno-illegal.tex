@@ -1,0 +1,29 @@
+% `tex.web` §1048 lists `\eqno` among the forbidden cases — `non_math(eq_no)`
+% — and §1140 admits it in math mode only when `privileged`:
+%
+%     mmode+eq_no: if privileged then
+%       if cur_group=math_shift_group then start_eq_no
+%       else off_save;
+%
+%     function privileged:boolean;
+%     begin if mode>0 then privileged:=true
+%     else begin report_illegal_case; privileged:=false; end;
+%     end;
+%
+% `mode>0` is the display: `$…$` pushes `-mmode`, so an equation number inside
+% ordinary math is §1049's illegal case just as one in a paragraph is.  Four
+% modes, four messages, and §1049 names each of them:
+%
+%     print_err("You can't use `"); print_cmd_chr(cur_cmd,cur_chr);
+%     print("' in "); print_mode(mode);
+%
+% This engine admitted `\eqno` silently everywhere it did not apply, so
+% trip.tex line 254's bare `\eqno` — which the file's own comment calls
+% "another error" — produced none.
+\catcode`\{=1 \catcode`\}=2 \catcode`\$=3
+\font\r=cmr10 \r \hsize100pt \parindent0pt
+A\eqno B\par
+\vbox{\eqno}
+$ x\eqno y$\par
+\leqno
+\end

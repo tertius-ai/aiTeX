@@ -1,0 +1,27 @@
+[package]
+name = "aitex-fonts"
+description = "Format-neutral font parsing, shaping, policy, and subsetting for aiTeX"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+publish.workspace = true
+
+[dependencies]
+aitex-page = { path = "../aitex-page" }
+# This is deliberately one coherent stack: HarfRust shapes through
+# Fontations' read-fonts model, while Skera subsets through the same model.
+# All upstream types stay private to this crate so their pre-1.0 APIs do not
+# become aiTeX's public API.
+harfrust = { version = "=0.13.3", default-features = false, features = ["std"] }
+read-fonts = { version = "=0.43.3", default-features = false, features = ["std"] }
+skera = "=0.6.0"
+skrifa = { version = "=0.46.2", default-features = false, features = ["std"] }
+kurbo = "=0.13.1"
+# Used only at the private embedding boundary to turn a concrete variable
+# instance (including CFF2) into a small static TrueType program.
+write-fonts = { version = "=0.52.0", features = ["read"] }
+sha2 = "0.10.9"
+
+[lints]
+workspace = true

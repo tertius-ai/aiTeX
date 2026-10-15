@@ -1,0 +1,35 @@
+\documentclass{article}
+% The locked qualification overlay is not registered with the host's updmap
+% database. Load its map explicitly so both pdfLaTeX and aiTeX resolve the
+% overlay's Type 1 programs rather than attempting unavailable PK generation.
+\pdfmapfile{+fourier.map}
+\usepackage{pb-diagram}
+\usepackage{ytableau}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{fourier}
+
+\makeatletter
+\newdimen\dimenA
+\dimenA=1pt
+\def\peek{\kernel@ifnextchar *{Y}{N}}
+\makeatother
+
+\pagestyle{empty}
+\begin{document}
+% The minimized ytableau path: a \let-derived implicit character must retain
+% its control-sequence token when the alignment u-template is stored.
+\halign{&\tabskip=-\dimenA\peek#\cr 1\cr}
+
+% PGF's dvips driver selects this family after detecting \savepos.
+\begin{pgfpicture}
+  \global\pgfrememberpicturepositiononpagetrue
+\end{pgfpicture}
+
+\ydiagram{2,1}
+
+\includegraphics[width=24pt]{figure with space.pdf}
+
+% fourier-ms has an encoding inside its PFB, but none in its map entry.
+$q-\mathbb{W}$
+\end{document}

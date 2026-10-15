@@ -1,0 +1,54 @@
+% §1145 does not always break a paragraph into lines before a display:
+%
+%     @<Go into display math mode@>=
+%     begin if head=tail then {`\noindent$$' or `$${ }$$'}
+%       begin pop_nest; w:=-max_dimen;
+%       end
+%     else  begin line_break(true);@/
+%       @<Calculate the natural width, |w|, by which the characters of the
+%         final line extend to the right of the reference point…@>;
+%       end;
+%
+% With nothing in the paragraph there is no last line to measure and `w` — which
+% becomes `\predisplaysize` — is `-max_dimen` outright. Knuth's own comment names
+% the two cases: `\noindent$$` and `$${ }$$`. A display straight after another
+% display is a third, and by far the most common: §1200's `resume_after_display`
+% opens a fresh horizontal list, so the next `$$` finds it empty.
+%
+% This matters because §1202 chooses between the long and short display skips on
+% that number:
+%
+%     if (d+s<=pre_display_size)or l then {not enough clearance}
+%       begin g1:=above_display_skip_code; g2:=below_display_skip_code; end
+%     else  begin g1:=above_display_short_skip_code;
+%       g2:=below_display_short_skip_code; end;
+%
+% `-max_dimen` is smaller than any `d+s`, so an empty paragraph always takes the
+% *short* skips. We read `w` from the line-breaker's record of the last line,
+% which only the line-breaker assigns — so an interrupted-but-empty paragraph
+% left the previous paragraph's reach in place, every display after a display
+% took the long skips, and pages carried ~14.7pt of glue that TeX does not put
+% there. 2608.18003v1 and 2608.17815v1 both broke a page one paragraph early.
+\input plain
+\def\P{\message{<pds=\the\predisplaysize>}}
+% A display after real text: `w` is that line's reach, and it is a large
+% positive number. This is the case that always worked.
+\noindent Alpha beta gamma delta epsilon zeta eta theta iota kappa lambda mu.
+$$\P a=1$$
+% …and now a display straight after it, with nothing between. Empty paragraph.
+$$\P b=2$$
+% A third, to show it stays empty rather than picking up the display's own width.
+$$\P c=3$$
+% Knuth's first named case, verbatim.
+\noindent$$\P d=4$$
+% Knuth's second. The `{ }` is a group, not a box, so the list is still empty.
+$${ }$$\P
+$$\P e=5$$
+% Text again, then a display: back to a measured reach.
+\noindent Omicron pi rho sigma tau upsilon phi chi psi omega alpha beta gamma.
+$$\P f=6$$
+% A paragraph whose last line is short leaves a small reach; one whose last line
+% is long leaves a large one. Both are measured, neither is -max_dimen.
+\noindent Xi.
+$$\P g=7$$
+\end

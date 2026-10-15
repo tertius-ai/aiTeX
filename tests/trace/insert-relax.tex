@@ -1,0 +1,41 @@
+% `tex.web` §379 and §367: an `\input` that turns up while a file name is
+% being scanned is put back, not obeyed.
+%
+%     input: if chr_code>0 then force_eof:=true
+%       else if name_in_progress then insert_relax
+%       else start_input;
+%
+%     procedure insert_relax;
+%     begin cur_tok:=cs_token_flag+cur_cs; back_input;
+%     cur_tok:=cs_token_flag+frozen_relax; back_input; token_type:=inserted;
+%     end;
+%
+% §526 raises `name_in_progress` over the name itself and §1258 raises it
+% again over the `at`/`scaled` keyword that may follow, so it catches an
+% `\input` on either side of a font's size.
+%
+% We ended the name at the control sequence and backed it up unexpanded. The
+% file still opened in the right place and the name still came out right — but
+% the inserted `\relax` is a command, and §367's `tracing_commands>1` traces
+% the expansion of `\input` as well, so TeX writes two lines here that we
+% wrote none of.
+%
+% `\input` is not expandable in this engine — `main_control` dispatches it —
+% so the flag is consulted at the one place TeX ever raises it, rather than in
+% `expand` where TeX keeps it.
+\catcode`\{=1 \catcode`\}=2
+\tracingonline=1 \tracingcommands=2
+\errorcontextlines=5
+
+\immediate\openout0=isub.tex
+\immediate\write0{\string\message{PROBE:sub}\string\showthe\string\escapechar}
+\immediate\closeout0
+
+% The name runs straight into the `\input`.
+\font\a=cmr10\input isub
+
+% ...and here the size scan is what meets it: §1258's half of the flag.
+\font\b=cmr10 at 12pt \input isub
+
+\showthe\escapechar
+\end

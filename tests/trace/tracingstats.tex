@@ -1,0 +1,31 @@
+% `\tracingstats` — the one parameter of the seven whose numbers cannot be
+% TeX's, and the case that proves the rest of the transcript still lines up
+% around it.
+%
+% §639 and §1334 report the state of TeX's `mem[]` word array:
+%
+%     Memory usage before: 159&313; after: 102&278; still untouched: 4998613
+%     Here is how much of TeX's memory you used:
+%      3556 words of memory out of 5000000
+%      372 multiletter control sequences out of 15000+600000
+%
+% Every figure there is `var_used`, `dyn_used`, `hi_mem_min-lo_mem_max`, the
+% string pool, the hash, `fmem_ptr`, the five input-stack capacities. docs/history/PLAN.md
+% decision 2 keeps nodes as Rust values rather than a flat word array, and §4
+% spells out what follows: "our memory statistics will differ by construction".
+% `rtex` made the same choice and still passed TRIP.
+%
+% So the block carries our own figures under a header that says whose they are,
+% rather than TeX's format filled with invented numbers, and §639's per-page
+% `Memory usage before: …` is not emitted at all — a same-shaped line carrying
+% different quantities would be worse than none. Both engines' statistics
+% blocks are filtered out of this comparison; what it checks is that everything
+% *else* still agrees with the parameter switched on.
+\catcode`\{=1 \catcode`\}=2 \catcode`\#=6
+\font\rip=cmr10 \rip
+\hsize=100pt \parindent=0pt \hbadness=10000
+\tracingstats=2
+\tracingcommands=1
+\def\a{A}\a\relax
+\tracingcommands=0
+\end

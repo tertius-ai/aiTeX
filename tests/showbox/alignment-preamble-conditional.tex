@@ -1,0 +1,12 @@
+% `tex.web` §782 tests preamble boundaries against the global `align_state`,
+% including braces consumed while the token after `\span` is expanded.  The
+% false branch here swallows the `}` before `\fi`, so the first `\cr` is still
+% part of the u-template.  Treating it as a boundary manufactures two empty
+% rows; the 97 penalties from `\everycr` make the row count visible even though
+% every entry is empty.
+\input plain
+\showboxdepth=4 \showboxbreadth=20 \tracingonline=0
+\everycr{\noalign{\penalty97}}
+\setbox0=\vbox{\halign\relax{\span\iffalse}\fi\cr#&\ifnum0=`{\fi\cr\cr}}
+\showbox0
+\end

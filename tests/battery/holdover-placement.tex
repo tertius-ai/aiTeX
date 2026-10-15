@@ -1,0 +1,33 @@
+% Where an insertion waits when its class has no room, seen through the
+% registers rather than the transcript.
+%
+% `tex.web` §1017 puts an insertion the fired page could not take at the head of
+% the *new page*, and nothing re-contributes it — so the class accounting §1009
+% does for an arriving insertion has to happen there too, or the class has no
+% record at the next firing and the insertion is held for ever.
+%
+% TeX places exactly one held box per firing, straight off the page, with no new
+% `\insert100` arriving at all. `\ht100` counts them up 8, 16, 24; and
+% `\insertpenalties` — which during `\output` is the *number* of insertions
+% still waiting (§1014) — reads 1, 1, 0.
+\catcode`\{=1 \catcode`\}=2 \catcode`\#=6
+\font\rip=cmr10 \rip
+\hsize=100pt \vsize=60pt \topskip=0pt \maxdepth=2pt \parindent=0pt
+\baselineskip=0pt \lineskip=0pt \lineskiplimit=0pt
+\dimen100=10pt \count100=1000 \skip100=0pt \splittopskip=0pt \splitmaxdepth=100pt
+\count0=0
+\output={\global\advance\count0 by1
+  \message{<fire \the\count0 ip=\the\insertpenalties box100=\the\ht100>}%
+  \shipout\box255}
+\hbox to 5pt{}
+\insert100{\hbox to 5pt{\vrule height 8pt}\penalty 0
+  \hbox to 5pt{\vrule height 8pt}\penalty 0
+  \hbox to 5pt{\vrule height 8pt}}
+\hbox to 5pt{}
+\penalty-10000
+\hbox to 5pt{}
+\penalty-10000
+\hbox to 5pt{}
+\penalty-10000
+\message{<done pages=\the\count0 box100=\the\ht100>}
+\end

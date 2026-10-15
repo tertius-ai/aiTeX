@@ -1,0 +1,111 @@
+name: CI
+on: [push, pull_request]
+
+permissions:
+  contents: read
+
+# A duplicated delivery or a second push should not keep an obsolete run alive.
+# Besides wasting runners, each superseded failure can produce another email.
+concurrency:
+  # A same-repository PR receives both push and pull_request deliveries. Give
+  # both the same key so only the newest run for that branch survives.
+  group: ci-${{ github.workflow }}-${{ github.event.pull_request.head.repo.full_name || github.repository }}-${{ github.event.pull_request.head.ref || github.ref_name }}
+  cancel-in-progress: true
+
+# Every job is blocking. Complete release qualification is intentionally absent
+# here: it is expensive, fetches the locked corpus, and runs locally on the
+# pinned qualification host after this fast feedback is green.
+
+jobs:
+  test:
+    name: build & test (blocking)
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+      - uses: dtolnay/rust-toolchain@4aab473fa1157d90c6dc14f879ca54797e16fea0 # 1.90.0
+      - run: cargo build --workspace --all-targets --locked
+      - run: cargo test --workspace --locked
+      - name: Check repository cleanliness
+        run: tools/repo_check.sh
+
+  invariants:
+    name: repository invariants (blocking)
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+      - uses: dtolnay/rust-toolchain@4aab473fa1157d90c6dc14f879ca54797e16fea0 # 1.90.0
+      # docs/history/PLAN.md decision 8: engine dependencies stay constrained.
+      - run: python3 tools/check_zero_deps.py
+      - run: python3 tools/docs_check.py
+      - run: python3 tools/perf_baseline.py --self-test
+      - run: python3 tools/document_boundary_benchmark.py --self-test
+      - run: python3 tools/document_boundary_benchmark.py --check qualification/document-boundary-v1.results.json
+      - run: python3 tools/compiler_build_matrix.py --self-test
+      - run: python3 tools/bundle_check.py --self-test
+      - run: python3 tools/model_campaign.py --self-test
+      - run: python3 tools/ecosystem_sweep.py --self-test
+      # Permissive licenses only; GPL/AGPL/LGPL excluded.
+      - name: Install cargo-deny
+        env:
+          CARGO_DENY_VERSION: "0.20.2"
+          CARGO_DENY_SHA256: 9f12ed4c49936e09b48bf862b595cde2fe64fcbd9d74dfacac6131ca824c8d5f
+        run: |
+          archive="$RUNNER_TEMP/cargo-deny.tar.gz"
+          install_dir="$RUNNER_TEMP/cargo-deny"
+          curl --fail --location --retry 3 \
+            "https://github.com/EmbarkStudios/cargo-deny/releases/download/$CARGO_DENY_VERSION/cargo-deny-$CARGO_DENY_VERSION-x86_64-unknown-linux-musl.tar.gz" \
+            --output "$archive"
+          printf '%s  %s\n' "$CARGO_DENY_SHA256" "$archive" | sha256sum --check
+          mkdir -p "$install_dir"
+          tar xzf "$archive" -C "$install_dir" --strip-components=1
+          echo "$install_dir" >> "$GITHUB_PATH"
+      - name: Check dependency policy
+        run: >-
+          cargo-deny --log-level warn --manifest-path ./Cargo.toml
+          --all-features check licenses bans sources
+
+  style:
+    name: fmt & clippy correctness (blocking)
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+      - uses: dtolnay/rust-toolchain@4aab473fa1157d90c6dc14f879ca54797e16fea0 # 1.90.0
+        with:
+          components: rustfmt, clippy
+      - name: Check formatting
+        run: cargo fmt --all --check
+      - name: Run clippy
+        # The engine intentionally retains a style-warning backlog. Correctness
+        # lints are blocking; rustfmt owns mechanical style.
+        run: cargo clippy --workspace --all-targets --locked -- -A warnings -D clippy::correctness
+
+  ecosystem:
+    name: ecosystem differentials (blocking)
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+      - uses: dtolnay/rust-toolchain@4aab473fa1157d90c6dc14f879ca54797e16fea0 # 1.90.0
+      - name: Install the stock-TeX oracle
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends texlive-base texlive-latex-base
+      - name: Verify the stock-TeX oracle
+        run: |
+          command -v tex >/dev/null || {
+            echo 'hosted runner is missing the required tex oracle' >&2
+            exit 1
+          }
+          command -v pdftex >/dev/null || {
+            echo 'hosted runner is missing the required pdftex oracle' >&2
+            exit 1
+          }
+          tex --version | head -n 1
+          pdftex --version | head -n 1
+      - run: cargo build --release --locked -p aitex-cli
+      - run: python3 tools/ecosystem_sweep.py --pr
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
+        if: always()
+        with:
+          name: ecosystem-sweep-${{ github.sha }}
+          retention-days: 7
+          path: target/qualification/ecosystem-sweep-pr.json

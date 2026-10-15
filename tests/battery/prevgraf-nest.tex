@@ -1,0 +1,53 @@
+% `tex.web` §212 and §1244: `\prevgraf` is a field of the semantic nest.
+%
+%     @d prev_graf == cur_list.pg_field {number of paragraph lines accumulated}
+%
+% §216's `push_nest` sets it to zero and §217's `pop_nest` throws it away, so a
+% paragraph broken inside a `\vbox` leaves the enclosing list's `\prevgraf`
+% exactly as it was. We kept one global, so every box leaked its line count
+% outward and nothing put the old value back. In trip.tex that surfaced at the
+% first shipped page: a deferred `\write` of `\the\prevgraf` said 3 where
+% Knuth's transcript says 0, three boxes after the paragraph that set it.
+%
+% §1244 reads and writes it through the same walk, which is the other half:
+%
+%     nest[nest_ptr]:=cur_list; p:=nest_ptr;
+%     while abs(nest[p].mode_field)<>vmode do decr(p);
+%     cur_val:=nest[p].pg_field;
+%
+% `pg_field` means something else in math mode — §212 calls it a "context
+% code" — and horizontal mode has no paragraphs of its own, so `\prevgraf`
+% inside an `\hbox` is the enclosing vertical list's, to read and to set alike.
+%
+% §1025 pushes a level for `\output` too, so the routine sees 0 however many
+% lines the page's last paragraph came to, and §1026 puts the old value back.
+%
+% tests/showbox/prevgraf-nest.tex covers §218's per-level display of the same
+% field; this file is the values a document can read.
+\catcode`\{=1 \catcode`\}=2
+\hsize=100pt \parindent=0pt \vsize=30pt \maxdepth=2pt
+\font\rip=cmr10 \rip
+\output={\message{<inout=\the\prevgraf>}\shipout\box255\message{<endout=\the\prevgraf>}}
+
+\message{<start=\the\prevgraf>}
+
+% A paragraph inside a box: the box's own level counts it, and nothing escapes.
+\setbox0\vbox{AAA AAA AAA AAA AAA AAA\par}
+\message{<afterbox=\the\prevgraf>}
+
+% One on the main vertical list, which does count — and fires the output
+% routine, whose level starts at zero and restores this one.
+AAA AAA AAA AAA AAA AAA AAA AAA\par
+\message{<afterpar=\the\prevgraf>}
+
+% Inside an `\hbox`, both directions: the value read is the enclosing vertical
+% list's, and an assignment lands there too rather than on the box.
+\setbox1\hbox{\message{<inhbox=\the\prevgraf>}\prevgraf=7 }
+\message{<sethbox=\the\prevgraf>}
+
+% Nested two deep, to be sure the walk stops at the innermost vertical level
+% and not at the outermost.
+\setbox2\vbox{\message{<invbox=\the\prevgraf>}\setbox3\hbox{\prevgraf=4 }%
+  \message{<invbox2=\the\prevgraf>}}
+\message{<afterinner=\the\prevgraf>}
+\end

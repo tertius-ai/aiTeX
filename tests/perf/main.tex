@@ -1,0 +1,33 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue]{hyperref}
+\newcommand{\benchmarkword}{baseline}
+\title{Deterministic aiTeX performance fixture}
+\author{aiTeX}
+\begin{document}
+\maketitle
+\tableofcontents
+
+\section{Main text}\label{sec:main}
+This is the PERFORMANCE-PARAGRAPH-BASELINE. It contains enough ordinary prose
+to exercise line breaking, references Section~\ref{sec:included}, and cites
+Knuth's account of TeX~\cite{knuth1984}. The preamble word is
+\benchmarkword.
+
+\input{section}
+
+\section{Image}
+\begin{figure}[ht]
+  \centering
+  \ifnum\pdfoutput>0
+    \includegraphics[width=1in]{figure.png}
+  \else
+    \includegraphics[width=1in]{figure.eps}
+  \fi
+  \caption{A deterministic benchmark image.}\label{fig:benchmark}
+\end{figure}
+Figure~\ref{fig:benchmark} makes image invalidation observable.
+
+\bibliographystyle{plain}
+\bibliography{refs}
+\end{document}

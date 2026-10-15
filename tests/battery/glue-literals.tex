@@ -1,0 +1,19 @@
+\input plain
+\catcode`\@=11
+\skip5=3pt plus 1fil \count5=7 \dimen5=2pt
+\def\showglue#1{\skip0=#1 \message{<\the\skip0>}}
+\showglue{1pt}
+\showglue{1pt plus 2pt}
+\showglue{1pt minus 3pt}
+\showglue{1pt plus 2pt minus 3pt}
+\showglue{1pt plus 1fil}
+\showglue{1pt plus 1fill}
+\showglue{1pt plus 1filll}
+\showglue{1pt plus -2pt}
+\showglue{-1pt plus 2fil minus 3fill}
+\showglue{\skip5}
+\showglue{-\skip5}
+\showglue{\count5\p@}
+\showglue{2\dimen5 plus 1fil}
+\showglue{0pt plus 1fil minus 1fil}
+\bye

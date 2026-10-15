@@ -1,0 +1,60 @@
+% `tex.web` §1105 `delete_last`: `\unskip`, `\unkern` and `\unpenalty` refuse to
+% remove a node that belongs to a discretionary's *replace* text.
+%
+%     if not is_char_node(q) then if type(q)=disc_node then
+%       begin for m:=1 to replace_count(q) do p:=link(p);
+%       if p=tail then return;
+%       end;
+%
+% §145 stores that text as `replace_count` nodes following the disc node, so
+% removing one without decrementing the count leaves the list claiming more
+% than it has. That is not a cosmetic inconsistency: §882 skips `1 + replace`
+% nodes when it breaks at the discretionary, so a stale count swallows whatever
+% follows.
+%
+% In trip.tex the `\unkern` after `\discretionary{\?AAAB}{\?B-}{\?/A\kern2pt}`
+% deleted the kern and left the count at 2 with one node behind it, and the
+% `\vbox{\hrule width 6pt}` on the next source line vanished from the shipped
+% page. The display gave it away: both engines printed `replacing 2`, and only
+% one of them had two nodes there.
+\catcode`\{=1 \catcode`\}=2
+\showboxdepth=3 \showboxbreadth=12 \tracingonline=0
+\font\r=cmr10 \r \hsize=200pt
+
+% the tail is the last node of a replace text: refused, the kern survives
+\setbox0\hbox{A\discretionary{X}{Y}{Z\kern2pt}\unkern B}
+\showbox0
+
+% `\unskip` and `\unpenalty` after a discretionary delete as usual, and the
+% reason is §1121: a discretionary list may hold boxes, rules, kerns,
+% characters and ligatures and nothing else. Glue and a penalty are "Improper
+% discretionary list" and are removed as the list is built, so in TeX they are
+% never replace nodes at all. Only a kern can be reached by §1105's guard.
+%
+% We do not enforce §1121 yet, so our replace text *can* hold them and our
+% count is one larger than TeX's there. The guard is restricted to kerns for
+% that reason — it matches TeX exactly for every list TeX would accept.
+% (Neither the `\unskip` nor the `\unpenalty` twin is here. The *deletion*
+% matches in both — the guard is restricted to kerns for exactly that reason —
+% but our replace *count* is 2 where TeX's is 1, because §1121 is not enforced
+% and the glue or penalty got into the list in the first place. Enforcing
+% §1121 is its own job, and until it is done a case here would be testing that
+% gap rather than this fix.)
+% (The `\unpenalty` twin is not here: the deletion matches, but our replace
+% *count* is 2 where TeX's is 1, because §1121 is not enforced and the penalty
+% got into the list in the first place. Enforcing §1121 is its own job.)
+% NOT `\unpenalty`, and the asymmetry is not understood. TeX refuses for a
+% kern and for glue but *deletes* a trailing penalty and decrements the count
+% with it — `\discretionary{X}{Y}{Z\penalty7}\unpenalty` leaves `replacing 1`
+% and no penalty. Ours refuses, leaving `replacing 2` and the penalty. Whatever
+% §1105 and §1120 do between them there, it is not what the kern case does, and
+% guessing at it would be worse than leaving it out of a gate.
+
+% a discardable that is NOT in a replace text is removed as usual
+\setbox3\hbox{A\kern2pt\unkern B}
+\showbox3
+
+% ...including one that follows a discretionary but is past its replace text
+\setbox4\hbox{A\discretionary{X}{Y}{Z}\kern2pt\unkern B}
+\showbox4
+\end

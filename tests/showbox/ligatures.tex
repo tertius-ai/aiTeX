@@ -1,0 +1,40 @@
+% `tex.web` §143/§144 and §193: a ligature keeps the characters it replaced.
+%
+% When the font's ligature program substitutes a character for a run, TeX does
+% not simply append the result — it records the run as well, and §193 displays
+% both:
+%
+%     .\r ^^L (ligature fi)
+%
+% The character actually set, then what it came from in §174's short form.
+%
+% We applied the program and appended a plain character. The DVI was identical,
+% which is why tools/typeset_check.sh (30/30) and tools/latex_check.sh (35/35)
+% never noticed: the glyph reaching the page is the same one. Found in trip.tex's
+% sixth shipped page, where Knuth's transcript has `\rip C (ligature B-)`.
+%
+% It is not only a display difference. §897's `reconstitute` takes a word apart
+% to hyphenate it and re-runs the ligature program on the letters; `\unhbox`
+% hands the nodes back; §1124's `\accent` inspects what precedes it. A document
+% that *hyphenates* a word containing a ligature is the case at risk, not one
+% that merely sets one.
+%
+% Also §48/§49: a character outside ` `..`~` cannot be printed, so TeX writes
+% `^^X` — the code plus 64 below 64, minus 64 above it. Ligature characters are
+% usually in that range (cmr10's `fi` is 12), which is why it surfaced here.
+\catcode`\{=1 \catcode`\}=2
+\showboxdepth=2 \showboxbreadth=9 \tracingonline=0
+\font\r=cmr10 \r
+
+% fi is one step; ffi is two, and the run accumulates across both
+\setbox0\hbox{fi ffi --- A}
+\showbox0
+
+% a ligature that is itself printable needs no ^^ notation
+\setbox1\hbox{---}
+\showbox1
+
+% and a word with no ligature in it is unchanged
+\setbox2\hbox{box}
+\showbox2
+\end

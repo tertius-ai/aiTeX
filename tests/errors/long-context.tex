@@ -1,0 +1,47 @@
+% `tex.web` §317: an error context is *bounded*, and this is the whole rule.
+%
+%     if l+first_count<=half_error_line then
+%       begin p:=0; n:=l+first_count; end
+%     else begin print("..."); p:=l+first_count-half_error_line+3;
+%       n:=half_error_line; end;
+%     for q:=p to first_count-1 do print_char(trick_buf[q mod error_line]);
+%     print_ln;
+%     for q:=1 to n do print_char(" ");
+%     if m+n<=error_line then p:=first_count+m
+%     else p:=first_count+(error_line-n-3);
+%     for q:=first_count to p-1 do print_char(trick_buf[q mod error_line]);
+%     if m+n>error_line then print("...")
+%
+% The head — `l.4 `, `<to be read again> `, a macro's name — is printed before
+% the pseudoprint begins and is never itself cut. What gives is the *tail* of
+% what has been read, marked with a leading `...`, and the *head* of what has
+% not, marked with a trailing one. So the first line comes to at most
+% `half_error_line` and the second to at most `error_line`.
+%
+% Neither is a TeX parameter; a document can neither read nor set them, so they
+% are constants and this case is how their values were established rather than
+% assumed: 50 and 79, the numbers TeX Live builds with.
+%
+% Every line here is long on purpose. Without the rule ours printed the source
+% entire, which is a third of trip.log's error contexts differing in a way that
+% reads as wrong content rather than as an unbounded line.
+\catcode`\{=1 \catcode`\}=2 \catcode`\#=6
+
+% Both halves at once: the read part overflows to the left, the unread part to
+% the right.
+\count1=\undefinedcontrolsequencewithaveryverylongname AAAAAAAAAA BBBBBBBBBB CCCCCCCCCC DDDDDDDDDD EEEEEEEEEE FFFFFFFFFF
+\message{PROBE:one=\the\count1}
+
+% §319 prints only a macro's *name* before the pseudoprint starts: its
+% parameter text and the `->` belong to the list being shown, and so are part
+% of what gets cut. Keeping them in the head breaks a truncated macro context
+% two characters late.
+\def\aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa#1{\count2=\undefinedtwo #1XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX}
+\aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa{Y}
+\message{PROBE:two=\the\count2}
+
+% A short context is left alone — the bound must not fire where TeX does not
+% reach it.
+\count3=\undefthree
+\message{PROBE:three=\the\count3}
+\end

@@ -1,0 +1,21 @@
+% \let must keep the engine's macro table honest in both directions: binding a
+% name that *was* a macro to something that is not one has to drop the old
+% body, or the stale entry wins on every later lookup.
+\input plain
+\catcode`\@=11
+\let\bar= X
+\message{<char=\meaning\bar>}
+\def\m{OLD}\let\m\relax        \message{<prim=\meaning\m>}
+\def\n{OLD}\let\n\undefinedcs  \message{<undef=\meaning\n>}
+\def\p{OLD}\def\q{NEW}\let\p\q \message{<macro=\meaning\p>}
+\def\r{OLD}\let\r\count        \message{<register=\meaning\r>}
+\def\s{OLD}\chardef\ch=65 \let\s\ch \message{<chardef=\meaning\s>}
+% Binding a space token: \let skips one optional space after the `=`, so a
+% second one is what gets bound (tex.web 1221). expl3 defines \exp_stop_f:
+% exactly this way, via `\let #1 =~` with the argument supplying the second.
+\def\setsp#1{\let#1= }
+\setsp\spacetok\relax
+\message{<space=\meaning\spacetok>}
+% And the round trip: a name let to a macro is still a macro.
+\def\t{TEE}\let\u\t \message{<roundtrip=\u|\meaning\u>}
+\bye

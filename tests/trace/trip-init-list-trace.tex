@@ -1,0 +1,15 @@
+% TFM-PL: vendor/trip/trip.pl
+% §903 removes the punctuation ligature immediately before `qq`, saves its
+% original character list, and reconstitutes it together with the patterned
+% word.  The following `11` makes the unbroken 10-node replacement branch
+% contribute to a later candidate, pinning both reconstruction and the active
+% widths carried past the discretionary.
+\catcode`\{=1 \catcode`\}=2
+\font\r=trip \r \hyphenchar\r=`\-
+\lccode`1=`1 \lccode`q=`q
+\lefthyphenmin=1 \righthyphenmin=1
+\hyphenation{q-q 1-1}
+\pretolerance=-1 \tolerance=10000 \hbadness=10000 \parindent=0pt
+\tracingparagraphs=1 \tracingonline=1
+\setbox0=\vbox{\hsize=6pt A -\char0 qq 11\par}
+\end

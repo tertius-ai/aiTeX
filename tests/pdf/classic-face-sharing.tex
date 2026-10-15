@@ -1,0 +1,13 @@
+\documentclass{article}
+\pagestyle{empty}
+\begin{document}
+% rm-lmr10 and ec-lmr10 resolve to the same physical Type 1 program. The first
+% face is used at two sizes through its built-in encoding; the third use has a
+% distinct T1 encoding and a partially disjoint glyph set.
+\font\standardten=rm-lmr10 at 10pt
+\font\standardtwelve=rm-lmr10 at 12pt
+\font\encodedten=ec-lmr10 at 10pt
+\standardten\char65\char66\quad
+\standardtwelve\char65\char66\quad
+\encodedten\char68\char69
+\end{document}

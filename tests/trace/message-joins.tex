@@ -1,0 +1,45 @@
+%% max_print_line: default
+% `tex.web` §1279: a `\message` joins the line already in progress.
+%
+%     if term_offset+length(s)>max_print_line-2 then print_ln
+%     else if (term_offset>0)or(file_offset>0) then print_char(" ");
+%     slow_print(s); update_terminal;
+%
+% So consecutive messages come out on one line with single spaces between
+% them, and one that would overflow the margin starts a line of its own
+% instead. We gave every message a line of its own, which made two of
+% trip.log's diffs phantoms: a `{restoring …}` that TeX had put after a
+% message on the same line looked misordered against ours on the next one,
+% and chasing it cost a probe to find that our restore order was right all
+% along.
+%
+% Only another message leaves a line open. Everything else this engine writes
+% ends its line the way `print_nl` does — a `\tracingcommands` line closes with
+% `end_diagnostic(false)`, an error with §90's two `print_ln`s — so a message
+% after one of those starts fresh.
+%
+% This runs at TeX's own margin rather than the 1000 the other cases use,
+% because where the break falls is the whole subject.
+\catcode`\{=1 \catcode`\}=2
+\tracingonline=1
+
+% A report first, so what follows starts at column zero in both engines: TeX
+% opens its log with a `(./file.tex` this engine does not write, and a message
+% would otherwise join *that*.
+\showthe\escapechar
+
+% Three that fit: one line.
+\message{alpha}\message{beta}\message{gamma}
+
+% ...and one that does not: it starts its own, and the next joins *that*.
+\message{The quick brown fox jumps over the lazy dog and keeps on running past the post}\message{tail}
+
+% A report closes the line, so what follows begins a new one.
+\showthe\escapechar
+\message{after-a-report}
+\message{joined}
+
+% A report last, so TeX's closing `)` lands on a line of its own rather than on
+% the end of `joined`.
+\showthe\escapechar
+\end

@@ -1,0 +1,12 @@
+% Dynamic §82--§90 help paths: `\errhelp`, the one-time long explanation
+% for `\errmessage`, and the recovery-specific advice for commands that cannot
+% remove material from the current page.
+\catcode`\{=1 \catcode`\}=2
+\tracingonline=1
+\errhelp={custom errhelp text}\errmessage{custom}
+\errhelp={}\errmessage{first default}\errmessage{second default}
+\unpenalty \unkern
+\vskip1pt \unskip
+\setbox0=\lastbox
+\setbox1=\hbox{$\lastbox$}
+\end

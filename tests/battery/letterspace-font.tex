@@ -1,0 +1,24 @@
+% pdfTeX's synthetic letterspacing font must remain a real font identifier:
+% packages such as microtype select it and alter its fontdimens after
+% construction.  Width probes are in scaled points to pin pdfTeX's rounding.
+\input plain
+\font\base=cmr10
+\letterspacefont\tracked=\base 100\relax
+\message{<tracked-name=\fontname\tracked>}
+\message{<base-A=\number\fontcharwd\base`A>}
+\message{<tracked-A=\number\fontcharwd\tracked`A>}
+\letterspacefont\same=\base 100\relax
+\ifx\tracked\same\message{<same-id>}\else\message{<fresh-id>}\fi
+\message{<same-f-tag=\the\tagcode\same`f>}
+\tagcode\same`f=-1
+\message{<same-f-cleared=\the\tagcode\same`f>}
+\setbox0=\hbox{\same fi}
+\message{<unligatured-width=\the\wd0>}
+\letterspacefont\clamped=\base 1001\relax
+\message{<clamped-name=\fontname\clamped>}
+\message{<clamped-A=\number\fontcharwd\clamped`A>}
+\fontdimen2\tracked=4pt
+\message{<base-space=\the\fontdimen2\base>}
+\message{<tracked-space=\the\fontdimen2\tracked>}
+\tracked AV fi\par
+\bye

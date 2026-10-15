@@ -1,0 +1,20 @@
+[package]
+name = "aitex-unicode"
+description = "Host-side Unicode itemization, fallback, and shaping for aiTeX"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+publish.workspace = true
+
+[dependencies]
+aitex-engine = { path = "../aitex-engine" }
+aitex-fonts = { path = "../aitex-fonts" }
+aitex-page = { path = "../aitex-page" }
+fontdb = "=0.24.0"
+icu_properties = "=2.3.0"
+icu_segmenter = "=2.3.0"
+unicode-bidi = "=0.3.18"
+
+[lints]
+workspace = true

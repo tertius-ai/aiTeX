@@ -1,0 +1,31 @@
+% `tex.web` §581 `char_warning`, from §582's `main_loop`:
+%
+%     Missing character: There is no ^^c8 in font cmr10!
+%
+% Two things beyond the message. The character prints in §48's *printable*
+% form, so a byte outside the printable range shows as `^^c8` rather than as
+% itself; and the font is named by the file it was loaded from — `font_name`,
+% not the control sequence that selects it.
+%
+% §582 does not typeset the character at all: it warns and jumps back to
+% `big_switch`, so there is no node, no space-factor update, and §1034's inner
+% character loop is never entered. We were appending a `Node::Char` for a
+% character the font does not have, which put a glyph in the DVI that TeX
+% leaves out. That is the substance of this one; the message is how you see it.
+\catcode`\{=1 \catcode`\}=2
+\font\rip=cmr10 \rip
+\hsize=100pt \parindent=0pt \hbadness=10000
+
+\tracinglostchars=1
+A\char200 B\relax
+% a second miss in the same run, and one in a different font
+\char201 \char202 \relax
+\font\other=cmmi10 \other \char200 \relax
+\rip
+% A missing accent is rejected before TeX looks for the character below it,
+% so the A remains an ordinary character and the warning still appears.
+\accent200 A\relax
+% silent when the parameter is off
+\tracinglostchars=0
+\char203 \relax
+\end

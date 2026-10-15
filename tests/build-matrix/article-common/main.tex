@@ -1,0 +1,56 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{array,booktabs,tabularx,longtable}
+\usepackage{xcolor,geometry,microtype}
+\usepackage{hyperref,cleveref}
+\geometry{margin=1in}
+\newtheorem{theorem}{Theorem}[section]
+\title{A Common Article Workload}
+\author{aiTeX qualification}
+\date{September 2001}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\section{Text and mathematics}\label{sec:text}
+Office traffic and affine geometry exercise common ligatures. Accented text:
+R\'esum\'e, d\'ej\`a vu, and Stra\ss e.
+
+\begin{theorem}\label{thm:sum}
+For every positive integer $n$,
+\[
+  \sum_{k=1}^{n} k = \frac{n(n+1)}{2}.
+\]
+\end{theorem}
+
+\begin{align}
+  (a+b)^2 &= a^2+2ab+b^2, \\
+  \int_0^1 x^2\,dx &= \frac13.
+\end{align}
+
+\section{Tables and links}
+The result in \cref{thm:sum} was introduced in \cref{sec:text}. Visit the
+\href{https://example.invalid/aitex/matrix}{benchmark destination}.
+
+\begin{tabularx}{\linewidth}{@{}l>{\raggedleft\arraybackslash}Xr@{}}
+\toprule
+Item & Description & Value \\
+\midrule
+Alpha & A deterministic row with flexible width & 13 \\
+Beta & A second row in blue & \textcolor{blue}{21} \\
+\bottomrule
+\end{tabularx}
+
+\section{Lists}
+\begin{enumerate}
+  \item A numbered item with \textbf{bold} and \emph{emphasized} text.
+  \item A nested list:
+    \begin{itemize}
+      \item first nested point;
+      \item second nested point.
+    \end{itemize}
+\end{enumerate}
+\end{document}

@@ -1,0 +1,53 @@
+% §1025 fires the output routine like this, and the mode is not negotiable:
+%
+%     @<Fire up the user's output routine and |return|@>=
+%     begin output_active:=true;
+%     incr(dead_cycles);
+%     push_nest; mode:=-vmode; prev_depth:=ignore_depth; mode_line:=-line;
+%     begin_token_list(output_routine,output_text);
+%     new_save_level(output_group); normal_paragraph;
+%     scan_left_brace;
+%     return;
+%     end
+%
+% `mode:=-vmode` — internal vertical mode, flatly, whatever mode the page
+% builder interrupted to get here. §211's `print_mode` says "internal vertical
+% mode" and `\ifinner` is true.
+%
+% We ran the routine on the outer list rather than opening a box for it, and
+% reported the *interrupted* mode instead. That is invisible while the page
+% builder fires between paragraphs — vertical either way — and wrong the moment
+% something fires it from inside one. A display does:
+%
+%     \begin{figure}…\end{figure}   then   $$ x=1 $$
+%
+% left `\ifhmode` true inside `\output`, so §1094's `head_for_vmode` decided the
+% `\unvbox` in LaTeX's `\@makecol` belonged to a paragraph, put it back and
+% inserted a `\par`. LaTeX's `\par` is a no-op in inner mode, so the `\unvbox`
+% came round again, and again. 2608.17233v1 shipped 1 page of 8 with no error at
+% all — it was spinning, not truncating.
+\input plain
+\output={\message{<fired v=\ifvmode1\else0\fi
+  h=\ifhmode1\else0\fi
+  m=\ifmmode1\else0\fi
+  i=\ifinner1\else0\fi>}\shipout\box255}
+\vsize=30pt
+% Fired from vertical mode, between paragraphs — the easy case, right before.
+\noindent Aaa.
+\par
+\vskip 40pt
+\noindent Bbb.
+\par
+% Fired from *inside* a paragraph: the display breaks the paragraph, contributes
+% its lines, and the page builder runs with a paragraph still open. This is the
+% one that was wrong.
+\noindent Ccc ddd eee.
+$$x=1$$
+Fff ggg.
+\par
+% \ifinner is true throughout, so a conditional in the routine picks the same
+% branch either way; \ifvmode is what separates the two.
+\vskip 60pt
+\noindent Hhh.
+\par
+\end

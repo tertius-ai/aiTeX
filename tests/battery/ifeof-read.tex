@@ -1,0 +1,63 @@
+% \ifeof is an *expandable* conditional (tex.web 509), not a stomach command.
+% expl3's \ior_if_eof:N is \prg_new_conditional and runs \if_eof:w (\ifeof)
+% purely by expansion; its read loops -- \ior_map_variable:NNn reading
+% UnicodeData.txt -- never terminate if the test cannot be answered in the
+% gullet. It was implemented only in the stomach, so \ifeof inside \message or
+% a fully-expandable loop produced nothing and spun. Also checks that \read
+% ends each line with the \endlinechar space (tex.web 483), which the kernel's
+% line parsers rely on.
+\input plain
+\newwrite\wout
+\immediate\openout\wout=probe.dat
+\immediate\write\wout{alpha}
+\immediate\write\wout{beta}
+\immediate\write\wout{gamma}
+\immediate\closeout\wout
+\newread\rin
+\openin\rin=probe.dat
+% \ifeof in a gullet (\message) context: must yield N, not nothing.
+\message{<start=\ifeof\rin Y\else N\fi>}
+\read\rin to\a
+% the trailing endlinechar space: \a is `alpha ` (letters + one space)
+\message{<a=\a|>}
+\read\rin to\b
+\message{<b=\b|>}
+\read\rin to\c
+\message{<eofnow=\ifeof\rin Y\else N\fi>}
+\message{<c=\c|>}
+\read\rin to\d
+\message{<afterlast=\ifeof\rin Y\else N\fi>}
+\closein\rin
+% a recursive read-until-eof driven entirely by the expandable \ifeof, the
+% shape \ior_map_variable uses.
+\openin\rin=probe.dat
+\count0=0
+\def\rdall{\ifeof\rin \else \read\rin to\line \advance\count0 by1 \expandafter\rdall\fi}
+\rdall
+\message{<looptotal=\the\count0>}
+\closein\rin
+% \ifeof on an unopened stream reads as true
+\message{<unopened=\ifeof9 Y\else N\fi>}
+% \read strips trailing spaces from the line (tex.web 31) before the endline
+% space, so `trail   ' reads as `trail ' -- one space, not four.
+\immediate\openout\wout=trail.dat
+\immediate\write\wout{trail   }
+\immediate\closeout\wout
+\openin\rin=trail.dat
+\read\rin to\t
+\message{<trail=\meaning\t>}
+\closein\rin
+% \readline reads a line verbatim: every character catcode 12 (other) except
+% a space (catcode 10). expl3's \ior_str_get:NN reads CaseFolding.txt this way.
+\immediate\openout\wout=str.dat
+\immediate\write\wout{a b~c}
+\immediate\closeout\wout
+\openin\rin=str.dat
+\endlinechar=-1
+\readline\rin to\s
+% every non-space char is `other'; \ifcat against a known other-char is true,
+% and against a letter is false -- proving the catcodes are forced.
+\message{<rl=\meaning\s>}
+\message{<rlother=\expandafter\ifcat\string a12\noexpand\else L\fi>}
+\closein\rin
+\bye

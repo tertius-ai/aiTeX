@@ -1,0 +1,16 @@
+% A gullet conditional (\ifeof here) expanded while the stomach scans a \if /
+% \ifx / \ifnum operand stays *open* -- its \fi pending at the front of the
+% stream. When the stomach conditional then takes its false branch, the skip
+% must start already that many levels deep so the pending \fi closes the gullet
+% conditional, not the stomach one. babel's hyphen.cfg loops on exactly this:
+%   \loop \read1 to\bbl@line \if T\ifeof1F\fi T\relax ... \repeat
+% miscounting the pending \fi made \if run its true branch on eof, so \read
+% spun over language.dat forever (latex.ltx never finished loading).
+\input plain
+% \ifeof5 is true (stream 5 never opened): \ifeof5 F\fi -> F, \if T F -> false.
+\message{<a=\if T\ifeof5 F\fi T\relax X\else Y\fi>}
+% a nested conditional in the true branch too, to exercise the depth counting.
+\message{<b=\if T\ifeof5 F\fi T\relax \ifodd3 P\else Q\fi\else R\fi>}
+% \ifnum with a gullet conditional in an operand, false branch.
+\message{<c=\ifnum 0\ifeof5 1\fi>0 G\else H\fi>}
+\bye

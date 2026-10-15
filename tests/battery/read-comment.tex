@@ -1,0 +1,40 @@
+% \read tokenizes each line with the current catcodes, so a comment character
+% (catcode 14, `%`) ends the line: the rest, endlinechar included, is discarded
+% (tex.web 344). \readline forces catcode 12 on everything, so there `%` is a
+% literal `other` and nothing is stripped. This was broken: \read kept the `%`
+% and everything after it, so babel reading language.dat's `% $Id: ... $` RCS
+% header as data pulled the `$` in as a real math shift and the engine was
+% stuck in math mode all the way to \@@end.
+\input plain
+\newwrite\wout
+\immediate\openout\wout=probe.dat
+% Write the `%` and `$` literally by giving them catcode 12 at write time.
+\begingroup
+  \catcode`\%=12 \catcode`\$=12
+  \immediate\write\wout{alpha % $Id: secret$ tail}
+  \immediate\write\wout{% whole line is a comment}
+  \immediate\write\wout{beta}
+\endgroup
+\immediate\closeout\wout
+\newread\rin
+\openin\rin=probe.dat
+% \read strips at the `%`: `alpha ` (the space before `%`). The comment eats the
+% end of line too, so there is no extra endlinechar space.
+\read\rin to\a
+\message{<a=\a|>}
+% A whole-comment line reads as empty (just nothing, no endline space): the
+% next \read after it should skip straight to `beta`.
+\read\rin to\b
+\message{<b=\b|>}
+\read\rin to\c
+\message{<c=\c|>}
+\closein\rin
+% \readline (string mode) forces catcode 12: the `%` is NOT a comment, so the
+% whole line including `% $Id: secret$ tail` comes back verbatim. \endlinechar
+% -1 drops the trailing end-of-line so the compared text has no control char.
+\openin\rin=probe.dat
+\endlinechar=-1
+\readline\rin to\d
+\message{<d=\d|>}
+\closein\rin
+\bye

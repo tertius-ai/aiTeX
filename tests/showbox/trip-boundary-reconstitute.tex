@@ -1,0 +1,29 @@
+% TFM-PL: vendor/trip/trip.pl
+% TRIP's boundary program builds long retained/generated chains. §903 saves
+% their context in `hu[0]` and `init_list` before reconstituting a hyphenated
+% word; the compact operator font does not create a chain long enough to expose
+% mistakes in that handoff.
+\catcode`\{=1 \catcode`\}=2
+\font\r=trip \r \hyphenchar\r=`\-
+\lccode`1=`1 \lccode`q=`q
+\lefthyphenmin=1 \righthyphenmin=1
+\pretolerance=-1 \tolerance=10000 \hbadness=10000 \parindent=0pt
+\hyphenation{1-1 q-q}
+\showboxbreadth=999 \showboxdepth=99 \tracingonline=0
+\setbox0=\vbox{\hsize=6pt A 11\par}\showbox0
+\setbox1=\vbox{\hsize=6pt A qq\par}\showbox1
+% §903 also saves the node immediately before the first letter.  Here `-0`
+% first makes a punctuation ligature, whose retained/generated result then
+% participates in the left-boundary translation of `qq`.  Reconstructing the
+% word from its letters alone loses the second `q` from the post-break branch.
+\setbox3=\vbox{\hsize=6pt A -\char0 qq\par}\showbox3
+\setbox4=\vbox{\hsize=6pt A -\char0 qq 11\par}\showbox4
+% §896 looks through a ligature node to the first character in `lig_ptr`
+% while searching after glue.  TRIP's `7A` ligature displays as A, whose
+% lccode is made nonzero here, but its first component is 7, whose lccode is
+% zero: TeX skips the ligature, applies the language whatsit, and hyphenates
+% the following 11 under language 98.  Testing the displayed glyph instead
+% spends the glue's one hyphenation attempt on the punctuation ligature.
+\lccode`A=1 \language=98 \hyphenation{1-1}\language=0
+\setbox2=\vbox{\hsize=6pt\noindent\hskip1pt 7A\setlanguage98 11\par}\showbox2
+\end

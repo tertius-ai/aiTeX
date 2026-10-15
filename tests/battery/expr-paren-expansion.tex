@@ -1,0 +1,19 @@
+% An expression finds *every* part of itself with get_x_token.
+%
+% Operators, the closing parenthesis, and the opening one too. expl3 writes
+% all three forms -- `\int_eval:n { \cs_if_exist:NT ... ( ... ) }` puts a
+% conditional that expands to nothing in front of the paren -- and a scanner
+% that checks the raw token first sees a control sequence where `(` was
+% coming, falls through to the plain number scanner, and reports a bad number
+% on the paren.
+\input plain
+\def\M#1{\message{<#1>}}
+\def\nothing{}
+\def\paren{(1+2)}
+\M{a=\the\numexpr \nothing(1+2)*3\relax}
+\M{b=\the\numexpr \paren *3\relax}
+\M{c=\the\numexpr 1+\nothing(2+3)\relax}
+\M{d=\the\numexpr \nothing\nothing(1+1)\relax}
+\M{e=\the\dimexpr \nothing(1pt+2pt)*2\relax}
+\M{f=\the\numexpr (1+2)*\nothing 3\relax}
+\bye

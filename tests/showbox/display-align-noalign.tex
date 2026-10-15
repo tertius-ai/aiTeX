@@ -1,0 +1,29 @@
+% `tex.web` §812 attaches a display alignment's finished list to the enclosing
+% *vertical* list:
+%
+%     pop_nest; tail_append(new_penalty(pre_display_penalty));
+%     tail_append(new_param_glue(above_display_skip_code));
+%     link(tail):=p;  { the rows }
+%     if p<>null then tail:=q;
+%
+% `\noalign` material is part of `p`, so it belongs there beside the rows. This
+% engine appended it through the ordinary mode-sensitive path, and the mode
+% around a display is *math* — where §729 claims any glue for the math list.
+% So a `\noalign` in a display alignment lost its glue and its penalty, while
+% the same `\noalign` in an ordinary `\halign` came out right.
+%
+% amsmath writes `\noalign{\penalty\interdisplaylinepenalty\vskip\jot}` between
+% the lines of every `align`, so this was every multi-line display in every
+% LaTeX paper: no interline penalty, and the rows a `\jot` too close.
+\input plain
+\showboxdepth=4 \showboxbreadth=40 \tracingonline=0
+\setbox0=\vbox{\hsize=200pt Some text before the display here now.
+$$\halign{#\hfil&#\hfil\cr
+A&B\cr
+\noalign{\penalty100\vskip3pt}
+C&D\cr
+\noalign{\vskip-4.5pt}
+E&F\cr}$$
+Text after.\par}
+\showbox0
+\end

@@ -1,0 +1,44 @@
+% `tex.web` §873: what the third pass actually *does* with `\emergencystretch`.
+%
+%     else begin if tracing_paragraphs>0 then print_nl("@emergencypass");
+%       background[2]:=background[2]+emergency_stretch; final_pass:=true;
+%       end;
+%
+% `background[2]` is the normal-order stretch every line starts with —
+% `\leftskip` and `\rightskip` — and the emergency pass adds `\emergencystretch`
+% to it. So the pass does not look for different breaks; it makes the *same*
+% breaks less bad, which is how a paragraph that would otherwise go overfull
+% comes out merely loose.
+%
+% We ran the third pass with the parameter deciding only *whether* it happened
+% and never widening anything, so it scored exactly what the second pass had
+% and fell through to §851's artificial demerits — `b=*` in the narration, and
+% a forced break. TeX gets `b=99` and breaks a word earlier.
+%
+% LaTeX sets `\emergencystretch` in `\sloppy` and in every `\raggedbottom`
+% class, so this is not an exotic path.
+\catcode`\{=1 \catcode`\}=2
+\tracingonline=1 \tracingparagraphs=1 \showboxbreadth=99 \showboxdepth=99
+\hsize=90pt \parindent=0pt \tolerance=100 \pretolerance=-1
+\font\r=cmr10 \r
+% The box warnings are not what this case is about, and the two passes differ
+% in which of them they raise.
+\hbadness=10000 \vbadness=10000
+\showthe\escapechar
+
+% No emergency stretch: the second pass is the final one, and a word that will
+% not fit forces a break.
+\setbox0\vbox{AAAAAAAA BBBBBBBB CCCCCCCCCCCCCCCCCC DD\par}
+\showbox0
+
+% ...and with it, a third pass whose lines have 30pt more to give.
+\emergencystretch=30pt
+\setbox1\vbox{AAAAAAAA BBBBBBBB CCCCCCCCCCCCCCCCCC DD\par}
+\showbox1
+
+% Back to zero: no third pass, and no `@emergencypass` line.
+\emergencystretch=0pt
+\setbox2\vbox{AAAAAAAA BBBBBBBB CCCCCCCCCCCCCCCCCC DD\par}
+\showbox2
+\showthe\escapechar
+\end

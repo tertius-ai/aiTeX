@@ -1,0 +1,11 @@
+% \font is the current font, and \hyphenchar\font / \fontdimen n \font name it;
+% \fontdimen n <font> is also an internal *dimension* usable as a value. Font
+% preloading (\hyphenchar\font) and \newdimen init read these; a scanner that
+% doesn't accept \font, or \fontdimen as a dimension, fails or runs away.
+\input plain
+\font\test=cmr10 \test
+\hyphenchar\font=`\- \message{<hc=\the\hyphenchar\font>}
+\dimen0=\fontdimen6\font \message{<quad=\the\dimen0>}
+\dimen1=2\fontdimen6\font \message{<twoquad=\the\dimen1>}
+\skewchar\font=127 \message{<sk=\the\skewchar\font>}
+\bye

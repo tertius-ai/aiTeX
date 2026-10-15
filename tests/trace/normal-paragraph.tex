@@ -1,0 +1,44 @@
+% `tex.web` §1070 `normal_paragraph`: the paragraph shape is reset wherever a
+% *new* vertical list begins, not only when a paragraph ends.
+%
+%     procedure normal_paragraph;
+%     begin if looseness<>0 then eq_word_define(int_base+looseness_code,0);
+%     if hang_indent<>0 then eq_word_define(dimen_base+hang_indent_code,0);
+%     if hang_after<>1 then eq_word_define(int_base+hang_after_code,1);
+%     if par_shape_ptr<>null then eq_define(par_shape_loc,shape_ref,null);
+%     end;
+%
+% §1096's `end_graf` calls it — which is the one we had — and so do §1083 for
+% `\vbox` and `\vtop`, §1167 for `\vcenter`, §1099 for `\insert` and
+% `\vadjust`, and §1025 for the output routine. Each begins a vertical list of
+% its own, and a `\hangindent` or a `\looseness` from outside has no business
+% in it.
+%
+% It is an *assignment*, so it goes on the save stack like any other and the
+% group restores it. That is how this was found: the order of two restores in
+% trip.log. `\vadjust{\uchyph=0…}` restores `\uchyph` first and `\looseness`
+% second, which can only happen if `\looseness` was saved *before* the
+% `\uchyph=0` that is written first — and it is, by the `normal_paragraph`
+% inside `\vadjust` itself, because the enclosing paragraph's `\everypar` had
+% left `\looseness` at −1.
+\catcode`\{=1 \catcode`\}=2
+\tracingonline=1
+\tracingrestores=1
+\hsize=100pt \parindent=0pt
+\font\rip=cmr10 \rip
+\everypar={\looseness=-1 }
+\uchyph=1 \looseness=0
+
+\setbox0\vbox{A\vadjust{\uchyph=0\ B}\par}
+
+% A `\vbox` resets it too, so the value inside is not the one outside.
+\looseness=3 \hangindent=5pt \hangafter=4
+% The `\showthe` after each message is there to end the line: §252 opens a
+% restore trace with `print_char`, not `print_nl`, so `{restoring …}` joins
+% whatever line is in progress — and a `\message` leaves one open. Reproducing
+% that needs the column model established by the historical
+% print-ln/print-nl investigation.
+\setbox1\vbox{\message{PROBE:inside=[\the\looseness][\the\hangindent][\the\hangafter]}\showthe\escapechar}
+\message{PROBE:outside=[\the\looseness][\the\hangindent][\the\hangafter]}
+\showthe\escapechar
+\end

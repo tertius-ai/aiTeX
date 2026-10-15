@@ -1,0 +1,27 @@
+% \advance, \multiply and \divide on a *glue* register.
+%
+% A glue register advances by a glue, stretch and shrink and all
+% (tex.web 1240). Ours scanned an integer: `\advance\skip0 by 1pt` read the 1
+% and left `pt` in the stream, so the width moved by one scaled point and the
+% stretch never moved at all. Every one of the forms below was wrong.
+%
+% The comment sitting in that code asserted that TeX leaves stretch alone. It
+% did not describe TeX, it described the bug -- the third time here that a
+% comment has ratified a fault instead of recording a rule.
+\input plain
+\def\M#1{\message{<#1>}}
+\skip0=3pt plus 2pt minus 1pt \advance\skip0 by 1pt plus 1pt
+\M{a=\the\skip0}
+\skip1=3pt plus 2pt minus 1pt \advance\skip1 by 1pt
+\M{b=\the\skip1}
+\skip2=3pt plus 2pt minus 1pt \multiply\skip2 by 2
+\M{c=\the\skip2}
+\skip3=4pt plus 2pt minus 1pt \divide\skip3 by 2
+\M{d=\the\skip3}
+\skip4=1pt plus 1fil \advance\skip4 by 1pt plus 1fill
+\M{e=\the\skip4}
+\skip5=3pt plus 2pt \advance\skip5 by -1pt plus 1pt
+\M{f=\the\skip5}
+\skip6=1pt plus 2pt \advance\skip6 by \skip6
+\M{g=\the\skip6}
+\bye

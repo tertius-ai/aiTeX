@@ -1,0 +1,28 @@
+% `tex.web` §1005-§1010: where the page builder's trace goes.
+%
+% TeX's transcript is one stream. `%% goal height=…` and `% t=… g=… b=… p=…
+% c=…` are printed by `build_page` as it weighs each breakpoint, so they land
+% between the `{\tracingcommands}` lines of the commands that contributed the
+% material — and before the `Completed box being shipped out` of the page they
+% decided on.
+%
+% Ours went into a buffer of the page builder's own, printed once at the end of
+% the run. Every line was right and every line was in the wrong place, which is
+% invisible to any case that turns on `\tracingpages` alone: with nothing else
+% in the transcript there is nothing for it to be out of order with. In trip.log
+% it read as three missing lines near the top and a block of surplus ones near
+% the bottom.
+\catcode`\{=1 \catcode`\}=2
+\tracingonline=1
+\tracingpages=1
+\tracingoutput=1
+\tracingcommands=1
+\showboxbreadth=3 \showboxdepth=1
+\vsize=50pt \maxdepth=2pt
+
+\hbox{}
+\vskip 10pt plus 3pt minus 4pt
+\hbox{}
+\penalty-10000
+\hbox{}
+\end

@@ -1,0 +1,41 @@
+% \numexpr is an *internal quantity*, not a run of digits -- in integers too.
+%
+% It is a complete number and it ends the scan. Expanding it to characters and
+% then carrying on looking for more digits reads whatever follows:
+% `\count0=\numexpr 1\relax\five` came out 15 instead of 1.
+%
+% That is never merely a wrong number. Every comparison expl3 makes is
+%
+%   \if_int_compare:w \__int_eval:w #1#2\__int_eval:w #3
+%     \__int_eval_end: \__prg_TF_true:w \fi: \use_ii:nn
+%
+% so the tokens after the expression are the conditional's own branch
+% machinery. Scanning past it expanded \__prg_TF_true:w, which swallowed the
+% \fi:, and every *false* \int_compare:nNnTF in the kernel took its true
+% branch -- `1 < 0` allocating a count register is what surfaced.
+%
+% Three copies of this rule: the gullet's dimension scanner had it (since
+% \count5\p@), the gullet's integer scanner did not, and neither did the
+% stomach's. The stomach now calls the gullet's expression scanner so they
+% cannot drift again.
+\input plain
+\def\M#1{\message{<#1>}}
+\def\five{5}
+\count0=\numexpr 1\relax\five
+\M{a=\the\count0}
+\count1=\numexpr 2\relax 7
+\M{b=\the\count1}
+\dimen0=\dimexpr 1pt\relax\five
+\M{c=\the\dimen0}
+\count2=3\five
+\M{d=\the\count2}
+\M{e=\number\numexpr 1\relax\five}
+\M{f=\ifnum\numexpr 1\relax<\numexpr 0\relax\five T\else F\fi}
+\M{g=\ifnum\numexpr 1\relax>\numexpr 0\relax\five T\else F\fi}
+\count3=\numexpr 2*3\relax\five
+\M{h=\the\count3}
+\M{i=\the\numexpr\numexpr 2\relax+1\relax}
+\count4=\numexpr 4\relax
+\M{j=\the\count4}
+\M{k=\ifnum\numexpr 7\relax=7 T\else F\fi}
+\bye

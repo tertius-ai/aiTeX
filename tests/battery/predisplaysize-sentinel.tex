@@ -1,0 +1,38 @@
+% `tex.web` §1146: what `\predisplaysize` is when there is no line to measure.
+%
+%     if head=tail then {`\noindent$$' or `$${ }$$'}
+%       begin pop_nest; w:=-max_dimen;
+%       end
+%
+% `max_dimen` is `@'7777777777` — 2^30 − 1, not 2^30. We used `i32::MIN` for
+% the sentinel, which is neither, and it is not a difference a reader would
+% ever see in `\the\predisplaysize` alone: −32768.0pt against TeX's
+% −16383.99998pt, both absurd, both obviously "no line here".
+%
+% It matters because a document may *negate* it. trip.tex writes
+% `\global\postdisplaypenalty-\predisplaysize`, and TeX gets 1073741823 — a
+% perfectly ordinary integer, and a penalty far below `eject_penalty`, so the
+% page is forced out. Negating ours overflowed, and what reached
+% `\postdisplaypenalty` was a number neither engine could account for.
+%
+% The lesson is about sentinels rather than about displays: a value chosen to
+% be "impossible" is still arithmetic to the document, and TeX picked
+% `max_dimen` so that negating, adding and comparing it all stay in range.
+\input plain
+\catcode`\@=11
+\hsize=100pt \parindent=0pt
+
+% No line before the display.
+\setbox0\vbox{\noindent$$\message{<empty=\the\predisplaysize>}B$$}
+
+% ...and negated, which is the form that overflowed.
+\setbox1\vbox{\noindent$$\count0=-\predisplaysize \message{<neg=\the\count0>}B$$}
+
+% A real line before it, for the ordinary case beside the sentinel.
+\setbox2\vbox{\noindent A$$\message{<line=\the\predisplaysize>}B$$}
+
+% Stretching glue before later visible material makes the reach unknowable;
+% §1146 uses positive max_dimen, never the machine integer maximum.
+\setbox3\vbox{\noindent A\hfil B$$
+  \count0=\predisplaysize \message{<moving=\the\count0>}B$$}
+\bye

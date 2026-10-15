@@ -1,0 +1,37 @@
+% `tex.web` §1017: `\box255` belongs to the page builder.
+%
+%     if box(255)<>null then
+%       begin print_err(""); print_esc("box"); print("255 is not void");
+%       help2("You shouldn't use \box255 except in \output routines.")
+%         ("Proceed, and I'll discard its present contents.");
+%       box_error(255);
+%       end
+%
+% `fire_up` hands the page over by *putting* it in that register, so anything
+% already there is a document's mistake — and §992's `box_error` shows what is
+% about to be thrown away as it goes, which is the only record the document
+% gets of a box it has lost.
+%
+% We overwrote it in silence. trip.tex fills `\box255` on purpose at line 150
+% and the complaint is eleven lines of Knuth's transcript.
+%
+% §1017 sits inside `fire_up`, after §1005 has weighed the breakpoint it is
+% firing on — so the `% t=… c=…` line that chose this page is already in the
+% log when the complaint arrives. Ours is raised from outside the builder, so
+% the narration has to be let out first; `\tracingpages` here is what holds
+% that order.
+\catcode`\{=1 \catcode`\}=2
+\tracingonline=1 \tracingpages=1
+\showboxbreadth=2 \showboxdepth=1
+\vsize=30pt \maxdepth=2pt
+\output={\shipout\box255}
+
+\setbox255=\hbox{}
+\hbox{}\vfill\penalty-10000
+\message{PROBE:one=after}
+
+% ...and a void `\box255` is the ordinary case, with nothing said about it.
+\hbox{}\vfill\penalty-10000
+\message{PROBE:two=done}
+\hbox{}
+\end

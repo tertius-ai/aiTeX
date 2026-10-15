@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use aiTeX in research, please cite the tagged source release."
+title: "aiTeX"
+type: software
+authors:
+  - family-names: "Antieau"
+    given-names: "Benjamin"
+  - family-names: "Manam"
+    given-names: "Deven"
+version: 0.3.1
+date-released: 2026-10-15
+repository-code: "https://github.com/tertius-ai/aiTeX"
+url: "https://tertius.cc"
+license: "Apache-2.0 OR MIT"
+abstract: >-
+  A TeX and LaTeX compiler written in Rust, with direct PDF and exact DVI
+  output, deterministic complete builds, caching, watch mode, and conservative
+  diagnostics.

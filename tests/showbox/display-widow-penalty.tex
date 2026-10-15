@@ -1,0 +1,43 @@
+% `tex.web` §890's widow penalty is an *argument* to `line_break`, and the two
+% callers pass different ones.
+%
+%     procedure line_break(@!final_widow_penalty:integer);
+%
+% §1096's `end_graf` passes `\widowpenalty`. §1203 — the paragraph that a
+% display interrupts — passes `\displaywidowpenalty`:
+%
+%     @<Go into display math mode@>=
+%     begin if head=tail then {`\.{\\noindent\$\$}' or `\.{\$\${ }\$\$}'}
+%       begin pop_nest; w:=-max_dimen;
+%       end
+%     else  begin line_break(display_widow_penalty);@/
+%       ...
+%
+% So the line *before* a display carries `\interlinepenalty +
+% \displaywidowpenalty`, and the second-to-last line of the paragraph resumed
+% *after* it carries `\interlinepenalty + \widowpenalty`. Reading the parameter
+% from one place gives both the same number, and nothing in plain or LaTeX's
+% own defaults shows it, because they set the two alike.
+%
+% amsart does not: `\widowpenalty=10000` with `\displaywidowpenalty` left at
+% LaTeX's 50. Every AMS paper with a display therefore has a page breakpoint of
+% 50 where we offered 10000, and the page builder never considered it —
+% `2608.17952v1` has eleven, and its running head landed 120 characters early
+% because of them.
+%
+% The four numbers below are deliberately unequal, and no two of them sum to a
+% third, so a wrong penalty cannot coincide with a right one:
+%
+%   14    = \interlinepenalty 3 + \clubpenalty 11      (first line)
+%   3     = \interlinepenalty                          (ordinary)
+%   53    = \interlinepenalty 3 + \displaywidowpenalty 50
+%   10003 = \interlinepenalty 3 + \widowpenalty 10000
+\input plain
+\widowpenalty=10000 \displaywidowpenalty=50 \clubpenalty=11 \interlinepenalty=3
+\showboxdepth=1 \showboxbreadth=40 \tracingonline=0
+\setbox0=\vbox{\hsize=80pt
+one two three four five six seven eight nine ten eleven twelve
+$$x=1$$
+after the display more words here to make another line or two of text\par}
+\showbox0
+\end

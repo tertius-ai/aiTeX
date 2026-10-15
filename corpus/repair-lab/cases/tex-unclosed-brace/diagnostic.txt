@@ -1,0 +1,6 @@
+Runaway argument?
+{This group is never closed. \end {document}
+! File ended while scanning use of \textbf.
+<inserted text>
+                \par
+<*> main.tex

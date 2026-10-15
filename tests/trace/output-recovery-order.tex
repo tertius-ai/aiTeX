@@ -1,0 +1,12 @@
+% tex.web §§1024 and 1026: an output token that closes the routine's group
+% early is diagnosed before unsave, so the error precedes the local restore.
+% When the returned page fires again at \maxdeadcycles, all page-cost traces
+% precede the output-loop error and its three canonical help lines.
+\catcode`\{=1 \catcode`\}=2
+\tracingonline=1 \tracingrestores=1 \tracingpages=1
+\vsize=30pt \maxdepth=2pt \maxdeadcycles=1
+\def\local{outer}
+\let\rb=}
+\output={\def\local{inner}\unvbox255\end\rb}
+\hbox{}\vfill\penalty-10000
+\end

@@ -1,0 +1,18 @@
+% \expanded must find its closing brace by *expanding*, not by counting braces
+% first -- so the `\iffalse } \fi' trick works inside it, where a conditional
+% consumes a brace that a plain counter would read as ending the group early
+% and whose \fi sits outside the group. l3keys' \__keys_property_find hides
+% `}}}' inside `\if_false: ... \fi:' this way; grabbing a balanced group first
+% stranded the \fi and the skip ran off the input (UnbalancedConditional),
+% stalling latex.ltx at command 27,830,882.
+\input plain
+\def\id#1{#1}
+% `}}}' consumed by \iffalse; the group really ends after \id{Y}.
+\edef\a{P\expanded{X\iffalse}}}\fi\id{Y}}Q}\message{<a=\meaning\a>}
+% one brace consumed, trailing text after \fi still inside the group.
+\edef\b{\expanded{A\iffalse}\fi B}}\message{<b=\meaning\b>}
+% expansion before and an unbalanced close inside.
+\edef\c{\expanded{\id{u}\iffalse}}\fi v}}\message{<c=\meaning\c>}
+% empty true-ish run, and text after the whole \expanded.
+\edef\d{1\expanded{\iffalse}\fi 2}3}\message{<d=\meaning\d>}
+\bye

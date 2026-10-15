@@ -1,0 +1,65 @@
+% §509 skips to the selected case, and its loop has two independent tests:
+%
+%     while n<>0 do
+%       begin pass_text;
+%       if cond_ptr=save_cond_ptr then
+%         if cur_chr=or_code then decr(n)
+%         else goto common_ending
+%       else if cur_chr=fi_code then @<Pop the condition stack@>;
+%       end;
+%     change_if_limit(or_code,save_cond_ptr);
+%
+% `pass_text` steps over whole `\if…\fi` groups met *inside* the skipped text.
+% `cond_ptr=save_cond_ptr` asks something else entirely: is this `\ifcase`'s own
+% node still the innermost one? It is not, when a conditional opened *while the
+% case number was being scanned* has yet to see its `\fi` — §498 pushes the
+% node before scanning the operand, so anything the scan expands nests inside.
+%
+% We had only `pass_text`'s counter, so a nested conditional's `\fi` was taken
+% for the `\ifcase`'s, and the node popped was whichever was on top rather than
+% the `\ifcase`'s own. Its limit stayed at `if_code` — the state §510 reads as
+% "condition not yet evaluated" — so every later `\or` was put back with a
+% `\relax` in front of it (§379 `insert_relax`), for ever.
+%
+% XY-pic writes exactly this:
+%
+%     \xydef@\rectangleEdge#1{\ifcase#1\expandafter\rectangleEdge@
+%      \or \expandafter\rectangleUnder@ \or \expandafter\rectangleDist@
+%      \or \expandafter\rectangleProp@ \else \relax \fi}
+%
+% Scanning `#1` expands `\expandafter`, which expands `\or` (§510 puts it back)
+% and then `\rectangleEdge@`, which is a chain of `\ifdim`s — four still open
+% when the number ended. `\xymatrix{A \ar@{-->}[r] & B}` spun 140 million `\or`
+% expansions; 2608.17821v1 hung after 21 of its 46 pages.
+\input plain
+% \M opens a conditional, enters its branch, and leaves the `\fi` for later —
+% the `\relax` is what ends the enclosing number scan while it is still open.
+\def\M{\ifdim 1pt>0pt \relax [M]\fi}
+\def\sel#1{\ifcase#1\expandafter\M\or [one]\or [two]\else [other]\fi}
+% n=3 has to skip past three `\or`s with the \ifdim still on the stack; the
+% `\else` it lands on must be recognised as this \ifcase's own.
+\message{<a3=\sel3>}
+% n=1 stops at the first `\or` — the shortest skip that still crosses the open
+% conditional.
+\message{<a1=\sel1>}
+% n=9 runs off the end of the cases and must find the `\else`.
+\message{<a9=\sel9>}
+% n=0 takes the case containing the open conditional itself, so nothing is
+% skipped at all and the `\ifdim` closes inside the branch.
+\message{<a0=\sel0>}
+% Two conditionals left open by the scan, not one.
+\def\N{\ifdim 1pt>0pt \ifnum 1<2 \relax [N]\fi\fi}
+\def\selb#1{\ifcase#1\expandafter\N\or [b1]\or [b2]\else [bx]\fi}
+\message{<b2=\selb2>}
+\message{<b7=\selb7>}
+% The nested conditional is *false*, so its skip runs while the \ifcase's own
+% node is buried.
+\def\P{\ifdim 1pt<0pt [never]\else \relax [P]\fi}
+\def\selc#1{\ifcase#1\expandafter\P\or [c1]\else [cx]\fi}
+\message{<c1=\selc1>}
+\message{<c5=\selc5>}
+% And an `\ifcase` inside the skipped text, which `pass_text`'s own counter has
+% to step over — the test that must keep working.
+\def\seld#1{\ifcase#1\expandafter\M\or \ifcase0 X\or Y\fi\or [d2]\else [dx]\fi}
+\message{<d2=\seld2>}
+\end

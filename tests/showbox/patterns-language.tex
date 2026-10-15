@@ -1,0 +1,43 @@
+% `tex.web` §963 makes the language the first character of every trie key:
+%
+%     q:=0; hc[0]:=cur_lang;
+%     while l<=k do …
+%
+% so patterns loaded under one `\language` are invisible under another, and so
+% are `\hyphenation` exceptions (§934 keys those the same way).  §1034 says
+% what `cur_lang` is:
+%
+%     if language<=0 then cur_lang:=0
+%     else if language>255 then cur_lang:=0
+%     else cur_lang:=language
+%
+% — out of range is language nought, not an error.
+%
+% We kept one set for every language, so patterns loaded under `\language5`
+% hyphenated a paragraph set under `\language0`.  A document that loads several
+% languages' patterns — which is what every multilingual format does — had all
+% of them applying at once.
+\catcode`\{=1 \catcode`\}=2
+\font\r=cmr10 \r \hsize20pt \parindent0pt \baselineskip12pt
+\tolerance10000 \pretolerance-1 \hbadness10000 \uchyph=1
+\showboxbreadth99 \showboxdepth99 \tracingonline0
+\language=5 \patterns{bb1}
+\language=0 \patterns{cc1}
+% Under language 0: the `cc` patterns apply and the `bb` ones do not.
+\setbox0\vbox{\noindent x BBBBBB\par}\showbox0
+\setbox1\vbox{\noindent x CCCCCC\par}\showbox1
+% Under language 5: the other way about.
+\language=5
+\setbox2\vbox{\noindent x BBBBBB\par}\showbox2
+\setbox3\vbox{\noindent x CCCCCC\par}\showbox3
+% Out of range is language nought.
+\language=300
+\setbox4\vbox{\noindent x CCCCCC\par}\showbox4
+% A language assignment inside a paragraph becomes a language whatsit before
+% the next character; the breaker changes pattern tries at that exact point.
+\language=0
+\setbox5\vbox{\noindent x BBBBBB \language=5 CCCCCC\par}\showbox5
+% Explicit `\setlanguage` changes the same breaker state without assigning the
+% `\language` parameter.
+\setbox6\vbox{\noindent x \setlanguage5 CCCCCC\par}\showbox6
+\end

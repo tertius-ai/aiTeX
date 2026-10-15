@@ -1,0 +1,21 @@
+\documentclass[10pt]{article}
+\usepackage{graphicx,xcolor}
+\usepackage{hyperref}
+\pagestyle{empty}
+
+\begin{document}
+\section*{A generated image workload}
+The same deterministic assets are reused through several transformations.
+
+\includegraphics[width=220bp,trim=11 7 13 9,clip,angle=3]{pattern.png}
+
+\colorbox{yellow}{\includegraphics[width=150bp,angle=-5]{alpha.png}}
+
+\includegraphics[width=70bp]{gray-1.png}\quad
+\includegraphics[width=70bp]{gray-8.png}\quad
+\colorbox{cyan}{\includegraphics[width=70bp]{indexed-2-trns.png}}
+
+\includegraphics[width=110bp,angle=7]{pattern-copy.png}
+
+\href{https://example.invalid/aitex/images}{Image benchmark destination}
+\end{document}

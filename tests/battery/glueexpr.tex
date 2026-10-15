@@ -1,0 +1,35 @@
+% \glueexpr and \muexpr -- e-TeX's glue-valued expressions.
+%
+% expl3 builds every skip constant on them: \skip_set:Nn is
+%   #1 ~ \tex_glueexpr:D #2 \scan_stop:
+% so with \glueexpr missing, \c_zero_skip -- the very first skip constant in
+% l3skip -- stopped on an illegal unit of measure.
+%
+% Addition follows TeX's own rule for combining glue: for each of stretch and
+% shrink the higher order wins *outright*. 1fil plus 1pt of stretch is 1fil,
+% not 1fil and a bit. That is why \hfil beats interword glue and \hfill beats
+% \hfil, and getting it wrong is invisible until a page is set.
+\input plain
+\def\M#1{\message{<#1>}}
+\skip0=3pt plus 2pt minus 1pt
+\skip1=1pt plus 1fil
+\M{a=\the\glueexpr 0pt\relax}
+\M{b=\the\glueexpr 3pt plus 2pt minus 1pt\relax}
+\M{c=\the\glueexpr \skip0\relax}
+\M{d=\the\glueexpr \skip0 + \skip1\relax}
+\M{e=\the\glueexpr \skip0 * 2\relax}
+\M{f=\the\glueexpr \skip0 / 2\relax}
+\M{g=\the\glueexpr -\skip0\relax}
+\M{h=\the\glueexpr 1pt plus 1fill + 2pt plus 3fil\relax}
+\M{i=\the\glueexpr 1pt plus 1filll\relax}
+\M{j=\the\glueexpr \skip1 - \skip1\relax}
+\skip2=\glueexpr 3pt plus 2pt\relax
+\M{k=\the\skip2}
+\skip3=\glueexpr \skip0 + 1pt\relax
+\M{l=\the\skip3}
+\M{m=\the\glueexpr 2pt plus 0.5fil\relax}
+\M{n=\the\glueexpr 5pt\relax}
+\advance\skip0 by \glueexpr 1pt plus 1pt\relax
+\M{o=\the\skip0}
+\M{p=\the\muexpr 3mu plus 1mu\relax}
+\bye

@@ -1,0 +1,42 @@
+% `tex.web` §1195: `after_math` opens by checking that the fonts a formula
+% needs are actually there.
+%
+%     if (font_params[fam_fnt(2+size_code)]<total_mathsy_params)or…
+%       begin print_err("Math formula deleted: Insufficient symbol fonts");
+%       … error; flush_math; danger:=true; end
+%     else if (font_params[fam_fnt(3+size_code)]<total_mathex_params)or…
+%       … "Insufficient extension fonts" …
+%
+% Family 2 carries the symbol parameters — §700's `total_mathsy_params`, 22 of
+% them — and family 3 the extension ones, 13, and all three sizes of each must
+% have them. Without them the spacing rules have nothing to compute from, so
+% TeX *deletes the formula* rather than set it out of whatever the fonts
+% happened to have. We set it.
+%
+% The deletion is the part that matters: `flush_math` throws the list away and
+% appends nothing, so the box holding the formula is the width of the text
+% around it and no more. A reader who sees the message and a formula anyway has
+% been told something untrue.
+\catcode`\{=1 \catcode`\}=2 \catcode`\$=3
+\hsize=100pt \parindent=0pt
+\font\rm=cmr10 \textfont0=\rm \scriptfont0=\rm \scriptscriptfont0=\rm \rm
+\font\mi=cmmi10 \textfont1=\mi \scriptfont1=\mi \scriptscriptfont1=\mi
+
+% No family 2 at all: the symbol message, and the formula goes.
+\setbox0\hbox{A$B$}
+\message{PROBE:nosymbol=[\the\wd0]}
+
+% Family 2 present, family 3 not: the extension message.
+\font\sy=cmsy10 \textfont2=\sy \scriptfont2=\sy \scriptscriptfont2=\sy
+\setbox1\hbox{A$B$}
+\message{PROBE:noext=[\the\wd1]}
+
+% ...and with both, no message and a formula.
+\font\ex=cmex10 \textfont3=\ex \scriptfont3=\ex \scriptscriptfont3=\ex
+\setbox2\hbox{A$B$}
+\message{PROBE:both=[\the\wd2]}
+
+% A display goes the same way, and the paragraph resumes after it.
+\setbox3\vbox{\hsize=100pt \noindent A$$B$$C\par}
+\message{PROBE:display=[\the\ht3]}
+\end

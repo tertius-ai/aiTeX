@@ -1,0 +1,69 @@
+% TFM-PL: vendor/trip/trip.pl
+% `tex.web` §668: a glue node that is a *leader* widens the box that holds it.
+%
+%     glue_node: begin @<Incorporate glue into the vertical totals@>;
+%       if subtype(p)>=a_leaders then
+%         begin g:=leader_ptr(p);
+%         if width(g)>w then w:=width(g);
+%         end;
+%       end;
+%
+% The leader box is repeated across the glue, so a `\vbox` containing one has
+% to be wide enough to hold it. Ordinary glue contributes no width at all,
+% which is what makes this a special case rather than part of the sum.
+%
+% We measured every leader as zero-width, so any `\vbox` whose width came only
+% from a leader came out 0pt wide. Found in trip.tex: the `\vsplit255 to 55pt`
+% shipped on page 2 is `x45.0` in Knuth's transcript and was `x0.0` here, its
+% width coming from a `\cleaders` whose box is `\hbox(15.0+2.0)x45.0`. Every
+% other dimension of that page — 40-odd nodes deep — was already identical, so
+% nothing but the width said anything was wrong.
+\catcode`\{=1 \catcode`\}=2
+\showboxdepth=3 \showboxbreadth=9 \tracingonline=0
+
+% all three flavours widen the box
+\setbox0\vbox{\cleaders\hbox to 45pt{}\vskip 50pt}
+\showbox0
+\setbox1\vbox{\leaders\hbox to 30pt{}\vskip 50pt}
+\showbox1
+\setbox2\vbox{\xleaders\hbox to 20pt{}\vskip 50pt}
+\showbox2
+
+% ...the widest wins, as it is a max and not a sum
+\setbox3\vbox{\cleaders\hbox to 45pt{}\vskip 10pt
+              \cleaders\hbox to 70pt{}\vskip 10pt}
+\showbox3
+
+% ...and ordinary glue still contributes nothing
+\setbox4\vbox{\vskip 50pt}
+\showbox4
+
+% §1078 reads a leader's box with `scan_box`, which does not go back through
+% `main_control` — so a `\vrule` after `\leaders` never reaches §1090's
+% `vmode+vrule` case and never starts a paragraph. Without that, this began one
+% and produced an empty \vbox holding a line with a `\rightskip`.
+\setbox5\vbox{\cleaders\vrule width 12pt\vskip 50pt}
+\showbox5
+\setbox6\vbox{\leaders\vrule width 12pt\vskip 50pt}
+\showbox6
+
+% ...while a plain `\vrule` in a vertical list still starts one, which is the
+% behaviour the guard must not swallow
+\setbox7\vbox{\vrule width 12pt}
+\showbox7
+
+% and a rule leader in a horizontal list, which never needed a paragraph
+\setbox8\hbox{\cleaders\vrule width 12pt\hskip 50pt}
+\showbox8
+
+% §816 removes a paragraph's trailing glue before adding its finishing
+% penalty and `\parfillskip`. A leader is still a glue node, so this one must
+% not survive into the final line or make it overfull.
+\font\trip=trip \trip
+\showboxbreadth=100
+\hsize=10pt \leftskip=3pt \rightskip=0pt
+\spaceskip=4pt plus1pt minus2pt \parfillskip=0pt plus100pt
+\overfullrule=5pt \tolerance=1 \hbadness=100
+\setbox9=\vbox{A A A A A\leaders\vrule\hskip5pt\par}
+\showbox9
+\end

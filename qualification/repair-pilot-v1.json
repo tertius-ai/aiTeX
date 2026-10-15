@@ -1,0 +1,152 @@
+{
+  "schema": "aitex-repair-pilot-qualification-v1",
+  "captured_date": "2026-09-04",
+  "decision": {
+    "a1_one_shot_profile": "compact",
+    "a1_max_output_tokens": 512,
+    "product_fallback_profile": "expanded",
+    "reference_model": "mistralai/mistral-small-24b-instruct-2501",
+    "reference_served_provider": "DeepInfra",
+    "claim": "protocol and low-cost reference selection; not a general model leaderboard"
+  },
+  "pilot": {
+    "track": "routed",
+    "campaign_seed": 20260904,
+    "profiles": [
+      "compact"
+    ],
+    "cases_per_repeat": 6,
+    "repeats": 3,
+    "models": 4,
+    "completed_jobs": 72,
+    "semantic_labels": 72,
+    "charged_microusd": 4210,
+    "privacy": {
+      "zdr": true,
+      "data_collection": "deny"
+    }
+  },
+  "results": [
+    {
+      "model": "google/gemma-4-26b-a4b-it",
+      "served_provider": "DeepInfra",
+      "profile": "compact",
+      "attempts": 18,
+      "build_successes": 13,
+      "semantic_correct": 13,
+      "semantic_labeled": 18,
+      "semantic_rate_ci95": [
+        0.4912734343970254,
+        0.8750024662044601
+      ],
+      "exact_oracle": 6,
+      "input_tokens": 6729,
+      "output_tokens": 2350,
+      "reasoning_tokens": 0,
+      "charged_microusd": 1272,
+      "cost_per_build_success_microusd": 97.84615384615384,
+      "model_ms_p50": 4982.207753000001,
+      "model_ms_p95": 9879.128031
+    },
+    {
+      "model": "mistralai/ministral-8b-2512",
+      "served_provider": "Mistral",
+      "profile": "compact",
+      "attempts": 18,
+      "build_successes": 6,
+      "semantic_correct": 4,
+      "semantic_labeled": 18,
+      "semantic_rate_ci95": [
+        0.09000928108601694,
+        0.45214584316212625
+      ],
+      "exact_oracle": 0,
+      "input_tokens": 3970,
+      "cache_read_tokens": 2720,
+      "output_tokens": 2163,
+      "reasoning_tokens": 0,
+      "charged_microusd": 963,
+      "cost_per_build_success_microusd": 160.5,
+      "model_ms_p50": 1362.7411659999998,
+      "model_ms_p95": 1725.207611
+    },
+    {
+      "model": "mistralai/mistral-small-24b-instruct-2501",
+      "served_provider": "DeepInfra",
+      "profile": "compact",
+      "attempts": 18,
+      "build_successes": 15,
+      "semantic_correct": 15,
+      "semantic_labeled": 18,
+      "semantic_rate_ci95": [
+        0.6077796189608428,
+        0.9416342319413856
+      ],
+      "exact_oracle": 3,
+      "input_tokens": 6690,
+      "output_tokens": 2167,
+      "reasoning_tokens": 0,
+      "charged_microusd": 507,
+      "cost_per_build_success_microusd": 33.8,
+      "model_ms_p50": 3065.6146855,
+      "model_ms_p95": 10153.501153000001
+    },
+    {
+      "model": "nvidia/nemotron-3.5-lightning",
+      "served_provider": "DeepInfra",
+      "profile": "compact",
+      "attempts": 18,
+      "build_successes": 6,
+      "semantic_correct": 6,
+      "semantic_labeled": 18,
+      "semantic_rate_ci95": [
+        0.1627877475083369,
+        0.5625053270405489
+      ],
+      "exact_oracle": 1,
+      "input_tokens": 6888,
+      "output_tokens": 4583,
+      "reasoning_tokens": 0,
+      "charged_microusd": 1468,
+      "cost_per_build_success_microusd": 244.66666666666666,
+      "model_ms_p50": 3285.2741435,
+      "model_ms_p95": 21431.037643
+    }
+  ],
+  "offline_rescore": {
+    "provider_calls": 0,
+    "evaluator_id": "e19d90c00373f788c3aedb36df97207b3da0195853717b42bae85fabf228acaf",
+    "new_build_successes": 3,
+    "build_regressions": 0,
+    "transition": {
+      "mistralai/ministral-8b-2512": "5/18 -> 6/18",
+      "mistralai/mistral-small-24b-instruct-2501": "13/18 -> 15/18"
+    },
+    "recovered_normalization": "diff-marker-padding"
+  },
+  "source_artifacts_sha256": {
+    "campaign.json": "4b747a66133281d29380fec7006f33c98f6700fd5c9661eb0cabef9c1fa2c6f8",
+    "results.jsonl": "2af666ab3e5ac9ad477dcc265ddd1f84a45bf87b6a8b780cc3e691aeaea099fd",
+    "labels.jsonl": "9d7573137af7065d703ee0856c9ec257f386165e08b2a68f82bc3fcd53410adf",
+    "models.json": "5adad74c27e13469495cc2c6335aed80b2f74042d1fca68d7d81bf524efc4727"
+  },
+  "rescore_artifacts_sha256": {
+    "results.jsonl": "71827c84088acdeb8cdf54df56951583e9c8601e9884a795903358e15237c8e2",
+    "summary.json": "89a14b1610d3d11f4dbcaef78404dcb1f000b3b0c123595369d0947121ab4e12",
+    "report.md": "dcbc4dc2c2abdde9a6c9abebc4bf67cc4af56fb90cc2eeaa77beb4678ebd93fd"
+  },
+  "protocol_sources_sha256": {
+    "docs/AI-REPAIR-PROTOCOL-V1.md": "8dc0d087fdcae51650c1a0ee44d164fe70827f6a40887439c09162903b3ba319",
+    "corpus/repair-lab/manifest.json": "c654eca2434538bd535231b63c41d4acd15c549c4ee0a71f30c6f0dd57e79b60",
+    "crates/aitex-harness/src/repair.rs": "4ff80419b3e76b124759e7b22879a5e20f880bc99ba982d578bed757517730a5",
+    "crates/aitex-harness/src/patch.rs": "3d4e0e04e251b4b90340aad60ed665660b7baba7dcf51ac641d1af88a68ed5c2",
+    "crates/aitex-harness/src/session.rs": "01e42833e8a3dcbc114a302f9d02721b8fd31816cdde74aa6abf6759980404ad",
+    "crates/aitex-harness/src/validation.rs": "23ba770c472921b793736a5097122555e9f8f2bf90feb8e4cd47e406713c1369",
+    "crates/aitex-harness/src/bin/aitex-repair-lab.rs": "4a62429ed9701e0ffbd8498998e88ccb619ccf10a614c68ae812f3858b3fe10a",
+    "tools/model_campaign.py": "b47ef10c1181739cdcd2fbb928db1fc420a1956ca8a4ed8652dcdcaebe29071a"
+  },
+  "evaluator_binaries_sha256": {
+    "target/debug/aitex-repair-lab": "260aba6eaa2d7bcbcb0216bece31b7bbdf40b78b85513778f0c3c0797430bb10",
+    "bin/aitex": "c8186223d6eb8a9e9b2e626b00afb595dd86fe93bc8385ac9b6f819ed2eca41d"
+  }
+}

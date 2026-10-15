@@ -1,0 +1,47 @@
+% `tex.web` §752 `make_ord` does three things this engine did none of, and all
+% three are about *adjacent characters of one family* inside a formula.
+%
+% 1. A ligature. The font's lig/kern program runs over two ord noads exactly
+%    as it does over two characters in a paragraph, and the `=:` case merges
+%    them into a single noad:
+%
+%        othercases begin link(q):=link(p);
+%            character(nucleus(q)):=rem_byte(cur_i);
+%            mem[subscr(q)]:=mem[subscr(p)]; mem[supscr(q)]:=mem[supscr(p)];
+%            free_node(p,noad_size); end
+%
+%    So `$``x''$` sets opening and closing quotation marks, not four accents.
+%
+% 2. `math_text_char`, which is a rule about *italic corrections* and not about
+%    text at all. §752 marks a character whose successor is another character
+%    of the same family, and §755 then skips its correction:
+%
+%        if (math_type(nucleus(q))=math_text_char)and(space(cur_f)<>0) then
+%          delta:=0; {no italic correction in mid-word of text font}
+%
+%    "Mid-word" is the point: `l` and `o` of `\log` lose their corrections and
+%    the final `g` keeps its 0.01389em. Suppressing every text-font character's
+%    correction is right twice and wrong once, and 0.1632pt at 12pt was the
+%    difference between two arXiv papers matching pdfTeX and not.
+%
+% 3. §727's *final* binary. A `bin_noad` becomes ordinary when nothing can
+%    follow it — at the end of the list, and before a relation, a closing
+%    delimiter or punctuation:
+%
+%        rel_noad,close_noad,punct_noad,right_noad: begin
+%          @<Convert a final bin_noad to an ord_noad@>;
+%
+%    `$--$` is the smallest case: no `\medmuskip` between the two, because the
+%    second minus is not binary.
+\input plain
+\showboxdepth=3 \showboxbreadth=60 \tracingonline=0
+\setbox0=\hbox{$``x''$}\showbox0
+\setbox0=\hbox{$\rm off\!ice$}\showbox0
+\setbox0=\hbox{$\log x$}\showbox0
+\setbox0=\hbox{$\rm fi\rm fl$}\showbox0
+\setbox0=\hbox{$``^2$}\showbox0
+\setbox0=\hbox{$--$}\showbox0
+\setbox0=\hbox{$x+=y$}\showbox0
+\setbox0=\hbox{$x+)$}\showbox0
+\setbox0=\hbox{$x--x$}\showbox0
+\end

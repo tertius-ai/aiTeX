@@ -1,0 +1,59 @@
+% `tex.web` §811: every cell in a finished alignment row takes the *row's*
+% height and depth, not its own.
+%
+%     @<Make the unset node |r| into an |hlist_node| of width |w|…@>=
+%     begin height(r):=height(q); depth(r):=depth(q);
+%
+% A cell is a window onto the row rather than a box of its own size. That is
+% what makes a `\vrule` with a running height fill a table row however short
+% the entry holding it: the rule stays running — `\rule(*+*)` in a display, in
+% both engines — and the *cell* it is measured against grows to the row.
+%
+% We left each cell at its natural size, so a cell holding only a rule was 0pt
+% tall and the rule had nothing to run to. Found by diffing trip.tex's sixth
+% shipped page, whose first `\hbox` is 22.0 tall in Knuth's transcript and was
+% 0.0 here.
+\catcode`\{=1 \catcode`\}=2 \catcode`\#=6 \catcode`\&=4
+\font\r=cmr10 \r \hsize=200pt
+\showboxdepth=3 \showboxbreadth=9 \tracingonline=0
+
+% a rule cell beside a tall cell: both cells are the row's height
+\setbox0\vbox{\halign{#&#\cr \vrule & \vbox to 22pt{}\cr}}
+\showbox0
+
+% depth travels with it, not just height — the lowered box gives the row one
+\setbox1\vbox{\halign{#&#\cr \vrule & \lower3pt\vbox to 22pt{}\cr}}
+\showbox1
+
+% a row whose entries differ: the short one is raised to the tall one
+\setbox2\vbox{\halign{#&#\cr \vbox to 5pt{} & \vbox to 30pt{}\cr}}
+\showbox2
+
+% ...and two rows do not borrow from each other
+\setbox3\vbox{\halign{#\cr \vbox to 5pt{}\cr \vbox to 30pt{}\cr}}
+\showbox3
+
+% §810's vertical branch is the transpose: a `\valign` cell takes the
+% *column's* width, and a cell holding a running `\hrule` was 0pt wide here
+% with the rule having nothing to run to.
+\setbox4\hbox{\valign{#&#\cr \hrule & \hbox to 13pt{}\cr}}
+\showbox4
+
+% ...and two columns do not borrow from each other either
+\setbox5\hbox{\valign{#\cr \hbox to 5pt{}\cr \hbox to 30pt{}\cr}}
+\showbox5
+
+% §768: a `\valign` entry is a *vertical* list, so text in it starts a
+% paragraph — and the entry's end is what breaks that paragraph into lines,
+% exactly as a `\vbox`'s closing brace is. Our alignment path closed the cell
+% without ending the paragraph, so a `\valign` cell containing text closed with
+% it still open and the content went nowhere: an empty cell.
+%
+% An `\halign` entry is horizontal and has no paragraph to end, which is why
+% this is asked of the vertical case only — the `\halign` cases above cover
+% that side.
+\setbox6\hbox{\valign{#\cr A\cr}}
+\showbox6
+\setbox7\hbox{\valign{#&#\cr A\cr}}
+\showbox7
+\end

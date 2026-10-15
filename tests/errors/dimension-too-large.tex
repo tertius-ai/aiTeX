@@ -1,0 +1,16 @@
+% `tex.web` §460: every finite dimension is bounded by `max_dimen`,
+% `2^30-1sp`. Values beyond it raise their own error (not `Missing number`),
+% saturate with the scanned sign, and leave the input positioned after the
+% complete unit. Glue components use the same scanner.
+\catcode`\{=1 \catcode`\}=2
+\dimen0=16383.99999237060546875pt
+\message{PROBE:positive=\the\dimen0}
+\dimen0=-16383.99999237060546875pt
+\message{PROBE:negative=\the\dimen0}
+\dimen0=300in
+\message{PROBE:physical=\the\dimen0}
+\skip0=1pt plus 17000pt\relax
+\message{PROBE:glue-recovered}
+\dimen0=16383.99998pt
+\message{PROBE:exact-limit=\the\dimen0}
+\end

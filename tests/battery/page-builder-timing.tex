@@ -1,0 +1,58 @@
+% When the page builder runs, and what a kern makes it wait for.
+%
+% Two rules from `tex.web` §1000 and §1057, both visible through `\pagetotal`.
+%
+% **§1057: glue, a kern or a rule does not exercise the page builder.** TeX runs
+% it after a box (§1076), a penalty (§1103), `\par` (§1094), an insertion or a
+% mark (§1101), a new paragraph (§1091), and the end of `\output` (§1026) — and
+% nowhere else. So a `\vskip` on its own leaves `\pagetotal` exactly where it
+% was until something else arrives. We ran the builder after glue and kerns too,
+% which is not merely early: it fires `\output` at a different point in the
+% token stream, so a macro that assigns to `\vsize` or `\output` between a skip
+% and the box after it sees a different page.
+%
+% **§1000: a kern waits for what follows it.** `kern_node: if link(p)=null then
+% return` — a kern is a legal breakpoint exactly when *glue* comes next, so
+% until something does, TeX cannot classify it and stops, leaving it on the
+% contribution list. We guessed "not a breakpoint" and moved it on, which loses
+% the breakpoint for good once the glue arrives. trip.tex's `\kern-50pt` ahead
+% of a paragraph is one of those: TeX weighs a break there and we never did.
+\catcode`\{=1 \catcode`\}=2 \catcode`\#=6
+\font\rip=cmr10 \rip
+\hsize=100pt \vsize=200pt \topskip=0pt \maxdepth=2pt \parindent=0pt
+\baselineskip=10pt \lineskip=0pt \lineskiplimit=0pt
+\output={\shipout\box255}
+
+% A box exercises the builder, so its height is on the page.
+\hbox{}
+\message{<box t=\the\pagetotal>}
+
+% A kern does not — and could not, since what follows decides whether it is a
+% breakpoint at all.
+\kern 7pt
+\message{<kern t=\the\pagetotal>}
+
+% Nor does glue.
+\vskip 3pt
+\message{<glue t=\the\pagetotal>}
+
+% Nor does a rule (§1056 appends it and stops).
+\hrule height 1pt
+\message{<rule t=\the\pagetotal>}
+
+% The next box runs the builder, and everything waiting arrives at once.
+\hbox{}
+\message{<box2 t=\the\pagetotal>}
+
+% A penalty runs it too (§1103).
+\kern 4pt
+\penalty 100
+\message{<penalty t=\the\pagetotal>}
+
+% And `\mark` (§1101).
+\kern 6pt
+\mark{m}
+\message{<mark t=\the\pagetotal>}
+
+\penalty-10000
+\end

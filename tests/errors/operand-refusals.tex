@@ -1,0 +1,17 @@
+% Commands whose legality is decided before their following operands are read.
+%
+% `tex.web` §1048 routes horizontal movers used in horizontal/math modes, and
+% vertical movers used in vertical mode, straight to `report_illegal_case`.
+% The following dimension and box tokens therefore remain available to normal
+% command processing.  §1236 does the same ordering for arithmetic targets: an
+% invalid target is consumed and reported, but `by` and the operand are not.
+\catcode`\{=1 \catcode`\}=2
+\font\f=cmr10 \f
+\setbox0=\hbox{X}
+$\moveleft\lastbox$
+\hbox{\moveright\copy0\raise1pt\copy0\lower1pt\copy0}
+\moveleft1pt\copy0
+\raise\copy0
+\advance\prevdepth\afterassignment\relax\count0=7
+\showthe\count0
+\end

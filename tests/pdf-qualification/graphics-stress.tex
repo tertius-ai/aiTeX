@@ -1,0 +1,56 @@
+% Original synthetic raster/vector workload for redistributable qualification.
+\documentclass[10pt]{article}
+% aiTeX's direct-PDF adapter advertises pdfTeX-compatible output while using
+% dvipdfmx specials as its private image transport.  Keep that route
+% driver-neutral, but select dvipdfmx explicitly for the stock DVI reference.
+\ifdefined\pdfoutput
+  \ifnum\pdfoutput>0
+    \usepackage{graphicx}
+    \usepackage{xcolor}
+  \else
+    \usepackage[dvipdfmx]{graphicx}
+    \usepackage[dvipdfmx]{xcolor}
+  \fi
+\else
+  \usepackage[dvipdfmx]{graphicx}
+  \usepackage[dvipdfmx]{xcolor}
+\fi
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\newcount\aitexgraphicpage
+\aitexgraphicpage=0
+\providecommand{\aitexqualificationpages}{12}
+
+\begin{document}
+\loop
+  \advance\aitexgraphicpage by 1
+  {\Large\bfseries Raster and vector page \number\aitexgraphicpage}\par\medskip
+
+  Deterministic RGB PNG, cropped and rotated:\par
+  \includegraphics[width=230bp,trim=11 7 13 9,clip,angle=3]{pattern.png}\par
+  \medskip
+
+  Deterministic alpha PNG over a non-white backing:\par
+  \colorbox{yellow}{\includegraphics[width=150bp,angle=-5]{alpha.png}}\par
+  \medskip
+
+  Native one-bit gray, eight-bit gray, and indexed color-key PNGs:\par
+  \includegraphics[width=65bp]{gray-1.png}\quad
+  \includegraphics[width=65bp]{gray-8.png}\quad
+  \colorbox{cyan}{\includegraphics[width=65bp]{indexed-2-trns.png}}\par
+  \medskip
+
+  Identical RGB bytes through a second name and transformation:\par
+  \includegraphics[width=95bp,trim=17 9 21 11,clip,angle=-4]{pattern-copy.png}\par
+  \medskip
+
+  Original vector EPS, reused at two transformations:\par
+  \includegraphics[width=90bp]{driver-image.eps}\quad
+  \includegraphics[width=65bp,angle=12]{driver-image.eps}\par
+
+  \vfill
+  Graphics qualification page \number\aitexgraphicpage\hfill aiTeX
+  \newpage
+\ifnum\aitexgraphicpage<\aitexqualificationpages
+\repeat
+\end{document}

@@ -1,0 +1,26 @@
+% `tex.web` §233 and §1233: `\textfont`, `\scriptfont` and `\scriptscriptfont`
+% are eqtb entries like any other.
+%
+%     define(fam_fnt(cur_val+size_code),data,f)
+%
+% `define` is the grouped one, so a family set inside braces goes back at the
+% closing brace and §252 traces it by the font's *identifier* — the control
+% sequence `\font` created, not the file it came from.
+%
+% We wrote the assignment straight into the table, so a formula that set
+% `\scriptfont2` inside a group kept it afterwards. LaTeX changes the math
+% families inside groups constantly — every `\mathversion` and every size
+% change does — so this leaked far outside trip.
+\catcode`\{=1 \catcode`\}=2
+\tracingonline=1 \tracingrestores=1
+\font\rm=cmr10 \font\sy=cmsy10 \font\ex=cmex10
+\textfont2=\sy \scriptfont2=\sy
+% A report first, so the message does not join TeX's `(./file.tex`.
+\showthe\escapechar
+\message{PROBE:before=[\fontname\textfont2][\fontname\scriptfont2]}
+\showthe\escapechar
+{\scriptfont2=\ex \textfont2=\rm
+ \message{PROBE:inside=[\fontname\textfont2][\fontname\scriptfont2]}\showthe\escapechar}
+\message{PROBE:after=[\fontname\textfont2][\fontname\scriptfont2]}
+\showthe\escapechar
+\end

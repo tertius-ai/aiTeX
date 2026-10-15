@@ -1,0 +1,23 @@
+% e-TeX's \currentiftype belongs to the innermost open conditional and is
+% restored when that level closes; \unless negates only its own level.
+\catcode`\{=1 \catcode`\}=2
+\message{<base:\the\currentiflevel,\the\currentiftype,\the\currentifbranch>}
+\iftrue
+  \message{<outer:\the\currentiflevel,\the\currentiftype,\the\currentifbranch>}
+  \ifcase0
+    \message{<inner:\the\currentiflevel,\the\currentiftype,\the\currentifbranch>}
+  \fi
+  \message{<restored:\the\currentiflevel,\the\currentiftype,\the\currentifbranch>}
+  \ifcase2 skipped\or skipped\or
+    \message{<case-two:\the\currentiflevel,\the\currentiftype,\the\currentifbranch>}
+  \fi
+  \ifcase9 skipped\or skipped\else
+    \message{<case-else:\the\currentiflevel,\the\currentiftype,\the\currentifbranch>}
+  \fi
+  \unless\iffalse
+    \message{<unless:\the\currentiflevel,\the\currentiftype,\the\currentifbranch>}
+  \fi
+  \message{<again:\the\currentiflevel,\the\currentiftype,\the\currentifbranch>}
+\fi
+\message{<done:\the\currentiflevel,\the\currentiftype,\the\currentifbranch>}
+\end

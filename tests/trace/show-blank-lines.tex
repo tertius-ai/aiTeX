@@ -1,0 +1,54 @@
+% `tex.web` §90, the tail of `error`, and where its blank line comes from:
+%
+%     if interaction>batch_mode then decr(selector);
+%     ... help lines, each via print_nl ...
+%     print_ln;
+%     if interaction>batch_mode then incr(selector);
+%     print_ln
+%
+% One `print_ln` closes whatever line the help (or, with `help0`, the error
+% context) left open, and the second shows as a blank line. Every report ends
+% that way, including the ones that are not faults: §1298 sends `\show`,
+% `\showthe`, `\showbox` and `\showlists` through `error` too.
+%
+% `\show` and `\showthe` were the two reports in this engine that ended without
+% it — their `> …` line *is* the message, so they never went through the same
+% path as an error with a `!` line above it, and they lost the blank with it.
+% trip.log has 67 of these.
+%
+% §863's paragraph narration is the same fact in another place: `begin_diagnostic
+% … end_diagnostic(true)` around the whole of `@firstpass … @@2: line 2.2-`, so
+% two consecutive paragraphs are two blocks and not one.
+%
+% Blank lines are only worth testing because tools/trace_check.sh compares them
+% now. It could not before: TeX opens the log with a `(./file.tex` line this
+% engine has no equivalent for, and dropping that left a leading blank with
+% nothing to match. Leading blanks are dropped on both sides instead, which
+% costs nothing — no case begins with one — and leaves every interior blank
+% under comparison.
+\catcode`\{=1 \catcode`\}=2
+\tracingonline=1
+\hsize=100pt \parindent=0pt
+\font\rip=cmr10 \rip
+
+% The first thing in the log, so that what follows starts at column 0 in both
+% engines: TeX's `\message` puts a space in front of itself when the line
+% already has something on it, and at the very top of the log that something is
+% the `(./file.tex` this engine does not write.
+\showthe\hsize
+\message{BETWEEN}
+\show\hsize
+\message{AFTER}
+
+% ...and an error with help text, which ends with the same single blank line
+% by a different route: the help's own `print_nl` closes the context line.
+\count1=\undefinedzz
+\message{END}
+
+% Two paragraphs in a row, so the boundary between their narrations is visible.
+% Both break on the first pass on purpose: what the *second* pass narrates is
+% its own piece of work and would swamp the blank line this case is about.
+\tracingparagraphs=1
+AAA AAA AAA AAA\par
+AAA AAA AAA AAA\par
+\end

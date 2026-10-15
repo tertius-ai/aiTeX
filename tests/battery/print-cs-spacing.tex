@@ -1,0 +1,78 @@
+% §262 `print_cs` renders a control-sequence name in three shapes, and the
+% trailing space is part of the rendering rather than an afterthought:
+%
+%     procedure print_cs(@!p:integer); {prints a purported control sequence}
+%     begin if p<hash_base then {single character}
+%       if p>=single_base then
+%         if p=null_cs then
+%           begin print_esc("csname"); print_esc("endcsname"); print_char(" ");
+%           end
+%         else  begin print_esc(p-single_base);
+%           if cat_code(p-single_base)=letter then print_char(" ");
+%           end
+%       else if p<active_base then print_esc("IMPOSSIBLE.")
+%       else print(p-active_base)
+%     ...
+%     else  begin print_esc(text(p));
+%       print_char(" ");
+%       end;
+%
+% So: an *active character* prints bare — no escape character and no trailing
+% space. A *single-character* control sequence prints with the escape and gets
+% a trailing space only when that character's catcode is currently `letter` —
+% a live `\catcode` test, not a question about the alphabet. A control *word*
+% always gets the space.
+%
+% `sprint_cs` is the same minus the error checks and minus every trailing
+% space; it is what `\string` and `\csname` echoing use.
+%
+% print_cs backs `show_token_list` (§294), and so `\tracingmacros`,
+% `\tracingcommands`, `\message`, `\write` (§1370 `write_out` calls
+% `token_show`), `\meaning` and `\detokenize`.
+\input plain
+% An active character: bare, no escape, no space. Braces mark the edges so a
+% dropped or added space is visible.
+\message{<str=[\string~]>}
+\message{<detok=[\detokenize{~}]>}
+\def\usesactive{a~b}
+\message{<meaning=[\meaning\usesactive]>}
+% A control word: escape plus a trailing space, always.
+\message{<word=[\detokenize{\hbox}]>}
+\message{<wordstr=[\string\hbox]>}
+% A single-character control sequence whose character is a letter: space.
+\message{<oneletter=[\detokenize{\a}]>}
+% …and one whose character is not: no space. (Not `\+` — plain makes it
+% `\outer`, and `\detokenize` refuses to scan one.)
+\message{<onepunct=[\detokenize{\,}]>}
+\message{<onespace=[\detokenize{\ }]>}
+% The letter test reads the *current* catcode. With `@` made a letter, `\@`
+% becomes a control word for printing purposes and picks up the space.
+\catcode`\@=11
+\message{<atletter=[\detokenize{\@}]>}
+\catcode`\@=12
+\message{<atother=[\detokenize{\@}]>}
+% The converse: a letter demoted to `other` loses the space. It has to be a
+% letter that no control word still ahead of us is spelled with — demoting `a`
+% takes `\catcode` and `\message` with it, and `z` is inside `\detokenize`.
+\message{<qletter=[\detokenize{\q}]>}
+{\catcode`\q=12 \message{<qdemoted=[\detokenize{\q}]>}}
+\message{<qrestored=[\detokenize{\q}]>}
+% `\string` never adds a space, whatever the catcode.
+\catcode`\@=11
+\message{<stratletter=[\string\@]>}
+\catcode`\@=12
+% `\csname\endcsname` — the null control sequence — prints both halves and a
+% space.
+\expandafter\message\expandafter{\expandafter<\expandafter n\expandafter u\expandafter l\expandafter l\expandafter c\expandafter s\expandafter =\expandafter [\expandafter\detokenize\expandafter{\csname\endcsname}]>}
+% `\escapechar` chooses the escape character, and a value outside 0..255
+% suppresses it entirely (§63).
+\escapechar=`\!
+\message{<escbang=[\detokenize{\hbox}]>}
+\escapechar=-1
+\message{<escnone=[\detokenize{\hbox}]>}
+\escapechar=`\\
+% An active character is unaffected by `\escapechar`: it never had an escape.
+\escapechar=`\!
+\message{<escactive=[\string~]>}
+\escapechar=`\\
+\end

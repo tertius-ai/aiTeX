@@ -1,0 +1,32 @@
+% `tex.web` §175: a ligature shows the characters it was *made of*.
+%
+%     ligature_node: short_display(lig_ptr(p)); {recursive call}
+%
+% §174's `short_display` is the one-line summary of a box's contents that §663
+% prints above an underfull or overfull warning, and §857 prints in a
+% paragraph's narration. For a ligature it recurses into the original
+% characters, so `office` reads `office` however many ligatures cmr10 made of
+% it — `ffi` is one node and prints three letters.
+%
+% We printed the ligature's own character. Those live where the font keeps
+% them, not where the letters do, so `office fluffy waffle` came out as
+% `oce uy wae`: every ligature silently *missing* from the line the warning is
+% about, which is the line a reader is trying to identify.
+%
+% In trip.tex the font's ligature for `BB` sits at `A`, so a paragraph of six
+% B's read `AAA` — three characters of the wrong letter, and the count wrong
+% too.
+\catcode`\{=1 \catcode`\}=2
+\tracingonline=1
+\hbadness=0 \hfuzz=0pt
+\showboxbreadth=1 \showboxdepth=0
+\hsize=200pt \parindent=0pt
+\font\rip=cmr10 \rip
+
+office fluffy waffle\par
+
+% A discretionary's halves go through the same routine, so a hyphenated
+% ligature shows its letters on both sides of the break.
+\hsize=48pt
+office fluffy waffle\par
+\end

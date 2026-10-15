@@ -1,0 +1,4446 @@
+{
+  "schema": 2,
+  "description": "Warm per-document LaTeX preamble snapshot benchmark",
+  "created_at": "2026-08-30T19:41:17+00:00",
+  "cold_results_sha256": "64fd532b86fce881f0364ecce2e4978ece3005caeff7f06495e14236c4c7c79b",
+  "sources_sha256": "ba336a6dded14b38332bc6e0a1008443883f167dabb21c7fc650abf9067041b2",
+  "runner_sha256": "956a3e45b643e3bdb5ff6b205dc9e70f668311535979abe6d52b26b6f80d4096",
+  "selection": "locked roots whose stock DVI route succeeded",
+  "cold_compiler": {
+    "git_commit": "5e0c72615d3d50074197429ac32ec9c95373d22b",
+    "binary_sha256": "136d6e3a6a34fa7484eb675d20b19f0a7d4b06dff2f7163c3617de012d219c77",
+    "format_sha256": "52d350415bbc74f05883ba0050277ec87d7e01aea24e7366d845c02349dc3209",
+    "version": "0.1.0"
+  },
+  "binary_sha256": "f69e5e7d1e8a280c9d37b6bf2095b4ed8923509449856d47cb3c7c395fe9ae62",
+  "format_sha256": "79bb598f39578f002800c9c30b819e66da35bad0d12cda93eb7d958c3a62a0e9",
+  "jobs": 3,
+  "selected": 56,
+  "valid_snapshot_hits": 56,
+  "entries": [
+    {
+      "id": "2608.27447v1",
+      "status": "valid",
+      "stock_setup_passes": 2,
+      "candidate_setup_passes": 2,
+      "stock": {
+        "returncode": 0,
+        "seconds": 4.434928,
+        "cpu_seconds": 4.42,
+        "timed_out": false,
+        "user_seconds": 0.88,
+        "system_seconds": 3.54,
+        "max_rss_kib": 40448,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 200704,
+        "output": {
+          "valid": true,
+          "pages": 23,
+          "characters": 23858,
+          "characters_sha256": "6101185d52eecdc88adc005f8fca9cc657a72db4122e65ae23b4a19f2e7a6e39",
+          "bytes": 152252
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 2.477012,
+        "cpu_seconds": 2.47,
+        "timed_out": false,
+        "user_seconds": 0.65,
+        "system_seconds": 1.82,
+        "max_rss_kib": 52996,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 11948032,
+        "output": {
+          "valid": true,
+          "pages": 23,
+          "characters": 23858,
+          "characters_sha256": "6101185d52eecdc88adc005f8fca9cc657a72db4122e65ae23b4a19f2e7a6e39",
+          "bytes": 160240
+        },
+        "snapshot_written": true,
+        "snapshot_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 1.441637,
+        "cpu_seconds": 1.43,
+        "timed_out": false,
+        "user_seconds": 0.29,
+        "system_seconds": 1.14,
+        "max_rss_kib": 37120,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 188416,
+        "output": {
+          "valid": true,
+          "pages": 23,
+          "characters": 23858,
+          "characters_sha256": "6101185d52eecdc88adc005f8fca9cc657a72db4122e65ae23b4a19f2e7a6e39",
+          "bytes": 160240
+        },
+        "snapshot_written": false,
+        "snapshot_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.27427v1",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 5.406069,
+        "cpu_seconds": 5.4,
+        "timed_out": false,
+        "user_seconds": 1.16,
+        "system_seconds": 4.24,
+        "max_rss_kib": 40704,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 356352,
+        "output": {
+          "valid": true,
+          "pages": 36,
+          "characters": 85219,
+          "characters_sha256": "8211ec26869a9a3006bad4fdc448a57b4d88bde87990021c1c5a874b6e67c1c3",
+          "bytes": 275084
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 2.898791,
+        "cpu_seconds": 2.88,
+        "timed_out": false,
+        "user_seconds": 0.93,
+        "system_seconds": 1.95,
+        "max_rss_kib": 73216,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 15720448,
+        "output": {
+          "valid": true,
+          "pages": 36,
+          "characters": 85219,
+          "characters_sha256": "8211ec26869a9a3006bad4fdc448a57b4d88bde87990021c1c5a874b6e67c1c3",
+          "bytes": 294004
+        },
+        "snapshot_written": true,
+        "snapshot_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 1.637207,
+        "cpu_seconds": 1.63,
+        "timed_out": false,
+        "user_seconds": 0.51,
+        "system_seconds": 1.12,
+        "max_rss_kib": 48384,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 344064,
+        "output": {
+          "valid": true,
+          "pages": 36,
+          "characters": 85219,
+          "characters_sha256": "8211ec26869a9a3006bad4fdc448a57b4d88bde87990021c1c5a874b6e67c1c3",
+          "bytes": 294004
+        },
+        "snapshot_written": false,
+        "snapshot_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.27398v1",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 3.637285,
+        "cpu_seconds": 3.63,
+        "timed_out": false,
+        "user_seconds": 0.74,
+        "system_seconds": 2.89,
+        "max_rss_kib": 40704,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 266240,
+        "output": {
+          "valid": true,
+          "pages": 32,
+          "characters": 38497,
+          "characters_sha256": "edaa014da37d426400eeace77da773791148dee1e07ea01b168b35158f90dfe6",
+          "bytes": 215104
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 2.001794,
+        "cpu_seconds": 1.99,
+        "timed_out": false,
+        "user_seconds": 0.56,
+        "system_seconds": 1.43,
+        "max_rss_kib": 45988,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 10584064,
+        "output": {
+          "valid": true,
+          "pages": 32,
+          "characters": 38497,
+          "characters_sha256": "edaa014da37d426400eeace77da773791148dee1e07ea01b168b35158f90dfe6",
+          "bytes": 221564
+        },
+        "snapshot_written": true,
+        "snapshot_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 1.185086,
+        "cpu_seconds": 1.17,
+        "timed_out": false,
+        "user_seconds": 0.28,
+        "system_seconds": 0.89,
+        "max_rss_kib": 35584,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 258048,
+        "output": {
+          "valid": true,
+          "pages": 32,
+          "characters": 38497,
+          "characters_sha256": "edaa014da37d426400eeace77da773791148dee1e07ea01b168b35158f90dfe6",
+          "bytes": 221564
+        },
+        "snapshot_written": false,
+        "snapshot_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.27356v1",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 3.451176,
+        "cpu_seconds": 3.44,
+        "timed_out": false,
+        "user_seconds": 0.92,
+        "system_seconds": 2.52,
+        "max_rss_kib": 39936,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 335872,
+        "output": {
+          "valid": true,
+          "pages": 32,
+          "characters": 55443,
+          "characters_sha256": "04e2647579c82d40aaa55628f87c369219b52701bf09e45a48669a12186f2226",
+          "bytes": 282332
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 2.263381,
+        "cpu_seconds": 2.25,
+        "timed_out": false,
+        "user_seconds": 0.74,
+        "system_seconds": 1.51,
+        "max_rss_kib": 99036,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 18558976,
+        "output": {
+          "valid": true,
+          "pages": 32,
+          "characters": 55443,
+          "characters_sha256": "04e2647579c82d40aaa55628f87c369219b52701bf09e45a48669a12186f2226",
+          "bytes": 296116
+        },
+        "snapshot_written": true,
+        "snapshot_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.484492,
+        "cpu_seconds": 0.47,
+        "timed_out": false,
+        "user_seconds": 0.3,
+        "system_seconds": 0.17,
+        "max_rss_kib": 49152,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 331776,
+        "output": {
+          "valid": true,
+          "pages": 32,
+          "characters": 55443,
+          "characters_sha256": "04e2647579c82d40aaa55628f87c369219b52701bf09e45a48669a12186f2226",
+          "bytes": 296116
+        },
+        "snapshot_written": false,
+        "snapshot_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.27347v1",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 12.170153,
+        "cpu_seconds": 12.15,
+        "timed_out": false,
+        "user_seconds": 7.54,
+        "system_seconds": 4.61,
+        "max_rss_kib": 50432,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 2383872,
+        "output": {
+          "valid": true,
+          "pages": 18,
+          "characters": 41867,
+          "characters_sha256": "9caa269920c56e108278ec4bdc27398ea6a8fea2264d7adc5ef4e7839d17540d",
+          "bytes": 2309652
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 13.691843,
+        "cpu_seconds": 13.67,
+        "timed_out": false,
+        "user_seconds": 11.26,
+        "system_seconds": 2.41,
+        "max_rss_kib": 100356,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 16822272,
+        "output": {
+          "valid": true,
+          "pages": 18,
+          "characters": 41867,
+          "characters_sha256": "9caa269920c56e108278ec4bdc27398ea6a8fea2264d7adc5ef4e7839d17540d",
+          "bytes": 2320644
+        },
+        "snapshot_written": true,
+        "snapshot_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 11.757867,
+        "cpu_seconds": 11.74,
+        "timed_out": false,
+        "user_seconds": 10.47,
+        "system_seconds": 1.27,
+        "max_rss_kib": 105384,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 2355200,
+        "output": {
+          "valid": true,
+          "pages": 18,
+          "characters": 41867,
+          "characters_sha256": "9caa269920c56e108278ec4bdc27398ea6a8fea2264d7adc5ef4e7839d17540d",
+          "bytes": 2320644
+        },
+        "snapshot_written": false,
+        "snapshot_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.27304v1",
+      "status": "valid",
+      "stock_setup_passes": 2,
+      "candidate_setup_passes": 2,
+      "stock": {
+        "returncode": 0,
+        "seconds": 3.334155,
+        "cpu_seconds": 3.33,
+        "timed_out": false,
+        "user_seconds": 0.7,
+        "system_seconds": 2.63,
+        "max_rss_kib": 40448,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 192512,
+        "output": {
+          "valid": true,
+          "pages": 21,
+          "characters": 50015,
+          "characters_sha256": "37936a2fee6120bcd19a30c45f16e2a7be88698f5ed1cf953680dd591dfeb939",
+          "bytes": 142144
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 2.181709,
+        "cpu_seconds": 2.16,
+        "timed_out": false,
+        "user_seconds": 0.58,
+        "system_seconds": 1.58,
+        "max_rss_kib": 57812,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 11014144,
+        "output": {
+          "valid": true,
+          "pages": 21,
+          "characters": 50015,
+          "characters_sha256": "37936a2fee6120bcd19a30c45f16e2a7be88698f5ed1cf953680dd591dfeb939",
+          "bytes": 154816
+        },
+        "snapshot_written": true,
+        "snapshot_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 1.186015,
+        "cpu_seconds": 1.17,
+        "timed_out": false,
+        "user_seconds": 0.23,
+        "system_seconds": 0.94,
+        "max_rss_kib": 34048,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 184320,
+        "output": {
+          "valid": true,
+          "pages": 21,
+          "characters": 50015,
+          "characters_sha256": "37936a2fee6120bcd19a30c45f16e2a7be88698f5ed1cf953680dd591dfeb939",
+          "bytes": 154816
+        },
+        "snapshot_written": false,
+        "snapshot_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.27283v1",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 5.521175,
+        "cpu_seconds": 5.51,
+        "timed_out": false,
+        "user_seconds": 1.11,
+        "system_seconds": 4.4,
+        "max_rss_kib": 40192,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 163840,
+        "output": {
+          "valid": true,
+          "pages": 20,
+          "characters": 24479,
+          "characters_sha256": "791ce6f6c8ba81d018ef5672538d4dcc76f6f760dffc05fa4ca1eaff7ed6b2ea",
+          "bytes": 115496
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 2.956861,
+        "cpu_seconds": 2.95,
+        "timed_out": false,
+        "user_seconds": 0.72,
+        "system_seconds": 2.23,
+        "max_rss_kib": 59128,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 14569472,
+        "output": {
+          "valid": true,
+          "pages": 20,
+          "characters": 24479,
+          "characters_sha256": "791ce6f6c8ba81d018ef5672538d4dcc76f6f760dffc05fa4ca1eaff7ed6b2ea",
+          "bytes": 122064
+        },
+        "snapshot_written": true,
+        "snapshot_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 1.736203,
+        "cpu_seconds": 1.72,
+        "timed_out": false,
+        "user_seconds": 0.31,
+        "system_seconds": 1.41,
+        "max_rss_kib": 42752,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 135168,
+        "output": {
+          "valid": true,
+          "pages": 20,
+          "characters": 24479,
+          "characters_sha256": "791ce6f6c8ba81d018ef5672538d4dcc76f6f760dffc05fa4ca1eaff7ed6b2ea",
+          "bytes": 122064
+        },
+        "snapshot_written": false,
+        "snapshot_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.27276v1",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 4.678858,
+        "cpu_seconds": 4.66,
+        "timed_out": false,
+        "user_seconds": 1.03,
+        "system_seconds": 3.63,
+        "max_rss_kib": 40960,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 204800,
+        "output": {
+          "valid": true,
+          "pages": 17,
+          "characters": 24729,
+          "characters_sha256": "d699e2292f9a87ae5c546ebae4ff028d117a1b561aaf434bbf880164bc340fd5",
+          "bytes": 144500
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 2.863154,
+        "cpu_seconds": 2.85,
+        "timed_out": false,
+        "user_seconds": 0.73,
+        "system_seconds": 2.12,
+        "max_rss_kib": 74776,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 18898944,
+        "output": {
+          "valid": true,
+          "pages": 17,
+          "characters": 24729,
+          "characters_sha256": "d699e2292f9a87ae5c546ebae4ff028d117a1b561aaf434bbf880164bc340fd5",
+          "bytes": 145384
+        },
+        "snapshot_written": true,
+        "snapshot_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 1.113959,
+        "cpu_seconds": 1.1,
+        "timed_out": false,
+        "user_seconds": 0.31,
+        "system_seconds": 0.79,
+        "max_rss_kib": 49408,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 180224,
+        "output": {
+          "valid": true,
+          "pages": 17,
+          "characters": 24729,
+          "characters_sha256": "d699e2292f9a87ae5c546ebae4ff028d117a1b561aaf434bbf880164bc340fd5",
+          "bytes": 145384
+        },
+        "snapshot_written": false,
+        "snapshot_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.27203v1",
+      "status": "valid",
+      "stock_setup_passes": 2,
+      "candidate_setup_passes": 2,
+      "stock": {
+        "returncode": 0,
+        "seconds": 4.718728,
+        "cpu_seconds": 4.7,
+        "timed_out": false,
+        "user_seconds": 1.12,
+        "system_seconds": 3.58,
+        "max_rss_kib": 40960,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 172032,
+        "output": {
+          "valid": true,
+          "pages": 14,
+          "characters": 26708,
+          "characters_sha256": "cc71dc7668fa070b323fb113c0444806e8d56bfeffa04afc86131e0b8b1e5c97",
+          "bytes": 122428
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 2.411377,
+        "cpu_seconds": 2.4,
+        "timed_out": false,
+        "user_seconds": 0.73,
+        "system_seconds": 1.67,
+        "max_rss_kib": 48720,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 8257536,
+        "output": {
+          "valid": true,
+          "pages": 14,
+          "characters": 26708,
+          "characters_sha256": "cc71dc7668fa070b323fb113c0444806e8d56bfeffa04afc86131e0b8b1e5c97",
+          "bytes": 128064
+        },
+        "snapshot_written": true,
+        "snapshot_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 1.116338,
+        "cpu_seconds": 1.1,
+        "timed_out": false,
+        "user_seconds": 0.26,
+        "system_seconds": 0.84,
+        "max_rss_kib": 30976,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 151552,
+        "output": {
+          "valid": true,
+          "pages": 14,
+          "characters": 26708,
+          "characters_sha256": "cc71dc7668fa070b323fb113c0444806e8d56bfeffa04afc86131e0b8b1e5c97",
+          "bytes": 128064
+        },
+        "snapshot_written": false,
+        "snapshot_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.26969v1",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 4.622337,
+        "cpu_seconds": 4.6,
+        "timed_out": false,
+        "user_seconds": 1.41,
+        "system_seconds": 3.19,
+        "max_rss_kib": 40960,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 282624,
+        "output": {
+          "valid": true,
+          "pages": 26,
+          "characters": 40619,
+          "characters_sha256": "c0d730ab56e732d836816bfea218bcb554bac90fbec914cf46920048815e9d98",
+          "bytes": 229400
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 2.727333,
+        "cpu_seconds": 2.72,
+        "timed_out": false,
+        "user_seconds": 1.34,
+        "system_seconds": 1.38,
+        "max_rss_kib": 63140,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 8568832,
+        "output": {
+          "valid": true,
+          "pages": 26,
+          "characters": 40619,
+          "characters_sha256": "c0d730ab56e732d836816bfea218bcb554bac90fbec914cf46920048815e9d98",
+          "bytes": 240536
+        },
+        "snapshot_written": true,
+        "snapshot_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 1.483728,
+        "cpu_seconds": 1.47,
+        "timed_out": false,
+        "user_seconds": 0.84,
+        "system_seconds": 0.63,
+        "max_rss_kib": 43904,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 262144,
+        "output": {
+          "valid": true,
+          "pages": 26,
+          "characters": 40619,
+          "characters_sha256": "c0d730ab56e732d836816bfea218bcb554bac90fbec914cf46920048815e9d98",
+          "bytes": 240536
+        },
+        "snapshot_written": false,
+        "snapshot_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.26936v1",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 2.838507,
+        "cpu_seconds": 2.83,
+        "timed_out": false,
+        "user_seconds": 0.65,
+        "system_seconds": 2.18,
+        "max_rss_kib": 40960,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 225280,
+        "output": {
+          "valid": true,
+          "pages": 19,
+          "characters": 36979,
+          "characters_sha256": "4d9f9e1a795a2df68cccab2f3e6028df32307e562b997e1900bcebe35010c43c",
+          "bytes": 187340
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 1.679369,
+        "cpu_seconds": 1.67,
+        "timed_out": false,
+        "user_seconds": 0.47,
+        "system_seconds": 1.2,
+        "max_rss_kib": 56376,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 10072064,
+        "output": {
+          "valid": true,
+          "pages": 19,
+          "characters": 36979,
+          "characters_sha256": "4d9f9e1a795a2df68cccab2f3e6028df32307e562b997e1900bcebe35010c43c",
+          "bytes": 195660
+        },
+        "snapshot_written": true,
+        "snapshot_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.735704,
+        "cpu_seconds": 0.72,
+        "timed_out": false,
+        "user_seconds": 0.19,
+        "system_seconds": 0.53,
+        "max_rss_kib": 33792,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 217088,
+        "output": {
+          "valid": true,
+          "pages": 19,
+          "characters": 36979,
+          "characters_sha256": "4d9f9e1a795a2df68cccab2f3e6028df32307e562b997e1900bcebe35010c43c",
+          "bytes": 195660
+        },
+        "snapshot_written": false,
+        "snapshot_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.26923v1",
+      "status": "valid",
+      "stock_setup_passes": 2,
+      "candidate_setup_passes": 2,
+      "stock": {
+        "returncode": 0,
+        "seconds": 5.452003,
+        "cpu_seconds": 5.44,
+        "timed_out": false,
+        "user_seconds": 1.21,
+        "system_seconds": 4.23,
+        "max_rss_kib": 41728,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 258048,
+        "output": {
+          "valid": true,
+          "pages": 21,
+          "characters": 43463,
+          "characters_sha256": "e6fe6ac5a3628d54ee278403865390a442f3d04370fce9d21da96af4ab2832bc",
+          "bytes": 187920
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 2.70317,
+        "cpu_seconds": 2.69,
+        "timed_out": false,
+        "user_seconds": 1.0,
+        "system_seconds": 1.69,
+        "max_rss_kib": 73812,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 15499264,
+        "output": {
+          "valid": true,
+          "pages": 21,
+          "characters": 43463,
+          "characters_sha256": "e6fe6ac5a3628d54ee278403865390a442f3d04370fce9d21da96af4ab2832bc",
+          "bytes": 196596
+        },
+        "snapshot_written": true,
+        "snapshot_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 1.891554,
+        "cpu_seconds": 1.88,
+        "timed_out": false,
+        "user_seconds": 0.61,
+        "system_seconds": 1.27,
+        "max_rss_kib": 49408,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 237568,
+        "output": {
+          "valid": true,
+          "pages": 21,
+          "characters": 43463,
+          "characters_sha256": "e6fe6ac5a3628d54ee278403865390a442f3d04370fce9d21da96af4ab2832bc",
+          "bytes": 196596
+        },
+        "snapshot_written": false,
+        "snapshot_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.26922v1",
+      "status": "valid",
+      "stock_setup_passes": 2,
+      "candidate_setup_passes": 2,
+      "stock": {
+        "returncode": 0,
+        "seconds": 5.527481,
+        "cpu_seconds": 5.51,
+        "timed_out": false,
+        "user_seconds": 1.3,
+        "system_seconds": 4.21,
+        "max_rss_kib": 40704,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 192512,
+        "output": {
+          "valid": true,
+          "pages": 24,
+          "characters": 25783,
+          "characters_sha256": "ca4f24bd35a8d32a933446e68b2c05b5d072b2ec0068b9c54d00180a1655bcf3",
+          "bytes": 132168
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 2.844865,
+        "cpu_seconds": 2.83,
+        "timed_out": false,
+        "user_seconds": 0.85,
+        "system_seconds": 1.98,
+        "max_rss_kib": 56692,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 11042816,
+        "output": {
+          "valid": true,
+          "pages": 24,
+          "characters": 25783,
+          "characters_sha256": "ca4f24bd35a8d32a933446e68b2c05b5d072b2ec0068b9c54d00180a1655bcf3",
+          "bytes": 141648
+        },
+        "snapshot_written": true,
+        "snapshot_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 1.011543,
+        "cpu_seconds": 0.99,
+        "timed_out": false,
+        "user_seconds": 0.24,
+        "system_seconds": 0.75,
+        "max_rss_kib": 34792,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 167936,
+        "output": {
+          "valid": true,
+          "pages": 24,
+          "characters": 25783,
+          "characters_sha256": "ca4f24bd35a8d32a933446e68b2c05b5d072b2ec0068b9c54d00180a1655bcf3",
+          "bytes": 141648
+        },
+        "snapshot_written": false,
+        "snapshot_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.26904v1",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 4.640672,
+        "cpu_seconds": 4.62,
+        "timed_out": false,
+        "user_seconds": 1.08,
+        "system_seconds": 3.54,
+        "max_rss_kib": 41216,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 172032,
+        "output": {
+          "valid": true,
+          "pages": 11,
+          "characters": 19108,
+          "characters_sha256": "ac0c71878efbea058c0751bdafca7e4c79cc43d7b738c5d3b42c684641897d88",
+          "bytes": 94200
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 2.468742,
+        "cpu_seconds": 2.45,
+        "timed_out": false,
+        "user_seconds": 0.73,
+        "system_seconds": 1.72,
+        "max_rss_kib": 53616,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 7467008,
+        "output": {
+          "valid": true,
+          "pages": 11,
+          "characters": 19108,
+          "characters_sha256": "ac0c71878efbea058c0751bdafca7e4c79cc43d7b738c5d3b42c684641897d88",
+          "bytes": 96620
+        },
+        "snapshot_written": true,
+        "snapshot_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.636133,
+        "cpu_seconds": 0.62,
+        "timed_out": false,
+        "user_seconds": 0.18,
+        "system_seconds": 0.44,
+        "max_rss_kib": 29408,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 122880,
+        "output": {
+          "valid": true,
+          "pages": 11,
+          "characters": 19108,
+          "characters_sha256": "ac0c71878efbea058c0751bdafca7e4c79cc43d7b738c5d3b42c684641897d88",
+          "bytes": 96620
+        },
+        "snapshot_written": false,
+        "snapshot_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.26874v1",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 5.645497,
+        "cpu_seconds": 5.63,
+        "timed_out": false,
+        "user_seconds": 1.45,
+        "system_seconds": 4.18,
+        "max_rss_kib": 41728,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 131072,
+        "output": {
+          "valid": true,
+          "pages": 6,
+          "characters": 10318,
+          "characters_sha256": "da407fe902864e90d275f95fd05a06decb49e7ef577176fbeeb09489a7dfcc91",
+          "bytes": 56756
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 2.646731,
+        "cpu_seconds": 2.64,
+        "timed_out": false,
+        "user_seconds": 0.89,
+        "system_seconds": 1.75,
+        "max_rss_kib": 58812,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 11673600,
+        "output": {
+          "valid": true,
+          "pages": 6,
+          "characters": 10318,
+          "characters_sha256": "da407fe902864e90d275f95fd05a06decb49e7ef577176fbeeb09489a7dfcc91",
+          "bytes": 57972
+        },
+        "snapshot_written": true,
+        "snapshot_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.906726,
+        "cpu_seconds": 0.89,
+        "timed_out": false,
+        "user_seconds": 0.26,
+        "system_seconds": 0.63,
+        "max_rss_kib": 35840,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 90112,
+        "output": {
+          "valid": true,
+          "pages": 6,
+          "characters": 10318,
+          "characters_sha256": "da407fe902864e90d275f95fd05a06decb49e7ef577176fbeeb09489a7dfcc91",
+          "bytes": 57972
+        },
+        "snapshot_written": false,
+        "snapshot_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.26817v1",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 9.497983,
+        "cpu_seconds": 9.49,
+        "timed_out": false,
+        "user_seconds": 3.06,
+        "system_seconds": 6.43,
+        "max_rss_kib": 43008,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 700416,
+        "output": {
+          "valid": true,
+          "pages": 25,
+          "characters": 52999,
+          "characters_sha256": "d5ca23d9c7df1e7abff347ff64a7b7907b5d21d0e5594789131f0d3f01fe6c16",
+          "bytes": 444164
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 5.41925,
+        "cpu_seconds": 5.4,
+        "timed_out": false,
+        "user_seconds": 2.83,
+        "system_seconds": 2.57,
+        "max_rss_kib": 104268,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 22216704,
+        "output": {
+          "valid": true,
+          "pages": 25,
+          "characters": 52999,
+          "characters_sha256": "d5ca23d9c7df1e7abff347ff64a7b7907b5d21d0e5594789131f0d3f01fe6c16",
+          "bytes": 446512
+        },
+        "snapshot_written": true,
+        "snapshot_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 2.928024,
+        "cpu_seconds": 2.91,
+        "timed_out": false,
+        "user_seconds": 1.8,
+        "system_seconds": 1.11,
+        "max_rss_kib": 74972,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 638976,
+        "output": {
+          "valid": true,
+          "pages": 25,
+          "characters": 52999,
+          "characters_sha256": "d5ca23d9c7df1e7abff347ff64a7b7907b5d21d0e5594789131f0d3f01fe6c16",
+          "bytes": 446512
+        },
+        "snapshot_written": false,
+        "snapshot_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.26808v1",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 4.610412,
+        "cpu_seconds": 4.59,
+        "timed_out": false,
+        "user_seconds": 1.02,
+        "system_seconds": 3.57,
+        "max_rss_kib": 41216,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 266240,
+        "output": {
+          "valid": true,
+          "pages": 23,
+          "characters": 47028,
+          "characters_sha256": "2915ad2e1ee95756494c04126ad7d87cb4ffdc6dc32033a622d2b7fd474c4097",
+          "bytes": 216448
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 2.442316,
+        "cpu_seconds": 2.43,
+        "timed_out": false,
+        "user_seconds": 0.68,
+        "system_seconds": 1.75,
+        "max_rss_kib": 72948,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 15781888,
+        "output": {
+          "valid": true,
+          "pages": 23,
+          "characters": 47028,
+          "characters_sha256": "2915ad2e1ee95756494c04126ad7d87cb4ffdc6dc32033a622d2b7fd474c4097",
+          "bytes": 219656
+        },
+        "snapshot_written": true,
+        "snapshot_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.672062,
+        "cpu_seconds": 0.66,
+        "timed_out": false,
+        "user_seconds": 0.23,
+        "system_seconds": 0.43,
+        "max_rss_kib": 49408,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 233472,
+        "output": {
+          "valid": true,
+          "pages": 23,
+          "characters": 47028,
+          "characters_sha256": "2915ad2e1ee95756494c04126ad7d87cb4ffdc6dc32033a622d2b7fd474c4097",
+          "bytes": 219656
+        },
+        "snapshot_written": false,
+        "snapshot_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.26801v1",
+      "status": "valid",
+      "stock_setup_passes": 2,
+      "candidate_setup_passes": 2,
+      "stock": {
+        "returncode": 0,
+        "seconds": 1.757662,
+        "cpu_seconds": 1.75,
+        "timed_out": false,
+        "user_seconds": 0.25,
+        "system_seconds": 1.5,
+        "max_rss_kib": 40192,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 57344,
+        "output": {
+          "valid": true,
+          "pages": 9,
+          "characters": 19247,
+          "characters_sha256": "37ef706975b953954d4c8e10bf8a978cc1bd1a0fe14fdee91b10b446ea4546cf",
+          "bytes": 40428
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 1.055072,
+        "cpu_seconds": 1.04,
+        "timed_out": false,
+        "user_seconds": 0.2,
+        "system_seconds": 0.84,
+        "max_rss_kib": 41728,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 5140480,
+        "output": {
+          "valid": true,
+          "pages": 9,
+          "characters": 19247,
+          "characters_sha256": "37ef706975b953954d4c8e10bf8a978cc1bd1a0fe14fdee91b10b446ea4546cf",
+          "bytes": 44996
+        },
+        "snapshot_written": true,
+        "snapshot_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.698658,
+        "cpu_seconds": 0.68,
+        "timed_out": false,
+        "user_seconds": 0.07,
+        "system_seconds": 0.61,
+        "max_rss_kib": 20224,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 53248,
+        "output": {
+          "valid": true,
+          "pages": 9,
+          "characters": 19247,
+          "characters_sha256": "37ef706975b953954d4c8e10bf8a978cc1bd1a0fe14fdee91b10b446ea4546cf",
+          "bytes": 44996
+        },
+        "snapshot_written": false,
+        "snapshot_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.26770v1",
+      "status": "valid",
+      "stock_setup_passes": 2,
+      "candidate_setup_passes": 2,
+      "stock": {
+        "returncode": 0,
+        "seconds": 3.122652,
+        "cpu_seconds": 3.11,
+        "timed_out": false,
+        "user_seconds": 0.62,
+        "system_seconds": 2.49,
+        "max_rss_kib": 40448,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 106496,
+        "output": {
+          "valid": true,
+          "pages": 14,
+          "characters": 23963,
+          "characters_sha256": "2dfc32442ffa73c8f37fb62abf24824ad335efef9567c43c96ebec0232b5c2da",
+          "bytes": 77424
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 1.508256,
+        "cpu_seconds": 1.49,
+        "timed_out": false,
+        "user_seconds": 0.36,
+        "system_seconds": 1.13,
+        "max_rss_kib": 45076,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 10862592,
+        "output": {
+          "valid": true,
+          "pages": 14,
+          "characters": 23963,
+          "characters_sha256": "2dfc32442ffa73c8f37fb62abf24824ad335efef9567c43c96ebec0232b5c2da",
+          "bytes": 80776
+        },
+        "snapshot_written": true,
+        "snapshot_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.459279,
+        "cpu_seconds": 0.45,
+        "timed_out": false,
+        "user_seconds": 0.11,
+        "system_seconds": 0.34,
+        "max_rss_kib": 31488,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 90112,
+        "output": {
+          "valid": true,
+          "pages": 14,
+          "characters": 23963,
+          "characters_sha256": "2dfc32442ffa73c8f37fb62abf24824ad335efef9567c43c96ebec0232b5c2da",
+          "bytes": 80776
+        },
+        "snapshot_written": false,
+        "snapshot_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.26719v1",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 4.525144,
+        "cpu_seconds": 4.51,
+        "timed_out": false,
+        "user_seconds": 1.04,
+        "system_seconds": 3.47,
+        "max_rss_kib": 40192,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 217088,
+        "output": {
+          "valid": true,
+          "pages": 18,
+          "characters": 34524,
+          "characters_sha256": "734ca89e239faf73c023341155d09524a8fb8b1395dd21e78ab3cb3db382e876",
+          "bytes": 164912
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 2.36098,
+        "cpu_seconds": 2.35,
+        "timed_out": false,
+        "user_seconds": 0.69,
+        "system_seconds": 1.66,
+        "max_rss_kib": 73000,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 15343616,
+        "output": {
+          "valid": true,
+          "pages": 18,
+          "characters": 34524,
+          "characters_sha256": "734ca89e239faf73c023341155d09524a8fb8b1395dd21e78ab3cb3db382e876",
+          "bytes": 172468
+        },
+        "snapshot_written": true,
+        "snapshot_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 1.240454,
+        "cpu_seconds": 1.23,
+        "timed_out": false,
+        "user_seconds": 0.3,
+        "system_seconds": 0.93,
+        "max_rss_kib": 48896,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 196608,
+        "output": {
+          "valid": true,
+          "pages": 18,
+          "characters": 34524,
+          "characters_sha256": "734ca89e239faf73c023341155d09524a8fb8b1395dd21e78ab3cb3db382e876",
+          "bytes": 172468
+        },
+        "snapshot_written": false,
+        "snapshot_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.26707v1",
+      "status": "valid",
+      "stock_setup_passes": 2,
+      "candidate_setup_passes": 2,
+      "stock": {
+        "returncode": 0,
+        "seconds": 4.369605,
+        "cpu_seconds": 4.34,
+        "timed_out": false,
+        "user_seconds": 0.92,
+        "system_seconds": 3.42,
+        "max_rss_kib": 40960,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 233472,
+        "output": {
+          "valid": true,
+          "pages": 22,
+          "characters": 26765,
+          "characters_sha256": "7c61f78c558bc16dfbadee398ee91222aa007aa1a753621392deeb81bc43b507",
+          "bytes": 170520
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 2.571891,
+        "cpu_seconds": 2.55,
+        "timed_out": false,
+        "user_seconds": 0.7,
+        "system_seconds": 1.85,
+        "max_rss_kib": 83080,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 17592320,
+        "output": {
+          "valid": true,
+          "pages": 22,
+          "characters": 26765,
+          "characters_sha256": "7c61f78c558bc16dfbadee398ee91222aa007aa1a753621392deeb81bc43b507",
+          "bytes": 172968
+        },
+        "snapshot_written": true,
+        "snapshot_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 1.450147,
+        "cpu_seconds": 1.44,
+        "timed_out": false,
+        "user_seconds": 0.32,
+        "system_seconds": 1.12,
+        "max_rss_kib": 48384,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 217088,
+        "output": {
+          "valid": true,
+          "pages": 22,
+          "characters": 26765,
+          "characters_sha256": "7c61f78c558bc16dfbadee398ee91222aa007aa1a753621392deeb81bc43b507",
+          "bytes": 172968
+        },
+        "snapshot_written": false,
+        "snapshot_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.26692v1",
+      "status": "valid",
+      "stock_setup_passes": 2,
+      "candidate_setup_passes": 2,
+      "stock": {
+        "returncode": 0,
+        "seconds": 3.888357,
+        "cpu_seconds": 3.86,
+        "timed_out": false,
+        "user_seconds": 0.89,
+        "system_seconds": 2.97,
+        "max_rss_kib": 40448,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 208896,
+        "output": {
+          "valid": true,
+          "pages": 26,
+          "characters": 33149,
+          "characters_sha256": "b0f8c96a060f9458c3470cf94c461ea93a55f241a7397458179705fc5619077e",
+          "bytes": 156132
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 2.302359,
+        "cpu_seconds": 2.29,
+        "timed_out": false,
+        "user_seconds": 0.7,
+        "system_seconds": 1.59,
+        "max_rss_kib": 66340,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 13316096,
+        "output": {
+          "valid": true,
+          "pages": 26,
+          "characters": 33149,
+          "characters_sha256": "b0f8c96a060f9458c3470cf94c461ea93a55f241a7397458179705fc5619077e",
+          "bytes": 160732
+        },
+        "snapshot_written": true,
+        "snapshot_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 1.170395,
+        "cpu_seconds": 1.15,
+        "timed_out": false,
+        "user_seconds": 0.32,
+        "system_seconds": 0.83,
+        "max_rss_kib": 40704,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 192512,
+        "output": {
+          "valid": true,
+          "pages": 26,
+          "characters": 33149,
+          "characters_sha256": "b0f8c96a060f9458c3470cf94c461ea93a55f241a7397458179705fc5619077e",
+          "bytes": 160732
+        },
+        "snapshot_written": false,
+        "snapshot_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.26639v1",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 10.469533,
+        "cpu_seconds": 10.45,
+        "timed_out": false,
+        "user_seconds": 4.72,
+        "system_seconds": 5.73,
+        "max_rss_kib": 41472,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 638976,
+        "output": {
+          "valid": true,
+          "pages": 29,
+          "characters": 56154,
+          "characters_sha256": "646a6f4db6c9a65218e335a925e2ecc1ec4b4ab4f1bdb948331e0bfea05c7328",
+          "bytes": 580820
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 7.822982,
+        "cpu_seconds": 7.81,
+        "timed_out": false,
+        "user_seconds": 5.67,
+        "system_seconds": 2.14,
+        "max_rss_kib": 91496,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 18636800,
+        "output": {
+          "valid": true,
+          "pages": 29,
+          "characters": 56154,
+          "characters_sha256": "646a6f4db6c9a65218e335a925e2ecc1ec4b4ab4f1bdb948331e0bfea05c7328",
+          "bytes": 590524
+        },
+        "snapshot_written": true,
+        "snapshot_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 6.313602,
+        "cpu_seconds": 6.3,
+        "timed_out": false,
+        "user_seconds": 5.05,
+        "system_seconds": 1.25,
+        "max_rss_kib": 87676,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 618496,
+        "output": {
+          "valid": true,
+          "pages": 29,
+          "characters": 56154,
+          "characters_sha256": "646a6f4db6c9a65218e335a925e2ecc1ec4b4ab4f1bdb948331e0bfea05c7328",
+          "bytes": 590524
+        },
+        "snapshot_written": false,
+        "snapshot_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.26617v1",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 6.309389,
+        "cpu_seconds": 6.29,
+        "timed_out": false,
+        "user_seconds": 1.51,
+        "system_seconds": 4.78,
+        "max_rss_kib": 40960,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 573440,
+        "output": {
+          "valid": true,
+          "pages": 67,
+          "characters": 104107,
+          "characters_sha256": "6ddb8faea821a84b2b0a919229da3532f1e341cdb2454429cc4824897f65092d",
+          "bytes": 479720
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 3.328166,
+        "cpu_seconds": 3.31,
+        "timed_out": false,
+        "user_seconds": 1.14,
+        "system_seconds": 2.17,
+        "max_rss_kib": 65080,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 12111872,
+        "output": {
+          "valid": true,
+          "pages": 67,
+          "characters": 104107,
+          "characters_sha256": "6ddb8faea821a84b2b0a919229da3532f1e341cdb2454429cc4824897f65092d",
+          "bytes": 493276
+        },
+        "snapshot_written": true,
+        "snapshot_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 2.25767,
+        "cpu_seconds": 2.24,
+        "timed_out": false,
+        "user_seconds": 0.87,
+        "system_seconds": 1.37,
+        "max_rss_kib": 45824,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 565248,
+        "output": {
+          "valid": true,
+          "pages": 67,
+          "characters": 104107,
+          "characters_sha256": "6ddb8faea821a84b2b0a919229da3532f1e341cdb2454429cc4824897f65092d",
+          "bytes": 493276
+        },
+        "snapshot_written": false,
+        "snapshot_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.26615v1",
+      "status": "valid",
+      "stock_setup_passes": 2,
+      "candidate_setup_passes": 2,
+      "stock": {
+        "returncode": 0,
+        "seconds": 3.475134,
+        "cpu_seconds": 3.46,
+        "timed_out": false,
+        "user_seconds": 0.92,
+        "system_seconds": 2.54,
+        "max_rss_kib": 40704,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 294912,
+        "output": {
+          "valid": true,
+          "pages": 30,
+          "characters": 35375,
+          "characters_sha256": "a7d13249155f2f430dacf7aad3229b400f2f62d2f095822ac52d8d7406f39f16",
+          "bytes": 252736
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 1.952791,
+        "cpu_seconds": 1.94,
+        "timed_out": false,
+        "user_seconds": 0.93,
+        "system_seconds": 1.01,
+        "max_rss_kib": 58112,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 9138176,
+        "output": {
+          "valid": true,
+          "pages": 30,
+          "characters": 35375,
+          "characters_sha256": "a7d13249155f2f430dacf7aad3229b400f2f62d2f095822ac52d8d7406f39f16",
+          "bytes": 258368
+        },
+        "snapshot_written": true,
+        "snapshot_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 1.462628,
+        "cpu_seconds": 1.45,
+        "timed_out": false,
+        "user_seconds": 0.71,
+        "system_seconds": 0.74,
+        "max_rss_kib": 40960,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 282624,
+        "output": {
+          "valid": true,
+          "pages": 30,
+          "characters": 35375,
+          "characters_sha256": "a7d13249155f2f430dacf7aad3229b400f2f62d2f095822ac52d8d7406f39f16",
+          "bytes": 258368
+        },
+        "snapshot_written": false,
+        "snapshot_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.26593v1",
+      "status": "valid",
+      "stock_setup_passes": 2,
+      "candidate_setup_passes": 2,
+      "stock": {
+        "returncode": 0,
+        "seconds": 4.131925,
+        "cpu_seconds": 4.11,
+        "timed_out": false,
+        "user_seconds": 0.77,
+        "system_seconds": 3.34,
+        "max_rss_kib": 40704,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 110592,
+        "output": {
+          "valid": true,
+          "pages": 10,
+          "characters": 25541,
+          "characters_sha256": "079ed280d0a274a4b5b814f0da4738de036679f84835e6de028f81fb8fb1109e",
+          "bytes": 69212
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 1.880446,
+        "cpu_seconds": 1.87,
+        "timed_out": false,
+        "user_seconds": 0.44,
+        "system_seconds": 1.43,
+        "max_rss_kib": 48476,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 12066816,
+        "output": {
+          "valid": true,
+          "pages": 10,
+          "characters": 25541,
+          "characters_sha256": "079ed280d0a274a4b5b814f0da4738de036679f84835e6de028f81fb8fb1109e",
+          "bytes": 74920
+        },
+        "snapshot_written": true,
+        "snapshot_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 1.033148,
+        "cpu_seconds": 1.02,
+        "timed_out": false,
+        "user_seconds": 0.12,
+        "system_seconds": 0.9,
+        "max_rss_kib": 35072,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 86016,
+        "output": {
+          "valid": true,
+          "pages": 10,
+          "characters": 25541,
+          "characters_sha256": "079ed280d0a274a4b5b814f0da4738de036679f84835e6de028f81fb8fb1109e",
+          "bytes": 74920
+        },
+        "snapshot_written": false,
+        "snapshot_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.26591v1",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 4.259139,
+        "cpu_seconds": 4.24,
+        "timed_out": false,
+        "user_seconds": 1.01,
+        "system_seconds": 3.23,
+        "max_rss_kib": 40704,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 155648,
+        "output": {
+          "valid": true,
+          "pages": 14,
+          "characters": 24755,
+          "characters_sha256": "decd6c0729196441091da52ebfa36ffde54546255681d3cbdeb8b57d7c30db8b",
+          "bytes": 105652
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 2.150525,
+        "cpu_seconds": 2.14,
+        "timed_out": false,
+        "user_seconds": 0.62,
+        "system_seconds": 1.52,
+        "max_rss_kib": 67128,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 18620416,
+        "output": {
+          "valid": true,
+          "pages": 14,
+          "characters": 24755,
+          "characters_sha256": "decd6c0729196441091da52ebfa36ffde54546255681d3cbdeb8b57d7c30db8b",
+          "bytes": 111020
+        },
+        "snapshot_written": true,
+        "snapshot_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.54561,
+        "cpu_seconds": 0.53,
+        "timed_out": false,
+        "user_seconds": 0.12,
+        "system_seconds": 0.41,
+        "max_rss_kib": 51968,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 126976,
+        "output": {
+          "valid": true,
+          "pages": 14,
+          "characters": 24755,
+          "characters_sha256": "decd6c0729196441091da52ebfa36ffde54546255681d3cbdeb8b57d7c30db8b",
+          "bytes": 111020
+        },
+        "snapshot_written": false,
+        "snapshot_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.26565v1",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 3.725533,
+        "cpu_seconds": 3.71,
+        "timed_out": false,
+        "user_seconds": 0.83,
+        "system_seconds": 2.88,
+        "max_rss_kib": 40704,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 221184,
+        "output": {
+          "valid": true,
+          "pages": 21,
+          "characters": 37409,
+          "characters_sha256": "5857acd2728b98d73ea4f4b79bc0968b68b46b7d7f3598a47b6a3d839c033cd9",
+          "bytes": 173456
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 1.940807,
+        "cpu_seconds": 1.93,
+        "timed_out": false,
+        "user_seconds": 0.56,
+        "system_seconds": 1.37,
+        "max_rss_kib": 67860,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 14209024,
+        "output": {
+          "valid": true,
+          "pages": 21,
+          "characters": 37409,
+          "characters_sha256": "5857acd2728b98d73ea4f4b79bc0968b68b46b7d7f3598a47b6a3d839c033cd9",
+          "bytes": 182172
+        },
+        "snapshot_written": true,
+        "snapshot_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.598946,
+        "cpu_seconds": 0.59,
+        "timed_out": false,
+        "user_seconds": 0.18,
+        "system_seconds": 0.41,
+        "max_rss_kib": 41984,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 204800,
+        "output": {
+          "valid": true,
+          "pages": 21,
+          "characters": 37409,
+          "characters_sha256": "5857acd2728b98d73ea4f4b79bc0968b68b46b7d7f3598a47b6a3d839c033cd9",
+          "bytes": 182172
+        },
+        "snapshot_written": false,
+        "snapshot_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.26554v1",
+      "status": "valid",
+      "stock_setup_passes": 2,
+      "candidate_setup_passes": 2,
+      "stock": {
+        "returncode": 0,
+        "seconds": 3.462927,
+        "cpu_seconds": 3.45,
+        "timed_out": false,
+        "user_seconds": 0.71,
+        "system_seconds": 2.74,
+        "max_rss_kib": 40192,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 167936,
+        "output": {
+          "valid": true,
+          "pages": 23,
+          "characters": 26270,
+          "characters_sha256": "d3896d5a2ea87952b0ddb63d0e82c7b7ba9e78feb3d66184a67908759e91370b",
+          "bytes": 122748
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 1.939417,
+        "cpu_seconds": 1.92,
+        "timed_out": false,
+        "user_seconds": 0.58,
+        "system_seconds": 1.34,
+        "max_rss_kib": 46772,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 10817536,
+        "output": {
+          "valid": true,
+          "pages": 23,
+          "characters": 26270,
+          "characters_sha256": "d3896d5a2ea87952b0ddb63d0e82c7b7ba9e78feb3d66184a67908759e91370b",
+          "bytes": 130528
+        },
+        "snapshot_written": true,
+        "snapshot_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.934896,
+        "cpu_seconds": 0.92,
+        "timed_out": false,
+        "user_seconds": 0.22,
+        "system_seconds": 0.7,
+        "max_rss_kib": 33280,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 155648,
+        "output": {
+          "valid": true,
+          "pages": 23,
+          "characters": 26270,
+          "characters_sha256": "d3896d5a2ea87952b0ddb63d0e82c7b7ba9e78feb3d66184a67908759e91370b",
+          "bytes": 130528
+        },
+        "snapshot_written": false,
+        "snapshot_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.26502v1",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 4.043493,
+        "cpu_seconds": 4.02,
+        "timed_out": false,
+        "user_seconds": 0.96,
+        "system_seconds": 3.06,
+        "max_rss_kib": 40192,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 405504,
+        "output": {
+          "valid": true,
+          "pages": 32,
+          "characters": 54776,
+          "characters_sha256": "7f88ee649879b5a5d73bfaf0a44d4d71f0915978acdb2cf05044020377439663",
+          "bytes": 344716
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 2.069471,
+        "cpu_seconds": 2.05,
+        "timed_out": false,
+        "user_seconds": 0.67,
+        "system_seconds": 1.38,
+        "max_rss_kib": 64456,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 15294464,
+        "output": {
+          "valid": true,
+          "pages": 32,
+          "characters": 54776,
+          "characters_sha256": "7f88ee649879b5a5d73bfaf0a44d4d71f0915978acdb2cf05044020377439663",
+          "bytes": 354804
+        },
+        "snapshot_written": true,
+        "snapshot_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.631244,
+        "cpu_seconds": 0.62,
+        "timed_out": false,
+        "user_seconds": 0.24,
+        "system_seconds": 0.38,
+        "max_rss_kib": 49152,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 385024,
+        "output": {
+          "valid": true,
+          "pages": 32,
+          "characters": 54776,
+          "characters_sha256": "7f88ee649879b5a5d73bfaf0a44d4d71f0915978acdb2cf05044020377439663",
+          "bytes": 354804
+        },
+        "snapshot_written": false,
+        "snapshot_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.26457v1",
+      "status": "valid",
+      "stock_setup_passes": 2,
+      "candidate_setup_passes": 2,
+      "stock": {
+        "returncode": 0,
+        "seconds": 6.175452,
+        "cpu_seconds": 6.16,
+        "timed_out": false,
+        "user_seconds": 1.11,
+        "system_seconds": 5.05,
+        "max_rss_kib": 40192,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 196608,
+        "output": {
+          "valid": true,
+          "pages": 25,
+          "characters": 32678,
+          "characters_sha256": "1601735c42687a8164c6a6c36d5f6c0680d3158035785851947827a8cefc68a3",
+          "bytes": 136740
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 2.549752,
+        "cpu_seconds": 2.54,
+        "timed_out": false,
+        "user_seconds": 0.69,
+        "system_seconds": 1.85,
+        "max_rss_kib": 67212,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 18374656,
+        "output": {
+          "valid": true,
+          "pages": 25,
+          "characters": 32678,
+          "characters_sha256": "1601735c42687a8164c6a6c36d5f6c0680d3158035785851947827a8cefc68a3",
+          "bytes": 141688
+        },
+        "snapshot_written": true,
+        "snapshot_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 1.155435,
+        "cpu_seconds": 1.14,
+        "timed_out": false,
+        "user_seconds": 0.21,
+        "system_seconds": 0.93,
+        "max_rss_kib": 50944,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 167936,
+        "output": {
+          "valid": true,
+          "pages": 25,
+          "characters": 32678,
+          "characters_sha256": "1601735c42687a8164c6a6c36d5f6c0680d3158035785851947827a8cefc68a3",
+          "bytes": 141688
+        },
+        "snapshot_written": false,
+        "snapshot_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.26449v1",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 6.018611,
+        "cpu_seconds": 6.01,
+        "timed_out": false,
+        "user_seconds": 1.43,
+        "system_seconds": 4.58,
+        "max_rss_kib": 41728,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 262144,
+        "output": {
+          "valid": true,
+          "pages": 14,
+          "characters": 47317,
+          "characters_sha256": "37c4d96fbeb0452420cad2584070b3c057078b805bb9c055c3f4979fb0819b42",
+          "bytes": 183308
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 3.08026,
+        "cpu_seconds": 3.06,
+        "timed_out": false,
+        "user_seconds": 1.12,
+        "system_seconds": 1.94,
+        "max_rss_kib": 56848,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 12140544,
+        "output": {
+          "valid": true,
+          "pages": 14,
+          "characters": 47317,
+          "characters_sha256": "37c4d96fbeb0452420cad2584070b3c057078b805bb9c055c3f4979fb0819b42",
+          "bytes": 191848
+        },
+        "snapshot_written": true,
+        "snapshot_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 1.621483,
+        "cpu_seconds": 1.61,
+        "timed_out": false,
+        "user_seconds": 0.53,
+        "system_seconds": 1.08,
+        "max_rss_kib": 49992,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 237568,
+        "output": {
+          "valid": true,
+          "pages": 14,
+          "characters": 47317,
+          "characters_sha256": "37c4d96fbeb0452420cad2584070b3c057078b805bb9c055c3f4979fb0819b42",
+          "bytes": 191848
+        },
+        "snapshot_written": false,
+        "snapshot_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.26344v1",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 5.143403,
+        "cpu_seconds": 5.13,
+        "timed_out": false,
+        "user_seconds": 1.14,
+        "system_seconds": 3.99,
+        "max_rss_kib": 41728,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 225280,
+        "output": {
+          "valid": true,
+          "pages": 12,
+          "characters": 45077,
+          "characters_sha256": "4409fa4c75d533b30de847ca5234e6be379cb8c1f01416a2f5383f662a1c7afe",
+          "bytes": 161640
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 3.124212,
+        "cpu_seconds": 3.11,
+        "timed_out": false,
+        "user_seconds": 0.93,
+        "system_seconds": 2.18,
+        "max_rss_kib": 63988,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 15880192,
+        "output": {
+          "valid": true,
+          "pages": 12,
+          "characters": 45077,
+          "characters_sha256": "4409fa4c75d533b30de847ca5234e6be379cb8c1f01416a2f5383f662a1c7afe",
+          "bytes": 170644
+        },
+        "snapshot_written": true,
+        "snapshot_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 1.777582,
+        "cpu_seconds": 1.76,
+        "timed_out": false,
+        "user_seconds": 0.5,
+        "system_seconds": 1.26,
+        "max_rss_kib": 48384,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 212992,
+        "output": {
+          "valid": true,
+          "pages": 12,
+          "characters": 45077,
+          "characters_sha256": "4409fa4c75d533b30de847ca5234e6be379cb8c1f01416a2f5383f662a1c7afe",
+          "bytes": 170644
+        },
+        "snapshot_written": false,
+        "snapshot_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.26311v1",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 4.463207,
+        "cpu_seconds": 4.45,
+        "timed_out": false,
+        "user_seconds": 0.97,
+        "system_seconds": 3.48,
+        "max_rss_kib": 40448,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 270336,
+        "output": {
+          "valid": true,
+          "pages": 22,
+          "characters": 38054,
+          "characters_sha256": "5abcb3f474d88aa9e60ecb64109545108a67800f0ba4fd45bc9a85452957ca15",
+          "bytes": 198520
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 2.232747,
+        "cpu_seconds": 2.22,
+        "timed_out": false,
+        "user_seconds": 0.65,
+        "system_seconds": 1.57,
+        "max_rss_kib": 46596,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 7389184,
+        "output": {
+          "valid": true,
+          "pages": 22,
+          "characters": 38054,
+          "characters_sha256": "5abcb3f474d88aa9e60ecb64109545108a67800f0ba4fd45bc9a85452957ca15",
+          "bytes": 208680
+        },
+        "snapshot_written": true,
+        "snapshot_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.506991,
+        "cpu_seconds": 0.49,
+        "timed_out": false,
+        "user_seconds": 0.15,
+        "system_seconds": 0.34,
+        "max_rss_kib": 29684,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 249856,
+        "output": {
+          "valid": true,
+          "pages": 22,
+          "characters": 38054,
+          "characters_sha256": "5abcb3f474d88aa9e60ecb64109545108a67800f0ba4fd45bc9a85452957ca15",
+          "bytes": 208680
+        },
+        "snapshot_written": false,
+        "snapshot_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.26287v1",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 3.387601,
+        "cpu_seconds": 3.37,
+        "timed_out": false,
+        "user_seconds": 0.82,
+        "system_seconds": 2.55,
+        "max_rss_kib": 40448,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 196608,
+        "output": {
+          "valid": true,
+          "pages": 12,
+          "characters": 14749,
+          "characters_sha256": "4ff3d4fefd7917e09fbace20841f17c0bda6b701b6829a98f7b95af05123dc6a",
+          "bytes": 41196
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 2.163405,
+        "cpu_seconds": 2.15,
+        "timed_out": false,
+        "user_seconds": 0.63,
+        "system_seconds": 1.52,
+        "max_rss_kib": 59948,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 12185600,
+        "output": {
+          "valid": true,
+          "pages": 12,
+          "characters": 14749,
+          "characters_sha256": "4ff3d4fefd7917e09fbace20841f17c0bda6b701b6829a98f7b95af05123dc6a",
+          "bytes": 43836
+        },
+        "snapshot_written": true,
+        "snapshot_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.993767,
+        "cpu_seconds": 0.98,
+        "timed_out": false,
+        "user_seconds": 0.18,
+        "system_seconds": 0.8,
+        "max_rss_kib": 43440,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 176128,
+        "output": {
+          "valid": true,
+          "pages": 12,
+          "characters": 14749,
+          "characters_sha256": "4ff3d4fefd7917e09fbace20841f17c0bda6b701b6829a98f7b95af05123dc6a",
+          "bytes": 43836
+        },
+        "snapshot_written": false,
+        "snapshot_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.26248v1",
+      "status": "valid",
+      "stock_setup_passes": 2,
+      "candidate_setup_passes": 2,
+      "stock": {
+        "returncode": 0,
+        "seconds": 3.588546,
+        "cpu_seconds": 3.57,
+        "timed_out": false,
+        "user_seconds": 0.87,
+        "system_seconds": 2.7,
+        "max_rss_kib": 40704,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 327680,
+        "output": {
+          "valid": true,
+          "pages": 32,
+          "characters": 69025,
+          "characters_sha256": "6869e2323f05d8ace7ce59367be5c480fb061ae17868304d7c2d184c168a2270",
+          "bytes": 247708
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 2.170636,
+        "cpu_seconds": 2.15,
+        "timed_out": false,
+        "user_seconds": 0.67,
+        "system_seconds": 1.48,
+        "max_rss_kib": 60040,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 14462976,
+        "output": {
+          "valid": true,
+          "pages": 32,
+          "characters": 69025,
+          "characters_sha256": "6869e2323f05d8ace7ce59367be5c480fb061ae17868304d7c2d184c168a2270",
+          "bytes": 264040
+        },
+        "snapshot_written": true,
+        "snapshot_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.898126,
+        "cpu_seconds": 0.88,
+        "timed_out": false,
+        "user_seconds": 0.3,
+        "system_seconds": 0.58,
+        "max_rss_kib": 46848,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 319488,
+        "output": {
+          "valid": true,
+          "pages": 32,
+          "characters": 69025,
+          "characters_sha256": "6869e2323f05d8ace7ce59367be5c480fb061ae17868304d7c2d184c168a2270",
+          "bytes": 264040
+        },
+        "snapshot_written": false,
+        "snapshot_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.26092v1",
+      "status": "valid",
+      "stock_setup_passes": 2,
+      "candidate_setup_passes": 2,
+      "stock": {
+        "returncode": 0,
+        "seconds": 3.706668,
+        "cpu_seconds": 3.7,
+        "timed_out": false,
+        "user_seconds": 0.82,
+        "system_seconds": 2.88,
+        "max_rss_kib": 40704,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 151552,
+        "output": {
+          "valid": true,
+          "pages": 15,
+          "characters": 24793,
+          "characters_sha256": "6eea548f3d76b51b13590c2b2cf7ff6a4cf08966a08558497859a701e57a4415",
+          "bytes": 112188
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 2.177151,
+        "cpu_seconds": 2.17,
+        "timed_out": false,
+        "user_seconds": 0.59,
+        "system_seconds": 1.58,
+        "max_rss_kib": 57328,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 10715136,
+        "output": {
+          "valid": true,
+          "pages": 15,
+          "characters": 24793,
+          "characters_sha256": "6eea548f3d76b51b13590c2b2cf7ff6a4cf08966a08558497859a701e57a4415",
+          "bytes": 118072
+        },
+        "snapshot_written": true,
+        "snapshot_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.969227,
+        "cpu_seconds": 0.96,
+        "timed_out": false,
+        "user_seconds": 0.27,
+        "system_seconds": 0.69,
+        "max_rss_kib": 34816,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 135168,
+        "output": {
+          "valid": true,
+          "pages": 15,
+          "characters": 24793,
+          "characters_sha256": "6eea548f3d76b51b13590c2b2cf7ff6a4cf08966a08558497859a701e57a4415",
+          "bytes": 118072
+        },
+        "snapshot_written": false,
+        "snapshot_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.26080v1",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 4.35335,
+        "cpu_seconds": 4.34,
+        "timed_out": false,
+        "user_seconds": 1.07,
+        "system_seconds": 3.27,
+        "max_rss_kib": 41216,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 282624,
+        "output": {
+          "valid": true,
+          "pages": 34,
+          "characters": 48151,
+          "characters_sha256": "99741d5a42dce4065af66accd86eba6a4739f05298a518eea2723570fb2ac77f",
+          "bytes": 227112
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 2.889507,
+        "cpu_seconds": 2.87,
+        "timed_out": false,
+        "user_seconds": 0.85,
+        "system_seconds": 2.02,
+        "max_rss_kib": 81912,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 18231296,
+        "output": {
+          "valid": true,
+          "pages": 34,
+          "characters": 48151,
+          "characters_sha256": "99741d5a42dce4065af66accd86eba6a4739f05298a518eea2723570fb2ac77f",
+          "bytes": 237108
+        },
+        "snapshot_written": true,
+        "snapshot_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 1.344025,
+        "cpu_seconds": 1.33,
+        "timed_out": false,
+        "user_seconds": 0.42,
+        "system_seconds": 0.91,
+        "max_rss_kib": 49144,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 270336,
+        "output": {
+          "valid": true,
+          "pages": 34,
+          "characters": 48151,
+          "characters_sha256": "99741d5a42dce4065af66accd86eba6a4739f05298a518eea2723570fb2ac77f",
+          "bytes": 237108
+        },
+        "snapshot_written": false,
+        "snapshot_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.25831v1",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 4.069678,
+        "cpu_seconds": 4.06,
+        "timed_out": false,
+        "user_seconds": 0.89,
+        "system_seconds": 3.17,
+        "max_rss_kib": 40448,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 159744,
+        "output": {
+          "valid": true,
+          "pages": 17,
+          "characters": 26802,
+          "characters_sha256": "22ea3ad13c67fb9a2cc9ed75ef223be374dfb94f69e868095f9fd3e4bd76c5c3",
+          "bytes": 114968
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 2.381311,
+        "cpu_seconds": 2.36,
+        "timed_out": false,
+        "user_seconds": 0.6,
+        "system_seconds": 1.76,
+        "max_rss_kib": 56564,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 10760192,
+        "output": {
+          "valid": true,
+          "pages": 17,
+          "characters": 26802,
+          "characters_sha256": "22ea3ad13c67fb9a2cc9ed75ef223be374dfb94f69e868095f9fd3e4bd76c5c3",
+          "bytes": 121016
+        },
+        "snapshot_written": true,
+        "snapshot_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 1.317086,
+        "cpu_seconds": 1.3,
+        "timed_out": false,
+        "user_seconds": 0.26,
+        "system_seconds": 1.04,
+        "max_rss_kib": 34048,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 143360,
+        "output": {
+          "valid": true,
+          "pages": 17,
+          "characters": 26802,
+          "characters_sha256": "22ea3ad13c67fb9a2cc9ed75ef223be374dfb94f69e868095f9fd3e4bd76c5c3",
+          "bytes": 121016
+        },
+        "snapshot_written": false,
+        "snapshot_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.25746v1",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 3.505334,
+        "cpu_seconds": 3.49,
+        "timed_out": false,
+        "user_seconds": 0.64,
+        "system_seconds": 2.85,
+        "max_rss_kib": 40192,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 184320,
+        "output": {
+          "valid": true,
+          "pages": 17,
+          "characters": 35252,
+          "characters_sha256": "2d850c749f8509ca62fbd61f860cc0591ed9515b4ad9d37be2aa0af216db6a5f",
+          "bytes": 151592
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 2.072517,
+        "cpu_seconds": 2.05,
+        "timed_out": false,
+        "user_seconds": 0.45,
+        "system_seconds": 1.6,
+        "max_rss_kib": 42408,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 9154560,
+        "output": {
+          "valid": true,
+          "pages": 17,
+          "characters": 35252,
+          "characters_sha256": "2d850c749f8509ca62fbd61f860cc0591ed9515b4ad9d37be2aa0af216db6a5f",
+          "bytes": 157696
+        },
+        "snapshot_written": true,
+        "snapshot_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 1.203776,
+        "cpu_seconds": 1.19,
+        "timed_out": false,
+        "user_seconds": 0.18,
+        "system_seconds": 1.01,
+        "max_rss_kib": 31744,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 176128,
+        "output": {
+          "valid": true,
+          "pages": 17,
+          "characters": 35252,
+          "characters_sha256": "2d850c749f8509ca62fbd61f860cc0591ed9515b4ad9d37be2aa0af216db6a5f",
+          "bytes": 157696
+        },
+        "snapshot_written": false,
+        "snapshot_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.25740v1",
+      "status": "valid",
+      "stock_setup_passes": 2,
+      "candidate_setup_passes": 2,
+      "stock": {
+        "returncode": 0,
+        "seconds": 2.662679,
+        "cpu_seconds": 2.64,
+        "timed_out": false,
+        "user_seconds": 0.53,
+        "system_seconds": 2.11,
+        "max_rss_kib": 40448,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 106496,
+        "output": {
+          "valid": true,
+          "pages": 11,
+          "characters": 15299,
+          "characters_sha256": "db8928f0d95bf045eb6110a221d8ed828049c4b7469d14bf1d187586e3476946",
+          "bytes": 80232
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 1.58766,
+        "cpu_seconds": 1.58,
+        "timed_out": false,
+        "user_seconds": 0.4,
+        "system_seconds": 1.18,
+        "max_rss_kib": 43668,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 9879552,
+        "output": {
+          "valid": true,
+          "pages": 11,
+          "characters": 15299,
+          "characters_sha256": "db8928f0d95bf045eb6110a221d8ed828049c4b7469d14bf1d187586e3476946",
+          "bytes": 84684
+        },
+        "snapshot_written": true,
+        "snapshot_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.654411,
+        "cpu_seconds": 0.64,
+        "timed_out": false,
+        "user_seconds": 0.1,
+        "system_seconds": 0.54,
+        "max_rss_kib": 30464,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 98304,
+        "output": {
+          "valid": true,
+          "pages": 11,
+          "characters": 15299,
+          "characters_sha256": "db8928f0d95bf045eb6110a221d8ed828049c4b7469d14bf1d187586e3476946",
+          "bytes": 84684
+        },
+        "snapshot_written": false,
+        "snapshot_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.25654v1",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 2.294671,
+        "cpu_seconds": 2.28,
+        "timed_out": false,
+        "user_seconds": 0.5,
+        "system_seconds": 1.78,
+        "max_rss_kib": 40448,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 106496,
+        "output": {
+          "valid": true,
+          "pages": 9,
+          "characters": 41039,
+          "characters_sha256": "5f89a0fc87fb71d9a89ceb251dc0de94693dd68f3159defb620b7818ac454eae",
+          "bytes": 81060
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 1.521495,
+        "cpu_seconds": 1.51,
+        "timed_out": false,
+        "user_seconds": 0.46,
+        "system_seconds": 1.05,
+        "max_rss_kib": 41984,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 8392704,
+        "output": {
+          "valid": true,
+          "pages": 9,
+          "characters": 41039,
+          "characters_sha256": "5f89a0fc87fb71d9a89ceb251dc0de94693dd68f3159defb620b7818ac454eae",
+          "bytes": 87908
+        },
+        "snapshot_written": true,
+        "snapshot_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.885626,
+        "cpu_seconds": 0.88,
+        "timed_out": false,
+        "user_seconds": 0.25,
+        "system_seconds": 0.63,
+        "max_rss_kib": 30212,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 102400,
+        "output": {
+          "valid": true,
+          "pages": 9,
+          "characters": 41039,
+          "characters_sha256": "5f89a0fc87fb71d9a89ceb251dc0de94693dd68f3159defb620b7818ac454eae",
+          "bytes": 87908
+        },
+        "snapshot_written": false,
+        "snapshot_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.25558v1",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 5.085898,
+        "cpu_seconds": 5.07,
+        "timed_out": false,
+        "user_seconds": 1.16,
+        "system_seconds": 3.91,
+        "max_rss_kib": 40960,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 241664,
+        "output": {
+          "valid": true,
+          "pages": 20,
+          "characters": 39937,
+          "characters_sha256": "a709b933188f187760383f6b9dfb0639ce94f9e04004c5efac58ca75b4384d42",
+          "bytes": 173580
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 2.718851,
+        "cpu_seconds": 2.7,
+        "timed_out": false,
+        "user_seconds": 0.85,
+        "system_seconds": 1.85,
+        "max_rss_kib": 74112,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 15716352,
+        "output": {
+          "valid": true,
+          "pages": 20,
+          "characters": 39937,
+          "characters_sha256": "a709b933188f187760383f6b9dfb0639ce94f9e04004c5efac58ca75b4384d42",
+          "bytes": 178476
+        },
+        "snapshot_written": true,
+        "snapshot_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.877107,
+        "cpu_seconds": 0.87,
+        "timed_out": false,
+        "user_seconds": 0.21,
+        "system_seconds": 0.66,
+        "max_rss_kib": 45800,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 204800,
+        "output": {
+          "valid": true,
+          "pages": 20,
+          "characters": 39937,
+          "characters_sha256": "a709b933188f187760383f6b9dfb0639ce94f9e04004c5efac58ca75b4384d42",
+          "bytes": 178476
+        },
+        "snapshot_written": false,
+        "snapshot_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.25553v2",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 5.476563,
+        "cpu_seconds": 5.47,
+        "timed_out": false,
+        "user_seconds": 1.44,
+        "system_seconds": 4.03,
+        "max_rss_kib": 41728,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 270336,
+        "output": {
+          "valid": true,
+          "pages": 21,
+          "characters": 53831,
+          "characters_sha256": "029a160d6d03b50d45a340d7dfd5be33b3ec068be5d6f6147dd139d291939e34",
+          "bytes": 200804
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 2.702703,
+        "cpu_seconds": 2.69,
+        "timed_out": false,
+        "user_seconds": 1.04,
+        "system_seconds": 1.65,
+        "max_rss_kib": 70544,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 12398592,
+        "output": {
+          "valid": true,
+          "pages": 21,
+          "characters": 53831,
+          "characters_sha256": "029a160d6d03b50d45a340d7dfd5be33b3ec068be5d6f6147dd139d291939e34",
+          "bytes": 215320
+        },
+        "snapshot_written": true,
+        "snapshot_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 1.381159,
+        "cpu_seconds": 1.37,
+        "timed_out": false,
+        "user_seconds": 0.48,
+        "system_seconds": 0.89,
+        "max_rss_kib": 49480,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 249856,
+        "output": {
+          "valid": true,
+          "pages": 21,
+          "characters": 53831,
+          "characters_sha256": "029a160d6d03b50d45a340d7dfd5be33b3ec068be5d6f6147dd139d291939e34",
+          "bytes": 215320
+        },
+        "snapshot_written": false,
+        "snapshot_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.25491v1",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 6.817637,
+        "cpu_seconds": 6.81,
+        "timed_out": false,
+        "user_seconds": 1.5,
+        "system_seconds": 5.31,
+        "max_rss_kib": 41728,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 442368,
+        "output": {
+          "valid": true,
+          "pages": 38,
+          "characters": 58592,
+          "characters_sha256": "e899a70983a471f5cfe4e4ef5036f98d4b13cdf9b8eafc76beac3c001d7fde97",
+          "bytes": 343536
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 2.983547,
+        "cpu_seconds": 2.96,
+        "timed_out": false,
+        "user_seconds": 1.15,
+        "system_seconds": 1.81,
+        "max_rss_kib": 67564,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 9162752,
+        "output": {
+          "valid": true,
+          "pages": 38,
+          "characters": 58592,
+          "characters_sha256": "e899a70983a471f5cfe4e4ef5036f98d4b13cdf9b8eafc76beac3c001d7fde97",
+          "bytes": 354092
+        },
+        "snapshot_written": true,
+        "snapshot_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 1.255503,
+        "cpu_seconds": 1.25,
+        "timed_out": false,
+        "user_seconds": 0.54,
+        "system_seconds": 0.71,
+        "max_rss_kib": 44544,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 421888,
+        "output": {
+          "valid": true,
+          "pages": 38,
+          "characters": 58592,
+          "characters_sha256": "e899a70983a471f5cfe4e4ef5036f98d4b13cdf9b8eafc76beac3c001d7fde97",
+          "bytes": 354092
+        },
+        "snapshot_written": false,
+        "snapshot_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.25471v1",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 3.760011,
+        "cpu_seconds": 3.75,
+        "timed_out": false,
+        "user_seconds": 0.82,
+        "system_seconds": 2.93,
+        "max_rss_kib": 40960,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 540672,
+        "output": {
+          "valid": true,
+          "pages": 47,
+          "characters": 94541,
+          "characters_sha256": "773b2c85411adce0f27fbfd3fd1f048506920453bfacaf0154c8bee7d0092fbc",
+          "bytes": 481400
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 2.414158,
+        "cpu_seconds": 2.4,
+        "timed_out": false,
+        "user_seconds": 0.73,
+        "system_seconds": 1.67,
+        "max_rss_kib": 63164,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 11243520,
+        "output": {
+          "valid": true,
+          "pages": 47,
+          "characters": 94541,
+          "characters_sha256": "773b2c85411adce0f27fbfd3fd1f048506920453bfacaf0154c8bee7d0092fbc",
+          "bytes": 506904
+        },
+        "snapshot_written": true,
+        "snapshot_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 1.426626,
+        "cpu_seconds": 1.41,
+        "timed_out": false,
+        "user_seconds": 0.39,
+        "system_seconds": 1.02,
+        "max_rss_kib": 43008,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 548864,
+        "output": {
+          "valid": true,
+          "pages": 47,
+          "characters": 94541,
+          "characters_sha256": "773b2c85411adce0f27fbfd3fd1f048506920453bfacaf0154c8bee7d0092fbc",
+          "bytes": 506904
+        },
+        "snapshot_written": false,
+        "snapshot_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.25447v1",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 6.633302,
+        "cpu_seconds": 6.6,
+        "timed_out": false,
+        "user_seconds": 1.48,
+        "system_seconds": 5.12,
+        "max_rss_kib": 40704,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 319488,
+        "output": {
+          "valid": true,
+          "pages": 37,
+          "characters": 56204,
+          "characters_sha256": "64253586a5599abe2482462d8ada9377e38772cb44829fe6f6117a7873f4652d",
+          "bytes": 255984
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 3.410577,
+        "cpu_seconds": 3.4,
+        "timed_out": false,
+        "user_seconds": 1.02,
+        "system_seconds": 2.38,
+        "max_rss_kib": 79264,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 20070400,
+        "output": {
+          "valid": true,
+          "pages": 37,
+          "characters": 56204,
+          "characters_sha256": "64253586a5599abe2482462d8ada9377e38772cb44829fe6f6117a7873f4652d",
+          "bytes": 272312
+        },
+        "snapshot_written": true,
+        "snapshot_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 1.629722,
+        "cpu_seconds": 1.62,
+        "timed_out": false,
+        "user_seconds": 0.45,
+        "system_seconds": 1.17,
+        "max_rss_kib": 52480,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 303104,
+        "output": {
+          "valid": true,
+          "pages": 37,
+          "characters": 56204,
+          "characters_sha256": "64253586a5599abe2482462d8ada9377e38772cb44829fe6f6117a7873f4652d",
+          "bytes": 272312
+        },
+        "snapshot_written": false,
+        "snapshot_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.25387v1",
+      "status": "valid",
+      "stock_setup_passes": 2,
+      "candidate_setup_passes": 2,
+      "stock": {
+        "returncode": 0,
+        "seconds": 3.580792,
+        "cpu_seconds": 3.57,
+        "timed_out": false,
+        "user_seconds": 0.61,
+        "system_seconds": 2.96,
+        "max_rss_kib": 41472,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 110592,
+        "output": {
+          "valid": true,
+          "pages": 7,
+          "characters": 22851,
+          "characters_sha256": "a2e46827fa95fa30da6bbb1b3ef84e94c0137d1b3e0f81a461982d4620ad7a4e",
+          "bytes": 74256
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 1.515404,
+        "cpu_seconds": 1.5,
+        "timed_out": false,
+        "user_seconds": 0.38,
+        "system_seconds": 1.12,
+        "max_rss_kib": 42240,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 9318400,
+        "output": {
+          "valid": true,
+          "pages": 7,
+          "characters": 22851,
+          "characters_sha256": "a2e46827fa95fa30da6bbb1b3ef84e94c0137d1b3e0f81a461982d4620ad7a4e",
+          "bytes": 86476
+        },
+        "snapshot_written": true,
+        "snapshot_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.589922,
+        "cpu_seconds": 0.58,
+        "timed_out": false,
+        "user_seconds": 0.12,
+        "system_seconds": 0.46,
+        "max_rss_kib": 32256,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 102400,
+        "output": {
+          "valid": true,
+          "pages": 7,
+          "characters": 22851,
+          "characters_sha256": "a2e46827fa95fa30da6bbb1b3ef84e94c0137d1b3e0f81a461982d4620ad7a4e",
+          "bytes": 86476
+        },
+        "snapshot_written": false,
+        "snapshot_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.25372v1",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 2.933734,
+        "cpu_seconds": 2.92,
+        "timed_out": false,
+        "user_seconds": 0.67,
+        "system_seconds": 2.25,
+        "max_rss_kib": 40448,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 286720,
+        "output": {
+          "valid": true,
+          "pages": 20,
+          "characters": 49115,
+          "characters_sha256": "83d7e93bdced536bc149b3f9b1b14b783b862aaa9d8ad90de179cf4b50240638",
+          "bytes": 241132
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 1.808696,
+        "cpu_seconds": 1.79,
+        "timed_out": false,
+        "user_seconds": 0.52,
+        "system_seconds": 1.27,
+        "max_rss_kib": 58240,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 10321920,
+        "output": {
+          "valid": true,
+          "pages": 20,
+          "characters": 49115,
+          "characters_sha256": "83d7e93bdced536bc149b3f9b1b14b783b862aaa9d8ad90de179cf4b50240638",
+          "bytes": 253200
+        },
+        "snapshot_written": true,
+        "snapshot_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.636107,
+        "cpu_seconds": 0.62,
+        "timed_out": false,
+        "user_seconds": 0.22,
+        "system_seconds": 0.4,
+        "max_rss_kib": 37632,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 282624,
+        "output": {
+          "valid": true,
+          "pages": 20,
+          "characters": 49115,
+          "characters_sha256": "83d7e93bdced536bc149b3f9b1b14b783b862aaa9d8ad90de179cf4b50240638",
+          "bytes": 253200
+        },
+        "snapshot_written": false,
+        "snapshot_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.25351v1",
+      "status": "valid",
+      "stock_setup_passes": 2,
+      "candidate_setup_passes": 2,
+      "stock": {
+        "returncode": 0,
+        "seconds": 3.64375,
+        "cpu_seconds": 3.63,
+        "timed_out": false,
+        "user_seconds": 0.78,
+        "system_seconds": 2.85,
+        "max_rss_kib": 40704,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 188416,
+        "output": {
+          "valid": true,
+          "pages": 21,
+          "characters": 47647,
+          "characters_sha256": "f279606866176ed5e7152987a095ade263daff183b4976e65a4a37c75c2cfe3c",
+          "bytes": 139548
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 1.885644,
+        "cpu_seconds": 1.87,
+        "timed_out": false,
+        "user_seconds": 0.59,
+        "system_seconds": 1.28,
+        "max_rss_kib": 59264,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 14565376,
+        "output": {
+          "valid": true,
+          "pages": 21,
+          "characters": 47647,
+          "characters_sha256": "f279606866176ed5e7152987a095ade263daff183b4976e65a4a37c75c2cfe3c",
+          "bytes": 151296
+        },
+        "snapshot_written": true,
+        "snapshot_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.990286,
+        "cpu_seconds": 0.98,
+        "timed_out": false,
+        "user_seconds": 0.25,
+        "system_seconds": 0.73,
+        "max_rss_kib": 44032,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 167936,
+        "output": {
+          "valid": true,
+          "pages": 21,
+          "characters": 47647,
+          "characters_sha256": "f279606866176ed5e7152987a095ade263daff183b4976e65a4a37c75c2cfe3c",
+          "bytes": 151296
+        },
+        "snapshot_written": false,
+        "snapshot_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.25339v1",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 3.636973,
+        "cpu_seconds": 3.62,
+        "timed_out": false,
+        "user_seconds": 0.85,
+        "system_seconds": 2.77,
+        "max_rss_kib": 40704,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 131072,
+        "output": {
+          "valid": true,
+          "pages": 10,
+          "characters": 17420,
+          "characters_sha256": "384aeb856a2f7ade11802cee7f3004b5d6186973d59b62e78d0f0f5dcba21c8f",
+          "bytes": 89700
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 1.760556,
+        "cpu_seconds": 1.74,
+        "timed_out": false,
+        "user_seconds": 0.51,
+        "system_seconds": 1.23,
+        "max_rss_kib": 66976,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 14254080,
+        "output": {
+          "valid": true,
+          "pages": 10,
+          "characters": 17420,
+          "characters_sha256": "384aeb856a2f7ade11802cee7f3004b5d6186973d59b62e78d0f0f5dcba21c8f",
+          "bytes": 94640
+        },
+        "snapshot_written": true,
+        "snapshot_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.478865,
+        "cpu_seconds": 0.46,
+        "timed_out": false,
+        "user_seconds": 0.12,
+        "system_seconds": 0.34,
+        "max_rss_kib": 40192,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 114688,
+        "output": {
+          "valid": true,
+          "pages": 10,
+          "characters": 17420,
+          "characters_sha256": "384aeb856a2f7ade11802cee7f3004b5d6186973d59b62e78d0f0f5dcba21c8f",
+          "bytes": 94640
+        },
+        "snapshot_written": false,
+        "snapshot_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.25323v1",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 4.009205,
+        "cpu_seconds": 4.0,
+        "timed_out": false,
+        "user_seconds": 0.78,
+        "system_seconds": 3.22,
+        "max_rss_kib": 40704,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 143360,
+        "output": {
+          "valid": true,
+          "pages": 8,
+          "characters": 35270,
+          "characters_sha256": "3932695200935fada0aec22130895509f3046542bbe340173364d362f4902cb7",
+          "bytes": 91464
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 1.881007,
+        "cpu_seconds": 1.86,
+        "timed_out": false,
+        "user_seconds": 0.56,
+        "system_seconds": 1.3,
+        "max_rss_kib": 69416,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 19423232,
+        "output": {
+          "valid": true,
+          "pages": 8,
+          "characters": 35270,
+          "characters_sha256": "3932695200935fada0aec22130895509f3046542bbe340173364d362f4902cb7",
+          "bytes": 97232
+        },
+        "snapshot_written": true,
+        "snapshot_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.964865,
+        "cpu_seconds": 0.95,
+        "timed_out": false,
+        "user_seconds": 0.18,
+        "system_seconds": 0.77,
+        "max_rss_kib": 64236,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 114688,
+        "output": {
+          "valid": true,
+          "pages": 8,
+          "characters": 35270,
+          "characters_sha256": "3932695200935fada0aec22130895509f3046542bbe340173364d362f4902cb7",
+          "bytes": 97232
+        },
+        "snapshot_written": false,
+        "snapshot_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.25259v1",
+      "status": "valid",
+      "stock_setup_passes": 3,
+      "candidate_setup_passes": 3,
+      "stock": {
+        "returncode": 0,
+        "seconds": 2.287504,
+        "cpu_seconds": 2.28,
+        "timed_out": false,
+        "user_seconds": 0.32,
+        "system_seconds": 1.96,
+        "max_rss_kib": 40704,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 110592,
+        "output": {
+          "valid": true,
+          "pages": 8,
+          "characters": 36012,
+          "characters_sha256": "b5da1a9a8d01f7725b8af34923a058f1591b8b67d21bba678175f0dbbb930806",
+          "bytes": 78528
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 1.05424,
+        "cpu_seconds": 1.04,
+        "timed_out": false,
+        "user_seconds": 0.25,
+        "system_seconds": 0.79,
+        "max_rss_kib": 41916,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 4980736,
+        "output": {
+          "valid": true,
+          "pages": 8,
+          "characters": 36012,
+          "characters_sha256": "b5da1a9a8d01f7725b8af34923a058f1591b8b67d21bba678175f0dbbb930806",
+          "bytes": 84224
+        },
+        "snapshot_written": true,
+        "snapshot_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.670312,
+        "cpu_seconds": 0.66,
+        "timed_out": false,
+        "user_seconds": 0.14,
+        "system_seconds": 0.52,
+        "max_rss_kib": 40936,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 102400,
+        "output": {
+          "valid": true,
+          "pages": 8,
+          "characters": 36012,
+          "characters_sha256": "b5da1a9a8d01f7725b8af34923a058f1591b8b67d21bba678175f0dbbb930806",
+          "bytes": 84224
+        },
+        "snapshot_written": false,
+        "snapshot_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.25232v1",
+      "status": "valid",
+      "stock_setup_passes": 2,
+      "candidate_setup_passes": 2,
+      "stock": {
+        "returncode": 0,
+        "seconds": 2.822594,
+        "cpu_seconds": 2.81,
+        "timed_out": false,
+        "user_seconds": 0.43,
+        "system_seconds": 2.38,
+        "max_rss_kib": 40192,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 90112,
+        "output": {
+          "valid": true,
+          "pages": 7,
+          "characters": 28343,
+          "characters_sha256": "086f2c77ab62fa4503b65f64ed70d185f71ac2bca9a991815ec574db9d94a766",
+          "bytes": 58396
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 1.452106,
+        "cpu_seconds": 1.44,
+        "timed_out": false,
+        "user_seconds": 0.32,
+        "system_seconds": 1.12,
+        "max_rss_kib": 41728,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 6836224,
+        "output": {
+          "valid": true,
+          "pages": 7,
+          "characters": 28343,
+          "characters_sha256": "086f2c77ab62fa4503b65f64ed70d185f71ac2bca9a991815ec574db9d94a766",
+          "bytes": 63592
+        },
+        "snapshot_written": true,
+        "snapshot_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 0.801715,
+        "cpu_seconds": 0.78,
+        "timed_out": false,
+        "user_seconds": 0.12,
+        "system_seconds": 0.66,
+        "max_rss_kib": 25600,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 77824,
+        "output": {
+          "valid": true,
+          "pages": 7,
+          "characters": 28343,
+          "characters_sha256": "086f2c77ab62fa4503b65f64ed70d185f71ac2bca9a991815ec574db9d94a766",
+          "bytes": 63592
+        },
+        "snapshot_written": false,
+        "snapshot_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.25221v1",
+      "status": "valid",
+      "stock_setup_passes": 2,
+      "candidate_setup_passes": 2,
+      "stock": {
+        "returncode": 0,
+        "seconds": 4.663631,
+        "cpu_seconds": 4.64,
+        "timed_out": false,
+        "user_seconds": 1.03,
+        "system_seconds": 3.61,
+        "max_rss_kib": 41216,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 286720,
+        "output": {
+          "valid": true,
+          "pages": 23,
+          "characters": 62292,
+          "characters_sha256": "b74e2fefd30bfd28f48603893d4a3e3efd38cf4f07b9d8abaa744e6f9e47fc38",
+          "bytes": 235964
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 2.651086,
+        "cpu_seconds": 2.64,
+        "timed_out": false,
+        "user_seconds": 0.77,
+        "system_seconds": 1.87,
+        "max_rss_kib": 50628,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 6246400,
+        "output": {
+          "valid": true,
+          "pages": 23,
+          "characters": 62292,
+          "characters_sha256": "b74e2fefd30bfd28f48603893d4a3e3efd38cf4f07b9d8abaa744e6f9e47fc38",
+          "bytes": 252864
+        },
+        "snapshot_written": true,
+        "snapshot_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 1.336569,
+        "cpu_seconds": 1.32,
+        "timed_out": false,
+        "user_seconds": 0.34,
+        "system_seconds": 0.98,
+        "max_rss_kib": 28672,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 278528,
+        "output": {
+          "valid": true,
+          "pages": 23,
+          "characters": 62292,
+          "characters_sha256": "b74e2fefd30bfd28f48603893d4a3e3efd38cf4f07b9d8abaa744e6f9e47fc38",
+          "bytes": 252864
+        },
+        "snapshot_written": false,
+        "snapshot_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    },
+    {
+      "id": "2608.25183v1",
+      "status": "valid",
+      "stock_setup_passes": 2,
+      "candidate_setup_passes": 2,
+      "stock": {
+        "returncode": 0,
+        "seconds": 5.329743,
+        "cpu_seconds": 5.31,
+        "timed_out": false,
+        "user_seconds": 1.2,
+        "system_seconds": 4.11,
+        "max_rss_kib": 41728,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 253952,
+        "output": {
+          "valid": true,
+          "pages": 11,
+          "characters": 22199,
+          "characters_sha256": "6025e226802cd7e507eda57d8073d7a44944df9bfece2a4916b6e74f4a0907f9",
+          "bytes": 186956
+        },
+        "correctness": {
+          "valid": true
+        }
+      },
+      "cold": {
+        "returncode": 0,
+        "seconds": 2.968671,
+        "cpu_seconds": 2.95,
+        "timed_out": false,
+        "user_seconds": 0.93,
+        "system_seconds": 2.02,
+        "max_rss_kib": 65504,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 17379328,
+        "output": {
+          "valid": true,
+          "pages": 11,
+          "characters": 22199,
+          "characters_sha256": "6025e226802cd7e507eda57d8073d7a44944df9bfece2a4916b6e74f4a0907f9",
+          "bytes": 191588
+        },
+        "snapshot_written": true,
+        "snapshot_hit": false,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      },
+      "hit": {
+        "returncode": 0,
+        "seconds": 1.589313,
+        "cpu_seconds": 1.57,
+        "timed_out": false,
+        "user_seconds": 0.46,
+        "system_seconds": 1.11,
+        "max_rss_kib": 51712,
+        "filesystem_read_bytes": 0,
+        "filesystem_write_bytes": 221184,
+        "output": {
+          "valid": true,
+          "pages": 11,
+          "characters": 22199,
+          "characters_sha256": "6025e226802cd7e507eda57d8073d7a44944df9bfece2a4916b6e74f4a0907f9",
+          "bytes": 191588
+        },
+        "snapshot_written": false,
+        "snapshot_hit": true,
+        "correctness": {
+          "valid": true,
+          "equivalent": true,
+          "drawing_equivalent": true,
+          "specials_equivalent": true
+        }
+      }
+    }
+  ]
+}

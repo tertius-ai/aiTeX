@@ -1,0 +1,73 @@
+% Three preconditions on hyphenation, from `tex.web`, none of which this
+% engine had.
+%
+% §894's header is the first, and it is the whole of it:
+%
+%     When the following code is activated, the |line_break| procedure is
+%     in its second pass, and |cur_p| points to a glue node.
+%
+% §866 reaches it only for a glue node, so a word not preceded by glue is
+% never hyphenated — the *first word of a paragraph* most of all, since what
+% precedes it is the `\parindent` box or nothing at all. §896 then skips
+% normal kerns and whatsits on the way to the first letter, so those do not
+% break the chain and a box or a penalty does. We hyphenated every run of
+% letters, and put discretionaries in the first word of every paragraph.
+%
+% §896 reads the hyphen character from the *word's own font*, and gives the
+% word up when it is outside 0..255:
+%
+%     done2: hyf_char:=hyphen_char[hf];
+%     if hyf_char<0 then goto done1;
+%     if hyf_char>255 then goto done1;
+%
+% We inserted a hardcoded `-`, which a font may not even have.
+%
+% §1091 passes both hyphenation minima through `norm_min`:
+%
+%     function norm_min(@!h:integer):small_number;
+%     begin if h<=0 then norm_min:=1@+else if h>=63 then norm_min:=63@+
+%     else norm_min:=h;
+%
+% and §240 leaves both at nought, so INITEX's are 1 and 1. Ours defaulted to
+% 2 and 3 — *plain's* values, the same mistake as `\hyphenpenalty`'s 50 — so
+% every short word had fewer places to break than TeX gives it.
+%
+% §902 is a fourth: the nodes *following* the word decide too.
+%
+%     loop@+ begin if not(is_char_node(s)) then
+%       case type(s) of
+%       ligature_node: do_nothing;
+%       kern_node: if subtype(s)<>normal then goto done4;
+%       whatsit_node,glue_node,penalty_node,ins_node,adjust_node,mark_node:
+%         goto done4;
+%       othercases goto done1
+%       endcases;
+%     s:=link(s);
+%     end;
+%
+% The loop *walks*: a comma or a full stop after the word is stepped over, and
+% so is an ordinary kern.  Glue stops it favourably; a discretionary, a box, a
+% rule or a math node abandons the hyphenation altogether — which is why
+% plain's `inter\-word` keeps its `inter` whole.
+\catcode`\{=1 \catcode`\}=2
+\font\r=cmr10 \r \hyphenchar\r=`\- \hsize50pt \parindent0pt \baselineskip12pt
+\tolerance10000 \pretolerance-1 \hbadness10000
+\showboxbreadth99 \showboxdepth99 \tracingonline0
+\patterns{m1n n1m}
+% A word followed by a discretionary is not hyphenated at all (§902).
+\setbox5\vbox{\noindent x mnmn\-mnmn\par}\showbox5
+% One followed by a comma is: the walk steps over it.
+\setbox6\vbox{\noindent x mnmnmnmn, y\par}\showbox6
+% The first word is never hyphenated; the second follows glue and is.
+\setbox0\vbox{\noindent mnmnmnmn mnmnmnmn\par}\showbox0
+% A box or a penalty between the glue and the word breaks the chain; a normal
+% kern does not.
+\setbox1\vbox{\noindent x \hbox{}mnmnmnmn\par}\showbox1
+\setbox2\vbox{\noindent x \penalty1 mnmnmnmn\par}\showbox2
+% A font whose \hyphenchar is out of range is not hyphenated at all.
+\font\s=cmr10 \hyphenchar\s=-1
+\setbox3\vbox{\noindent x {\s mnmnmnmn}\par}\showbox3
+% The minima, at INITEX's values and at others.
+\lefthyphenmin=4 \righthyphenmin=4
+\setbox4\vbox{\noindent x mnmnmnmn\par}\showbox4
+\end

@@ -1,0 +1,9 @@
+% tex.web §1024 compares the values literally before invoking \output:
+% dead_cycles >= max_dead_cycles. At zero, the routine must not run at all;
+% TeX diagnoses the loop immediately and ships \box255 itself.
+\catcode`\{=1 \catcode`\}=2
+\tracingonline=1 \tracingpages=1
+\vsize=30pt \maxdepth=2pt \maxdeadcycles=0
+\output={\message{PROBE:must-not-run}\shipout\box255}
+\hbox{}\vfill\penalty-10000
+\end

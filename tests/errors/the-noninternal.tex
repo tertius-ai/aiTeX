@@ -1,0 +1,24 @@
+% `tex.web` §413 `scan_something_internal`, the arm every other one falls to:
+%
+%     othercases begin print_err("You can't use `");
+%       print_cmd_chr(cur_cmd,cur_chr);
+%       print("' after "); print_esc("the");
+%       help1("I'm forgetting what you said and using zero instead.");
+%       error;
+%       if level<>tok_val then begin cur_val:=0; cur_val_level:=dimen_val; end
+%       else begin cur_val:=0; cur_val_level:=int_val; end;
+%       end
+%
+% §428's `the_toks` reaches it because it hands over whatever `get_x_token`
+% returned, without first asking whether that is an internal quantity:
+%
+%     begin get_x_token; scan_something_internal(tok_val,false);
+%
+% The zero was already right here — what was missing is the complaint, so
+% `\showthe$` reported `> 0.` as though it had been asked something sensible.
+\catcode`\{=1 \catcode`\}=2 \catcode`\$=3
+\showthe$
+\showthe\relax
+\showthe\hbox
+\edef\x{\the\par}\show\x
+\end

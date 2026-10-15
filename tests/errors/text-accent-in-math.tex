@@ -1,0 +1,13 @@
+% `tex.web` §1165 `math_ac`: the text `\accent` primitive is recoverable in
+% math mode. TeX diagnoses it, then treats its number and following field
+% exactly as `\mathaccent` would instead of constructing text accent nodes.
+\catcode`\{=1 \catcode`\}=2 \catcode`\$=3
+\font\r=cmr10 \r
+\font\mi=cmmi10 \font\sy=cmsy10 \font\ex=cmex10
+\textfont0=\r \scriptfont0=\r \scriptscriptfont0=\r
+\textfont1=\mi \scriptfont1=\mi \scriptscriptfont1=\mi
+\textfont2=\sy \scriptfont2=\sy \scriptscriptfont2=\sy
+\textfont3=\ex \scriptfont3=\ex \scriptscriptfont3=\ex
+\setbox0=\hbox{$\accent94 A$}
+\message{PROBE:width=[\the\wd0]}
+\end

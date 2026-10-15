@@ -1,0 +1,14 @@
+% `tex.web` §§826 and 867 make every infinitely shrinking paragraph glue
+% finite before line breaking. The shrink amount survives; only its order is
+% reset. This covers both background `\rightskip` and materialized `\spaceskip`.
+\catcode`\{=1 \catcode`\}=2
+\font\r=cmr10 \r
+\hsize=35pt \parindent=0pt \pretolerance=10000 \tolerance=10000
+\rightskip=0pt minus 100fil
+\spaceskip=4pt plus 2pt minus 1fil
+\showboxbreadth=99 \showboxdepth=99 \tracingonline=0
+\setbox0=\vbox{A A A A\par}\showbox0
+% The same rule applies to the other background skip and to leader glue.
+\rightskip=0pt \spaceskip=0pt \leftskip=0pt minus 3fill
+\setbox1=\vbox{A\leaders\hbox{}\hskip 4pt minus 2fil A\par}\showbox1
+\end

@@ -1,0 +1,45 @@
+% `tex.web` §846 narrates the line breaker, and the narration is a faithful
+% picture of the active list — so getting it right is getting §829 right.
+%
+% §835 walks the list forward and creates a line-number group's nodes the
+% moment the cursor crosses into the next group:
+%
+%     begin l:=line_number(r);
+%     if l>old_l then
+%       begin if (minimum_demerits<awful_bad)and
+%          ((old_l<>easy_line)or(r=last_active)) then
+%         @<Create new active nodes for the best feasible breaks just found@>;
+%
+% so the log runs candidates, nodes, candidates, nodes — not every candidate
+% of a breakpoint and then every node of it.
+%
+% §845 links each new node in before the node the cursor is standing on, and
+% runs `prev_r:=q` after each fitness class:
+%
+%     link(q):=r; link(prev_r):=q; prev_r:=q;
+%
+% so a group's four classes go in one after another in class order, and the
+% group as a whole goes *in front of* the run it joins — the cursor is already
+% on the first node of the next group when the flush happens. The merged group
+% is the exception: it is flushed at `r=last_active`, so it goes on the end.
+%
+% §857 prints the material since the last breakpoint reported, and prints
+% nothing when there is none — `print_nl("")` starts no line when none is in
+% progress. We pushed an empty line, which put a blank between the last `@@`
+% node of a paragraph and its `\par` breaks.
+%
+% `\parshape` is what makes the groups distinguishable: without it every line
+% has the same measure, `easy_line` is nought, and the whole paragraph is one
+% merged group.
+\catcode`\{=1 \catcode`\}=2
+\font\r=cmr10 \r \hsize120pt \parindent20pt \baselineskip12pt \parskip6pt
+\tolerance=10000 \pretolerance=100 \linepenalty=10 \adjdemerits=10000
+\hbadness=10000 \vbadness=10000
+\parfillskip=0pt plus 1fil
+\rightskip 0pt plus 1fil
+\parshape=4 0pt 120pt 10pt 100pt 20pt 80pt 0pt 120pt
+\tracingparagraphs1 \tracingonline0
+\noindent the quick brown fox jumps over the lazy dog, while office traffic waffles fluffily past the coffee shop on the corner of the avenue near the old railway station.
+\par
+\tracingparagraphs0
+\end

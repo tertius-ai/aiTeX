@@ -1,0 +1,36 @@
+% `tex.web` §216 keeps `mode_line` in the *nest entry*, so `push_nest` and
+% `pop_nest` save and restore it:
+%
+%     mode_line:=line
+%
+% is what §1091's `new_graf` does for the level it has just pushed. A
+% paragraph begun inside an alignment cell, a box, or an insertion therefore
+% has a `mode_line` of its own, and the paragraph outside gets its own back
+% when that level pops.
+%
+% §663 reads it for the line-range in a box warning:
+%
+%     print(") in paragraph at lines "); print_int(mode_line); …
+%
+% tests/warn/paragraph-mode-line.tex pins the other half of this: a box opened
+% in the middle of a paragraph must not take the paragraph's line. That one was
+% about `par_line` being shared with the slot the next box is stamped from;
+% this one is about it not being saved and restored with the nest level at all,
+% so a paragraph *nested inside* another left its line behind on the way out.
+%
+% `\valign` is where trip.tex meets this: it is a horizontal-mode command, so
+% in vertical mode it begins a paragraph (line 3 here), and its cells are
+% internal vertical material in which another paragraph begins (line 5). TeX
+% reports the outer one as starting at 3 and we reported 5 — trip.tex's own
+% `\valign` at line 171 came out as `at lines 185--187` against TeX's
+% `171--187`, 185 being a line inside the alignment.
+\catcode`\{=1 \catcode`\}=2 \catcode`\#=6 \catcode`\&=4
+\font\r=cmr10 \r \hsize100pt \parindent0pt \baselineskip12pt \hbadness=0
+\valign{#\cr
+\hsize40pt
+\noindent BBBB
+\par
+\cr}
+CCC
+\par
+\end

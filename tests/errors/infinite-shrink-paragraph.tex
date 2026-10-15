@@ -1,0 +1,11 @@
+% `tex.web` §826 reports only once when several glue specs in one paragraph
+% shrink infinitely, and it reports while ending that paragraph.
+\catcode`\{=1 \catcode`\}=2
+\font\r=cmr10 \r
+\hsize=35pt \parindent=0pt \pretolerance=10000 \tolerance=10000
+\rightskip=0pt minus 100fil
+\spaceskip=4pt plus 2pt minus 1fil
+\message{PROBE:before}
+A A A A\par
+\message{PROBE:after}
+\end

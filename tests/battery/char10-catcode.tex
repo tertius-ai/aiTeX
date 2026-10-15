@@ -1,0 +1,29 @@
+% Character 10 (line feed) is catcode Other by default, matching tex.web --
+% not EndOfLine.
+%
+% Only \r (13), the default \endlinechar, gets EndOfLine; giving char 10 the
+% same catcode conflated "how we split a file into physical lines" with "what
+% catcode does the character U+000A have". Every *ordinary* appearance of
+% char 10 -- ^^J, \char10, a string containing it -- was silently rewritten
+% into a line break instead of staying an Other character.
+%
+% expl3's l3iow uses ^^J as a literal macro-parameter delimiter for wrapping
+% log lines to 79 characters:
+%
+%   \cs_new:Npn \__iow_wrap_fix_newline:w #1 ^^J #2 ^^J { ... }
+%
+% and the delimiter was silently becoming a space before any call could ever
+% match it -- so every \msg_error, every \typeout, everything that writes to
+% the log, failed the same way once l3iow tried to wrap a line.
+\input plain
+\def\M#1{\message{<#1>}}
+\M{a=\the\catcode10}
+\M{b=\the\catcode13}
+% a comment must still end at the real end of line
+\def\c{one} % this comment must not eat the rest of the file
+\M{c=\c}
+% ^^J as an ordinary catcode-12 character, used as a macro delimiter
+\long\def\split#1^^J#2{[1=\detokenize{#1}][2=\detokenize{#2}]}
+\edef\x{a^^Jb}
+\M{d=\expandafter\split\x}
+\bye

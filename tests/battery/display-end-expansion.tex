@@ -1,0 +1,17 @@
+% `tex.web` §1194/§1197: `fin_mlist` pops the math nest before `get_x_token`
+% expands the token that must supply a display's second `$`. Mode conditionals
+% in that expansion therefore see the enclosing list. An equation number has
+% one extra math nest: its closing token sees the outer display, non-inner.
+\catcode`\{=1 \catcode`\}=2 \catcode`\$=3
+\font\testfont=cmr10 \font\sy=cmsy10 \font\ex=cmex10 \testfont
+\textfont0=\testfont
+\textfont1=\testfont \scriptfont1=\testfont \scriptscriptfont1=\testfont
+\textfont2=\sy \scriptfont2=\sy \scriptscriptfont2=\sy
+\textfont3=\ex \scriptfont3=\ex \scriptscriptfont3=\ex
+
+\def\vclose{\ifvmode\ifinner$\else BAD\fi\else BAD\fi}
+\setbox0=\vbox{\noindent$$x$\vclose\message{<VBOX-OK>}\par}
+
+\def\eqclose{\ifmmode\ifinner BAD\else$\fi\else BAD\fi}
+\setbox0=\vbox{\noindent$$x\eqno y$\eqclose\message{<EQNO-OK>}\par}
+\end

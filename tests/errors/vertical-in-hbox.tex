@@ -1,0 +1,45 @@
+% `tex.web` §1094 `head_for_vmode`, the `mode<0` half: a command belonging to a
+% *vertical* list, met while a restricted horizontal one — an \hbox, or an
+% alignment cell — is being built.
+%
+%     procedure head_for_vmode;
+%     begin if mode<0 then
+%       if cur_cmd<>hrule then off_save
+%       else begin print_err("You can't use `"); print_esc("hrule");
+%         print("' here except with leaders"); ... end
+%
+% Two outcomes from one procedure. `\hrule` gets §1095's message of its own and
+% is dropped. `\end`, `\vskip`, `\unvbox` and `\halign` go to §1064 `off_save`,
+% which puts the command back, inserts the `}` the box is missing, and says so.
+%
+% That inserted `}` closes the box early — so the *real* `}` then arrives at the
+% outer level and TeX reports "Too many }'s". The second error is part of the
+% behaviour and not a separate fault, which is why every case here expects two.
+% Getting the first message right and the recovery wrong would show up as the
+% second one moving or vanishing.
+\catcode`\{=1 \catcode`\}=2 \catcode`\#=6
+\font\r=cmr10 \r \hsize=100pt
+
+% §1095: its own message, and the command is dropped rather than pushed back —
+% so there is no "Too many }'s" after it.
+\setbox0\hbox{\hrule}
+\message{PROBE:afterhrule=\the\wd0}
+
+% §1064, once per command
+\setbox1\hbox{a\vskip1pt b}
+\setbox2\hbox{a\unvbox9 b}
+\setbox3\hbox{a\halign{#\cr x\cr}b}
+
+% The exception §1095 names by hand: a rule *is* allowed as a leader, which is
+% what \hrulefill is built from. No error, and the box is 20pt wide.
+\setbox4\hbox to 20pt{\leaders\hrule\hfil}
+\message{PROBE:leaders=\the\wd4}
+
+% ...and none of this fires in a vertical list, where all five are ordinary.
+\setbox5\vbox{\hrule\vskip1pt\halign{#\cr y\cr}}
+\message{PROBE:vbox=\ifvoid5 void\else full\fi}
+
+% nor for the horizontal spellings inside an \hbox
+\setbox6\hbox{a\hskip2pt\vrule b}
+\message{PROBE:hbox=\the\wd6}
+\end

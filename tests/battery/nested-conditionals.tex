@@ -1,0 +1,55 @@
+% A conditional evaluated *inside another conditional's operand*.
+%
+% tex.web 498 keeps open conditionals on a stack (cond_ptr), and that is not
+% bookkeeping for its own sake:
+%
+%   \if e\if Exe\else x\fi T\else F\fi
+%
+% The inner \if runs while the outer is scanning its second operand. It takes
+% its false branch and leaves its \fi pending in the stream. When the outer
+% then skips its own false branch, that pending \fi is the first one it meets
+% -- and it is not the outer's. TeX pops the inner conditional and keeps
+% skipping; a plain depth counter stops there, ends the outer early, and runs
+% its true branch instead.
+%
+% expl3 nests conditionals inside conditionals everywhere. l3fp's exponent
+% test is exactly this shape:
+%
+%   \if:w e\if:w E\exp_not:N #1e\else: \exp_not:N #1\fi: ...
+%
+% so every floating-point literal was read as though it carried an exponent.
+%
+% The \noexpand cases matter separately: \exp_not:N sits in front of nearly
+% every operand expl3 tests, and it is a *non*-conditional primitive expanded
+% mid-scan -- it must leave the enclosing conditional's depth untouched.
+\input plain
+\catcode`\:=11 \catcode`\_=11
+\def\M#1{\message{<#1>}}
+% A conditional evaluated while an enclosing one scans its operands. The
+% inner leaves its \fi pending, and that \fi is the first the outer meets
+% when it skips its own false branch -- it is not the outer's.
+\M{a=\if e\if Exe\else x\fi T\else F\fi}
+\M{b=\if e\if EEe\else x\fi T\else F\fi}
+\M{c=\if x\if Exe\else x\fi T\else F\fi}
+% Two levels of nesting in operand position.
+\M{d=\if e\if E\if AAx\else e\fi e\else x\fi T\else F\fi}
+% The same through \noexpand, as expl3 writes it.
+\let\if:w\if \let\exp_not:N\noexpand \let\fi:\fi \let\else:\else
+\let\s__mark\relax
+\def\test#1{\if:w e\if:w E\exp_not:N #1e\else: \exp_not:N #1\fi: TRUE\else: FALSE\fi:}
+\M{e=\test\s__mark}
+\M{f=\test e}
+\M{g=\test E}
+\M{h=\test x}
+\def\mac{q}
+\M{i=\test\mac}
+% Repeated, to catch depth drifting across evaluations.
+\M{j=\test\s__mark}
+\M{k=\test E}
+\M{l=\test\s__mark}
+% Nested in an \ifnum operand.
+\M{m=\ifnum\ifnum1>0 1\else 2\fi=1 T\else F\fi}
+\M{n=\ifnum\ifnum1>2 1\else 2\fi=1 T\else F\fi}
+% \ifcase with a conditional choosing the case.
+\M{o=\ifcase\ifnum1>0 1\else 0\fi zero\or one\else other\fi}
+\bye

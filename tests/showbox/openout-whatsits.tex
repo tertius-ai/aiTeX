@@ -1,0 +1,54 @@
+% `tex.web` §1341: `\openout` and `\closeout` are whatsits, exactly like
+% `\write`. They are *not* performed where they are written; they become nodes
+% on the current list and §1370's `ship_out` performs them as the page carrying
+% them goes to the DVI file:
+%
+%     open_node,write_node,close_node: @<Do some work that has been queued up
+%       for \.{\\shipout}@>;
+%
+% Only `\immediate` (§1348) does the thing at once and leaves no node behind.
+%
+% We did the opposite for two of the three: `\openout` opened the file and
+% `\closeout` closed it the moment they were read, and neither put a node on
+% the list. So a box holding them displayed three nodes where TeX displays
+% five, and trip.tex's first shipped page — which carries `\openout0=8terminal`
+% and `\openout10=tripos` — carried neither.
+%
+% The ordering is the point of the test rather than the display alone. TeX
+% opens the file when the page ships, so the stream is open for the writes *on
+% that page* and not for anything typeset earlier that happens to ship later.
+%
+% This case also covers the fix that made it work: §638's `ship_out` was
+% reachable from `\shipout` alone. §1023's no-`\output` default and §1024's
+% output-loop bailout called `emit_page` directly, so on any document without
+% an `\output` routine a deferred `\write` was built, displayed, and then
+% thrown away unperformed.
+\catcode`\{=1 \catcode`\}=2
+\showboxbreadth=100 \showboxdepth=100
+
+% All three whatsits, interleaved with real material so their position in the
+% list is visible and not just their presence.
+\setbox0\vbox{\openout3=zzz \hbox{}\closeout3 \write3{x}\special{sp}}
+\showbox0
+
+% §1348: with `\immediate` the file is opened at once and nothing is appended.
+% The box below holds one node, not two.
+\setbox1\vbox{\immediate\openout4=yyy \hbox{}\immediate\closeout4}
+\showbox1
+
+% §1350 decides how to scan the stream by *node size*, which is worth stating
+% because it is not what the names suggest:
+%
+%     if w<>write_node_size then scan_four_bit_int
+%     else begin scan_int;
+%       if cur_val<0 then cur_val:=17 else if cur_val>15 then cur_val:=16;
+%       end;
+%
+% `close_node` is `small_node_size`, and that *is* `write_node_size` — so
+% `\closeout` scans like `\write`, clamping rather than complaining, and only
+% `\openout` gets the 0..15 check. `\closeout99` is therefore stream 16 and no
+% error at all. Correspondingly §1355's `print_write_whatsit` is shared by all
+% three, so the `*` shorthand shows up here and not only under `\write`.
+\setbox2\vbox{\closeout99 \closeout-5 \hbox{}}
+\showbox2
+\end

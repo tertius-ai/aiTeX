@@ -1,0 +1,73 @@
+% `tex.web` §560 and §561: a `.tfm` that cannot be read is not a font.
+%
+%     procedure start_font_error_message;
+%     begin print_err("Font "); sprint_cs(u); print_char("=");
+%     print_file_name(nom,aire,"");
+%     if s>=0 then begin print(" at "); print_scaled(s); print("pt"); end
+%     else if s<>-1000 then begin print(" scaled "); print_int(-s); end;
+%     end;
+%     …
+%     if file_opened then print(" not loadable: Bad metric (TFM) file")
+%     else print(" not loadable: Metric (TFM) file not found");
+%
+% and `read_font_info` returns `null_font`, so the identifier the document
+% asked for means \nullfont from then on, the file name is never registered,
+% and a second \font naming it fails again and reports again.
+%
+% We gave it a slot measuring zero and said nothing, on the theory that one
+% missing `.tfm` should cost one wrong box rather than the whole document. But
+% it costs the document silently: every glyph in that font vanishes from the
+% page with no record anywhere that a font was missing, and \fontname answers
+% with a file that was never read.
+%
+% The other half is §379, reached from §367's `input` case:
+%
+%     input: if chr_code>0 then force_eof:=true
+%       else if name_in_progress then insert_relax
+%       else start_input;
+%
+% A file name is being scanned, so `\input` must not open anything: §379 puts
+% it back and a `\relax` in front of it. §526 raises `name_in_progress` over
+% the name and §1258 raises it again over the `at`/`scaled` keyword, so it
+% catches an `\input` on either side of the size. We ended the name at the
+% control sequence and backed it up unexpanded, which reads the same and is
+% not — the error context showed `\input` where TeX shows the inserted
+% `\relax` above an elided level, and one command went missing from the trace.
+%
+% Not covered here: "Bad metric (TFM) file", the branch where the file opens
+% and its contents are wrong. It needs a malformed `.tfm` on the search path,
+% which a `.tex` case cannot put there.
+\catcode`\{=1 \catcode`\}=2
+\errorcontextlines=5
+\showthe\escapechar
+
+% Plain: the name, the message, and \nullfont after it.
+\font\gone=mumblezz
+\message{PROBE:gone=[\fontname\gone]}
+
+% A second \font naming the same file is not a reuse of the first — nothing
+% was registered — so it fails again.
+\font\gone2=mumblezz
+\message{PROBE:again=[\fontname\gone2]}
+
+% §560 echoes the size spec as it was written.
+\font\atsize=mumblezz at 12pt
+\font\scal=mumblezz scaled 500
+\font\scal1000=mumblezz scaled 1000
+
+% ...and an `\input` in the way, on both sides of the size.
+\immediate\openout0=fsub.tex
+% The sub-file ends with a report rather than a message, so that TeX's
+% closing `)` — written against the current column, and this engine writes no
+% file echo at all — lands on a line of its own.
+\immediate\write0{\noexpand\message{PROBE:sub}\noexpand\showthe\noexpand\escapechar}
+\immediate\closeout0
+\font\iname=mumblezz\input fsub
+\font\ikey=mumblezz \input fsub
+
+% A font that *is* there still loads, and is still shared with itself.
+\font\ok=cmr10
+\font\ok2=cmr10
+\message{PROBE:ok=[\fontname\ok][\ifx\ok\ok2 same\else different\fi]}
+\showthe\escapechar
+\end

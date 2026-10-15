@@ -1,0 +1,21 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\begin{document}
+PNG alpha over a coloured backing, cropped and rotated:
+
+\colorbox{yellow}{%
+  \includegraphics[width=150bp,trim=12 8 18 6,clip,angle=11]{alpha.png}}
+
+\bigskip
+JPEG colour, cropped and counter-rotated:
+
+\includegraphics[width=130bp,trim=7 5 9 4,clip,angle=-7]{colour.jpg}
+
+\bigskip
+Nominal RGBA with a fully opaque alpha plane:
+
+\includegraphics[width=110bp]{opaque-alpha.png}
+\end{document}

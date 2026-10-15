@@ -1,0 +1,8 @@
+% tex.web §1335 reports every scope still open at \end: the save-stack level,
+% then conditionals from innermost to outermost with their own names and lines.
+\catcode`\{=1 \catcode`\}=2
+\begingroup
+\iftrue
+\ifcase0
+\ifodd1
+\end

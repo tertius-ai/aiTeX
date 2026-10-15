@@ -1,0 +1,27 @@
+% `tex.web` §298 names a character token with a category-code word and then
+% the character:
+%
+%     letter: print("the letter ");
+%     other_char: print("the character ");
+%     …
+%     othercases print_char(chr_cmd)  { and then `print(chr)` }
+%
+% §59's `print` sends anything outside the printable range through §48's `^^`
+% form — the same one `print_ASCII` uses.  With `\catcode`\^=7`, `^^^A` is the
+% character 30, which TeX names `^^^`; we pushed the control character itself,
+% which is invisible in a terminal and absent from a log.
+%
+% trip.tex reaches this at command 824, where a subscript character is `^^A`.
+\catcode`\{=1 \catcode`\}=2 \catcode`\$=3
+\catcode`\^=7 \catcode1=8 \catcode2=7 \catcode200=11
+\font\r=cmr10 \r \hsize100pt \parindent0pt \hbadness10000 \tolerance10000
+\tracingcommands2 \tracingonline0
+\textfont0=\r \scriptfont0=\r \scriptscriptfont0=\r
+\textfont1=\r \scriptfont1=\r \scriptscriptfont1=\r
+\textfont2=\r \scriptfont2=\r \scriptscriptfont2=\r
+\textfont3=\r \scriptfont3=\r \scriptscriptfont3=\r
+\fontdimen22\r=1pt
+$x^^^Ay$
+$x^^A y^^B z^^c8$
+\tracingcommands0
+\par\end

@@ -1,0 +1,11 @@
+% `tex.web` §1257--§1258: `read_font_info` returns the null font when a
+% TFM cannot be loaded, but control still reaches `common_ending` and changes
+% that font's frozen identifier. An active-character font name is represented
+% by the synthetic name `FONT<char>`, so this failed definition makes the
+% later range diagnostic name `\FONT?` rather than `\nullfont`.
+\catcode`\{=1 \catcode`\}=2 \catcode`\?=13
+\errorcontextlines=5
+\font?=this-font-does-not-exist
+\font\r=cmr10
+\fontdimen1000=
+\end

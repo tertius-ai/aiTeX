@@ -1,0 +1,71 @@
+% Original synthetic workload for redistributable PDF size qualification.
+\documentclass[10pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{
+  pdftitle={aiTeX synthetic PDF qualification},
+  pdfauthor={aiTeX project},
+  bookmarksopen=false
+}
+\setlength{\parindent}{1em}
+\setlength{\parskip}{0pt}
+\newcount\syntheticpage
+\syntheticpage=0
+\providecommand{\aitexqualificationpages}{192}
+
+\newcommand{\syntheticparagraph}[1]{%
+  This generated paragraph number #1 on page \number\syntheticpage{} carries
+  deterministic words through ligature formation, kerning, hyphenation, line
+  breaking, and compressed page-stream serialization.  The affine office
+  fixture efficiently verifies familiar letter combinations while integers
+  0123456789 make every compiled page observably distinct.  A reference to
+  Section~\ref{section:first} exercises a stable auxiliary-file dependency.
+  \textbf{Bold structure}, \textit{italic emphasis},
+  \textsf{sans serif labels}, and \texttt{fixed width data} share the line.
+  The synthetic formula
+  $\sum_{k=1}^{8} k^2 = 204$ combines scripts, operators, and numerals.\par
+}
+
+\begin{document}
+\section*{Synthetic PDF qualification}
+This document is generated entirely from original test prose. It deliberately
+contains no third-party publication text. The following pages repeat a stable
+layout with changing counters so PDF compression, object sharing, font
+subsetting, destinations, and rendering can be compared reproducibly.
+\bigskip
+\noindent{\small\color{blue}%
+  Qualification identity: synthetic-book-v1. Pages are produced by the TeX
+  loop in this source rather than stored as expanded inputs or PDF artifacts.\par}
+\newpage
+
+\loop
+  \advance\syntheticpage by 1
+  \section{Generated section \number\syntheticpage}
+  \ifnum\syntheticpage=1\label{section:first}\fi
+  \hypertarget{generated-page-\number\syntheticpage}{}
+  \noindent
+  \textcolor{blue}{Page \number\syntheticpage} \quad
+  \hyperlink{generated-page-1}{return to the first generated page} \quad
+  \href{https://example.invalid/aitex/synthetic}{synthetic URI}
+  \medskip
+
+  \syntheticparagraph{1}
+  \syntheticparagraph{2}
+  \syntheticparagraph{3}
+
+  \noindent\rule{\linewidth}{0.4pt}
+  \begin{center}
+    $\displaystyle
+      \frac{\sqrt{(\number\syntheticpage)^2+1}}{1+\number\syntheticpage}
+      \qquad
+      \int_0^1 (1+x+x^2)\,dx = \frac{11}{6}$
+  \end{center}
+  \vfill
+  \noindent Synthetic footer \number\syntheticpage\hfill aiTeX
+  \newpage
+\ifnum\syntheticpage<\aitexqualificationpages
+\repeat
+
+\end{document}

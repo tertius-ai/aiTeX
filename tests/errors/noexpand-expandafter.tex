@@ -1,0 +1,8 @@
+% `tex.web` §§366 and 369: `\expandafter` saves only the token, not the
+% temporary relax command that a preceding `\noexpand` gave it. The nested
+% chain therefore exposes `\undefined` again, while the later protected
+% `\expandafter` is inert and leaves the probe to execute normally.
+\catcode`\{=1 \catcode`\}=2
+\def\probe{\message{PROBE: reached tail}}
+\expandafter\expandafter\noexpand\undefined\noexpand\expandafter\probe
+\end

@@ -1,0 +1,73 @@
+% `\scantokens` opens a *file*, and `\everyeof` is what ends it.
+%
+% e-TeX spells `\scantokens` `pseudo_start` and `etex.ch` puts it in §367's
+% `input` case — the one `expand` handles — so the pseudo-file starts *during
+% expansion*, and its material becomes part of whatever is being built.
+% Dispatched from `main_control` instead it works only at the top level, and
+% `\edef\a{\scantokens{ab}}` keeps the literal `\scantokens {ab}`.
+%
+% The pseudo-file is a file in every other respect too. Each of its lines gets
+% `\endlinechar` appended, the last one included (§31 reads lines, §360 appends
+% the character), and `\everyeof` goes in when it ends — `etex.ch` in §362's
+% `force_eof` branch:
+%
+%     if every_eof<>null then if not eof_seen[index] then
+%       begin begin_token_list(every_eof,every_eof_text);
+%       eof_seen[index]:=true; goto restart;
+%       end;
+%
+% Once per file: the *second* arrival at the end is the one that closes it.
+%
+% expl3's `\tl_set_rescan:Nnn` is all of this at once — it parks a terminator
+% in `\everyeof`, wraps the material in markers, and reads it back inside a
+% `\tl_set:No`. LaTeX rescans a `\def` for every deferred definition, and
+% hyperref installs one on `\@thm`, so without `\everyeof` every theorem in a
+% document loading hyperref came out as the literal text of its own
+% `\begin{thm}[…]`.
+%
+% Only forms real TeX accepts without complaint are here. `\edef` around a
+% `\scantokens` is *not* one of them on its own — a file may not end in the
+% middle of a definition, and TeX says so — which is why expl3 closes the group
+% from inside `\everyeof`, and why `\everyeof{\noexpand}` appears below.
+\input plain
+\catcode`\@=11
+% Catcodes are applied afresh, so a `#` that arrived as catcode 12 comes back
+% as a parameter character — which is the whole point of the primitive.
+\scantokens{\message{<top=read>}}
+% `\everyeof` fires when the pseudo-file ends, and only for the file that ended.
+\everyeof{\message{<eof=fired>}}
+\scantokens{\message{<inner=read>}}
+\everyeof{}
+\scantokens{\message{<after=read>}}
+% …and once per file. A pseudo-file with two lines still ends once.
+\newlinechar=`\^^J
+\everyeof{\message{<eof2=fired>}}
+\scantokens{\message{<line1>}^^J\message{<line2>}}
+\everyeof{}
+\newlinechar=-1
+% Expandable: §367 handles `\scantokens` in `expand`, so the pseudo-file starts
+% while the `\edef` body is being built. `\everyeof{\noexpand}` is what makes
+% that legal — a file may not end in the middle of a definition, and the
+% `\noexpand` reads the `}` that follows and backs it up, so `scan_toks` sees a
+% brace and closes the body (§369 attaches the `\notexpanded:` marker only to a
+% control sequence).
+\endlinechar=-1
+\everyeof{\noexpand}
+\edef\a{\scantokens{ab}}\message{<edef=\meaning\a>}
+% …and the pseudo-file's last line still gets `\endlinechar`, which is why the
+% first of these ends in a space and the second does not.
+\endlinechar=13
+\edef\b{\scantokens{ab}}\message{<endline=\meaning\b>}
+\everyeof{}
+% One step of expansion has to start the file too, or a delimited argument
+% scanned afterwards swallows the literal `\scantokens {…}` — which is what
+% expl3's `\tl_set_rescan:Nnn` does, and it reads the rest of the document.
+\endlinechar=-1
+\everyeof{\noexpand}
+% The delimiter goes *inside* the pseudo-file: a delimited argument may not
+% span the end of one, and `\everyeof{\noexpand}` does not help there.
+\def\grab#1STOP{\message{<grabbed=\detokenize{#1}>}}
+\expandafter\grab\scantokens{abSTOP}
+\everyeof{}
+\endlinechar=13
+\end

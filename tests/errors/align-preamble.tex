@@ -1,0 +1,51 @@
+% Three things about an alignment preamble, from `tex.web`.
+%
+% §342 — an entry ends *in the scanner*, not in `main_control`:
+%
+%     if cur_cmd<=car_ret then if cur_cmd>=tab_mark then if align_state=0 then
+%       @<Insert the <v_j> template and goto restart@>
+%
+% and §789 fires the template up and restarts the read. That is the whole
+% point of doing it there: a macro part-way through scanning an argument sees
+% the template too.  With `\def\d #1\d {#1#1}`, the preamble `\d#\d` puts a
+% `\d` on each side of the entry, and the entry's `\d` finds its delimiter in
+% the `v` template.  Ending the cell from `main_control` instead — which is
+% what this engine did — meant the delimiter never arrived and the argument
+% scan ran off through the `\cr`, the `}` and the `\end`.
+%
+% §783 — a template with no `#` is reported and *recovered*:
+%
+%     begin print_err("Missing # inserted in alignment preamble");
+%     help3("There should be exactly one # between &'s, when an")
+%     ("\halign or \valign is being set up. In this case you had")
+%     ("none, so I've put one in; maybe that will work.");
+%     back_error; goto done1;
+%     end
+%
+% §784 — more than one `#` is reported and all but the first ignored:
+%
+%     begin print_err("Only one # is allowed per tab");
+%     help3(…)("more than one, so I'm ignoring all but the first.");
+%     error; goto continue;
+%     end
+%
+% We abandoned the whole alignment for either, which left the `{` its
+% `\halign` had opened with no `}` and everything after it one group too deep:
+% one error became eight.
+%
+% And the preamble is scanned with `get_token` (§782), unexpanded — `\d` stays
+% a token and is expanded when the template is *used*.
+\catcode`\{=1 \catcode`\}=2 \catcode`\#=6 \catcode`\&=4
+\font\r=cmr10 \r \hsize100pt \parindent0pt
+\def\d #1\d {#1#1}
+\halign{\d#\d\cr A\cr}
+\halign{#&\cr B\cr}
+\halign{a\cr C\cr}
+\halign{##\cr D\cr}
+\halign{#&##&#\cr E&F&G\cr}
+
+% A malformed preamble can leave `align_state` one below its delimiter level.
+% The `&` below is then literal v-template material, not a column boundary;
+% when that template runs it must survive to §1126's misplaced-tab error.
+\halign{\span\iffalse}\fi\cr#&\ifnum0=`{\fi\cr\cr}
+\end

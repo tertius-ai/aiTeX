@@ -1,0 +1,14 @@
+%!PS-Adobe-3.0 EPSF-3.0
+%%BoundingBox: 0 0 120 60
+%%EndComments
+% Defining and invoking a procedure deliberately takes this beyond aiTeX's
+% small native EPS drawing subset, so the CLI must use Ghostscript's raster.
+/panel {
+  0.15 0.75 0.35 setrgbcolor
+  newpath 0 0 moveto 120 0 lineto 120 60 lineto 0 60 lineto closepath fill
+  0.8 0.1 0.15 setrgbcolor
+  newpath 60 30 22 0 360 arc fill
+} def
+panel
+showpage
+%%EOF

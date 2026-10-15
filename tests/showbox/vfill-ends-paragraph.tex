@@ -1,0 +1,42 @@
+% `\vfil`, `\vfill`, `\vss` and `\vfilneg` are the `vskip` command with a
+% different `chr` (`tex.web` §208), so §1045 sends all five through one case:
+%
+%     hmode+vskip,hmode+hrule,hmode+un_vbox,hmode+halign: head_for_vmode;
+%
+% and §1094's `head_for_vmode` puts `\par` back ahead of the command:
+%
+%     else begin back_input; cur_tok:=par_token; back_input;
+%       token_type:=inserted; end;
+%
+% This engine gave `\vskip` that treatment and the four fil forms a weaker one
+% that could not reach inside an open box. So `\vfill` after a sentence inside
+% a `\vbox` joined the *horizontal* list: the line broke at the infinite glue,
+% the paragraph gained an empty second line carrying `\clubpenalty +
+% \widowpenalty`, and the box lost its `\vfill` entirely.
+%
+% The second and third boxes are the ones that already worked — `\par` and
+% `\vskip` — and are here so a regression cannot pass by making all three
+% wrong in the same way.
+\input plain
+\showboxdepth=3 \showboxbreadth=50 \tracingonline=0
+\hsize=100pt \parindent=0pt
+\setbox0=\vbox{one two three four five.
+\vfill\penalty-10000}
+\showbox0
+\setbox0=\vbox{one two three four five.
+\par}
+\showbox0
+\setbox0=\vbox{one two three four five.
+\vskip 3pt}
+\showbox0
+\setbox0=\vbox{one two three four five.
+\vfil}
+\showbox0
+\setbox0=\vbox{one two three four five.
+\vss}
+\showbox0
+% And the paragraph *resumed after a display*, which ends the same way.
+\setbox0=\vbox{$$x=1$$after it.
+\vfill}
+\showbox0
+\end

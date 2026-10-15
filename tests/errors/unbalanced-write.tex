@@ -1,0 +1,17 @@
+% `tex.web` §1372 protects write expansion with an artificial outer
+% `\endwrite`. A conditional can make the expanded result unbalanced even
+% though the stored token list was balanced: the false branch below skips the
+% opening brace before `\else`, then returns its closing mate. The scan must
+% diagnose and drain through the stopper, leaving the surrounding input and
+% group intact. Exercise both paths through the shared `write_out` routine.
+\catcode`\{=1 \catcode`\}=2
+\hbox{\write-1{\if01{\else PROBE:deferred}\fi}}
+\shipout\box0
+\immediate\write-1{\if01{\else PROBE:immediate}\fi}
+\message{PROBE:after}
+% The inverse imbalance leaves an unmatched opening brace. The artificial
+% right brace is then absorbed into the result, and the outer stopper invokes
+% the ordinary runaway-text recovery before any surrounding input is read.
+\immediate\write-1{\iftrue{\else}\fi PROBE:outer}
+\message{PROBE:done}
+\end

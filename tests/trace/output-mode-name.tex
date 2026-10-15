@@ -1,0 +1,44 @@
+% `tex.web` §1025: `\output` runs on a nest level of its own.
+%
+%     begin ship_out(box(255)); box(255):=null; end
+%     …
+%     push_nest; mode:=-vmode; prev_depth:=ignore_depth;
+%
+% `mode := -vmode` is a *mode*, not just a list, so §367 names the routine's
+% own commands `internal vertical mode` however the page was interrupted. We
+% reported the interrupted list's mode: an `\output` firing inside a paragraph
+% said `restricted horizontal mode`, and one firing from vertical mode said
+% nothing at all, the name being unchanged from before.
+%
+% That is not decoration. A `\tracingcommands` log of a document with a real
+% output routine is mostly the routine, and the mode name is how a reader
+% tells the routine's commands from the page's.
+%
+% The substitution stops as soon as the routine opens a box or a paragraph of
+% its own — that is a level above §1025's and answers for itself. It is
+% measured by depth rather than by the mode the page was interrupted in,
+% because the routine may fire from inside an alignment cell that is gone
+% again by the time its first command runs, which is what a display alignment
+% does.
+\catcode`\{=1 \catcode`\}=2 \catcode`\$=3 \catcode`\#=6 \catcode`\&=4
+\tracingonline=1 \tracingcommands=2
+\hsize=100pt \parindent=0pt \vsize=12pt \maxdepth=2pt
+\hbadness=10000 \vbadness=10000
+\font\rm=cmr10 \textfont0=\rm \scriptfont0=\rm \scriptscriptfont0=\rm \rm
+\font\mi=cmmi10 \textfont1=\mi \scriptfont1=\mi \scriptscriptfont1=\mi
+\font\sy=cmsy10 \textfont2=\sy \scriptfont2=\sy \scriptscriptfont2=\sy
+\font\ex=cmex10 \textfont3=\ex \scriptfont3=\ex \scriptscriptfont3=\ex
+\output={\message{OUT\the\count0}\shipout\box255 \advance\count0 1 }
+\showthe\escapechar
+
+% A page fired from inside a display alignment's cell, and another from the
+% paragraph after it.
+\noindent A$$\halign{#\cr B\cr C\cr}$$D\par
+E\par
+
+% ...and a routine that opens a box of its own, whose contents are named for
+% the box and not for §1025's level.
+\output={\message{TWO}\setbox9\hbox{\message{INBOX}}\shipout\box255 }
+F\par
+\showthe\escapechar
+\end

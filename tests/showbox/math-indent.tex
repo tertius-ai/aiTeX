@@ -1,0 +1,10 @@
+% `tex.web` §1092 `indent_in_hmode`: in math mode `\indent` becomes an
+% ordinary noad whose nucleus is an empty `\parindent`-wide hbox. It is not a
+% paragraph-starting operation, but it still contributes that box to the
+% formula.
+\catcode`\{=1 \catcode`\}=2 \catcode`\$=3
+\showboxdepth=3 \showboxbreadth=10 \tracingonline=0
+\font\r=cmr10 \r \parindent=5pt
+\setbox0=\hbox{$\indent\showlists$}
+\showbox0
+\end

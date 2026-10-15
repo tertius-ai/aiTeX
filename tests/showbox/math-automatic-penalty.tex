@@ -1,0 +1,16 @@
+% `tex.web` §761 inserts a binary or relation penalty only when the node that
+% immediately follows the atom is neither an explicit penalty nor a relation.
+% A raw node between the atom and a later relation makes that relation
+% non-adjacent, so the automatic binary penalty is retained.
+\catcode`\{=1 \catcode`\}=2 \catcode`\$=3
+\font\r=cmr10 \font\mi=cmmi10 \font\sy=cmsy10 \font\ex=cmex10
+\textfont0=\r \scriptfont0=\r \scriptscriptfont0=\r
+\textfont1=\mi \scriptfont1=\mi \scriptscriptfont1=\mi
+\textfont2=\sy \scriptfont2=\sy \scriptscriptfont2=\sy
+\textfont3=\ex \scriptfont3=\ex \scriptscriptfont3=\ex
+\mathcode`\+="202B \mathcode`\=="303D
+\binoppenalty=-3333 \relpenalty=-2222
+\showboxbreadth=100 \showboxdepth=100 \tracingonline=0
+$A+\penalty1000A$\showlists\par
+$A+\mskip1mu=A$\showlists\par
+\end

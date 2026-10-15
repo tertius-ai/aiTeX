@@ -1,0 +1,12 @@
+% `tex.web` §1073 and §1080: a mover belongs to a box's position in its
+% current list. A nested display therefore shows the shift, but `\lastbox`
+% clears it when it removes that same box and returns it as a value.
+\catcode`\{=1 \catcode`\}=2
+\showboxdepth=4 \showboxbreadth=20 \tracingonline=0
+
+\setbox0=\vbox{\moveleft1pt\vbox{\mark{nested}}}
+\showbox0
+
+\setbox0=\vbox{\moveleft1pt\vbox{\mark{removed}}
+  \setbox1=\lastbox \showbox1}
+\end

@@ -1,0 +1,46 @@
+% `tex.web` §1025, and the order inside it:
+%
+%     push_nest; mode:=-vmode; prev_depth:=nest[nest_ptr-2].aux_field.sc;
+%     mode_line:=-line; begin_token_list(output_routine,output_text);
+%     new_save_level(output_group); normal_paragraph;
+%     scan_left_brace; return;
+%
+% `new_save_level` *then* `normal_paragraph`. §1070's reset — `\looseness`,
+% `\hangindent`, `\hangafter`, `\parshape` — therefore happens inside the
+% output group, so the four are saved at that level and given back when the
+% routine ends.
+%
+% We called it before the group existed, so the assignments landed on the
+% enclosing group instead. The routine's own `unsave` had nothing to say about
+% them, and a document that set a paragraph shape and then let an `\output`
+% fire lost the shape for good — the reset was permanent rather than the
+% routine's business.
+%
+% `\parshape` is the one that shows it plainly: set it, let a page fire, and
+% ask again.
+\catcode`\{=1 \catcode`\}=2
+\tracingonline=1 \tracingrestores=1
+\hsize=100pt \parindent=0pt \vsize=12pt \maxdepth=2pt
+\hbadness=10000 \vbadness=10000
+\font\r=cmr10 \r
+\output={\message{OUT}\shipout\box255 }
+\showthe\escapechar
+
+% The page has to fire while the shape is still *live*, which means not from
+% a `\par` — §1094's `end_graf` resets all four before the builder is reached,
+% so by then there is nothing for the routine to reset. A forced break does
+% it, and so does the display alignment in trip.tex, which is where this was
+% found.
+A\par
+\parshape 2 0pt 50pt 0pt 60pt
+\hangindent=10pt \hangafter=-3 \looseness=2
+\penalty-10000
+\message{PROBE:after=[\the\parshape][\the\hangindent][\the\hangafter][\the\looseness]}
+
+% ...and again, to show the four `{restoring …}` lines are the routine's own
+% group giving them back rather than an accident of ordering.
+\parshape 1 0pt 40pt \looseness=5
+\penalty-10000
+\message{PROBE:again=[\the\parshape][\the\looseness]}
+\showthe\escapechar
+\end

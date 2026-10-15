@@ -1,0 +1,25 @@
+\input plain
+\catcode`\@=11
+\count5=42 \dimen5=3pt \skip5=1pt plus 2fil \toks5={A\relax B}
+\chardef\ch=65 \def\mac#1{<#1>}
+\message{<1:\the\count5>}
+\message{<2:\the\dimen5>}
+\message{<3:\the\skip5>}
+\message{<4:\the\toks5>}
+\message{<5:\the\ch>}
+\message{<6:\number\count5>}
+\message{<7:\number-17>}
+\message{<8:\romannumeral 1984>}
+\message{<9:\string\foo>}
+\message{<10:\string A>}
+\message{<11:\meaning\mac>}
+\message{<12:\meaning\relax>}
+\message{<13:\meaning\undefinedthing>}
+\message{<14:\detokenize{\a b#c}>}
+\message{<15:\the\numexpr 7*3-2\relax>}
+\message{<16:\the\dimexpr 2pt*3\relax>}
+\message{<17:\jobname>}
+\message{<18:\the\catcode`\@>}
+\message{<19:\the\escapechar>}
+\message{<20:\expandafter\string\csname foo bar\endcsname>}
+\bye

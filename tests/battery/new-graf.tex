@@ -1,0 +1,50 @@
+% `tex.web` §1091 `new_graf`: everything that happens when a paragraph begins,
+% in the order it happens.
+%
+%   prev_graf := 0
+%   \parskip glue on the enclosing list
+%   push_nest, the indent box
+%   \everypar
+%   if nest_ptr = 1 then build_page   % "put \parskip glue on current page"
+%
+% That last step is not bookkeeping. It means the paragraph's `\parskip` is on
+% the *page* before any `\everypar` token is read, so a macro that looks at
+% `\pagetotal` or `\pagegoal` from `\everypar` sees it there — and sees the
+% previous line's depth folded into the total, which §1004 does as the glue goes
+% by. LaTeX's float placement asks exactly this question at exactly this moment.
+%
+% Three of our four paragraph-starting paths did the first four things and not
+% the fifth, so trip.tex read 1060.0pt from us where TeX reads 1061.0 — the
+% missing 1pt being the previous line's depth.
+%
+% Only at the outer level: `nest_ptr = 1` means the paragraph is the only level
+% pushed, so one begun inside a box exercises no page builder at all.
+\catcode`\{=1 \catcode`\}=2 \catcode`\#=6
+\font\rip=cmr10 \rip
+\hsize=100pt \vsize=500pt \parindent=0pt \topskip=0pt \maxdepth=2pt
+\baselineskip=10pt \lineskip=1pt \lineskiplimit=0pt \parskip=3pt
+\output={\shipout\box255}
+
+% A character starts the paragraph.
+\everypar{\message{<char pt=\the\pagetotal>}}
+A\par
+A\par
+
+% `\indent` starts it (§1093), and so does `\noindent`.
+\everypar{\message{<indent pt=\the\pagetotal>}}
+\indent A\par
+\noindent A\par
+
+% A horizontal command that is not a character: `\hbox` in vertical mode does
+% *not* start one, but `\vrule` does.
+\everypar{\message{<vrule pt=\the\pagetotal>}}
+\vrule width 1pt\par
+
+% Inside a box there is no page to exercise, and `\pagetotal` must not move.
+\everypar{\message{<in-box pt=\the\pagetotal>}}
+\setbox0\vbox{\hbox{}A\par}
+\message{<after-box pt=\the\pagetotal>}
+
+\everypar{}
+\penalty-10000
+\end

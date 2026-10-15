@@ -1,0 +1,39 @@
+% §1245: `\deadcycles` is not an eqtb entry. TeX keeps it in a global that
+% `\shipout` clears (§640) and §1025 increments as it fires `\output`:
+%
+%     @<Fire up the user's output routine and |return|@>=
+%     begin output_active:=true;
+%     incr(dead_cycles);
+%     push_nest; mode:=-vmode; …
+%
+% so inside the output routine `\the\deadcycles` is at least 1, and it counts
+% how many routines have run since the last page was shipped. `\the` reads that
+% global directly.
+%
+% We keep the counter in a field and serve `\the` out of the name table, and
+% nothing wrote one from the other — so `\the\deadcycles` answered 0 for the
+% whole of every run while the counter behind it climbed. LaTeX's output
+% routine reads it.
+\input plain
+% Nothing shipped yet, and no output routine has run: zero.
+\message{<start=\the\deadcycles>}
+% An output routine that ships sets it back to 0 (§640). One that does not
+% leaves it standing, so a routine which simply throws the page away and
+% returns is counted.
+\output={\message{<in=\the\deadcycles>}\shipout\box255
+  \message{<after=\the\deadcycles>}}
+\vsize=20pt
+\hrule height 5pt
+\vfill\penalty-10000
+\message{<shipped=\the\deadcycles>}
+% Assigning it writes the *global*, not just the value `\the` reads (§1245's
+% `set_page_int`). §1054 ends the job only when the page and the lists are
+% empty **and** `dead_cycles=0`, so an assignment that reached only the
+% readable copy left `\end` ejecting residual material over and over. LaTeX's
+% `\enddocument` is `\deadcycles\z@\@@end`, so this is on the path out of
+% every document.
+\deadcycles=7
+\message{<set=\the\deadcycles>}
+\deadcycles=0
+\message{<cleared=\the\deadcycles>}
+\end

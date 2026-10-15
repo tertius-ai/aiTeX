@@ -1,0 +1,38 @@
+% `tex.web` §580: `\fontdimen` is bounded in *both* directions.
+%
+%     if n<=font_params[f] then …
+%     else begin while font_ptr=f do  {the font is the most recently loaded}
+%       begin … incr(font_params[f]); … end;
+%       if n>font_params[f] then
+%         begin print_err("Font "); print_esc(font_id_text(f));
+%         print(" has only "); print_int(font_params[f]);
+%         print(" fontdimen parameters");
+%         help2("To increase the number of font parameters, you must")
+%         ("use \fontdimen immediately after the \font is loaded."); error;
+%         end
+%       end
+%
+% Three rules, and this engine had none of them. It kept `\fontdimen` in a side
+% table that answered every read, so:
+%
+%   * assigning past the last parameter of a font that is no longer the most
+%     recently loaded silently stored a value TeX drops;
+%   * reading past it silently returned that value, where TeX raises the same
+%     error a second time and reads nought;
+%   * and the font's own parameter *count* never grew, so a font could never be
+%     promoted.
+%
+% The count is the part that reaches beyond diagnostics: §1195 measures a math
+% family by it. Twenty-two parameters make a symbol font and thirteen an
+% extension font, whatever the `.tfm` came with — trip.tex has a macro for
+% exactly that promotion, and without it we reported `Insufficient symbol
+% fonts` at a point where TeX had got as far as `Insufficient extension fonts`.
+\catcode`\{=1 \catcode`\}=2
+\errorcontextlines=5
+\font\r=cmr10 \font\e=cmex10
+\message{<n=\the\fontdimen7\r>}
+\fontdimen8\r=1pt
+\message{<after=\the\fontdimen8\r>}
+\fontdimen8\e=2pt
+\message{<last=\the\fontdimen8\e>}
+\end

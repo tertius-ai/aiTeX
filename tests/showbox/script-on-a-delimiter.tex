@@ -1,0 +1,57 @@
+% §1176 decides which atom a script belongs to before it reads the script:
+%
+%     @d scripts_allowed(#)==(type(#)>=ord_noad)and(type(#)<left_noad)
+%
+%     begin t:=empty; p:=null;
+%     if tail<>head then if scripts_allowed(tail) then
+%       begin p:=supscr(tail)+cur_cmd-sup_mark; t:=math_type(p);
+%       end;
+%     if (p=null)or(t<>empty) then @<Insert a dummy noad…@>;
+%     scan_math(p);
+%
+% `left_noad` and `right_noad` sit *outside* the allowed range, so a script
+% after `\left|` or `\right)` goes on a fresh empty atom rather than on the
+% delimiter. It matters because §762 builds a delimiter box from the delimiter
+% and nothing else: a script hung there is never looked at again and simply
+% disappears.
+%
+%     \left|_{\theta=\theta_0}\right.
+%
+% is the ordinary way to write an evaluation bar, and 2608.16468v1 lost
+% `θ=θ₀` out of the middle of a theorem that way — 72 pages matching pdfTeX
+% and 42 characters short.
+%
+% The same insertion is what makes `x^1^2` mean `x^1{}^2`, and §1177's error
+% goes with it. Because §1176 inserts *before* `scan_math`, that error is
+% reported with the field still unread, so its context ends `x^1^`.
+\catcode`\{=1 \catcode`\}=2 \catcode`\$=3 \catcode`\^=7 \catcode`\_=8
+\font\r=cmr10 \r \hsize=300pt \parindent=0pt
+\font\mi=cmmi10 \font\sy=cmsy10 \font\ex=cmex10
+\textfont0=\r \scriptfont0=\r \scriptscriptfont0=\r
+\textfont1=\mi \scriptfont1=\mi \scriptscriptfont1=\mi
+\textfont2=\sy \scriptfont2=\sy \scriptscriptfont2=\sy
+\textfont3=\ex \scriptfont3=\ex \scriptscriptfont3=\ex
+\showboxdepth=8 \showboxbreadth=20 \tracingonline=0
+
+% The evaluation bar: the subscript is a separate Ord atom after the `\left|`.
+\setbox0=\hbox{$\left|_{a}\right.$}
+\showbox0
+
+% A script after `\right`, which is equally not allowed to carry one.
+\setbox0=\hbox{$\left(x\right)^{b}$}
+\showbox0
+
+% Both at once, and a script on an ordinary atom in between to show the
+% difference: that one *is* carried by the atom itself.
+\setbox0=\hbox{$\left(x^{c}\right)_{d}$}
+\showbox0
+
+% A script at the very start of a list — `tail=head`, the other way `p` stays
+% null — also gets an empty atom.
+\setbox0=\hbox{$^{e}f$}
+\showbox0
+
+% A script on a style switch, which is not an atom either.
+\setbox0=\hbox{$g\displaystyle^{h}$}
+\showbox0
+\end

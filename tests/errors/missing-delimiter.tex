@@ -1,0 +1,56 @@
+% `tex.web` §1160 and §1161: a delimiter is a character whose `\delcode` is
+% not negative, and §232 leaves every one of them negative but `.`.
+%
+%     if cur_val<0 then
+%       begin print_err("Missing delimiter (. inserted)");
+%       help6("I was expecting to see something like `(' or `\{' or")
+%       ("`\}' here. If you typed, e.g., `{' instead of `\{', you")
+%       ("should probably delete the `{' by typing `1' now, so that")
+%       ("braces don't get unbalanced. Otherwise just proceed.")
+%       ("Acceptable delimiters are characters whose \delcode is")
+%       ("nonnegative, or you can use `\delimiter <delimiter code>'.");
+%       back_error; cur_val:=0;
+%       end
+%
+% `back_error`, so the offending token is put back and read again as a
+% command. That is the half that reaches the page: `\left(` under INITEX's own
+% table sets the `(` as an ordinary character *after* a null delimiter, rather
+% than swallowing it. We swallowed it, and said nothing — so a document that
+% had not set its `\delcode`s lost a character per delimiter with no record.
+%
+% plain.tex sets them, which is why this only shows in a format-free run — and
+% why the null delimiter `.` has to keep working, since `\left.` is how a
+% document asks for a delimiter that prints nothing.
+\catcode`\{=1 \catcode`\}=2 \catcode`\$=3
+\errorcontextlines=5 \hsize=100pt \parindent=0pt
+\font\rm=cmr10 \textfont0=\rm \scriptfont0=\rm \scriptscriptfont0=\rm \rm
+\font\mi=cmmi10 \textfont1=\mi \scriptfont1=\mi \scriptscriptfont1=\mi
+\font\sy=cmsy10 \textfont2=\sy \scriptfont2=\sy \scriptscriptfont2=\sy
+\font\ex=cmex10 \textfont3=\ex \scriptfont3=\ex \scriptscriptfont3=\ex
+\showthe\escapechar
+
+% Nothing has set a \delcode, so both of these are missing delimiters — and
+% both parentheses are then set as ordinary characters.
+\setbox0\hbox{$\left(A\right)$}
+\message{PROBE:unset=[\the\wd0]}
+
+% ...and with the codes set, no message and real delimiters.
+\delcode`(="028300 \delcode`)="029301
+\setbox1\hbox{$\left(A\right)$}
+\message{PROBE:set=[\the\wd1]}
+
+% §232 leaves `.` at 0, which is the *null* delimiter — it exists and prints
+% nothing, so `\left.` is silent.
+\setbox2\hbox{$\left.A\right.$}
+\message{PROBE:null=[\the\wd2]}
+
+% `\delimiter` writes the code out and needs no \delcode at all.
+\setbox3\hbox{$\left\delimiter"028300 A\right\delimiter"029301 $}
+\message{PROBE:explicit=[\the\wd3]}
+
+% The other two places §1160 is reached from: a fraction's own delimiters, and
+% `\radical`.
+\setbox4\hbox{$A\abovewithdelims xy 1pt B$}
+\message{PROBE:frac=[\the\wd4]}
+\showthe\escapechar
+\end

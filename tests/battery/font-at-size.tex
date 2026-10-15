@@ -1,0 +1,36 @@
+% `tex.web` §298's `set_font` case:
+%
+%     set_font: begin print("select font ");
+%       slow_print(font_name[chr_code]);
+%       if font_size[chr_code]<>font_dsize[chr_code] then
+%         begin print(" at "); print_scaled(font_size[chr_code]); print("pt");
+%         end;
+%       end;
+%
+% The `at` clause is about the *size*, not about whether one was asked for: a
+% font loaded `at` its own design size prints without it, and one loaded
+% `scaled 1200` prints with it although no `at` was written. We printed it
+% whenever a size had been given, which is neither.
+%
+% trip.tex turns this on. Line 215 is `\font\ip trip at -10pt`, which is
+% §1259's improper `at' size, recovered to a flat 10pt — and 10pt is
+% trip.tfm's design size, so TeX prints `select font trip` where we printed
+% `select font trip at 10.0pt`. expl3 greps this string.
+%
+% \ifx between two \font's naming the same file at the same computed size is
+% the other half of §1260, and it is what makes `at 10pt` and no size at all
+% one font rather than two.
+\input plain
+\font\a=cmr10
+\font\b=cmr10 at 10pt
+\font\c=cmr10 at 12pt
+\font\d=cmr10 scaled 1000
+\font\e=cmr10 scaled 1200
+\font\f=cmr5 at 5pt
+\font\g=cmr5 at 10pt
+\message{<a=\meaning\a><b=\meaning\b><c=\meaning\c>}
+\message{<d=\meaning\d><e=\meaning\e><f=\meaning\f><g=\meaning\g>}
+\message{<null=\meaning\nullfont>}
+\message{<ab=\ifx\a\b Y\else N\fi><ad=\ifx\a\d Y\else N\fi><ce=\ifx\c\e Y\else N\fi><ac=\ifx\a\c Y\else N\fi>}
+\message{<names=\fontname\a|\fontname\c|\fontname\e|\fontname\g>}
+\bye

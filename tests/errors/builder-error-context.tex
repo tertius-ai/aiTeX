@@ -1,0 +1,36 @@
+% `tex.web` §1005-§1025: where the page builder's complaints stand relative to
+% the output routine.
+%
+% §1010's `Infinite glue shrinkage inserted from \skip n`, §1017's `\box255 is
+% not void` and §1005's weighings all happen inside `fire_up` — *before* §1025
+% pushes the output routine. So their error contexts show the input stack as it
+% was when the page fired: the token the firing command's number scan pushed
+% back, and the file under it. Draining the builder's narration after the
+% routine was armed put an `<output>` level on top of every one of them, which
+% in trip.log is eleven lines out of step at the very first page that carries
+% an insertion.
+%
+% `\penalty-10000\hbox` is what makes that level visible: with no space to end
+% the number, §444 reads the `\hbox` and pushes it back, and it is still there
+% when the builder fires.
+\catcode`\{=1 \catcode`\}=2
+\tracingonline=1 \tracingpages=1
+\showboxbreadth=1 \showboxdepth=0
+\vsize=200pt \maxdepth=2pt
+\output={\shipout\box255}
+
+\dimen8=100pt \count8=1000 \skip8=0pt minus 1fil
+\hbox{}\insert8{\hbox{}}\vfill
+\penalty-10000\hbox to 23pt{}
+\message{PROBE:one=fired}
+
+% ...and again on the *next* page, where the routine that has just run is still
+% on the input stack unless §1026's `end_token_list` takes it off. Ours left it
+% there, spent, and §311 shows the innermost level whether or not it is spent —
+% so this second complaint carried an `<output>` level holding the whole of a
+% routine that had already finished.
+\dimen9=100pt \count9=1000 \skip9=0pt minus 1fil
+\hbox{}\insert9{\hbox{}}\vfill
+\penalty-10000\hbox to 23pt{}
+\message{PROBE:two=done}
+\end

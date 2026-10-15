@@ -1,0 +1,46 @@
+% `tex.web` §1183: two fraction operators in one math list, and TeX will not
+% guess which nests inside which.
+%
+%     if incompleat_noad<>null then
+%       begin if c>=delimited_code then
+%         begin scan_delimiter(garbage,false); scan_delimiter(garbage,false);
+%         end;
+%       if c mod delimited_code=above_code then scan_dimen(false,false,false);
+%       print_err("Ambiguous; you need another { and }");
+%       help3("I'm ignoring this fraction specification, since I don't")
+%       ("know whether a construction like `x \over y \over z'")
+%       ("means `{x \over y} \over z' or `x \over {y \over z}'.");
+%       error;
+%       end
+%
+% The delimiters and the thickness are scanned either way — they have to be, or
+% the rest of the formula would read them as material — and then the whole
+% specification is *ignored*, list unchanged.
+%
+% We accepted it and built the fraction. That is not merely a missing message:
+% the math list came out a level deeper than TeX's for the rest of the formula,
+% which is what made trip.tex's `\mkern` two commands later report `math mode`
+% where TeX reports `display math mode`.
+%
+% Braces are how to say what was meant, and the last case shows it — with them
+% there is one fraction per list and nothing to complain about.
+\catcode`\{=1 \catcode`\}=2 \catcode`\$=3
+\errorcontextlines=5 \hsize=100pt \parindent=0pt
+\font\rm=cmr10 \textfont0=\rm \scriptfont0=\rm \scriptscriptfont0=\rm \rm
+\font\mi=cmmi10 \textfont1=\mi \scriptfont1=\mi \scriptscriptfont1=\mi
+\font\sy=cmsy10 \textfont2=\sy \scriptfont2=\sy \scriptscriptfont2=\sy
+\font\ex=cmex10 \textfont3=\ex \scriptfont3=\ex \scriptscriptfont3=\ex
+\delcode`(="028300 \delcode`)="029301
+\showthe\escapechar
+\setbox0\hbox{$A\over B\over C$}
+\message{PROBE:two=[\the\wd0]}
+\setbox1\hbox{$A\over B\abovewithdelims(( 2pt C$}
+\message{PROBE:delims=[\the\wd1]}
+\setbox2\hbox{$A\over B\above 3pt C$}
+\message{PROBE:above=[\the\wd2]}
+\setbox3\hbox{$A\over B$}
+\message{PROBE:ok=[\the\wd3]}
+\setbox4\hbox{${A\over B}\over C$}
+\message{PROBE:braced=[\the\wd4]}
+\showthe\escapechar
+\end

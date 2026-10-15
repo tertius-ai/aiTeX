@@ -1,0 +1,21 @@
+% TFM-PL: vendor/trip/trip.pl
+% `tex.web` §752 runs every TFM ligature operator in math, not only ordinary
+% op-0 replacement. TRIP's `p`/`q` program chains replacements and insertions
+% with several retain/delete forms, producing a much longer run than its input.
+\catcode`\{=1 \catcode`\}=2 \catcode`\$=3
+\font\trip=trip
+\font\smalltrip=trip scaled 500
+\font\bigtrip=trip at 20pt
+\trip
+\textfont0=\trip \scriptfont0=\smalltrip \scriptscriptfont0=\smalltrip
+\textfont1=\trip \scriptfont1=\smalltrip \scriptscriptfont1=\smalltrip
+\textfont2=\smalltrip \scriptfont2=\smalltrip \scriptscriptfont2=\smalltrip
+\textfont3=\bigtrip \scriptfont3=\bigtrip \scriptscriptfont3=\bigtrip
+\showboxdepth=6 \showboxbreadth=60 \tracingonline=0
+\setbox0=\hbox{$pq$}\showbox0
+\setbox0=\hbox{$\scriptstyle pq$}\showbox0
+% The original right noad keeps its relation class through insertions. This is
+% TRIP's exact case and pins each generated kern on the pair that found it.
+\mathcode`q="3171
+\setbox0=\hbox{$\displaystyle pq$}\showbox0
+\end

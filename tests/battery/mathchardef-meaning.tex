@@ -1,0 +1,36 @@
+% `tex.web` §1223: `\meaning` distinguishes a `\chardef` from a `\mathchardef`.
+% They are printed from different `chr_cmd` strings — `char_given` is `\char`
+% and `math_given` is `\mathchar` — because they are different things: a
+% `\chardef`'d constant is a character to typeset, a `\mathchardef`'d one is an
+% atom carrying a class, a family and a position.
+%
+% We printed `\char` for both. Every symbol plain.tex defines — `\alpha` is
+% `\mathchardef"010B` — then claimed through `\meaning` and `\show` to be an
+% ordinary character constant, and a macro switching on `\meaning` could not
+% tell a relation from a letter.
+%
+% Found in trip.tex, where `\show` of a `\mathchardef`'d `\minus` reads
+% `\mathchar"232D` in Knuth's transcript and read `\char"232D` in ours.
+\catcode`\{=1 \catcode`\}=2
+
+\mathchardef\mc="232D
+\chardef\ch="41
+\message{<mc=\meaning\mc>}
+\message{<ch=\meaning\ch>}
+
+% `\the` is the same integer for both — only the *meaning* distinguishes them,
+% which is the whole point of the two strings.
+\message{<mcval=\the\mc><chval=\the\ch>}
+
+% a mathchar big enough to need all four hex digits, and one small enough not to
+\mathchardef\big="7FFF
+\mathchardef\small="1
+\message{<big=\meaning\big><small=\meaning\small>}
+
+% and `\ifx` sees the two as different meanings even at the same value — which
+% has to be tested inside 0..255, since a character code wider than that is
+% §434's error and not a `\chardef` at all.
+\mathchardef\msame="41
+\message{<ifx=\ifx\ch\msame yes\else no\fi>}
+\message{<ifxself=\ifx\ch\ch yes\else no\fi>}
+\end

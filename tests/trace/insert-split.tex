@@ -1,0 +1,41 @@
+% `tex.web` §1010: how much room a `\vsplit`-able insertion class is given.
+%
+%     if count(n)<=0 then w:=max_dimen
+%     else begin w:=page_goal-page_total-page_depth;
+%       if count(n)<>1000 then w:=x_over_n(w,count(n))*1000;
+%       end;
+%     if w>dimen(n)-height(r) then w:=dimen(n)-height(r);
+%
+% The scaling divides *first* and multiplies after — the same shape as §1009's
+% `h:=x_over_n(height(p),1000)*count(n)` — and the order is not
+% interchangeable. `xn_over_d(w,1000,count)` is exact where this deliberately
+% is not: it drops the remainder before scaling it up, so the answer is always
+% a multiple of 1000sp and always a little short of the exact quotient.
+%
+% We used the exact form. Measured against real TeX, four independent inputs,
+% all off by the rounding and nothing else:
+%
+%     w        count   TeX (x_over_n*1000)   ours (xn_over_d)
+%     90pt     500     179.99268             180.0
+%     93pt     500     185.98938             186.0
+%     100pt    500     199.99695             200.0
+%     100pt    250     399.9939              400.0
+%
+% This was trip.tex's first page-trace divergence. The original investigation
+% measured the gap at 120sp and — assuming the arithmetic was exact — concluded
+% it must be in `page_depth`, the one
+% quantity in the expression that nothing prints. The arithmetic was the gap.
+% The note is deleted with this change; it was blocked on reading §1010, and
+% varying the inputs against real TeX answered it without needing to.
+\catcode`\{=1 \catcode`\}=2
+\tracingpages=1 \tracingonline=0
+\output={\shipout\box255}
+\vsize=100pt \maxdepth=2pt
+\dimen200=10000pt \count200=500 \skip200=3pt
+
+% An insertion far too tall for the page, so §1010 has to decide how much of it
+% fits. Two firings, so two splits with different `page_total` behind them.
+\hbox{}\vskip 7pt
+\insert200{\hbox{}\vskip 400pt\hbox{}\vskip 400pt}
+\hbox{}\vskip 300pt
+\end

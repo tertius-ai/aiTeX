@@ -1,0 +1,28 @@
+% \ifdim in the *gullet* -- inside \message, \edef, \expanded.
+%
+% The stomach had this right and the gullet did not: its copy scanned
+% integers, so `\ifdim 1pt>0pt` could not read `1pt` at all. The conditionals
+% battery tests that form at top level, where the stomach runs it, so the
+% gullet's copy stayed broken while every gate was green -- and the gullet is
+% exactly where expl3 does its work.
+%
+% One rule, two implementations, once again. Each case below is written so it
+% is evaluated during *expansion*, which is what the existing battery never
+% did.
+\input plain
+\def\M#1{\message{<#1>}}
+\dimen0=5pt \dimen1=3pt \skip0=2pt plus 1pt
+\M{a=\ifdim 1pt>0pt T\else F\fi}
+\M{b=\ifdim\dimen0>\dimen1 T\else F\fi}
+\M{c=\ifdim 2.5pt<3pt T\else F\fi}
+\M{d=\ifdim 1in>72pt T\else F\fi}
+\M{e=\ifdim\dimen0=5pt T\else F\fi}
+\M{f=\ifdim 0.5pt<1pt T\else F\fi}
+\M{g=\ifdim -1pt<0pt T\else F\fi}
+\M{h=\ifdim\skip0>1pt T\else F\fi}
+\M{i=\ifdim\dimexpr 2pt*2\relax>3pt T\else F\fi}
+\edef\r{\ifdim 1pt>2pt A\else B\fi}\M{j=\meaning\r}
+\M{k=\expanded{\ifdim 3pt>2pt Y\else N\fi}}
+\ifdim 1pt>0pt \M{l=stomach-T}\else\M{l=stomach-F}\fi
+\M{m=\ifdim 1pt=1pt T\else F\fi}
+\bye

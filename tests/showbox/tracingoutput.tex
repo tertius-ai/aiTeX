@@ -1,0 +1,33 @@
+% `tex.web` §638 `ship_out`: with `\tracingoutput` positive, TeX announces each
+% page and shows the whole box before writing a byte of DVI.
+%
+%     Completed box being shipped out [3.1]
+%     \vbox(50.0+0.0)x5.0
+%     .\glue(\topskip) 0.0
+%     …
+%
+% It is the only record of what actually *left* the engine — everything else in
+% a transcript is what the engine was thinking — and trip.tex turns it on for
+% every page it ships, which is fourteen of them.
+%
+% The `[…]` is `\count0` through the highest non-zero `\count9` with dots
+% between, the same numbers §640 puts in the DVI's `bop`. So a page whose
+% `\count1` is set reads `[4.7]` and one whose is not reads `[3]`.
+%
+% `\tracingoutput` was registered as a parameter with nothing reading it — the
+% eighth instance of that shape in this engine, and the first of the seven
+% `\tracing*` parameters that make up most of TRIP's transcript.
+\catcode`\{=1 \catcode`\}=2 \catcode`\#=6
+\font\rip=cmr10 \rip
+\hsize=100pt \vsize=50pt \topskip=0pt \maxdepth=2pt \parindent=0pt
+\baselineskip=10pt \lineskip=0pt \lineskiplimit=0pt
+\showboxbreadth=9999 \showboxdepth=9999
+\tracingoutput=1
+\output={\shipout\box255}
+\count0=3
+\hbox to 5pt{A}
+\penalty-10000
+\count0=4 \count1=7
+\hbox to 5pt{B}
+\penalty-10000
+\end

@@ -1,0 +1,38 @@
+% `tex.web` §1028: an output routine has to empty `\box255`.
+%
+%     if box(255)<>null then
+%       begin print_err("Output routine didn't use all of ");
+%       print_esc("box"); print_int(255);
+%       help3("Your \output commands should empty \box255,")
+%         ("e.g., by saying `\shipout\box255'.")
+%         ("Proceed; I'll discard its present contents.");
+%       box_error(255);
+%       end;
+%
+% We reported it and stopped there — no help, and no §992 display of the box
+% being discarded, which is the same omission §1017 had. A routine that leaves
+% the page behind loses it, and the log is the only place that says what was
+% lost.
+%
+% §233 while nearby: `\tracingrestores` shows a box register's old value as
+% §184's header line, glue set and all, with a ` []` for the list underneath
+% that the depth limit stops. We wrote the three dimensions by hand and left
+% both out — so a restore said nothing about how the box had been packed.
+\catcode`\{=1 \catcode`\}=2
+\tracingonline=1 \tracingrestores=1
+\showboxbreadth=2 \showboxdepth=1
+\vsize=30pt \maxdepth=2pt
+
+% A routine that does nothing with the page. §1024's dead-cycle count stops it
+% after `\maxdeadcycles`, and each firing complains once.
+\maxdeadcycles=2
+\output={\message{[out]}}
+\hbox{}\vskip 10pt\hbox{}\vfill\penalty-10000
+\message{PROBE:one=after}
+
+% A routine that does its job again, so the page `\end` makes is disposed of
+% cleanly and the case does not also depend on what the input stack looks like
+% at end of job — which is its own divergence and not this one.
+\output={\shipout\box255}
+\hbox{}
+\end

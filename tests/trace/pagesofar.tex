@@ -1,0 +1,35 @@
+% `tex.web` §982's `page_so_far`, as the output routine reads it.
+%
+% `\pagetotal`, `\pagegoal`, `\pagestretch`, `\pagefilstretch`, `\pageshrink`
+% and `\pagedepth` are what an output routine knows about the page it has just
+% been handed. plain.tex's `\pagebody` is `\vbox to\pagegoal{…}`, and trip.tex
+% reads `\pageshrink` from inside `\output` twice.
+%
+% Two faults kept these from being right, and only together:
+%
+%   * `fire_up` zeroes the live accumulator on its way out, so by the time a
+%     firing is visible to the caller there is nothing left to publish. The
+%     values now come from a snapshot taken in `fire_up` beside `fired_size`.
+%   * the publish sat past the early return in `harvest_insertions`, which is
+%     taken whenever the page carries no insertion — nearly every page. So the
+%     parameters kept whatever the last *idle* publish had left in them: the
+%     values as of some earlier breakpoint, one contribution short of the page
+%     that actually fired. `\pagegoal` went the same way.
+%
+% Read together with tests/trace/tracingpages.tex, which pins the builder's own
+% view of the same page. The builder was right before either fix; what it knew
+% was not reaching the routine.
+\catcode`\{=1 \catcode`\}=2
+\tracingonline=0
+\output={\showthe\pagetotal \showthe\pagegoal \showthe\pagestretch
+ \showthe\pagefilstretch \showthe\pageshrink \showthe\pagedepth
+ \shipout\box255}
+\vsize=50pt \maxdepth=2pt
+
+% The first firing carries the page whole — 130pt of it, with the stretch and
+% shrink of all three glues. The second is `\end`'s own page, which is empty,
+% and every quantity reads zero rather than the previous page's figures.
+\hbox{}\vskip 10pt plus 3pt minus 4pt
+\hbox{}\vskip 20pt plus 1fil minus 7pt
+\hbox{}\vskip 100pt plus 55pt minus 66pt
+\end

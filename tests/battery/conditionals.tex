@@ -1,0 +1,52 @@
+% Every conditional TeX has, both branches, plus nesting and \let aliases.
+\input plain
+\catcode`\@=11
+\count5=7 \dimen5=3pt \newif\ifmine \setbox5=\hbox{x}
+\def\yn#1{\message{<#1>}}
+\ifnum 1<2 \yn{ifnum-lt}\else\yn{BAD}\fi
+\ifnum 2<1 \yn{BAD}\else\yn{ifnum-else}\fi
+\ifnum \count5=7 \yn{ifnum-reg}\else\yn{BAD}\fi
+\ifdim 1pt>0pt \yn{ifdim-gt}\else\yn{BAD}\fi
+\ifdim \dimen5=3pt \yn{ifdim-reg}\else\yn{BAD}\fi
+\ifodd 3 \yn{ifodd}\else\yn{BAD}\fi
+\ifodd 4 \yn{BAD}\else\yn{ifodd-else}\fi
+\ifvmode \yn{ifvmode}\else\yn{BAD}\fi
+\ifhmode \yn{BAD}\else\yn{ifhmode-else}\fi
+\ifmmode \yn{BAD}\else\yn{ifmmode-else}\fi
+\ifinner \yn{BAD}\else\yn{ifinner-else}\fi
+\ifvoid 9 \yn{ifvoid}\else\yn{BAD}\fi
+\ifhbox 5 \yn{ifhbox}\else\yn{BAD}\fi
+\ifvbox 5 \yn{BAD}\else\yn{ifvbox-else}\fi
+\ifx \relax\relax \yn{ifx-same}\else\yn{BAD}\fi
+\ifx \relax\undefinedthing \yn{BAD}\else\yn{ifx-diff}\fi
+\ifx \undefinedone\undefinedtwo \yn{ifx-both-undef}\else\yn{BAD}\fi
+\if AA\yn{if-char}\else\yn{BAD}\fi
+\if AB\yn{BAD}\else\yn{if-char-else}\fi
+\ifcat AB\yn{ifcat}\else\yn{BAD}\fi
+\ifcat A1\yn{BAD}\else\yn{ifcat-else}\fi
+\iftrue \yn{iftrue}\else\yn{BAD}\fi
+\iffalse \yn{BAD}\else\yn{iffalse}\fi
+\ifdefined\relax \yn{ifdefined}\else\yn{BAD}\fi
+\ifdefined\undefinedthing \yn{BAD}\else\yn{ifdefined-else}\fi
+\ifcsname relax\endcsname \yn{ifcsname}\else\yn{BAD}\fi
+\ifcsname nosuchcs\endcsname \yn{BAD}\else\yn{ifcsname-else}\fi
+\ifcase 2 \yn{BAD}\or\yn{BAD}\or\yn{ifcase-2}\else\yn{BAD}\fi
+\ifcase 9 \yn{BAD}\or\yn{BAD}\else\yn{ifcase-else}\fi
+\minetrue \ifmine \yn{newif-true}\else\yn{BAD}\fi
+\minefalse \ifmine \yn{BAD}\else\yn{newif-false}\fi
+% Nesting inside a discarded branch: the inner \fi must not close the outer.
+\iffalse \iftrue \yn{BAD}\fi \yn{BAD}\else\yn{nested-skip}\fi
+% A \let alias closes a conditional by meaning, not spelling.
+\let\myfi\fi \let\myiffalse\iffalse
+\myiffalse \yn{BAD}\myfi \yn{alias-fi}
+% \ifcase past the last \or, and with a negative selector: tex.web 509 stops
+% at whatever it runs into rather than treating either as an error.
+\ifcase 5 \yn{BAD}\or\yn{BAD}\else\yn{ifcase-past-end}\fi
+\ifcase -1 \yn{BAD}\or\yn{BAD}\else\yn{ifcase-negative}\fi
+\ifcase 3 \yn{BAD}\or\yn{BAD}\fi \yn{ifcase-no-else}
+\ifcase 0 \yn{ifcase-zero}\or\yn{BAD}\else\yn{BAD}\fi
+% \ifinner is true inside a box and false on the outer vertical list.
+\setbox6=\hbox{\ifinner\yn{ifinner-in-hbox}\else\yn{BAD}\fi}
+\setbox7=\vbox{\ifinner\yn{ifinner-in-vbox}\else\yn{BAD}\fi}
+\setbox8=\hbox{\ifhmode\yn{ifhmode-in-hbox}\else\yn{BAD}\fi}
+\bye

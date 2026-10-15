@@ -1,0 +1,25 @@
+[package]
+name = "aitex-harness"
+description = "LLM-mediated LaTeX compile-repair harness"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+publish.workspace = true
+
+[dependencies]
+aitex-core = { path = "../aitex-core" }
+# Hand-rolled against /v1/messages: no official Rust SDK, and a wrapper lagging
+# on cache_control placement would silently cost us the cache hits the whole
+# token strategy depends on. Blocking, because TeX is sequential anyway.
+reqwest = { version = "0.12", default-features = false, features = ["blocking", "json", "rustls-tls"], optional = true }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+[features]
+default = ["anthropic", "openrouter"]
+anthropic = ["dep:reqwest"]
+openrouter = ["dep:reqwest"]
+
+[lints]
+workspace = true

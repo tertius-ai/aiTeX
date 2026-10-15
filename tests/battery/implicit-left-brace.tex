@@ -1,0 +1,84 @@
+% §403 `scan_left_brace` tests the *command*, not the character:
+%
+%     procedure scan_left_brace; {reads a mandatory left brace}
+%     begin @<Get the next non-blank non-relax non-call token@>;
+%     if cur_cmd<>left_brace then
+%       begin print_err("Missing { inserted");
+%       help4("A left brace was mandatory here, so I've put one in.")…
+%
+% `cur_cmd = left_brace` is true of an explicit `{` and equally of a control
+% sequence `\let` to one — plain's `\bgroup`. Everything that reads a mandatory
+% brace goes through here: `\hbox`, `\vbox`, `\vtop`, `\vcenter`, the three
+% parts of `\discretionary`, `\insert`, `\vadjust`, `\output`, and §1151's
+% `scan_math` for a subformula.
+%
+% mathtools builds every paired delimiter on the implicit form:
+%
+%     \DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+%
+% expands `\norm{Z}` through `\mathopen{}\mathclose\bgroup … \aftergroup\egroup`,
+% so the brace that opens the subformula is `\bgroup` and never a `{`. Reading
+% the token's catcode instead of its meaning refuses it:
+%
+%     ! Missing { inserted.
+%     <recently read> \delimiter
+%     l.321  \norm{Z}
+%                    _{\psi_2}:=\inf\left\{r>0:
+%
+% 2608.15840v1 uses `\norm` throughout and stopped at the hundred-error limit
+% after four of its thirty-six pages.
+\catcode`\{=1 \catcode`\}=2 \catcode`\$=3 \catcode`\^=7 \catcode`\_=8
+\font\r=cmr10 \r \hsize=200pt \parindent=0pt
+\font\mi=cmmi10 \font\sy=cmsy10 \font\ex=cmex10
+\textfont0=\r \scriptfont0=\r \scriptscriptfont0=\r
+\textfont1=\mi \scriptfont1=\mi \scriptscriptfont1=\mi
+\textfont2=\sy \scriptfont2=\sy \scriptscriptfont2=\sy
+\textfont3=\ex \scriptfont3=\ex \scriptscriptfont3=\ex
+\let\bgroup={ \let\egroup=}
+
+% A box whose brace is implicit — the plainest case of §403.
+\setbox0=\hbox\bgroup A\egroup
+\message{<hbox=\the\wd0>}
+\setbox0=\vbox\bgroup \hbox{B}\egroup
+\message{<vbox=\the\ht0>}
+\setbox0=\vtop\bgroup \hbox{C}\egroup
+\message{<vtop=\the\ht0>}
+
+% §1151's `scan_math`: a subformula opened by an implicit brace. This is the
+% one mathtools depends on, reached through `\mathclose\bgroup`.
+\setbox0=\hbox{$x\mathclose\bgroup y\egroup$}
+\message{<mathclose=\the\wd0>}
+\setbox0=\hbox{$\mathopen\bgroup z\egroup$}
+\message{<mathopen=\the\wd0>}
+
+% A script field, which also reads a mandatory brace.
+\setbox0=\hbox{$a^\bgroup b\egroup$}
+\message{<script=\the\wd0>}
+
+% `\vcenter`, and a `\vbox to` where the dimension is scanned before the brace.
+\setbox0=\hbox{$\vcenter\bgroup\hbox{D}\egroup$}
+\message{<vcenter=\the\wd0>}
+\setbox0=\vbox to 20pt\bgroup \hbox{E}\vfil\egroup
+\message{<vboxto=\the\ht0>}
+
+% `\discretionary`'s three parts.
+\setbox0=\hbox{a\discretionary\bgroup-\egroup\bgroup\egroup\bgroup\egroup b}
+\message{<disc=\the\wd0>}
+
+% An explicit brace still works, and so does a brace reached through one more
+% level of `\let` — the meaning is what counts, however far it is from a `{`.
+\let\obrace=\bgroup \let\cbrace=\egroup
+\setbox0=\hbox\obrace F\cbrace
+\message{<relet=\the\wd0>}
+
+% A *space* before the implicit brace: §403 skips blanks first, so this is the
+% same case and not a different one.
+\setbox0=\hbox \bgroup G\egroup
+\message{<spaced=\the\wd0>}
+
+% The control: a token that is not a brace at all still has to be refused, or
+% the fix would accept anything. `\relax` is skipped by §403's "non-relax"
+% clause, so the `H` is what gets refused — and TeX inserts the brace and
+% carries on, which is what makes this comparable.
+\message{<end>}
+\end

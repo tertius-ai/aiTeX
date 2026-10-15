@@ -1,0 +1,46 @@
+% `tex.web` §1009: the fourth place TeX refuses infinite shrinkage, and the
+% only one whose message names a register.
+%
+%     page_shrink:=page_shrink+shrink(q);
+%     if (shrink_order(q)<>normal)and(shrink(q)<>0) then
+%       begin print_err("Infinite glue shrinkage inserted from ");
+%       print_esc("skip"); print_int(n);
+%       help3("The correction glue for page breaking with insertions")
+%         ("must have finite shrinkability. But you may proceed,")
+%         ("since the offensive shrinkability has been made finite.");
+%       error;
+%       end
+%
+% `\skip n` is the per-class correction glue: the room an insertion of class n
+% costs the page over and above its own height. `page_shrink` is a single
+% scaled number and there was never anywhere to put a `fil`, so nothing is
+% actually changed — the shrink has already been added as if finite, which is
+% what "has been made finite" in the help means.
+%
+% The timing is the other half of the case. §1009 reads `\count n`, `\dimen n`
+% and `\skip n` as the class's *first insertion reaches the page*, so the error
+% lands at the `\insert` and not at the assignment three lines above it. The
+% three neighbouring cases live in tests/errors/infinite-shrink.tex; this one
+% is on its own because it needs a page to fire — and it fires exactly one, on
+% purpose. A class is frozen once per page, so a second page reports the same
+% `\skip` again, and that second report lands in the instant after an output
+% routine has finished, where our input stack is still not TeX's. That is a
+% real difference and it is not this one; keeping it out of here keeps this
+% case about §1009.
+\catcode`\{=1 \catcode`\}=2
+\tracingonline=1
+% §1009 freezes the page before it complains, so the complaint belongs under
+% the `%% goal height` line — which is only visible with this on.
+\tracingpages=1
+\vsize=200pt
+\output={\shipout\box255}
+
+\dimen6=100pt \count6=1000 \skip6=0pt minus 1fil
+\hbox{}\insert6{\hbox{}}\vskip 300pt
+\message{PROBE:infinite=\the\skip6}
+
+% Something after the last insertion, so the run does not end with the page
+% builder re-freezing the class from inside `\end`: §1054's own material makes
+% one more page, and the input stack there is its own subject.
+\hbox{}
+\end

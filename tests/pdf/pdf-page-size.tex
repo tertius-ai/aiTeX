@@ -1,0 +1,13 @@
+% pdfTeX derives zero page dimensions from the box being shipped plus twice
+% the PDF origin/output offset. The offsets below cancel the ordinary one-inch
+% origin, leaving a compact, deterministic 123pt by 45pt media box.
+\documentclass{article}
+\pagestyle{empty}
+\begin{document}
+\hoffset=-1in
+\voffset=-1in
+\pdfpagewidth=0pt
+\pdfpageheight=0pt
+\setbox0=\vbox to45pt{\hsize=123pt\noindent PAGE-SIZE\vfil}
+\shipout\box0
+\end{document}

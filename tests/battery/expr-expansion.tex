@@ -1,0 +1,30 @@
+% Expressions look for their operators with get_x_token -- they *expand*.
+%
+% This is not a detail. expl3's l3fp classifies a character with
+%
+%   \if_int_compare:w \__fp_int_eval:w (`#2\if_int_compare:w `#2>`Z-32\fi: )/26=3
+%
+% so a conditional sits exactly where the closing parenthesis is expected.
+% Peeking without expanding left the rest of `(1+2)\ifnum1>0 *3\fi` in the
+% stream as text: l3fp read a classification that never terminated, raised an
+% invalid-operation error, and re-entered its parse loop forever -- 113,936
+% commands into latex.ltx, every time, to the token.
+\input plain
+\def\M#1{\message{<#1>}}
+\count5=7 \dimen5=3pt \skip5=2pt plus 1pt
+\M{a=\the\numexpr (`A\ifnum`A>`Z -32\fi )/26\relax}
+\M{b=\the\numexpr (`a\ifnum`a>`Z -32\fi )/26\relax}
+\M{c=\the\numexpr (1+2)\ifnum1>0 *3\fi\relax}
+\M{d=\the\numexpr (1+2)\ifnum1>2 *3\fi\relax}
+\def\op{+}
+\M{e=\the\numexpr 1\op 2\relax}
+\M{f=\the\numexpr (1\op 2)*3\relax}
+\def\close{)}
+\M{g=\the\numexpr (1+2\close *3\relax}
+\M{h=\the\dimexpr (1pt+2pt)\ifnum1>0 *3\fi\relax}
+\M{i=\the\glueexpr (1pt plus 1pt)\ifnum1>0 *2\fi\relax}
+\M{j=\the\numexpr \count5\ifnum1>0 +1\fi\relax}
+\M{k=\the\numexpr 2*(3+4)\relax}
+\M{l=\the\numexpr ((1+2))*2\relax}
+\M{m=\the\numexpr 1+2*3-4/2\relax}
+\bye

@@ -1,0 +1,54 @@
+% `tex.web` §1215, §262 and §233: three things a `{restoring …}` line has to
+% get right, all of them met at trip.tex line 213.
+%
+%     {\catcode`?=13 \font?xyzzy at0pt\font ? xyzzy scaled1?}
+%
+% §1257's `\font` opens with `get_r_token`, and §1215's `cur_cs` is nonzero for
+% an *active character* too — they live in eqtb alongside the control
+% sequences. So `\font?xyzzy` names a font `?` exactly as `\font\rip` names one
+% `\rip`, and the trailing `?` on that line is a font identifier meaning
+% \nullfont. We asked only for a control sequence, so the whole definition was
+% dropped and `?` stayed undefined.
+%
+% §262 and §263 then print an active character *bare*:
+%
+%     else print(p-active_base)
+%
+% no escape, which is also how a document writes it. This engine keeps an
+% active character's eqtb slot under a name beginning with a marker character,
+% so `{restoring ?=undefined}` came out `{restoring \^^A?=undefined}` once the
+% definition did happen — and every `\show~` with it.
+%
+% §233's region 4 is the third:
+%
+%     if n=cur_font_loc then print("current font")
+%     …
+%     print_char("="); print_esc(font_id_text(equiv(n)));
+%
+% The current font is an eqtb entry like any other, so a group restores it and
+% §252 says so. We restored it — \fontname\font was right on either side — but
+% off the save stack's trace, so every `{\bf …}` in a document was one
+% `{restoring …}` line short of TeX's. `font_id_text` is the control sequence
+% the font answers to, which is the *last* one bound to it, not the file it was
+% read from.
+\catcode`\{=1 \catcode`\}=2
+\tracingonline=1 \tracingrestores=1 \errorcontextlines=5
+\font\a=cmr10 \font\b=cmbx10 \a
+\showthe\escapechar
+
+% The plain form: a group that changes the font restores it, and says so.
+{\b X}
+
+% An active character as a font identifier, and one that cannot be loaded —
+% so `?` means \nullfont, selecting it is a font selection like any other, and
+% the group restores both it and the font.
+{\catcode`?=13 \font?xyzzy at0pt\font ? xyzzy scaled1?}
+
+% An active character as an ordinary definition, restored the same way. `!`
+% rather than `~` on purpose: this engine's initial \catcode table is plain's
+% and not §232's, so `~` starts out active here and *other* in TeX, and its
+% restore could not agree before the initial-catcode fix. `!` is `other` in
+% both engines.
+{\catcode`!=13 \def!{bang}\show!}
+\showthe\escapechar
+\end

@@ -1,0 +1,62 @@
+% `tex.web` §1046 and §1047: a command that only makes sense on the other side
+% of a `$`.
+%
+%     procedure insert_dollar_sign;
+%     begin back_input; cur_tok:=math_shift_token+"$";
+%     print_err("Missing $ inserted");
+%     help2("I've inserted a begin-math/end-math symbol since I think")
+%     ("you left one out. Proceed, with fingers crossed."); ins_error;
+%     end;
+%
+% §1046 lists it twice over — every math-only command met *outside* math, and
+% a handful of vertical ones met *inside* it:
+%
+%     non_math(sub_mark),non_math(sup_mark),non_math(math_char_num),
+%     non_math(math_given),non_math(math_comp),non_math(delim_num),
+%     non_math(left_right),non_math(above),non_math(radical),
+%     non_math(math_style),non_math(math_choice),non_math(vcenter),
+%     non_math(non_script),non_math(mkern),non_math(limit_switch),
+%     non_math(mskip),non_math(math_accent),mmode+endv,mmode+par_end,
+%     mmode+stop,mmode+vskip,mmode+un_vbox,mmode+valign,mmode+hrule:
+%       insert_dollar_sign;
+%
+% The `$` it inserts is *executed*, so an unclosed formula is closed at the
+% first sign of trouble rather than swallowing the rest of the document — and
+% a `x^2` written outside math becomes one, rather than setting a literal `^`
+% and a `2` and saying nothing. Both halves were missing here.
+%
+% §1047's order shows in the context: `back_input` the offending token, then
+% `ins_error`, which is `back_input` the `$` *and then* `error`. So the
+% `<inserted text> $` level is already on the stack when the context beneath
+% the message is printed.
+\catcode`\{=1 \catcode`\}=2 \catcode`\$=3 \catcode`\^=7 \catcode`\_=8
+\errorcontextlines=5
+\hsize=100pt \parindent=0pt
+\font\rm=cmr10 \textfont0=\rm \scriptfont0=\rm \scriptscriptfont0=\rm \rm
+\font\mi=cmmi10 \textfont1=\mi \scriptfont1=\mi \scriptscriptfont1=\mi
+\font\sy=cmsy10 \textfont2=\sy \scriptfont2=\sy \scriptscriptfont2=\sy
+\font\ex=cmex10 \textfont3=\ex \scriptfont3=\ex \scriptscriptfont3=\ex
+\showthe\escapechar
+
+% Outside math: a script character, which is how this is nearly always met.
+\setbox0\hbox{Ax^2B}
+\message{PROBE:sup=[\the\wd0]}
+\setbox1\hbox{Ax_2B}
+\message{PROBE:sub=[\the\wd1]}
+
+% ...and a math-only primitive.
+\setbox2\hbox{A\over B}
+\message{PROBE:over=[\the\wd2]}
+
+% Inside math: a vertical command. `\par` is the one a forgotten `$` produces
+% in real documents, at the blank line after the sentence.
+\setbox3\vbox{\noindent A$B\par C}
+\message{PROBE:par=[\the\ht3]}
+\setbox4\vbox{\noindent A$B\vskip 3pt C$D\par}
+\message{PROBE:vskip=[\the\ht4]}
+
+% ...and the same written correctly, which says nothing.
+\setbox5\hbox{A$x^2$B}
+\message{PROBE:ok=[\the\wd5]}
+\showthe\escapechar
+\end

@@ -1,0 +1,88 @@
+{
+  "schema": 1,
+  "description": "Layered stock-TeX differential and product-output regression sweep",
+  "lanes": [
+    {
+      "id": "generated-scanner-matrix",
+      "description": "Generated token-identity/current-command combinations, including the #26 and #32 scanner boundaries",
+      "modes": ["pr", "full"],
+      "command": ["python3", "tools/scanner_matrix.py", "--binary", "{binary}"],
+      "requires": ["tex"],
+      "timeout_seconds": 120,
+      "summary_regex": "scanner matrix: (?P<count>[0-9]+)/(?P<total>[0-9]+) cases match TeX",
+      "minimum_observations": 8,
+      "require_complete": true
+    },
+    {
+      "id": "historical-engine-regressions",
+      "description": "All minimized syntax regressions compared with TeX82 or e-TeX",
+      "modes": ["pr", "full"],
+      "command": ["tools/battery.sh"],
+      "requires": ["tex", "pdftex"],
+      "timeout_seconds": 900,
+      "summary_regex": "all batteries agree with TeX — (?P<count>[0-9]+) forms",
+      "minimum_observations": 500
+    },
+    {
+      "id": "pdf-evidence-contract",
+      "description": "Offline audit of the varied PDF, font, Unicode, annotation, image, and scale evidence",
+      "modes": ["pr", "full"],
+      "command": ["python3", "tools/pdf_contract_check.py"],
+      "requires": [],
+      "timeout_seconds": 60,
+      "summary_regex": "PDF qualification contract: (?P<count>[0-9]+)/(?P<total>[0-9]+) cases pass",
+      "minimum_observations": 7,
+      "require_complete": true
+    },
+    {
+      "id": "latex-layout-differential",
+      "description": "Two-pass LaTeX documents compared by positioned DVI glyph semantics",
+      "modes": ["full"],
+      "command": ["tools/latex_check.sh"],
+      "requires": ["pdftex", "dvitype"],
+      "timeout_seconds": 1800,
+      "summary_regex": "a LaTeX document sets where pdftex sets it — (?P<count>[0-9]+)/(?P<total>[0-9]+) cases",
+      "minimum_observations": 40,
+      "require_complete": true
+    },
+    {
+      "id": "real-package-loads",
+      "description": "The locked package catalog loads without TeX errors, undefined commands, budget exhaustion, or leaked groups",
+      "modes": ["full"],
+      "command": ["tools/packages.sh"],
+      "requires": ["kpsewhich"],
+      "timeout_seconds": 1800,
+      "summary_regex": "(?P<count>[0-9]+) of (?P<total>[0-9]+) available packages load",
+      "minimum_observations": 40,
+      "require_complete": true
+    },
+    {
+      "id": "pdf-product-differentials",
+      "description": "Live stock-PDF/DVI comparisons and independent validation, including every minimized #26 PDF-path regression",
+      "modes": ["full"],
+      "command": ["tools/pdf_check.sh"],
+      "requires": ["pdflatex", "dvitype", "gawk", "gs", "mutool"],
+      "timeout_seconds": 3600,
+      "observation_regex": "(?m)^OK ",
+      "minimum_observations": 15
+    },
+    {
+      "id": "locked-191-root-holdout",
+      "description": "Conditional stock-success parity over every ready root in the locked holdout",
+      "modes": ["full"],
+      "command": [
+        "python3",
+        "tools/holdout_check.py",
+        "--results",
+        "{holdout_results}",
+        "--binary",
+        "{binary}"
+      ],
+      "requires": [],
+      "timeout_seconds": 120,
+      "summary_regex": "holdout: PASS (?P<count>[0-9]+)/(?P<total>[0-9]+) evaluated",
+      "minimum_observations": 191,
+      "require_complete": true
+    }
+  ]
+}

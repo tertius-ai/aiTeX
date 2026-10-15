@@ -1,0 +1,66 @@
+% §442 reads an alphabetic constant with `get_token` and then *undoes* what
+% reading it did to `align_state`:
+%
+%     begin get_token; {suppress macro expansion}
+%     if cur_tok<cs_token_flag then
+%       begin cur_val:=cur_chr;
+%       if cur_cmd<=right_brace then
+%         if cur_cmd=right_brace then incr(align_state)
+%         else decr(align_state);
+%       end
+%
+% A brace written as a *constant* is not a brace in the list, so it must not
+% move the counter §342 reads. We counted it, which put `align_state` one out
+% for the rest of whatever was running.
+%
+% LaTeX's `\\` inside a `tabular` is built on this exactly:
+%
+%     \def\@tabularcr{\relax\iffalse{\fi\ifnum0=`}\fi
+%       \@ifstar\@xtabularcr\@xtabularcr}
+%     \def\@xtabularcr{\@ifnextchar[\@argtabularcr{\ifnum0=`{\fi}\\}}
+%
+% The `{` inside `\iffalse{\fi` *is* counted — skipped conditional text is still
+% read through `get_next` — while the `` `} `` is meant not to be. The two
+% together leave `align_state` at 1 for the rest of the macro, which is what
+% stops `\@ifnextchar`'s `\futurelet` from firing a cell boundary on the `&` it
+% peeks at. Counting the constant brought it back to 0, the peek ended the
+% entry, and `end_cell` handed `\futurelet` the `v` template's first token
+% instead — the `&` gone and an entire empty cell with it.
+%
+%     \begin{tabular}{lccc}20&Bias&0.1&0.2\\&SD&0.3&0.4\end{tabular}
+%
+% came out one column short in its second row, and every column width after it
+% was measured against the wrong entry: 81.55577pt against pdfTeX's 78.36133pt.
+\catcode`\{=1 \catcode`\}=2 \catcode`\#=6 \catcode`\&=4
+\font\r=cmr10 \r \hsize=200pt
+\showboxdepth=3 \showboxbreadth=12 \tracingonline=0
+
+% `\ifnum0=`{\fi` must leave the counter alone, so the `&` after it still ends
+% the entry: two cells, not one.
+\setbox0=\vbox{\halign{#\hfil&#\hfil\cr
+X\ifnum0=`{\fi&Y\cr}}
+\showbox0
+
+% The same with a right brace, which §442 compensates the other way.
+\setbox0=\vbox{\halign{#\hfil&#\hfil\cr
+P\ifnum0=`}\fi&Q\cr}}
+\showbox0
+
+% And with the `\cr` itself after the constant, rather than a tab.
+\setbox0=\vbox{\halign{#\hfil&#\hfil\cr
+R&S\ifnum0=`{\fi\cr}}
+\showbox0
+
+% A constant that is *not* a brace changes nothing either way — the control
+% case, so a fix that simply stopped counting would still be measured.
+\setbox0=\vbox{\halign{#\hfil&#\hfil\cr
+T\ifnum0=`Z\fi&U\cr}}
+\showbox0
+
+% An empty first entry in a row, which is what the `tabular` above comes down
+% to once LaTeX's macros are stripped away.
+\setbox0=\vbox{\halign{#\hfil&#\hfil\cr
+V&W\cr
+&Z\cr}}
+\showbox0
+\end

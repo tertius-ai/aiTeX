@@ -1,0 +1,49 @@
+% Two rules about what goes on a vertical list, both found by diffing
+% `\tracingpages` against TeX's over trip.tex.
+%
+% §1091 `new_graf` appends `\parskip` when `(mode = vmode) or (head <> tail)`.
+% In *outer* vertical mode the first half is always true, so `\parskip`
+% precedes every paragraph including the first one of the document, on an
+% empty list. Inside a box the mode is internal vertical and it is the second
+% half that decides, so there it goes in only when the box already holds
+% something. We suppressed it on an empty list either way, which cost a page
+% its `\parskip` stretch — 42pt of it in trip.tex.
+%
+% §993 `ensure_vbox`: an insertion may only be added to a *vbox*. A box
+% register holding an `\hbox` is an error — "Insertions can only be added to a
+% vbox" — and TeX **discards its contents**, so the class starts from nothing.
+% trip.tex does exactly that, `\setbox100=\hbox{A}` and then `\insert100{…}`,
+% and the eight points of that `A` were the difference between the room TeX
+% gives the class (all 803pt of `\dimen100`) and the room we gave it (795pt).
+\catcode`\{=1 \catcode`\}=2 \catcode`\#=6
+\font\testfont=cmr10 \testfont
+\hsize=100pt \vsize=200pt \topskip=0pt \maxdepth=2pt \parindent=0pt
+
+% --- §1091 -----------------------------------------------------------------
+% Outer vertical mode: `\parskip` goes in ahead of the first paragraph too, so
+% two paragraphs put two of them on the page.
+\parskip=0pt plus 42pt minus 8pt
+\tracingpages=1
+\output={\shipout\box255}
+\hbox{A}
+\noindent B\par
+\noindent C\par
+\penalty-10000
+\tracingpages=0
+
+% Inside a box the list must already hold something. An empty `\vbox` whose
+% first thing is a paragraph gets no `\parskip`; one that already holds a box
+% gets one, and is that much taller.
+\parskip=5pt
+\setbox0\vbox{\noindent D\par}
+\setbox1\vbox{\hbox{}\noindent D\par}
+\message{<vbox-first-para=\the\ht0>}
+\message{<vbox-after-box=\the\ht1>}
+
+% §993 `ensure_vbox` is *not* tested here: TeX reports "Insertions can only be
+% added to a vbox" for it, and a battery whose reference log has errors is a
+% battery comparing error recovery. trip.tex covers it — with the fix, our
+% `% split100 to 803.0,…` line matches TeX's exactly, and without it we gave
+% the class 795pt.
+
+\end

@@ -1,0 +1,108 @@
+% `tex.web` §774 and §812: an alignment in a display, at both ends.
+%
+% §774 pushes the alignment's nest level *before* `scan_spec` reads
+% `to<dimen>` and the `{`:
+%
+%     push_nest;
+%     if mode=mmode then
+%       begin mode:=-vmode; prev_depth:=nest[nest_ptr-2].aux_field.sc; end
+%     else if mode>0 then negate(mode);
+%     scan_spec(align_group,false);
+%
+% so the dimension is scanned — and traced — in the alignment's own mode. It
+% coincides with the enclosing one everywhere except a display, where `\halign`
+% is `-vmode` and the display is `mmode`: trip.tex's `\halign
+% to\the\displaywidth` reports `{internal vertical mode: \the}` and we reported
+% `{\the}`, because we had no level for it at all.
+%
+% §812 is the other end. `fin_align` finishes the display *itself* — neither
+% `$` of the closing `$$` reaches `main_control`:
+%
+%     begin do_assignments;
+%     if cur_cmd<>math_shift then
+%       @<Pontificate about improper alignment in display@>
+%     else @<Check that another $ follows@>;
+%     pop_nest; …
+%
+% `do_assignments` first, so a `\global\count6=7` written after the alignment's
+% `}` belongs to the alignment's ending and not to what follows — trip.tex line
+% 251 is exactly that, and TeX traces none of it. We traced the assignments and
+% both `$`s, and left the display's nest level standing: the math list stayed
+% on the stack, so §1153's mode name was wrong for every formula after.
+%
+% §1207 is the recovery when what follows is not a `$`:
+%
+%     print_err("Missing $$ inserted");
+%     help2(…); back_error;
+%
+% `back_error`, so the token goes back and the display is finished all the
+% same. Nothing is inserted, which is why the context shows the offender with
+% nothing above it.
+\catcode`\{=1 \catcode`\}=2 \catcode`\$=3 \catcode`\#=6 \catcode`\&=4
+\tracingonline=1 \tracingcommands=2 \errorcontextlines=5
+\hsize=100pt \parindent=0pt \dimen0=50pt
+% §663's `in alignment at lines N--M` is a warning form this engine does not
+% produce yet, and a `\halign to<dimen>` raises one. It is not what this case
+% is about, so both engines are told to keep quiet about badness.
+\hbadness=10000 \vbadness=10000
+\font\rm=cmr10 \textfont0=\rm \scriptfont0=\rm \scriptscriptfont0=\rm \rm
+\font\mi=cmmi10 \textfont1=\mi \scriptfont1=\mi \scriptscriptfont1=\mi
+\font\sy=cmsy10 \textfont2=\sy \scriptfont2=\sy \scriptscriptfont2=\sy
+\font\ex=cmex10 \textfont3=\ex \scriptfont3=\ex \scriptscriptfont3=\ex
+\showthe\escapechar
+
+% §774: the `\the` in the spec is scanned in internal vertical mode.
+\setbox0\vbox{\noindent X$$\halign to\the\dimen0{#\hfil\cr A\cr}$$Y\par}
+
+% §812: assignments between the alignment and the `$$`, none of them traced,
+% and all of them obeyed.
+\setbox1\vbox{\noindent X$$\halign{#\cr A\cr}\global\count6=7 \predisplaypenalty=101 $$Y\par}
+\message{PROBE:assign=[\the\count6][\the\predisplaypenalty]}
+
+% §1270 opens each turn with `@<Get the next non-blank non-relax non-call
+% token@>`, so a newline after the alignment's `}` — which is what a document
+% actually writes — does not stop it, and neither does a `\relax`. Stopping
+% there closes the display before the assignments, which is a different page.
+\setbox4\vbox{\noindent X$$\halign{#\cr A\cr}
+  \relax \global\count6=9 $$Y\par}
+\message{PROBE:blank=[\the\count6]}
+
+% §812 reads both penalties and both skips *after* `do_assignments`, and links
+% the rows in between them:
+%
+%     begin do_assignments;
+%     … pop_nest; tail_append(new_penalty(pre_display_penalty));
+%     tail_append(new_param_glue(above_display_skip_code));
+%     link(tail):=p;  { the rows }
+%     if p<>null then tail:=q;
+%     tail_append(new_penalty(post_display_penalty));
+%     tail_append(new_param_glue(below_display_skip_code));
+%
+% so a `\predisplaypenalty` written *after* the alignment's `}` still applies
+% to that display — the assignments are part of its ending, not of what
+% follows. We read the parameters as the rows were placed, which is before
+% those assignments have run, so both came out at whatever they were before.
+%
+% The second penalty is why this reaches the page rather than the transcript: a
+% `\postdisplaypenalty` below §1005's `eject_penalty` *forces the page out*.
+% trip.tex writes one of −1179647 there, and with ours left at zero the page
+% never fired, `\output` never ran, and the whole of the run after it was
+% missing.
+\setbox5\vbox{\noindent X$$\halign{#\cr A\cr}
+  \predisplaypenalty=101 \postdisplaypenalty=102 $$Y\par}
+\showbox5
+
+% ...and the ejecting form, on a page small enough to see it.
+\output={\message{OUT}\shipout\box255 }
+\vsize=200pt
+\noindent X$$\halign{#\cr A\cr}\postdisplaypenalty=-20000 $$Y\par
+\message{PROBE:ejected}
+
+% §1207: something else there instead.
+\setbox2\vbox{\noindent X$$\halign{#\cr A\cr}Z$$Y\par}
+
+% ...and the same alignment outside a display, where §812 has no part in it
+% and the mode is the enclosing one anyway.
+\setbox3\vbox{\halign{#\hfil\cr A\cr\noalign{\the\dimen0}B\cr}}
+\showthe\escapechar
+\end

@@ -1,0 +1,80 @@
+% `tex.web` §1064 `off_save`, and §1065's table of what it inserts.
+%
+%     procedure off_save;
+%     var p:pointer; {inserted token}
+%     begin if cur_group=bottom_level then
+%       @<Drop current token and complain that it was forbidden@>
+%     else  begin back_input; p:=get_avail; link(temp_head):=p;
+%       print_err("Missing ");
+%       @<Prepare to insert a token that matches |cur_group|@>;
+%       print(" inserted"); ins_list(link(temp_head));
+%       help5(…); error;
+%       end;
+%     end;
+%
+%     case cur_group of
+%     semi_simple_group: … print_esc("endgroup");
+%     math_shift_group:  … print_char("$");
+%     math_left_group:   … print_esc("right.");
+%     othercases         … print_char("}")
+%
+% A command arrived that cannot be obeyed with the current group open, so the
+% token that *would* close the group is inserted in front of it. The inserted
+% token is then executed, which is what makes the choice matter: the wrong one
+% closes the wrong thing and everything after diverges.
+%
+% We had the `}` arm only, written inline at its one caller (§1095's
+% `head_for_vmode`). §1066's other half was missing too — with *no* group open
+% there is nothing to insert, so the token is dropped and named:
+%
+%     begin print_err("Extra "); print_cmd_chr(cur_cmd,cur_chr);
+%     help1("Things are pretty mixed up, but I think the worst is over.");
+%     error;
+%     end
+%
+% and the two callers wired up here are §1065's `\endgroup` — legal only for a
+% `\begingroup`'s own group — and §1145's `\halign`, which in a display is
+% legal only when the group is the display's.
+%
+% Not covered: the `\right.` arm. It is implemented and reachable, but every
+% way of reaching it also runs through §1193's `Extra \right`, which does not
+% exist yet, so a case for it would be testing that instead.
+\catcode`\{=1 \catcode`\}=2 \catcode`\$=3 \catcode`\#=6 \catcode`\&=4
+\errorcontextlines=5
+\hsize=100pt \parindent=0pt
+\font\rm=cmr10 \textfont0=\rm \scriptfont0=\rm \scriptscriptfont0=\rm \rm
+\font\mi=cmmi10 \textfont1=\mi \scriptfont1=\mi \scriptscriptfont1=\mi
+\font\sy=cmsy10 \textfont2=\sy \scriptfont2=\sy \scriptscriptfont2=\sy
+\font\ex=cmex10 \textfont3=\ex \scriptfont3=\ex \scriptscriptfont3=\ex
+\showthe\escapechar
+
+% The `}` arm, twice over: the inserted brace closes the `{`, the `\endgroup`
+% comes back and closes the \hbox the same way, and only then is there no
+% group left and §1066 drops it.
+\setbox0\hbox{A{B\endgroup C}D}
+\message{PROBE:brace=[\the\wd0]}
+
+% The `$` arm. The cascade is the point: the inserted `$` closes the formula,
+% the `\endgroup` comes back and meets the \hbox, and §1047 picks up the
+% unclosed formula the trailing `$D}` leaves behind.
+\setbox1\hbox{A$B\endgroup C$D}
+\message{PROBE:math=[\the\wd1]}
+
+% §1145's caller: an alignment in a display, inside a group that is not the
+% display's. This is trip.tex line 250.
+\setbox2\vbox{\noindent A$$\begingroup\halign{#\cr B\cr}$$C\par}
+\message{PROBE:halign=[\the\ht2]}
+
+% ...and the same alignment with no group in the way, which is legal.
+\setbox3\vbox{\noindent A$$\halign{#\cr B\cr}$$C\par}
+\message{PROBE:plain=[\the\ht3]}
+
+% §1066 on its own: nothing open at all.
+\endgroup
+\message{PROBE:bottom}
+
+% A `\begingroup` closed by its own `\endgroup` says nothing.
+\begingroup\endgroup
+\message{PROBE:ok}
+\showthe\escapechar
+\end

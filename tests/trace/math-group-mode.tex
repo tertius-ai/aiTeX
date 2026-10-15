@@ -1,0 +1,56 @@
+% `tex.web` §1153 and §1136: a `{` in math mode is a *subformula*, and it gets
+% a nest level of its own.
+%
+%     mmode+left_brace: begin tail_append(new_noad); back_input;
+%       scan_math(nucleus(tail));
+%       end;
+%
+%     procedure push_math(@!c:group_code);
+%     begin push_nest; mode:=-mmode; incompleat_noad:=null;
+%     new_save_level(c);
+%     end;
+%
+% `mode := -mmode` — inner — whatever style the material will eventually be
+% set in. Only the outermost level of a *display* is `mmode` positive; `$…$`
+% and every braced group inside either are not. So `$$B{C}D$$` reports
+% `{math mode: the letter C}` and then `{display math mode: the letter D}`.
+%
+% We read the *style* to decide, and the style is `display_style` all the way
+% down a display — so every subformula in one was named for the display it sat
+% in. §211's mode name is not decoration: it is how a reader of a
+% `\tracingcommands` log tells which list a command went to, and §218's
+% `\showlists` heading is built from the same answer.
+%
+% The style and the mode are genuinely different questions, which is why one
+% cannot stand in for the other: a `{}` group in a display is inner mode and
+% display style, and `\hbox{$Q$}` inside a display is *text* style and inner
+% mode both.
+\catcode`\{=1 \catcode`\}=2 \catcode`\$=3 \catcode`\^=7 \catcode`\_=8
+\tracingonline=1 \tracingcommands=2
+\hsize=100pt \parindent=0pt
+\font\rm=cmr10 \textfont0=\rm \scriptfont0=\rm \scriptscriptfont0=\rm \rm
+\font\mi=cmmi10 \textfont1=\mi \scriptfont1=\mi \scriptscriptfont1=\mi
+\font\sy=cmsy10 \textfont2=\sy \scriptfont2=\sy \scriptscriptfont2=\sy
+\font\ex=cmex10 \textfont3=\ex \scriptfont3=\ex \scriptscriptfont3=\ex
+\showthe\escapechar
+
+% Nested groups: in and out, one level at a time.
+\setbox0\vbox{\noindent A$$B{C{D}E}F$$G\par}
+
+% Scripts open one the same way — §1176's `scan_math` on the field.
+\setbox1\vbox{\noindent A$$B^{C}_{D}E$$F\par}
+
+% ...and so do the two halves of a fraction, when §1184 splits the list.
+\setbox2\vbox{\noindent A$$B\over C$$D\par}
+
+% \vcenter is a vertical list inside a formula, and what follows it is back in
+% the display.
+\setbox3\vbox{\noindent A$$\vcenter{\hbox{x}}B$$C\par}
+
+% An \hbox in a display holds a formula of its own: inner mode, text style.
+\setbox4\vbox{\noindent A$$\hbox{$Q$}B$$C\par}
+
+% Inline math is inner already, so a group in one changes nothing.
+\setbox5\hbox{A$B{C}D$E}
+\showthe\escapechar
+\end

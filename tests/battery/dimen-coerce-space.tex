@@ -1,0 +1,22 @@
+% tex.web 448/453: before a dimension's unit TeX reads with get_x_token and
+% skips spaces -- expandable tokens are expanded, spaces (and space-equivalents)
+% discarded, until the unit appears. So `11 \dimen0` (space before an internal
+% dimen) is `11 * \dimen0`, not `11pt`; and a macro/`\let`-to-space in that gap
+% is skipped too. expl3 builds a category-code table as an intarray, one entry
+% per char:  \fontdimen n \cctab = \char_value_catcode:n{c} \c__intarray_sp_dim
+% = <catcode><exp_stop_f:><internal dimen>, where \exp_stop_f: is a space. The
+% missing skip read the number as `11pt` and leaked the internal dimen as a
+% digit into vertical mode -- a spurious paragraph that fired \output at \@@end.
+\input plain
+\dimen0=1sp
+\def\es{ }%                 a macro that expands to a space, like an expandable \exp_stop_f:
+\dimen1=11\dimen0
+\dimen2=11 \dimen0
+\dimen3=-3 \dimen0
+\dimen4=2 \dimen0 \relax
+\dimen5=100\dimen0
+\dimen6=100 \dimen0
+\dimen7=7\es\dimen0
+\dimen8=9 \es \dimen0
+\message{<a=\the\dimen1><b=\the\dimen2><c=\the\dimen3><d=\the\dimen4><e=\the\dimen5><f=\the\dimen6><g=\the\dimen7><h=\the\dimen8>}
+\bye

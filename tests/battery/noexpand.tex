@@ -1,0 +1,34 @@
+% \noexpand marks the token it protects (tex.web 258, 369): a marked token has
+% the meaning of \relax, which is what makes
+%
+%     \expandafter\ifx\noexpand\foo \foo
+%
+% a test of whether \foo is *expandable*. A macro is not \relax so the
+% comparison fails; a primitive is unaffected by \noexpand and compares equal.
+% expl3's variant generator uses exactly this to decide whether a generated
+% variant must be \protected, so getting it wrong makes every variant
+% protected.
+\input plain
+\catcode`\@=11
+\def\M#1{\message{<#1>}}
+\def\expandable{X}\protected\def\prot{X}
+\expandafter\ifx\noexpand\expandable\expandable \M{macro=same}\else\M{macro=diff}\fi
+\expandafter\ifx\noexpand\prot\prot \M{protected=same}\else\M{protected=diff}\fi
+\expandafter\ifx\noexpand\relax\relax \M{relax=same}\else\M{relax=diff}\fi
+\expandafter\ifx\noexpand\hbox\hbox \M{primitive=same}\else\M{primitive=diff}\fi
+\expandafter\ifx\noexpand\undefinedcs\undefinedcs \M{undef=same}\else\M{undef=diff}\fi
+% The marker never reaches a result: an \edef body holds the token alone.
+\edef\a{\noexpand\expandable}\M{edef=\meaning\a}
+\edef\b{Y\noexpand\expandable Z}\M{edefmid=\meaning\b}
+% And the protected token still executes normally afterwards.
+\M{runs=\a}
+% The marker protects exactly the token after it, in an \edef body too: that
+% token is taken as it stands and not looked at again. expl3 writes
+% `\exp_not:N \foo` throughout its generators for precisely this.
+\def\willexpand{EXPANDED}
+\edef\na{\noexpand\willexpand}\M{edefprot=\meaning\na}
+\edef\nb{A\noexpand\willexpand B\willexpand}\M{edefmixed=\meaning\nb}
+% And a protected macro needs no marker: it does not expand in an \edef at all.
+\protected\def\protm{P}
+\edef\nc{\protm\willexpand}\M{protected=\meaning\nc}
+\bye

@@ -1,0 +1,11 @@
+% `tex.web` §§48, 59 and 262: control bytes in a control-sequence name are
+% printed in `^^` notation unless they equal `\newlinechar`, and an active
+% character is printed bare rather than as an escaped implementation symbol.
+\catcode`\{=1 \catcode`\}=2
+\catcode0=11
+\def\a^^@a{\undefined}
+\a^^@a
+\catcode13=13
+\def^^M{\undefined}%
+^^M%
+\end

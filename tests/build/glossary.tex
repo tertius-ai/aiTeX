@@ -1,0 +1,13 @@
+\documentclass{article}
+\usepackage[acronym]{glossaries}
+\makeglossaries
+\newglossaryentry{sample}{name=sample,description={A sample entry}}
+\newacronym{ai}{AI}{artificial intelligence}
+\usepackage{nomencl}
+\makenomenclature
+\begin{document}
+\gls{sample}; \gls{ai}.
+\nomenclature{$x$}{A value}
+\printglossaries
+\printnomenclature
+\end{document}

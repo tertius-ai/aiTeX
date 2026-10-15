@@ -1,0 +1,32 @@
+% \endlinechar governs what a line end contributes -- including inside a macro
+% argument, which is where it was being ignored: argument reading used a
+% hardcoded 13 whatever the document had set.
+%
+% Only forms verified in isolation against pdftex are here. Cases that change
+% \endlinechar and then span lines are genuinely delicate -- a line end that
+% contributes nothing merges the next line into this one -- and two attempts at
+% writing them produced files that tested something other than what I intended.
+\input plain
+\catcode`\@=11
+\def\arg#1{(#1)}
+\message{<default=\arg{a
+b}>}
+\endlinechar=`\!
+\message{<bang-arg=\arg{a
+b}>}
+\message{<bang-plain=x
+y>}
+\endlinechar=13
+% expl3's regime: the line end is a space *character*, and the space character
+% is ignored -- so line ends vanish completely, even inside arguments.
+\catcode`\ =9 \endlinechar=32
+\def\outer@arg#1{[#1]}
+\message{<expl-arg=\outer@arg{a
+b}>}
+% A \def read as part of an argument keeps its parameter text intact: no
+% phantom space delimiter from the line end. This is what stopped expl3.
+\outer@arg{\def\inner#1
+  {(#1)}}
+\message{<expl-def=\inner X>}
+\endlinechar=13 \catcode`\ =10
+\bye

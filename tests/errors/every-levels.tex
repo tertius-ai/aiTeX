@@ -1,0 +1,57 @@
+% `tex.web` §307 and §314: fifteen kinds of token list, each named in an error
+% context by the tag §314 gives it.
+%
+%     output_text: print_nl("<output> ");
+%     every_par_text: print_nl("<everypar> ");
+%     every_math_text: print_nl("<everymath> ");
+%     …
+%
+% Ours knew three of them and showed the rest as `<to be read again> `, which
+% is not merely a wrong label: the tag is how a reader tells "this came from
+% your \everyvbox" from "this was put back", and §317 measures the tag's width
+% when it decides where to cut the line under it — so a mis-named level also
+% cuts its own text in the wrong place.
+%
+% The other half of this case is §311's elision, which is why every error here
+% is deliberately two levels deep:
+%
+%     if (base_ptr=input_ptr) or bottom_line or (nn<error_context_lines) then
+%       @<Display the current context@>
+%     else if nn=error_context_lines then
+%       begin print_nl("..."); incr(nn); end;
+%
+% and "Display the current context" then declines to print a spent backed-up
+% list anyway. The order is the point: such a level prints nothing but has
+% already been counted, so with `\errorcontextlines` at its default of 0 it
+% becomes the `...` rather than silence. Each `\hbox{` here leaves one behind —
+% `scan_spec` backs up the token that was not `to` or `spread` — and we skipped
+% it outright, so every one of these contexts lost its `...`.
+\catcode`\{=1 \catcode`\}=2 \catcode`\$=3 \catcode`\#=6
+\everypar={\undefA}
+\everyhbox={\undefB}
+\everyvbox={\undefC}
+\everymath={\undefD}
+\everydisplay={\undefE}
+\everycr={\undefF}
+\hsize=100pt
+
+% Math needs its two symbol families before §1195 will let a formula stand;
+% without them the formula is deleted and `\everymath` never runs a second time.
+\font\sy=cmsy10 \textfont2=\sy \scriptfont2=\sy \scriptscriptfont2=\sy
+\font\ex=cmex10 \textfont3=\ex \scriptfont3=\ex \scriptscriptfont3=\ex
+\font\rm=cmr10 \textfont0=\rm \scriptfont0=\rm \scriptscriptfont0=\rm \rm
+\font\mi=cmmi10 \textfont1=\mi \scriptfont1=\mi \scriptscriptfont1=\mi
+
+\setbox0\hbox{x}
+\setbox1\vbox{y}
+\noindent z\par
+\setbox2\hbox{$a$}
+% One `\cr` only: the preamble's. A row's `\cr` leaves a spent `v` template
+% on TeX's stack — §325's while loop names `v_template` as the one kind it will
+% not pop early — and §311 counts that level, so the context of the `\everycr`
+% after a *row* carries a `...` we do not yet produce. That is a gap in how
+% this engine models an alignment's input stack, not in §314's names, and it
+% belongs to whatever closes that gap rather than here.
+\halign{#\cr}
+\message{PROBE:done}
+\end

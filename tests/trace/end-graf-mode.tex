@@ -1,0 +1,52 @@
+% `tex.web` §1094: `end_graf` is about the mode, and only one mode.
+%
+%     procedure end_graf;
+%     begin if mode=hmode then
+%       begin if head=tail then pop_nest {null paragraphs are discarded}
+%       else line_break(widow_penalty);
+%       normal_paragraph;
+%       error_count:=0;
+%       end;
+%     end;
+%
+% `mode=hmode`, not `abs(mode)=hmode`. A restricted horizontal list — the
+% inside of an \hbox — is not a paragraph, so there is nothing to break and
+% nothing for §1070's `normal_paragraph` to reset.
+%
+% We called it whatever the mode was. That is invisible until something has
+% been set that `normal_paragraph` clears: inside `{\looseness 5 …}` an \hbox
+% reset \looseness to 0 within the *box's own* group, and the box's closing
+% brace gave it straight back — a `{restoring \looseness=5}` TeX does not
+% write, and, worse, a \looseness of 0 in force for the whole of the box.
+%
+% Which is also why the fix has to leave `\par` alone. §1094 puts `\par` in the
+% big switch twice, and only the horizontal one is `end_graf`:
+%
+%     vmode+par_end: begin normal_paragraph;
+%       if mode>0 then build_page; end;
+%     hmode+par_end: begin if align_state<0 then off_save; end_graf;
+%       if mode=vmode then build_page; end;
+%
+% so a `\par` where there is no paragraph still resets the shape, and a `\par`
+% in restricted horizontal mode does nothing whatever.
+\catcode`\{=1 \catcode`\}=2
+\tracingonline=1 \tracingcommands=2 \tracingrestores=1
+\hsize=100pt \parindent=0pt
+\font\rm=cmr10 \rm
+
+% The \hbox is inside the group, so anything it resets is restored at *its*
+% brace and shows up as a line of its own.
+{\looseness 5 \hangindent 3pt A\hbox{}B\par}
+
+% A \vbox does call `normal_paragraph` — as it opens (§1083), not as it
+% closes — so this one restore is TeX's too.
+{\looseness 5 \vbox{}}
+
+% `\par` with no paragraph under way: the shape is reset, and the restore that
+% follows is the group's.
+{\looseness 5 \hangafter 4 \par}
+
+% ...and `\par` in restricted horizontal mode, which is neither.
+{\looseness 5 \setbox0\hbox{A\par B}}
+\showthe\looseness
+\end

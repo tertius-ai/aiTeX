@@ -1,0 +1,28 @@
+% `tex.web` §479, checked as the body is read:
+%
+%     if cur_cmd<>mac_param then
+%       if (cur_tok<=zero_token)or(cur_tok>t) then
+%         begin print_err("Illegal parameter number in definition of ");
+%         sprint_cs(warning_index);
+%         help3("You meant to type ## instead of #, right?")
+%         ("Or maybe a } was forgotten somewhere earlier, and things")
+%         ("are all screwed up? I'm going to assume that you meant ##.");
+%         back_error; cur_tok:=s;
+%         end
+%       else cur_tok:=out_param_token-"0"+cur_chr;
+%
+% `t` is the number of parameters the parameter text declared, so `#2` in a
+% macro that takes one is an error and so is `#0`.  The recovery is `##`: the
+% offending token goes back — `back_error`, so the context carries `<to be
+% read again>` — and the `#` stands for itself.
+%
+% We accepted any digit and substituted nothing for the ones that named no
+% parameter, so `\def\c{#2}` expanded to nothing at all and said nothing.
+\catcode`\{=1 \catcode`\}=2 \catcode`\#=6
+\def\c{#2}
+\def\d#1{#1#2}
+\def\e#1{#0}
+\def\f#1{#1##}
+\def\g#1{#1#1}
+\show\c \show\d \show\e \show\f \show\g
+\end
