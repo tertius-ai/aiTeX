@@ -22,6 +22,14 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+      - name: Install the TeX resolver used by the integration tests
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends texlive-base texlive-latex-base
+      - name: Verify the TeX resolver and LaTeX kernel
+        run: |
+          command -v kpsewhich
+          kpsewhich --format=tex latex.ltx
       - uses: dtolnay/rust-toolchain@4aab473fa1157d90c6dc14f879ca54797e16fea0 # 1.90.0
       - run: cargo build --workspace --all-targets --locked
       - run: cargo test --workspace --locked
