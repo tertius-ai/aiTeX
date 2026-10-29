@@ -17651,6 +17651,31 @@ impl Fast {
         }
     }
 
+    /// EOF is §336's other `matching` failure. Abandon the call instead of
+    /// binding an empty/truncated argument and executing its body: recursive
+    /// collectors such as Beamer's otherwise keep calling themselves at EOF.
+    fn file_ended_macro_argument(&mut self, absorbed: &[Token]) {
+        // A budget failure or -halt-on-error also stops the token reader.
+        // Preserve that first diagnostic rather than reporting a false EOF.
+        if self.halt_requested {
+            return;
+        }
+        let name = self
+            .scanning_macro
+            .map(|(sym, _)| self.esc_name(sym))
+            .unwrap_or_default();
+        self.messages
+            .push(alloc::string::String::from("Runaway argument?"));
+        if !absorbed.is_empty() {
+            self.messages.push(self.tok_slice_str(absorbed, 69));
+        }
+        self.report(
+            ErrorKind::Runaway,
+            alloc::format!("File ended while scanning use of {name}"),
+            &name,
+        );
+    }
+
     /// §396's common abort after a non-`\long` macro sees `\par`.
     fn paragraph_ended_macro_argument(&mut self, par: Token, absorbed: &[Token]) {
         let name = self
@@ -17742,8 +17767,8 @@ impl Fast {
                 Some(x) if x.is_space() => continue,
                 Some(x) => break x,
                 None => {
-                    let s = self.params.len() as u32;
-                    return Some((s, 0));
+                    self.file_ended_macro_argument(&[]);
+                    return None;
                 }
             }
         };
@@ -17844,6 +17869,11 @@ impl Fast {
                 );
                 self.dbg_runaway.push(r);
             }
+        }
+        if !aborted && depth != 0 {
+            buf.insert(0, first);
+            self.file_ended_macro_argument(&buf);
+            aborted = true;
         }
         if aborted {
             self.arg_scratch = buf;
@@ -18221,9 +18251,12 @@ impl Fast {
             }
             out.push(t);
         }
-        // One exit for all three ways out (delimiter matched, one-token delimiter
-        // matched, input exhausted), so the scratch buffers always go back.
-        let _ = done;
+        // Exhausted input is not a successful delimiter match. In particular,
+        // do not execute a recursive collector with a fabricated argument.
+        if !done && !aborted {
+            self.file_ended_macro_argument(&out);
+            aborted = true;
+        }
         if aborted {
             self.delim_scratch = out;
             self.partial_scratch = partial;
@@ -30263,6 +30296,53 @@ mod tests {
         assert!(f.halted_on_error());
         assert_eq!(f.error_count(), 1);
         assert_eq!(f.errors()[0].kind, ErrorKind::BudgetExhausted);
+    }
+
+    #[test]
+    fn macro_argument_eof_aborts_the_call_without_exhausting_the_budget() {
+        // Stock TeX reports "File ended while scanning use of \\again" for
+        // each case. Executing the body with an empty or truncated argument
+        // instead makes these tail calls spin until the global token cap.
+        for source in [
+            r"\long\def\again#1\stop{\again}\again unfinished",
+            r"\long\def\again#1\stop now{\again}\again unfinished\stop",
+            r"\long\def\again#1{\again}\again",
+            r"\long\def\again#1{\again}\again{unfinished",
+            r"\long\def\again#1#2{\again}\again{first}",
+            r"\long\def\again#1#{\again}\again unfinished",
+            r"\long\def\again#1\stop{\again}\expandafter\relax\again unfinished",
+        ] {
+            for halt_on_error in [false, true] {
+                let mut f = Fast::new();
+                init(&mut f);
+                f.set_halt_on_error(halt_on_error);
+                f.set_max_steps(2_000);
+                f.run(source);
+                assert!(!f.hit_cap, "argument scan spun at EOF: {source}");
+                assert_eq!(f.error_count(), 1, "{source}: {:?}", f.errors());
+                assert_eq!(f.errors()[0].kind, ErrorKind::Runaway);
+                assert_eq!(
+                    f.errors()[0].message,
+                    "File ended while scanning use of \\again"
+                );
+                assert!(f.pranges.is_empty(), "aborted arguments leaked: {source}");
+                assert!(f.params.is_empty(), "aborted arguments leaked: {source}");
+            }
+        }
+    }
+
+    #[test]
+    fn macro_argument_eof_reports_the_unfinished_text() {
+        let mut f = Fast::new();
+        init(&mut f);
+        f.run(r"\long\def\again#1\stop now{}\again unfinished\stop");
+        assert_eq!(f.error_count(), 1);
+        assert!(f.messages.iter().any(|line| line == "Runaway argument?"));
+        assert!(
+            f.messages.iter().any(|line| line.trim() == "unfinished"),
+            "{:?}",
+            f.messages
+        );
     }
 
     #[test]
